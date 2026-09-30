@@ -11,8 +11,9 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=PROJECT_ROOT / ".env", extra="ignore")
 
     app_name: str = "AI Interview Analyzer"
-    # Postgres example: postgresql+psycopg://postgres:password@localhost:5432/interview_ai
-    database_url: str = f"sqlite:///{(PROJECT_ROOT / 'data' / 'dev.db').as_posix()}"
+    # Required. No default on purpose, so a database is never created implicitly.
+    # Example: postgresql+psycopg://postgres:password@localhost:5432/interview_ai
+    database_url: str | None = None
 
     data_dir: Path = PROJECT_ROOT / "data"
     ml_models_dir: Path = PROJECT_ROOT / "ml" / "models"

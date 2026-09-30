@@ -7,6 +7,11 @@ from sqlalchemy.orm import Session, sessionmaker
 from backend.app.core.config import get_settings
 
 settings = get_settings()
+if not settings.database_url:
+    raise RuntimeError(
+        "DATABASE_URL is not set. Copy .env.example to .env and set your PostgreSQL URL, e.g. "
+        "postgresql+psycopg://postgres:PASSWORD@localhost:5432/interview_ai"
+    )
 _is_sqlite = settings.database_url.startswith("sqlite")
 
 engine = create_engine(
