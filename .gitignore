@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# Secrets
+.env
+
+# Runtime data (recordings, DB, reports)
+data/*
+!data/.gitkeep
+
+# ML: raw datasets and large model weights (re-created by ml/ scripts)
+ml/datasets/
+ml/models/*
+!ml/models/.gitkeep
+!ml/models/*.json
+
+# IDE / OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
