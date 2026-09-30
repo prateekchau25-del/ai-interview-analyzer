@@ -51,9 +51,3 @@ def session_scope() -> Iterator[Session]:
         raise
     finally:
         db.close()
-
-
-def init_db() -> None:
-    from backend.app.db.models import Base
-
-    Base.metadata.create_all(engine)

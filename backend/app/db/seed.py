@@ -124,7 +124,9 @@ ROLES = [
                             "security", "backup", "linux", "itil", "firewall"],
         "questions": [
             {
-                "text": "Explain how you would handle a sudden network outage affecting multiple departments.",
+                "text": (
+                    "Explain how you would handle a sudden network outage affecting multiple departments."
+                ),
                 "ideal_answer": (
                     "Identify the scope and root cause by checking monitoring, switches, routers, "
                     "firewall and server logs. Communicate the outage and expected timelines to the "

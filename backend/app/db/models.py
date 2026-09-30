@@ -1,12 +1,17 @@
 """Relational schema. Works unchanged on PostgreSQL (production) and SQLite (local tests)."""
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from sqlalchemy import JSON, DateTime, Float, ForeignKey, Integer, String, Text
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
 
 def utcnow() -> datetime:
-    return datetime.now(timezone.utc)
+    return datetime.now(UTC)
+
+
+# JSONB on PostgreSQL (indexable, faster), plain JSON elsewhere (tests)
+JSONType = JSON().with_variant(JSONB(), "postgresql")
 
 
 class Base(DeclarativeBase):
@@ -19,7 +24,7 @@ class JobRole(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     title: Mapped[str] = mapped_column(String(120), unique=True)
     description: Mapped[str] = mapped_column(Text, default="")
-    required_skills: Mapped[list] = mapped_column(JSON, default=list)
+    required_skills: Mapped[list] = mapped_column(JSONType, default=list)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
     questions: Mapped[list["Question"]] = relationship(
@@ -31,11 +36,11 @@ class Question(Base):
     __tablename__ = "questions"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    role_id: Mapped[int] = mapped_column(ForeignKey("job_roles.id", ondelete="CASCADE"))
+    role_id: Mapped[int] = mapped_column(ForeignKey("job_roles.id", ondelete="CASCADE"), index=True)
     order_index: Mapped[int] = mapped_column(Integer, default=0)
     text: Mapped[str] = mapped_column(Text)
     ideal_answer: Mapped[str] = mapped_column(Text, default="")
-    keywords: Mapped[list] = mapped_column(JSON, default=list)
+    keywords: Mapped[list] = mapped_column(JSONType, default=list)
     category: Mapped[str] = mapped_column(String(40), default="technical")  # technical | behavioral | hr
     time_limit_sec: Mapped[int] = mapped_column(Integer, default=120)
 
@@ -50,7 +55,7 @@ class Candidate(Base):
     email: Mapped[str] = mapped_column(String(200), unique=True, index=True)
     batch: Mapped[str | None] = mapped_column(String(60), nullable=True)
     resume_path: Mapped[str | None] = mapped_column(String(500), nullable=True)
-    resume_analysis: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    resume_analysis: Mapped[dict | None] = mapped_column(JSONType, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
     interviews: Mapped[list["Interview"]] = relationship(back_populates="candidate")
@@ -60,13 +65,15 @@ class Interview(Base):
     __tablename__ = "interviews"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    candidate_id: Mapped[int] = mapped_column(ForeignKey("candidates.id", ondelete="CASCADE"))
+    candidate_id: Mapped[int] = mapped_column(
+        ForeignKey("candidates.id", ondelete="CASCADE"), index=True
+    )
     role_id: Mapped[int] = mapped_column(ForeignKey("job_roles.id"))
     # in_progress -> analyzing -> completed | failed
     status: Mapped[str] = mapped_column(String(20), default="in_progress", index=True)
     overall_score: Mapped[float | None] = mapped_column(Float, nullable=True)
     verdict: Mapped[str | None] = mapped_column(String(40), nullable=True)
-    summary: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    summary: Mapped[dict | None] = mapped_column(JSONType, nullable=True)
     report_pdf_path: Mapped[str | None] = mapped_column(String(500), nullable=True)
     started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
     finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
@@ -82,7 +89,9 @@ class Answer(Base):
     __tablename__ = "answers"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    interview_id: Mapped[int] = mapped_column(ForeignKey("interviews.id", ondelete="CASCADE"))
+    interview_id: Mapped[int] = mapped_column(
+        ForeignKey("interviews.id", ondelete="CASCADE"), index=True
+    )
     question_id: Mapped[int | None] = mapped_column(ForeignKey("questions.id"), nullable=True)
     # Snapshot of the question text (supports resume-generated ad-hoc questions too)
     question_text: Mapped[str] = mapped_column(Text)
@@ -126,10 +135,10 @@ class AnswerMetrics(Base):
     dominant_face_emotion: Mapped[str | None] = mapped_column(String(30), nullable=True)
 
     # Full detail from each pipeline (timelines, breakdowns, LLM feedback)
-    speech: Mapped[dict] = mapped_column(JSON, default=dict)
-    audio: Mapped[dict] = mapped_column(JSON, default=dict)
-    vision: Mapped[dict] = mapped_column(JSON, default=dict)
-    nlp: Mapped[dict] = mapped_column(JSON, default=dict)
-    suggestions: Mapped[list] = mapped_column(JSON, default=list)
+    speech: Mapped[dict] = mapped_column(JSONType, default=dict)
+    audio: Mapped[dict] = mapped_column(JSONType, default=dict)
+    vision: Mapped[dict] = mapped_column(JSONType, default=dict)
+    nlp: Mapped[dict] = mapped_column(JSONType, default=dict)
+    suggestions: Mapped[list] = mapped_column(JSONType, default=list)
 
     answer: Mapped[Answer] = relationship(back_populates="metrics")
