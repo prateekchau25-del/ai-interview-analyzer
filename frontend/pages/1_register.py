@@ -7,44 +7,99 @@ ui.setup_page("📝 Register & Resume Check")
 
 COURSES = {"BSC_IT": "B.Sc IT", "BSC_DS": "B.Sc DS", "BSC_AI": "B.Sc AI", "BCA": "BCA"}
 YEARS = {1: "FY (1st year)", 2: "SY (2nd year)", 3: "TY (3rd year)"}
+ss = st.session_state
 
-with st.form("register"):
-    c1, c2 = st.columns(2)
-    name = c1.text_input("Full name *")
-    roll_no = c2.text_input("Roll number *")
-    college = st.text_input("College name *", value="K.E.S. Shroff College")
-    c3, c4 = st.columns(2)
-    course = c3.selectbox("Course *", list(COURSES), format_func=COURSES.get)
-    year = c4.radio("Year *", list(YEARS), format_func=YEARS.get, horizontal=True)
-    resume = st.file_uploader("Resume (PDF or DOCX, max 5 MB)", type=["pdf", "docx"])
-    submitted = st.form_submit_button("Save & analyse resume", type="primary")
 
-if submitted:
-    if len(name.strip()) < 2 or not roll_no.strip() or len(college.strip()) < 2:
-        st.error("Please fill name, roll number and college.")
-        st.stop()
+def save(register_fn, resume) -> None:
+    """Register, optionally analyse the resume, and remember the candidate for the interview page."""
     try:
         with st.spinner("Saving your details..."):
-            cand = api.register(name, college, roll_no, course, year)
-        st.session_state["candidate"] = cand
-        st.session_state.pop("interview_id", None)
+            cand = register_fn()
+        ss["candidate"] = cand
+        for k in ("interview_id", "question", "last_result", "review", "review_decision", "report"):
+            ss.pop(k, None)
         if resume is not None:
             with st.spinner("Reading your resume and running the ATS check..."):
-                st.session_state["ats"] = api.upload_resume(cand["id"], resume.name, resume.getvalue())
+                ss["ats"] = api.upload_resume(cand["id"], resume.name, resume.getvalue())
         else:
-            st.session_state.pop("ats", None)
+            ss.pop("ats", None)
     except api.ApiError as e:
         st.error(str(e))
         st.stop()
 
-cand = st.session_state.get("candidate")
+
+role = st.radio("I am a", ["Student", "Teacher (IT Department)"], horizontal=True)
+
+# ---------------------------------------------------------------- student
+if role == "Student":
+    with st.form("register"):
+        c1, c2 = st.columns(2)
+        name = c1.text_input("Full name *")
+        roll_no = c2.text_input("Roll number *")
+        college = st.text_input("College name *", value="K.E.S. Shroff College")
+        c3, c4 = st.columns(2)
+        course = c3.selectbox("Course *", list(COURSES), format_func=COURSES.get)
+        year = c4.radio("Year *", list(YEARS), format_func=YEARS.get, horizontal=True)
+        resume = st.file_uploader("Resume (PDF or DOCX, max 5 MB)", type=["pdf", "docx"])
+        submitted = st.form_submit_button("Save & analyse resume", type="primary")
+    if submitted:
+        if len(name.strip()) < 2 or not roll_no.strip() or len(college.strip()) < 2:
+            st.error("Please fill name, roll number and college.")
+            st.stop()
+        save(lambda: api.register(name, college, roll_no, course, year), resume)
+
+# ---------------------------------------------------------------- teacher
+else:
+    st.caption("For IT-department faculty. Choose every course, year and subject you have taught; "
+               "your interview will only cover those subjects from the syllabus.")
+    try:
+        syl = api.syllabus()
+    except api.ApiError as e:
+        st.error(str(e))
+        st.stop()
+    c1, c2 = st.columns(2)
+    t_name = c1.text_input("Full name *", key="t_name")
+    emp_id = c2.text_input("Employee ID (optional)", key="t_emp")
+    t_college = st.text_input("College name *", value="K.E.S. Shroff College", key="t_college")
+
+    # Dependent multi-selects need reruns, so they live outside a form.
+    courses = st.multiselect("Courses you teach *", list(COURSES), format_func=COURSES.get, key="t_courses")
+    teaching = []
+    for course in courses:
+        with st.container(border=True):
+            st.markdown(f"**{COURSES[course]}**")
+            years = st.multiselect("Years", list(YEARS), format_func=YEARS.get, key=f"t_years_{course}")
+            for year in years:
+                subjects = syl.get(course, {}).get(str(year), [])
+                picked = st.multiselect(f"{YEARS[year]} subjects you taught", subjects,
+                                        key=f"t_subj_{course}_{year}")
+                teaching += [{"course": course, "year": year, "subject": s} for s in picked]
+    if teaching:
+        st.caption(f"Selected {len(teaching)} subject(s): "
+                   + "; ".join(f"{COURSES[t['course']]} Y{t['year']} - {t['subject']}" for t in teaching))
+    t_resume = st.file_uploader("Resume (optional, PDF or DOCX)", type=["pdf", "docx"], key="t_resume")
+    if st.button("Save teacher profile", type="primary"):
+        if len(t_name.strip()) < 2 or len(t_college.strip()) < 2:
+            st.error("Please fill your name and college.")
+            st.stop()
+        if not teaching:
+            st.error("Select at least one subject you have taught.")
+            st.stop()
+        save(lambda: api.register_teacher(t_name, t_college, emp_id, teaching), t_resume)
+
+# ---------------------------------------------------------------- result
+cand = ss.get("candidate")
 if not cand:
     st.stop()
 
-st.success(f"Registered: **{cand['name']}** · {cand['college_name']} · Roll {cand['roll_no']} · "
-           f"{cand['course_name']} · {cand['year_name']}")
+if cand.get("role") == "teacher":
+    st.success(f"Teacher profile saved: **{cand['name']}** · {cand['college_name']} · "
+               f"{len(cand['teaching'])} subject(s)")
+else:
+    st.success(f"Registered: **{cand['name']}** · {cand['college_name']} · Roll {cand['roll_no']} · "
+               f"{cand['course_name']} · {cand['year_name']}")
 
-ats = st.session_state.get("ats")
+ats = ss.get("ats")
 if ats:
     st.subheader("Resume ATS report")
     score = ats["ats_score"]

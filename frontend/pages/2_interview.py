@@ -24,10 +24,17 @@ def submit(fn, *args):
 
 # ---------------------------------------------------------------- start
 if "interview_id" not in ss:
-    st.markdown(f"Hi **{cand['name']}**! This interview has an introduction, **15 technical questions** from "
-                f"the {cand['course_name']} syllabus (up to {cand['year_name']}), follow-up questions on your "
-                "answers, " + ("questions on your resume, " if cand.get("has_resume") else "")
-                + "and soft-skill questions.")
+    resume_part = "questions on your resume, " if cand.get("has_resume") else ""
+    if cand.get("role") == "teacher":
+        subjects = ", ".join(sorted({t["subject"] for t in cand.get("teaching") or []}))
+        st.markdown(f"Welcome **{cand['name']}**! This faculty interview has an introduction, "
+                    f"**10 technical questions** from the subjects you teach ({subjects}) at Intermediate "
+                    "level and above, **1-2 counter questions on every answer**, " + resume_part
+                    + "and questions on your teaching practice.")
+    else:
+        st.markdown(f"Hi **{cand['name']}**! This interview has an introduction, **15 technical questions** "
+                    f"from the {cand['course_name']} syllabus (up to {cand['year_name']}), follow-up "
+                    "questions on your answers, " + resume_part + "and soft-skill questions.")
     st.markdown("- Allow microphone access when your browser asks.\n"
                 "- Listen to the question, click the mic, answer, then **Submit**.\n"
                 "- Don't know an answer? Press **I don't know**: we will explain it at the end.")
@@ -76,7 +83,8 @@ if q.get("phase") == "error":
 
 if q.get("phase") not in ("review", "finished"):
     done = q["number"] - 1
-    st.progress(min(1.0, done / q["planned_total"]), text=f"Question {q['number']} of about {q['planned_total']}")
+    st.progress(min(1.0, done / q["planned_total"]),
+                text=f"Question {q['number']} of about {q['planned_total']}")
     ui.question_card(q)
     ui.speak(q["text"], key=f"q{iid}-{q['question_id']}")
     st.caption(f"Suggested time: about {q['time_limit_sec'] // 60} min {q['time_limit_sec'] % 60:02d} s")

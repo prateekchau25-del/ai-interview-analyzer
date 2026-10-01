@@ -15,7 +15,8 @@ def _call(method: str, path: str, **kwargs):
     try:
         r = requests.request(method, f"{API_URL}{path}", timeout=TIMEOUT, **kwargs)
     except requests.ConnectionError as e:
-        raise ApiError(f"Cannot reach the backend at {API_URL}. Is `uvicorn backend.app.main:app` running?") from e
+        raise ApiError(f"Cannot reach the backend at {API_URL}. "
+                       "Is `uvicorn backend.app.main:app` running?") from e
     if r.status_code == 204:
         return None
     if not r.ok:
@@ -40,6 +41,16 @@ def register(name: str, college_name: str, roll_no: str, course: str, year: int)
                                               "roll_no": roll_no, "course": course, "year": year})
 
 
+def syllabus() -> dict:
+    """{course: {year(str): [subject, ...]}}"""
+    return _call("GET", "/meta/syllabus")
+
+
+def register_teacher(name: str, college_name: str, employee_id: str, teaching: list[dict]) -> dict:
+    return _call("POST", "/teachers", json={"name": name, "college_name": college_name,
+                                            "employee_id": employee_id or None, "teaching": teaching})
+
+
 def upload_resume(candidate_id: int, filename: str, data: bytes) -> dict:
     return _call("POST", f"/candidates/{candidate_id}/resume", files={"file": (filename, data)})
 
@@ -48,8 +59,9 @@ def candidate(candidate_id: int) -> dict:
     return _call("GET", f"/candidates/{candidate_id}")
 
 
-def candidates(course: str | None = None) -> list[dict]:
-    return _call("GET", "/candidates", params={"course": course} if course else None)
+def candidates(course: str | None = None, role: str | None = None) -> list[dict]:
+    params = {k: v for k, v in (("course", course), ("role", role)) if v}
+    return _call("GET", "/candidates", params=params or None)
 
 
 def start_interview(candidate_id: int) -> dict:

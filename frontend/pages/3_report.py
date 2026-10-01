@@ -7,7 +7,8 @@ ui.setup_page("📊 Interview Report")
 ss = st.session_state
 
 # A report can be opened from the interview (session) or from the HR dashboard (?interview=ID).
-iid = st.query_params.get("interview") or (ss.get("report") or {}).get("interview_id") or ss.get("interview_id")
+iid = (st.query_params.get("interview") or (ss.get("report") or {}).get("interview_id")
+       or ss.get("interview_id"))
 if not iid:
     st.info("Finish an interview to see your report, or open one from the HR dashboard.")
     st.stop()
@@ -22,7 +23,12 @@ if rep["status"] != "completed":
 
 c = rep["candidate"]
 s = rep["summary"] or {}
-st.markdown(f"**{c['name']}** · {c['college']} · Roll {c['roll_no']} · {c['course']} · {c['year']}")
+if c.get("role") == "teacher":
+    taught = "; ".join(f"{t['course']} Y{t['year']} - {t['subject']}" for t in c.get("teaching") or [])
+    st.markdown(f"**{c['name']}** (Faculty) · {c['college']} · ID {c['roll_no']}")
+    st.caption(f"Subjects taught: {taught}")
+else:
+    st.markdown(f"**{c['name']}** · {c['college']} · Roll {c['roll_no']} · {c['course']} · {c['year']}")
 
 # ---------------------------------------------------------------- headline
 overall = rep["overall_score"] or 0
@@ -62,6 +68,11 @@ with tab_table:
     } for i, a in enumerate(answers)])
     st.dataframe(df, hide_index=True)
 
+if s.get("subject_scores"):
+    st.subheader("Knowledge by subject")
+    st.plotly_chart(ui.subject_scores_chart(s["subject_scores"]))
+    st.caption("Average % across the main and counter questions asked from each subject.")
+
 if s.get("level_trail"):
     st.subheader("How the difficulty changed")
     st.plotly_chart(ui.level_trail_chart(s["level_trail"]))
@@ -82,6 +93,7 @@ for i, a in enumerate(answers, 1):
 resume = rep.get("resume")
 if resume:
     st.subheader("Resume")
-    st.markdown(("✅ ATS pass" if resume["ats_pass"] else "❌ Not ATS-ready") + f" · {resume['ats_score']:.0f}%")
+    status = "✅ ATS pass" if resume["ats_pass"] else "❌ Not ATS-ready"
+    st.markdown(f"{status} · {resume['ats_score']:.0f}%")
     if resume["improvements"]:
         st.markdown("**Top fixes:**\n" + "\n".join(f"- {x}" for x in resume["improvements"][:6]))

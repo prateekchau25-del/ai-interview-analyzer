@@ -6,9 +6,12 @@ import ui
 ui.setup_page("🗂️ HR / Faculty Dashboard")
 
 COURSES = {"": "All courses", "BSC_IT": "B.Sc IT", "BSC_DS": "B.Sc DS", "BSC_AI": "B.Sc AI", "BCA": "BCA"}
-course = st.selectbox("Course", list(COURSES), format_func=COURSES.get)
+ROLES = {"": "Students & teachers", "student": "Students", "teacher": "Teachers"}
+f1, f2 = st.columns(2)
+role = f1.selectbox("Who", list(ROLES), format_func=ROLES.get)
+course = f2.selectbox("Course", list(COURSES), format_func=COURSES.get, disabled=role == "teacher")
 try:
-    rows = api.candidates(course or None)
+    rows = api.candidates(None if role == "teacher" else (course or None), role or None)
 except api.ApiError as e:
     st.error(str(e))
     st.stop()
@@ -17,8 +20,10 @@ if not rows:
     st.stop()
 
 df = pd.DataFrame([{
-    "Name": r["name"], "Roll no": r["roll_no"], "College": r["college_name"], "Course": r["course_name"],
-    "Year": r["year_name"], "Interviews": r["interviews"],
+    "Name": r["name"], "Role": r["role"].title(), "Roll / emp. no": r["roll_no"],
+    "College": r["college_name"], "Course": r["course_name"] or "Faculty",
+    "Year": r["year_name"] or ("; ".join(sorted({t["subject"] for t in r["teaching"] or []}))[:60] or "-"),
+    "Interviews": r["interviews"],
     "Last score %": round(r["last_score"]) if r["last_score"] is not None else None,
     "Verdict": r["last_verdict"] or "-",
     "ATS %": round(r["ats_score"]) if r["ats_score"] is not None else None,
@@ -39,7 +44,7 @@ st.download_button("Download CSV", df.drop(columns="_iid").to_csv(index=False).e
                    "candidates.csv", "text/csv")
 
 st.subheader("Open a report")
-options = {f"{r['Name']} ({r['Roll no']})": r["_iid"] for _, r in df.iterrows() if pd.notna(r["_iid"])}
+options = {f"{r['Name']} ({r['Roll / emp. no']})": r["_iid"] for _, r in df.iterrows() if pd.notna(r["_iid"])}
 if options:
     pick = st.selectbox("Candidate", list(options))
     if st.button("Open report"):

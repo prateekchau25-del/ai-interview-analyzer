@@ -112,6 +112,22 @@ def question_scores_chart(answers: list[dict]) -> go.Figure:
     return fig
 
 
+def subject_scores_chart(subject_scores: dict) -> go.Figure:
+    """One bar per subject: average % (single series -> slot 1 color), 85% line."""
+    items = sorted(subject_scores.items(), key=lambda kv: kv[1]["avg"])
+    fig = go.Figure(go.Bar(
+        x=[v["avg"] for _, v in items], y=[k for k, _ in items], orientation="h", width=0.6,
+        marker=dict(color=SERIES, cornerradius=4),
+        customdata=[v["questions"] for _, v in items],
+        hovertemplate="<b>%{y}</b><br>%{x:.0f}% over %{customdata} question(s)<extra></extra>",
+    ))
+    fig.add_vline(x=PASS, line_width=1.5, line_color=MUTED)
+    _layout(fig, height=max(200, 40 * len(items) + 80))
+    fig.update_xaxes(range=[0, 100], ticksuffix="%")
+    fig.update_yaxes(showgrid=False)
+    return fig
+
+
 def level_trail_chart(trail: list[int]) -> go.Figure:
     """How the difficulty moved across the technical questions."""
     x = list(range(1, len(trail) + 1))
