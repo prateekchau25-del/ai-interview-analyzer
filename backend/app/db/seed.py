@@ -179,17 +179,19 @@ def load_soft_skills() -> list[dict]:
 
 
 def load_question_bank() -> list[dict]:
-    """Flatten data/question_bank/*.json into question dicts.
+    """Flatten data/question_bank/*.json into question dicts (one row per course/year using the subject).
 
-    File format: {"course", "year", "semester", "subject", "questions": [
+    File format: {"subject", "applies_to": [{"course", "year", "semester"}, ...], "questions": [
         {"level": 1-6, "topic", "text", "ideal_answer", "keywords": [...]}, ...]}
     """
     rows = []
     for f in sorted(QUESTION_BANK_DIR.glob("*.json")):
         data = json.loads(f.read_text(encoding="utf-8"))
-        for q in data["questions"]:
-            rows.append({**q, "course": data["course"], "year": data["year"],
-                         "semester": data.get("semester"), "subject": data["subject"]})
+        targets = {(a["course"], a["year"]): a.get("semester") for a in data["applies_to"]}
+        for (course, year), semester in sorted(targets.items()):
+            for q in data["questions"]:
+                rows.append({**q, "course": course, "year": year, "semester": semester,
+                             "subject": data["subject"]})
     return rows
 
 

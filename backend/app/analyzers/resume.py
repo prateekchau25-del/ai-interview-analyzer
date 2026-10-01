@@ -73,7 +73,26 @@ class ResumeReport:
 
 
 # ---------------------------------------------------------------- text extraction
+# Bullet glyphs as they come out of PDF/DOCX text extraction (Word "Symbol"/"Wingdings" private-use chars,
+# DEL from some PDF fonts, arrows, check marks...). All are normalised to "•".
+BULLET_GLYPHS = (
+    "\x7f\u2022\u25cf\u25aa\u25e6\u2023\u2043\u27a2\u2713\u2714\u25ba\u25b8"
+    "\uf0b7\uf0a7\uf076\uf0d8\uf0fc\u00b7"
+)
+
+
+def normalize_text(text: str) -> str:
+    text = text.translate({ord(ch): "\u2022" for ch in BULLET_GLYPHS})
+    text = text.replace("\u00a0", " ").replace("\r", "")
+    return "\n".join(ln.rstrip() for ln in text.splitlines())
+
+
 def extract_text(path: str | Path) -> tuple[str, int]:
+    text, pages = _extract_raw(path)
+    return normalize_text(text), pages
+
+
+def _extract_raw(path: str | Path) -> tuple[str, int]:
     """Return (text, page_count). Supports PDF and DOCX."""
     path = Path(path)
     suffix = path.suffix.lower()
@@ -137,7 +156,7 @@ def _first_word(line: str) -> str:
 
 
 def bullet_lines(text: str) -> list[str]:
-    return [ln.strip() for ln in text.splitlines() if re.match(r"^\s*([•●▪\-–*]|\d+\.)\s+\S", ln)]
+    return [ln.strip() for ln in text.splitlines() if re.match(r"^\s*([•\-–*]|\d+\.)\s*\S", ln)]
 
 
 # ---------------------------------------------------------------- scoring
@@ -224,7 +243,7 @@ def score_resume(text: str, pages: int, course: str) -> ResumeReport:
                              r"certification|achievement|award)s?\b|\Z)", text, re.I | re.S)
     proj_text = proj_section.group(1) if proj_section else ""
     proj_count = len([ln for ln in proj_text.splitlines()
-                      if ln.strip() and not re.match(r"^\s*[•●▪\-–*]", ln) and len(ln.split()) <= 12])
+                      if ln.strip() and not re.match(r"^\s*[•\-–*]", ln) and len(ln.split()) <= 12])
     tech_in_projects = len(detect_skills(proj_text, course)[0]) if proj_text else 0
     c = Check("Projects", 0, 10)
     c.points += min(6.0, proj_count * 2.0)
@@ -311,7 +330,7 @@ def _project_titles(text: str) -> list[str]:
     titles = []
     for ln in m.group(1).splitlines():
         ln = ln.strip()
-        if ln and not re.match(r"^[•●▪\-–*]", ln) and 1 < len(ln.split()) <= 12:
+        if ln and not re.match(r"^[•\-–*]", ln) and 1 < len(ln.split()) <= 12:
             titles.append(re.split(r"\s[|–-]\s|\(", ln)[0].strip())
     return titles[:4]
 
