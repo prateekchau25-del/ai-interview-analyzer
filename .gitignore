@@ -18,6 +18,7 @@ ml/datasets/
 ml/models/*
 !ml/models/.gitkeep
 !ml/models/*.json
+!ml/models/*.onnx
 
 # IDE / OS
 .vscode/

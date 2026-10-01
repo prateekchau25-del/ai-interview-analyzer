@@ -1,0 +1,133 @@
+{
+  "labels": [
+    "neutral",
+    "calm",
+    "happy",
+    "sad",
+    "angry",
+    "fearful",
+    "disgust",
+    "surprised"
+  ],
+  "groups": {
+    "neutral": "calm",
+    "calm": "calm",
+    "happy": "positive",
+    "surprised": "positive",
+    "sad": "nervous",
+    "fearful": "nervous",
+    "angry": "tense",
+    "disgust": "tense"
+  },
+  "group_names": [
+    "calm",
+    "positive",
+    "nervous",
+    "tense"
+  ],
+  "feature_dim": 79,
+  "dataset": "RAVDESS speech (24 actors, 1440 clips), speaker-independent split",
+  "split": {
+    "train": "actors 1-18 (+ noise augmentation)",
+    "val": "actors 19-20",
+    "test": "actors 21-24"
+  },
+  "metrics": {
+    "test_accuracy_8class": 0.542,
+    "test_accuracy_4group": 0.633,
+    "chance_8class": 0.125,
+    "per_class_recall": {
+      "neutral": 0.312,
+      "calm": 0.656,
+      "happy": 0.375,
+      "sad": 0.25,
+      "angry": 0.625,
+      "fearful": 0.562,
+      "disgust": 0.688,
+      "surprised": 0.75
+    },
+    "confusion_matrix": [
+      [
+        5,
+        3,
+        4,
+        1,
+        0,
+        0,
+        3,
+        0
+      ],
+      [
+        1,
+        21,
+        2,
+        0,
+        0,
+        4,
+        4,
+        0
+      ],
+      [
+        5,
+        1,
+        12,
+        1,
+        3,
+        6,
+        2,
+        2
+      ],
+      [
+        1,
+        10,
+        2,
+        8,
+        1,
+        2,
+        8,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        20,
+        6,
+        4,
+        2
+      ],
+      [
+        0,
+        2,
+        3,
+        4,
+        0,
+        18,
+        4,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        1,
+        6,
+        2,
+        22,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        6,
+        1,
+        1,
+        24
+      ]
+    ],
+    "test_clips": 240
+  }
+}

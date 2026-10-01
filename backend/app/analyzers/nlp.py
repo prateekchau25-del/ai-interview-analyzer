@@ -272,3 +272,16 @@ def explain_answer(question: str, model_answer: str, candidate_answer: str | Non
         except llm.LLMUnavailable as e:
             log.warning("LLM explanation failed: %s", e)
     return model_answer
+
+
+def chunk_words(text: str, size: int = 180) -> list[str]:
+    words = text.split()
+    return [" ".join(words[i:i + size]) for i in range(0, max(len(words), 1), size)] or [""]
+
+
+def text_embedding(text: str):
+    """Embedding of an arbitrarily long text: mean of 180-word chunk embeddings, L2-normalised."""
+    import numpy as np
+
+    e = embed(chunk_words(text)).mean(axis=0)
+    return e / (np.linalg.norm(e) + 1e-9)
