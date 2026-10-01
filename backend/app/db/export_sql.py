@@ -12,7 +12,7 @@ from alembic import command
 from alembic.config import Config
 
 from backend.app.core.config import PROJECT_ROOT
-from backend.app.db.seed import ROLES, load_question_bank, load_soft_skills
+from backend.app.db.seed import ROLES, load_question_bank, load_soft_skills, load_teacher_skills
 
 OUT = PROJECT_ROOT / "database" / "schema.sql"
 
@@ -43,11 +43,11 @@ def _question_sql(kind: str, q: dict, role_title: str | None = None, order_index
     default_time = 120 if kind == "technical" else 90
     return (
         "INSERT INTO questions (role_id, order_index, text, ideal_answer, keywords, category, "
-        "time_limit_sec, kind, course, year, semester, subject, topic, level, source) VALUES ("
+        "time_limit_sec, kind, course, year, semester, subject, topic, level, source, audience) VALUES ("
         f"{role}, {order_index}, {_q(q['text'])}, {_q(q['ideal_answer'])}, {_j(q.get('keywords', []))}, "
         f"{_q('technical' if kind == 'technical' else 'soft')}, {q.get('time_limit_sec', default_time)}, "
         f"{_q(kind)}, {course}, {num(q.get('year'))}, {num(q.get('semester'))}, {subject}, {topic}, "
-        f"{q.get('level', 0)}, {_q('seed' if role_title else 'bank')});"
+        f"{q.get('level', 0)}, {_q('seed' if role_title else 'bank')}, {_q(q.get('audience', 'student'))});"
     )
 
 
@@ -60,7 +60,7 @@ def seed_sql() -> str:
         )
         for i, q in enumerate(role["questions"]):
             lines.append(_question_sql("technical", q, role["title"], i))
-    lines += [_question_sql("soft", q) for q in load_soft_skills()]
+    lines += [_question_sql("soft", q) for q in load_soft_skills() + load_teacher_skills()]
     lines += [_question_sql("technical", q) for q in load_question_bank()]
     lines.append("COMMIT;")
     return "\n".join(lines) + "\n"

@@ -4,23 +4,21 @@ Live path per answer (synchronous, a few seconds on CPU):
     audio -> Whisper transcript -> grade vs model answer -> engine (level/follow-up) -> next question
 Heavier media analysis (voice tone, face, eye contact) runs later in the background worker.
 """
-import json
 import logging
 import random
 from datetime import UTC, datetime
 from pathlib import Path
 
-from sqlalchemy import func, select, update
+from sqlalchemy import and_, func, or_, select, update
 from sqlalchemy.orm import Session
 
 from backend.app.analyzers import llm, nlp
 from backend.app.analyzers.nlp import Grade
 from backend.app.db.models import Answer, Candidate, Interview, Question
 from backend.app.services import interview_engine as eng
+from backend.app.services import syllabus
 
 log = logging.getLogger(__name__)
-
-SYLLABUS_FILE = Path(__file__).resolve().parents[1] / "data" / "syllabus.json"
 
 # Overall score weights (body-language/voice metrics are added by the media worker when available).
 W_TECHNICAL, W_SOFT, W_COMMUNICATION = 0.65, 0.20, 0.15
@@ -55,14 +53,23 @@ class DbQuestionPool:
 
     def _query(self, kind: str, course: str, max_year: int, level: int | None):
         q = select(Question).where(Question.is_active.is_(True))
+        audience = "teacher" if self.candidate.role == "teacher" else "student"
         if kind == "technical":
-            q = q.where(Question.kind == "technical", Question.course == course, Question.year <= max_year)
+            q = q.where(Question.kind == "technical")
+            if self.candidate.role == "teacher":
+                # Only the exact course/year/subject combinations this teacher has taught.
+                q = q.where(or_(*[and_(Question.course == t["course"], Question.year == t["year"],
+                                       Question.subject == t["subject"])
+                                  for t in self.candidate.teaching or []]))
+            else:
+                q = q.where(Question.course == course, Question.year <= max_year)
             if level is not None:
                 q = q.where(Question.level == level)
         elif kind == "intro":
-            q = q.where(Question.kind == "soft", Question.topic == "intro")
+            q = q.where(Question.kind == "soft", Question.audience == audience, Question.topic == "intro")
         elif kind == "soft":
-            q = q.where(Question.kind == "soft", (Question.topic.is_(None)) | (Question.topic != "intro"))
+            q = q.where(Question.kind == "soft", Question.audience == audience,
+                        (Question.topic.is_(None)) | (Question.topic != "intro"))
         elif kind == "resume":
             q = q.where(Question.kind == "resume", Question.candidate_id == self.candidate.id)
         else:
@@ -104,16 +111,39 @@ def register_candidate(db: Session, *, name: str, college_name: str, roll_no: st
     return cand
 
 
+def register_teacher(db: Session, *, name: str, college_name: str, teaching: list[dict],
+                     employee_id: str | None = None, email: str | None = None) -> Candidate:
+    """IT-department faculty. `teaching` = [{"course", "year", "subject"}] they have taught (multi-select)."""
+    teaching = syllabus.validate_teaching(teaching)
+    college_key = " ".join(college_name.split())
+    # Employee id identifies a teacher; without one, fall back to the normalised name.
+    ident = (employee_id or "").strip().upper() or "T-" + "-".join(name.upper().split())
+    cand = db.scalar(select(Candidate).where(
+        func.lower(Candidate.college_name) == college_key.lower(), Candidate.roll_no == ident,
+        Candidate.course == "TEACHER"))
+    if cand is None:
+        cand = Candidate(college_name=college_key, roll_no=ident, course="TEACHER", role="teacher",
+                         name=name.strip(), year=0, email=email, teaching=teaching)
+        db.add(cand)
+    else:
+        cand.name, cand.teaching, cand.email = name.strip(), teaching, email or cand.email
+    db.commit()
+    return cand
+
+
 def process_resume(db: Session, candidate: Candidate, path: Path) -> dict:
     """ATS analysis + personalised resume questions (replaces any earlier resume questions)."""
     from backend.app.analyzers import resume as resume_an
 
-    report, text = resume_an.analyze_resume(path, candidate.course)
+    # Teachers: score the resume against the skills of the first course they teach.
+    course = candidate.course if candidate.role != "teacher" else (candidate.teaching or [{}])[0].get(
+        "course", "BSC_IT")
+    report, text = resume_an.analyze_resume(path, course)
     candidate.resume_path, candidate.resume_text = str(path), text
     candidate.resume_analysis, candidate.ats_score = report.to_dict(), report.ats_score
     db.execute(update(Question).where(Question.candidate_id == candidate.id, Question.kind == "resume")
                .values(is_active=False))
-    for q in resume_an.resume_questions(text, candidate.course, n=eng.RESUME_COUNT):
+    for q in resume_an.resume_questions(text, course, n=eng.RESUME_COUNT):
         db.add(Question(kind="resume", source="resume", candidate_id=candidate.id, text=q["text"],
                         ideal_answer=q["ideal_answer"], keywords=q.get("keywords", []),
                         topic=q.get("topic"), category="resume", level=0, time_limit_sec=120))
@@ -122,12 +152,16 @@ def process_resume(db: Session, candidate: Candidate, path: Path) -> dict:
 
 
 # ------------------------------------------------------------------ LLM fallback question generation
-def _random_topic(course: str, max_year: int, rng: random.Random) -> tuple[int, int, str, str] | None:
-    data = json.loads(SYLLABUS_FILE.read_text(encoding="utf-8"))
-    years = data["courses"].get(course, {}).get("years", {})
-    options = [(int(y), int(sem), s["subject"], t)
-               for y, yd in years.items() if int(y) <= max_year
-               for sem, subs in yd["semesters"].items() for s in subs for t in s["topics"]]
+def _random_topic(candidate: Candidate, max_year: int,
+                  rng: random.Random) -> tuple[str, int, int, str, str] | None:
+    """(course, year, semester, subject, topic) from the candidate's syllabus scope."""
+    if candidate.role == "teacher":
+        scope = [(t["course"], t["year"], t["subject"]) for t in candidate.teaching or []]
+    else:
+        scope = [(candidate.course, y, s) for y in range(1, max_year + 1)
+                 for s in syllabus.subjects_for(candidate.course, y)]
+    options = [(c, y, sem, subj, topic) for c, y, subj in scope
+               for sem, topic in syllabus.topics_for(c, y, subj)]
     return rng.choice(options) if options else None
 
 
@@ -139,16 +173,16 @@ and 4-8 lowercase keywords a correct answer must contain.
 Return JSON: {"text": "...", "ideal_answer": "...", "keywords": ["..."]}"""
 
 
-def generate_question(db: Session, course: str, max_year: int, level: int,
+def generate_question(db: Session, candidate: Candidate, max_year: int, level: int,
                       rng: random.Random | None = None) -> Question | None:
     """Create a brand-new syllabus question with the LLM (used when the bank has nothing left)."""
     if not llm.is_enabled():
         return None
     rng = rng or random.Random()
-    pick = _random_topic(course, max_year, rng)
+    pick = _random_topic(candidate, max_year, rng)
     if not pick:
         return None
-    year, sem, subject, topic = pick
+    course, year, sem, subject, topic = pick
     try:
         data = llm.chat_json(GEN_SYSTEM, f"Course: {eng.COURSES[course]}\nSubject: {subject}\n"
                              f"Topic: {topic}\nDifficulty level: {level} ({eng.level_name(level)})",
@@ -178,7 +212,8 @@ def _save_state(interview: Interview, state: eng.InterviewState) -> None:
 def start_interview(db: Session, candidate: Candidate) -> Interview:
     has_resume = db.scalar(select(func.count(Question.id)).where(
         Question.candidate_id == candidate.id, Question.kind == "resume", Question.is_active.is_(True))) > 0
-    state = eng.InterviewState(course=candidate.course, year=candidate.year, has_resume=has_resume)
+    state = eng.InterviewState(course=candidate.course, year=candidate.year, has_resume=has_resume,
+                               mode="teacher" if candidate.role == "teacher" else "student")
     interview = Interview(candidate_id=candidate.id, course=candidate.course, year=candidate.year,
                           status="in_progress", state=state.to_dict())
     db.add(interview)
@@ -224,7 +259,7 @@ def next_question(db: Session, interview: Interview, rng: random.Random | None =
     else:
         ref = step["question"]
         if ref is None and phase == "technical":
-            q = generate_question(db, interview.course, interview.year, state.level, rng)
+            q = generate_question(db, interview.candidate, interview.year, state.level, rng)
             if q is None:
                 # Only possible if the bank for this course/year is empty and no LLM is configured.
                 log.error("No technical question available for interview %s", interview.id)
@@ -354,7 +389,10 @@ def report_data(db: Session, interview: Interview) -> dict:
     cand = interview.candidate
     return {
         "candidate": {"name": cand.name, "college": cand.college_name, "roll_no": cand.roll_no,
-                      "course": eng.COURSES.get(cand.course, cand.course), "year": eng.YEARS.get(cand.year)},
+                      "role": cand.role, "teaching": cand.teaching,
+                      "course": eng.COURSES.get(cand.course,
+                                                "Faculty" if cand.role == "teacher" else cand.course),
+                      "year": eng.YEARS.get(cand.year)},
         "interview_id": interview.id, "status": interview.status,
         "overall_score": interview.overall_score, "verdict": interview.verdict,
         "technical_score": interview.technical_score, "soft_score": interview.soft_score,

@@ -44,9 +44,9 @@ class FakePool:
                 and (kind != "soft" or q.id not in self.intro_ids)]
 
 
-def run_interview(answer_fn, year=3, has_resume=True, seed=0):
+def run_interview(answer_fn, year=3, has_resume=True, seed=0, mode="student"):
     pool, rng = FakePool(), random.Random(seed)
-    state = InterviewState(course="BSC_IT", year=year, has_resume=has_resume)
+    state = InterviewState(course="BSC_IT", year=year, has_resume=has_resume, mode=mode)
     phases, asked = [], []
     while True:
         step = next_step(state, pool, rng)
@@ -156,3 +156,55 @@ def test_followup_answers_do_not_move_level():
     assert state.level == START_LEVEL and state.followup_for is None
     record_answer(state, QuestionRef(3, "followup", START_LEVEL, 3, "OS"), 10)  # wrong follow-up
     assert state.level == START_LEVEL and 3 in state.parked
+
+
+
+# ------------------------------------------------------------------ teacher mode
+from backend.app.services.interview_engine import PROFILES  # noqa: E402
+
+TEACHER = PROFILES["teacher"]
+
+
+def test_teacher_every_answer_gets_one_or_two_counter_questions():
+    state, phases, asked, _ = run_interview(lambda q, s: 90, mode="teacher", seed=3)
+    assert phases.count("technical") == TEACHER.technical
+    # walk the sequence: every technical/resume answer is followed by 1 or 2 follow-ups
+    i = 0
+    while i < len(asked):
+        if asked[i].kind in ("technical", "resume"):
+            n = 0
+            while i + 1 + n < len(asked) and asked[i + 1 + n].kind == "followup":
+                n += 1
+            assert 1 <= n <= 2, f"question {i} got {n} follow-ups"
+            i += n
+        i += 1
+
+
+def test_teacher_gets_second_followup_when_first_is_weak():
+    state = InterviewState(course="TEACHER", year=3, mode="teacher")
+    record_answer(state, QuestionRef(1, "technical", 4, 1, "DBMS"), 95)
+    assert state.followup_for == 1 and state.followup_depth == 1
+    record_answer(state, QuestionRef(2, "followup", 4, 1, "DBMS"), 60)  # weak -> must probe again
+    assert state.followup_for == 2 and state.followup_depth == 2
+    record_answer(state, QuestionRef(3, "followup", 4, 1, "DBMS"), 40)  # chain capped at 2
+    assert state.followup_for is None and state.followup_depth == 0
+
+
+def test_teacher_levels_never_easy():
+    state, _, asked, _ = run_interview(lambda q, s: 10 if q.kind == "technical" else 90, mode="teacher")
+    tech = [q.level for q in asked if q.kind == "technical"]
+    assert tech[0] == TEACHER.start_level == 4  # Intermediate
+    assert min(tech) == TEACHER.min_level == 3  # floors at Medium, never Basic/Beginner
+
+
+def test_student_followups_unchanged_and_no_chains():
+    _, phases, asked, _ = run_interview(lambda q, s: 70 if q.kind == "technical" else 90)
+    for i, q in enumerate(asked):
+        if q.kind == "followup":
+            assert asked[i - 1].kind in ("technical", "resume")  # never a follow-up of a follow-up
+
+
+def test_subject_scores_in_summary():
+    state, *_ = run_interview(lambda q, s: 90, mode="teacher")
+    subj = summary(state)["subject_scores"]
+    assert subj and all(v["questions"] >= 1 and 0 <= v["avg"] <= 100 for v in subj.values())

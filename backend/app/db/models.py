@@ -73,6 +73,7 @@ class Question(Base):
     )
     times_asked: Mapped[int] = mapped_column(Integer, default=0)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
+    audience: Mapped[str] = mapped_column(String(20), default="student")  # soft questions: student | teacher
 
     role: Mapped[JobRole | None] = relationship(back_populates="questions")
 
@@ -83,6 +84,9 @@ class Candidate(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(120))
+    role: Mapped[str] = mapped_column(String(20), default="student", index=True)  # student | teacher
+    # Teachers: subjects they taught, [{"course", "year", "subject"}, ...]; roll_no holds the employee id.
+    teaching: Mapped[list | None] = mapped_column(JSONType, nullable=True)
     college_name: Mapped[str] = mapped_column(String(200), default="")
     roll_no: Mapped[str] = mapped_column(String(40), default="")
     course: Mapped[str] = mapped_column(String(20), default="")  # BSC_IT | BSC_DS | BSC_AI | BCA

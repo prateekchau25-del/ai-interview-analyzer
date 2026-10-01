@@ -1,6 +1,7 @@
 """Default data, inserted idempotently on every setup/start.
 
-- data/soft_skills.json        -> soft-skill / HR questions (kind="soft")
+- data/soft_skills.json        -> soft-skill / HR questions for students (kind="soft")
+- data/teacher_skills.json     -> faculty intro + teaching-practice questions (soft, audience="teacher")
 - data/question_bank/*.json    -> syllabus technical questions with model answers (kind="technical")
 - ROLES (below)                -> legacy job-role demo questions
 """
@@ -17,6 +18,7 @@ log = logging.getLogger(__name__)
 
 DATA_DIR = Path(__file__).resolve().parents[1] / "data"
 SOFT_SKILLS_FILE = DATA_DIR / "soft_skills.json"
+TEACHER_SKILLS_FILE = DATA_DIR / "teacher_skills.json"
 QUESTION_BANK_DIR = DATA_DIR / "question_bank"
 
 ROLES = [
@@ -178,6 +180,11 @@ def load_soft_skills() -> list[dict]:
     return json.loads(SOFT_SKILLS_FILE.read_text(encoding="utf-8"))["questions"]
 
 
+def load_teacher_skills() -> list[dict]:
+    rows = json.loads(TEACHER_SKILLS_FILE.read_text(encoding="utf-8"))["questions"]
+    return [{**r, "audience": "teacher"} for r in rows]
+
+
 def load_question_bank() -> list[dict]:
     """Flatten data/question_bank/*.json into question dicts (one row per course/year using the subject).
 
@@ -220,6 +227,7 @@ def _insert_missing(db: Session, kind: str, rows: list[dict]) -> int:
             course=r.get("course"), year=r.get("year"), semester=r.get("semester"),
             subject=r.get("subject"), topic=r.get("topic"), level=r.get("level", 0),
             source="bank", time_limit_sec=r.get("time_limit_sec", 120 if kind == "technical" else 90),
+            audience=r.get("audience", "student"),
         ))
         existing.add((r.get("course"), r["text"]))
         added += 1
@@ -228,7 +236,7 @@ def _insert_missing(db: Session, kind: str, rows: list[dict]) -> int:
 
 def seed_defaults(db: Session) -> None:
     _seed_roles(db)
-    soft = _insert_missing(db, "soft", load_soft_skills())
+    soft = _insert_missing(db, "soft", load_soft_skills() + load_teacher_skills())
     tech = _insert_missing(db, "technical", load_question_bank())
     db.commit()
     if soft or tech:

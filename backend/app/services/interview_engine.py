@@ -9,6 +9,9 @@ Flow of one interview:
 Level rules:
     answer >= 85%                  -> level up (max Professional)
     2 not-correct answers in a row -> level down (min Basic)
+
+Teacher mode (IT-department faculty): questions only from the subjects they taught, starts at Intermediate and
+never goes below Medium, and EVERY answered question gets 1-2 counter questions.
 """
 import math
 import random
@@ -28,6 +31,27 @@ MAX_FOLLOWUPS = 4
 PARTIAL_MIN = 50.0  # 50-84% = partially correct -> probe the missing part
 FOLLOWUP_ON_CORRECT_PROB = 0.3  # occasionally dig deeper after a correct answer
 FOLLOWUP_PARENT_KINDS = ("technical", "resume")
+
+
+@dataclass(frozen=True)
+class Profile:
+    technical: int
+    resume: int
+    soft: int  # including the intro question
+    start_level: int
+    min_level: int
+    max_followups: int
+    always_followup: bool  # teacher: every answered technical/resume question gets a counter question
+    second_followup_prob: float = 0.0  # teacher: chance of a 2nd counter question after a correct follow-up
+
+
+PROFILES = {
+    "student": Profile(technical=TECHNICAL_COUNT, resume=RESUME_COUNT, soft=SOFT_COUNT,
+                       start_level=START_LEVEL,
+                       min_level=MIN_LEVEL, max_followups=MAX_FOLLOWUPS, always_followup=False),
+    "teacher": Profile(technical=10, resume=2, soft=3, start_level=4, min_level=3, max_followups=24,
+                       always_followup=True, second_followup_prob=0.5),
+}
 
 COURSES = {
     "BSC_IT": "B.Sc. Information Technology",
@@ -69,13 +93,23 @@ class InterviewState:
     course: str
     year: int
     has_resume: bool = False
-    level: int = START_LEVEL
+    level: int | None = None  # defaults to the profile's start level
+    mode: str = "student"  # student | teacher
     wrong_streak: int = 0
     phase: str = "intro"  # intro | technical | resume | soft | review | finished
     history: list[AskedRecord] = field(default_factory=list)
     parked: list[int] = field(default_factory=list)  # question ids answered wrong/skipped
     pending_question_id: int | None = None
     followup_for: int | None = None  # question id whose answer should get a counter question next
+    followup_depth: int = 0  # how many counter questions in the current chain (teacher: up to 2)
+
+    def __post_init__(self):
+        if self.level is None:
+            self.level = self.profile.start_level
+
+    @property
+    def profile(self) -> Profile:
+        return PROFILES[self.mode]
 
     # ---- serialisation (stored as JSON on the interview row) ----
     def to_dict(self) -> dict:
@@ -101,7 +135,10 @@ class InterviewState:
 
     @property
     def total_planned(self) -> int:
-        return TECHNICAL_COUNT + SOFT_COUNT + (RESUME_COUNT if self.has_resume else 0)
+        p = self.profile
+        main = p.technical + (p.resume if self.has_resume else 0)
+        followups = main if p.always_followup else 0  # at least one counter question per answer
+        return main + p.soft + followups
 
 
 class QuestionPool(Protocol):
@@ -118,13 +155,14 @@ def years_in_scope(year: int) -> list[int]:
 
 
 def _next_phase(state: InterviewState) -> str:
+    p = state.profile
     if state.count("soft") < 1:
         return "intro"
-    if state.count("technical") < TECHNICAL_COUNT:
+    if state.count("technical") < p.technical:
         return "technical"
-    if state.has_resume and state.count("resume") < RESUME_COUNT:
+    if state.has_resume and state.count("resume") < p.resume:
         return "resume"
-    if state.count("soft") < SOFT_COUNT:
+    if state.count("soft") < p.soft:
         return "soft"
     return "review" if state.parked else "finished"
 
@@ -149,7 +187,7 @@ def choose_question(state: InterviewState, pool: QuestionPool, kind: str,
         options = []
         for delta in (0, -1, 1, -2, 2, -3, 3, -4, 4, -5, 5):
             lvl = state.level + delta
-            if MIN_LEVEL <= lvl <= MAX_LEVEL:
+            if state.profile.min_level <= lvl <= MAX_LEVEL:
                 options = pool.candidates(kind, state.course, state.year, lvl, state.asked_ids)
                 if options:
                     break
@@ -184,8 +222,18 @@ def next_step(state: InterviewState, pool: QuestionPool, rng: random.Random | No
 
 def _wants_followup(state: InterviewState, q: QuestionRef, score: float, skipped: bool,
                     rng: random.Random) -> bool:
-    if q.kind not in FOLLOWUP_PARENT_KINDS or skipped or state.count("followup") >= MAX_FOLLOWUPS:
+    p = state.profile
+    if skipped or state.count("followup") >= p.max_followups:
         return False
+    if q.kind == "followup":
+        # Only teachers get a second counter question in the same chain.
+        if not p.always_followup or state.followup_depth >= 2:
+            return False
+        return score < PASS_THRESHOLD or rng.random() < p.second_followup_prob
+    if q.kind not in FOLLOWUP_PARENT_KINDS:
+        return False
+    if p.always_followup:
+        return True
     if PARTIAL_MIN <= score < PASS_THRESHOLD:
         return True
     return score >= PASS_THRESHOLD and rng.random() < FOLLOWUP_ON_CORRECT_PROB
@@ -212,14 +260,16 @@ def record_answer(state: InterviewState, q: QuestionRef, score: float, skipped: 
         else:
             state.wrong_streak += 1
             if state.wrong_streak >= WRONG_STREAK_FOR_LEVEL_DOWN:
-                state.level = max(MIN_LEVEL, state.level - 1)
+                state.level = max(state.profile.min_level, state.level - 1)
                 state.wrong_streak = 0
     change = "up" if state.level > old else "down" if state.level < old else "same"
 
-    if q.kind == "followup":
+    if _wants_followup(state, q, score, skipped, rng):
+        state.followup_for = q.id  # the next counter question builds on THIS answer
+        state.followup_depth = state.followup_depth + 1 if q.kind == "followup" else 1
+    else:
         state.followup_for = None
-    elif _wants_followup(state, q, score, skipped, rng):
-        state.followup_for = q.id
+        state.followup_depth = 0
     return {"is_correct": is_correct, "level": state.level, "level_name": state.level_name,
             "level_change": change, "followup_next": state.followup_for is not None}
 
@@ -232,6 +282,10 @@ def summary(state: InterviewState) -> dict:
     tech = [h for h in state.history if h.kind == "technical"]
     soft = [h for h in state.history if h.kind in ("soft", "resume")]
     follow = [h for h in state.history if h.kind == "followup"]
+    by_subject: dict[str, list[float]] = {}
+    for h in tech + follow:
+        if h.subject:
+            by_subject.setdefault(h.subject, []).append(h.score or 0)
     peak = max((h.level for h in tech), default=state.level)
     # Harder questions answered correctly count more (level-weighted accuracy).
     weighted = sum((h.score or 0) * math.sqrt(h.level) for h in tech)
@@ -249,4 +303,6 @@ def summary(state: InterviewState) -> dict:
         "peak_level": level_name(peak),
         "level_trail": [h.level for h in tech],
         "parked_count": len(state.parked),
+        "subject_scores": {k: {"avg": avg(v), "questions": len(v)} for k, v in sorted(by_subject.items())},
+        "mode": state.mode,
     }

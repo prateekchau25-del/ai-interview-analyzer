@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "description": "Introduction and teaching-practice questions for IT-department faculty (audience=teacher). topic='intro' opens the interview.",
+    "answer_style": "ideal_answer describes what a strong answer from an experienced lecturer contains."
+  },
+  "questions": [
+    {
+      "topic": "intro",
+      "text": "Please introduce yourself and the subjects you have been teaching.",
+      "ideal_answer": "Name, qualification and years of teaching experience, the courses, years and subjects taught, areas of specialisation, any industry experience, certifications, research or publications, and what the teacher enjoys most about teaching these subjects.",
+      "keywords": ["experience", "subjects", "qualification", "specialization", "students", "teaching"]
+    },
+    {
+      "topic": "intro",
+      "text": "Tell me about your teaching journey and your strongest subject area.",
+      "ideal_answer": "Overview of teaching experience and courses handled, the strongest subject with reasons and proof such as results, projects guided or certifications, and how the teacher keeps that knowledge up to date.",
+      "keywords": ["experience", "subject", "results", "projects", "students", "update"]
+    },
+    {
+      "topic": "pedagogy",
+      "text": "How would you explain a difficult concept from your subject to a student who is struggling with it?",
+      "ideal_answer": "Diagnose what the student already knows, break the concept into small steps, use a real-life analogy and a visual or diagram, show a worked example or live demo, let the student try a similar problem, check understanding with questions, and give extra practice or resources.",
+      "keywords": ["analogy", "example", "step", "diagram", "practice", "check understanding"]
+    },
+    {
+      "topic": "assessment",
+      "text": "How do you check whether students have really understood a topic, beyond the final exam?",
+      "ideal_answer": "Use continuous formative assessment: short quizzes, viva questions, practical or lab tasks, mini projects, peer explanation, exit tickets and analysis of common mistakes, then adjust teaching and give feedback based on the results.",
+      "keywords": ["quiz", "viva", "practical", "project", "feedback", "continuous"]
+    },
+    {
+      "topic": "practical",
+      "text": "How do you connect theory with practical or industry use in your subject?",
+      "ideal_answer": "Link each concept to a real application or case study, run hands-on labs with current tools, assign mini projects on real datasets or problems, invite industry guest sessions or show open-source code, and align practicals with skills used in jobs.",
+      "keywords": ["case study", "lab", "project", "industry", "tools", "real world"]
+    },
+    {
+      "topic": "inclusion",
+      "text": "How do you handle a class with both very strong and weak students?",
+      "ideal_answer": "Differentiate instruction: cover core concepts for everyone, give extra challenge tasks to strong students, remedial sessions and simpler examples for weak students, use peer learning or groups that mix levels, and track individual progress.",
+      "keywords": ["different levels", "remedial", "challenge", "peer learning", "groups", "progress"]
+    },
+    {
+      "topic": "updating",
+      "text": "Technology changes fast. How do you keep your subject knowledge and syllabus delivery up to date?",
+      "ideal_answer": "Regular self-learning through MOOCs, certifications, documentation and research papers, attending FDPs, workshops and conferences, interacting with industry, building personal projects, and updating examples, labs and assignments while staying within the syllabus.",
+      "keywords": ["certification", "workshop", "fdp", "research", "industry", "projects"]
+    },
+    {
+      "topic": "mentoring",
+      "text": "Describe how you guide students on their final-year or semester projects.",
+      "ideal_answer": "Help students choose a feasible and relevant problem, define scope and milestones, review design and code regularly, teach version control and documentation, encourage testing and presentation practice, and evaluate both process and outcome with clear feedback.",
+      "keywords": ["problem", "scope", "milestones", "review", "documentation", "feedback"]
+    }
+  ]
+}

@@ -87,3 +87,18 @@ def test_full_api_flow(client, tmp_path):
     assert len(rep["answers"]) == answered
     listing = client.get("/candidates").json()
     assert listing[0]["last_interview_id"] == iid
+
+
+def test_teacher_api(client):
+    syl = client.get("/meta/syllabus").json()
+    assert "Database Management Systems" in syl["BSC_IT"]["1"]
+    bad = client.post("/teachers", json={"name": "Dr X", "college_name": "KES", "teaching": []})
+    assert bad.status_code == 422
+    wrong = client.post("/teachers", json={"name": "Dr X", "college_name": "KES", "teaching": [
+        {"course": "BSC_IT", "year": 1, "subject": "Blockchain"}]})
+    assert wrong.status_code == 422 and "not in the BSC_IT year 1 syllabus" in wrong.json()["detail"]
+    t = client.post("/teachers", json={"name": "Dr X", "college_name": "KES", "employee_id": "E9",
+                                       "teaching": [
+        {"course": "BSC_IT", "year": 1, "subject": "Database Management Systems"}]}).json()
+    assert t["role"] == "teacher" and t["teaching"][0]["subject"] == "Database Management Systems"
+    assert [c["id"] for c in client.get("/candidates", params={"role": "teacher"}).json()] == [t["id"]]

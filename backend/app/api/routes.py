@@ -16,6 +16,7 @@ from backend.app.db.models import Candidate, Interview
 from backend.app.db.session import get_db
 from backend.app.services import interview_engine as eng
 from backend.app.services import interview_service as svc
+from backend.app.services import syllabus
 
 log = logging.getLogger(__name__)
 router = APIRouter()
@@ -58,7 +59,7 @@ def candidate_out(c: Candidate) -> dict:
     return {"id": c.id, "name": c.name, "college_name": c.college_name, "roll_no": c.roll_no,
             "course": c.course, "course_name": eng.COURSES.get(c.course), "year": c.year,
             "year_name": eng.YEARS.get(c.year), "email": c.email, "ats_score": c.ats_score,
-            "has_resume": bool(c.resume_path)}
+            "has_resume": bool(c.resume_path), "role": c.role, "teaching": c.teaching}
 
 
 # ------------------------------------------------------------------ meta
@@ -73,6 +74,13 @@ def health() -> dict:
 def meta() -> dict:
     return {"courses": eng.COURSES, "years": eng.YEARS, "levels": eng.LEVELS,
             "technical_count": eng.TECHNICAL_COUNT, "pass_threshold": eng.PASS_THRESHOLD}
+
+
+@router.get("/meta/syllabus")
+def syllabus_subjects() -> dict:
+    """{course: {year: [subject, ...]}} - used by the teacher registration multi-select."""
+    return {c: {y: [s["subject"] for s in subs] for y, subs in years.items()}
+            for c, years in syllabus.catalog().items()}
 
 
 # ------------------------------------------------------------------ candidates
@@ -93,9 +101,35 @@ def create_candidate(body: CandidateIn, db: DB) -> dict:
         raise HTTPException(422, str(e)) from e
 
 
+class TeachingItem(BaseModel):
+    course: str
+    year: int = Field(ge=1, le=3)
+    subject: str
+
+
+class TeacherIn(BaseModel):
+    name: str = Field(min_length=2, max_length=120)
+    college_name: str = Field(min_length=2, max_length=200)
+    employee_id: str | None = Field(default=None, max_length=40)
+    email: str | None = None
+    teaching: list[TeachingItem] = Field(min_length=1)
+
+
+@router.post("/teachers")
+def create_teacher(body: TeacherIn, db: DB) -> dict:
+    """IT-department faculty: choose every course/year/subject they have taught."""
+    data = body.model_dump()
+    try:
+        return candidate_out(svc.register_teacher(db, **data))
+    except ValueError as e:
+        raise HTTPException(422, str(e)) from e
+
+
 @router.get("/candidates")
-def list_candidates(db: DB, course: str | None = None) -> list[dict]:
+def list_candidates(db: DB, course: str | None = None, role: str | None = None) -> list[dict]:
     q = select(Candidate).order_by(Candidate.created_at.desc())
+    if role:
+        q = q.where(Candidate.role == role)
     if course:
         q = q.where(Candidate.course == course)
     out = []
