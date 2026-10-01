@@ -1,14 +1,180 @@
-{"subject": "Descriptive Statistics", "applies_to": [{"course": "BSC_DS", "year": 1, "semester": 1}], "questions": [
-{"level": 1, "topic": "Meaning and importance of statistics; nominal, ordinal, interval and ratio scales", "text": "What are the four scales of measurement in statistics?", "ideal_answer": "The four scales of measurement are nominal, ordinal, interval and ratio. Nominal data are categories with no order, such as gender or city. Ordinal data have a meaningful order but unequal gaps, such as ranks or ratings. Interval data have equal gaps but no true zero, such as temperature in Celsius, while ratio data have equal gaps and a true zero, such as height, weight or income.", "keywords": ["nominal", "ordinal", "interval", "ratio", "order", "true zero"]},
-{"level": 1, "topic": "Measures of central tendency: median, mode, quartiles, deciles, percentiles", "text": "What are the median and the mode of a data set?", "ideal_answer": "The median is the middle value when the data are arranged in ascending or descending order; for an even number of values it is the average of the two middle values. The mode is the value that occurs most frequently in the data. A data set can have no mode, one mode or more than one mode. Both are measures of central tendency, and the median is not affected much by extreme values.", "keywords": ["middle value", "ascending order", "most frequently", "central tendency", "extreme values"]},
-{"level": 2, "topic": "Frequency and cumulative frequency distributions, histograms and ogives", "text": "What is the difference between a histogram and an ogive?", "ideal_answer": "A histogram is a graph of a frequency distribution in which adjacent rectangles are drawn over class intervals, with heights proportional to the class frequencies. An ogive is a cumulative frequency curve formed by plotting cumulative frequencies against class boundaries and joining the points. A less-than ogive uses upper class boundaries and a more-than ogive uses lower class boundaries. The histogram shows the shape of the distribution, while the ogive is used to find the median, quartiles and percentiles graphically.", "keywords": ["histogram", "rectangles", "class intervals", "ogive", "cumulative frequency", "less than", "median"]},
-{"level": 2, "topic": "Measures of dispersion: range, quartile deviation, mean absolute deviation, standard deviation", "text": "What is the difference between range and standard deviation as measures of dispersion?", "ideal_answer": "Range is the difference between the largest and smallest values, so it depends only on two extreme observations. Standard deviation is the square root of the average of squared deviations from the mean, so it uses every observation. Range is quick to calculate but heavily affected by outliers and ignores how the other values are spread. Standard deviation is more reliable and is the most widely used measure of dispersion.", "keywords": ["range", "largest", "smallest", "standard deviation", "square root", "deviations from mean", "outliers"]},
-{"level": 3, "topic": "Spearman rank correlation with and without ties", "text": "How do you calculate Spearman's rank correlation coefficient?", "ideal_answer": "First rank the values of each variable separately, then find the difference d between the two ranks for each observation. Square each difference and add them to get the sum of d squared. Spearman's coefficient is r = 1 - 6 times the sum of d squared divided by n times (n squared - 1), where n is the number of pairs. If there are tied values, each gets the average of the ranks they would occupy and a correction factor of m(m squared - 1)/12 is added to the sum of d squared for each group of m ties.", "keywords": ["rank", "difference", "squared", "number of pairs", "ties", "average rank"]},
-{"level": 3, "topic": "Linear regression and fitting a straight line by least squares", "text": "How is a straight line fitted to data using the method of least squares?", "ideal_answer": "We fit the line y = a + bx by choosing a and b so that the sum of squared vertical errors between observed y values and predicted y values is minimum. Setting the derivatives to zero gives two normal equations: sum of y = na + b times sum of x, and sum of xy = a times sum of x + b times sum of x squared. Solving them gives the slope b = covariance of x and y divided by variance of x, and the intercept a = mean of y minus b times mean of x. The fitted line always passes through the point of means.", "keywords": ["straight line", "sum of squared errors", "minimum", "normal equations", "slope", "intercept"]},
-{"level": 4, "topic": "Raw and central moments, skewness and kurtosis", "text": "A data set has mean 50, median 45 and mode 40. What can you say about its skewness, and why?", "ideal_answer": "The distribution is positively skewed, or right-skewed. In a positively skewed distribution the mean is greater than the median, which is greater than the mode, as here with 50 > 45 > 40. This happens because a few large values in the long right tail pull the mean upward more than the median. Karl Pearson's coefficient of skewness, (mean minus mode) divided by standard deviation, would therefore be positive.", "keywords": ["positively skewed", "right tail", "mean greater than median", "mode", "pearson", "coefficient of skewness"]},
-{"level": 4, "topic": "Relation between correlation and regression; multiple correlation, multiple and logistic regression", "text": "What is the difference between correlation and regression, and how are they related?", "ideal_answer": "Correlation measures the strength and direction of the linear relationship between two variables and is symmetric, with r lying between -1 and +1. Regression describes the relationship as an equation that predicts a dependent variable from an independent variable, and it is not symmetric. They are linked because the correlation coefficient is the geometric mean of the two regression coefficients, r = square root of (byx times bxy), and r has the same sign as both. Correlation does not imply causation, and regression is used for prediction.", "keywords": ["strength", "direction", "prediction", "dependent variable", "regression coefficients", "geometric mean", "causation"]},
-{"level": 5, "topic": "Correlation, scatter diagram and product moment correlation coefficient", "text": "You find a Pearson correlation of almost zero between two variables, but the scatter plot shows a clear U-shaped pattern. Explain this.", "ideal_answer": "Pearson's product moment correlation measures only linear relationships. In a U-shaped pattern, y decreases and then increases as x increases, so the positive and negative parts cancel out and r comes close to zero. This does not mean the variables are unrelated; they have a strong non-linear relationship. That is why a scatter diagram should always be plotted first, and a non-linear model such as a quadratic fit should be used instead.", "keywords": ["linear relationship", "non-linear", "u-shaped", "cancel out", "scatter diagram", "quadratic"]},
-{"level": 5, "topic": "Combined standard deviation for grouped and ungrouped data", "text": "Two classes have different means and standard deviations. Why can't you just average their standard deviations to get the combined standard deviation, and how is it computed?", "ideal_answer": "Simply averaging the standard deviations ignores the different group sizes and the difference between the group means. The combined variance is (n1(s1 squared + d1 squared) + n2(s2 squared + d2 squared)) divided by (n1 + n2), where d1 and d2 are the differences between each group mean and the combined mean. The combined mean is (n1 times mean1 + n2 times mean2) divided by (n1 + n2). The combined standard deviation is the square root of this combined variance, and it is usually larger than the average when the group means differ.", "keywords": ["group sizes", "combined mean", "difference", "combined variance", "square root"]},
-{"level": 6, "topic": "Measures of central tendency: median, mode, quartiles, deciles, percentiles", "text": "An HR team reports average salary of employees, but a few executives earn very high salaries. As a data analyst, which measures would you report and why?", "ideal_answer": "Salary data are usually right-skewed, so the mean is pulled upward by a few very high executive salaries and does not represent a typical employee. The median is a better measure of central tendency because it is resistant to extreme values. I would also report the interquartile range or quartile deviation for spread, and percentiles such as the 25th, 75th and 90th to show the distribution. A box plot or histogram helps communicate this, and it is good practice to mention the mean separately so the effect of outliers is transparent.", "keywords": ["skewed", "median", "outliers", "interquartile range", "percentiles", "box plot"]},
-{"level": 6, "topic": "Relation between correlation and regression; multiple correlation, multiple and logistic regression", "text": "A bank wants to predict whether a customer will default on a loan using income, age and credit score. Would you use multiple linear regression or logistic regression, and why?", "ideal_answer": "Logistic regression is the right choice because the outcome, default or no default, is binary. Linear regression can predict values below 0 or above 1, which cannot be probabilities. Logistic regression uses the sigmoid function to model the probability of default as a function of several predictors, and a threshold such as 0.5 converts it into a class. Its coefficients show how each predictor affects the log-odds, and the model should be checked for multicollinearity and evaluated with metrics such as accuracy, precision and recall.", "keywords": ["logistic regression", "binary", "probability", "sigmoid", "log-odds", "multicollinearity"]}
-]}
+{
+ "subject": "Descriptive Statistics",
+ "applies_to": [
+  {
+   "course": "BSC_DS",
+   "year": 1,
+   "semester": 1
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Meaning and importance of statistics; nominal, ordinal, interval and ratio scales",
+   "text": "What are the four scales of measurement in statistics?",
+   "ideal_answer": "The four scales of measurement are nominal, ordinal, interval and ratio. Nominal data are categories with no order, such as gender or city. Ordinal data have a meaningful order but unequal gaps, such as ranks or ratings. Interval data have equal gaps but no true zero, such as temperature in Celsius, while ratio data have equal gaps and a true zero, such as height, weight or income.",
+   "keywords": [
+    "nominal",
+    "ordinal",
+    "interval",
+    "ratio",
+    "order",
+    "true zero"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Measures of central tendency: median, mode, quartiles, deciles, percentiles",
+   "text": "What are the median and the mode of a data set?",
+   "ideal_answer": "The median is the middle value when the data are arranged in ascending or descending order; for an even number of values it is the average of the two middle values. The mode is the value that occurs most frequently in the data. A data set can have no mode, one mode or more than one mode. Both are measures of central tendency, and the median is not affected much by extreme values.",
+   "keywords": [
+    "middle value",
+    "ascending",
+    "most frequently",
+    "central tendency",
+    "extreme values"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Frequency and cumulative frequency distributions, histograms and ogives",
+   "text": "What is the difference between a histogram and an ogive?",
+   "ideal_answer": "A histogram is a graph of a frequency distribution in which adjacent rectangles are drawn over class intervals, with heights proportional to the class frequencies. An ogive is a cumulative frequency curve formed by plotting cumulative frequencies against class boundaries and joining the points. A less-than ogive uses upper class boundaries and a more-than ogive uses lower class boundaries. The histogram shows the shape of the distribution, while the ogive is used to find the median, quartiles and percentiles graphically.",
+   "keywords": [
+    "histogram",
+    "rectangles",
+    "class intervals",
+    "ogive",
+    "cumulative frequency",
+    "less-than ogive",
+    "median"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Measures of dispersion: range, quartile deviation, mean absolute deviation, standard deviation",
+   "text": "What is the difference between range and standard deviation as measures of dispersion?",
+   "ideal_answer": "Range is the difference between the largest and smallest values, so it depends only on two extreme observations. Standard deviation is the square root of the average of squared deviations from the mean, so it uses every observation. Range is quick to calculate but heavily affected by outliers and ignores how the other values are spread. Standard deviation is more reliable and is the most widely used measure of dispersion.",
+   "keywords": [
+    "range",
+    "largest",
+    "smallest",
+    "standard deviation",
+    "square root",
+    "squared deviations",
+    "outliers"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Spearman rank correlation with and without ties",
+   "text": "How do you calculate Spearman's rank correlation coefficient?",
+   "ideal_answer": "First rank the values of each variable separately, then find the difference d between the two ranks for each observation. Square each difference and add them to get the sum of d squared. Spearman's coefficient is r = 1 - 6 times the sum of d squared divided by n times (n squared - 1), where n is the number of pairs. If there are tied values, each gets the average of the ranks they would occupy and a correction factor of m(m squared - 1)/12 is added to the sum of d squared for each group of m ties.",
+   "keywords": [
+    "rank",
+    "difference",
+    "squared",
+    "number of pairs",
+    "ties",
+    "average of the ranks"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Linear regression and fitting a straight line by least squares",
+   "text": "How is a straight line fitted to data using the method of least squares?",
+   "ideal_answer": "We fit the line y = a + bx by choosing a and b so that the sum of squared vertical errors between observed y values and predicted y values is minimum. Setting the derivatives to zero gives two normal equations: sum of y = na + b times sum of x, and sum of xy = a times sum of x + b times sum of x squared. Solving them gives the slope b = covariance of x and y divided by variance of x, and the intercept a = mean of y minus b times mean of x. The fitted line always passes through the point of means.",
+   "keywords": [
+    "squared vertical errors",
+    "minimum",
+    "normal equations",
+    "slope",
+    "intercept"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Raw and central moments, skewness and kurtosis",
+   "text": "A data set has mean 50, median 45 and mode 40. What can you say about its skewness, and why?",
+   "ideal_answer": "The distribution is positively skewed, or right-skewed. In a positively skewed distribution the mean is greater than the median, which is greater than the mode, as here with 50 > 45 > 40. This happens because a few large values in the long right tail pull the mean upward more than the median. Karl Pearson's coefficient of skewness, (mean minus mode) divided by standard deviation, would therefore be positive.",
+   "keywords": [
+    "positively skewed",
+    "right tail",
+    "mean is greater than the median",
+    "mode",
+    "pearson",
+    "coefficient of skewness"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Relation between correlation and regression; multiple correlation, multiple and logistic regression",
+   "text": "What is the difference between correlation and regression, and how are they related?",
+   "ideal_answer": "Correlation measures the strength and direction of the linear relationship between two variables and is symmetric, with r lying between -1 and +1. Regression describes the relationship as an equation that predicts a dependent variable from an independent variable, and it is not symmetric. They are linked because the correlation coefficient is the geometric mean of the two regression coefficients, r = square root of (byx times bxy), and r has the same sign as both. Correlation does not imply causation, and regression is used for prediction.",
+   "keywords": [
+    "strength",
+    "direction",
+    "prediction",
+    "dependent variable",
+    "regression coefficients",
+    "geometric mean",
+    "causation"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Correlation, scatter diagram and product moment correlation coefficient",
+   "text": "You find a Pearson correlation of almost zero between two variables, but the scatter plot shows a clear U-shaped pattern. Explain this.",
+   "ideal_answer": "Pearson's product moment correlation measures only linear relationships. In a U-shaped pattern, y decreases and then increases as x increases, so the positive and negative parts cancel out and r comes close to zero. This does not mean the variables are unrelated; they have a strong non-linear relationship. That is why a scatter diagram should always be plotted first, and a non-linear model such as a quadratic fit should be used instead.",
+   "keywords": [
+    "linear relationship",
+    "non-linear",
+    "u-shaped",
+    "cancel out",
+    "scatter diagram",
+    "quadratic"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Combined standard deviation for grouped and ungrouped data",
+   "text": "Two classes have different means and standard deviations. Why can't you just average their standard deviations to get the combined standard deviation, and how is it computed?",
+   "ideal_answer": "Simply averaging the standard deviations ignores the different group sizes and the difference between the group means. The combined variance is (n1(s1 squared + d1 squared) + n2(s2 squared + d2 squared)) divided by (n1 + n2), where d1 and d2 are the differences between each group mean and the combined mean. The combined mean is (n1 times mean1 + n2 times mean2) divided by (n1 + n2). The combined standard deviation is the square root of this combined variance, and it is usually larger than the average when the group means differ.",
+   "keywords": [
+    "group sizes",
+    "combined mean",
+    "difference",
+    "combined variance",
+    "square root"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Measures of central tendency: median, mode, quartiles, deciles, percentiles",
+   "text": "An HR team reports average salary of employees, but a few executives earn very high salaries. As a data analyst, which measures would you report and why?",
+   "ideal_answer": "Salary data are usually right-skewed, so the mean is pulled upward by a few very high executive salaries and does not represent a typical employee. The median is a better measure of central tendency because it is resistant to extreme values. I would also report the interquartile range or quartile deviation for spread, and percentiles such as the 25th, 75th and 90th to show the distribution. A box plot or histogram helps communicate this, and it is good practice to mention the mean separately so the effect of outliers is transparent.",
+   "keywords": [
+    "skewed",
+    "median",
+    "outliers",
+    "interquartile range",
+    "percentiles",
+    "box plot"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Relation between correlation and regression; multiple correlation, multiple and logistic regression",
+   "text": "A bank wants to predict whether a customer will default on a loan using income, age and credit score. Would you use multiple linear regression or logistic regression, and why?",
+   "ideal_answer": "Logistic regression is the right choice because the outcome, default or no default, is binary. Linear regression can predict values below 0 or above 1, which cannot be probabilities. Logistic regression uses the sigmoid function to model the probability of default as a function of several predictors, and a threshold such as 0.5 converts it into a class. Its coefficients show how each predictor affects the log-odds, and the model should be checked for multicollinearity and evaluated with metrics such as accuracy, precision and recall.",
+   "keywords": [
+    "logistic regression",
+    "binary",
+    "probability",
+    "sigmoid",
+    "log-odds",
+    "multicollinearity"
+   ]
+  }
+ ]
+}

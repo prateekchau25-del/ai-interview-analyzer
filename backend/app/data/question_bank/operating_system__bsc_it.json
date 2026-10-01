@@ -1,194 +1,194 @@
 {
-  "subject": "Operating System",
-  "applies_to": [
-    {
-      "course": "BSC_IT",
-      "year": 2,
-      "semester": 3
-    },
-    {
-      "course": "BSC_IT",
-      "year": 2,
-      "semester": 4
-    }
-  ],
-  "questions": [
-    {
-      "level": 1,
-      "topic": "Operating system concepts, system calls",
-      "text": "What is a system call?",
-      "ideal_answer": "A system call is the programmatic interface through which a user program requests a service from the operating system kernel. Because user programs run in user mode and cannot directly access hardware, a system call switches the CPU into kernel mode to perform the privileged operation. Examples are fork, exec, open, read, write and exit in Unix or Linux. After the service is completed, control returns to the user program in user mode.",
-      "keywords": [
-        "interface",
-        "request",
-        "kernel",
-        "user mode",
-        "kernel mode",
-        "fork",
-        "read"
-      ]
-    },
-    {
-      "level": 1,
-      "topic": "Deadlocks",
-      "text": "What is a deadlock? State the four necessary conditions for deadlock.",
-      "ideal_answer": "A deadlock is a situation where a set of processes are blocked forever because each process is holding a resource and waiting for a resource held by another process in the set. The four necessary conditions, given by Coffman, are mutual exclusion, hold and wait, no preemption and circular wait. All four must hold at the same time for a deadlock to occur. Preventing any one of them prevents deadlock.",
-      "keywords": [
-        "blocked",
-        "waiting",
-        "mutual exclusion",
-        "hold and wait",
-        "no preemption",
-        "circular wait"
-      ]
-    },
-    {
-      "level": 2,
-      "topic": "Processes, threads and interprocess communication",
-      "text": "What is the difference between a process and a thread?",
-      "ideal_answer": "A process is a program in execution with its own address space, code, data, open files and other resources. A thread is the smallest unit of CPU scheduling and runs within a process; threads of the same process share its code, data and files but have their own program counter, registers and stack. Creating and switching threads is cheaper and faster than processes. However, since threads share memory, a fault in one thread can affect the whole process, while processes are isolated from each other.",
-      "keywords": [
-        "program in execution",
-        "address space",
-        "share",
-        "own stack",
-        "program counter",
-        "cheaper",
-        "isolated"
-      ]
-    },
-    {
-      "level": 2,
-      "topic": "Memory management, address spaces and virtual memory",
-      "text": "What is virtual memory and why is it used?",
-      "ideal_answer": "Virtual memory is a memory management technique that gives each process the illusion of a large, private, contiguous address space, which may be larger than the physical RAM. Only the parts of a program that are needed are kept in RAM, and the rest is stored on disk, in swap space. The memory management unit translates virtual addresses to physical addresses using page tables. It allows running large programs, more processes at once, and provides isolation and protection between processes.",
-      "keywords": [
-        "address space",
-        "larger than physical",
-        "disk",
-        "swap",
-        "page tables",
-        "translates",
-        "isolation"
-      ]
-    },
-    {
-      "level": 3,
-      "topic": "Process scheduling",
-      "text": "Three processes arrive at time 0 with burst times 24, 3 and 3 in that order. Compare the average waiting time under FCFS and SJF scheduling.",
-      "ideal_answer": "In FCFS, processes run in arrival order, so P1 waits 0, P2 waits 24 and P3 waits 27, giving an average waiting time of 51 divided by 3, which is 17. In non-preemptive SJF, the shortest jobs run first, so the two 3-unit jobs run before the 24-unit job, giving waiting times 0, 3 and 6, an average of 3. FCFS suffers from the convoy effect, where short processes wait behind a long one. SJF gives the minimum average waiting time, but it needs burst times to be known or predicted and can cause starvation of long jobs.",
-      "keywords": [
-        "fcfs",
-        "17",
-        "sjf",
-        "average of 3",
-        "convoy effect",
-        "minimum average waiting time",
-        "starvation"
-      ]
-    },
-    {
-      "level": 3,
-      "topic": "File systems: files, directories and implementation",
-      "text": "Explain contiguous, linked and indexed file allocation methods.",
-      "ideal_answer": "In contiguous allocation, each file occupies a set of consecutive disk blocks, so sequential and direct access are fast, but it suffers from external fragmentation and files are hard to grow. In linked allocation, each block contains a pointer to the next block, so there is no external fragmentation, but direct access is slow and a broken pointer loses data; the FAT system keeps these links in a table. In indexed allocation, each file has an index block, like an inode in Unix, that stores the addresses of all its blocks, supporting direct access without external fragmentation, but with overhead for the index block.",
-      "keywords": [
-        "contiguous",
-        "external fragmentation",
-        "linked",
-        "pointer",
-        "fat",
-        "indexed",
-        "inode"
-      ]
-    },
-    {
-      "level": 4,
-      "topic": "Page replacement algorithms, paging and segmentation",
-      "text": "What is Belady's anomaly? Which page replacement algorithms suffer from it and which do not?",
-      "ideal_answer": "Belady's anomaly is the situation where increasing the number of page frames increases the number of page faults for some reference strings. It occurs with the FIFO page replacement algorithm. For example, the reference string 1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5 gives 9 page faults with 3 frames but 10 with 4 frames under FIFO. LRU and the optimal algorithm do not suffer from it because they are stack algorithms, where the pages in memory with n frames are always a subset of those with n plus 1 frames.",
-      "keywords": [
-        "more frames",
-        "more page faults",
-        "fifo",
-        "lru",
-        "optimal",
-        "stack algorithms"
-      ]
-    },
-    {
-      "level": 4,
-      "topic": "I/O hardware and software, disks and clocks",
-      "text": "Why is disk scheduling needed? Compare FCFS, SSTF and SCAN disk scheduling.",
-      "ideal_answer": "On hard disks, seek time to move the head between tracks is the largest part of access time, so the order of serving requests strongly affects performance. FCFS serves requests in arrival order, which is fair but can cause long head movements. SSTF, shortest seek time first, serves the request closest to the current head position, reducing total seek time but possibly starving far requests. SCAN, the elevator algorithm, moves the head in one direction serving requests until the end, then reverses, giving lower seek time than FCFS and more uniform waiting times than SSTF.",
-      "keywords": [
-        "seek time",
-        "fcfs",
-        "sstf",
-        "closest",
-        "starvation",
-        "scan",
-        "elevator"
-      ]
-    },
-    {
-      "level": 5,
-      "topic": "Multiprocessor and distributed systems",
-      "text": "A multi-threaded program runs on a machine with 2 cores. Moving it to a 16-core machine gives very little speed-up. What could be the reasons?",
-      "ideal_answer": "First, Amdahl's law says the speed-up is limited by the serial part of the program, so if a large fraction cannot run in parallel, adding cores helps little. Second, threads may contend for shared locks, so they spend time waiting instead of running. Third, on shared-memory multiprocessors, cache coherence traffic and false sharing, where threads update different variables on the same cache line, slow things down. The program may also create fewer threads than cores, or be limited by memory bandwidth or I/O. Fixes include reducing the serial portion, using finer-grained or lock-free synchronization, padding data to avoid false sharing and checking processor affinity and load balancing.",
-      "keywords": [
-        "amdahl's law",
-        "serial part",
-        "lock contention",
-        "cache coherence",
-        "false sharing",
-        "load balancing"
-      ]
-    },
-    {
-      "level": 5,
-      "topic": "Classic IPC problems",
-      "text": "In the producer-consumer problem with a shared buffer, what can go wrong without synchronization and how do semaphores solve it?",
-      "ideal_answer": "Without synchronization, the producer and consumer can update the shared buffer and count at the same time, causing a race condition and corrupted data; the producer may also add to a full buffer or the consumer remove from an empty one. Using semaphores, a mutex semaphore initialized to 1 gives mutual exclusion on the buffer, an empty semaphore initialized to the buffer size counts free slots, and a full semaphore initialized to 0 counts filled slots. The producer waits on empty then mutex, adds an item, then signals mutex and full; the consumer does the reverse. Waiting on mutex before empty or full can cause deadlock, so the order matters.",
-      "keywords": [
-        "race condition",
-        "mutual exclusion",
-        "mutex",
-        "empty",
-        "full",
-        "wait",
-        "signal"
-      ]
-    },
-    {
-      "level": 6,
-      "topic": "Virtualization, hypervisors and cloud",
-      "text": "Your company wants to run many isolated applications on a few physical servers. Would you choose virtual machines or containers, and what are the trade-offs?",
-      "ideal_answer": "Virtual machines run on a hypervisor and each has its own full guest operating system, giving strong isolation and the ability to run different operating systems, but they use more memory and disk and take longer to boot. Containers share the host operating system kernel using features like namespaces and cgroups, so they are lightweight, start in seconds and allow higher density on the same hardware. However, container isolation is weaker, and all containers must be compatible with the host kernel. Many companies combine both, running containers inside VMs, choosing VMs for security boundaries or different operating systems and containers for scalable microservices.",
-      "keywords": [
-        "hypervisor",
-        "guest operating system",
-        "strong isolation",
-        "share kernel",
-        "namespaces",
-        "cgroups",
-        "lightweight"
-      ]
-    },
-    {
-      "level": 6,
-      "topic": "Case studies: Linux, Android and Windows",
-      "text": "As a system administrator, you must choose operating systems for company servers and for employee mobile devices. How do Linux, Windows and Android differ in their design, and what would you choose?",
-      "ideal_answer": "Linux is an open-source, Unix-like operating system with a monolithic kernel and loadable modules; it is stable, secure, highly configurable and dominant on servers and cloud. Windows uses a hybrid kernel, has strong GUI and enterprise tools like Active Directory, and suits environments dependent on Microsoft software, but needs licences. Android is built on the Linux kernel with apps running in a sandbox, each app as a separate Linux user with a permission model, designed for mobile devices with power management. I would choose Linux for most servers due to cost and stability, Windows Server where Microsoft services are required, and managed Android devices using mobile device management for staff phones.",
-      "keywords": [
-        "open-source",
-        "monolithic kernel",
-        "hybrid kernel",
-        "active directory",
-        "linux kernel",
-        "sandbox",
-        "permissions"
-      ]
-    }
-  ]
+ "subject": "Operating System",
+ "applies_to": [
+  {
+   "course": "BSC_IT",
+   "year": 2,
+   "semester": 3
+  },
+  {
+   "course": "BSC_IT",
+   "year": 2,
+   "semester": 4
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Operating system concepts, system calls",
+   "text": "What is a system call?",
+   "ideal_answer": "A system call is the programmatic interface through which a user program requests a service from the operating system kernel. Because user programs run in user mode and cannot directly access hardware, a system call switches the CPU into kernel mode to perform the privileged operation. Examples are fork, exec, open, read, write and exit in Unix or Linux. After the service is completed, control returns to the user program in user mode.",
+   "keywords": [
+    "interface",
+    "request",
+    "kernel",
+    "user mode",
+    "kernel mode",
+    "fork",
+    "read"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Deadlocks",
+   "text": "What is a deadlock? State the four necessary conditions for deadlock.",
+   "ideal_answer": "A deadlock is a situation where a set of processes are blocked forever because each process is holding a resource and waiting for a resource held by another process in the set. The four necessary conditions, given by Coffman, are mutual exclusion, hold and wait, no preemption and circular wait. All four must hold at the same time for a deadlock to occur. Preventing any one of them prevents deadlock.",
+   "keywords": [
+    "blocked",
+    "waiting",
+    "mutual exclusion",
+    "hold and wait",
+    "no preemption",
+    "circular wait"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Processes, threads and interprocess communication",
+   "text": "What is the difference between a process and a thread?",
+   "ideal_answer": "A process is a program in execution with its own address space, code, data, open files and other resources. A thread is the smallest unit of CPU scheduling and runs within a process; threads of the same process share its code, data and files but have their own program counter, registers and stack. Creating and switching threads is cheaper and faster than processes. However, since threads share memory, a fault in one thread can affect the whole process, while processes are isolated from each other.",
+   "keywords": [
+    "program in execution",
+    "address space",
+    "share",
+    "own stack",
+    "program counter",
+    "cheaper",
+    "isolated"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Memory management, address spaces and virtual memory",
+   "text": "What is virtual memory and why is it used?",
+   "ideal_answer": "Virtual memory is a memory management technique that gives each process the illusion of a large, private, contiguous address space, which may be larger than the physical RAM. Only the parts of a program that are needed are kept in RAM, and the rest is stored on disk, in swap space. The memory management unit translates virtual addresses to physical addresses using page tables. It allows running large programs, more processes at once, and provides isolation and protection between processes.",
+   "keywords": [
+    "address space",
+    "larger than physical",
+    "disk",
+    "swap",
+    "page tables",
+    "translates",
+    "isolation"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Process scheduling",
+   "text": "Three processes arrive at time 0 with burst times 24, 3 and 3 in that order. Compare the average waiting time under FCFS and SJF scheduling.",
+   "ideal_answer": "In FCFS, processes run in arrival order, so P1 waits 0, P2 waits 24 and P3 waits 27, giving an average waiting time of 51 divided by 3, which is 17. In non-preemptive SJF, the shortest jobs run first, so the two 3-unit jobs run before the 24-unit job, giving waiting times 0, 3 and 6, an average of 3. FCFS suffers from the convoy effect, where short processes wait behind a long one. SJF gives the minimum average waiting time, but it needs burst times to be known or predicted and can cause starvation of long jobs.",
+   "keywords": [
+    "fcfs",
+    "17",
+    "sjf",
+    "average of 3",
+    "convoy effect",
+    "minimum average waiting time",
+    "starvation"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "File systems: files, directories and implementation",
+   "text": "Explain contiguous, linked and indexed file allocation methods.",
+   "ideal_answer": "In contiguous allocation, each file occupies a set of consecutive disk blocks, so sequential and direct access are fast, but it suffers from external fragmentation and files are hard to grow. In linked allocation, each block contains a pointer to the next block, so there is no external fragmentation, but direct access is slow and a broken pointer loses data; the FAT system keeps these links in a table. In indexed allocation, each file has an index block, like an inode in Unix, that stores the addresses of all its blocks, supporting direct access without external fragmentation, but with overhead for the index block.",
+   "keywords": [
+    "contiguous",
+    "external fragmentation",
+    "linked",
+    "pointer",
+    "fat",
+    "indexed",
+    "inode"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Page replacement algorithms, paging and segmentation",
+   "text": "What is Belady's anomaly? Which page replacement algorithms suffer from it and which do not?",
+   "ideal_answer": "Belady's anomaly is the situation where increasing the number of page frames increases the number of page faults for some reference strings. It occurs with the FIFO page replacement algorithm. For example, the reference string 1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5 gives 9 page faults with 3 frames but 10 with 4 frames under FIFO. LRU and the optimal algorithm do not suffer from it because they are stack algorithms, where the pages in memory with n frames are always a subset of those with n plus 1 frames.",
+   "keywords": [
+    "more frames",
+    "more page faults",
+    "fifo",
+    "lru",
+    "optimal",
+    "stack algorithms"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "I/O hardware and software, disks and clocks",
+   "text": "Why is disk scheduling needed? Compare FCFS, SSTF and SCAN disk scheduling.",
+   "ideal_answer": "On hard disks, seek time to move the head between tracks is the largest part of access time, so the order of serving requests strongly affects performance. FCFS serves requests in arrival order, which is fair but can cause long head movements. SSTF, shortest seek time first, serves the request closest to the current head position, reducing total seek time but possibly starving far requests. SCAN, the elevator algorithm, moves the head in one direction serving requests until the end, then reverses, giving lower seek time than FCFS and more uniform waiting times than SSTF.",
+   "keywords": [
+    "seek time",
+    "fcfs",
+    "sstf",
+    "closest",
+    "starvation",
+    "scan",
+    "elevator"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Multiprocessor and distributed systems",
+   "text": "A multi-threaded program runs on a machine with 2 cores. Moving it to a 16-core machine gives very little speed-up. What could be the reasons?",
+   "ideal_answer": "First, Amdahl's law says the speed-up is limited by the serial part of the program, so if a large fraction cannot run in parallel, adding cores helps little. Second, threads may contend for shared locks, so they spend time waiting instead of running. Third, on shared-memory multiprocessors, cache coherence traffic and false sharing, where threads update different variables on the same cache line, slow things down. The program may also create fewer threads than cores, or be limited by memory bandwidth or I/O. Fixes include reducing the serial portion, using finer-grained or lock-free synchronization, padding data to avoid false sharing and checking processor affinity and load balancing.",
+   "keywords": [
+    "amdahl's law",
+    "serial part",
+    "lock contention",
+    "cache coherence",
+    "false sharing",
+    "load balancing"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Classic IPC problems",
+   "text": "In the producer-consumer problem with a shared buffer, what can go wrong without synchronization and how do semaphores solve it?",
+   "ideal_answer": "Without synchronization, the producer and consumer can update the shared buffer and count at the same time, causing a race condition and corrupted data; the producer may also add to a full buffer or the consumer remove from an empty one. Using semaphores, a mutex semaphore initialized to 1 gives mutual exclusion on the buffer, an empty semaphore initialized to the buffer size counts free slots, and a full semaphore initialized to 0 counts filled slots. The producer waits on empty then mutex, adds an item, then signals mutex and full; the consumer does the reverse. Waiting on mutex before empty or full can cause deadlock, so the order matters.",
+   "keywords": [
+    "race condition",
+    "mutual exclusion",
+    "mutex",
+    "empty",
+    "full",
+    "wait",
+    "signal"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Virtualization, hypervisors and cloud",
+   "text": "Your company wants to run many isolated applications on a few physical servers. Would you choose virtual machines or containers, and what are the trade-offs?",
+   "ideal_answer": "Virtual machines run on a hypervisor and each has its own full guest operating system, giving strong isolation and the ability to run different operating systems, but they use more memory and disk and take longer to boot. Containers share the host operating system kernel using features like namespaces and cgroups, so they are lightweight, start in seconds and allow higher density on the same hardware. However, container isolation is weaker, and all containers must be compatible with the host kernel. Many companies combine both, running containers inside VMs, choosing VMs for security boundaries or different operating systems and containers for scalable microservices.",
+   "keywords": [
+    "hypervisor",
+    "guest operating system",
+    "strong isolation",
+    "share kernel",
+    "namespaces",
+    "cgroups",
+    "lightweight"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Case studies: Linux, Android and Windows",
+   "text": "As a system administrator, you must choose operating systems for company servers and for employee mobile devices. How do Linux, Windows and Android differ in their design, and what would you choose?",
+   "ideal_answer": "Linux is an open-source, Unix-like operating system with a monolithic kernel and loadable modules; it is stable, secure, highly configurable and dominant on servers and cloud. Windows uses a hybrid kernel, has strong GUI and enterprise tools like Active Directory, and suits environments dependent on Microsoft software, but needs licences. Android is built on the Linux kernel with apps running in a sandbox, each app as a separate Linux user with a permission model, designed for mobile devices with power management. I would choose Linux for most servers due to cost and stability, Windows Server where Microsoft services are required, and managed Android devices using mobile device management for staff phones.",
+   "keywords": [
+    "open-source",
+    "monolithic kernel",
+    "hybrid kernel",
+    "active directory",
+    "linux kernel",
+    "sandbox",
+    "permissions"
+   ]
+  }
+ ]
 }

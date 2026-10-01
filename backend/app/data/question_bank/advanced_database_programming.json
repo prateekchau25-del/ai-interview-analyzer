@@ -50,7 +50,7 @@
     "sql%rowcount",
     "explicit cursor",
     "multiple rows",
-    "open fetch close"
+    "opened"
    ]
   },
   {
@@ -64,7 +64,7 @@
     "return",
     "procedure",
     "out parameters",
-    "called from select",
+    "called from a sql statement",
     "execute"
    ]
   },
@@ -120,7 +120,7 @@
     "if-elsif",
     "first matching",
     "simple case",
-    "single expression",
+    "one expression",
     "searched case",
     "readable",
     "case_not_found"

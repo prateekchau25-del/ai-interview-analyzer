@@ -1,90 +1,181 @@
 {
-  "subject": "Software Engineering & Agile Methodologies",
-  "applies_to": [{"course": "BSC_IT", "year": 3, "semester": 5}],
-  "questions": [
-    {
-      "level": 1,
-      "topic": "Software engineering and SDLC phases",
-      "text": "What is software engineering?",
-      "ideal_answer": "Software engineering is the systematic, disciplined and quantifiable approach to the development, operation and maintenance of software, applying engineering principles. It covers activities like requirements analysis, design, coding, testing, deployment and maintenance, along with project management and quality assurance. Its goal is to produce reliable, high-quality software on time and within budget.",
-      "keywords": ["systematic", "engineering principles", "development", "maintenance", "quality", "within budget"]
-    },
-    {
-      "level": 1,
-      "topic": "Agile methods, extreme programming",
-      "text": "What is Agile software development?",
-      "ideal_answer": "Agile is an iterative and incremental approach to software development where working software is delivered in short iterations, usually 1 to 4 weeks. Based on the Agile Manifesto, it values individuals and interactions over processes and tools, working software over comprehensive documentation, customer collaboration over contract negotiation, and responding to change over following a plan. Scrum, Kanban and Extreme Programming are popular agile methods.",
-      "keywords": ["iterative", "incremental", "short iterations", "agile manifesto", "customer collaboration", "responding to change"]
-    },
-    {
-      "level": 2,
-      "topic": "Agile methods: plan-driven vs agile development",
-      "text": "What is the difference between plan-driven development and agile development?",
-      "ideal_answer": "In plan-driven development, all activities are planned in advance and progress is measured against the plan; requirements are fixed early and phases like design and coding happen in sequence, as in the waterfall model. In agile development, planning is incremental, requirements evolve, and the plan is changed based on customer feedback after each iteration. Plan-driven suits large, safety-critical or regulated systems with stable requirements, while agile suits projects with changing requirements and close customer involvement.",
-      "keywords": ["planned in advance", "fixed requirements", "incremental planning", "customer feedback", "changing requirements", "safety-critical"]
-    },
-    {
-      "level": 2,
-      "topic": "Verification, validation and software testing",
-      "text": "What is the difference between verification and validation?",
-      "ideal_answer": "Verification checks whether the software is being built correctly according to its specification, answering 'Are we building the product right?'. It includes reviews, inspections and walkthroughs, and can be done without running the code. Validation checks whether the software meets the customer's actual needs and expectations, answering 'Are we building the right product?'. It involves executing the software, such as system and acceptance testing.",
-      "keywords": ["verification", "building the product right", "specification", "reviews", "validation", "building the right product", "acceptance testing"]
-    },
-    {
-      "level": 3,
-      "topic": "Agile methods: extreme programming",
-      "text": "How does Extreme Programming improve code quality? Explain its key practices.",
-      "ideal_answer": "Extreme Programming uses several engineering practices to keep quality high while changing quickly. Test-driven development means writing automated tests before the code. Pair programming has two developers working at one computer, reviewing code continuously. Continuous integration merges and tests code many times a day, and refactoring regularly improves the code design without changing behaviour. Other practices include small frequent releases, simple design, collective code ownership, user stories and an on-site customer.",
-      "keywords": ["test-driven development", "pair programming", "continuous integration", "refactoring", "small releases", "simple design"]
-    },
-    {
-      "level": 3,
-      "topic": "Requirements engineering: feasibility, elicitation, validation, management",
-      "text": "Describe the steps of the requirements engineering process for a new hospital appointment system.",
-      "ideal_answer": "First, a feasibility study checks whether the system is technically, economically and operationally possible and worth building. Next, requirements elicitation gathers needs from stakeholders such as doctors, patients and receptionists using interviews, questionnaires, observation and workshops. These requirements are analysed and documented in a specification. Requirements validation then checks them for correctness, consistency, completeness and testability, using reviews and prototypes. Finally, requirements management tracks and controls changes throughout the project, using traceability.",
-      "keywords": ["feasibility study", "elicitation", "stakeholders", "specification", "validation", "requirements management"]
-    },
-    {
-      "level": 4,
-      "topic": "Process models: prototyping, RAD, RUP",
-      "text": "Compare the prototyping model with the RAD model. In what situations is each suitable?",
-      "ideal_answer": "The prototyping model builds a quick working model of the system to clarify unclear requirements with the customer, and the prototype is refined or thrown away before the real system is built. RAD, Rapid Application Development, focuses on delivering a complete system very quickly, often 60 to 90 days, using reusable components, code generators and parallel teams working on modules with heavy user involvement. Prototyping suits projects where requirements are unclear, while RAD suits projects with well-understood, modular requirements, tight deadlines and available skilled teams. RAD is not suitable for high technical risk or systems that cannot be modularised.",
-      "keywords": ["prototype", "unclear requirements", "rapid application development", "reusable components", "modular", "tight deadline"]
-    },
-    {
-      "level": 4,
-      "topic": "Software metrics and cost estimation",
-      "text": "In basic COCOMO, why does effort grow faster than linearly with project size?",
-      "ideal_answer": "Basic COCOMO estimates effort in person-months as a times KLOC to the power b, where KLOC is thousands of lines of code. The exponent b is greater than 1, about 1.05 for organic, 1.12 for semi-detached and 1.20 for embedded projects. This means doubling the size more than doubles the effort, which reflects diseconomies of scale: larger projects need more communication, coordination, integration and management among more people. Embedded projects, with tight constraints, grow the fastest.",
-      "keywords": ["cocomo", "kloc", "exponent greater than 1", "organic", "embedded", "communication overhead"]
-    },
-    {
-      "level": 5,
-      "topic": "Agile project management and scaling agile methods",
-      "text": "A company wants to apply Scrum across 10 teams working on one product, but teams keep blocking each other. What problems arise when scaling agile, and how can they be handled?",
-      "ideal_answer": "Scrum is designed for a single small team, so with many teams there are dependencies between teams, integration problems, inconsistent priorities and communication overhead. Scaling frameworks such as SAFe, LeSS or Scrum of Scrums help: representatives from each team meet regularly to coordinate and resolve dependencies. A single product owner or a shared product backlog keeps priorities aligned, and teams synchronise sprints and use continuous integration so work is integrated often. Organising teams around features rather than components and maintaining a shared architecture also reduces blocking.",
-      "keywords": ["dependencies", "scrum of scrums", "safe", "shared product backlog", "synchronised sprints", "continuous integration"]
-    },
-    {
-      "level": 5,
-      "topic": "Project planning, scheduling and risk management",
-      "text": "Halfway through a project, a key developer leaves and a critical third-party API changes. How should risk management have prepared for this, and what would you do now?",
-      "ideal_answer": "Risk management involves identifying risks, analysing their probability and impact, planning strategies, and monitoring them throughout the project. Staff turnover and dependency on external components are well-known risks, so they should have been in the risk register with strategies such as avoidance, minimisation and contingency plans, for example documentation, pair programming and wrapping the API behind an interface. Now, I would assess the impact on the schedule using the critical path, reassign or hire staff with knowledge transfer, adapt the code to the new API, and update the plan and inform stakeholders. Lessons learned should be added to the risk register.",
-      "keywords": ["risk identification", "probability", "impact", "risk register", "contingency plan", "monitoring"]
-    },
-    {
-      "level": 6,
-      "topic": "CMMI process improvement and software reuse",
-      "text": "Your IT services company wants to bid for large government contracts that require CMMI Level 3. What does this mean and what changes would the company need to make?",
-      "ideal_answer": "CMMI, the Capability Maturity Model Integration, rates process maturity on five levels: Initial, Managed, Defined, Quantitatively Managed and Optimizing. At Level 2 processes are managed at project level, while Level 3, Defined, requires standard, documented organisation-wide processes that each project tailors. The company must define and document processes for requirements, design, testing, configuration management and risk management, train staff, and set up process reviews and quality assurance. This brings consistency and predictability but adds overhead and cost, so it should be balanced with agile practices rather than becoming heavy paperwork.",
-      "keywords": ["capability maturity model integration", "five levels", "defined", "organisation-wide processes", "documented", "overhead"]
-    },
-    {
-      "level": 6,
-      "topic": "System models and architectural design",
-      "text": "A startup's monolithic web application is becoming hard to deploy and scale. Should they move to microservices? Discuss the architectural trade-offs.",
-      "ideal_answer": "A monolithic architecture packages all features in one deployable unit, which is simple to develop, test and deploy at first, but grows hard to understand, and any change needs a full redeployment and the whole application must be scaled together. Microservices split the system into small independently deployable services around business capabilities, which allows independent scaling, deployment and technology choices per team. However, microservices add complexity: network communication, distributed data consistency, monitoring, and DevOps skills. For a small team, a well-structured modular monolith may be better, gradually extracting services only where scaling or deployment needs justify it.",
-      "keywords": ["monolithic", "microservices", "independent deployment", "scaling", "complexity", "modular monolith"]
-    }
-  ]
+ "subject": "Software Engineering & Agile Methodologies",
+ "applies_to": [
+  {
+   "course": "BSC_IT",
+   "year": 3,
+   "semester": 5
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Software engineering and SDLC phases",
+   "text": "What is software engineering?",
+   "ideal_answer": "Software engineering is the systematic, disciplined and quantifiable approach to the development, operation and maintenance of software, applying engineering principles. It covers activities like requirements analysis, design, coding, testing, deployment and maintenance, along with project management and quality assurance. Its goal is to produce reliable, high-quality software on time and within budget.",
+   "keywords": [
+    "systematic",
+    "engineering principles",
+    "development",
+    "maintenance",
+    "quality",
+    "within budget"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Agile methods, extreme programming",
+   "text": "What is Agile software development?",
+   "ideal_answer": "Agile is an iterative and incremental approach to software development where working software is delivered in short iterations, usually 1 to 4 weeks. Based on the Agile Manifesto, it values individuals and interactions over processes and tools, working software over comprehensive documentation, customer collaboration over contract negotiation, and responding to change over following a plan. Scrum, Kanban and Extreme Programming are popular agile methods.",
+   "keywords": [
+    "iterative",
+    "incremental",
+    "short iterations",
+    "agile manifesto",
+    "customer collaboration",
+    "responding to change"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Agile methods: plan-driven vs agile development",
+   "text": "What is the difference between plan-driven development and agile development?",
+   "ideal_answer": "In plan-driven development, all activities are planned in advance and progress is measured against the plan; requirements are fixed early and phases like design and coding happen in sequence, as in the waterfall model. In agile development, planning is incremental, requirements evolve, and the plan is changed based on customer feedback after each iteration. Plan-driven suits large, safety-critical or regulated systems with stable requirements, while agile suits projects with changing requirements and close customer involvement.",
+   "keywords": [
+    "planned in advance",
+    "fixed requirements",
+    "incremental planning",
+    "customer feedback",
+    "changing requirements",
+    "safety-critical"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Verification, validation and software testing",
+   "text": "What is the difference between verification and validation?",
+   "ideal_answer": "Verification checks whether the software is being built correctly according to its specification, answering 'Are we building the product right?'. It includes reviews, inspections and walkthroughs, and can be done without running the code. Validation checks whether the software meets the customer's actual needs and expectations, answering 'Are we building the right product?'. It involves executing the software, such as system and acceptance testing.",
+   "keywords": [
+    "verification",
+    "building the product right",
+    "specification",
+    "reviews",
+    "validation",
+    "building the right product",
+    "acceptance testing"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Agile methods: extreme programming",
+   "text": "How does Extreme Programming improve code quality? Explain its key practices.",
+   "ideal_answer": "Extreme Programming uses several engineering practices to keep quality high while changing quickly. Test-driven development means writing automated tests before the code. Pair programming has two developers working at one computer, reviewing code continuously. Continuous integration merges and tests code many times a day, and refactoring regularly improves the code design without changing behaviour. Other practices include small frequent releases, simple design, collective code ownership, user stories and an on-site customer.",
+   "keywords": [
+    "test-driven development",
+    "pair programming",
+    "continuous integration",
+    "refactoring",
+    "small releases",
+    "simple design"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Requirements engineering: feasibility, elicitation, validation, management",
+   "text": "Describe the steps of the requirements engineering process for a new hospital appointment system.",
+   "ideal_answer": "First, a feasibility study checks whether the system is technically, economically and operationally possible and worth building. Next, requirements elicitation gathers needs from stakeholders such as doctors, patients and receptionists using interviews, questionnaires, observation and workshops. These requirements are analysed and documented in a specification. Requirements validation then checks them for correctness, consistency, completeness and testability, using reviews and prototypes. Finally, requirements management tracks and controls changes throughout the project, using traceability.",
+   "keywords": [
+    "feasibility study",
+    "elicitation",
+    "stakeholders",
+    "specification",
+    "validation",
+    "requirements management"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Process models: prototyping, RAD, RUP",
+   "text": "Compare the prototyping model with the RAD model. In what situations is each suitable?",
+   "ideal_answer": "The prototyping model builds a quick working model of the system to clarify unclear requirements with the customer, and the prototype is refined or thrown away before the real system is built. RAD, Rapid Application Development, focuses on delivering a complete system very quickly, often 60 to 90 days, using reusable components, code generators and parallel teams working on modules with heavy user involvement. Prototyping suits projects where requirements are unclear, while RAD suits projects with well-understood, modular requirements, tight deadlines and available skilled teams. RAD is not suitable for high technical risk or systems that cannot be modularised.",
+   "keywords": [
+    "prototype",
+    "unclear requirements",
+    "rapid application development",
+    "reusable components",
+    "modular",
+    "tight deadline"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Software metrics and cost estimation",
+   "text": "In basic COCOMO, why does effort grow faster than linearly with project size?",
+   "ideal_answer": "Basic COCOMO estimates effort in person-months as a times KLOC to the power b, where KLOC is thousands of lines of code. The exponent b is greater than 1, about 1.05 for organic, 1.12 for semi-detached and 1.20 for embedded projects. This means doubling the size more than doubles the effort, which reflects diseconomies of scale: larger projects need more communication, coordination, integration and management among more people. Embedded projects, with tight constraints, grow the fastest.",
+   "keywords": [
+    "cocomo",
+    "kloc",
+    "exponent greater than 1",
+    "organic",
+    "embedded",
+    "communication overhead"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Agile project management and scaling agile methods",
+   "text": "A company wants to apply Scrum across 10 teams working on one product, but teams keep blocking each other. What problems arise when scaling agile, and how can they be handled?",
+   "ideal_answer": "Scrum is designed for a single small team, so with many teams there are dependencies between teams, integration problems, inconsistent priorities and communication overhead. Scaling frameworks such as SAFe, LeSS or Scrum of Scrums help: representatives from each team meet regularly to coordinate and resolve dependencies. A single product owner or a shared product backlog keeps priorities aligned, and teams synchronise sprints and use continuous integration so work is integrated often. Organising teams around features rather than components and maintaining a shared architecture also reduces blocking.",
+   "keywords": [
+    "dependencies",
+    "scrum of scrums",
+    "safe",
+    "shared product backlog",
+    "synchronised sprints",
+    "continuous integration"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Project planning, scheduling and risk management",
+   "text": "Halfway through a project, a key developer leaves and a critical third-party API changes. How should risk management have prepared for this, and what would you do now?",
+   "ideal_answer": "Risk management involves identifying risks, analysing their probability and impact, planning strategies, and monitoring them throughout the project. Staff turnover and dependency on external components are well-known risks, so they should have been in the risk register with strategies such as avoidance, minimisation and contingency plans, for example documentation, pair programming and wrapping the API behind an interface. Now, I would assess the impact on the schedule using the critical path, reassign or hire staff with knowledge transfer, adapt the code to the new API, and update the plan and inform stakeholders. Lessons learned should be added to the risk register.",
+   "keywords": [
+    "risk identification",
+    "probability",
+    "impact",
+    "risk register",
+    "contingency plan",
+    "monitoring"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "CMMI process improvement and software reuse",
+   "text": "Your IT services company wants to bid for large government contracts that require CMMI Level 3. What does this mean and what changes would the company need to make?",
+   "ideal_answer": "CMMI, the Capability Maturity Model Integration, rates process maturity on five levels: Initial, Managed, Defined, Quantitatively Managed and Optimizing. At Level 2 processes are managed at project level, while Level 3, Defined, requires standard, documented organisation-wide processes that each project tailors. The company must define and document processes for requirements, design, testing, configuration management and risk management, train staff, and set up process reviews and quality assurance. This brings consistency and predictability but adds overhead and cost, so it should be balanced with agile practices rather than becoming heavy paperwork.",
+   "keywords": [
+    "capability maturity model integration",
+    "five levels",
+    "defined",
+    "organisation-wide processes",
+    "documented",
+    "overhead"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "System models and architectural design",
+   "text": "A startup's monolithic web application is becoming hard to deploy and scale. Should they move to microservices? Discuss the architectural trade-offs.",
+   "ideal_answer": "A monolithic architecture packages all features in one deployable unit, which is simple to develop, test and deploy at first, but grows hard to understand, and any change needs a full redeployment and the whole application must be scaled together. Microservices split the system into small independently deployable services around business capabilities, which allows independent scaling, deployment and technology choices per team. However, microservices add complexity: network communication, distributed data consistency, monitoring, and DevOps skills. For a small team, a well-structured modular monolith may be better, gradually extracting services only where scaling or deployment needs justify it.",
+   "keywords": [
+    "monolithic",
+    "microservices",
+    "independent deployment",
+    "scaling",
+    "complexity",
+    "modular monolith"
+   ]
+  }
+ ]
 }

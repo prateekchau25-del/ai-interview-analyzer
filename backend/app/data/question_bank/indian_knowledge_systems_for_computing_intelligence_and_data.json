@@ -1,201 +1,201 @@
 {
-  "subject": "Indian Knowledge Systems for Computing, Intelligence and Data Traditions",
-  "applies_to": [
-    {
-      "course": "BSC_IT",
-      "year": 3,
-      "semester": 5
-    },
-    {
-      "course": "BSC_DS",
-      "year": 3,
-      "semester": 5
-    },
-    {
-      "course": "BSC_AI",
-      "year": 3,
-      "semester": 5
-    }
-  ],
-  "questions": [
-    {
-      "level": 1,
-      "topic": "Foundations of IKS: Dharma, Karma and Pramana",
-      "text": "What is meant by Pramana in Indian Knowledge Systems?",
-      "ideal_answer": "Pramana means a valid means of knowledge, that is, a reliable way by which correct knowledge is obtained. The main pramanas accepted in Indian philosophy include pratyaksha, direct perception; anumana, inference; upamana, comparison or analogy; and shabda, reliable testimony. Different schools accept different numbers of pramanas; for example, the Nyaya school accepts these four. The idea is similar to how data science values evidence, observation and sound reasoning.",
-      "keywords": [
-        "valid means of knowledge",
-        "pratyaksha",
-        "perception",
-        "anumana",
-        "inference",
-        "upamana",
-        "shabda"
-      ]
-    },
-    {
-      "level": 1,
-      "topic": "Ancient Indian mathematics: zero, decimal system and place value",
-      "text": "What was India's contribution to the concept of zero and the decimal place-value system?",
-      "ideal_answer": "Ancient Indian mathematicians developed the decimal place-value system, in which only ten digits, 0 to 9, are used and the value of a digit depends on its position. They also treated zero both as a placeholder and as a number in its own right. Brahmagupta, in his Brahmasphutasiddhanta of 628 CE, gave rules for arithmetic with zero and negative numbers. This system spread through the Arab world to Europe as Hindu-Arabic numerals and is the basis of modern arithmetic and computing.",
-      "keywords": [
-        "zero",
-        "decimal",
-        "place-value",
-        "ten digits",
-        "brahmagupta",
-        "hindu-arabic numerals"
-      ]
-    },
-    {
-      "level": 2,
-      "topic": "Contributions of Aryabhata, Brahmagupta and Bhaskaracharya",
-      "text": "Briefly describe the contributions of Aryabhata and Bhaskaracharya to mathematics and astronomy.",
-      "ideal_answer": "Aryabhata, in his Aryabhatiya written in 499 CE, gave an accurate approximation of pi as about 3.1416, worked on sine tables and solutions of linear indeterminate equations using the kuttaka method, and proposed that the Earth rotates on its axis, explaining eclipses by shadows. Bhaskaracharya, or Bhaskara II, wrote the Siddhanta Shiromani in the 12th century, including the Lilavati on arithmetic and Bijaganita on algebra. He solved equations like Pell's equation with the chakravala method and described ideas close to differential calculus.",
-      "keywords": [
-        "aryabhata",
-        "aryabhatiya",
-        "pi",
-        "earth rotates",
-        "bhaskaracharya",
-        "lilavati",
-        "chakravala"
-      ]
-    },
-    {
-      "level": 2,
-      "topic": "Indian logic: Nyaya and Vaisheshika schools",
-      "text": "What is the difference between the Nyaya and Vaisheshika schools of Indian philosophy?",
-      "ideal_answer": "The Nyaya school focuses on logic and epistemology, the methods of valid reasoning and debate, and is known for its five-step inference, the panchavayava syllogism. The Vaisheshika school, founded by Kanada, focuses on ontology, classifying reality into categories called padarthas such as substance, quality and action, and it proposed that matter is made of indivisible atoms, paramanu. The two schools are closely related and later merged as Nyaya-Vaisheshika, combining logic with a theory of reality.",
-      "keywords": [
-        "nyaya",
-        "logic",
-        "inference",
-        "vaisheshika",
-        "kanada",
-        "padartha",
-        "atoms"
-      ]
-    },
-    {
-      "level": 3,
-      "topic": "Algorithmic thinking in ancient texts",
-      "text": "Give an example of algorithmic thinking found in ancient Indian texts and explain how it works as an algorithm.",
-      "ideal_answer": "A good example is Pingala's Chandahshastra on Sanskrit prosody, around the 3rd to 2nd century BCE, which listed all combinations of short and long syllables, laghu and guru. Its procedures are effectively binary representation: treating short and long syllables like 0 and 1, it gave step-by-step rules, such as prastara to enumerate all patterns and others to find a pattern's position. These are recursive, step-by-step procedures, and the counts relate to Pascal's triangle, called meru prastara. Another example is the kuttaka algorithm for solving linear indeterminate equations, similar to the Euclidean algorithm.",
-      "keywords": [
-        "pingala",
-        "chandahshastra",
-        "laghu",
-        "binary",
-        "step-by-step",
-        "meru prastara",
-        "kuttaka"
-      ]
-    },
-    {
-      "level": 3,
-      "topic": "Astronomy and timekeeping: Indian calendars, eclipses, planetary motion",
-      "text": "How does the traditional Indian lunisolar calendar keep lunar months in step with the solar year?",
-      "ideal_answer": "The Indian lunisolar calendar, the Panchang, uses lunar months based on the phases of the Moon, each of about 29.5 days and divided into tithis, so twelve lunar months make about 354 days. The solar year is about 365 days, around 11 days longer. To keep months aligned with the seasons, an extra intercalary month, called adhika masa, is added roughly every 32 to 33 months, about once in three years. This is an early example of algorithmic error correction in timekeeping.",
-      "keywords": [
-        "lunisolar",
-        "panchang",
-        "lunar month",
-        "tithi",
-        "solar year",
-        "11 days",
-        "adhika masa"
-      ]
-    },
-    {
-      "level": 4,
-      "topic": "Panini's grammar as a precursor to formal languages",
-      "text": "Why is Panini's Ashtadhyayi considered a precursor to formal languages and grammars used in computer science?",
-      "ideal_answer": "Panini's Ashtadhyayi, around the 4th century BCE, describes Sanskrit grammar in about 4,000 concise rules called sutras that generate correct words and sentences from roots and affixes. It uses a formal metalanguage with abbreviations, markers, rule ordering and recursion, similar to production rules in a generative grammar. This is comparable to how formal grammars, like those in the Chomsky hierarchy and the Backus-Naur Form used to define programming languages, specify which strings are valid. Because of this resemblance, BNF is sometimes called Panini-Backus form.",
-      "keywords": [
-        "ashtadhyayi",
-        "sutras",
-        "rules",
-        "metalanguage",
-        "recursion",
-        "formal grammar",
-        "backus-naur form"
-      ]
-    },
-    {
-      "level": 4,
-      "topic": "Indian ethical concepts (Lokasangraha, Ahimsa) applied to IT ethics",
-      "text": "How can the concepts of Ahimsa and Lokasangraha be applied to the ethics of building AI systems?",
-      "ideal_answer": "Ahimsa means non-harm, so in AI it means designing systems that avoid causing physical, financial, psychological or social harm, for example by testing for bias, protecting privacy and preventing misuse. Lokasangraha means working for the welfare of society as a whole, so AI should be built for the common good and not just for profit or a narrow group, ensuring fairness, accessibility and transparency. Together they encourage developers to consider the impact on all stakeholders, which matches modern principles of responsible AI.",
-      "keywords": [
-        "ahimsa",
-        "non-harm",
-        "bias",
-        "privacy",
-        "lokasangraha",
-        "welfare of society",
-        "responsible ai"
-      ]
-    },
-    {
-      "level": 5,
-      "topic": "Sanskrit and structured programming logic",
-      "text": "Some people claim that Sanskrit is the best language for computers. How would you critically evaluate this claim?",
-      "ideal_answer": "Sanskrit, through Panini's grammar, has a highly systematic, rule-based structure with rich inflection, which reduces some ambiguity and makes it interesting for computational linguistics and knowledge representation, as noted in Rick Briggs's 1985 article. However, computers do not run on natural languages; they use formal programming languages and machine code, and Sanskrit still has ambiguities such as sandhi and multiple meanings. So the accurate claim is that Sanskrit's grammatical tradition offers useful ideas for formal language design and natural language processing, not that it is a ready-made programming language. Claims should be evaluated with evidence rather than accepted uncritically.",
-      "keywords": [
-        "panini",
-        "rule-based",
-        "computational linguistics",
-        "rick briggs",
-        "formal programming languages",
-        "ambiguity",
-        "evidence"
-      ]
-    },
-    {
-      "level": 5,
-      "topic": "Traditional engineering: metallurgy and water management systems",
-      "text": "What makes the Iron Pillar of Delhi and stepwells notable examples of traditional engineering, and what lessons do they offer for modern sustainable design?",
-      "ideal_answer": "The Iron Pillar of Delhi, around 1,600 years old, has resisted rusting and corrosion because of its high phosphorus content and a thin protective layer of misawite that formed on its surface, showing advanced forge-welding and metallurgy. Stepwells such as Rani ki Vav in Gujarat stored rainwater and groundwater for dry seasons, with steps reaching the changing water level and a cool microclimate. The lessons are to design using local materials and conditions, to manage scarce resources like water sustainably, and to build for durability, ideas that align with green and resilient engineering today.",
-      "keywords": [
-        "iron pillar",
-        "corrosion",
-        "phosphorus",
-        "protective layer",
-        "stepwells",
-        "rainwater",
-        "sustainably"
-      ]
-    },
-    {
-      "level": 6,
-      "topic": "Foundations of IKS: Dharma and Karma",
-      "text": "As a software engineer, you are asked to ship a feature quickly although it collects more user data than needed. How could the ideas of Dharma and Karma guide your decision?",
-      "ideal_answer": "Dharma refers to one's duty and right conduct, so a professional's dharma includes protecting users and following laws such as the Digital Personal Data Protection Act, not only meeting deadlines. Karma emphasises that actions have consequences, so collecting unnecessary data creates risks of breaches, misuse and loss of trust that affect both users and the company. Applying these ideas, I would raise the concern, propose data minimisation by collecting only what the feature needs, and suggest safeguards like consent and encryption. This balances business goals with ethical responsibility.",
-      "keywords": [
-        "dharma",
-        "duty",
-        "karma",
-        "consequences",
-        "data minimisation",
-        "consent",
-        "data protection"
-      ]
-    },
-    {
-      "level": 6,
-      "topic": "Indian logic: Nyaya and Vaisheshika schools",
-      "text": "How could the Nyaya method of inference be used to structure explanations in an AI decision system, such as a loan approval model?",
-      "ideal_answer": "The Nyaya five-membered inference has pratijna, the claim; hetu, the reason; udaharana, a general rule with an example; upanaya, application to the present case; and nigamana, the conclusion. An AI explanation could follow this pattern: the loan is rejected, because the debt-to-income ratio is high, since in general applicants with high ratios often default, as seen in past data, this applicant's ratio is 70 percent, therefore the loan is rejected. This makes the reasoning transparent and auditable, supports explainable AI, and helps detect faulty or biased reasons. Nyaya's analysis of fallacious reasons, hetvabhasa, also reminds us to check for invalid evidence.",
-      "keywords": [
-        "pratijna",
-        "hetu",
-        "udaharana",
-        "upanaya",
-        "nigamana",
-        "explainable ai",
-        "hetvabhasa"
-      ]
-    }
-  ]
+ "subject": "Indian Knowledge Systems for Computing, Intelligence and Data Traditions",
+ "applies_to": [
+  {
+   "course": "BSC_IT",
+   "year": 3,
+   "semester": 5
+  },
+  {
+   "course": "BSC_DS",
+   "year": 3,
+   "semester": 5
+  },
+  {
+   "course": "BSC_AI",
+   "year": 3,
+   "semester": 5
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Foundations of IKS: Dharma, Karma and Pramana",
+   "text": "What is meant by Pramana in Indian Knowledge Systems?",
+   "ideal_answer": "Pramana means a valid means of knowledge, that is, a reliable way by which correct knowledge is obtained. The main pramanas accepted in Indian philosophy include pratyaksha, direct perception; anumana, inference; upamana, comparison or analogy; and shabda, reliable testimony. Different schools accept different numbers of pramanas; for example, the Nyaya school accepts these four. The idea is similar to how data science values evidence, observation and sound reasoning.",
+   "keywords": [
+    "valid means of knowledge",
+    "pratyaksha",
+    "perception",
+    "anumana",
+    "inference",
+    "upamana",
+    "shabda"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Ancient Indian mathematics: zero, decimal system and place value",
+   "text": "What was India's contribution to the concept of zero and the decimal place-value system?",
+   "ideal_answer": "Ancient Indian mathematicians developed the decimal place-value system, in which only ten digits, 0 to 9, are used and the value of a digit depends on its position. They also treated zero both as a placeholder and as a number in its own right. Brahmagupta, in his Brahmasphutasiddhanta of 628 CE, gave rules for arithmetic with zero and negative numbers. This system spread through the Arab world to Europe as Hindu-Arabic numerals and is the basis of modern arithmetic and computing.",
+   "keywords": [
+    "zero",
+    "decimal",
+    "place-value",
+    "ten digits",
+    "brahmagupta",
+    "hindu-arabic numerals"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Contributions of Aryabhata, Brahmagupta and Bhaskaracharya",
+   "text": "Briefly describe the contributions of Aryabhata and Bhaskaracharya to mathematics and astronomy.",
+   "ideal_answer": "Aryabhata, in his Aryabhatiya written in 499 CE, gave an accurate approximation of pi as about 3.1416, worked on sine tables and solutions of linear indeterminate equations using the kuttaka method, and proposed that the Earth rotates on its axis, explaining eclipses by shadows. Bhaskaracharya, or Bhaskara II, wrote the Siddhanta Shiromani in the 12th century, including the Lilavati on arithmetic and Bijaganita on algebra. He solved equations like Pell's equation with the chakravala method and described ideas close to differential calculus.",
+   "keywords": [
+    "aryabhata",
+    "aryabhatiya",
+    "pi",
+    "earth rotates",
+    "bhaskaracharya",
+    "lilavati",
+    "chakravala"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Indian logic: Nyaya and Vaisheshika schools",
+   "text": "What is the difference between the Nyaya and Vaisheshika schools of Indian philosophy?",
+   "ideal_answer": "The Nyaya school focuses on logic and epistemology, the methods of valid reasoning and debate, and is known for its five-step inference, the panchavayava syllogism. The Vaisheshika school, founded by Kanada, focuses on ontology, classifying reality into categories called padarthas such as substance, quality and action, and it proposed that matter is made of indivisible atoms, paramanu. The two schools are closely related and later merged as Nyaya-Vaisheshika, combining logic with a theory of reality.",
+   "keywords": [
+    "nyaya",
+    "logic",
+    "inference",
+    "vaisheshika",
+    "kanada",
+    "padartha",
+    "atoms"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Algorithmic thinking in ancient texts",
+   "text": "Give an example of algorithmic thinking found in ancient Indian texts and explain how it works as an algorithm.",
+   "ideal_answer": "A good example is Pingala's Chandahshastra on Sanskrit prosody, around the 3rd to 2nd century BCE, which listed all combinations of short and long syllables, laghu and guru. Its procedures are effectively binary representation: treating short and long syllables like 0 and 1, it gave step-by-step rules, such as prastara to enumerate all patterns and others to find a pattern's position. These are recursive, step-by-step procedures, and the counts relate to Pascal's triangle, called meru prastara. Another example is the kuttaka algorithm for solving linear indeterminate equations, similar to the Euclidean algorithm.",
+   "keywords": [
+    "pingala",
+    "chandahshastra",
+    "laghu",
+    "binary",
+    "step-by-step",
+    "meru prastara",
+    "kuttaka"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Astronomy and timekeeping: Indian calendars, eclipses, planetary motion",
+   "text": "How does the traditional Indian lunisolar calendar keep lunar months in step with the solar year?",
+   "ideal_answer": "The Indian lunisolar calendar, the Panchang, uses lunar months based on the phases of the Moon, each of about 29.5 days and divided into tithis, so twelve lunar months make about 354 days. The solar year is about 365 days, around 11 days longer. To keep months aligned with the seasons, an extra intercalary month, called adhika masa, is added roughly every 32 to 33 months, about once in three years. This is an early example of algorithmic error correction in timekeeping.",
+   "keywords": [
+    "lunisolar",
+    "panchang",
+    "lunar month",
+    "tithi",
+    "solar year",
+    "11 days",
+    "adhika masa"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Panini's grammar as a precursor to formal languages",
+   "text": "Why is Panini's Ashtadhyayi considered a precursor to formal languages and grammars used in computer science?",
+   "ideal_answer": "Panini's Ashtadhyayi, around the 4th century BCE, describes Sanskrit grammar in about 4,000 concise rules called sutras that generate correct words and sentences from roots and affixes. It uses a formal metalanguage with abbreviations, markers, rule ordering and recursion, similar to production rules in a generative grammar. This is comparable to how formal grammars, like those in the Chomsky hierarchy and the Backus-Naur Form used to define programming languages, specify which strings are valid. Because of this resemblance, BNF is sometimes called Panini-Backus form.",
+   "keywords": [
+    "ashtadhyayi",
+    "sutras",
+    "rules",
+    "metalanguage",
+    "recursion",
+    "formal grammar",
+    "backus-naur form"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Indian ethical concepts (Lokasangraha, Ahimsa) applied to IT ethics",
+   "text": "How can the concepts of Ahimsa and Lokasangraha be applied to the ethics of building AI systems?",
+   "ideal_answer": "Ahimsa means non-harm, so in AI it means designing systems that avoid causing physical, financial, psychological or social harm, for example by testing for bias, protecting privacy and preventing misuse. Lokasangraha means working for the welfare of society as a whole, so AI should be built for the common good and not just for profit or a narrow group, ensuring fairness, accessibility and transparency. Together they encourage developers to consider the impact on all stakeholders, which matches modern principles of responsible AI.",
+   "keywords": [
+    "ahimsa",
+    "non-harm",
+    "bias",
+    "privacy",
+    "lokasangraha",
+    "welfare of society",
+    "responsible ai"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Sanskrit and structured programming logic",
+   "text": "Some people claim that Sanskrit is the best language for computers. How would you critically evaluate this claim?",
+   "ideal_answer": "Sanskrit, through Panini's grammar, has a highly systematic, rule-based structure with rich inflection, which reduces some ambiguity and makes it interesting for computational linguistics and knowledge representation, as noted in Rick Briggs's 1985 article. However, computers do not run on natural languages; they use formal programming languages and machine code, and Sanskrit still has ambiguities such as sandhi and multiple meanings. So the accurate claim is that Sanskrit's grammatical tradition offers useful ideas for formal language design and natural language processing, not that it is a ready-made programming language. Claims should be evaluated with evidence rather than accepted uncritically.",
+   "keywords": [
+    "panini",
+    "rule-based",
+    "computational linguistics",
+    "rick briggs",
+    "formal programming languages",
+    "ambiguity",
+    "evidence"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Traditional engineering: metallurgy and water management systems",
+   "text": "What makes the Iron Pillar of Delhi and stepwells notable examples of traditional engineering, and what lessons do they offer for modern sustainable design?",
+   "ideal_answer": "The Iron Pillar of Delhi, around 1,600 years old, has resisted rusting and corrosion because of its high phosphorus content and a thin protective layer of misawite that formed on its surface, showing advanced forge-welding and metallurgy. Stepwells such as Rani ki Vav in Gujarat stored rainwater and groundwater for dry seasons, with steps reaching the changing water level and a cool microclimate. The lessons are to design using local materials and conditions, to manage scarce resources like water sustainably, and to build for durability, ideas that align with green and resilient engineering today.",
+   "keywords": [
+    "iron pillar",
+    "corrosion",
+    "phosphorus",
+    "protective layer",
+    "stepwells",
+    "rainwater",
+    "sustainably"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Foundations of IKS: Dharma and Karma",
+   "text": "As a software engineer, you are asked to ship a feature quickly although it collects more user data than needed. How could the ideas of Dharma and Karma guide your decision?",
+   "ideal_answer": "Dharma refers to one's duty and right conduct, so a professional's dharma includes protecting users and following laws such as the Digital Personal Data Protection Act, not only meeting deadlines. Karma emphasises that actions have consequences, so collecting unnecessary data creates risks of breaches, misuse and loss of trust that affect both users and the company. Applying these ideas, I would raise the concern, propose data minimisation by collecting only what the feature needs, and suggest safeguards like consent and encryption. This balances business goals with ethical responsibility.",
+   "keywords": [
+    "dharma",
+    "duty",
+    "karma",
+    "consequences",
+    "data minimisation",
+    "consent",
+    "data protection"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Indian logic: Nyaya and Vaisheshika schools",
+   "text": "How could the Nyaya method of inference be used to structure explanations in an AI decision system, such as a loan approval model?",
+   "ideal_answer": "The Nyaya five-membered inference has pratijna, the claim; hetu, the reason; udaharana, a general rule with an example; upanaya, application to the present case; and nigamana, the conclusion. An AI explanation could follow this pattern: the loan is rejected, because the debt-to-income ratio is high, since in general applicants with high ratios often default, as seen in past data, this applicant's ratio is 70 percent, therefore the loan is rejected. This makes the reasoning transparent and auditable, supports explainable AI, and helps detect faulty or biased reasons. Nyaya's analysis of fallacious reasons, hetvabhasa, also reminds us to check for invalid evidence.",
+   "keywords": [
+    "pratijna",
+    "hetu",
+    "udaharana",
+    "upanaya",
+    "nigamana",
+    "explainable ai",
+    "hetvabhasa"
+   ]
+  }
+ ]
 }

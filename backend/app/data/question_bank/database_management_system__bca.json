@@ -1,14 +1,185 @@
-{"subject": "Database Management System", "applies_to": [{"course": "BCA", "year": 2, "semester": 3}], "questions": [
-{"level": 1, "topic": "Keys: primary, candidate, super, foreign, composite", "text": "What is a primary key?", "ideal_answer": "A primary key is a column or set of columns that uniquely identifies each row in a table. Its values must be unique and cannot be NULL. A table can have only one primary key, chosen from the candidate keys. For example, roll number can be the primary key of a Student table.", "keywords": ["uniquely identifies", "row", "unique", "not null", "one primary key", "candidate keys"]},
-{"level": 1, "topic": "Transactions, ACID properties and serializability", "text": "What are the ACID properties of a transaction?", "ideal_answer": "ACID stands for Atomicity, Consistency, Isolation and Durability. Atomicity means a transaction executes completely or not at all. Consistency means a transaction takes the database from one valid state to another, preserving integrity constraints. Isolation means concurrent transactions do not interfere with each other, and Durability means once a transaction is committed its changes survive system failures.", "keywords": ["atomicity", "consistency", "isolation", "durability", "committed", "all or nothing"]},
-{"level": 2, "topic": "Database vs traditional file system, data abstraction", "text": "What are the advantages of a DBMS over a traditional file system?", "ideal_answer": "A file system stores data in separate files, which leads to data redundancy, inconsistency and difficulty in accessing data. A DBMS reduces redundancy and keeps data consistent through centralised control and integrity constraints. It provides a query language like SQL for easy data access, concurrent access by multiple users, security through access control, and backup and recovery. It also provides data independence through levels of abstraction, so applications are not affected by changes in storage.", "keywords": ["redundancy", "inconsistency", "integrity constraints", "concurrent access", "security", "backup and recovery", "data independence"]},
-{"level": 2, "topic": "SQL DDL, DML, aggregate functions, GROUP BY, HAVING", "text": "What is the difference between DDL and DML commands in SQL? Give examples.", "ideal_answer": "DDL, or Data Definition Language, defines and changes the structure of database objects such as tables. Examples are CREATE, ALTER, DROP and TRUNCATE. DML, or Data Manipulation Language, works with the data stored inside tables. Examples are INSERT, UPDATE, DELETE and SELECT, and DML changes can usually be rolled back, while DDL commands are generally auto-committed.", "keywords": ["data definition language", "structure", "create", "alter", "data manipulation language", "insert", "update"]},
-{"level": 3, "topic": "SQL joins: inner, natural, outer and equi joins", "text": "Explain how an inner join and a left outer join behave, using Student and Course tables as an example.", "ideal_answer": "An inner join returns only the rows that have matching values in both tables, so it shows only students who are enrolled in a course that exists in the Course table. A left outer join returns all rows from the left table and the matching rows from the right table. If a student has no matching course, the student still appears and the course columns are filled with NULL. So the left join keeps unmatched students, while the inner join drops them.", "keywords": ["inner join", "matching values", "both tables", "left outer join", "all rows from the left", "null"]},
-{"level": 3, "topic": "ER model, weak entity sets and extended ER features", "text": "What is a weak entity set? Explain with an example.", "ideal_answer": "A weak entity set is an entity set that does not have enough attributes to form a primary key on its own and depends on a strong, or owner, entity. It is identified by combining the owner's primary key with its own partial key, also called the discriminator. For example, Dependent is a weak entity of Employee, identified by employee ID plus dependent name. In an ER diagram it is drawn with a double rectangle and its identifying relationship with a double diamond.", "keywords": ["no primary key", "owner entity", "partial key", "discriminator", "identifying relationship", "double rectangle"]},
-{"level": 4, "topic": "SQL DDL, DML, aggregate functions, GROUP BY, HAVING", "text": "What is the difference between WHERE and HAVING? What happens in the query: SELECT dept, COUNT(*) FROM emp GROUP BY dept HAVING COUNT(*) > 5?", "ideal_answer": "WHERE filters individual rows before grouping and cannot use aggregate functions, while HAVING filters groups after GROUP BY and can use aggregate functions. In the given query, the rows of emp are grouped by department and the number of employees in each department is counted. The HAVING clause then keeps only departments that have more than 5 employees. The result shows each such department name with its employee count.", "keywords": ["where", "before grouping", "having", "after group by", "aggregate functions", "more than 5"]},
-{"level": 4, "topic": "Functional dependencies and normalization 1NF to 5NF, BCNF", "text": "What is the difference between 3NF and BCNF? Why is BCNF stricter?", "ideal_answer": "A relation is in 3NF if it is in 2NF and, for every non-trivial functional dependency X determines A, either X is a super key or A is a prime attribute, that is, part of some candidate key. BCNF removes that exception and requires that for every non-trivial functional dependency, X must be a super key. So a relation can be in 3NF but not BCNF when a non-key attribute determines part of a candidate key. BCNF removes more redundancy, but decomposing to BCNF may not preserve all functional dependencies, whereas 3NF decomposition always can.", "keywords": ["functional dependency", "super key", "prime attribute", "candidate key", "bcnf", "dependency preservation"]},
-{"level": 5, "topic": "Concurrency control: 2PL, timestamp ordering, optimistic", "text": "How does two-phase locking ensure serializability, and what problems can it still cause?", "ideal_answer": "In two-phase locking, each transaction has a growing phase in which it only acquires locks and a shrinking phase in which it only releases locks; once it releases a lock it cannot acquire a new one. This guarantees conflict-serializable schedules. However, basic 2PL can cause deadlocks, where transactions wait for each other's locks, and cascading rollbacks if a transaction reads uncommitted data. Strict 2PL, which holds exclusive locks until commit, avoids cascading rollbacks, and deadlocks are handled by detection with wait-for graphs, timeouts, or prevention schemes like wait-die.", "keywords": ["growing phase", "shrinking phase", "conflict serializable", "deadlock", "cascading rollback", "strict 2pl"]},
-{"level": 5, "topic": "Database recovery: checkpoints and transaction rollback", "text": "After a system crash, how does a DBMS use the log and checkpoints to recover?", "ideal_answer": "The DBMS keeps a log recording each transaction's start, updates with old and new values, and commit or abort, and uses write-ahead logging so log records reach disk before data. A checkpoint periodically flushes modified data to disk and records the active transactions, so recovery only needs to scan the log from the last checkpoint. During recovery, transactions that committed after the checkpoint are redone using new values. Transactions that had not committed are undone using old values, restoring a consistent state.", "keywords": ["log", "write-ahead logging", "checkpoint", "redo", "undo", "committed", "consistent state"]},
-{"level": 6, "topic": "RDBMS, distributed databases and NoSQL", "text": "You are designing the backend for an e-commerce site with orders, payments and a fast-changing product catalogue. Would you use an RDBMS, NoSQL, or both? Justify.", "ideal_answer": "Orders and payments need strong consistency and ACID transactions, so they belong in a relational database like PostgreSQL or MySQL with proper keys and constraints. The product catalogue has varied attributes for different product types and heavy read traffic, so a document NoSQL store like MongoDB, which has a flexible schema and scales horizontally, can suit it. Using both, called polyglot persistence, gives the best fit for each workload. The trade-off is extra operational complexity and keeping data in sync, so a small system might start with only an RDBMS using JSON columns.", "keywords": ["acid", "strong consistency", "relational database", "nosql", "flexible schema", "horizontal scaling", "polyglot persistence"]},
-{"level": 6, "topic": "Functional dependencies and normalization 1NF to 5NF, BCNF", "text": "A reporting dashboard runs slowly because its queries join many normalized tables. Should you denormalize? Discuss the trade-offs.", "ideal_answer": "Normalization removes redundancy and update anomalies, but many joins can slow down read-heavy reporting queries. Before denormalizing, check the query plans, add proper indexes and tune the queries. If it is still slow, controlled denormalization, materialized views or a separate reporting database or data warehouse with a star schema can greatly speed up reads. The trade-off is redundant data, more storage and the risk of inconsistency, so the transactional system should stay normalized and the denormalized copy should be refreshed in a controlled way.", "keywords": ["normalization", "redundancy", "joins", "indexes", "denormalization", "materialized views", "data warehouse"]}
-]}
+{
+ "subject": "Database Management System",
+ "applies_to": [
+  {
+   "course": "BCA",
+   "year": 2,
+   "semester": 3
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Keys: primary, candidate, super, foreign, composite",
+   "text": "What is a primary key?",
+   "ideal_answer": "A primary key is a column or set of columns that uniquely identifies each row in a table. Its values must be unique and cannot be NULL. A table can have only one primary key, chosen from the candidate keys. For example, roll number can be the primary key of a Student table.",
+   "keywords": [
+    "uniquely identifies",
+    "row",
+    "unique",
+    "cannot be null",
+    "one primary key",
+    "candidate keys"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Transactions, ACID properties and serializability",
+   "text": "What are the ACID properties of a transaction?",
+   "ideal_answer": "ACID stands for Atomicity, Consistency, Isolation and Durability. Atomicity means a transaction executes completely or not at all. Consistency means a transaction takes the database from one valid state to another, preserving integrity constraints. Isolation means concurrent transactions do not interfere with each other, and Durability means once a transaction is committed its changes survive system failures.",
+   "keywords": [
+    "atomicity",
+    "consistency",
+    "isolation",
+    "durability",
+    "committed",
+    "completely or not at all"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Database vs traditional file system, data abstraction",
+   "text": "What are the advantages of a DBMS over a traditional file system?",
+   "ideal_answer": "A file system stores data in separate files, which leads to data redundancy, inconsistency and difficulty in accessing data. A DBMS reduces redundancy and keeps data consistent through centralised control and integrity constraints. It provides a query language like SQL for easy data access, concurrent access by multiple users, security through access control, and backup and recovery. It also provides data independence through levels of abstraction, so applications are not affected by changes in storage.",
+   "keywords": [
+    "redundancy",
+    "inconsistency",
+    "integrity constraints",
+    "concurrent access",
+    "security",
+    "backup and recovery",
+    "data independence"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "SQL DDL, DML, aggregate functions, GROUP BY, HAVING",
+   "text": "What is the difference between DDL and DML commands in SQL? Give examples.",
+   "ideal_answer": "DDL, or Data Definition Language, defines and changes the structure of database objects such as tables. Examples are CREATE, ALTER, DROP and TRUNCATE. DML, or Data Manipulation Language, works with the data stored inside tables. Examples are INSERT, UPDATE, DELETE and SELECT, and DML changes can usually be rolled back, while DDL commands are generally auto-committed.",
+   "keywords": [
+    "data definition language",
+    "structure",
+    "create",
+    "alter",
+    "data manipulation language",
+    "insert",
+    "update"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "SQL joins: inner, natural, outer and equi joins",
+   "text": "Explain how an inner join and a left outer join behave, using Student and Course tables as an example.",
+   "ideal_answer": "An inner join returns only the rows that have matching values in both tables, so it shows only students who are enrolled in a course that exists in the Course table. A left outer join returns all rows from the left table and the matching rows from the right table. If a student has no matching course, the student still appears and the course columns are filled with NULL. So the left join keeps unmatched students, while the inner join drops them.",
+   "keywords": [
+    "inner join",
+    "matching values",
+    "both tables",
+    "left outer join",
+    "all rows from the left",
+    "null"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "ER model, weak entity sets and extended ER features",
+   "text": "What is a weak entity set? Explain with an example.",
+   "ideal_answer": "A weak entity set is an entity set that does not have enough attributes to form a primary key on its own and depends on a strong, or owner, entity. It is identified by combining the owner's primary key with its own partial key, also called the discriminator. For example, Dependent is a weak entity of Employee, identified by employee ID plus dependent name. In an ER diagram it is drawn with a double rectangle and its identifying relationship with a double diamond.",
+   "keywords": [
+    "primary key",
+    "owner",
+    "partial key",
+    "discriminator",
+    "identifying relationship",
+    "double rectangle"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "SQL DDL, DML, aggregate functions, GROUP BY, HAVING",
+   "text": "What is the difference between WHERE and HAVING? What happens in the query: SELECT dept, COUNT(*) FROM emp GROUP BY dept HAVING COUNT(*) > 5?",
+   "ideal_answer": "WHERE filters individual rows before grouping and cannot use aggregate functions, while HAVING filters groups after GROUP BY and can use aggregate functions. In the given query, the rows of emp are grouped by department and the number of employees in each department is counted. The HAVING clause then keeps only departments that have more than 5 employees. The result shows each such department name with its employee count.",
+   "keywords": [
+    "where",
+    "before grouping",
+    "having",
+    "after group by",
+    "aggregate functions",
+    "more than 5"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Functional dependencies and normalization 1NF to 5NF, BCNF",
+   "text": "What is the difference between 3NF and BCNF? Why is BCNF stricter?",
+   "ideal_answer": "A relation is in 3NF if it is in 2NF and, for every non-trivial functional dependency X determines A, either X is a super key or A is a prime attribute, that is, part of some candidate key. BCNF removes that exception and requires that for every non-trivial functional dependency, X must be a super key. So a relation can be in 3NF but not BCNF when a non-key attribute determines part of a candidate key. BCNF removes more redundancy, but decomposing to BCNF may not preserve all functional dependencies, whereas 3NF decomposition always can.",
+   "keywords": [
+    "functional dependency",
+    "super key",
+    "prime attribute",
+    "candidate key",
+    "bcnf",
+    "preserve all functional dependencies"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Concurrency control: 2PL, timestamp ordering, optimistic",
+   "text": "How does two-phase locking ensure serializability, and what problems can it still cause?",
+   "ideal_answer": "In two-phase locking, each transaction has a growing phase in which it only acquires locks and a shrinking phase in which it only releases locks; once it releases a lock it cannot acquire a new one. This guarantees conflict-serializable schedules. However, basic 2PL can cause deadlocks, where transactions wait for each other's locks, and cascading rollbacks if a transaction reads uncommitted data. Strict 2PL, which holds exclusive locks until commit, avoids cascading rollbacks, and deadlocks are handled by detection with wait-for graphs, timeouts, or prevention schemes like wait-die.",
+   "keywords": [
+    "growing phase",
+    "shrinking phase",
+    "conflict-serializable",
+    "deadlock",
+    "cascading rollback",
+    "strict 2pl"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Database recovery: checkpoints and transaction rollback",
+   "text": "After a system crash, how does a DBMS use the log and checkpoints to recover?",
+   "ideal_answer": "The DBMS keeps a log recording each transaction's start, updates with old and new values, and commit or abort, and uses write-ahead logging so log records reach disk before data. A checkpoint periodically flushes modified data to disk and records the active transactions, so recovery only needs to scan the log from the last checkpoint. During recovery, transactions that committed after the checkpoint are redone using new values. Transactions that had not committed are undone using old values, restoring a consistent state.",
+   "keywords": [
+    "log",
+    "write-ahead logging",
+    "checkpoint",
+    "redo",
+    "undo",
+    "committed",
+    "consistent state"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "RDBMS, distributed databases and NoSQL",
+   "text": "You are designing the backend for an e-commerce site with orders, payments and a fast-changing product catalogue. Would you use an RDBMS, NoSQL, or both? Justify.",
+   "ideal_answer": "Orders and payments need strong consistency and ACID transactions, so they belong in a relational database like PostgreSQL or MySQL with proper keys and constraints. The product catalogue has varied attributes for different product types and heavy read traffic, so a document NoSQL store like MongoDB, which has a flexible schema and scales horizontally, can suit it. Using both, called polyglot persistence, gives the best fit for each workload. The trade-off is extra operational complexity and keeping data in sync, so a small system might start with only an RDBMS using JSON columns.",
+   "keywords": [
+    "acid",
+    "strong consistency",
+    "relational database",
+    "nosql",
+    "flexible schema",
+    "scales horizontally",
+    "polyglot persistence"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Functional dependencies and normalization 1NF to 5NF, BCNF",
+   "text": "A reporting dashboard runs slowly because its queries join many normalized tables. Should you denormalize? Discuss the trade-offs.",
+   "ideal_answer": "Normalization removes redundancy and update anomalies, but many joins can slow down read-heavy reporting queries. Before denormalizing, check the query plans, add proper indexes and tune the queries. If it is still slow, controlled denormalization, materialized views or a separate reporting database or data warehouse with a star schema can greatly speed up reads. The trade-off is redundant data, more storage and the risk of inconsistency, so the transactional system should stay normalized and the denormalized copy should be refreshed in a controlled way.",
+   "keywords": [
+    "normalization",
+    "redundancy",
+    "joins",
+    "indexes",
+    "denormalization",
+    "materialized views",
+    "data warehouse"
+   ]
+  }
+ ]
+}

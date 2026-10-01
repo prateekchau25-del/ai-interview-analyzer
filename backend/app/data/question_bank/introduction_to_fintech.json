@@ -58,7 +58,7 @@
       "ideal_answer": "An e-wallet, a prepaid payment instrument, stores money loaded in advance inside the wallet, and payments are made from that balance; it is regulated by RBI and has balance limits. UPI, the Unified Payments Interface built by NPCI, transfers money directly between bank accounts in real time using a virtual payment address or UPI ID, so there is no need to preload money. UPI works across apps and banks, while wallet money is usually tied to a particular provider. Apps like Paytm and PhonePe offer both.",
       "keywords": [
         "prepaid",
-        "preloaded balance",
+        "loaded in advance",
         "upi",
         "npci",
         "bank account",
@@ -101,7 +101,7 @@
       "keywords": [
         "insurtech",
         "online",
-        "comparison",
+        "compare",
         "usage-based",
         "telematics",
         "claim settlement"
@@ -117,7 +117,7 @@
         "instant",
         "cost",
         "natural language processing",
-        "complex queries",
+        "complex",
         "human agent"
       ]
     },
@@ -144,7 +144,7 @@
         "multi-factor authentication",
         "device binding",
         "encryption",
-        "tokenisation",
+        "tokenise",
         "fraud detection",
         "phishing"
       ]
@@ -155,10 +155,10 @@
       "text": "A startup claims that putting all bank transactions on a public blockchain will solve every banking problem. What are the strengths and limitations of this idea?",
       "ideal_answer": "Blockchain provides a distributed, tamper-resistant ledger, so records are transparent and hard to alter, which helps with audit trails, trade finance and cross-border settlement. However, public blockchains have limited transaction throughput and high latency compared with systems like UPI, and some consume a lot of energy. Putting customer transactions on a public chain also conflicts with privacy and data protection laws, and regulatory compliance like KYC is difficult. Banks therefore prefer permissioned blockchains for specific use cases rather than replacing core banking systems.",
       "keywords": [
-        "distributed ledger",
+        "distributed",
         "tamper-resistant",
-        "transparency",
-        "scalability",
+        "transparent",
+        "throughput",
         "privacy",
         "permissioned blockchain"
       ]
@@ -188,7 +188,7 @@
         "rbi",
         "encrypted",
         "revoke",
-        "data sharing"
+        "share financial data"
       ]
     }
   ]

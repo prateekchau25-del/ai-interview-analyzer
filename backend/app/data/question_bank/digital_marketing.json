@@ -1,94 +1,190 @@
 {
-  "subject": "Digital Marketing",
-  "applies_to": [
-    {"course": "BSC_IT", "year": 1, "semester": 2},
-    {"course": "BSC_DS", "year": 1, "semester": 2},
-    {"course": "BSC_AI", "year": 1, "semester": 2}
-  ],
-  "questions": [
-    {
-      "level": 1,
-      "topic": "Introduction to digital marketing",
-      "text": "What is digital marketing?",
-      "ideal_answer": "Digital marketing is the promotion of products, services or brands using digital channels such as search engines, websites, social media, email and mobile apps. Unlike traditional marketing through print, TV or billboards, it can target specific audiences, interact with them in real time and measure results precisely using analytics. It is usually cheaper, easier to adjust and gives measurable return on investment.",
-      "keywords": ["digital channels", "social media", "search engines", "email", "targeting", "measurable"]
-    },
-    {
-      "level": 1,
-      "topic": "SEO",
-      "text": "What is SEO?",
-      "ideal_answer": "SEO, or search engine optimization, is the process of improving a website so that it ranks higher in the unpaid, organic results of search engines like Google. It involves using relevant keywords, creating quality content, improving page speed and mobile friendliness, and earning backlinks from other sites. Higher rankings bring more free, relevant traffic to the website.",
-      "keywords": ["search engine optimization", "organic", "ranking", "keywords", "backlinks", "traffic"]
-    },
-    {
-      "level": 2,
-      "topic": "Digital channels: owned, earned and paid media",
-      "text": "Explain the difference between owned, earned and paid media with one example each.",
-      "ideal_answer": "Owned media are channels the brand controls itself, such as its website, blog or official social media page. Earned media is publicity the brand gets for free from others, such as customer reviews, shares, mentions or news coverage. Paid media is exposure the brand pays for, such as Google Ads, sponsored social media posts or influencer promotions. A good strategy combines all three, with paid media driving traffic to owned media and generating earned media.",
-      "keywords": ["owned media", "earned media", "paid media", "website", "reviews", "ads"]
-    },
-    {
-      "level": 2,
-      "topic": "SEO: on-page and off-page",
-      "text": "What is the difference between on-page SEO and off-page SEO?",
-      "ideal_answer": "On-page SEO covers optimizations done on the website itself, such as keywords in titles, meta descriptions, headings, good content, image alt text, internal links, URL structure and page speed. Off-page SEO covers activities outside the website that build its authority, mainly earning quality backlinks, plus social sharing, guest posting and brand mentions. On-page SEO helps search engines understand the page, while off-page SEO tells them the page is trusted.",
-      "keywords": ["on-page", "off-page", "meta description", "content", "backlinks", "authority"]
-    },
-    {
-      "level": 3,
-      "topic": "SEM: Google Ads, PPC, bidding",
-      "text": "How does pay-per-click advertising on Google Ads work?",
-      "ideal_answer": "In pay-per-click advertising, the advertiser chooses keywords and creates ads, and pays only when a user clicks the ad. When someone searches, Google runs an auction among advertisers bidding on that keyword. Ad position is decided by ad rank, which depends on the bid amount and the quality score, based on expected click-through rate, ad relevance and landing page experience. So a highly relevant ad can rank higher and pay less per click than a higher bidder with a poor ad.",
-      "keywords": ["pay per click", "keywords", "auction", "bid", "quality score", "ad rank"]
-    },
-    {
-      "level": 3,
-      "topic": "Email marketing: A/B testing",
-      "text": "A company wants to know which email subject line gets more opens. How would they use A/B testing?",
-      "ideal_answer": "In A/B testing, the company creates two versions of the email that differ in only one element, here the subject line. Each version is sent to a random, similar-sized sample of the mailing list at the same time. They then compare the open rate of both versions, and the winning subject line is sent to the rest of the list. Tools like Mailchimp can automate this split and pick the winner.",
-      "keywords": ["two versions", "one variable", "subject line", "random sample", "open rate", "winner"]
-    },
-    {
-      "level": 4,
-      "topic": "Tools: Google Analytics, Google Search Console",
-      "text": "What is the difference between Google Analytics and Google Search Console, and why would a marketer use both?",
-      "ideal_answer": "Google Analytics tracks what users do on the website after they arrive, such as sessions, traffic sources, pages viewed, engagement, bounce and conversions. Google Search Console shows how the website performs in Google Search before the click, such as search queries, impressions, clicks, average position, indexing problems and crawl errors. A marketer uses both because Search Console helps improve visibility and SEO, while Analytics shows whether that traffic actually engages and converts.",
-      "keywords": ["google analytics", "search console", "user behaviour", "conversions", "impressions", "indexing"]
-    },
-    {
-      "level": 4,
-      "topic": "Traditional vs digital marketing",
-      "text": "Why do many small businesses prefer digital marketing over traditional marketing?",
-      "ideal_answer": "Digital marketing has lower entry cost, since a business can start with a small daily budget instead of paying for print or TV ads. It allows precise targeting by location, age, interests and behaviour, so money is not wasted on irrelevant audiences. Results are measurable in real time through clicks, conversions and ROI, and campaigns can be changed quickly. It also enables two-way interaction with customers through social media and email, which traditional one-way media cannot easily do.",
-      "keywords": ["lower cost", "targeting", "measurable", "roi", "real time", "two-way interaction"]
-    },
-    {
-      "level": 5,
-      "topic": "CRM: segmentation and lead scoring",
-      "text": "An e-commerce site sends the same promotional email to all users and gets poor conversion. How would CRM segmentation and lead scoring fix this?",
-      "ideal_answer": "Segmentation divides customers into groups based on demographics, purchase history, browsing behaviour or engagement, so each group gets relevant content, such as offers on products they viewed. Lead scoring assigns points to users based on actions like opening emails, visiting pricing pages or adding to cart, to identify who is most likely to buy. High-score leads can get personalised offers or sales follow-up, while low-score users get nurturing content. Email automation triggers these messages, for example abandoned-cart reminders, which improves relevance and conversion.",
-      "keywords": ["segmentation", "lead scoring", "personalization", "purchase history", "automation", "abandoned cart"]
-    },
-    {
-      "level": 5,
-      "topic": "Content marketing: influencer marketing",
-      "text": "A brand's influencer campaign got many likes but almost no sales. What could have gone wrong, and how would you fix it?",
-      "ideal_answer": "Likes are a vanity metric; the influencer's audience may not match the brand's target customers, or the followers may be fake or low-engagement. The content may also have lacked a clear call to action, product link or discount code to drive purchases. To fix it, choose influencers by audience fit and genuine engagement rate rather than follower count, often using micro-influencers. Track results with UTM links or unique promo codes, and measure conversions and ROI instead of likes.",
-      "keywords": ["vanity metric", "audience fit", "engagement rate", "call to action", "promo code", "conversions"]
-    },
-    {
-      "level": 6,
-      "topic": "Email marketing: GDPR; digital ethics and data privacy",
-      "text": "Your startup plans to buy an email list and send marketing emails to users in India and Europe. What legal and ethical issues would you raise?",
-      "ideal_answer": "Buying email lists is poor practice because the recipients have not given consent, which leads to spam complaints, low deliverability and damage to the brand. For European users, GDPR requires explicit, informed consent, a clear unsubscribe option and the right to access or delete data, with heavy fines for violations. In India, the Digital Personal Data Protection Act 2023 also requires consent and lawful purpose for processing personal data. The better approach is to build an opt-in list through website sign-ups, use double opt-in, and keep a privacy policy and easy unsubscribe.",
-      "keywords": ["consent", "gdpr", "opt-in", "unsubscribe", "data protection act", "spam"]
-    },
-    {
-      "level": 6,
-      "topic": "SEM: keyword planning and bidding strategies",
-      "text": "You have a limited monthly ad budget for a new college coaching app. How would you plan keywords and bidding in Google Ads to get the best return?",
-      "ideal_answer": "Use Keyword Planner to find relevant keywords and focus on specific long-tail, high-intent keywords such as 'BCA entrance coaching app Mumbai', which are cheaper and convert better than broad terms. Add negative keywords to avoid paying for irrelevant clicks, and target by location, device and schedule. Start with manual CPC or maximize clicks to gather data, then move to a conversion-based strategy like target CPA once conversions are being tracked. Continuously monitor quality score, click-through rate and cost per conversion, and shift budget to the best performing ads.",
-      "keywords": ["keyword planner", "long-tail", "negative keywords", "bidding strategy", "target cpa", "quality score"]
-    }
-  ]
+ "subject": "Digital Marketing",
+ "applies_to": [
+  {
+   "course": "BSC_IT",
+   "year": 1,
+   "semester": 2
+  },
+  {
+   "course": "BSC_DS",
+   "year": 1,
+   "semester": 2
+  },
+  {
+   "course": "BSC_AI",
+   "year": 1,
+   "semester": 2
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Introduction to digital marketing",
+   "text": "What is digital marketing?",
+   "ideal_answer": "Digital marketing is the promotion of products, services or brands using digital channels such as search engines, websites, social media, email and mobile apps. Unlike traditional marketing through print, TV or billboards, it can target specific audiences, interact with them in real time and measure results precisely using analytics. It is usually cheaper, easier to adjust and gives measurable return on investment.",
+   "keywords": [
+    "digital channels",
+    "social media",
+    "search engines",
+    "email",
+    "targeting",
+    "measurable"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "SEO",
+   "text": "What is SEO?",
+   "ideal_answer": "SEO, or search engine optimization, is the process of improving a website so that it ranks higher in the unpaid, organic results of search engines like Google. It involves using relevant keywords, creating quality content, improving page speed and mobile friendliness, and earning backlinks from other sites. Higher rankings bring more free, relevant traffic to the website.",
+   "keywords": [
+    "search engine optimization",
+    "organic",
+    "ranking",
+    "keywords",
+    "backlinks",
+    "traffic"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Digital channels: owned, earned and paid media",
+   "text": "Explain the difference between owned, earned and paid media with one example each.",
+   "ideal_answer": "Owned media are channels the brand controls itself, such as its website, blog or official social media page. Earned media is publicity the brand gets for free from others, such as customer reviews, shares, mentions or news coverage. Paid media is exposure the brand pays for, such as Google Ads, sponsored social media posts or influencer promotions. A good strategy combines all three, with paid media driving traffic to owned media and generating earned media.",
+   "keywords": [
+    "owned media",
+    "earned media",
+    "paid media",
+    "website",
+    "reviews",
+    "ads"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "SEO: on-page and off-page",
+   "text": "What is the difference between on-page SEO and off-page SEO?",
+   "ideal_answer": "On-page SEO covers optimizations done on the website itself, such as keywords in titles, meta descriptions, headings, good content, image alt text, internal links, URL structure and page speed. Off-page SEO covers activities outside the website that build its authority, mainly earning quality backlinks, plus social sharing, guest posting and brand mentions. On-page SEO helps search engines understand the page, while off-page SEO tells them the page is trusted.",
+   "keywords": [
+    "on-page",
+    "off-page",
+    "meta description",
+    "content",
+    "backlinks",
+    "authority"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "SEM: Google Ads, PPC, bidding",
+   "text": "How does pay-per-click advertising on Google Ads work?",
+   "ideal_answer": "In pay-per-click advertising, the advertiser chooses keywords and creates ads, and pays only when a user clicks the ad. When someone searches, Google runs an auction among advertisers bidding on that keyword. Ad position is decided by ad rank, which depends on the bid amount and the quality score, based on expected click-through rate, ad relevance and landing page experience. So a highly relevant ad can rank higher and pay less per click than a higher bidder with a poor ad.",
+   "keywords": [
+    "pay per click",
+    "keywords",
+    "auction",
+    "bid",
+    "quality score",
+    "ad rank"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Email marketing: A/B testing",
+   "text": "A company wants to know which email subject line gets more opens. How would they use A/B testing?",
+   "ideal_answer": "In A/B testing, the company creates two versions of the email that differ in only one element, here the subject line. Each version is sent to a random, similar-sized sample of the mailing list at the same time. They then compare the open rate of both versions, and the winning subject line is sent to the rest of the list. Tools like Mailchimp can automate this split and pick the winner.",
+   "keywords": [
+    "two versions",
+    "one variable",
+    "subject line",
+    "random sample",
+    "open rate",
+    "winner"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Tools: Google Analytics, Google Search Console",
+   "text": "What is the difference between Google Analytics and Google Search Console, and why would a marketer use both?",
+   "ideal_answer": "Google Analytics tracks what users do on the website after they arrive, such as sessions, traffic sources, pages viewed, engagement, bounce and conversions. Google Search Console shows how the website performs in Google Search before the click, such as search queries, impressions, clicks, average position, indexing problems and crawl errors. A marketer uses both because Search Console helps improve visibility and SEO, while Analytics shows whether that traffic actually engages and converts.",
+   "keywords": [
+    "google analytics",
+    "search console",
+    "user behaviour",
+    "conversions",
+    "impressions",
+    "indexing"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Traditional vs digital marketing",
+   "text": "Why do many small businesses prefer digital marketing over traditional marketing?",
+   "ideal_answer": "Digital marketing has lower entry cost, since a business can start with a small daily budget instead of paying for print or TV ads. It allows precise targeting by location, age, interests and behaviour, so money is not wasted on irrelevant audiences. Results are measurable in real time through clicks, conversions and ROI, and campaigns can be changed quickly. It also enables two-way interaction with customers through social media and email, which traditional one-way media cannot easily do.",
+   "keywords": [
+    "lower cost",
+    "targeting",
+    "measurable",
+    "roi",
+    "real time",
+    "two-way interaction"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "CRM: segmentation and lead scoring",
+   "text": "An e-commerce site sends the same promotional email to all users and gets poor conversion. How would CRM segmentation and lead scoring fix this?",
+   "ideal_answer": "Segmentation divides customers into groups based on demographics, purchase history, browsing behaviour or engagement, so each group gets relevant content, such as offers on products they viewed. Lead scoring assigns points to users based on actions like opening emails, visiting pricing pages or adding to cart, to identify who is most likely to buy. High-score leads can get personalised offers or sales follow-up, while low-score users get nurturing content. Email automation triggers these messages, for example abandoned-cart reminders, which improves relevance and conversion.",
+   "keywords": [
+    "segmentation",
+    "lead scoring",
+    "personalization",
+    "purchase history",
+    "automation",
+    "abandoned cart"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Content marketing: influencer marketing",
+   "text": "A brand's influencer campaign got many likes but almost no sales. What could have gone wrong, and how would you fix it?",
+   "ideal_answer": "Likes are a vanity metric; the influencer's audience may not match the brand's target customers, or the followers may be fake or low-engagement. The content may also have lacked a clear call to action, product link or discount code to drive purchases. To fix it, choose influencers by audience fit and genuine engagement rate rather than follower count, often using micro-influencers. Track results with UTM links or unique promo codes, and measure conversions and ROI instead of likes.",
+   "keywords": [
+    "vanity metric",
+    "audience fit",
+    "engagement rate",
+    "call to action",
+    "promo code",
+    "conversions"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Email marketing: GDPR; digital ethics and data privacy",
+   "text": "Your startup plans to buy an email list and send marketing emails to users in India and Europe. What legal and ethical issues would you raise?",
+   "ideal_answer": "Buying email lists is poor practice because the recipients have not given consent, which leads to spam complaints, low deliverability and damage to the brand. For European users, GDPR requires explicit, informed consent, a clear unsubscribe option and the right to access or delete data, with heavy fines for violations. In India, the Digital Personal Data Protection Act 2023 also requires consent and lawful purpose for processing personal data. The better approach is to build an opt-in list through website sign-ups, use double opt-in, and keep a privacy policy and easy unsubscribe.",
+   "keywords": [
+    "consent",
+    "gdpr",
+    "opt-in",
+    "unsubscribe",
+    "data protection act",
+    "spam"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "SEM: keyword planning and bidding strategies",
+   "text": "You have a limited monthly ad budget for a new college coaching app. How would you plan keywords and bidding in Google Ads to get the best return?",
+   "ideal_answer": "Use Keyword Planner to find relevant keywords and focus on specific long-tail, high-intent keywords such as 'BCA entrance coaching app Mumbai', which are cheaper and convert better than broad terms. Add negative keywords to avoid paying for irrelevant clicks, and target by location, device and schedule. Start with manual CPC or maximize clicks to gather data, then move to a conversion-based strategy like target CPA once conversions are being tracked. Continuously monitor quality score, click-through rate and cost per conversion, and shift budget to the best performing ads.",
+   "keywords": [
+    "keyword planner",
+    "long-tail",
+    "negative keywords",
+    "bidding strategy",
+    "target cpa",
+    "quality score"
+   ]
+  }
+ ]
 }

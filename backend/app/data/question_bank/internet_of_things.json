@@ -1,14 +1,199 @@
-{"subject": "Internet of Things", "applies_to": [{"course": "BSC_IT", "year": 3, "semester": 6}, {"course": "BCA", "year": 3, "semester": 6}], "questions": [
-{"level": 1, "topic": "IoT overview and design principles for connected devices", "text": "What is the Internet of Things?", "ideal_answer": "The Internet of Things is a network of physical objects, or things, embedded with sensors, actuators, software and connectivity that collect and exchange data over the internet. These devices can be monitored and controlled remotely and can act automatically based on the data. Examples include smart home devices, wearable fitness trackers, smart meters and industrial machines. IoT combines embedded systems, networking, cloud computing and data analytics.", "keywords": ["physical objects", "sensors", "actuators", "connectivity", "exchange data", "internet", "smart home"]},
-{"level": 1, "topic": "Prototyping: open vs closed source; sensors and actuators", "text": "What is the difference between a sensor and an actuator?", "ideal_answer": "A sensor detects a physical quantity or change in the environment, such as temperature, light or motion, and converts it into an electrical signal that a microcontroller can read. An actuator does the opposite: it takes an electrical signal from the controller and produces a physical action, such as moving a motor, switching a relay or turning on an LED. Sensors are the inputs of an IoT system and actuators are the outputs. For example, a temperature sensor can trigger a fan motor actuator.", "keywords": ["sensor", "detects", "physical quantity", "electrical signal", "actuator", "physical action", "motor"]},
-{"level": 2, "topic": "Embedded platforms: Arduino and Raspberry Pi", "text": "What is the difference between Arduino and Raspberry Pi?", "ideal_answer": "Arduino is a microcontroller board that runs a single program directly on the hardware without an operating system, which makes it simple, low-power and good for real-time control of sensors and actuators. Raspberry Pi is a single-board computer with a microprocessor that runs a full operating system like Linux, with more memory, USB, HDMI and built-in networking. Arduino is programmed in C/C++ through the Arduino IDE, while Raspberry Pi supports many languages, especially Python. Arduino suits simple sensing tasks, while Raspberry Pi suits complex tasks like image processing, web servers and multitasking.", "keywords": ["arduino", "microcontroller", "no operating system", "raspberry pi", "single-board computer", "linux", "low power"]},
-{"level": 2, "topic": "Internet principles: TCP/IP, UDP, IP addressing, DNS, IPv6, ports", "text": "What is the difference between TCP and UDP, and which is preferred for IoT devices?", "ideal_answer": "TCP is a connection-oriented protocol that guarantees reliable, ordered delivery using handshakes, acknowledgements and retransmission. UDP is connectionless and sends datagrams without guarantees of delivery or order, so it has much lower overhead and latency. Many constrained IoT devices use UDP-based protocols like CoAP to save power and bandwidth, while MQTT uses TCP when reliable delivery matters. The choice depends on whether reliability or low overhead is more important.", "keywords": ["tcp", "connection-oriented", "reliable", "udp", "connectionless", "low overhead", "coap"]},
-{"level": 3, "topic": "Real-time protocols: MQTT, XMPP, CoAP", "text": "How does the MQTT protocol work?", "ideal_answer": "MQTT is a lightweight publish-subscribe messaging protocol that runs over TCP and is widely used in IoT. Devices called clients connect to a central broker, such as Mosquitto. Publishers send messages to named topics, like home/livingroom/temperature, and the broker forwards each message to all clients subscribed to that topic, so publishers and subscribers do not need to know each other. It offers three Quality of Service levels, 0, 1 and 2, plus features like retained messages and last will.", "keywords": ["publish-subscribe", "lightweight", "broker", "topics", "subscribe", "quality of service", "tcp"]},
-{"level": 3, "topic": "Online components: APIs, mashups, scraping", "text": "How can an IoT device use a web API to send its readings to the cloud? Give an example.", "ideal_answer": "An API is a defined interface that lets programs communicate, and many IoT cloud platforms provide REST APIs over HTTP. The device, such as an ESP8266 with a temperature sensor, formats its reading as JSON and sends an HTTP POST request to the platform's endpoint, including an API key for authentication. For example, it can send data to ThingSpeak, which stores and plots the readings. The device can also send GET requests to fetch commands or data, such as a weather forecast.", "keywords": ["api", "rest", "http post", "json", "api key", "endpoint", "thingspeak"]},
-{"level": 4, "topic": "Real-time protocols: MQTT, XMPP, CoAP", "text": "Compare MQTT and CoAP. Why would you choose one over the other?", "ideal_answer": "MQTT uses a publish-subscribe model with a central broker and runs over TCP, giving reliable delivery and making it good for many devices sending telemetry to a cloud. CoAP uses a request-response model similar to HTTP with methods like GET and POST, but runs over UDP with very small headers, which suits very constrained devices and low-power networks. CoAP also supports an observe option for subscriptions and maps easily to REST web services. Choose MQTT when a broker-based, reliable many-to-many messaging is needed, and CoAP when devices are very constrained or need RESTful direct interaction.", "keywords": ["mqtt", "publish-subscribe", "broker", "tcp", "coap", "request-response", "udp", "constrained devices"]},
-{"level": 4, "topic": "Internet principles: TCP/IP, UDP, IP addressing, DNS, IPv6, ports", "text": "Why is IPv6 important for the growth of IoT?", "ideal_answer": "IPv4 uses 32-bit addresses, giving only about 4.3 billion addresses, which are already exhausted given billions of connected devices. IPv6 uses 128-bit addresses, giving an almost unlimited number of addresses, so every IoT device can have its own globally unique address. This reduces the need for NAT, which simplifies direct end-to-end communication between devices. IPv6 also supports stateless address auto-configuration, and 6LoWPAN allows IPv6 to work on low-power wireless networks.", "keywords": ["ipv4", "32-bit", "exhausted", "ipv6", "128-bit", "unique address", "nat", "6lowpan"]},
-{"level": 5, "topic": "Writing embedded code: memory management, performance, battery life", "text": "A battery-powered IoT sensor node drains its battery in a few days instead of months. How would you troubleshoot and improve battery life?", "ideal_answer": "The usual cause is the microcontroller and radio staying awake, so I would measure current consumption in each state to find the main drain. The code should put the microcontroller into deep sleep between readings and wake using a timer or interrupt instead of busy-wait loops. Radio transmission uses the most energy, so the device should send data less often, batch readings and use a low-power protocol such as BLE or LoRa. Unused peripherals, LEDs and sensors should be powered off, and the clock speed can be reduced.", "keywords": ["current consumption", "deep sleep", "interrupt", "radio", "transmission", "batch", "low-power protocol"]},
-{"level": 5, "topic": "Application layer protocols: HTTP, HTTPS", "text": "Your IoT devices send data to a server using plain HTTP. What are the risks and how would you secure the communication?", "ideal_answer": "With plain HTTP, data is sent unencrypted, so attackers can eavesdrop, modify data with man-in-the-middle attacks, or steal credentials and send fake readings. The communication should use HTTPS, which is HTTP over TLS, to provide encryption, integrity and server authentication through certificates. Each device should authenticate itself with unique credentials, tokens or client certificates rather than shared default passwords. Because TLS needs more processing and memory, constrained devices may use lightweight options like DTLS with CoAP or MQTT over TLS, and firmware must be kept updated.", "keywords": ["unencrypted", "eavesdrop", "man-in-the-middle", "https", "tls", "certificates", "device authentication"]},
-{"level": 6, "topic": "Moving to manufacture: PCB design, certification, scaling", "text": "Your IoT prototype built on an Arduino and breadboard works well. What must you consider to move it to mass manufacture?", "ideal_answer": "The breadboard and development board must be replaced by a custom PCB with only the necessary components, designed using tools like KiCad or Eagle and tested through prototype runs. Components should be chosen for cost, availability and long-term supply, with a bill of materials optimised for volume. The product must pass certifications such as CE, FCC or in India BIS and WPC approval for radio devices, plus electrical safety and EMC testing. Other concerns are enclosure design, factory testing, secure firmware updates, supply chain management and scaling costs.", "keywords": ["custom pcb", "bill of materials", "certification", "fcc", "emc", "enclosure", "firmware updates"]},
-{"level": 6, "topic": "Ethics: privacy, control and environment", "text": "Your company is launching smart home cameras. What privacy and ethical issues would you address in the product design?", "ideal_answer": "Cameras collect very sensitive personal data, so privacy by design is essential: collect only necessary data, encrypt video in transit and at rest, and process data locally where possible. Users must give informed consent, have clear control over recording, storage and sharing, and be able to delete their data, in line with laws like India's Digital Personal Data Protection Act. Security measures like no default passwords, two-factor authentication and regular firmware updates prevent hacking. Ethical concerns also include recording neighbours or guests without consent, vendor lock-in, and the environmental impact of e-waste.", "keywords": ["privacy by design", "encryption", "consent", "user control", "data protection", "security updates", "e-waste"]}
-]}
+{
+ "subject": "Internet of Things",
+ "applies_to": [
+  {
+   "course": "BSC_IT",
+   "year": 3,
+   "semester": 6
+  },
+  {
+   "course": "BCA",
+   "year": 3,
+   "semester": 6
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "IoT overview and design principles for connected devices",
+   "text": "What is the Internet of Things?",
+   "ideal_answer": "The Internet of Things is a network of physical objects, or things, embedded with sensors, actuators, software and connectivity that collect and exchange data over the internet. These devices can be monitored and controlled remotely and can act automatically based on the data. Examples include smart home devices, wearable fitness trackers, smart meters and industrial machines. IoT combines embedded systems, networking, cloud computing and data analytics.",
+   "keywords": [
+    "physical objects",
+    "sensors",
+    "actuators",
+    "connectivity",
+    "exchange data",
+    "internet",
+    "smart home"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Prototyping: open vs closed source; sensors and actuators",
+   "text": "What is the difference between a sensor and an actuator?",
+   "ideal_answer": "A sensor detects a physical quantity or change in the environment, such as temperature, light or motion, and converts it into an electrical signal that a microcontroller can read. An actuator does the opposite: it takes an electrical signal from the controller and produces a physical action, such as moving a motor, switching a relay or turning on an LED. Sensors are the inputs of an IoT system and actuators are the outputs. For example, a temperature sensor can trigger a fan motor actuator.",
+   "keywords": [
+    "sensor",
+    "detects",
+    "physical quantity",
+    "electrical signal",
+    "actuator",
+    "physical action",
+    "motor"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Embedded platforms: Arduino and Raspberry Pi",
+   "text": "What is the difference between Arduino and Raspberry Pi?",
+   "ideal_answer": "Arduino is a microcontroller board that runs a single program directly on the hardware without an operating system, which makes it simple, low-power and good for real-time control of sensors and actuators. Raspberry Pi is a single-board computer with a microprocessor that runs a full operating system like Linux, with more memory, USB, HDMI and built-in networking. Arduino is programmed in C/C++ through the Arduino IDE, while Raspberry Pi supports many languages, especially Python. Arduino suits simple sensing tasks, while Raspberry Pi suits complex tasks like image processing, web servers and multitasking.",
+   "keywords": [
+    "arduino",
+    "microcontroller",
+    "without an operating system",
+    "raspberry pi",
+    "single-board computer",
+    "linux",
+    "low-power"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Internet principles: TCP/IP, UDP, IP addressing, DNS, IPv6, ports",
+   "text": "What is the difference between TCP and UDP, and which is preferred for IoT devices?",
+   "ideal_answer": "TCP is a connection-oriented protocol that guarantees reliable, ordered delivery using handshakes, acknowledgements and retransmission. UDP is connectionless and sends datagrams without guarantees of delivery or order, so it has much lower overhead and latency. Many constrained IoT devices use UDP-based protocols like CoAP to save power and bandwidth, while MQTT uses TCP when reliable delivery matters. The choice depends on whether reliability or low overhead is more important.",
+   "keywords": [
+    "tcp",
+    "connection-oriented",
+    "reliable",
+    "udp",
+    "connectionless",
+    "low overhead",
+    "coap"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Real-time protocols: MQTT, XMPP, CoAP",
+   "text": "How does the MQTT protocol work?",
+   "ideal_answer": "MQTT is a lightweight publish-subscribe messaging protocol that runs over TCP and is widely used in IoT. Devices called clients connect to a central broker, such as Mosquitto. Publishers send messages to named topics, like home/livingroom/temperature, and the broker forwards each message to all clients subscribed to that topic, so publishers and subscribers do not need to know each other. It offers three Quality of Service levels, 0, 1 and 2, plus features like retained messages and last will.",
+   "keywords": [
+    "publish-subscribe",
+    "lightweight",
+    "broker",
+    "topics",
+    "subscribe",
+    "quality of service",
+    "tcp"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Online components: APIs, mashups, scraping",
+   "text": "How can an IoT device use a web API to send its readings to the cloud? Give an example.",
+   "ideal_answer": "An API is a defined interface that lets programs communicate, and many IoT cloud platforms provide REST APIs over HTTP. The device, such as an ESP8266 with a temperature sensor, formats its reading as JSON and sends an HTTP POST request to the platform's endpoint, including an API key for authentication. For example, it can send data to ThingSpeak, which stores and plots the readings. The device can also send GET requests to fetch commands or data, such as a weather forecast.",
+   "keywords": [
+    "api",
+    "rest",
+    "http post",
+    "json",
+    "api key",
+    "endpoint",
+    "thingspeak"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Real-time protocols: MQTT, XMPP, CoAP",
+   "text": "Compare MQTT and CoAP. Why would you choose one over the other?",
+   "ideal_answer": "MQTT uses a publish-subscribe model with a central broker and runs over TCP, giving reliable delivery and making it good for many devices sending telemetry to a cloud. CoAP uses a request-response model similar to HTTP with methods like GET and POST, but runs over UDP with very small headers, which suits very constrained devices and low-power networks. CoAP also supports an observe option for subscriptions and maps easily to REST web services. Choose MQTT when a broker-based, reliable many-to-many messaging is needed, and CoAP when devices are very constrained or need RESTful direct interaction.",
+   "keywords": [
+    "mqtt",
+    "publish-subscribe",
+    "broker",
+    "tcp",
+    "coap",
+    "request-response",
+    "udp",
+    "constrained devices"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Internet principles: TCP/IP, UDP, IP addressing, DNS, IPv6, ports",
+   "text": "Why is IPv6 important for the growth of IoT?",
+   "ideal_answer": "IPv4 uses 32-bit addresses, giving only about 4.3 billion addresses, which are already exhausted given billions of connected devices. IPv6 uses 128-bit addresses, giving an almost unlimited number of addresses, so every IoT device can have its own globally unique address. This reduces the need for NAT, which simplifies direct end-to-end communication between devices. IPv6 also supports stateless address auto-configuration, and 6LoWPAN allows IPv6 to work on low-power wireless networks.",
+   "keywords": [
+    "ipv4",
+    "32-bit",
+    "exhausted",
+    "ipv6",
+    "128-bit",
+    "unique address",
+    "nat",
+    "6lowpan"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Writing embedded code: memory management, performance, battery life",
+   "text": "A battery-powered IoT sensor node drains its battery in a few days instead of months. How would you troubleshoot and improve battery life?",
+   "ideal_answer": "The usual cause is the microcontroller and radio staying awake, so I would measure current consumption in each state to find the main drain. The code should put the microcontroller into deep sleep between readings and wake using a timer or interrupt instead of busy-wait loops. Radio transmission uses the most energy, so the device should send data less often, batch readings and use a low-power protocol such as BLE or LoRa. Unused peripherals, LEDs and sensors should be powered off, and the clock speed can be reduced.",
+   "keywords": [
+    "current consumption",
+    "deep sleep",
+    "interrupt",
+    "radio",
+    "transmission",
+    "batch",
+    "low-power protocol"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Application layer protocols: HTTP, HTTPS",
+   "text": "Your IoT devices send data to a server using plain HTTP. What are the risks and how would you secure the communication?",
+   "ideal_answer": "With plain HTTP, data is sent unencrypted, so attackers can eavesdrop, modify data with man-in-the-middle attacks, or steal credentials and send fake readings. The communication should use HTTPS, which is HTTP over TLS, to provide encryption, integrity and server authentication through certificates. Each device should authenticate itself with unique credentials, tokens or client certificates rather than shared default passwords. Because TLS needs more processing and memory, constrained devices may use lightweight options like DTLS with CoAP or MQTT over TLS, and firmware must be kept updated.",
+   "keywords": [
+    "unencrypted",
+    "eavesdrop",
+    "man-in-the-middle",
+    "https",
+    "tls",
+    "certificates",
+    "authenticate itself"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Moving to manufacture: PCB design, certification, scaling",
+   "text": "Your IoT prototype built on an Arduino and breadboard works well. What must you consider to move it to mass manufacture?",
+   "ideal_answer": "The breadboard and development board must be replaced by a custom PCB with only the necessary components, designed using tools like KiCad or Eagle and tested through prototype runs. Components should be chosen for cost, availability and long-term supply, with a bill of materials optimised for volume. The product must pass certifications such as CE, FCC or in India BIS and WPC approval for radio devices, plus electrical safety and EMC testing. Other concerns are enclosure design, factory testing, secure firmware updates, supply chain management and scaling costs.",
+   "keywords": [
+    "custom pcb",
+    "bill of materials",
+    "certification",
+    "fcc",
+    "emc",
+    "enclosure",
+    "firmware updates"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Ethics: privacy, control and environment",
+   "text": "Your company is launching smart home cameras. What privacy and ethical issues would you address in the product design?",
+   "ideal_answer": "Cameras collect very sensitive personal data, so privacy by design is essential: collect only necessary data, encrypt video in transit and at rest, and process data locally where possible. Users must give informed consent, have clear control over recording, storage and sharing, and be able to delete their data, in line with laws like India's Digital Personal Data Protection Act. Security measures like no default passwords, two-factor authentication and regular firmware updates prevent hacking. Ethical concerns also include recording neighbours or guests without consent, vendor lock-in, and the environmental impact of e-waste.",
+   "keywords": [
+    "privacy by design",
+    "encrypt",
+    "consent",
+    "clear control",
+    "data protection",
+    "firmware updates",
+    "e-waste"
+   ]
+  }
+ ]
+}

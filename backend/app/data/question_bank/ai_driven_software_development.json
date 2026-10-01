@@ -1,90 +1,200 @@
 {
-  "subject": "AI-Driven Software Development",
-  "applies_to": [{"course": "BSC_IT", "year": 3, "semester": 6}, {"course": "BCA", "year": 3, "semester": 6}],
-  "questions": [
-    {
-      "level": 1,
-      "topic": "SDLC models (Waterfall, Agile, DevOps, V-model)",
-      "text": "What is the Software Development Life Cycle? Name its main phases.",
-      "ideal_answer": "The Software Development Life Cycle, or SDLC, is a structured process for planning, building, testing and maintaining software so that it meets requirements with good quality, on time and within budget. Its main phases are requirement gathering and analysis, design, implementation or coding, testing, deployment and maintenance. Different SDLC models such as Waterfall, V-model, Agile and DevOps organize these phases differently, for example sequentially in Waterfall and in short iterations in Agile.",
-      "keywords": ["structured process", "requirements", "design", "coding", "testing", "deployment", "maintenance"]
-    },
-    {
-      "level": 1,
-      "topic": "AI pair programming tools: GitHub Copilot, Amazon CodeWhisperer",
-      "text": "What is an AI pair programming tool? Give examples.",
-      "ideal_answer": "An AI pair programming tool is an assistant integrated into the code editor or IDE that uses large language models trained on code to suggest code completions, whole functions, tests and explanations as the developer types or describes intent in natural language. It acts like a partner programmer that speeds up routine coding. Examples are GitHub Copilot, Amazon CodeWhisperer, now part of Amazon Q Developer, and similar assistants. The developer remains responsible for reviewing and accepting the suggestions.",
-      "keywords": ["ide", "large language models", "suggest", "code completion", "github copilot", "codewhisperer", "review"]
-    },
-    {
-      "level": 2,
-      "topic": "Benefits and limitations of AI in the SDLC",
-      "text": "What are the main benefits and limitations of using AI in software development?",
-      "ideal_answer": "AI can automate repetitive tasks like boilerplate code, test generation and documentation, speed up development, help find bugs early and analyze logs and requirements at scale. It also helps beginners learn and improves productivity. Its limitations are that AI can produce incorrect or insecure code, called hallucinations, lacks full understanding of business context, may reproduce licensed or biased content, and depends on the quality of its training data. Over-reliance can reduce developer skills, so human review remains essential.",
-      "keywords": ["automate", "productivity", "bugs", "incorrect", "hallucinations", "insecure", "human review"]
-    },
-    {
-      "level": 2,
-      "topic": "NLP for requirements gathering, classification and prioritization",
-      "text": "How can natural language processing help in requirements engineering?",
-      "ideal_answer": "Requirements are mostly written in natural language in documents, emails and user feedback. NLP can extract requirements from these texts, classify them into functional and non-functional requirements, and detect ambiguous words such as fast or user-friendly. It can find duplicate or conflicting requirements using text similarity and help prioritize them, for example using sentiment or frequency in user reviews. This saves analyst time and improves the clarity and completeness of the requirements specification.",
-      "keywords": ["natural language", "extract", "classify", "functional", "non-functional", "ambiguous", "duplicate", "prioritize"]
-    },
-    {
-      "level": 3,
-      "topic": "Automated test case generation and predictive test selection",
-      "text": "How does predictive test selection work, and why is it useful in a large project?",
-      "ideal_answer": "In large projects, running the full test suite on every code change takes too long. Predictive test selection uses a machine learning model trained on historical data such as which files changed, past test results and test-to-code dependencies to predict which tests are most likely to fail for a new change. Only those high-risk tests are run first or run on each commit, while the full suite runs less often, such as nightly. This reduces CI time and cost and gives faster feedback, while still catching most failures.",
-      "keywords": ["full test suite", "machine learning", "historical", "changed files", "likely to fail", "faster feedback", "ci"]
-    },
-    {
-      "level": 3,
-      "topic": "LLM-based code synthesis and intelligent code completion",
-      "text": "How do LLM-based code completion tools generate code from a developer's prompt or comment?",
-      "ideal_answer": "A large language model is trained on huge amounts of source code and text to predict the next token given previous tokens. The tool sends context, such as the developer's comment, the current file, nearby code and sometimes related files, as a prompt to the model. The model then generates the most probable continuation token by token, producing code that matches the described intent. Good prompts with clear comments, function names and examples improve results. The generated code is probabilistic, so it must be reviewed and tested.",
-      "keywords": ["large language model", "trained", "next token", "context", "prompt", "probabilistic", "reviewed"]
-    },
-    {
-      "level": 4,
-      "topic": "ML-based bug detection and code smell prediction",
-      "text": "Compare traditional static analysis tools with machine learning based bug and code smell detection.",
-      "ideal_answer": "Traditional static analysis tools, like linters, use hand-written rules and patterns to detect issues, so they are precise and explainable for known problems but miss issues not covered by rules. ML-based detection learns from historical code, past bugs and fixes and code metrics such as complexity and churn, so it can find subtle patterns and predict bug-prone files or code smells like god classes or long methods. However, ML models can give false positives, need good labelled data and are harder to explain. In practice both are combined.",
-      "keywords": ["static analysis", "rules", "explainable", "historical", "code metrics", "code smells", "false positives"]
-    },
-    {
-      "level": 4,
-      "topic": "AI in CI/CD, log anomaly detection and AIOps",
-      "text": "What is AIOps, and why is ML-based log anomaly detection better than fixed threshold alerts?",
-      "ideal_answer": "AIOps means using artificial intelligence and machine learning for IT operations, such as monitoring, event correlation, anomaly detection and root cause analysis. Fixed threshold alerts, like CPU above 90 percent, cannot adapt to normal patterns such as daily traffic peaks, so they generate false alarms or miss unusual behaviour below the threshold. ML models learn the normal baseline of logs and metrics, including seasonality, and flag deviations or unusual log patterns. They can also correlate related alerts to reduce alert fatigue and speed up incident resolution.",
-      "keywords": ["artificial intelligence", "it operations", "threshold", "false alarms", "baseline", "anomaly", "alert fatigue", "root cause"]
-    },
-    {
-      "level": 5,
-      "topic": "AI for refactoring, bug prediction and documentation",
-      "text": "An AI tool suggests a large refactoring of a legacy module. How would you safely apply it?",
-      "ideal_answer": "I would first make sure the module has good automated tests, adding characterization tests if needed, so behaviour can be verified before and after the change. I would review the AI's suggestion carefully, understand each change, and apply it in small incremental steps rather than one big change. After each step I would run the tests, static analysis and security scans, and compare performance. The changes would go through normal code review and version control, so they can be rolled back if problems appear in staging or production.",
-      "keywords": ["automated tests", "review", "small incremental steps", "run the tests", "static analysis", "code review", "rollback"]
-    },
-    {
-      "level": 5,
-      "topic": "AI-assisted architecture decisions and design recommendation",
-      "text": "An AI assistant recommends moving your small team's monolithic application to microservices. How would you evaluate this recommendation?",
-      "ideal_answer": "I would treat the recommendation as an input, not a decision, and check it against our actual requirements, such as scalability needs, team size, deployment frequency and domain complexity. Microservices give independent scaling and deployment, but add complexity in networking, monitoring, data consistency and DevOps, which may not suit a small team. I would ask the AI to explain its reasoning and trade-offs, verify claims with documentation and benchmarks, and possibly start with a modular monolith or extract one service as a pilot. The final decision should be documented in an architecture decision record.",
-      "keywords": ["requirements", "team size", "trade-offs", "complexity", "independent scaling", "modular monolith", "pilot"]
-    },
-    {
-      "level": 6,
-      "topic": "Explainable AI, fairness, security and legal issues",
-      "text": "Your company wants developers to use AI coding assistants on a proprietary codebase. What security, legal and ethical policies would you recommend?",
-      "ideal_answer": "For security, use enterprise versions that do not retain or train on company code, and never paste secrets, passwords or customer data into prompts. AI-generated code should pass the same code review, testing and security scanning, such as SAST and dependency checks, since it may contain vulnerabilities. Legally, enable filters that block suggestions matching public code and check licence compliance to avoid copyright issues. Ethically, developers remain accountable for the code, AI use should be transparent, and any AI-driven decisions affecting users should be explainable and tested for bias.",
-      "keywords": ["data retention", "secrets", "code review", "security scanning", "licence", "copyright", "accountable", "bias"]
-    },
-    {
-      "level": 6,
-      "topic": "Automated test case generation",
-      "text": "Your team plans to rely on AI-generated unit tests to increase test coverage from 40% to 80% quickly. What risks do you see and how would you ensure the tests are valuable?",
-      "ideal_answer": "The main risk is that AI-generated tests may only check what the current code does, including its bugs, or have weak assertions, so coverage increases without really catching defects. They may also be flaky, duplicate each other or be hard to maintain. To ensure value, developers should review tests against the requirements, focus on important logic and edge cases, and use mutation testing to check that tests fail when the code is deliberately changed. Coverage should be treated as a guide, not the goal, and tests must run reliably in the CI pipeline.",
-      "keywords": ["weak assertions", "existing bugs", "flaky", "review", "edge cases", "mutation testing", "coverage"]
-    }
-  ]
+ "subject": "AI-Driven Software Development",
+ "applies_to": [
+  {
+   "course": "BSC_IT",
+   "year": 3,
+   "semester": 6
+  },
+  {
+   "course": "BCA",
+   "year": 3,
+   "semester": 6
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "SDLC models (Waterfall, Agile, DevOps, V-model)",
+   "text": "What is the Software Development Life Cycle? Name its main phases.",
+   "ideal_answer": "The Software Development Life Cycle, or SDLC, is a structured process for planning, building, testing and maintaining software so that it meets requirements with good quality, on time and within budget. Its main phases are requirement gathering and analysis, design, implementation or coding, testing, deployment and maintenance. Different SDLC models such as Waterfall, V-model, Agile and DevOps organize these phases differently, for example sequentially in Waterfall and in short iterations in Agile.",
+   "keywords": [
+    "structured process",
+    "requirements",
+    "design",
+    "coding",
+    "testing",
+    "deployment",
+    "maintenance"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "AI pair programming tools: GitHub Copilot, Amazon CodeWhisperer",
+   "text": "What is an AI pair programming tool? Give examples.",
+   "ideal_answer": "An AI pair programming tool is an assistant integrated into the code editor or IDE that uses large language models trained on code to suggest code completions, whole functions, tests and explanations as the developer types or describes intent in natural language. It acts like a partner programmer that speeds up routine coding. Examples are GitHub Copilot, Amazon CodeWhisperer, now part of Amazon Q Developer, and similar assistants. The developer remains responsible for reviewing and accepting the suggestions.",
+   "keywords": [
+    "ide",
+    "large language models",
+    "suggest",
+    "code completion",
+    "github copilot",
+    "codewhisperer",
+    "review"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Benefits and limitations of AI in the SDLC",
+   "text": "What are the main benefits and limitations of using AI in software development?",
+   "ideal_answer": "AI can automate repetitive tasks like boilerplate code, test generation and documentation, speed up development, help find bugs early and analyze logs and requirements at scale. It also helps beginners learn and improves productivity. Its limitations are that AI can produce incorrect or insecure code, called hallucinations, lacks full understanding of business context, may reproduce licensed or biased content, and depends on the quality of its training data. Over-reliance can reduce developer skills, so human review remains essential.",
+   "keywords": [
+    "automate",
+    "productivity",
+    "bugs",
+    "incorrect",
+    "hallucinations",
+    "insecure",
+    "human review"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "NLP for requirements gathering, classification and prioritization",
+   "text": "How can natural language processing help in requirements engineering?",
+   "ideal_answer": "Requirements are mostly written in natural language in documents, emails and user feedback. NLP can extract requirements from these texts, classify them into functional and non-functional requirements, and detect ambiguous words such as fast or user-friendly. It can find duplicate or conflicting requirements using text similarity and help prioritize them, for example using sentiment or frequency in user reviews. This saves analyst time and improves the clarity and completeness of the requirements specification.",
+   "keywords": [
+    "natural language",
+    "extract",
+    "classify",
+    "functional",
+    "non-functional",
+    "ambiguous",
+    "duplicate",
+    "prioritize"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Automated test case generation and predictive test selection",
+   "text": "How does predictive test selection work, and why is it useful in a large project?",
+   "ideal_answer": "In large projects, running the full test suite on every code change takes too long. Predictive test selection uses a machine learning model trained on historical data such as which files changed, past test results and test-to-code dependencies to predict which tests are most likely to fail for a new change. Only those high-risk tests are run first or run on each commit, while the full suite runs less often, such as nightly. This reduces CI time and cost and gives faster feedback, while still catching most failures.",
+   "keywords": [
+    "full test suite",
+    "machine learning",
+    "historical",
+    "changed files",
+    "likely to fail",
+    "faster feedback",
+    "ci"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "LLM-based code synthesis and intelligent code completion",
+   "text": "How do LLM-based code completion tools generate code from a developer's prompt or comment?",
+   "ideal_answer": "A large language model is trained on huge amounts of source code and text to predict the next token given previous tokens. The tool sends context, such as the developer's comment, the current file, nearby code and sometimes related files, as a prompt to the model. The model then generates the most probable continuation token by token, producing code that matches the described intent. Good prompts with clear comments, function names and examples improve results. The generated code is probabilistic, so it must be reviewed and tested.",
+   "keywords": [
+    "large language model",
+    "trained",
+    "next token",
+    "context",
+    "prompt",
+    "probabilistic",
+    "reviewed"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "ML-based bug detection and code smell prediction",
+   "text": "Compare traditional static analysis tools with machine learning based bug and code smell detection.",
+   "ideal_answer": "Traditional static analysis tools, like linters, use hand-written rules and patterns to detect issues, so they are precise and explainable for known problems but miss issues not covered by rules. ML-based detection learns from historical code, past bugs and fixes and code metrics such as complexity and churn, so it can find subtle patterns and predict bug-prone files or code smells like god classes or long methods. However, ML models can give false positives, need good labelled data and are harder to explain. In practice both are combined.",
+   "keywords": [
+    "static analysis",
+    "rules",
+    "explainable",
+    "historical",
+    "code metrics",
+    "code smells",
+    "false positives"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "AI in CI/CD, log anomaly detection and AIOps",
+   "text": "What is AIOps, and why is ML-based log anomaly detection better than fixed threshold alerts?",
+   "ideal_answer": "AIOps means using artificial intelligence and machine learning for IT operations, such as monitoring, event correlation, anomaly detection and root cause analysis. Fixed threshold alerts, like CPU above 90 percent, cannot adapt to normal patterns such as daily traffic peaks, so they generate false alarms or miss unusual behaviour below the threshold. ML models learn the normal baseline of logs and metrics, including seasonality, and flag deviations or unusual log patterns. They can also correlate related alerts to reduce alert fatigue and speed up incident resolution.",
+   "keywords": [
+    "artificial intelligence",
+    "it operations",
+    "threshold",
+    "false alarms",
+    "baseline",
+    "anomaly",
+    "alert fatigue",
+    "root cause"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "AI for refactoring, bug prediction and documentation",
+   "text": "An AI tool suggests a large refactoring of a legacy module. How would you safely apply it?",
+   "ideal_answer": "I would first make sure the module has good automated tests, adding characterization tests if needed, so behaviour can be verified before and after the change. I would review the AI's suggestion carefully, understand each change, and apply it in small incremental steps rather than one big change. After each step I would run the tests, static analysis and security scans, and compare performance. The changes would go through normal code review and version control, so they can be rolled back if problems appear in staging or production.",
+   "keywords": [
+    "automated tests",
+    "review",
+    "small incremental steps",
+    "run the tests",
+    "static analysis",
+    "code review",
+    "rollback"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "AI-assisted architecture decisions and design recommendation",
+   "text": "An AI assistant recommends moving your small team's monolithic application to microservices. How would you evaluate this recommendation?",
+   "ideal_answer": "I would treat the recommendation as an input, not a decision, and check it against our actual requirements, such as scalability needs, team size, deployment frequency and domain complexity. Microservices give independent scaling and deployment, but add complexity in networking, monitoring, data consistency and DevOps, which may not suit a small team. I would ask the AI to explain its reasoning and trade-offs, verify claims with documentation and benchmarks, and possibly start with a modular monolith or extract one service as a pilot. The final decision should be documented in an architecture decision record.",
+   "keywords": [
+    "requirements",
+    "team size",
+    "trade-offs",
+    "complexity",
+    "independent scaling",
+    "modular monolith",
+    "pilot"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Explainable AI, fairness, security and legal issues",
+   "text": "Your company wants developers to use AI coding assistants on a proprietary codebase. What security, legal and ethical policies would you recommend?",
+   "ideal_answer": "For security, use enterprise versions that do not retain or train on company code, and never paste secrets, passwords or customer data into prompts. AI-generated code should pass the same code review, testing and security scanning, such as SAST and dependency checks, since it may contain vulnerabilities. Legally, enable filters that block suggestions matching public code and check licence compliance to avoid copyright issues. Ethically, developers remain accountable for the code, AI use should be transparent, and any AI-driven decisions affecting users should be explainable and tested for bias.",
+   "keywords": [
+    "data retention",
+    "secrets",
+    "code review",
+    "security scanning",
+    "licence",
+    "copyright",
+    "accountable",
+    "bias"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Automated test case generation",
+   "text": "Your team plans to rely on AI-generated unit tests to increase test coverage from 40% to 80% quickly. What risks do you see and how would you ensure the tests are valuable?",
+   "ideal_answer": "The main risk is that AI-generated tests may only check what the current code does, including its bugs, or have weak assertions, so coverage increases without really catching defects. They may also be flaky, duplicate each other or be hard to maintain. To ensure value, developers should review tests against the requirements, focus on important logic and edge cases, and use mutation testing to check that tests fail when the code is deliberately changed. Coverage should be treated as a guide, not the goal, and tests must run reliably in the CI pipeline.",
+   "keywords": [
+    "weak assertions",
+    "existing bugs",
+    "flaky",
+    "review",
+    "edge cases",
+    "mutation testing",
+    "coverage"
+   ]
+  }
+ ]
 }

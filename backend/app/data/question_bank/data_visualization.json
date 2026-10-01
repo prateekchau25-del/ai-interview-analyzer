@@ -1,14 +1,190 @@
-{"subject": "Data Visualization", "applies_to": [{"course": "BSC_DS", "year": 3, "semester": 5}], "questions": [
-{"level": 1, "topic": "Definition and role of data visualization in decision making", "text": "What is data visualization?", "ideal_answer": "Data visualization is the graphical representation of data and information using visual elements such as charts, graphs, maps and dashboards. It makes it easier to see patterns, trends, outliers and relationships that are hard to notice in raw tables. It helps decision makers understand information quickly and make data-driven decisions. Examples include bar charts for comparisons, line charts for trends and maps for geographic data.", "keywords": ["graphical representation", "charts", "patterns", "trends", "outliers", "decision making"]},
-{"level": 1, "topic": "Overview of business intelligence and Power BI components", "text": "What are the main components of Power BI?", "ideal_answer": "Power BI is Microsoft's business intelligence tool for connecting to data, modelling it and creating interactive reports and dashboards. Power BI Desktop is the Windows application used to build reports and data models. Power BI Service is the cloud platform used to publish, share and collaborate on reports and dashboards, and Power BI Mobile lets users view them on phones and tablets. Other components include Power Query for data preparation, DAX for calculations, and the on-premises data gateway for refreshing local data.", "keywords": ["business intelligence", "power bi desktop", "power bi service", "power bi mobile", "power query", "dax", "gateway"]},
-{"level": 2, "topic": "Types of data: numerical, categorical, temporal, geographical", "text": "Which chart types are suitable for categorical, temporal and geographical data?", "ideal_answer": "Categorical data, such as product category, are best shown with bar or column charts, which compare values across groups. Temporal data, such as monthly sales, are best shown with line charts or area charts, which show trends over time. Geographical data, such as sales by state, are shown with maps like filled or choropleth maps or bubble maps. Numerical data distributions are shown with histograms or box plots, and relationships between two numerical variables with scatter plots.", "keywords": ["categorical", "bar chart", "temporal", "line chart", "geographical", "map", "histogram"]},
-{"level": 2, "topic": "Connecting Power BI to databases, Excel and web services", "text": "What is the difference between Import mode and DirectQuery mode in Power BI?", "ideal_answer": "In Import mode, data is copied from the source and stored in Power BI's compressed in-memory engine, so reports are very fast, but the data is only as fresh as the last scheduled refresh. In DirectQuery mode, data stays in the source database and Power BI sends queries to the source each time a visual is used, so data is near real time. DirectQuery is useful for very large or frequently changing data, but it is slower and has some limits on transformations and DAX. Import is usually preferred for smaller data where speed matters.", "keywords": ["import mode", "in-memory", "refresh", "directquery", "source database", "real time", "slower"]},
-{"level": 3, "topic": "Data loading, cleansing and shaping with Power Query Editor", "text": "You load a sales Excel file into Power BI and it has blank rows, wrong data types and a combined 'City-State' column. How would you clean it in Power Query Editor?", "ideal_answer": "In Power Query Editor, I would first use Remove Rows to remove blank rows and Use First Row as Headers if headers are not detected. I would set the correct data type for each column, such as Date for order date and Decimal Number for amount, and fix errors or replace null values. The 'City-State' column can be split using Split Column by Delimiter on the hyphen to create separate City and State columns. Each step is recorded in Applied Steps in M language, so the same cleaning repeats automatically on every refresh.", "keywords": ["power query editor", "remove rows", "data type", "split column", "delimiter", "applied steps", "refresh"]},
-{"level": 3, "topic": "Data visualization process and its challenges and limitations", "text": "What are the main steps of the data visualization process?", "ideal_answer": "The process starts with defining the question or goal and understanding the audience. Next, data is collected and then cleaned and prepared by handling missing values, errors and formats. Then the data is explored and analysed to find key insights, and suitable chart types are chosen based on data type and the message. Finally the visualization is designed, reviewed for accuracy and clarity, shared, and refined based on feedback.", "keywords": ["goal", "audience", "collect", "clean", "explore", "chart type", "feedback"]},
-{"level": 4, "topic": "Visualization design principles, use of colour and data modelling", "text": "Why is a pie chart with ten slices or a 3D chart usually a poor choice? What would you use instead?", "ideal_answer": "Humans compare angles and areas less accurately than lengths or positions along a common scale, so a pie with many slices makes it hard to judge differences. With ten slices the small slices become unreadable and too many colours are needed. 3D effects distort perspective, making nearer slices or bars look bigger than they are, and add clutter without information. A sorted horizontal bar chart is usually better, since lengths are easy to compare and labels are readable.", "keywords": ["angles", "areas", "lengths", "too many slices", "3d distortion", "clutter", "sorted bar chart"]},
-{"level": 4, "topic": "Comparing Excel, Tableau, Power BI and Python visualization tools", "text": "Compare Power BI, Tableau, Excel and Python libraries like Matplotlib for data visualization. When would you choose each?", "ideal_answer": "Excel is easy and widely available, good for quick charts on small datasets but limited in interactivity and data size. Power BI integrates well with the Microsoft ecosystem, is cost-effective and strong for business dashboards with DAX and Power Query. Tableau offers very flexible, high-quality interactive visual exploration and handles large data well but is more expensive. Python libraries such as Matplotlib, Seaborn and Plotly give full programmatic control and reproducibility and integrate with data science workflows, but need coding skills.", "keywords": ["excel", "small datasets", "power bi", "microsoft", "tableau", "interactive", "python", "coding"]},
-{"level": 5, "topic": "Visualization design principles, use of colour and data modelling", "text": "Your Power BI report shows wrong totals when you combine fields from the Sales table and the Product table. What might be wrong in the data model and how would you fix it?", "ideal_answer": "The likely cause is a missing, wrong or inactive relationship between the Sales and Product tables, so filters do not flow correctly and totals repeat or ignore filters. Another cause is a many-to-many relationship or ambiguous paths, or a key column with mismatched data types or duplicates in the dimension table. The fix is to build a star schema with Product as a dimension table having unique keys and Sales as the fact table, with a one-to-many relationship and single filter direction. Measures should also be written with DAX instead of relying on implicit aggregation of wrong columns.", "keywords": ["relationship", "filter direction", "many-to-many", "star schema", "dimension table", "fact table", "one-to-many"]},
-{"level": 5, "topic": "Visualization design principles, use of colour and data modelling", "text": "How would you use colour correctly in a dashboard, including for users with colour blindness?", "ideal_answer": "Colour should be used purposefully, for example to highlight key values or categories, and not just for decoration. Use sequential palettes for ordered numeric data, diverging palettes for data around a midpoint such as profit and loss, and qualitative palettes with a limited number of distinct colours for categories. Use consistent colours for the same category across all charts. For colour-blind users, avoid relying only on red and green, use colour-blind-safe palettes, and add labels, icons or patterns with sufficient contrast.", "keywords": ["highlight", "sequential", "diverging", "categorical", "consistent", "colour blindness", "contrast"]},
-{"level": 6, "topic": "Dashboard layout and interactivity best practices", "text": "A sales manager complains that the dashboard you built is cluttered and slow. How would you redesign it?", "ideal_answer": "I would first talk to the manager to identify the key questions and KPIs they actually need and remove visuals that do not support them. The layout would place the most important KPIs at the top-left, follow a logical flow from summary to detail, use whitespace and consistent formatting, and limit each page to a few visuals. Interactivity like slicers, drill-down, tooltips and drill-through pages can provide detail on demand instead of showing everything at once. For performance, I would reduce the number of visuals, optimise the data model and DAX measures, and use aggregations or Import mode.", "keywords": ["kpis", "remove clutter", "layout", "whitespace", "slicers", "drill-down", "performance"]},
-{"level": 6, "topic": "Principles of data storytelling: narrative and context", "text": "You must present a quarterly analysis showing declining customer retention to senior management. How would you structure it as a data story?", "ideal_answer": "I would start with context, explaining why retention matters and what the target was, then present the key insight clearly, such as retention fell from 80% to 70% this quarter. Next I would show the evidence with a few simple charts, like a line chart of the trend and a breakdown by segment showing where the drop is concentrated. I would explain the likely causes and end with clear, actionable recommendations and their expected impact. Each chart should have a descriptive title stating the takeaway, with highlighting to direct attention and no unnecessary detail.", "keywords": ["context", "key insight", "narrative", "evidence", "causes", "recommendations", "audience"]}
-]}
+{
+ "subject": "Data Visualization",
+ "applies_to": [
+  {
+   "course": "BSC_DS",
+   "year": 3,
+   "semester": 5
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Definition and role of data visualization in decision making",
+   "text": "What is data visualization?",
+   "ideal_answer": "Data visualization is the graphical representation of data and information using visual elements such as charts, graphs, maps and dashboards. It makes it easier to see patterns, trends, outliers and relationships that are hard to notice in raw tables. It helps decision makers understand information quickly and make data-driven decisions. Examples include bar charts for comparisons, line charts for trends and maps for geographic data.",
+   "keywords": [
+    "graphical representation",
+    "charts",
+    "patterns",
+    "trends",
+    "outliers",
+    "decision makers"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Overview of business intelligence and Power BI components",
+   "text": "What are the main components of Power BI?",
+   "ideal_answer": "Power BI is Microsoft's business intelligence tool for connecting to data, modelling it and creating interactive reports and dashboards. Power BI Desktop is the Windows application used to build reports and data models. Power BI Service is the cloud platform used to publish, share and collaborate on reports and dashboards, and Power BI Mobile lets users view them on phones and tablets. Other components include Power Query for data preparation, DAX for calculations, and the on-premises data gateway for refreshing local data.",
+   "keywords": [
+    "business intelligence",
+    "power bi desktop",
+    "power bi service",
+    "power bi mobile",
+    "power query",
+    "dax",
+    "gateway"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Types of data: numerical, categorical, temporal, geographical",
+   "text": "Which chart types are suitable for categorical, temporal and geographical data?",
+   "ideal_answer": "Categorical data, such as product category, are best shown with bar or column charts, which compare values across groups. Temporal data, such as monthly sales, are best shown with line charts or area charts, which show trends over time. Geographical data, such as sales by state, are shown with maps like filled or choropleth maps or bubble maps. Numerical data distributions are shown with histograms or box plots, and relationships between two numerical variables with scatter plots.",
+   "keywords": [
+    "categorical",
+    "bar or column charts",
+    "temporal",
+    "line chart",
+    "geographical",
+    "map",
+    "histogram"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Connecting Power BI to databases, Excel and web services",
+   "text": "What is the difference between Import mode and DirectQuery mode in Power BI?",
+   "ideal_answer": "In Import mode, data is copied from the source and stored in Power BI's compressed in-memory engine, so reports are very fast, but the data is only as fresh as the last scheduled refresh. In DirectQuery mode, data stays in the source database and Power BI sends queries to the source each time a visual is used, so data is near real time. DirectQuery is useful for very large or frequently changing data, but it is slower and has some limits on transformations and DAX. Import is usually preferred for smaller data where speed matters.",
+   "keywords": [
+    "import mode",
+    "in-memory",
+    "refresh",
+    "directquery",
+    "source database",
+    "real time",
+    "slower"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Data loading, cleansing and shaping with Power Query Editor",
+   "text": "You load a sales Excel file into Power BI and it has blank rows, wrong data types and a combined 'City-State' column. How would you clean it in Power Query Editor?",
+   "ideal_answer": "In Power Query Editor, I would first use Remove Rows to remove blank rows and Use First Row as Headers if headers are not detected. I would set the correct data type for each column, such as Date for order date and Decimal Number for amount, and fix errors or replace null values. The 'City-State' column can be split using Split Column by Delimiter on the hyphen to create separate City and State columns. Each step is recorded in Applied Steps in M language, so the same cleaning repeats automatically on every refresh.",
+   "keywords": [
+    "power query editor",
+    "remove rows",
+    "data type",
+    "split column",
+    "delimiter",
+    "applied steps",
+    "refresh"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Data visualization process and its challenges and limitations",
+   "text": "What are the main steps of the data visualization process?",
+   "ideal_answer": "The process starts with defining the question or goal and understanding the audience. Next, data is collected and then cleaned and prepared by handling missing values, errors and formats. Then the data is explored and analysed to find key insights, and suitable chart types are chosen based on data type and the message. Finally the visualization is designed, reviewed for accuracy and clarity, shared, and refined based on feedback.",
+   "keywords": [
+    "goal",
+    "audience",
+    "collect",
+    "clean",
+    "explore",
+    "chart type",
+    "feedback"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Visualization design principles, use of colour and data modelling",
+   "text": "Why is a pie chart with ten slices or a 3D chart usually a poor choice? What would you use instead?",
+   "ideal_answer": "Humans compare angles and areas less accurately than lengths or positions along a common scale, so a pie with many slices makes it hard to judge differences. With ten slices the small slices become unreadable and too many colours are needed. 3D effects distort perspective, making nearer slices or bars look bigger than they are, and add clutter without information. A sorted horizontal bar chart is usually better, since lengths are easy to compare and labels are readable.",
+   "keywords": [
+    "angles",
+    "areas",
+    "lengths",
+    "many slices",
+    "distort perspective",
+    "clutter",
+    "sorted horizontal bar chart"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Comparing Excel, Tableau, Power BI and Python visualization tools",
+   "text": "Compare Power BI, Tableau, Excel and Python libraries like Matplotlib for data visualization. When would you choose each?",
+   "ideal_answer": "Excel is easy and widely available, good for quick charts on small datasets but limited in interactivity and data size. Power BI integrates well with the Microsoft ecosystem, is cost-effective and strong for business dashboards with DAX and Power Query. Tableau offers very flexible, high-quality interactive visual exploration and handles large data well but is more expensive. Python libraries such as Matplotlib, Seaborn and Plotly give full programmatic control and reproducibility and integrate with data science workflows, but need coding skills.",
+   "keywords": [
+    "excel",
+    "small datasets",
+    "power bi",
+    "microsoft",
+    "tableau",
+    "interactive",
+    "python",
+    "coding"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Visualization design principles, use of colour and data modelling",
+   "text": "Your Power BI report shows wrong totals when you combine fields from the Sales table and the Product table. What might be wrong in the data model and how would you fix it?",
+   "ideal_answer": "The likely cause is a missing, wrong or inactive relationship between the Sales and Product tables, so filters do not flow correctly and totals repeat or ignore filters. Another cause is a many-to-many relationship or ambiguous paths, or a key column with mismatched data types or duplicates in the dimension table. The fix is to build a star schema with Product as a dimension table having unique keys and Sales as the fact table, with a one-to-many relationship and single filter direction. Measures should also be written with DAX instead of relying on implicit aggregation of wrong columns.",
+   "keywords": [
+    "relationship",
+    "filter direction",
+    "many-to-many",
+    "star schema",
+    "dimension table",
+    "fact table",
+    "one-to-many"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Visualization design principles, use of colour and data modelling",
+   "text": "How would you use colour correctly in a dashboard, including for users with colour blindness?",
+   "ideal_answer": "Colour should be used purposefully, for example to highlight key values or categories, and not just for decoration. Use sequential palettes for ordered numeric data, diverging palettes for data around a midpoint such as profit and loss, and qualitative palettes with a limited number of distinct colours for categories. Use consistent colours for the same category across all charts. For colour-blind users, avoid relying only on red and green, use colour-blind-safe palettes, and add labels, icons or patterns with sufficient contrast.",
+   "keywords": [
+    "highlight",
+    "sequential",
+    "diverging",
+    "categories",
+    "consistent",
+    "colour-blind",
+    "contrast"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Dashboard layout and interactivity best practices",
+   "text": "A sales manager complains that the dashboard you built is cluttered and slow. How would you redesign it?",
+   "ideal_answer": "I would first talk to the manager to identify the key questions and KPIs they actually need and remove visuals that do not support them. The layout would place the most important KPIs at the top-left, follow a logical flow from summary to detail, use whitespace and consistent formatting, and limit each page to a few visuals. Interactivity like slicers, drill-down, tooltips and drill-through pages can provide detail on demand instead of showing everything at once. For performance, I would reduce the number of visuals, optimise the data model and DAX measures, and use aggregations or Import mode.",
+   "keywords": [
+    "kpis",
+    "remove visuals",
+    "layout",
+    "whitespace",
+    "slicers",
+    "drill-down",
+    "performance"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Principles of data storytelling: narrative and context",
+   "text": "You must present a quarterly analysis showing declining customer retention to senior management. How would you structure it as a data story?",
+   "ideal_answer": "I would start with context, explaining why retention matters and what the target was, then present the key insight clearly, such as retention fell from 80% to 70% this quarter. Next I would show the evidence with a few simple charts, like a line chart of the trend and a breakdown by segment showing where the drop is concentrated. I would explain the likely causes and end with clear, actionable recommendations and their expected impact. Each chart should have a descriptive title stating the takeaway, with highlighting to direct attention and no unnecessary detail.",
+   "keywords": [
+    "context",
+    "key insight",
+    "evidence",
+    "causes",
+    "recommendations"
+   ]
+  }
+ ]
+}

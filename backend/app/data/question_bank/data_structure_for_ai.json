@@ -1,188 +1,188 @@
 {
-  "subject": "Data Structure for AI",
-  "applies_to": [
-    {
-      "course": "BSC_AI",
-      "year": 2,
-      "semester": 3
-    }
-  ],
-  "questions": [
-    {
-      "level": 1,
-      "topic": "Classification of data structures; arrays and array operations",
-      "text": "What is a data structure and how are data structures classified?",
-      "ideal_answer": "A data structure is a way of organising and storing data in memory so that it can be accessed and modified efficiently. Data structures are classified as primitive, such as int, float and char, and non-primitive. Non-primitive structures are further divided into linear structures, where elements are arranged in sequence, such as arrays, linked lists, stacks and queues, and non-linear structures, where elements form a hierarchy or network, such as trees and graphs.",
-      "keywords": [
-        "organising",
-        "efficiently",
-        "primitive",
-        "non-primitive",
-        "linear",
-        "non-linear"
-      ]
-    },
-    {
-      "level": 1,
-      "topic": "Stacks: push/pop, implementation and applications",
-      "text": "What is a stack and what are its basic operations?",
-      "ideal_answer": "A stack is a linear data structure that follows the Last In, First Out principle, so the element inserted last is removed first. Push adds an element to the top of the stack, pop removes the top element, and peek or top returns the top element without removing it. Pushing onto a full stack causes overflow, and popping from an empty stack causes underflow. Stacks are used for function calls, undo operations and expression evaluation.",
-      "keywords": [
-        "last in, first out",
-        "element inserted last",
-        "push",
-        "pop",
-        "peek",
-        "overflow",
-        "underflow"
-      ]
-    },
-    {
-      "level": 2,
-      "topic": "Queues: implementation and operations",
-      "text": "What is the difference between a stack and a queue? Give a real-life example of each.",
-      "ideal_answer": "A stack follows LIFO, Last In First Out, and insertion and deletion both happen at one end called the top, using push and pop. A queue follows FIFO, First In First Out, so elements are inserted at the rear with enqueue and removed from the front with dequeue. A real-life stack is a pile of plates, where you take the top plate; a real-life queue is a line at a ticket counter, where the first person served is the one who came first.",
-      "keywords": [
-        "lifo",
-        "top",
-        "fifo",
-        "rear",
-        "front",
-        "enqueue",
-        "dequeue"
-      ]
-    },
-    {
-      "level": 2,
-      "topic": "Searching: linear and binary search",
-      "text": "What is the difference between linear search and binary search?",
-      "ideal_answer": "Linear search checks each element one by one from the start until the target is found or the list ends, works on unsorted data, and has time complexity O(n). Binary search works only on sorted data: it compares the target with the middle element and discards the half that cannot contain it, repeating on the remaining half. This gives time complexity O(log n), which is much faster for large lists. For example, searching 1,000,000 sorted items needs at most about 20 comparisons with binary search.",
-      "keywords": [
-        "one by one",
-        "unsorted",
-        "o(n)",
-        "sorted",
-        "middle element",
-        "half",
-        "o(log n)"
-      ]
-    },
-    {
-      "level": 3,
-      "topic": "Infix, prefix and postfix notations",
-      "text": "Convert the infix expression A + B * C into postfix and explain how a stack evaluates a postfix expression.",
-      "ideal_answer": "Since multiplication has higher precedence than addition, B * C is done first, so the postfix form is A B C * +. To evaluate a postfix expression, scan it from left to right; when an operand is found, push it onto the stack. When an operator is found, pop the top two operands, apply the operator with the first popped as the right operand, and push the result back. At the end, the single value left on the stack is the answer. Postfix needs no parentheses or precedence rules during evaluation.",
-      "keywords": [
-        "precedence",
-        "postfix",
-        "left to right",
-        "push it",
-        "pop the top two",
-        "result"
-      ]
-    },
-    {
-      "level": 3,
-      "topic": "Linked lists: singly, doubly and circular; insertion and deletion",
-      "text": "How do you delete a node with a given value from a singly linked list?",
-      "ideal_answer": "If the list is empty there is nothing to delete. If the head node holds the value, move head to head.next. Otherwise traverse the list keeping a pointer to the previous node until the current node holds the value; then set previous.next to current.next so the node is bypassed, and free its memory in languages like C. If the end is reached without finding the value, report that it is not present. Deletion takes O(n) time because of the search, though the pointer change itself is O(1).",
-      "keywords": [
-        "head",
-        "traverse",
-        "previous",
-        "next",
-        "bypass",
-        "free",
-        "o(n)"
-      ]
-    },
-    {
-      "level": 4,
-      "topic": "Trees: binary search trees and traversals",
-      "text": "If you insert the keys 50, 30, 70, 20, 40 into an empty binary search tree and do an inorder traversal, what is the output and why?",
-      "ideal_answer": "50 becomes the root; 30 goes to its left and 70 to its right; 20 goes to the left of 30 and 40 to the right of 30. Inorder traversal visits the left subtree, then the node, then the right subtree. So the output is 20, 30, 40, 50, 70. In a binary search tree, smaller keys are always in the left subtree and larger keys in the right, so inorder traversal always gives the keys in sorted ascending order.",
-      "keywords": [
-        "root",
-        "left subtree",
-        "right subtree",
-        "inorder",
-        "20, 30, 40, 50, 70",
-        "sorted"
-      ]
-    },
-    {
-      "level": 4,
-      "topic": "Linked lists vs arrays",
-      "text": "Why would you choose a linked list instead of an array, and when is an array better?",
-      "ideal_answer": "A linked list grows and shrinks dynamically and allows insertion or deletion in O(1) time once you have a pointer to the position, without shifting elements, so it suits data with frequent insertions and deletions and unknown size. An array stores elements contiguously, giving O(1) random access by index and better cache performance, but insertion or deletion in the middle needs shifting elements, which is O(n), and a static array has a fixed size. Linked lists need extra memory for pointers and only allow sequential access, O(n). So arrays are better for frequent access by index, linked lists for frequent insertions and deletions.",
-      "keywords": [
-        "dynamically",
-        "insertion",
-        "deletion",
-        "pointers",
-        "random access",
-        "contiguous",
-        "shifting"
-      ]
-    },
-    {
-      "level": 5,
-      "topic": "Sorting: bubble, selection, insertion, quick and heap sort",
-      "text": "Quick sort is usually fast, but on some inputs it becomes very slow. When does this happen and how can you prevent it?",
-      "ideal_answer": "Quick sort's average time is O(n log n), but its worst case is O(n squared). This happens when the pivot is always the smallest or largest element, for example when the first or last element is chosen as pivot and the array is already sorted or reverse sorted, so each partition removes only one element. It can be prevented by choosing a random pivot or using the median-of-three rule. Other safeguards are switching to insertion sort for small subarrays and using introsort, which switches to heap sort if recursion becomes too deep, guaranteeing O(n log n).",
-      "keywords": [
-        "o(n log n)",
-        "worst case",
-        "n squared",
-        "pivot",
-        "already sorted",
-        "random pivot",
-        "median-of-three"
-      ]
-    },
-    {
-      "level": 5,
-      "topic": "Algorithm analysis: time and space complexity, asymptotic notations",
-      "text": "Explain Big O, Big Omega and Big Theta notations, and state the time complexity of two nested loops each running n times.",
-      "ideal_answer": "Big O gives an asymptotic upper bound on an algorithm's growth rate and is usually used for the worst case. Big Omega gives a lower bound, the minimum growth, and Big Theta gives a tight bound when the upper and lower bounds are the same order. Two nested loops, each running n times, execute the inner statement n times n, so the time complexity is Theta of n squared, which is also O(n squared). Constants and lower-order terms are ignored in these notations.",
-      "keywords": [
-        "big o",
-        "upper bound",
-        "big omega",
-        "lower bound",
-        "big theta",
-        "tight bound",
-        "n squared"
-      ]
-    },
-    {
-      "level": 6,
-      "topic": "Graphs: representation, applications, BFS and DFS traversal",
-      "text": "You are building a feature that finds the minimum number of connections between two users in a social network with millions of users. Which graph representation and traversal would you use and why?",
-      "ideal_answer": "Represent the network as an adjacency list, because social graphs are sparse and an adjacency matrix would need V squared memory, which is impossible for millions of users. Use Breadth-First Search from the source user, which explores level by level using a queue, so the first time it reaches the target user it has found the shortest path in an unweighted graph. Keep a visited set to avoid revisiting nodes. For performance, bidirectional BFS from both users greatly reduces the nodes explored, and you can limit search depth. DFS is not suitable because it does not guarantee the shortest path.",
-      "keywords": [
-        "adjacency list",
-        "sparse",
-        "breadth-first search",
-        "queue",
-        "shortest path",
-        "visited",
-        "bidirectional"
-      ]
-    },
-    {
-      "level": 6,
-      "topic": "Trees: binary, strictly binary and complete binary trees; array representation",
-      "text": "In an AI task scheduler you must repeatedly pick the highest-priority job among thousands that keep arriving. Which data structure would you use and why?",
-      "ideal_answer": "A binary heap used as a priority queue is the best choice. A max-heap is a complete binary tree in which every parent's priority is greater than or equal to its children's, so the highest-priority job is always at the root. Insert and delete-max both take O(log n) time and viewing the maximum is O(1), compared with O(n) for an unsorted list or O(n) insertion for a sorted array. Because it is a complete binary tree it can be stored compactly in an array, where the children of index i are at 2i plus 1 and 2i plus 2.",
-      "keywords": [
-        "heap",
-        "priority queue",
-        "complete binary tree",
-        "root",
-        "o(log n)",
-        "array"
-      ]
-    }
-  ]
+ "subject": "Data Structure for AI",
+ "applies_to": [
+  {
+   "course": "BSC_AI",
+   "year": 2,
+   "semester": 3
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Classification of data structures; arrays and array operations",
+   "text": "What is a data structure and how are data structures classified?",
+   "ideal_answer": "A data structure is a way of organising and storing data in memory so that it can be accessed and modified efficiently. Data structures are classified as primitive, such as int, float and char, and non-primitive. Non-primitive structures are further divided into linear structures, where elements are arranged in sequence, such as arrays, linked lists, stacks and queues, and non-linear structures, where elements form a hierarchy or network, such as trees and graphs.",
+   "keywords": [
+    "organising",
+    "efficiently",
+    "primitive",
+    "non-primitive",
+    "linear",
+    "non-linear"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Stacks: push/pop, implementation and applications",
+   "text": "What is a stack and what are its basic operations?",
+   "ideal_answer": "A stack is a linear data structure that follows the Last In, First Out principle, so the element inserted last is removed first. Push adds an element to the top of the stack, pop removes the top element, and peek or top returns the top element without removing it. Pushing onto a full stack causes overflow, and popping from an empty stack causes underflow. Stacks are used for function calls, undo operations and expression evaluation.",
+   "keywords": [
+    "last in, first out",
+    "element inserted last",
+    "push",
+    "pop",
+    "peek",
+    "overflow",
+    "underflow"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Queues: implementation and operations",
+   "text": "What is the difference between a stack and a queue? Give a real-life example of each.",
+   "ideal_answer": "A stack follows LIFO, Last In First Out, and insertion and deletion both happen at one end called the top, using push and pop. A queue follows FIFO, First In First Out, so elements are inserted at the rear with enqueue and removed from the front with dequeue. A real-life stack is a pile of plates, where you take the top plate; a real-life queue is a line at a ticket counter, where the first person served is the one who came first.",
+   "keywords": [
+    "lifo",
+    "top",
+    "fifo",
+    "rear",
+    "front",
+    "enqueue",
+    "dequeue"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Searching: linear and binary search",
+   "text": "What is the difference between linear search and binary search?",
+   "ideal_answer": "Linear search checks each element one by one from the start until the target is found or the list ends, works on unsorted data, and has time complexity O(n). Binary search works only on sorted data: it compares the target with the middle element and discards the half that cannot contain it, repeating on the remaining half. This gives time complexity O(log n), which is much faster for large lists. For example, searching 1,000,000 sorted items needs at most about 20 comparisons with binary search.",
+   "keywords": [
+    "one by one",
+    "unsorted",
+    "o(n)",
+    "sorted",
+    "middle element",
+    "half",
+    "o(log n)"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Infix, prefix and postfix notations",
+   "text": "Convert the infix expression A + B * C into postfix and explain how a stack evaluates a postfix expression.",
+   "ideal_answer": "Since multiplication has higher precedence than addition, B * C is done first, so the postfix form is A B C * +. To evaluate a postfix expression, scan it from left to right; when an operand is found, push it onto the stack. When an operator is found, pop the top two operands, apply the operator with the first popped as the right operand, and push the result back. At the end, the single value left on the stack is the answer. Postfix needs no parentheses or precedence rules during evaluation.",
+   "keywords": [
+    "precedence",
+    "postfix",
+    "left to right",
+    "push it",
+    "pop the top two",
+    "result"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Linked lists: singly, doubly and circular; insertion and deletion",
+   "text": "How do you delete a node with a given value from a singly linked list?",
+   "ideal_answer": "If the list is empty there is nothing to delete. If the head node holds the value, move head to head.next. Otherwise traverse the list keeping a pointer to the previous node until the current node holds the value; then set previous.next to current.next so the node is bypassed, and free its memory in languages like C. If the end is reached without finding the value, report that it is not present. Deletion takes O(n) time because of the search, though the pointer change itself is O(1).",
+   "keywords": [
+    "head",
+    "traverse",
+    "previous",
+    "next",
+    "bypass",
+    "free",
+    "o(n)"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Trees: binary search trees and traversals",
+   "text": "If you insert the keys 50, 30, 70, 20, 40 into an empty binary search tree and do an inorder traversal, what is the output and why?",
+   "ideal_answer": "50 becomes the root; 30 goes to its left and 70 to its right; 20 goes to the left of 30 and 40 to the right of 30. Inorder traversal visits the left subtree, then the node, then the right subtree. So the output is 20, 30, 40, 50, 70. In a binary search tree, smaller keys are always in the left subtree and larger keys in the right, so inorder traversal always gives the keys in sorted ascending order.",
+   "keywords": [
+    "root",
+    "left subtree",
+    "right subtree",
+    "inorder",
+    "20, 30, 40, 50, 70",
+    "sorted"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Linked lists vs arrays",
+   "text": "Why would you choose a linked list instead of an array, and when is an array better?",
+   "ideal_answer": "A linked list grows and shrinks dynamically and allows insertion or deletion in O(1) time once you have a pointer to the position, without shifting elements, so it suits data with frequent insertions and deletions and unknown size. An array stores elements contiguously, giving O(1) random access by index and better cache performance, but insertion or deletion in the middle needs shifting elements, which is O(n), and a static array has a fixed size. Linked lists need extra memory for pointers and only allow sequential access, O(n). So arrays are better for frequent access by index, linked lists for frequent insertions and deletions.",
+   "keywords": [
+    "dynamically",
+    "insertion",
+    "deletion",
+    "pointers",
+    "random access",
+    "contiguous",
+    "shifting"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Sorting: bubble, selection, insertion, quick and heap sort",
+   "text": "Quick sort is usually fast, but on some inputs it becomes very slow. When does this happen and how can you prevent it?",
+   "ideal_answer": "Quick sort's average time is O(n log n), but its worst case is O(n squared). This happens when the pivot is always the smallest or largest element, for example when the first or last element is chosen as pivot and the array is already sorted or reverse sorted, so each partition removes only one element. It can be prevented by choosing a random pivot or using the median-of-three rule. Other safeguards are switching to insertion sort for small subarrays and using introsort, which switches to heap sort if recursion becomes too deep, guaranteeing O(n log n).",
+   "keywords": [
+    "o(n log n)",
+    "worst case",
+    "n squared",
+    "pivot",
+    "already sorted",
+    "random pivot",
+    "median-of-three"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Algorithm analysis: time and space complexity, asymptotic notations",
+   "text": "Explain Big O, Big Omega and Big Theta notations, and state the time complexity of two nested loops each running n times.",
+   "ideal_answer": "Big O gives an asymptotic upper bound on an algorithm's growth rate and is usually used for the worst case. Big Omega gives a lower bound, the minimum growth, and Big Theta gives a tight bound when the upper and lower bounds are the same order. Two nested loops, each running n times, execute the inner statement n times n, so the time complexity is Theta of n squared, which is also O(n squared). Constants and lower-order terms are ignored in these notations.",
+   "keywords": [
+    "big o",
+    "upper bound",
+    "big omega",
+    "lower bound",
+    "big theta",
+    "tight bound",
+    "n squared"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Graphs: representation, applications, BFS and DFS traversal",
+   "text": "You are building a feature that finds the minimum number of connections between two users in a social network with millions of users. Which graph representation and traversal would you use and why?",
+   "ideal_answer": "Represent the network as an adjacency list, because social graphs are sparse and an adjacency matrix would need V squared memory, which is impossible for millions of users. Use Breadth-First Search from the source user, which explores level by level using a queue, so the first time it reaches the target user it has found the shortest path in an unweighted graph. Keep a visited set to avoid revisiting nodes. For performance, bidirectional BFS from both users greatly reduces the nodes explored, and you can limit search depth. DFS is not suitable because it does not guarantee the shortest path.",
+   "keywords": [
+    "adjacency list",
+    "sparse",
+    "breadth-first search",
+    "queue",
+    "shortest path",
+    "visited",
+    "bidirectional"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Trees: binary, strictly binary and complete binary trees; array representation",
+   "text": "In an AI task scheduler you must repeatedly pick the highest-priority job among thousands that keep arriving. Which data structure would you use and why?",
+   "ideal_answer": "A binary heap used as a priority queue is the best choice. A max-heap is a complete binary tree in which every parent's priority is greater than or equal to its children's, so the highest-priority job is always at the root. Insert and delete-max both take O(log n) time and viewing the maximum is O(1), compared with O(n) for an unsorted list or O(n) insertion for a sorted array. Because it is a complete binary tree it can be stored compactly in an array, where the children of index i are at 2i plus 1 and 2i plus 2.",
+   "keywords": [
+    "heap",
+    "priority queue",
+    "complete binary tree",
+    "root",
+    "o(log n)",
+    "array"
+   ]
+  }
+ ]
 }

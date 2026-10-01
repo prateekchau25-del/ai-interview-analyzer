@@ -1,90 +1,189 @@
 {
   "subject": "Database Management System",
-  "applies_to": [{"course": "BSC_DS", "year": 1, "semester": 1}, {"course": "BSC_AI", "year": 1, "semester": 1}],
+  "applies_to": [
+    {
+      "course": "BSC_DS",
+      "year": 1,
+      "semester": 1
+    },
+    {
+      "course": "BSC_AI",
+      "year": 1,
+      "semester": 1
+    }
+  ],
   "questions": [
     {
       "level": 1,
       "topic": "Need for databases, role and advantages of DBMS",
       "text": "What is a Database Management System (DBMS)?",
       "ideal_answer": "A DBMS is software that is used to create, store, manage and retrieve data in a database in an organized way. It acts as an interface between users or applications and the stored data. It provides features such as data integrity, security, concurrent access, backup and recovery, and reduces data redundancy compared to file systems. Examples are MySQL, Oracle and PostgreSQL.",
-      "keywords": ["software", "store", "retrieve", "interface", "redundancy", "security"]
+      "keywords": [
+        "software",
+        "store",
+        "retrieve",
+        "interface",
+        "redundancy",
+        "security"
+      ]
     },
     {
       "level": 1,
       "topic": "Extended ER model and entity integrity (primary keys)",
       "text": "What is a primary key in a database table?",
       "ideal_answer": "A primary key is a column or a set of columns that uniquely identifies each row in a table. A primary key value must be unique and cannot be NULL, which is called the entity integrity rule. Each table can have only one primary key. For example, roll number can be the primary key of a Student table.",
-      "keywords": ["uniquely identifies", "row", "unique", "not null", "entity integrity", "one primary key"]
+      "keywords": [
+        "uniquely identifies",
+        "row",
+        "unique",
+        "not null",
+        "entity integrity",
+        "one primary key"
+      ]
     },
     {
       "level": 2,
       "topic": "Data models and degrees of data abstraction",
       "text": "Explain the three levels of data abstraction in a DBMS.",
       "ideal_answer": "The three levels are the physical (internal) level, the logical (conceptual) level and the view (external) level. The physical level describes how data is actually stored on disk, such as files and indexes. The logical level describes what data is stored and the relationships between data, like tables and constraints. The view level shows only the part of the database relevant to a particular user, hiding the rest. This abstraction gives data independence, so changes at one level do not affect the others.",
-      "keywords": ["physical level", "logical level", "view level", "stored", "relationships", "data independence"]
+      "keywords": [
+        "physical level",
+        "logical level",
+        "view level",
+        "stored",
+        "relationships",
+        "data independence"
+      ]
     },
     {
       "level": 2,
       "topic": "ER model: weak entities",
       "text": "What is the difference between a strong entity and a weak entity in an ER model?",
       "ideal_answer": "A strong entity has its own primary key and can exist independently, for example Employee with an employee ID. A weak entity does not have a sufficient primary key of its own and depends on a strong (owner) entity for its identification. A weak entity is identified using a partial key together with the primary key of the owner entity, through an identifying relationship. For example, Dependent is a weak entity that depends on Employee. In ER diagrams a weak entity is drawn with a double rectangle.",
-      "keywords": ["own primary key", "independently", "owner entity", "partial key", "identifying relationship", "double rectangle"]
+      "keywords": [
+        "own primary key",
+        "independently",
+        "owner entity",
+        "partial key",
+        "identifying relationship",
+        "double rectangle"
+      ]
     },
     {
       "level": 3,
       "topic": "ER model: relationships, connectivity, cardinality",
       "text": "In a college, each student can enroll in many courses and each course can have many students. How would you represent this relationship in an ER model and in tables?",
       "ideal_answer": "This is a many-to-many (M:N) relationship between Student and Course entities. In the ER diagram it is shown as an Enrolls relationship with cardinality M on one side and N on the other. In relational tables, a many-to-many relationship cannot be stored directly, so we create a separate bridge or junction table, such as Enrollment. The Enrollment table contains the student ID and course ID as foreign keys, and together they form a composite primary key. Attributes like enrollment date or grade can also be stored in this bridge table.",
-      "keywords": ["many-to-many", "bridge table", "junction", "foreign keys", "composite primary key", "cardinality"]
+      "keywords": [
+        "many-to-many",
+        "bridge table",
+        "junction",
+        "foreign keys",
+        "composite primary key",
+        "cardinality"
+      ]
     },
     {
       "level": 3,
       "topic": "Normalization process",
       "text": "What is normalization, and what are the conditions for a table to be in 1NF, 2NF and 3NF?",
       "ideal_answer": "Normalization is the process of organizing tables to reduce data redundancy and avoid insertion, update and deletion anomalies. A table is in 1NF if every column contains only atomic values and there are no repeating groups. It is in 2NF if it is in 1NF and there is no partial dependency, meaning no non-key attribute depends on only part of a composite primary key. It is in 3NF if it is in 2NF and there is no transitive dependency, meaning non-key attributes depend only on the primary key and not on other non-key attributes.",
-      "keywords": ["redundancy", "anomalies", "atomic", "partial dependency", "transitive dependency", "primary key"]
+      "keywords": [
+        "redundancy",
+        "anomalies",
+        "atomic",
+        "partial dependency",
+        "transitive dependency",
+        "primary key"
+      ]
     },
     {
       "level": 4,
       "topic": "Normalization, higher-level normal forms and denormalization",
       "text": "Why might a company deliberately denormalize some tables, and what is the downside?",
       "ideal_answer": "Denormalization means intentionally adding redundancy, such as combining tables or storing derived values, to improve read performance. Highly normalized designs need many joins, which can be slow for reporting and read-heavy applications like dashboards or data warehouses. Denormalizing reduces joins and speeds up queries. The downside is increased redundancy, more storage, and a higher risk of update anomalies and inconsistent data, so extra effort is needed to keep copies in sync.",
-      "keywords": ["redundancy", "read performance", "joins", "reporting", "update anomalies", "inconsistent"]
+      "keywords": [
+        "redundancy",
+        "read performance",
+        "joins",
+        "reporting",
+        "update anomalies",
+        "inconsistent"
+      ]
     },
     {
       "level": 4,
       "topic": "Database life cycle: conceptual, logical and physical design",
       "text": "Compare conceptual, logical and physical design in the database life cycle.",
       "ideal_answer": "Conceptual design captures the business entities, attributes and relationships, usually as an ER diagram, independent of any DBMS. Logical design converts this model into a specific data model, such as relational tables with primary keys, foreign keys and normalization, but still without storage details. Physical design decides how the database is actually implemented on a particular DBMS, including data types, indexes, partitions and storage structures for performance. Each step moves from what data is needed towards how it is stored.",
-      "keywords": ["conceptual design", "er diagram", "logical design", "tables", "physical design", "indexes", "dbms"]
+      "keywords": [
+        "conceptual design",
+        "er diagram",
+        "logical design",
+        "tables",
+        "physical design",
+        "indexes",
+        "dbms"
+      ]
     },
     {
       "level": 5,
       "topic": "Transactions and concurrency control",
       "text": "Two users try to update the same bank account balance at the same time and one update gets lost. What is this problem and how can concurrency control prevent it?",
       "ideal_answer": "This is the lost update problem, where two transactions read the same value and the second write overwrites the first. Concurrency control ensures that concurrent transactions produce a serializable result. With locking, a transaction takes an exclusive lock on the row before updating, so the other must wait; two-phase locking guarantees serializability. With timestamp ordering, transactions are ordered by timestamps and conflicting late operations are rolled back. Optimistic control lets transactions proceed and validates at commit time, aborting if a conflict is found.",
-      "keywords": ["lost update", "locking", "exclusive lock", "two-phase locking", "timestamp", "optimistic", "serializable"]
+      "keywords": [
+        "lost update",
+        "locking",
+        "exclusive lock",
+        "two-phase locking",
+        "timestamp",
+        "optimistic",
+        "serializable"
+      ]
     },
     {
       "level": 5,
       "topic": "Query processing, indexes and SQL performance tuning",
       "text": "A query that searches customers by email has become very slow as the table grew to millions of rows. How would you troubleshoot and fix it?",
       "ideal_answer": "First, I would look at the execution plan using EXPLAIN to see whether the query is doing a full table scan. If the email column has no index, I would create an index on it so the DBMS can use an index seek instead of scanning every row. I would also check that the query does not apply a function on the column, such as LOWER(email), which can prevent index use, and select only the needed columns instead of SELECT star. After the change I would re-check the execution plan and response time. Too many indexes slow down inserts and updates, so only useful indexes should be added.",
-      "keywords": ["execution plan", "explain", "full table scan", "index", "function on column", "inserts"]
+      "keywords": [
+        "execution plan",
+        "explain",
+        "full table scan",
+        "index",
+        "function on column",
+        "inserts"
+      ]
     },
     {
       "level": 6,
       "topic": "ANSI transaction isolation levels and database recovery management",
       "text": "You are designing the database for an online ticket booking system. Which transaction isolation level would you choose and how would you ensure recovery after a crash?",
       "ideal_answer": "The ANSI levels are read uncommitted, read committed, repeatable read and serializable; higher levels prevent dirty reads, non-repeatable reads and phantoms but reduce concurrency. For seat booking, double booking must be prevented, so the critical seat-allocation transaction should use serializable or repeatable read with row locking such as SELECT FOR UPDATE, while ordinary browsing can use read committed for performance. For recovery, the DBMS uses a transaction log with write-ahead logging so committed transactions can be redone and uncommitted ones undone after a crash. Regular full and incremental backups and checkpoints should also be scheduled and tested.",
-      "keywords": ["read committed", "serializable", "dirty read", "phantom", "transaction log", "write-ahead logging", "backup"]
+      "keywords": [
+        "read committed",
+        "serializable",
+        "dirty read",
+        "phantom",
+        "transaction log",
+        "write-ahead logging",
+        "backup"
+      ]
     },
     {
       "level": 6,
       "topic": "Database administration and security, role of the DBA",
       "text": "As a new DBA at a company, how would you secure a production database containing customer personal data?",
       "ideal_answer": "I would apply the principle of least privilege, creating roles and granting users only the permissions they need, and remove default or shared accounts. Sensitive data should be encrypted at rest and in transit using TLS, and sensitive columns can be masked for non-privileged users. Applications should use parameterized queries to prevent SQL injection. I would enable auditing to log access and changes, apply security patches regularly, and keep secured, tested backups. Strong authentication and network restrictions, such as allowing database access only from application servers, also reduce risk.",
-      "keywords": ["least privilege", "roles", "encryption", "sql injection", "auditing", "backups", "patches"]
+      "keywords": [
+        "least privilege",
+        "roles",
+        "encryption",
+        "sql injection",
+        "auditing",
+        "backups",
+        "patches"
+      ]
     }
   ]
 }

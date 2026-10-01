@@ -1,182 +1,182 @@
 {
-  "subject": "Data Structures",
-  "applies_to": [
-    {
-      "course": "BCA",
-      "year": 1,
-      "semester": 2
-    }
-  ],
-  "questions": [
-    {
-      "level": 1,
-      "topic": "Classification and operations of data structures",
-      "text": "What is a data structure, and how are data structures classified into linear and non-linear types?",
-      "ideal_answer": "A data structure is a way of organising and storing data in memory so that it can be accessed and modified efficiently. Linear data structures store elements in a sequence where each element has a unique predecessor and successor, such as arrays, linked lists, stacks and queues. Non-linear data structures store elements in a hierarchical or network form where one element can connect to many others, such as trees and graphs. Common operations on data structures include traversal, insertion, deletion, searching and sorting.",
-      "keywords": [
-        "organising",
-        "linear",
-        "non-linear",
-        "array",
-        "tree",
-        "graph",
-        "traversal"
-      ]
-    },
-    {
-      "level": 1,
-      "topic": "Stacks",
-      "text": "What is a stack, and what are its basic operations?",
-      "ideal_answer": "A stack is a linear data structure that follows the LIFO principle, Last In First Out, where insertion and deletion happen only at one end called the top. The push operation inserts an element on the top of the stack. The pop operation removes the top element. Peek or top returns the top element without removing it. Trying to push onto a full stack causes overflow and popping from an empty stack causes underflow.",
-      "keywords": [
-        "lifo",
-        "top",
-        "push",
-        "pop",
-        "overflow",
-        "underflow"
-      ]
-    },
-    {
-      "level": 2,
-      "topic": "Linear and binary search",
-      "text": "What is the difference between linear search and binary search?",
-      "ideal_answer": "Linear search checks each element one by one from the start until the key is found or the list ends, and it works on unsorted data. Its time complexity is O(n). Binary search works only on sorted data; it compares the key with the middle element and discards half of the list each step. Its time complexity is O(log n), so it is much faster for large sorted lists.",
-      "keywords": [
-        "sequential",
-        "sorted",
-        "middle element",
-        "half",
-        "log n"
-      ]
-    },
-    {
-      "level": 2,
-      "topic": "Singly, doubly and circular linked lists",
-      "text": "How does a singly linked list differ from a doubly linked list?",
-      "ideal_answer": "In a singly linked list, each node has a data part and one pointer to the next node, so it can be traversed only in the forward direction. In a doubly linked list, each node has two pointers, one to the next node and one to the previous node, so it can be traversed in both directions. A doubly linked list uses more memory per node because of the extra pointer. However, deletion of a given node and backward traversal are easier in a doubly linked list.",
-      "keywords": [
-        "node",
-        "next pointer",
-        "previous pointer",
-        "forward",
-        "both directions",
-        "memory"
-      ]
-    },
-    {
-      "level": 3,
-      "topic": "Stacks, infix to postfix conversion and postfix evaluation",
-      "text": "How is a postfix expression evaluated using a stack? Evaluate 2 3 4 * + as an example.",
-      "ideal_answer": "The postfix expression is scanned from left to right. When an operand is found, it is pushed onto the stack. When an operator is found, the top two operands are popped, the operator is applied with the second popped as the left operand, and the result is pushed back. For 2 3 4 * +, we push 2, 3 and 4; on * we pop 4 and 3 and push 12; on + we pop 12 and 2 and push 14. At the end the single value on the stack, 14, is the answer.",
-      "keywords": [
-        "left to right",
-        "push operand",
-        "pop two",
-        "operator",
-        "result",
-        "14"
-      ]
-    },
-    {
-      "level": 3,
-      "topic": "Hashing, hash functions and collision resolution",
-      "text": "What is hashing, and what happens when two keys map to the same index? Explain one way to handle it.",
-      "ideal_answer": "Hashing stores and retrieves data using a hash function that converts a key into an index of a hash table, giving average O(1) search. A collision occurs when two different keys produce the same index. In separate chaining, each table slot holds a linked list and all colliding keys are stored in that list. In open addressing, such as linear probing, the next free slot is searched by checking index plus 1, plus 2 and so on. A good hash function spreads keys uniformly to reduce collisions.",
-      "keywords": [
-        "hash function",
-        "index",
-        "collision",
-        "chaining",
-        "linear probing",
-        "open addressing"
-      ]
-    },
-    {
-      "level": 4,
-      "topic": "Queues: circular, double-ended and priority queues",
-      "text": "Why is a circular queue preferred over a simple linear queue implemented with an array?",
-      "ideal_answer": "In a linear array queue, the front index moves forward as elements are deleted, so the freed spaces at the beginning cannot be reused. The queue may report overflow when rear reaches the end even though empty slots exist at the front. A circular queue connects the last position back to the first using modulo arithmetic, rear = (rear + 1) mod size. This lets freed slots be reused, so memory is utilised fully without shifting elements.",
-      "keywords": [
-        "front",
-        "rear",
-        "wasted space",
-        "overflow",
-        "modulo",
-        "reuse"
-      ]
-    },
-    {
-      "level": 4,
-      "topic": "Recursion: runtime stack, GCD, Towers of Hanoi",
-      "text": "How many moves are needed to solve the Towers of Hanoi with n disks, and why? How does recursion use the runtime stack here?",
-      "ideal_answer": "The minimum number of moves is 2 to the power n minus 1. To move n disks, we recursively move n minus 1 disks to the auxiliary peg, move the largest disk to the destination, and then move the n minus 1 disks onto it, so T(n) = 2T(n-1) + 1, which solves to 2^n - 1. Each recursive call pushes an activation record with its parameters and return address onto the runtime stack. When the base case of one disk is reached, calls return and their records are popped. The maximum stack depth is n.",
-      "keywords": [
-        "power n minus 1",
-        "auxiliary peg",
-        "recursive",
-        "activation record",
-        "runtime stack",
-        "base case"
-      ]
-    },
-    {
-      "level": 5,
-      "topic": "Algorithm complexity and time-space tradeoff",
-      "text": "Bubble sort is O(n squared) in the worst case. Can it be made faster on an already-sorted array, and what is the time-space tradeoff idea in general?",
-      "ideal_answer": "Yes, by adding a swapped flag: if a full pass makes no swaps, the array is already sorted and the algorithm stops early. With this optimisation, bubble sort takes only one pass on sorted input, giving a best case of O(n). The worst and average case remain O(n squared). The time-space tradeoff means we can often reduce running time by using extra memory, or save memory by accepting more time, for example a hash table uses extra space to give fast lookups.",
-      "keywords": [
-        "swapped flag",
-        "early stop",
-        "best case",
-        "n squared",
-        "extra memory",
-        "tradeoff"
-      ]
-    },
-    {
-      "level": 5,
-      "topic": "AVL trees: insertion and deletion",
-      "text": "Inserting sorted keys 10, 20, 30 into a plain binary search tree makes it skewed. How does an AVL tree fix this, and which rotation is applied?",
-      "ideal_answer": "In a plain BST, inserting sorted keys creates a right-skewed tree that behaves like a linked list, so search becomes O(n). An AVL tree is a self-balancing BST where the balance factor, height of left subtree minus height of right subtree, of every node must be -1, 0 or 1. After inserting 30, node 10 has balance factor -2, which is a right-right case. A single left rotation at 10 makes 20 the root with 10 and 30 as children. This keeps the height O(log n), so search, insertion and deletion stay O(log n).",
-      "keywords": [
-        "skewed",
-        "balance factor",
-        "right-right",
-        "left rotation",
-        "log n",
-        "self-balancing"
-      ]
-    },
-    {
-      "level": 6,
-      "topic": "Graph representation and traversal",
-      "text": "You are building a friend-suggestion feature for a social network with millions of users, where each user has a few hundred friends. Which graph representation and traversal would you use, and why?",
-      "ideal_answer": "The graph is very sparse because each user connects to only a few hundred of millions of users, so an adjacency list is the right choice; an adjacency matrix would need V squared space and waste memory. To suggest friends-of-friends, breadth-first search from the user is suitable because it explores neighbours level by level, and we only need to go to depth two. BFS uses a queue and a visited set to avoid revisiting users. Its time is O(V + E) for the explored part, and limiting the depth keeps it fast. Candidates can be ranked by the number of mutual friends.",
-      "keywords": [
-        "adjacency list",
-        "sparse",
-        "adjacency matrix",
-        "breadth-first search",
-        "queue",
-        "visited",
-        "mutual friends"
-      ]
-    },
-    {
-      "level": 6,
-      "topic": "Binary trees, traversals and binary search trees",
-      "text": "A team stores product IDs in a binary search tree and needs to print them in sorted order and also quickly check whether an ID exists. Which traversal and which operation would you use, and what risk should they watch for?",
-      "ideal_answer": "An inorder traversal, left subtree then root then right subtree, of a BST visits the keys in ascending sorted order. To check whether an ID exists, they should use BST search, comparing with the root and going left if smaller or right if larger. Search takes O(h) time where h is the height of the tree. The risk is that if IDs are inserted in sorted order the tree becomes skewed and h becomes n, so they should use a self-balancing tree like an AVL tree to guarantee O(log n).",
-      "keywords": [
-        "inorder",
-        "sorted order",
-        "search",
-        "height",
-        "skewed",
-        "self-balancing",
-        "log n"
-      ]
-    }
-  ]
+ "subject": "Data Structures",
+ "applies_to": [
+  {
+   "course": "BCA",
+   "year": 1,
+   "semester": 2
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Classification and operations of data structures",
+   "text": "What is a data structure, and how are data structures classified into linear and non-linear types?",
+   "ideal_answer": "A data structure is a way of organising and storing data in memory so that it can be accessed and modified efficiently. Linear data structures store elements in a sequence where each element has a unique predecessor and successor, such as arrays, linked lists, stacks and queues. Non-linear data structures store elements in a hierarchical or network form where one element can connect to many others, such as trees and graphs. Common operations on data structures include traversal, insertion, deletion, searching and sorting.",
+   "keywords": [
+    "organising",
+    "linear",
+    "non-linear",
+    "array",
+    "tree",
+    "graph",
+    "traversal"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Stacks",
+   "text": "What is a stack, and what are its basic operations?",
+   "ideal_answer": "A stack is a linear data structure that follows the LIFO principle, Last In First Out, where insertion and deletion happen only at one end called the top. The push operation inserts an element on the top of the stack. The pop operation removes the top element. Peek or top returns the top element without removing it. Trying to push onto a full stack causes overflow and popping from an empty stack causes underflow.",
+   "keywords": [
+    "lifo",
+    "top",
+    "push",
+    "pop",
+    "overflow",
+    "underflow"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Linear and binary search",
+   "text": "What is the difference between linear search and binary search?",
+   "ideal_answer": "Linear search checks each element one by one from the start until the key is found or the list ends, and it works on unsorted data. Its time complexity is O(n). Binary search works only on sorted data; it compares the key with the middle element and discards half of the list each step. Its time complexity is O(log n), so it is much faster for large sorted lists.",
+   "keywords": [
+    "sequential",
+    "sorted",
+    "middle element",
+    "half",
+    "log n"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Singly, doubly and circular linked lists",
+   "text": "How does a singly linked list differ from a doubly linked list?",
+   "ideal_answer": "In a singly linked list, each node has a data part and one pointer to the next node, so it can be traversed only in the forward direction. In a doubly linked list, each node has two pointers, one to the next node and one to the previous node, so it can be traversed in both directions. A doubly linked list uses more memory per node because of the extra pointer. However, deletion of a given node and backward traversal are easier in a doubly linked list.",
+   "keywords": [
+    "node",
+    "next pointer",
+    "previous pointer",
+    "forward",
+    "both directions",
+    "memory"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Stacks, infix to postfix conversion and postfix evaluation",
+   "text": "How is a postfix expression evaluated using a stack? Evaluate 2 3 4 * + as an example.",
+   "ideal_answer": "The postfix expression is scanned from left to right. When an operand is found, it is pushed onto the stack. When an operator is found, the top two operands are popped, the operator is applied with the second popped as the left operand, and the result is pushed back. For 2 3 4 * +, we push 2, 3 and 4; on * we pop 4 and 3 and push 12; on + we pop 12 and 2 and push 14. At the end the single value on the stack, 14, is the answer.",
+   "keywords": [
+    "left to right",
+    "push operand",
+    "pop two",
+    "operator",
+    "result",
+    "14"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Hashing, hash functions and collision resolution",
+   "text": "What is hashing, and what happens when two keys map to the same index? Explain one way to handle it.",
+   "ideal_answer": "Hashing stores and retrieves data using a hash function that converts a key into an index of a hash table, giving average O(1) search. A collision occurs when two different keys produce the same index. In separate chaining, each table slot holds a linked list and all colliding keys are stored in that list. In open addressing, such as linear probing, the next free slot is searched by checking index plus 1, plus 2 and so on. A good hash function spreads keys uniformly to reduce collisions.",
+   "keywords": [
+    "hash function",
+    "index",
+    "collision",
+    "chaining",
+    "linear probing",
+    "open addressing"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Queues: circular, double-ended and priority queues",
+   "text": "Why is a circular queue preferred over a simple linear queue implemented with an array?",
+   "ideal_answer": "In a linear array queue, the front index moves forward as elements are deleted, so the freed spaces at the beginning cannot be reused. The queue may report overflow when rear reaches the end even though empty slots exist at the front. A circular queue connects the last position back to the first using modulo arithmetic, rear = (rear + 1) mod size. This lets freed slots be reused, so memory is utilised fully without shifting elements.",
+   "keywords": [
+    "front",
+    "rear",
+    "wasted space",
+    "overflow",
+    "modulo",
+    "reuse"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Recursion: runtime stack, GCD, Towers of Hanoi",
+   "text": "How many moves are needed to solve the Towers of Hanoi with n disks, and why? How does recursion use the runtime stack here?",
+   "ideal_answer": "The minimum number of moves is 2 to the power n minus 1. To move n disks, we recursively move n minus 1 disks to the auxiliary peg, move the largest disk to the destination, and then move the n minus 1 disks onto it, so T(n) = 2T(n-1) + 1, which solves to 2^n - 1. Each recursive call pushes an activation record with its parameters and return address onto the runtime stack. When the base case of one disk is reached, calls return and their records are popped. The maximum stack depth is n.",
+   "keywords": [
+    "power n minus 1",
+    "auxiliary peg",
+    "recursive",
+    "activation record",
+    "runtime stack",
+    "base case"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Algorithm complexity and time-space tradeoff",
+   "text": "Bubble sort is O(n squared) in the worst case. Can it be made faster on an already-sorted array, and what is the time-space tradeoff idea in general?",
+   "ideal_answer": "Yes, by adding a swapped flag: if a full pass makes no swaps, the array is already sorted and the algorithm stops early. With this optimisation, bubble sort takes only one pass on sorted input, giving a best case of O(n). The worst and average case remain O(n squared). The time-space tradeoff means we can often reduce running time by using extra memory, or save memory by accepting more time, for example a hash table uses extra space to give fast lookups.",
+   "keywords": [
+    "swapped flag",
+    "early stop",
+    "best case",
+    "n squared",
+    "extra memory",
+    "tradeoff"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "AVL trees: insertion and deletion",
+   "text": "Inserting sorted keys 10, 20, 30 into a plain binary search tree makes it skewed. How does an AVL tree fix this, and which rotation is applied?",
+   "ideal_answer": "In a plain BST, inserting sorted keys creates a right-skewed tree that behaves like a linked list, so search becomes O(n). An AVL tree is a self-balancing BST where the balance factor, height of left subtree minus height of right subtree, of every node must be -1, 0 or 1. After inserting 30, node 10 has balance factor -2, which is a right-right case. A single left rotation at 10 makes 20 the root with 10 and 30 as children. This keeps the height O(log n), so search, insertion and deletion stay O(log n).",
+   "keywords": [
+    "skewed",
+    "balance factor",
+    "right-right",
+    "left rotation",
+    "log n",
+    "self-balancing"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Graph representation and traversal",
+   "text": "You are building a friend-suggestion feature for a social network with millions of users, where each user has a few hundred friends. Which graph representation and traversal would you use, and why?",
+   "ideal_answer": "The graph is very sparse because each user connects to only a few hundred of millions of users, so an adjacency list is the right choice; an adjacency matrix would need V squared space and waste memory. To suggest friends-of-friends, breadth-first search from the user is suitable because it explores neighbours level by level, and we only need to go to depth two. BFS uses a queue and a visited set to avoid revisiting users. Its time is O(V + E) for the explored part, and limiting the depth keeps it fast. Candidates can be ranked by the number of mutual friends.",
+   "keywords": [
+    "adjacency list",
+    "sparse",
+    "adjacency matrix",
+    "breadth-first search",
+    "queue",
+    "visited",
+    "mutual friends"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Binary trees, traversals and binary search trees",
+   "text": "A team stores product IDs in a binary search tree and needs to print them in sorted order and also quickly check whether an ID exists. Which traversal and which operation would you use, and what risk should they watch for?",
+   "ideal_answer": "An inorder traversal, left subtree then root then right subtree, of a BST visits the keys in ascending sorted order. To check whether an ID exists, they should use BST search, comparing with the root and going left if smaller or right if larger. Search takes O(h) time where h is the height of the tree. The risk is that if IDs are inserted in sorted order the tree becomes skewed and h becomes n, so they should use a self-balancing tree like an AVL tree to guarantee O(log n).",
+   "keywords": [
+    "inorder",
+    "sorted order",
+    "search",
+    "height",
+    "skewed",
+    "self-balancing",
+    "log n"
+   ]
+  }
+ ]
 }

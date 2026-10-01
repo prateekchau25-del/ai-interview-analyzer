@@ -1,14 +1,190 @@
-{"subject": "Cloud Computing for Data Science", "applies_to": [{"course": "BSC_DS", "year": 2, "semester": 4}], "questions": [
-{"level": 1, "topic": "Characteristics, advantages and disadvantages of cloud computing", "text": "What is cloud computing?", "ideal_answer": "Cloud computing is the on-demand delivery of computing resources such as servers, storage, databases, networking and software over the internet with pay-as-you-go pricing. Instead of buying and maintaining physical hardware, users rent resources from a cloud provider like AWS, Azure or Google Cloud. Its key characteristics, as defined by NIST, are on-demand self-service, broad network access, resource pooling, rapid elasticity and measured service. It lets organisations scale quickly and reduce upfront costs.", "keywords": ["on-demand", "internet", "pay-as-you-go", "resource pooling", "rapid elasticity", "measured service"]},
-{"level": 1, "topic": "Service models: SaaS, PaaS and IaaS", "text": "What are the three main cloud service models?", "ideal_answer": "The three service models are Infrastructure as a Service, Platform as a Service and Software as a Service. IaaS provides virtual machines, storage and networks, and the user manages the operating system and applications, for example AWS EC2. PaaS provides a managed platform to build and deploy applications without managing servers, for example Google App Engine or AWS Elastic Beanstalk. SaaS delivers complete software over the internet to end users, for example Gmail or Salesforce.", "keywords": ["infrastructure as a service", "platform as a service", "software as a service", "virtual machines", "ec2", "gmail"]},
-{"level": 2, "topic": "Cloud deployment models and roots of cloud computing", "text": "What is the difference between a public cloud and a private cloud?", "ideal_answer": "A public cloud is owned and operated by a third-party provider and its resources are shared by many customers over the internet, such as AWS or Azure. A private cloud is used exclusively by a single organisation and can be hosted on-premises or by a provider. Public clouds are cheaper, highly scalable and need no hardware maintenance by the user. Private clouds give more control, security and customisation, which suits sensitive data, but cost more. A hybrid cloud combines both.", "keywords": ["public cloud", "third-party", "shared", "private cloud", "single organisation", "security", "hybrid"]},
-{"level": 2, "topic": "VMware virtualization: creating, cloning and managing virtual machines", "text": "What is virtualization and what is a hypervisor?", "ideal_answer": "Virtualization is the technique of creating multiple virtual machines, each with its own operating system, on a single physical machine. A hypervisor is the software layer that creates and manages these virtual machines and allocates CPU, memory and storage to them. A Type 1 or bare-metal hypervisor, like VMware ESXi, runs directly on hardware, while a Type 2 or hosted hypervisor, like VMware Workstation, runs on top of a host operating system. Virtualization is the foundation of cloud computing because it enables resource sharing and isolation.", "keywords": ["virtual machines", "single physical machine", "hypervisor", "type 1", "type 2", "isolation"]},
-{"level": 3, "topic": "AWS core services: compute, load balancing, autoscaling, storage", "text": "How do an Elastic Load Balancer and Auto Scaling work together on AWS for a web application?", "ideal_answer": "An Elastic Load Balancer distributes incoming traffic across multiple EC2 instances, often in different availability zones, and performs health checks so traffic only goes to healthy instances. An Auto Scaling group automatically adds instances when demand rises and removes them when demand falls, based on metrics like CPU utilisation from CloudWatch. New instances launched by Auto Scaling are registered with the load balancer automatically. Together they give high availability, fault tolerance and cost efficiency.", "keywords": ["load balancer", "distributes traffic", "ec2", "health checks", "auto scaling", "cloudwatch", "high availability"]},
-{"level": 3, "topic": "Cloud simulators: CloudSim architecture and GreenCloud", "text": "What is CloudSim and how is it used?", "ideal_answer": "CloudSim is an open-source Java-based framework for modelling and simulating cloud computing environments, developed at the University of Melbourne. It lets researchers model datacenters, hosts, virtual machines, cloudlets (tasks) and brokers without using a real cloud. Users can test resource provisioning, VM allocation and scheduling policies and measure performance and cost. This saves money and allows repeatable experiments, while GreenCloud is a similar simulator focused on energy consumption of data centers.", "keywords": ["simulation", "java", "datacenter", "virtual machines", "cloudlets", "broker", "scheduling policies"]},
-{"level": 4, "topic": "AWS managed services: RDS, DynamoDB, SNS, SQS, CloudWatch", "text": "Compare Amazon RDS and Amazon DynamoDB. When would you choose each?", "ideal_answer": "Amazon RDS is a managed relational database service that runs engines like MySQL, PostgreSQL and Oracle, using tables, fixed schemas, SQL and joins. Amazon DynamoDB is a fully managed serverless NoSQL key-value and document database that scales automatically with single-digit millisecond latency. Choose RDS when data is highly relational and you need complex queries, joins and ACID transactions, such as an accounting system. Choose DynamoDB for very high-scale workloads with simple, predictable access patterns, such as user sessions, IoT data or shopping carts.", "keywords": ["rds", "relational", "sql", "joins", "dynamodb", "nosql", "key-value", "scales automatically"]},
-{"level": 4, "topic": "AWS managed services: RDS, DynamoDB, SNS, SQS, CloudWatch", "text": "What is the difference between Amazon SNS and Amazon SQS?", "ideal_answer": "Amazon SNS is a publish-subscribe notification service that pushes each message to all subscribers of a topic, such as email, SMS, Lambda functions or SQS queues. Amazon SQS is a message queue service where producers put messages in a queue and consumers poll and process them, with each message normally handled by one consumer. SNS is used to fan out events to many receivers at once, while SQS is used to decouple components and buffer work. They are often combined in a fan-out pattern where SNS sends a message to several SQS queues.", "keywords": ["sns", "publish-subscribe", "push", "sqs", "queue", "poll", "decouple", "fan-out"]},
-{"level": 5, "topic": "Challenges and risks in cloud adoption", "text": "A company moved its data science workloads to the cloud and its monthly bill is far higher than expected. How would you diagnose and reduce costs?", "ideal_answer": "First analyse the bill with cost tools such as AWS Cost Explorer, using resource tags to see which projects and services cost the most. Common causes are idle or oversized instances, forgotten GPU machines, unattached storage volumes and high data transfer charges. Fixes include right-sizing instances, shutting down or scheduling idle resources, using auto scaling, and using spot or reserved instances for suitable workloads. Moving old data to cheaper storage classes like S3 Glacier and setting budgets and alerts helps prevent future overruns.", "keywords": ["cost explorer", "tags", "idle resources", "right-sizing", "spot instances", "reserved instances", "budgets"]},
-{"level": 5, "topic": "Cloud architecture and its components", "text": "How would you design a cloud architecture for an application so that it keeps running if one data center fails?", "ideal_answer": "I would deploy the application across multiple availability zones, which are separate data centers within a region. Application servers would run in an auto scaling group behind a load balancer that routes traffic only to healthy instances in any zone. The database would use a multi-AZ setup with a standby replica and automatic failover, and files would be stored in durable object storage like S3. Regular backups, health monitoring and, for critical systems, cross-region replication remove single points of failure.", "keywords": ["availability zones", "load balancer", "auto scaling", "multi-az", "failover", "backups", "single point of failure"]},
-{"level": 6, "topic": "Indian cloud ecosystem: MeghRaj, Digital India and homegrown SaaS", "text": "A state government department wants to host citizen data on the cloud. What would you recommend, considering Indian initiatives and regulations?", "ideal_answer": "I would recommend using the GI Cloud, also called MeghRaj, the Government of India cloud initiative, or a MeitY-empanelled cloud service provider. Citizen data should be stored in data centers located in India to meet data localisation and the Digital Personal Data Protection Act, 2023. Security measures should include encryption at rest and in transit, strict access control and audit logging. A private or government community cloud is suitable for sensitive data, while public-facing services can use scalable public cloud, balancing security, cost and scalability.", "keywords": ["meghraj", "meity", "empanelled", "data localisation", "data protection", "encryption", "community cloud"]},
-{"level": 6, "topic": "Service models: SaaS, PaaS and IaaS", "text": "Your data science team needs to train models and serve predictions. Would you use IaaS virtual machines or a PaaS managed ML service? Discuss the trade-offs.", "ideal_answer": "With IaaS, like EC2 GPU instances, the team gets full control over the operating system, libraries and configuration, but must manage setup, patching, scaling and security themselves. A PaaS managed ML service, like Amazon SageMaker, handles infrastructure, provides built-in training, model hosting, auto scaling and monitoring, so the team can focus on models. PaaS speeds up delivery and reduces operational effort but can cost more per hour and risks vendor lock-in. A small team usually benefits from PaaS, while teams with special requirements or strict cost control may choose IaaS.", "keywords": ["iaas", "full control", "management overhead", "paas", "managed service", "sagemaker", "vendor lock-in"]}
-]}
+{
+ "subject": "Cloud Computing for Data Science",
+ "applies_to": [
+  {
+   "course": "BSC_DS",
+   "year": 2,
+   "semester": 4
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Characteristics, advantages and disadvantages of cloud computing",
+   "text": "What is cloud computing?",
+   "ideal_answer": "Cloud computing is the on-demand delivery of computing resources such as servers, storage, databases, networking and software over the internet with pay-as-you-go pricing. Instead of buying and maintaining physical hardware, users rent resources from a cloud provider like AWS, Azure or Google Cloud. Its key characteristics, as defined by NIST, are on-demand self-service, broad network access, resource pooling, rapid elasticity and measured service. It lets organisations scale quickly and reduce upfront costs.",
+   "keywords": [
+    "on-demand",
+    "internet",
+    "pay-as-you-go",
+    "resource pooling",
+    "rapid elasticity",
+    "measured service"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Service models: SaaS, PaaS and IaaS",
+   "text": "What are the three main cloud service models?",
+   "ideal_answer": "The three service models are Infrastructure as a Service, Platform as a Service and Software as a Service. IaaS provides virtual machines, storage and networks, and the user manages the operating system and applications, for example AWS EC2. PaaS provides a managed platform to build and deploy applications without managing servers, for example Google App Engine or AWS Elastic Beanstalk. SaaS delivers complete software over the internet to end users, for example Gmail or Salesforce.",
+   "keywords": [
+    "infrastructure as a service",
+    "platform as a service",
+    "software as a service",
+    "virtual machines",
+    "ec2",
+    "gmail"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Cloud deployment models and roots of cloud computing",
+   "text": "What is the difference between a public cloud and a private cloud?",
+   "ideal_answer": "A public cloud is owned and operated by a third-party provider and its resources are shared by many customers over the internet, such as AWS or Azure. A private cloud is used exclusively by a single organisation and can be hosted on-premises or by a provider. Public clouds are cheaper, highly scalable and need no hardware maintenance by the user. Private clouds give more control, security and customisation, which suits sensitive data, but cost more. A hybrid cloud combines both.",
+   "keywords": [
+    "public cloud",
+    "third-party",
+    "shared",
+    "private cloud",
+    "single organisation",
+    "security",
+    "hybrid"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "VMware virtualization: creating, cloning and managing virtual machines",
+   "text": "What is virtualization and what is a hypervisor?",
+   "ideal_answer": "Virtualization is the technique of creating multiple virtual machines, each with its own operating system, on a single physical machine. A hypervisor is the software layer that creates and manages these virtual machines and allocates CPU, memory and storage to them. A Type 1 or bare-metal hypervisor, like VMware ESXi, runs directly on hardware, while a Type 2 or hosted hypervisor, like VMware Workstation, runs on top of a host operating system. Virtualization is the foundation of cloud computing because it enables resource sharing and isolation.",
+   "keywords": [
+    "virtual machines",
+    "single physical machine",
+    "hypervisor",
+    "type 1",
+    "type 2",
+    "isolation"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "AWS core services: compute, load balancing, autoscaling, storage",
+   "text": "How do an Elastic Load Balancer and Auto Scaling work together on AWS for a web application?",
+   "ideal_answer": "An Elastic Load Balancer distributes incoming traffic across multiple EC2 instances, often in different availability zones, and performs health checks so traffic only goes to healthy instances. An Auto Scaling group automatically adds instances when demand rises and removes them when demand falls, based on metrics like CPU utilisation from CloudWatch. New instances launched by Auto Scaling are registered with the load balancer automatically. Together they give high availability, fault tolerance and cost efficiency.",
+   "keywords": [
+    "load balancer",
+    "distributes incoming traffic",
+    "ec2",
+    "health checks",
+    "auto scaling",
+    "cloudwatch",
+    "high availability"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Cloud simulators: CloudSim architecture and GreenCloud",
+   "text": "What is CloudSim and how is it used?",
+   "ideal_answer": "CloudSim is an open-source Java-based framework for modelling and simulating cloud computing environments, developed at the University of Melbourne. It lets researchers model datacenters, hosts, virtual machines, cloudlets (tasks) and brokers without using a real cloud. Users can test resource provisioning, VM allocation and scheduling policies and measure performance and cost. This saves money and allows repeatable experiments, while GreenCloud is a similar simulator focused on energy consumption of data centers.",
+   "keywords": [
+    "simulating",
+    "java",
+    "datacenter",
+    "virtual machines",
+    "cloudlets",
+    "broker",
+    "scheduling policies"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "AWS managed services: RDS, DynamoDB, SNS, SQS, CloudWatch",
+   "text": "Compare Amazon RDS and Amazon DynamoDB. When would you choose each?",
+   "ideal_answer": "Amazon RDS is a managed relational database service that runs engines like MySQL, PostgreSQL and Oracle, using tables, fixed schemas, SQL and joins. Amazon DynamoDB is a fully managed serverless NoSQL key-value and document database that scales automatically with single-digit millisecond latency. Choose RDS when data is highly relational and you need complex queries, joins and ACID transactions, such as an accounting system. Choose DynamoDB for very high-scale workloads with simple, predictable access patterns, such as user sessions, IoT data or shopping carts.",
+   "keywords": [
+    "rds",
+    "relational",
+    "sql",
+    "joins",
+    "dynamodb",
+    "nosql",
+    "key-value",
+    "scales automatically"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "AWS managed services: RDS, DynamoDB, SNS, SQS, CloudWatch",
+   "text": "What is the difference between Amazon SNS and Amazon SQS?",
+   "ideal_answer": "Amazon SNS is a publish-subscribe notification service that pushes each message to all subscribers of a topic, such as email, SMS, Lambda functions or SQS queues. Amazon SQS is a message queue service where producers put messages in a queue and consumers poll and process them, with each message normally handled by one consumer. SNS is used to fan out events to many receivers at once, while SQS is used to decouple components and buffer work. They are often combined in a fan-out pattern where SNS sends a message to several SQS queues.",
+   "keywords": [
+    "sns",
+    "publish-subscribe",
+    "push",
+    "sqs",
+    "queue",
+    "poll",
+    "decouple",
+    "fan-out"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Challenges and risks in cloud adoption",
+   "text": "A company moved its data science workloads to the cloud and its monthly bill is far higher than expected. How would you diagnose and reduce costs?",
+   "ideal_answer": "First analyse the bill with cost tools such as AWS Cost Explorer, using resource tags to see which projects and services cost the most. Common causes are idle or oversized instances, forgotten GPU machines, unattached storage volumes and high data transfer charges. Fixes include right-sizing instances, shutting down or scheduling idle resources, using auto scaling, and using spot or reserved instances for suitable workloads. Moving old data to cheaper storage classes like S3 Glacier and setting budgets and alerts helps prevent future overruns.",
+   "keywords": [
+    "cost explorer",
+    "tags",
+    "idle resources",
+    "right-sizing",
+    "spot",
+    "reserved instances",
+    "budgets"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Cloud architecture and its components",
+   "text": "How would you design a cloud architecture for an application so that it keeps running if one data center fails?",
+   "ideal_answer": "I would deploy the application across multiple availability zones, which are separate data centers within a region. Application servers would run in an auto scaling group behind a load balancer that routes traffic only to healthy instances in any zone. The database would use a multi-AZ setup with a standby replica and automatic failover, and files would be stored in durable object storage like S3. Regular backups, health monitoring and, for critical systems, cross-region replication remove single points of failure.",
+   "keywords": [
+    "availability zones",
+    "load balancer",
+    "auto scaling",
+    "multi-az",
+    "failover",
+    "backups",
+    "single points of failure"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Indian cloud ecosystem: MeghRaj, Digital India and homegrown SaaS",
+   "text": "A state government department wants to host citizen data on the cloud. What would you recommend, considering Indian initiatives and regulations?",
+   "ideal_answer": "I would recommend using the GI Cloud, also called MeghRaj, the Government of India cloud initiative, or a MeitY-empanelled cloud service provider. Citizen data should be stored in data centers located in India to meet data localisation and the Digital Personal Data Protection Act, 2023. Security measures should include encryption at rest and in transit, strict access control and audit logging. A private or government community cloud is suitable for sensitive data, while public-facing services can use scalable public cloud, balancing security, cost and scalability.",
+   "keywords": [
+    "meghraj",
+    "meity",
+    "empanelled",
+    "data localisation",
+    "data protection",
+    "encryption",
+    "community cloud"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Service models: SaaS, PaaS and IaaS",
+   "text": "Your data science team needs to train models and serve predictions. Would you use IaaS virtual machines or a PaaS managed ML service? Discuss the trade-offs.",
+   "ideal_answer": "With IaaS, like EC2 GPU instances, the team gets full control over the operating system, libraries and configuration, but must manage setup, patching, scaling and security themselves. A PaaS managed ML service, like Amazon SageMaker, handles infrastructure, provides built-in training, model hosting, auto scaling and monitoring, so the team can focus on models. PaaS speeds up delivery and reduces operational effort but can cost more per hour and risks vendor lock-in. A small team usually benefits from PaaS, while teams with special requirements or strict cost control may choose IaaS.",
+   "keywords": [
+    "iaas",
+    "full control",
+    "paas",
+    "managed ml service",
+    "sagemaker",
+    "vendor lock-in"
+   ]
+  }
+ ]
+}

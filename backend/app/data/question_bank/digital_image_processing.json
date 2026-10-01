@@ -1,90 +1,183 @@
 {
-  "subject": "Digital Image Processing",
-  "applies_to": [{"course": "BCA", "year": 3, "semester": 5}],
-  "questions": [
-    {
-      "level": 1,
-      "topic": "Steps in digital image processing and applications",
-      "text": "What is digital image processing, and what are its main steps?",
-      "ideal_answer": "Digital image processing is the use of computer algorithms to process and analyse digital images, which are 2D arrays of pixels. The main steps are image acquisition, image enhancement, image restoration, colour image processing, compression, morphological processing, segmentation, representation and description, and object recognition. Applications include medical imaging, satellite imaging, face recognition, OCR and industrial inspection.",
-      "keywords": ["pixels", "acquisition", "enhancement", "restoration", "segmentation", "recognition"]
-    },
-    {
-      "level": 1,
-      "topic": "Image sampling, quantization and pixel relationships",
-      "text": "What are sampling and quantization in image digitisation?",
-      "ideal_answer": "Sampling is digitising the spatial coordinates of a continuous image, meaning choosing how many pixels are taken in each direction, which decides the spatial resolution. Quantization is digitising the amplitude or intensity values, meaning mapping each sample's brightness to a limited number of grey levels, such as 256 levels for 8 bits. Too little sampling causes blocky images and aliasing, and too few grey levels cause false contouring.",
-      "keywords": ["sampling", "spatial coordinates", "resolution", "quantization", "intensity", "grey levels"]
-    },
-    {
-      "level": 2,
-      "topic": "Grey level transformations",
-      "text": "What is an image negative, and where is it useful?",
-      "ideal_answer": "An image negative reverses the intensity levels of an image using the transformation s = L - 1 - r, where r is the input intensity, s is the output intensity and L is the number of grey levels. For an 8-bit image, s = 255 - r, so dark areas become bright and bright areas become dark. It is useful for enhancing white or grey detail embedded in large dark regions, such as in medical images like mammograms.",
-      "keywords": ["reverses intensity", "maximum grey level minus input", "255 minus r", "dark becomes bright", "medical images", "grey levels"]
-    },
-    {
-      "level": 2,
-      "topic": "Spatial filtering: smoothing and sharpening filters",
-      "text": "What is the difference between smoothing and sharpening spatial filters?",
-      "ideal_answer": "Smoothing filters are low-pass filters that reduce noise and blur the image by averaging pixel values in a neighbourhood, such as the mean filter, Gaussian filter, or the non-linear median filter. Sharpening filters are high-pass filters that highlight edges and fine details by emphasising intensity changes, using derivatives such as the Laplacian or unsharp masking. Smoothing removes small details while sharpening enhances them, but sharpening also amplifies noise.",
-      "keywords": ["smoothing", "low-pass", "averaging", "sharpening", "high-pass", "laplacian", "edges"]
-    },
-    {
-      "level": 3,
-      "topic": "Histogram processing",
-      "text": "How does histogram equalization improve the contrast of a dark image?",
-      "ideal_answer": "A histogram shows how many pixels have each intensity value; a dark low-contrast image has its histogram crowded into a narrow range of low values. Histogram equalization computes the cumulative distribution function of the histogram and uses it to map each input intensity to a new value, scaled to the full range of 0 to L minus 1. This spreads the intensities more evenly across the whole range, so the output histogram is approximately flat and contrast increases. It is automatic but can over-enhance noise, so adaptive methods like CLAHE are sometimes used.",
-      "keywords": ["histogram", "cumulative distribution", "mapping", "full range", "spread", "contrast"]
-    },
-    {
-      "level": 3,
-      "topic": "Thresholding and region-based segmentation",
-      "text": "How does Otsu's thresholding method choose a threshold to separate an object from the background?",
-      "ideal_answer": "Thresholding converts a grey image into a binary image by setting pixels above a threshold to one value and the rest to another. Otsu's method automatically chooses the threshold by trying every possible grey level and, for each, computing the between-class variance of the two resulting groups. It selects the threshold that maximises the between-class variance, which is equivalent to minimising the within-class variance. It works well when the histogram is bimodal, with clear object and background peaks.",
-      "keywords": ["binary image", "threshold", "otsu", "between-class variance", "maximise", "bimodal"]
-    },
-    {
-      "level": 4,
-      "topic": "Spatial filtering: median filter",
-      "text": "An image is corrupted with salt-and-pepper noise. Why does a median filter work better than an averaging filter here?",
-      "ideal_answer": "Salt-and-pepper noise consists of isolated pixels set to extreme values, pure white or black. An averaging filter includes these extreme values in the mean, so the noise is spread into neighbouring pixels as smudges and edges are blurred. A median filter replaces each pixel with the median of its neighbourhood, so isolated extreme values are simply ignored as outliers. As a result, it removes the impulse noise effectively while preserving edges much better.",
-      "keywords": ["salt-and-pepper", "extreme values", "averaging", "median", "outliers", "preserves edges"]
-    },
-    {
-      "level": 4,
-      "topic": "Morphology: erosion, dilation, opening, closing",
-      "text": "What is the difference between morphological opening and closing, and what does each remove?",
-      "ideal_answer": "Opening is erosion followed by dilation using the same structuring element. It removes small objects and thin protrusions, breaks narrow connections and smooths the object's contour while keeping larger shapes roughly the same size. Closing is dilation followed by erosion. It fills small holes and gaps, joins narrow breaks and smooths contours from the inside. So opening removes small bright noise and closing removes small dark holes in a binary image.",
-      "keywords": ["opening", "erosion then dilation", "closing", "dilation then erosion", "structuring element", "fills holes"]
-    },
-    {
-      "level": 5,
-      "topic": "Image restoration in spatial and frequency domains",
-      "text": "A photo is blurred due to camera motion and also has noise. Why does simple inverse filtering perform poorly, and what would you use instead?",
-      "ideal_answer": "Restoration models the degraded image as the original convolved with a degradation function plus noise. Inverse filtering divides the degraded image's Fourier transform by the degradation function H. Where H has values close to zero, usually at high frequencies, the noise term is divided by a tiny number and becomes hugely amplified, ruining the result. A Wiener filter is better because it minimises mean square error by considering both the degradation function and the noise-to-signal power ratio, reducing the restoration where noise dominates. Constrained least squares filtering is another option.",
-      "keywords": ["degradation function", "inverse filtering", "near zero", "noise amplified", "wiener filter", "mean square error"]
-    },
-    {
-      "level": 5,
-      "topic": "Point, line and edge detection, gradient operators",
-      "text": "Your edge detector using the Laplacian produces many false edges on a noisy image. Why, and how would you improve it?",
-      "ideal_answer": "The Laplacian is a second derivative operator, and derivatives are very sensitive to noise, so random intensity changes are detected as edges. Also, it does not give edge direction and can produce double edges. A better approach is to smooth the image first with a Gaussian filter, as in the Laplacian of Gaussian, or use first-derivative gradient operators like Sobel, which include some smoothing. The Canny edge detector is usually best: it applies Gaussian smoothing, computes the gradient, uses non-maximum suppression to thin edges and hysteresis thresholding to remove weak false edges.",
-      "keywords": ["second derivative", "sensitive to noise", "gaussian smoothing", "sobel", "canny", "non-maximum suppression", "hysteresis"]
-    },
-    {
-      "level": 6,
-      "topic": "Image compression: error-free and lossy, JPEG",
-      "text": "A hospital wants to store X-ray images and also show thumbnails on a website. What compression approaches would you recommend for each and why?",
-      "ideal_answer": "For diagnostic X-ray images, lossless or error-free compression such as PNG, lossless JPEG 2000 or the DICOM lossless options should be used, because any lost detail could affect diagnosis and there may be legal requirements. These use methods like run-length, Huffman or LZW coding to remove redundancy without losing information. For website thumbnails, lossy compression like JPEG is fine, since it uses the discrete cosine transform and quantization to discard details the eye barely notices and gives much smaller files. The trade-off is storage cost and speed versus image fidelity, and the original lossless copy should always be retained.",
-      "keywords": ["lossless", "diagnosis", "huffman", "lossy", "jpeg", "discrete cosine transform", "quantization"]
-    },
-    {
-      "level": 6,
-      "topic": "Discrete Fourier transform and frequency domain filtering",
-      "text": "Scanned documents in an archive show a regular periodic pattern of stripes. How would you remove it, and why might you choose the frequency domain over spatial filtering?",
-      "ideal_answer": "Periodic noise appears in the Fourier spectrum as bright, isolated spikes at specific frequencies, which is hard to target in the spatial domain. I would compute the 2D discrete Fourier transform using the FFT, locate these spikes, and apply a notch reject or band reject filter to suppress them, then take the inverse transform. Ideal filters with sharp cut-offs cause ringing, so smooth Butterworth or Gaussian notch filters are preferred. Spatial smoothing would blur text along with the stripes, while frequency filtering removes only the noise frequencies.",
-      "keywords": ["periodic noise", "fourier transform", "spikes", "notch filter", "inverse transform", "ringing"]
-    }
-  ]
+ "subject": "Digital Image Processing",
+ "applies_to": [
+  {
+   "course": "BCA",
+   "year": 3,
+   "semester": 5
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Steps in digital image processing and applications",
+   "text": "What is digital image processing, and what are its main steps?",
+   "ideal_answer": "Digital image processing is the use of computer algorithms to process and analyse digital images, which are 2D arrays of pixels. The main steps are image acquisition, image enhancement, image restoration, colour image processing, compression, morphological processing, segmentation, representation and description, and object recognition. Applications include medical imaging, satellite imaging, face recognition, OCR and industrial inspection.",
+   "keywords": [
+    "pixels",
+    "acquisition",
+    "enhancement",
+    "restoration",
+    "segmentation",
+    "recognition"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Image sampling, quantization and pixel relationships",
+   "text": "What are sampling and quantization in image digitisation?",
+   "ideal_answer": "Sampling is digitising the spatial coordinates of a continuous image, meaning choosing how many pixels are taken in each direction, which decides the spatial resolution. Quantization is digitising the amplitude or intensity values, meaning mapping each sample's brightness to a limited number of grey levels, such as 256 levels for 8 bits. Too little sampling causes blocky images and aliasing, and too few grey levels cause false contouring.",
+   "keywords": [
+    "sampling",
+    "spatial coordinates",
+    "resolution",
+    "quantization",
+    "intensity",
+    "grey levels"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Grey level transformations",
+   "text": "What is an image negative, and where is it useful?",
+   "ideal_answer": "An image negative reverses the intensity levels of an image using the transformation s = L - 1 - r, where r is the input intensity, s is the output intensity and L is the number of grey levels. For an 8-bit image, s = 255 - r, so dark areas become bright and bright areas become dark. It is useful for enhancing white or grey detail embedded in large dark regions, such as in medical images like mammograms.",
+   "keywords": [
+    "reverses intensity",
+    "maximum grey level minus input",
+    "255 minus r",
+    "dark becomes bright",
+    "medical images",
+    "grey levels"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Spatial filtering: smoothing and sharpening filters",
+   "text": "What is the difference between smoothing and sharpening spatial filters?",
+   "ideal_answer": "Smoothing filters are low-pass filters that reduce noise and blur the image by averaging pixel values in a neighbourhood, such as the mean filter, Gaussian filter, or the non-linear median filter. Sharpening filters are high-pass filters that highlight edges and fine details by emphasising intensity changes, using derivatives such as the Laplacian or unsharp masking. Smoothing removes small details while sharpening enhances them, but sharpening also amplifies noise.",
+   "keywords": [
+    "smoothing",
+    "low-pass",
+    "averaging",
+    "sharpening",
+    "high-pass",
+    "laplacian",
+    "edges"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Histogram processing",
+   "text": "How does histogram equalization improve the contrast of a dark image?",
+   "ideal_answer": "A histogram shows how many pixels have each intensity value; a dark low-contrast image has its histogram crowded into a narrow range of low values. Histogram equalization computes the cumulative distribution function of the histogram and uses it to map each input intensity to a new value, scaled to the full range of 0 to L minus 1. This spreads the intensities more evenly across the whole range, so the output histogram is approximately flat and contrast increases. It is automatic but can over-enhance noise, so adaptive methods like CLAHE are sometimes used.",
+   "keywords": [
+    "histogram",
+    "cumulative distribution",
+    "mapping",
+    "full range",
+    "spread",
+    "contrast"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Thresholding and region-based segmentation",
+   "text": "How does Otsu's thresholding method choose a threshold to separate an object from the background?",
+   "ideal_answer": "Thresholding converts a grey image into a binary image by setting pixels above a threshold to one value and the rest to another. Otsu's method automatically chooses the threshold by trying every possible grey level and, for each, computing the between-class variance of the two resulting groups. It selects the threshold that maximises the between-class variance, which is equivalent to minimising the within-class variance. It works well when the histogram is bimodal, with clear object and background peaks.",
+   "keywords": [
+    "binary image",
+    "threshold",
+    "otsu",
+    "between-class variance",
+    "maximise",
+    "bimodal"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Spatial filtering: median filter",
+   "text": "An image is corrupted with salt-and-pepper noise. Why does a median filter work better than an averaging filter here?",
+   "ideal_answer": "Salt-and-pepper noise consists of isolated pixels set to extreme values, pure white or black. An averaging filter includes these extreme values in the mean, so the noise is spread into neighbouring pixels as smudges and edges are blurred. A median filter replaces each pixel with the median of its neighbourhood, so isolated extreme values are simply ignored as outliers. As a result, it removes the impulse noise effectively while preserving edges much better.",
+   "keywords": [
+    "salt-and-pepper",
+    "extreme values",
+    "averaging",
+    "median",
+    "outliers",
+    "preserves edges"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Morphology: erosion, dilation, opening, closing",
+   "text": "What is the difference between morphological opening and closing, and what does each remove?",
+   "ideal_answer": "Opening is erosion followed by dilation using the same structuring element. It removes small objects and thin protrusions, breaks narrow connections and smooths the object's contour while keeping larger shapes roughly the same size. Closing is dilation followed by erosion. It fills small holes and gaps, joins narrow breaks and smooths contours from the inside. So opening removes small bright noise and closing removes small dark holes in a binary image.",
+   "keywords": [
+    "opening",
+    "erosion then dilation",
+    "closing",
+    "dilation then erosion",
+    "structuring element",
+    "fills holes"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Image restoration in spatial and frequency domains",
+   "text": "A photo is blurred due to camera motion and also has noise. Why does simple inverse filtering perform poorly, and what would you use instead?",
+   "ideal_answer": "Restoration models the degraded image as the original convolved with a degradation function plus noise. Inverse filtering divides the degraded image's Fourier transform by the degradation function H. Where H has values close to zero, usually at high frequencies, the noise term is divided by a tiny number and becomes hugely amplified, ruining the result. A Wiener filter is better because it minimises mean square error by considering both the degradation function and the noise-to-signal power ratio, reducing the restoration where noise dominates. Constrained least squares filtering is another option.",
+   "keywords": [
+    "degradation function",
+    "inverse filtering",
+    "near zero",
+    "noise amplified",
+    "wiener filter",
+    "mean square error"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Point, line and edge detection, gradient operators",
+   "text": "Your edge detector using the Laplacian produces many false edges on a noisy image. Why, and how would you improve it?",
+   "ideal_answer": "The Laplacian is a second derivative operator, and derivatives are very sensitive to noise, so random intensity changes are detected as edges. Also, it does not give edge direction and can produce double edges. A better approach is to smooth the image first with a Gaussian filter, as in the Laplacian of Gaussian, or use first-derivative gradient operators like Sobel, which include some smoothing. The Canny edge detector is usually best: it applies Gaussian smoothing, computes the gradient, uses non-maximum suppression to thin edges and hysteresis thresholding to remove weak false edges.",
+   "keywords": [
+    "second derivative",
+    "sensitive to noise",
+    "gaussian smoothing",
+    "sobel",
+    "canny",
+    "non-maximum suppression",
+    "hysteresis"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Image compression: error-free and lossy, JPEG",
+   "text": "A hospital wants to store X-ray images and also show thumbnails on a website. What compression approaches would you recommend for each and why?",
+   "ideal_answer": "For diagnostic X-ray images, lossless or error-free compression such as PNG, lossless JPEG 2000 or the DICOM lossless options should be used, because any lost detail could affect diagnosis and there may be legal requirements. These use methods like run-length, Huffman or LZW coding to remove redundancy without losing information. For website thumbnails, lossy compression like JPEG is fine, since it uses the discrete cosine transform and quantization to discard details the eye barely notices and gives much smaller files. The trade-off is storage cost and speed versus image fidelity, and the original lossless copy should always be retained.",
+   "keywords": [
+    "lossless",
+    "diagnosis",
+    "huffman",
+    "lossy",
+    "jpeg",
+    "discrete cosine transform",
+    "quantization"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Discrete Fourier transform and frequency domain filtering",
+   "text": "Scanned documents in an archive show a regular periodic pattern of stripes. How would you remove it, and why might you choose the frequency domain over spatial filtering?",
+   "ideal_answer": "Periodic noise appears in the Fourier spectrum as bright, isolated spikes at specific frequencies, which is hard to target in the spatial domain. I would compute the 2D discrete Fourier transform using the FFT, locate these spikes, and apply a notch reject or band reject filter to suppress them, then take the inverse transform. Ideal filters with sharp cut-offs cause ringing, so smooth Butterworth or Gaussian notch filters are preferred. Spatial smoothing would blur text along with the stripes, while frequency filtering removes only the noise frequencies.",
+   "keywords": [
+    "periodic noise",
+    "fourier transform",
+    "spikes",
+    "notch filter",
+    "inverse transform",
+    "ringing"
+   ]
+  }
+ ]
 }

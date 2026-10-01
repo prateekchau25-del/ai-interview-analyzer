@@ -1,187 +1,187 @@
 {
-  "subject": "Linear Algebra and Calculus",
-  "applies_to": [
-    {
-      "course": "BSC_DS",
-      "year": 2,
-      "semester": 3
-    },
-    {
-      "course": "BSC_AI",
-      "year": 1,
-      "semester": 1
-    }
-  ],
-  "questions": [
-    {
-      "level": 1,
-      "topic": "Eigenvalues, eigenvectors and diagonalization",
-      "text": "What are an eigenvalue and an eigenvector of a matrix?",
-      "ideal_answer": "For a square matrix A, a non-zero vector v is an eigenvector if multiplying it by A only scales it, that is A v equals lambda v. The scalar lambda is the corresponding eigenvalue. So the eigenvector keeps its direction, or reverses it, under the transformation, and the eigenvalue tells how much it is stretched or shrunk. Eigenvalues are found by solving the characteristic equation det(A minus lambda I) equals zero.",
-      "keywords": [
-        "square matrix",
-        "non-zero vector",
-        "lambda",
-        "scalar",
-        "direction",
-        "characteristic equation"
-      ]
-    },
-    {
-      "level": 1,
-      "topic": "Linear independence, basis, dimension",
-      "text": "What is a basis of a vector space and what is its dimension?",
-      "ideal_answer": "A basis of a vector space is a set of vectors that are linearly independent and span the space, meaning every vector in the space can be written uniquely as a linear combination of them. The dimension of the space is the number of vectors in any basis. For example, the standard basis of R3 is (1,0,0), (0,1,0) and (0,0,1), so R3 has dimension 3.",
-      "keywords": [
-        "linearly independent",
-        "span",
-        "linear combination",
-        "basis",
-        "dimension",
-        "number of vectors"
-      ]
-    },
-    {
-      "level": 2,
-      "topic": "Linear independence",
-      "text": "What is the difference between linearly independent and linearly dependent vectors? Give an example.",
-      "ideal_answer": "Vectors are linearly independent if the only linear combination of them that gives the zero vector is the one with all coefficients zero; none of them can be written using the others. They are linearly dependent if some non-trivial combination gives zero, meaning at least one vector is a combination of the others. For example, (1,0) and (0,1) are independent, while (1,2) and (2,4) are dependent because (2,4) is 2 times (1,2).",
-      "keywords": [
-        "linear combination",
-        "zero vector",
-        "coefficients zero",
-        "independent",
-        "dependent",
-        "example"
-      ]
-    },
-    {
-      "level": 2,
-      "topic": "Matrix multiplication, inverses and transposes",
-      "text": "What is the transpose of a matrix, and what is the rule for the transpose and inverse of a product AB?",
-      "ideal_answer": "The transpose of a matrix A, written A transpose, is obtained by turning its rows into columns, so the element in row i, column j moves to row j, column i. For a product, the order reverses: (AB) transpose equals B transpose times A transpose. Similarly, if A and B are invertible, (AB) inverse equals B inverse times A inverse. A matrix equal to its own transpose is called symmetric.",
-      "keywords": [
-        "rows",
-        "columns",
-        "transpose",
-        "order reverses",
-        "b inverse times a inverse",
-        "symmetric"
-      ]
-    },
-    {
-      "level": 3,
-      "topic": "Geometry of linear equations and Gaussian elimination",
-      "text": "How does Gaussian elimination solve a system Ax = b?",
-      "ideal_answer": "Gaussian elimination writes the augmented matrix [A | b] and uses elementary row operations, subtracting multiples of a pivot row from the rows below it, to create zeros below each pivot. This turns A into an upper triangular matrix U. The system is then solved by back substitution, starting from the last equation and moving upward. If a zero pivot appears, rows are exchanged; if no non-zero pivot is available, the matrix is singular and the system has either no solution or infinitely many.",
-      "keywords": [
-        "augmented matrix",
-        "row operations",
-        "pivot",
-        "upper triangular",
-        "back substitution",
-        "singular"
-      ]
-    },
-    {
-      "level": 3,
-      "topic": "Determinants: properties, formulas and applications",
-      "text": "Find the determinant of the 2 by 2 matrix with rows (3, 1) and (4, 2), and say what it tells you about the matrix.",
-      "ideal_answer": "For a 2 by 2 matrix with rows (a, b) and (c, d), the determinant is ad minus bc. Here it is 3 times 2 minus 1 times 4, which equals 6 minus 4, so the determinant is 2. Since the determinant is non-zero, the matrix is invertible, its columns are linearly independent, and Ax = b has a unique solution. Geometrically, the transformation scales areas by a factor of 2.",
-      "keywords": [
-        "ad minus bc",
-        "determinant",
-        "2",
-        "non-zero",
-        "invertible",
-        "area"
-      ]
-    },
-    {
-      "level": 4,
-      "topic": "Vector spaces, subspaces, solving Ax=0 and Ax=b",
-      "text": "If a 3 by 3 matrix A has rank 2, what can you say about the solutions of Ax = 0 and Ax = b? Explain why.",
-      "ideal_answer": "Since the rank is 2, which is less than the number of columns, there is one free variable, so the null space has dimension 3 minus 2, which is 1. Therefore Ax = 0 has infinitely many solutions, all multiples of one non-zero null-space vector, besides the zero solution. Ax = b has a solution only if b lies in the column space of A, which is a plane; then there are infinitely many solutions, a particular solution plus any null-space vector. If b is not in the column space, there is no solution. Also, A is singular and its determinant is zero.",
-      "keywords": [
-        "rank",
-        "free variable",
-        "null space",
-        "infinitely many",
-        "column space",
-        "particular solution",
-        "singular"
-      ]
-    },
-    {
-      "level": 4,
-      "topic": "Eigenvalues, eigenvectors and diagonalization",
-      "text": "When can a matrix be diagonalized, and why is diagonalization useful for computing A to the power 100?",
-      "ideal_answer": "An n by n matrix can be diagonalized if it has n linearly independent eigenvectors; this is guaranteed when it has n distinct eigenvalues, and every real symmetric matrix is diagonalizable. Then A equals S Lambda S inverse, where S has the eigenvectors as columns and Lambda is the diagonal matrix of eigenvalues. Powers become easy because A to the k equals S Lambda to the k S inverse, and Lambda to the k just raises each eigenvalue to the power k. So computing A to the 100 needs only powers of numbers instead of 99 matrix multiplications.",
-      "keywords": [
-        "n linearly independent eigenvectors",
-        "distinct eigenvalues",
-        "eigenvalues",
-        "diagonal matrix",
-        "powers",
-        "symmetric"
-      ]
-    },
-    {
-      "level": 5,
-      "topic": "Orthogonality, projections, least squares",
-      "text": "You have many data points and want to fit a straight line, but the system Ax = b has no exact solution. How does least squares find the best line?",
-      "ideal_answer": "With more equations than unknowns, b usually is not in the column space of A, so no exact solution exists. Least squares finds x-hat that minimises the squared error, the length of b minus A x squared. This happens when the error vector is orthogonal to the column space, which gives the normal equations A transpose A x-hat equals A transpose b. A x-hat is then the projection of b onto the column space. For a line y = C + Dt, A has a column of ones and a column of t values.",
-      "keywords": [
-        "column space",
-        "squared error",
-        "orthogonal",
-        "normal equations",
-        "a transpose a",
-        "projection"
-      ]
-    },
-    {
-      "level": 5,
-      "topic": "Matrix norm, condition number and iterative methods for Ax=b",
-      "text": "A small change in b causes a huge change in the solution of Ax = b. What property of A explains this and how do you deal with it?",
-      "ideal_answer": "This means A is ill-conditioned, measured by its condition number, the norm of A times the norm of A inverse, or the ratio of the largest to smallest singular value. A large condition number means relative errors in b, including rounding errors, can be magnified by up to that factor in x. To deal with it, use numerically stable methods such as partial pivoting, QR or SVD, use higher precision, rescale the variables, or use regularisation like ridge regression to stabilise the solution.",
-      "keywords": [
-        "ill-conditioned",
-        "condition number",
-        "singular value",
-        "error",
-        "pivoting",
-        "regularisation"
-      ]
-    },
-    {
-      "level": 6,
-      "topic": "Singular value decomposition",
-      "text": "In a data science project you have a large user-item ratings matrix and need to reduce its size while keeping the main patterns. How would SVD help, and what trade-offs would you consider?",
-      "ideal_answer": "SVD factorises the matrix as A equals U Sigma V transpose, where U and V have orthonormal columns and Sigma is a diagonal matrix of non-negative singular values in decreasing order. Keeping only the k largest singular values and their vectors gives the best rank-k approximation of A, capturing the main latent patterns, such as user tastes, with much less storage, and this is the basis of PCA and recommender systems. The trade-off is choosing k: too small loses information, too large keeps noise and costs more. Full SVD is expensive for very large or sparse matrices, so truncated or randomised SVD is used in practice, and missing ratings need special handling.",
-      "keywords": [
-        "orthonormal",
-        "singular values",
-        "rank-k approximation",
-        "best rank-k approximation",
-        "latent",
-        "choosing k",
-        "truncated"
-      ]
-    },
-    {
-      "level": 6,
-      "topic": "Positive definite matrices; minima, maxima and saddle points",
-      "text": "While optimising a machine learning loss function you reach a point where the gradient is zero. How would you use the Hessian matrix to decide whether it is a minimum, maximum or saddle point?",
-      "ideal_answer": "A zero gradient means a critical point, which could be a minimum, a maximum or a saddle point. The Hessian is the matrix of second partial derivatives at that point. If the Hessian is positive definite, meaning all its eigenvalues are positive, the point is a local minimum; if it is negative definite, all eigenvalues negative, it is a local maximum; and if it has both positive and negative eigenvalues it is a saddle point. In high-dimensional deep learning, saddle points are common, which is why optimisers like SGD with momentum help escape them.",
-      "keywords": [
-        "critical point",
-        "hessian",
-        "second partial derivatives",
-        "positive definite",
-        "eigenvalues",
-        "saddle point"
-      ]
-    }
-  ]
+ "subject": "Linear Algebra and Calculus",
+ "applies_to": [
+  {
+   "course": "BSC_DS",
+   "year": 2,
+   "semester": 3
+  },
+  {
+   "course": "BSC_AI",
+   "year": 1,
+   "semester": 1
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Eigenvalues, eigenvectors and diagonalization",
+   "text": "What are an eigenvalue and an eigenvector of a matrix?",
+   "ideal_answer": "For a square matrix A, a non-zero vector v is an eigenvector if multiplying it by A only scales it, that is A v equals lambda v. The scalar lambda is the corresponding eigenvalue. So the eigenvector keeps its direction, or reverses it, under the transformation, and the eigenvalue tells how much it is stretched or shrunk. Eigenvalues are found by solving the characteristic equation det(A minus lambda I) equals zero.",
+   "keywords": [
+    "square matrix",
+    "non-zero vector",
+    "lambda",
+    "scalar",
+    "direction",
+    "characteristic equation"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Linear independence, basis, dimension",
+   "text": "What is a basis of a vector space and what is its dimension?",
+   "ideal_answer": "A basis of a vector space is a set of vectors that are linearly independent and span the space, meaning every vector in the space can be written uniquely as a linear combination of them. The dimension of the space is the number of vectors in any basis. For example, the standard basis of R3 is (1,0,0), (0,1,0) and (0,0,1), so R3 has dimension 3.",
+   "keywords": [
+    "linearly independent",
+    "span",
+    "linear combination",
+    "basis",
+    "dimension",
+    "number of vectors"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Linear independence",
+   "text": "What is the difference between linearly independent and linearly dependent vectors? Give an example.",
+   "ideal_answer": "Vectors are linearly independent if the only linear combination of them that gives the zero vector is the one with all coefficients zero; none of them can be written using the others. They are linearly dependent if some non-trivial combination gives zero, meaning at least one vector is a combination of the others. For example, (1,0) and (0,1) are independent, while (1,2) and (2,4) are dependent because (2,4) is 2 times (1,2).",
+   "keywords": [
+    "linear combination",
+    "zero vector",
+    "coefficients zero",
+    "independent",
+    "dependent",
+    "example"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Matrix multiplication, inverses and transposes",
+   "text": "What is the transpose of a matrix, and what is the rule for the transpose and inverse of a product AB?",
+   "ideal_answer": "The transpose of a matrix A, written A transpose, is obtained by turning its rows into columns, so the element in row i, column j moves to row j, column i. For a product, the order reverses: (AB) transpose equals B transpose times A transpose. Similarly, if A and B are invertible, (AB) inverse equals B inverse times A inverse. A matrix equal to its own transpose is called symmetric.",
+   "keywords": [
+    "rows",
+    "columns",
+    "transpose",
+    "order reverses",
+    "b inverse times a inverse",
+    "symmetric"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Geometry of linear equations and Gaussian elimination",
+   "text": "How does Gaussian elimination solve a system Ax = b?",
+   "ideal_answer": "Gaussian elimination writes the augmented matrix [A | b] and uses elementary row operations, subtracting multiples of a pivot row from the rows below it, to create zeros below each pivot. This turns A into an upper triangular matrix U. The system is then solved by back substitution, starting from the last equation and moving upward. If a zero pivot appears, rows are exchanged; if no non-zero pivot is available, the matrix is singular and the system has either no solution or infinitely many.",
+   "keywords": [
+    "augmented matrix",
+    "row operations",
+    "pivot",
+    "upper triangular",
+    "back substitution",
+    "singular"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Determinants: properties, formulas and applications",
+   "text": "Find the determinant of the 2 by 2 matrix with rows (3, 1) and (4, 2), and say what it tells you about the matrix.",
+   "ideal_answer": "For a 2 by 2 matrix with rows (a, b) and (c, d), the determinant is ad minus bc. Here it is 3 times 2 minus 1 times 4, which equals 6 minus 4, so the determinant is 2. Since the determinant is non-zero, the matrix is invertible, its columns are linearly independent, and Ax = b has a unique solution. Geometrically, the transformation scales areas by a factor of 2.",
+   "keywords": [
+    "ad minus bc",
+    "determinant",
+    "2",
+    "non-zero",
+    "invertible",
+    "area"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Vector spaces, subspaces, solving Ax=0 and Ax=b",
+   "text": "If a 3 by 3 matrix A has rank 2, what can you say about the solutions of Ax = 0 and Ax = b? Explain why.",
+   "ideal_answer": "Since the rank is 2, which is less than the number of columns, there is one free variable, so the null space has dimension 3 minus 2, which is 1. Therefore Ax = 0 has infinitely many solutions, all multiples of one non-zero null-space vector, besides the zero solution. Ax = b has a solution only if b lies in the column space of A, which is a plane; then there are infinitely many solutions, a particular solution plus any null-space vector. If b is not in the column space, there is no solution. Also, A is singular and its determinant is zero.",
+   "keywords": [
+    "rank",
+    "free variable",
+    "null space",
+    "infinitely many",
+    "column space",
+    "particular solution",
+    "singular"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Eigenvalues, eigenvectors and diagonalization",
+   "text": "When can a matrix be diagonalized, and why is diagonalization useful for computing A to the power 100?",
+   "ideal_answer": "An n by n matrix can be diagonalized if it has n linearly independent eigenvectors; this is guaranteed when it has n distinct eigenvalues, and every real symmetric matrix is diagonalizable. Then A equals S Lambda S inverse, where S has the eigenvectors as columns and Lambda is the diagonal matrix of eigenvalues. Powers become easy because A to the k equals S Lambda to the k S inverse, and Lambda to the k just raises each eigenvalue to the power k. So computing A to the 100 needs only powers of numbers instead of 99 matrix multiplications.",
+   "keywords": [
+    "n linearly independent eigenvectors",
+    "distinct eigenvalues",
+    "eigenvalues",
+    "diagonal matrix",
+    "powers",
+    "symmetric"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Orthogonality, projections, least squares",
+   "text": "You have many data points and want to fit a straight line, but the system Ax = b has no exact solution. How does least squares find the best line?",
+   "ideal_answer": "With more equations than unknowns, b usually is not in the column space of A, so no exact solution exists. Least squares finds x-hat that minimises the squared error, the length of b minus A x squared. This happens when the error vector is orthogonal to the column space, which gives the normal equations A transpose A x-hat equals A transpose b. A x-hat is then the projection of b onto the column space. For a line y = C + Dt, A has a column of ones and a column of t values.",
+   "keywords": [
+    "column space",
+    "squared error",
+    "orthogonal",
+    "normal equations",
+    "a transpose a",
+    "projection"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Matrix norm, condition number and iterative methods for Ax=b",
+   "text": "A small change in b causes a huge change in the solution of Ax = b. What property of A explains this and how do you deal with it?",
+   "ideal_answer": "This means A is ill-conditioned, measured by its condition number, the norm of A times the norm of A inverse, or the ratio of the largest to smallest singular value. A large condition number means relative errors in b, including rounding errors, can be magnified by up to that factor in x. To deal with it, use numerically stable methods such as partial pivoting, QR or SVD, use higher precision, rescale the variables, or use regularisation like ridge regression to stabilise the solution.",
+   "keywords": [
+    "ill-conditioned",
+    "condition number",
+    "singular value",
+    "error",
+    "pivoting",
+    "regularisation"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Singular value decomposition",
+   "text": "In a data science project you have a large user-item ratings matrix and need to reduce its size while keeping the main patterns. How would SVD help, and what trade-offs would you consider?",
+   "ideal_answer": "SVD factorises the matrix as A equals U Sigma V transpose, where U and V have orthonormal columns and Sigma is a diagonal matrix of non-negative singular values in decreasing order. Keeping only the k largest singular values and their vectors gives the best rank-k approximation of A, capturing the main latent patterns, such as user tastes, with much less storage, and this is the basis of PCA and recommender systems. The trade-off is choosing k: too small loses information, too large keeps noise and costs more. Full SVD is expensive for very large or sparse matrices, so truncated or randomised SVD is used in practice, and missing ratings need special handling.",
+   "keywords": [
+    "orthonormal",
+    "singular values",
+    "rank-k approximation",
+    "best rank-k approximation",
+    "latent",
+    "choosing k",
+    "truncated"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Positive definite matrices; minima, maxima and saddle points",
+   "text": "While optimising a machine learning loss function you reach a point where the gradient is zero. How would you use the Hessian matrix to decide whether it is a minimum, maximum or saddle point?",
+   "ideal_answer": "A zero gradient means a critical point, which could be a minimum, a maximum or a saddle point. The Hessian is the matrix of second partial derivatives at that point. If the Hessian is positive definite, meaning all its eigenvalues are positive, the point is a local minimum; if it is negative definite, all eigenvalues negative, it is a local maximum; and if it has both positive and negative eigenvalues it is a saddle point. In high-dimensional deep learning, saddle points are common, which is why optimisers like SGD with momentum help escape them.",
+   "keywords": [
+    "critical point",
+    "hessian",
+    "second partial derivatives",
+    "positive definite",
+    "eigenvalues",
+    "saddle point"
+   ]
+  }
+ ]
 }

@@ -31,7 +31,7 @@
         "incrementally",
         "partial solution",
         "abandon",
-        "go back",
+        "goes back",
         "state space tree",
         "depth-first"
       ]
@@ -86,10 +86,10 @@
       "keywords": [
         "source",
         "infinity",
-        "smallest distance",
+        "smallest tentative distance",
         "relax",
         "priority queue",
-        "non-negative weights"
+        "non-negative"
       ]
     },
     {
@@ -156,7 +156,7 @@
       "keywords": [
         "directed graph",
         "topological sort",
-        "dag",
+        "directed acyclic graph",
         "in-degree",
         "cycle",
         "kahn"
@@ -171,7 +171,7 @@
         "travelling salesman",
         "np-hard",
         "np-complete",
-        "polynomial time",
+        "polynomial-time",
         "heuristics",
         "approximation"
       ]

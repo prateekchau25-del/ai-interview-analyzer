@@ -1,90 +1,182 @@
 {
   "subject": "Introduction to Programming with Python",
-  "applies_to": [{"course": "BSC_DS", "year": 1, "semester": 1}],
+  "applies_to": [
+    {
+      "course": "BSC_DS",
+      "year": 1,
+      "semester": 1
+    }
+  ],
   "questions": [
     {
       "level": 1,
       "topic": "Features of Python",
       "text": "What is Python and what are its main features?",
       "ideal_answer": "Python is a high-level, general-purpose programming language created by Guido van Rossum. It is interpreted, so code runs line by line without a separate compile step by the programmer. It is dynamically typed, has a simple readable syntax using indentation, and is object-oriented as well as procedural. It is open source, platform independent and has a large standard library and many third-party packages.",
-      "keywords": ["high-level", "interpreted", "dynamically typed", "readable", "open source", "library"]
+      "keywords": [
+        "high-level",
+        "interpreted",
+        "dynamically typed",
+        "readable",
+        "open source",
+        "library"
+      ]
     },
     {
       "level": 1,
       "topic": "Comments, docstrings, data types and variables",
       "text": "What is a docstring in Python and how is it different from a comment?",
       "ideal_answer": "A docstring is a string literal written in triple quotes as the first statement of a module, function or class to describe what it does. A comment starts with a hash symbol and is ignored completely by the interpreter. A docstring, unlike a comment, is stored with the object and can be accessed at runtime using the __doc__ attribute or the help() function. Docstrings are used for documentation, while comments explain code to readers.",
-      "keywords": ["triple quotes", "first statement", "function", "hash", "ignored", "doc attribute", "help"]
+      "keywords": [
+        "triple quotes",
+        "first statement",
+        "function",
+        "hash",
+        "ignored",
+        "doc attribute",
+        "help"
+      ]
     },
     {
       "level": 2,
       "topic": "Execution of a Python program and the Python interpreter",
       "text": "Explain how a Python program is executed.",
       "ideal_answer": "When we run a Python program, the source code in the .py file is first compiled by the Python compiler into byte code, which is a low-level, platform-independent set of instructions. The byte code may be saved as a .pyc file in the __pycache__ folder. The Python Virtual Machine, or PVM, then interprets this byte code and converts it into machine code that the computer executes. In the standard CPython implementation this happens automatically, so the programmer only runs the python command.",
-      "keywords": ["source code", "byte code", "pyc", "python virtual machine", "interprets", "machine code"]
+      "keywords": [
+        "source code",
+        "byte code",
+        "pyc",
+        "python virtual machine",
+        "interprets",
+        "machine code"
+      ]
     },
     {
       "level": 2,
       "topic": "Control statements: break, continue, pass",
       "text": "What is the difference between break, continue and pass in Python?",
       "ideal_answer": "The break statement immediately exits the loop it is in, and control goes to the statement after the loop. The continue statement skips the remaining statements of the current iteration and moves to the next iteration of the loop. The pass statement does nothing; it is a placeholder used where a statement is syntactically required, such as an empty function or loop body. For example, in a loop over numbers, break stops at a condition, continue skips only that number, and pass has no effect.",
-      "keywords": ["break", "exits the loop", "continue", "next iteration", "pass", "placeholder"]
+      "keywords": [
+        "break",
+        "exits the loop",
+        "continue",
+        "next iteration",
+        "pass",
+        "placeholder"
+      ]
     },
     {
       "level": 3,
       "topic": "Input function, output statements and command line arguments",
       "text": "How do you read command line arguments in a Python program? If you run 'python add.py 5 7', how would the program get 5 and 7?",
       "ideal_answer": "Command line arguments are accessed using the argv list from the sys module, after writing import sys. sys.argv[0] is the script name, here add.py, and sys.argv[1] and sys.argv[2] are '5' and '7'. All arguments are received as strings, so they must be converted using int() before adding. For example, int(sys.argv[1]) + int(sys.argv[2]) gives 12. The length of sys.argv tells how many arguments were passed.",
-      "keywords": ["sys", "argv", "script name", "strings", "int", "12"]
+      "keywords": [
+        "sys",
+        "argv",
+        "script name",
+        "strings",
+        "int",
+        "12"
+      ]
     },
     {
       "level": 3,
       "topic": "Defining and calling functions, returning multiple values",
       "text": "How can a Python function return multiple values? Explain with a simple example.",
       "ideal_answer": "A Python function can return multiple values by listing them separated by commas in the return statement. Python packs these values into a tuple automatically. For example, a function calc(a, b) can return a + b, a - b. The caller can unpack the result into separate variables, like s, d = calc(10, 4), which gives s as 14 and d as 6. This is simpler than languages like C where you would need pointers or structures.",
-      "keywords": ["return", "commas", "tuple", "unpack", "variables", "example"]
+      "keywords": [
+        "return",
+        "commas",
+        "tuple",
+        "unpack",
+        "variables",
+        "example"
+      ]
     },
     {
       "level": 4,
       "topic": "Operators: identity and membership",
       "text": "What is the difference between the '==' operator and the 'is' operator? Predict the output of: a = [1, 2]; b = [1, 2]; print(a == b, a is b).",
       "ideal_answer": "The == operator is a relational operator that compares the values of two objects. The is operator is an identity operator that checks whether two variables refer to the same object in memory, that is, whether their id() is the same. In the example, a and b are two separate list objects with equal contents. So a == b is True but a is b is False, and the output is True False.",
-      "keywords": ["values", "identity", "same object", "memory", "id", "true false"]
+      "keywords": [
+        "values",
+        "identity",
+        "same object",
+        "memory",
+        "id",
+        "true false"
+      ]
     },
     {
       "level": 4,
       "topic": "Recursive functions and lambda (anonymous) functions",
       "text": "Compare recursion and iteration in Python. Why can a deeply recursive function fail?",
       "ideal_answer": "Recursion is when a function calls itself with a smaller problem until it reaches a base case, while iteration repeats statements using loops. Recursion gives short, elegant code for problems like factorial or tree traversal, but each call adds a new frame to the call stack, using more memory and time. Python limits recursion depth, by default about 1000 calls, so very deep recursion raises a RecursionError. Missing or wrong base cases also cause infinite recursion. Iteration is usually more memory-efficient in Python.",
-      "keywords": ["calls itself", "base case", "loops", "call stack", "recursion depth", "recursionerror"]
+      "keywords": [
+        "calls itself",
+        "base case",
+        "loops",
+        "call stack",
+        "recursion depth",
+        "recursionerror"
+      ]
     },
     {
       "level": 5,
       "topic": "Defining functions: parameters and arguments",
       "text": "A function is defined as def add_item(item, lst=[]): lst.append(item); return lst. Calling it twice without lst gives [1] and then [1, 2]. Why does this happen and how do you fix it?",
       "ideal_answer": "Default argument values are evaluated only once, when the function is defined, not every time it is called. So the same list object is shared across all calls that do not pass lst, and appending modifies that shared mutable default. This is why the second call shows both items. The fix is to use None as the default, def add_item(item, lst=None), and inside the function write if lst is None: lst = []. This creates a fresh list on each call.",
-      "keywords": ["default argument", "evaluated once", "defined", "mutable", "shared", "none"]
+      "keywords": [
+        "default argument",
+        "evaluated once",
+        "defined",
+        "mutable",
+        "shared",
+        "none"
+      ]
     },
     {
       "level": 5,
       "topic": "Arrays and NumPy array indexing, slicing and attributes",
       "text": "You slice a NumPy array, b = a[0:3], and then change b[0]. The original array a also changes. Why, and how do you avoid it?",
       "ideal_answer": "Slicing a NumPy array returns a view, not a copy, meaning the new array shares the same underlying data buffer as the original. So modifying an element through the view also modifies the original array. This is done for performance and memory efficiency with large arrays. To get an independent array, use the copy() method, for example b = a[0:3].copy(). This is different from Python lists, where slicing creates a new shallow copy.",
-      "keywords": ["view", "copy", "same data", "memory", "copy method", "lists"]
+      "keywords": [
+        "view",
+        "copy",
+        "same data",
+        "memory",
+        "copy method",
+        "lists"
+      ]
     },
     {
       "level": 6,
       "topic": "Strings: slicing, concatenation, splitting/joining, formatting",
       "text": "You must build a large report string by adding thousands of lines in a loop using '+='. A colleague says this is slow. Why, and what is the better approach?",
       "ideal_answer": "Strings in Python are immutable, so every += creates a new string object and copies the old contents into it. Inside a loop with thousands of lines, this repeated copying can make the work grow roughly quadratically and waste memory. The better approach is to append each line to a list and finally use ''.join(list) or '\\n'.join(list), which builds the result in one pass. For formatting each line, f-strings are readable and efficient. This improves performance and keeps code clean.",
-      "keywords": ["immutable", "new string", "copies", "list", "join", "f-strings"]
+      "keywords": [
+        "immutable",
+        "new string",
+        "copies",
+        "list",
+        "join",
+        "f-strings"
+      ]
     },
     {
       "level": 6,
       "topic": "Dictionaries: creation, methods, iteration and ordered dictionaries",
       "text": "You are counting how many times each word appears in a large text file. How would you do it using dictionaries, and what best practices would you follow?",
       "ideal_answer": "I would read the file line by line using a with statement so it is closed properly and does not load everything into memory. Each line is split into words, converted to lowercase and stripped of punctuation for consistency. For counting, I would use a dictionary with the get() method, like counts[w] = counts.get(w, 0) + 1, or use collections.Counter or defaultdict(int), which are cleaner. Dictionary lookups are on average constant time, so this is efficient. Finally, I can sort the items by count to get the most frequent words.",
-      "keywords": ["with statement", "line by line", "split", "lowercase", "get", "counter", "constant time"]
+      "keywords": [
+        "with statement",
+        "line by line",
+        "split",
+        "lowercase",
+        "get",
+        "counter",
+        "constant time"
+      ]
     }
   ]
 }

@@ -19,7 +19,7 @@
       "text": "What is software testing, and why is it necessary?",
       "ideal_answer": "Software testing is the process of evaluating a software product to find defects and to check that it meets the specified requirements and user needs. It is necessary because developers make mistakes, and defects that reach users can cause failures, financial loss, safety risks and damage to reputation. Testing gives confidence in quality and reduces risk. It cannot prove that software is defect-free; it can only show the presence of defects.",
       "keywords": [
-        "evaluate",
+        "evaluating",
         "defects",
         "requirements",
         "quality",
@@ -33,8 +33,8 @@
       "text": "What is regression testing?",
       "ideal_answer": "Regression testing is re-running previously passed tests after a change to the software, such as a bug fix, enhancement or configuration change, to make sure the change has not broken existing functionality. It is needed because changes in one part of the code can have unexpected side effects elsewhere. Because it is repeated often, regression testing is a strong candidate for test automation. It differs from retesting, which only checks that a specific fixed defect is now resolved.",
       "keywords": [
-        "re-running tests",
-        "after changes",
+        "re-running previously passed tests",
+        "after a change",
         "existing functionality",
         "side effects",
         "automation",
@@ -63,7 +63,7 @@
       "keywords": [
         "black-box",
         "requirements",
-        "without internal code",
+        "without any knowledge",
         "white-box",
         "internal structure",
         "coverage"
@@ -91,7 +91,7 @@
       "keywords": [
         "conditions",
         "combinations",
-        "actions",
+        "action",
         "rules",
         "four combinations",
         "test case"
@@ -107,7 +107,7 @@
         "test level",
         "acceptance testing",
         "unit testing",
-        "early testing",
+        "start early",
         "cheaper"
       ]
     },
@@ -147,7 +147,7 @@
       "keywords": [
         "load testing",
         "stress testing",
-        "concurrent users",
+        "concurrent virtual users",
         "response time",
         "jmeter",
         "bottlenecks"
@@ -160,10 +160,10 @@
       "ideal_answer": "I would use risk-based testing: identify features by business impact and likelihood of failure, so critical areas like login, fund transfer, payments and security get the most thorough testing, while low-risk cosmetic areas get lighter coverage. The test plan would define scope, objectives, approach, resources, schedule, environments, entry and exit criteria, and deliverables. I would automate regression and smoke tests in a CI pipeline, run security and performance tests, and test on a matrix of popular devices and OS versions. Progress would be tracked with defect and coverage metrics, and any remaining risks would be clearly communicated to stakeholders before the release decision.",
       "keywords": [
         "risk-based testing",
-        "prioritise",
+        "most thorough",
         "test plan",
         "exit criteria",
-        "automation",
+        "automate",
         "stakeholders"
       ]
     },
@@ -178,7 +178,7 @@
         "requirements",
         "acceptance criteria",
         "traceability matrix",
-        "early feedback"
+        "feedback early"
       ]
     }
   ]

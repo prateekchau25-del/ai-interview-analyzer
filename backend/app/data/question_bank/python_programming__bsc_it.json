@@ -32,7 +32,7 @@
     "key-value pairs",
     "curly braces",
     "unique",
-    "immutable keys",
+    "immutable",
     "mutable",
     "accessed by key"
    ]
@@ -73,11 +73,11 @@
    "ideal_answer": "Slicing s[start:stop] includes the start index and excludes the stop index, so s[1:4] gives characters at indices 1, 2 and 3, which is 'YTH'. s[::-1] uses a step of -1, so it walks backwards through the whole string and gives 'NOHTYP', the reversed string. Negative indices count from the end, with -1 as the last character, so s[-2] is 'O'. None of these change s, because strings are immutable and slicing returns a new string.",
    "keywords": [
     "slicing",
-    "stop index excluded",
+    "excludes the stop index",
     "yth",
     "step",
     "reversed",
-    "negative index",
+    "negative indices",
     "immutable"
    ]
   },
@@ -104,10 +104,9 @@
    "keywords": [
     "shared",
     "default argument",
-    "evaluated once",
-    "function definition",
+    "evaluated only once",
+    "defined",
     "same list",
-    "mutable",
     "none"
    ]
   },
@@ -164,8 +163,8 @@
     "commit",
     "rollback",
     "try-except",
-    "close connection",
-    "validation"
+    "closed",
+    "validated"
    ]
   },
   {
@@ -176,7 +175,7 @@
    "keywords": [
     "base class",
     "inheritance",
-    "method overriding",
+    "override",
     "polymorphism",
     "private attributes",
     "name mangling",

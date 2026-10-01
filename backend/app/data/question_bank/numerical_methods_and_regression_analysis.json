@@ -1,18 +1,187 @@
 {
-  "subject": "Numerical Methods and Regression Analysis",
-  "applies_to": [{"course": "BSC_IT", "year": 2, "semester": 3}],
-  "questions": [
-    {"level": 1, "topic": "Approximations and round-off errors", "text": "What is a round-off error?", "ideal_answer": "A round-off error is the error caused because a computer stores numbers with a limited number of significant digits, so the exact value is rounded or chopped. For example, one third cannot be represented exactly and is stored as 0.3333 to some precision. These small errors can accumulate over many arithmetic operations. Subtracting two nearly equal numbers can greatly magnify them, which is called subtractive cancellation.", "keywords": ["limited digits", "significant digits", "rounded", "chopped", "accumulate", "subtractive cancellation"]},
-    {"level": 1, "topic": "Linear programming: formulation and graphical solution", "text": "What is linear programming, and what are its main components?", "ideal_answer": "Linear programming is a method for finding the best value, either maximum or minimum, of a linear objective function subject to linear constraints. Its components are the decision variables, the objective function such as profit or cost, the constraints such as limited resources, and the non-negativity restrictions on variables. The set of points satisfying all constraints is the feasible region. The optimal solution lies at a corner point of the feasible region.", "keywords": ["objective function", "linear constraints", "decision variables", "non-negativity", "feasible region", "corner point"]},
-    {"level": 2, "topic": "Truncation errors and Taylor series", "text": "What is the difference between truncation error and round-off error?", "ideal_answer": "Truncation error occurs when an exact mathematical procedure is replaced by an approximation, such as using only the first few terms of an infinite Taylor series or approximating a derivative with a finite difference. Round-off error comes from representing numbers with a limited number of digits on a computer. Truncation error decreases when we use more terms or a smaller step size. Round-off error tends to increase with more computations, so very small step sizes can make total error worse.", "keywords": ["approximation", "taylor series", "finite difference", "limited digits", "step size", "total error"]},
-    {"level": 2, "topic": "Simultaneous linear equations: Gauss-Jordan and Gauss-Seidel", "text": "What is the difference between a direct method and an iterative method for solving linear equations? Give one example of each.", "ideal_answer": "A direct method gives the solution in a fixed, finite number of steps, apart from round-off errors; Gauss-Jordan elimination is an example, where the matrix is reduced to the identity form. An iterative method starts with an initial guess and repeatedly improves it until the answer converges to the required accuracy; Gauss-Seidel is an example. Gauss-Seidel uses the most recently updated values within the same iteration. Iterative methods are useful for large sparse systems but need conditions like diagonal dominance to guarantee convergence.", "keywords": ["finite steps", "gauss-jordan", "initial guess", "converges", "gauss-seidel", "diagonal dominance"]},
-    {"level": 3, "topic": "Roots of equations: bisection method", "text": "How does the bisection method find a root of f(x) = 0?", "ideal_answer": "The bisection method starts with an interval a to b where f(a) and f(b) have opposite signs, so by the intermediate value theorem a root lies between them for a continuous function. It computes the midpoint c = (a + b) / 2. If f(a) times f(c) is negative, the root is in a to c, so b is replaced by c; otherwise a is replaced by c. This halving is repeated until the interval or f(c) is smaller than the tolerance. It always converges, but slowly, since the error halves each iteration.", "keywords": ["opposite signs", "interval", "midpoint", "halving", "tolerance", "always converges", "slow"]},
-    {"level": 3, "topic": "Numerical integration: trapezoidal, Simpson's 1/3 and 3/8 rules", "text": "How does Simpson's one-third rule approximate an integral, and what condition does it require?", "ideal_answer": "Simpson's one-third rule approximates the function by second-degree parabolas passing through groups of three points, instead of straight lines as in the trapezoidal rule. The formula is h by 3 times the sum of the first and last ordinates, plus 4 times the sum of odd-indexed ordinates, plus 2 times the sum of even-indexed interior ordinates. It requires the number of intervals n to be even. It is generally more accurate than the trapezoidal rule and is exact for polynomials up to degree three.", "keywords": ["parabolas", "h by 3", "4 times odd", "2 times even", "even number of intervals", "more accurate"]},
-    {"level": 4, "topic": "Roots of equations: Newton-Raphson, regula-falsi, secant", "text": "Why does Newton-Raphson usually converge faster than bisection, and when can it fail?", "ideal_answer": "Newton-Raphson uses the formula x new = x minus f(x) divided by f prime of x, which follows the tangent line to the root, so it uses slope information. Near a simple root it converges quadratically, roughly doubling the number of correct digits each iteration, while bisection converges only linearly. However, it needs the derivative to be computed. It can fail or diverge if f prime of x is zero or near zero, if the initial guess is far from the root, or if it oscillates between points. Bisection is slower but always converges when the root is bracketed.", "keywords": ["tangent", "derivative", "quadratic convergence", "linear convergence", "derivative zero", "initial guess", "diverge"]},
-    {"level": 4, "topic": "Interpolation: Newton's forward/backward difference, Lagrange's", "text": "When would you use Lagrange's interpolation instead of Newton's forward difference formula?", "ideal_answer": "Newton's forward difference formula requires the x values to be equally spaced and is convenient for interpolating near the beginning of the table, while the backward formula is used near the end. Lagrange's interpolation works for both equally and unequally spaced x values, so it is used when data points are not evenly spaced. Both give the same unique interpolating polynomial for the same points. A drawback of Lagrange's form is that adding a new data point requires recomputing all terms, whereas Newton's form can be extended by adding one term.", "keywords": ["equally spaced", "unequally spaced", "beginning of the table", "same polynomial", "adding a point", "recompute"]},
-    {"level": 5, "topic": "ODEs: Euler, modified Euler and Runge-Kutta methods", "text": "A simulation using Euler's method to solve an ODE gives results that drift far from the true solution. Why does this happen and what would you change?", "ideal_answer": "Euler's method uses only the slope at the beginning of each step, so it is a first-order method with local error of order h squared and global error of order h. Errors accumulate over many steps, and a large step size or a rapidly changing slope makes the solution drift; for stiff equations it can even become unstable. One fix is to reduce the step size, though this increases computation and round-off error. A better fix is to use a higher-order method such as modified Euler, which averages slopes, or fourth-order Runge-Kutta, which combines four slope estimates and has global error of order h to the fourth.", "keywords": ["slope", "first-order", "step size", "accumulate", "unstable", "runge-kutta", "fourth-order"]},
-    {"level": 5, "topic": "Least-squares regression: linear, polynomial and multiple", "text": "Increasing the degree of a polynomial regression model makes the training error almost zero, but predictions on new data become poor. Why, and how do you choose the degree?", "ideal_answer": "A high-degree polynomial has many parameters, so it fits the noise in the training data rather than the true trend; this is overfitting. Such a curve oscillates strongly between and beyond the data points, so it generalises badly. The degree should be chosen by checking error on data not used for fitting, using a validation set or cross-validation, and picking the degree where validation error is lowest. Adjusted R squared also penalises extra terms. In general, the simplest model that captures the trend is preferred.", "keywords": ["overfitting", "noise", "oscillates", "validation", "cross-validation", "adjusted r squared", "simplest model"]},
-    {"level": 6, "topic": "Nonlinear regression and general linear least squares", "text": "A company's sales grow roughly exponentially with advertising months. How would you fit a model y = a times e to the power bx using least squares, and what caution applies?", "ideal_answer": "Taking the natural log of both sides gives ln y = ln a + b x, which is linear in x. We can fit a straight line by linear least squares to the points (x, ln y), giving slope b and intercept ln a, and then a equals e to the power of the intercept. This linearisation is simple, but it minimises errors in ln y rather than in y, which gives more weight to small values. For a more accurate fit, the parameters can be refined with nonlinear regression methods such as Gauss-Newton, using the linearised values as the starting guess. Residuals should be checked for patterns.", "keywords": ["natural log", "linearisation", "slope", "intercept", "least squares", "nonlinear regression", "gauss-newton", "residuals"]},
-    {"level": 6, "topic": "Linear programming: formulation and graphical solution", "text": "A small factory makes chairs and tables with limited wood and labour hours and wants maximum profit. How would you formulate and graphically solve this as a linear programming problem?", "ideal_answer": "Let x be the number of chairs and y the number of tables. The objective is to maximise profit Z equals profit per chair times x plus profit per table times y. Constraints come from resources: wood used per chair times x plus wood per table times y must be at most the available wood, a similar inequality for labour hours, and x, y greater than or equal to zero. In the graphical method, each constraint is drawn as a line and the region satisfying all constraints is the feasible region. Z is evaluated at each corner point, and the corner with the highest Z gives the optimal production plan.", "keywords": ["decision variables", "maximise", "objective function", "constraints", "non-negativity", "feasible region", "corner point"]}
-  ]
+ "subject": "Numerical Methods and Regression Analysis",
+ "applies_to": [
+  {
+   "course": "BSC_IT",
+   "year": 2,
+   "semester": 3
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Approximations and round-off errors",
+   "text": "What is a round-off error?",
+   "ideal_answer": "A round-off error is the error caused because a computer stores numbers with a limited number of significant digits, so the exact value is rounded or chopped. For example, one third cannot be represented exactly and is stored as 0.3333 to some precision. These small errors can accumulate over many arithmetic operations. Subtracting two nearly equal numbers can greatly magnify them, which is called subtractive cancellation.",
+   "keywords": [
+    "limited digits",
+    "significant digits",
+    "rounded",
+    "chopped",
+    "accumulate",
+    "subtractive cancellation"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Linear programming: formulation and graphical solution",
+   "text": "What is linear programming, and what are its main components?",
+   "ideal_answer": "Linear programming is a method for finding the best value, either maximum or minimum, of a linear objective function subject to linear constraints. Its components are the decision variables, the objective function such as profit or cost, the constraints such as limited resources, and the non-negativity restrictions on variables. The set of points satisfying all constraints is the feasible region. The optimal solution lies at a corner point of the feasible region.",
+   "keywords": [
+    "objective function",
+    "linear constraints",
+    "decision variables",
+    "non-negativity",
+    "feasible region",
+    "corner point"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Truncation errors and Taylor series",
+   "text": "What is the difference between truncation error and round-off error?",
+   "ideal_answer": "Truncation error occurs when an exact mathematical procedure is replaced by an approximation, such as using only the first few terms of an infinite Taylor series or approximating a derivative with a finite difference. Round-off error comes from representing numbers with a limited number of digits on a computer. Truncation error decreases when we use more terms or a smaller step size. Round-off error tends to increase with more computations, so very small step sizes can make total error worse.",
+   "keywords": [
+    "approximation",
+    "taylor series",
+    "finite difference",
+    "limited digits",
+    "step size",
+    "total error"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Simultaneous linear equations: Gauss-Jordan and Gauss-Seidel",
+   "text": "What is the difference between a direct method and an iterative method for solving linear equations? Give one example of each.",
+   "ideal_answer": "A direct method gives the solution in a fixed, finite number of steps, apart from round-off errors; Gauss-Jordan elimination is an example, where the matrix is reduced to the identity form. An iterative method starts with an initial guess and repeatedly improves it until the answer converges to the required accuracy; Gauss-Seidel is an example. Gauss-Seidel uses the most recently updated values within the same iteration. Iterative methods are useful for large sparse systems but need conditions like diagonal dominance to guarantee convergence.",
+   "keywords": [
+    "finite steps",
+    "gauss-jordan",
+    "initial guess",
+    "converges",
+    "gauss-seidel",
+    "diagonal dominance"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Roots of equations: bisection method",
+   "text": "How does the bisection method find a root of f(x) = 0?",
+   "ideal_answer": "The bisection method starts with an interval a to b where f(a) and f(b) have opposite signs, so by the intermediate value theorem a root lies between them for a continuous function. It computes the midpoint c = (a + b) / 2. If f(a) times f(c) is negative, the root is in a to c, so b is replaced by c; otherwise a is replaced by c. This halving is repeated until the interval or f(c) is smaller than the tolerance. It always converges, but slowly, since the error halves each iteration.",
+   "keywords": [
+    "opposite signs",
+    "interval",
+    "midpoint",
+    "halving",
+    "tolerance",
+    "always converges",
+    "slow"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Numerical integration: trapezoidal, Simpson's 1/3 and 3/8 rules",
+   "text": "How does Simpson's one-third rule approximate an integral, and what condition does it require?",
+   "ideal_answer": "Simpson's one-third rule approximates the function by second-degree parabolas passing through groups of three points, instead of straight lines as in the trapezoidal rule. The formula is h by 3 times the sum of the first and last ordinates, plus 4 times the sum of odd-indexed ordinates, plus 2 times the sum of even-indexed interior ordinates. It requires the number of intervals n to be even. It is generally more accurate than the trapezoidal rule and is exact for polynomials up to degree three.",
+   "keywords": [
+    "parabolas",
+    "h by 3",
+    "4 times odd",
+    "2 times even",
+    "even number of intervals",
+    "more accurate"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Roots of equations: Newton-Raphson, regula-falsi, secant",
+   "text": "Why does Newton-Raphson usually converge faster than bisection, and when can it fail?",
+   "ideal_answer": "Newton-Raphson uses the formula x new = x minus f(x) divided by f prime of x, which follows the tangent line to the root, so it uses slope information. Near a simple root it converges quadratically, roughly doubling the number of correct digits each iteration, while bisection converges only linearly. However, it needs the derivative to be computed. It can fail or diverge if f prime of x is zero or near zero, if the initial guess is far from the root, or if it oscillates between points. Bisection is slower but always converges when the root is bracketed.",
+   "keywords": [
+    "tangent",
+    "derivative",
+    "quadratic convergence",
+    "linear convergence",
+    "derivative zero",
+    "initial guess",
+    "diverge"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Interpolation: Newton's forward/backward difference, Lagrange's",
+   "text": "When would you use Lagrange's interpolation instead of Newton's forward difference formula?",
+   "ideal_answer": "Newton's forward difference formula requires the x values to be equally spaced and is convenient for interpolating near the beginning of the table, while the backward formula is used near the end. Lagrange's interpolation works for both equally and unequally spaced x values, so it is used when data points are not evenly spaced. Both give the same unique interpolating polynomial for the same points. A drawback of Lagrange's form is that adding a new data point requires recomputing all terms, whereas Newton's form can be extended by adding one term.",
+   "keywords": [
+    "equally spaced",
+    "unequally spaced",
+    "beginning of the table",
+    "same polynomial",
+    "adding a point",
+    "recompute"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "ODEs: Euler, modified Euler and Runge-Kutta methods",
+   "text": "A simulation using Euler's method to solve an ODE gives results that drift far from the true solution. Why does this happen and what would you change?",
+   "ideal_answer": "Euler's method uses only the slope at the beginning of each step, so it is a first-order method with local error of order h squared and global error of order h. Errors accumulate over many steps, and a large step size or a rapidly changing slope makes the solution drift; for stiff equations it can even become unstable. One fix is to reduce the step size, though this increases computation and round-off error. A better fix is to use a higher-order method such as modified Euler, which averages slopes, or fourth-order Runge-Kutta, which combines four slope estimates and has global error of order h to the fourth.",
+   "keywords": [
+    "slope",
+    "first-order",
+    "step size",
+    "accumulate",
+    "unstable",
+    "runge-kutta",
+    "fourth-order"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Least-squares regression: linear, polynomial and multiple",
+   "text": "Increasing the degree of a polynomial regression model makes the training error almost zero, but predictions on new data become poor. Why, and how do you choose the degree?",
+   "ideal_answer": "A high-degree polynomial has many parameters, so it fits the noise in the training data rather than the true trend; this is overfitting. Such a curve oscillates strongly between and beyond the data points, so it generalises badly. The degree should be chosen by checking error on data not used for fitting, using a validation set or cross-validation, and picking the degree where validation error is lowest. Adjusted R squared also penalises extra terms. In general, the simplest model that captures the trend is preferred.",
+   "keywords": [
+    "overfitting",
+    "noise",
+    "oscillates",
+    "validation",
+    "cross-validation",
+    "adjusted r squared",
+    "simplest model"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Nonlinear regression and general linear least squares",
+   "text": "A company's sales grow roughly exponentially with advertising months. How would you fit a model y = a times e to the power bx using least squares, and what caution applies?",
+   "ideal_answer": "Taking the natural log of both sides gives ln y = ln a + b x, which is linear in x. We can fit a straight line by linear least squares to the points (x, ln y), giving slope b and intercept ln a, and then a equals e to the power of the intercept. This linearisation is simple, but it minimises errors in ln y rather than in y, which gives more weight to small values. For a more accurate fit, the parameters can be refined with nonlinear regression methods such as Gauss-Newton, using the linearised values as the starting guess. Residuals should be checked for patterns.",
+   "keywords": [
+    "natural log",
+    "linearisation",
+    "slope",
+    "intercept",
+    "least squares",
+    "nonlinear regression",
+    "gauss-newton",
+    "residuals"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Linear programming: formulation and graphical solution",
+   "text": "A small factory makes chairs and tables with limited wood and labour hours and wants maximum profit. How would you formulate and graphically solve this as a linear programming problem?",
+   "ideal_answer": "Let x be the number of chairs and y the number of tables. The objective is to maximise profit Z equals profit per chair times x plus profit per table times y. Constraints come from resources: wood used per chair times x plus wood per table times y must be at most the available wood, a similar inequality for labour hours, and x, y greater than or equal to zero. In the graphical method, each constraint is drawn as a line and the region satisfying all constraints is the feasible region. Z is evaluated at each corner point, and the corner with the highest Z gives the optimal production plan.",
+   "keywords": [
+    "decision variables",
+    "maximise",
+    "objective function",
+    "constraints",
+    "non-negativity",
+    "feasible region",
+    "corner point"
+   ]
+  }
+ ]
 }

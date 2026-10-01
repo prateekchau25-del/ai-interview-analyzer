@@ -1,18 +1,200 @@
 {
   "subject": "Blockchain",
-  "applies_to": [{"course": "BSC_IT", "year": 3, "semester": 6}, {"course": "BCA", "year": 3, "semester": 6}],
+  "applies_to": [
+    {
+      "course": "BSC_IT",
+      "year": 3,
+      "semester": 6
+    },
+    {
+      "course": "BCA",
+      "year": 3,
+      "semester": 6
+    }
+  ],
   "questions": [
-    {"level": 1, "topic": "Blockchain definition, characteristics and need", "text": "What is a blockchain and what are its key characteristics?", "ideal_answer": "A blockchain is a distributed, decentralised digital ledger that records transactions in blocks linked together using cryptographic hashes. Each block contains the hash of the previous block, forming a chain. Its key characteristics are decentralisation, since no single authority controls it, immutability, since recorded data is very hard to change, and transparency, since participants can verify transactions. Consensus mechanisms allow nodes that do not trust each other to agree on the state of the ledger.", "keywords": ["distributed ledger", "blocks", "hash", "decentralised", "immutable", "transparent", "consensus"]},
-    {"level": 1, "topic": "Smart contracts and DApps", "text": "What is a smart contract?", "ideal_answer": "A smart contract is a program stored on a blockchain that automatically executes when predefined conditions are met. Its code and state are replicated across nodes, so its execution is transparent and cannot be changed after deployment in normal cases. It removes the need for a trusted intermediary, for example releasing payment automatically when goods are delivered. On Ethereum, smart contracts are usually written in Solidity and run on the Ethereum Virtual Machine.", "keywords": ["program", "blockchain", "automatically executes", "conditions", "intermediary", "solidity", "evm"]},
-    {"level": 2, "topic": "Public, private, consortium and permissioned blockchains", "text": "What is the difference between a public blockchain and a private blockchain?", "ideal_answer": "A public blockchain is open to anyone: anyone can join, read data, send transactions and take part in consensus, as in Bitcoin and Ethereum. A private blockchain is controlled by a single organisation that decides who can join and what they can do, so it is permissioned. Public blockchains are more decentralised and censorship-resistant but slower. Private blockchains are faster and offer more privacy, but are more centralised. A consortium blockchain is controlled by a group of organisations, such as several banks.", "keywords": ["anyone can join", "bitcoin", "single organisation", "permissioned", "decentralised", "faster", "consortium"]},
-    {"level": 2, "topic": "Wallets and address generation", "text": "What is a crypto wallet, and what is the difference between a hot wallet and a cold wallet?", "ideal_answer": "A crypto wallet stores the user's private and public keys and is used to sign transactions; it does not actually store coins, which remain recorded on the blockchain. The public key is used to derive an address that others can send funds to, while the private key proves ownership. A hot wallet is connected to the internet, like a mobile app or MetaMask, which is convenient but more exposed to hacking. A cold wallet is kept offline, such as a hardware wallet or paper wallet, which is much safer for long-term storage.", "keywords": ["private key", "public key", "sign transactions", "address", "hot wallet", "cold wallet", "offline"]},
-    {"level": 3, "topic": "Block structure, hashing and the distributed ledger", "text": "How does linking blocks with hashes make a blockchain tamper-evident?", "ideal_answer": "Each block header contains the hash of the previous block, along with a timestamp, nonce and the Merkle root of its transactions. If someone changes a transaction in an old block, that block's hash changes. The next block still stores the old hash, so the link breaks, and every following block would need to be recomputed. In proof of work this means redoing the mining for all those blocks faster than the honest network, which is practically infeasible. Other nodes also hold copies of the ledger, so the altered version would be rejected.", "keywords": ["previous hash", "merkle root", "hash changes", "link breaks", "recompute", "copies", "rejected"]},
-    {"level": 3, "topic": "Cryptographic hash functions, public/private keys and digital signatures", "text": "How is a digital signature used to authorise a blockchain transaction?", "ideal_answer": "The sender hashes the transaction data and signs the hash with their private key, producing a digital signature, using an algorithm such as ECDSA. The transaction is broadcast with the signature and the sender's public key or address. Nodes verify the signature using the public key; if it matches, it proves the transaction was created by the owner of the private key. It also proves the data was not altered, since any change produces a different hash. The private key itself is never revealed.", "keywords": ["hash", "private key", "sign", "public key", "verify", "ecdsa", "not altered"]},
-    {"level": 4, "topic": "Consensus: PoW, PoS, DPoS, PBFT", "text": "Compare Proof of Work and Proof of Stake. Why did Ethereum move from PoW to PoS?", "ideal_answer": "In Proof of Work, miners compete to solve a computational puzzle by finding a nonce that gives a block hash below a target, and the winner adds the block; security comes from the cost of computing power. In Proof of Stake, validators lock up coins as stake and are chosen to propose and attest blocks, and dishonest validators can lose stake through slashing. PoW consumes huge amounts of electricity, while PoS uses very little energy. Ethereum moved to PoS in 2022, in the event called the Merge, mainly to cut energy use by over 99 percent and to prepare for better scalability.", "keywords": ["miners", "puzzle", "nonce", "validators", "stake", "slashing", "energy", "the merge"]},
-    {"level": 4, "topic": "Transaction lifecycle, validation and 51% attack", "text": "Why do merchants wait for several confirmations before accepting a Bitcoin payment?", "ideal_answer": "A transaction first enters the mempool, then is included in a block by a miner, which is one confirmation; each later block on top adds another confirmation. Because of forks, a recent block can be replaced if a longer competing chain appears, which could reverse the transaction and allow a double spend. Each additional block makes reversal exponentially harder, since an attacker would need to redo all those blocks faster than the network. That is why around six confirmations are commonly considered final for Bitcoin. A 51 percent attack, where one party controls most of the hash power, is what could still make reversal possible.", "keywords": ["mempool", "confirmation", "fork", "longest chain", "double spend", "six confirmations", "51 percent attack"]},
-    {"level": 5, "topic": "Ethereum, Solidity, Web3.js and MetaMask", "text": "What is a reentrancy attack in a Solidity smart contract, and how do you prevent it?", "ideal_answer": "A reentrancy attack happens when a contract sends Ether to an external contract before updating its own state, such as the user's balance. The attacker's contract has a fallback or receive function that calls the withdraw function again before the first call finishes, draining funds repeatedly. The 2016 DAO hack exploited this. It is prevented by the checks-effects-interactions pattern, which updates the balance before making the external call. A reentrancy guard such as OpenZeppelin's nonReentrant modifier, and pull-payment designs, give extra protection.", "keywords": ["external call", "state update", "fallback", "withdraw again", "dao hack", "checks-effects-interactions", "reentrancy guard"]},
-    {"level": 5, "topic": "Challenges: scalability, energy, regulation; Layer 2 solutions", "text": "Ethereum mainnet has high fees and low throughput during busy periods. How do Layer 2 rollups solve this, and what is the difference between optimistic and ZK rollups?", "ideal_answer": "Rollups execute transactions off the main chain, bundle many of them together and post compressed data and a state commitment to Layer 1, so the cost is shared and throughput increases while security comes from Ethereum. Optimistic rollups assume batches are valid and allow a challenge period, about seven days, during which anyone can submit a fraud proof; this delays withdrawals to Layer 1. ZK rollups submit a validity proof, a zero-knowledge proof that the batch is correct, so withdrawals are final quickly but generating proofs is computationally heavy. Examples are Arbitrum and Optimism for optimistic, and zkSync and Starknet for ZK.", "keywords": ["off-chain", "bundle", "layer 1", "optimistic", "fraud proof", "challenge period", "zk rollup", "validity proof"]},
-    {"level": 6, "topic": "Use cases: supply chain", "text": "A pharmaceutical company wants to use blockchain to track medicines from factory to pharmacy to fight counterfeits. How would you design it and what limitations should they know?", "ideal_answer": "A permissioned consortium blockchain such as Hyperledger Fabric suits this, with manufacturers, distributors, pharmacies and regulators as members. Each batch gets a unique ID or QR code, and every handover is recorded as a signed transaction, giving an immutable, shared history that anyone in the chain can verify. Smart contracts can enforce rules like rejecting expired batches or checking cold-chain temperatures from IoT sensors. Large documents should be stored off-chain with only their hashes on-chain. The key limitation is the oracle problem: blockchain cannot verify that the physical data entered is true, so secure packaging and trusted data entry are still needed.", "keywords": ["permissioned", "consortium", "unique id", "immutable", "smart contracts", "off-chain", "oracle problem"]},
-    {"level": 6, "topic": "Use cases: DeFi, NFTs, identity, voting", "text": "A startup wants to build an online voting system on a public blockchain. What are the benefits and the main risks you would point out?", "ideal_answer": "Benefits include transparency and auditability, because every vote is recorded immutably and results can be verified independently, and no single authority can secretly alter the count. However, voter privacy is a serious challenge, since public ledgers are visible, so cryptographic methods such as zero-knowledge proofs or homomorphic encryption are needed to keep votes secret while verifiable. Voter identity must be verified off-chain to ensure one person, one vote, which brings back trust in the identity provider. Other risks are coercion or vote buying if voters can prove how they voted, device security, smart contract bugs and transaction fees. A permissioned design or hybrid system may be more practical.", "keywords": ["transparency", "auditability", "immutable", "privacy", "zero-knowledge proofs", "identity", "coercion", "smart contract bugs"]}
+    {
+      "level": 1,
+      "topic": "Blockchain definition, characteristics and need",
+      "text": "What is a blockchain and what are its key characteristics?",
+      "ideal_answer": "A blockchain is a distributed, decentralised digital ledger that records transactions in blocks linked together using cryptographic hashes. Each block contains the hash of the previous block, forming a chain. Its key characteristics are decentralisation, since no single authority controls it, immutability, since recorded data is very hard to change, and transparency, since participants can verify transactions. Consensus mechanisms allow nodes that do not trust each other to agree on the state of the ledger.",
+      "keywords": [
+        "distributed ledger",
+        "blocks",
+        "hash",
+        "decentralised",
+        "immutable",
+        "transparent",
+        "consensus"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "Smart contracts and DApps",
+      "text": "What is a smart contract?",
+      "ideal_answer": "A smart contract is a program stored on a blockchain that automatically executes when predefined conditions are met. Its code and state are replicated across nodes, so its execution is transparent and cannot be changed after deployment in normal cases. It removes the need for a trusted intermediary, for example releasing payment automatically when goods are delivered. On Ethereum, smart contracts are usually written in Solidity and run on the Ethereum Virtual Machine.",
+      "keywords": [
+        "program",
+        "blockchain",
+        "automatically executes",
+        "conditions",
+        "intermediary",
+        "solidity",
+        "evm"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Public, private, consortium and permissioned blockchains",
+      "text": "What is the difference between a public blockchain and a private blockchain?",
+      "ideal_answer": "A public blockchain is open to anyone: anyone can join, read data, send transactions and take part in consensus, as in Bitcoin and Ethereum. A private blockchain is controlled by a single organisation that decides who can join and what they can do, so it is permissioned. Public blockchains are more decentralised and censorship-resistant but slower. Private blockchains are faster and offer more privacy, but are more centralised. A consortium blockchain is controlled by a group of organisations, such as several banks.",
+      "keywords": [
+        "anyone can join",
+        "bitcoin",
+        "single organisation",
+        "permissioned",
+        "decentralised",
+        "faster",
+        "consortium"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Wallets and address generation",
+      "text": "What is a crypto wallet, and what is the difference between a hot wallet and a cold wallet?",
+      "ideal_answer": "A crypto wallet stores the user's private and public keys and is used to sign transactions; it does not actually store coins, which remain recorded on the blockchain. The public key is used to derive an address that others can send funds to, while the private key proves ownership. A hot wallet is connected to the internet, like a mobile app or MetaMask, which is convenient but more exposed to hacking. A cold wallet is kept offline, such as a hardware wallet or paper wallet, which is much safer for long-term storage.",
+      "keywords": [
+        "private key",
+        "public key",
+        "sign transactions",
+        "address",
+        "hot wallet",
+        "cold wallet",
+        "offline"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Block structure, hashing and the distributed ledger",
+      "text": "How does linking blocks with hashes make a blockchain tamper-evident?",
+      "ideal_answer": "Each block header contains the hash of the previous block, along with a timestamp, nonce and the Merkle root of its transactions. If someone changes a transaction in an old block, that block's hash changes. The next block still stores the old hash, so the link breaks, and every following block would need to be recomputed. In proof of work this means redoing the mining for all those blocks faster than the honest network, which is practically infeasible. Other nodes also hold copies of the ledger, so the altered version would be rejected.",
+      "keywords": [
+        "previous hash",
+        "merkle root",
+        "hash changes",
+        "link breaks",
+        "recompute",
+        "copies",
+        "rejected"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Cryptographic hash functions, public/private keys and digital signatures",
+      "text": "How is a digital signature used to authorise a blockchain transaction?",
+      "ideal_answer": "The sender hashes the transaction data and signs the hash with their private key, producing a digital signature, using an algorithm such as ECDSA. The transaction is broadcast with the signature and the sender's public key or address. Nodes verify the signature using the public key; if it matches, it proves the transaction was created by the owner of the private key. It also proves the data was not altered, since any change produces a different hash. The private key itself is never revealed.",
+      "keywords": [
+        "hash",
+        "private key",
+        "sign",
+        "public key",
+        "verify",
+        "ecdsa",
+        "not altered"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Consensus: PoW, PoS, DPoS, PBFT",
+      "text": "Compare Proof of Work and Proof of Stake. Why did Ethereum move from PoW to PoS?",
+      "ideal_answer": "In Proof of Work, miners compete to solve a computational puzzle by finding a nonce that gives a block hash below a target, and the winner adds the block; security comes from the cost of computing power. In Proof of Stake, validators lock up coins as stake and are chosen to propose and attest blocks, and dishonest validators can lose stake through slashing. PoW consumes huge amounts of electricity, while PoS uses very little energy. Ethereum moved to PoS in 2022, in the event called the Merge, mainly to cut energy use by over 99 percent and to prepare for better scalability.",
+      "keywords": [
+        "miners",
+        "puzzle",
+        "nonce",
+        "validators",
+        "stake",
+        "slashing",
+        "energy",
+        "the merge"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Transaction lifecycle, validation and 51% attack",
+      "text": "Why do merchants wait for several confirmations before accepting a Bitcoin payment?",
+      "ideal_answer": "A transaction first enters the mempool, then is included in a block by a miner, which is one confirmation; each later block on top adds another confirmation. Because of forks, a recent block can be replaced if a longer competing chain appears, which could reverse the transaction and allow a double spend. Each additional block makes reversal exponentially harder, since an attacker would need to redo all those blocks faster than the network. That is why around six confirmations are commonly considered final for Bitcoin. A 51 percent attack, where one party controls most of the hash power, is what could still make reversal possible.",
+      "keywords": [
+        "mempool",
+        "confirmation",
+        "fork",
+        "longest chain",
+        "double spend",
+        "six confirmations",
+        "51 percent attack"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Ethereum, Solidity, Web3.js and MetaMask",
+      "text": "What is a reentrancy attack in a Solidity smart contract, and how do you prevent it?",
+      "ideal_answer": "A reentrancy attack happens when a contract sends Ether to an external contract before updating its own state, such as the user's balance. The attacker's contract has a fallback or receive function that calls the withdraw function again before the first call finishes, draining funds repeatedly. The 2016 DAO hack exploited this. It is prevented by the checks-effects-interactions pattern, which updates the balance before making the external call. A reentrancy guard such as OpenZeppelin's nonReentrant modifier, and pull-payment designs, give extra protection.",
+      "keywords": [
+        "external call",
+        "state update",
+        "fallback",
+        "withdraw again",
+        "dao hack",
+        "checks-effects-interactions",
+        "reentrancy guard"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Challenges: scalability, energy, regulation; Layer 2 solutions",
+      "text": "Ethereum mainnet has high fees and low throughput during busy periods. How do Layer 2 rollups solve this, and what is the difference between optimistic and ZK rollups?",
+      "ideal_answer": "Rollups execute transactions off the main chain, bundle many of them together and post compressed data and a state commitment to Layer 1, so the cost is shared and throughput increases while security comes from Ethereum. Optimistic rollups assume batches are valid and allow a challenge period, about seven days, during which anyone can submit a fraud proof; this delays withdrawals to Layer 1. ZK rollups submit a validity proof, a zero-knowledge proof that the batch is correct, so withdrawals are final quickly but generating proofs is computationally heavy. Examples are Arbitrum and Optimism for optimistic, and zkSync and Starknet for ZK.",
+      "keywords": [
+        "off-chain",
+        "bundle",
+        "layer 1",
+        "optimistic",
+        "fraud proof",
+        "challenge period",
+        "zk rollup",
+        "validity proof"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Use cases: supply chain",
+      "text": "A pharmaceutical company wants to use blockchain to track medicines from factory to pharmacy to fight counterfeits. How would you design it and what limitations should they know?",
+      "ideal_answer": "A permissioned consortium blockchain such as Hyperledger Fabric suits this, with manufacturers, distributors, pharmacies and regulators as members. Each batch gets a unique ID or QR code, and every handover is recorded as a signed transaction, giving an immutable, shared history that anyone in the chain can verify. Smart contracts can enforce rules like rejecting expired batches or checking cold-chain temperatures from IoT sensors. Large documents should be stored off-chain with only their hashes on-chain. The key limitation is the oracle problem: blockchain cannot verify that the physical data entered is true, so secure packaging and trusted data entry are still needed.",
+      "keywords": [
+        "permissioned",
+        "consortium",
+        "unique id",
+        "immutable",
+        "smart contracts",
+        "off-chain",
+        "oracle problem"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Use cases: DeFi, NFTs, identity, voting",
+      "text": "A startup wants to build an online voting system on a public blockchain. What are the benefits and the main risks you would point out?",
+      "ideal_answer": "Benefits include transparency and auditability, because every vote is recorded immutably and results can be verified independently, and no single authority can secretly alter the count. However, voter privacy is a serious challenge, since public ledgers are visible, so cryptographic methods such as zero-knowledge proofs or homomorphic encryption are needed to keep votes secret while verifiable. Voter identity must be verified off-chain to ensure one person, one vote, which brings back trust in the identity provider. Other risks are coercion or vote buying if voters can prove how they voted, device security, smart contract bugs and transaction fees. A permissioned design or hybrid system may be more practical.",
+      "keywords": [
+        "transparency",
+        "auditability",
+        "immutable",
+        "privacy",
+        "zero-knowledge proofs",
+        "identity",
+        "coercion",
+        "smart contract bugs"
+      ]
+    }
   ]
 }

@@ -18,7 +18,7 @@
         "fit",
         "test set",
         "unseen data",
-        "generalisation",
+        "over-optimistic",
         "validation"
       ]
     },
@@ -28,7 +28,7 @@
       "text": "What is association rule mining? Define support and confidence.",
       "ideal_answer": "Association rule mining discovers interesting relationships between items in large transaction datasets, in the form of rules like 'if bread then butter', as used in market basket analysis. Support of an itemset is the fraction of transactions that contain it. Confidence of a rule X implies Y is support of X and Y together divided by support of X, that is, how often Y appears when X appears. Algorithms like Apriori find rules that meet minimum support and confidence thresholds; lift is also used to measure interest.",
       "keywords": [
-        "association rules",
+        "rules",
         "market basket",
         "support",
         "confidence",
@@ -73,8 +73,8 @@
         "categorical",
         "one-hot encoding",
         "scales",
-        "standardisation",
-        "normalisation",
+        "standardised",
+        "normalised",
         "log transformation"
       ]
     },
@@ -88,7 +88,7 @@
         "assign",
         "nearest centroid",
         "mean",
-        "repeat until convergence",
+        "stop changing",
         "elbow method"
       ]
     },
@@ -128,9 +128,9 @@
       "keywords": [
         "linearly separable",
         "xor",
-        "never converges",
+        "keep changing",
         "kernel",
-        "feature transformation",
+        "transform the features",
         "multi-layer perceptron"
       ]
     },
@@ -155,10 +155,10 @@
       "ideal_answer": "A decision tree is a good choice because each prediction follows a readable path of if-then rules, such as age over 65 and previous admissions over 2, which doctors can verify. Naive Bayes is fast and works with little data, but its independence assumption is unrealistic for correlated medical features, and its probabilistic reasoning is less intuitive to explain. To make the tree reliable, I would limit depth and prune it to avoid overfitting, handle class imbalance, validate with cross-validation using recall and AUC, and test on data from a different time period. I would also check the rules with doctors and audit for bias across patient groups.",
       "keywords": [
         "decision tree",
-        "interpretable",
+        "readable",
         "if-then rules",
         "independence assumption",
-        "pruning",
+        "prune",
         "validation"
       ]
     },
@@ -170,9 +170,9 @@
       "keywords": [
         "hierarchical",
         "dendrogram",
-        "number of clusters",
+        "number of segments",
         "k-means",
-        "scalability",
+        "scales well",
         "silhouette"
       ]
     }

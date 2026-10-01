@@ -1,192 +1,192 @@
 {
-  "subject": "Data Science with Visual Programming",
-  "applies_to": [
-    {
-      "course": "BSC_DS",
-      "year": 3,
-      "semester": 6
-    }
-  ],
-  "questions": [
-    {
-      "level": 1,
-      "topic": "Introduction to data tools and sources of data",
-      "text": "What is KNIME and what is meant by visual programming in data science?",
-      "ideal_answer": "KNIME, the Konstanz Information Miner, is a free, open-source data analytics platform. In visual programming, instead of writing code, you build an analysis as a workflow by dragging nodes onto a canvas and connecting them; each node performs one task, such as reading a file, filtering rows, computing statistics or training a model. Data flows from one node to the next through the connections. This makes analysis easier for non-programmers and makes the steps easy to see, reuse and share. Rattle in R is another GUI-based tool.",
-      "keywords": [
-        "knime",
-        "open-source",
-        "workflow",
-        "nodes",
-        "drag",
-        "connect",
-        "instead of writing code"
-      ]
-    },
-    {
-      "level": 1,
-      "topic": "Analysis ToolPak and packages for additional data",
-      "text": "What is the Analysis ToolPak in Excel?",
-      "ideal_answer": "The Analysis ToolPak is an Excel add-in that provides ready-made tools for statistical and engineering analysis. Once enabled through Excel Options and Add-ins, it appears as Data Analysis on the Data tab. It includes tools such as Descriptive Statistics, Histogram, t-Test, F-Test, ANOVA, Correlation and Regression. You choose the tool, specify the input range and output location, and it produces a table of results.",
-      "keywords": [
-        "add-in",
-        "excel",
-        "data analysis",
-        "descriptive statistics",
-        "t-test",
-        "regression"
-      ]
-    },
-    {
-      "level": 2,
-      "topic": "Confidence intervals and random sampling",
-      "text": "What is a confidence interval? Explain what a 95 percent confidence interval means.",
-      "ideal_answer": "A confidence interval is a range of values, calculated from sample data, that is likely to contain the true population parameter, such as the population mean. It is usually computed as the sample estimate plus or minus a margin of error, based on the standard error and a critical value. A 95 percent confidence interval means that if we repeated the sampling many times and built an interval each time, about 95 percent of those intervals would contain the true parameter. A larger sample gives a narrower interval.",
-      "keywords": [
-        "range",
-        "population parameter",
-        "sample",
-        "margin of error",
-        "standard error",
-        "95 percent",
-        "repeated the sampling"
-      ]
-    },
-    {
-      "level": 2,
-      "topic": "Correlation and regression in KNIME and Rattle",
-      "text": "What is the difference between correlation and regression?",
-      "ideal_answer": "Correlation measures the strength and direction of the linear relationship between two variables, giving a coefficient r from minus 1 to plus 1, and it treats both variables symmetrically. Regression builds an equation, such as y equals a plus b x, that predicts a dependent variable from one or more independent variables. So correlation tells how closely two variables move together, while regression tells how much y changes for a change in x and can be used for prediction. Neither proves causation.",
-      "keywords": [
-        "correlation",
-        "strength",
-        "direction",
-        "minus 1 to plus 1",
-        "regression",
-        "equation",
-        "predict",
-        "dependent variable"
-      ]
-    },
-    {
-      "level": 3,
-      "topic": "Parametric t-test in Excel, Rattle and KNIME",
-      "text": "You want to test whether the average exam score of two different classes is significantly different. How would you do this with a t-test, and how do you interpret the result?",
-      "ideal_answer": "Use an independent two-sample t-test, available in Excel's Analysis ToolPak, in Rattle, or with KNIME's Independent Groups t-test node. The null hypothesis is that the two population means are equal and the alternative is that they differ. The test computes a t-statistic and a p-value; if the p-value is less than the significance level, usually 0.05, we reject the null hypothesis and conclude the means are significantly different. The test assumes roughly normal data and independent samples, and you choose the equal or unequal variance version.",
-      "keywords": [
-        "two-sample t-test",
-        "null hypothesis",
-        "population means are equal",
-        "p-value",
-        "0.05",
-        "reject",
-        "normal"
-      ]
-    },
-    {
-      "level": 3,
-      "topic": "Descriptive statistics and cumulative probability charts across tools",
-      "text": "What does a cumulative probability chart show, and how would you read the median from it?",
-      "ideal_answer": "A cumulative probability chart, or cumulative distribution plot, shows for each value on the x-axis the proportion of observations less than or equal to that value, so the curve rises from 0 to 1 or 100 percent. It helps compare distributions and see percentiles at a glance. To read the median, find 0.5 or 50 percent on the y-axis, move across to the curve and read the corresponding x value. Similarly, the 25 percent and 75 percent points give the first and third quartiles.",
-      "keywords": [
-        "cumulative",
-        "less than or equal",
-        "0 to 1",
-        "percentile",
-        "median",
-        "50 percent",
-        "quartiles"
-      ]
-    },
-    {
-      "level": 4,
-      "topic": "Power analysis and F-test",
-      "text": "Why is the F-test often performed before a two-sample t-test, and what does it check?",
-      "ideal_answer": "The F-test compares the variances of two groups by computing the ratio of the two sample variances, with the null hypothesis that the population variances are equal. The standard two-sample t-test comes in two versions, one assuming equal variances and the other, Welch's test, not assuming them. So the F-test result helps choose which t-test to use: if the p-value is above 0.05 we use the equal-variance t-test, otherwise the unequal-variance version. Excel provides this as F-Test Two-Sample for Variances.",
-      "keywords": [
-        "f-test",
-        "variances",
-        "ratio",
-        "equal variances",
-        "welch",
-        "which t-test",
-        "p-value"
-      ]
-    },
-    {
-      "level": 4,
-      "topic": "Multiple regression/correlation",
-      "text": "Why might a multiple regression model show a high R-squared but have predictors with unexpected signs or non-significant coefficients?",
-      "ideal_answer": "This is usually caused by multicollinearity, where two or more independent variables are highly correlated with each other. The model as a whole can explain the dependent variable well, giving a high R-squared, but it cannot separate the individual effect of correlated predictors, so their coefficients become unstable, with large standard errors, unexpected signs and high p-values. It can be detected using a correlation matrix or the variance inflation factor, VIF. Remedies include removing or combining correlated variables, or using regularisation.",
-      "keywords": [
-        "multicollinearity",
-        "correlated predictors",
-        "r-squared",
-        "unstable",
-        "standard errors",
-        "variance inflation factor"
-      ]
-    },
-    {
-      "level": 5,
-      "topic": "Benford's law, lift, word clouds and filtering",
-      "text": "How can Benford's law be used to detect possible fraud in a company's expense data, and what are its limitations?",
-      "ideal_answer": "Benford's law says that in many naturally occurring numerical data sets the leading digit is small more often: 1 appears as the first digit about 30 percent of the time, decreasing to about 4.6 percent for 9. To check for fraud, compare the first-digit distribution of the expense amounts with the Benford distribution, for example with a chi-square test; large deviations, such as too many amounts just under an approval limit, can signal fabricated numbers. Its limitations are that it applies only to data spanning several orders of magnitude without fixed limits or assigned numbers, so a deviation is a red flag for investigation, not proof of fraud.",
-      "keywords": [
-        "benford's law",
-        "leading digit",
-        "30 percent",
-        "first-digit distribution",
-        "chi-square",
-        "orders of magnitude",
-        "not proof"
-      ]
-    },
-    {
-      "level": 5,
-      "topic": "Power analysis and F-test",
-      "text": "A study found no significant difference between two teaching methods, using only 10 students per group. What problem might exist, and how would power analysis help?",
-      "ideal_answer": "With such a small sample, the test may have low statistical power, which is the probability of detecting a real effect when it exists, so the non-significant result could be a Type II error, a false negative. Power depends on sample size, effect size, significance level and variability. Power analysis, done before the study, calculates the sample size needed to reach a desired power, usually 0.8, for an expected effect size at alpha 0.05. So the conclusion should be that the study was inconclusive, and a larger study planned with power analysis is needed.",
-      "keywords": [
-        "statistical power",
-        "small sample",
-        "type ii error",
-        "effect size",
-        "sample size",
-        "0.8",
-        "inconclusive"
-      ]
-    },
-    {
-      "level": 6,
-      "topic": "Importing data into Excel, OpenOffice, R/Rattle, RStudio and KNIME",
-      "text": "Your manager asks whether the team should use Excel, R with RStudio or KNIME for a recurring monthly analysis of large sales data. How would you decide?",
-      "ideal_answer": "Excel is familiar and fast for small ad-hoc analysis, but it has a row limit of about one million, manual steps are hard to repeat and audit, and errors creep in. R with RStudio is powerful, scriptable and reproducible with huge package support, but it requires programming skills. KNIME offers reproducible, visual workflows that can handle large data, integrate databases, R and Python, and be rerun or scheduled each month, which suits mixed-skill teams. I would consider data size, the team's skills, the need for automation and reproducibility, and cost; for a recurring large analysis KNIME or R scripts are better than manual Excel work.",
-      "keywords": [
-        "excel",
-        "row limit",
-        "reproducible",
-        "r",
-        "programming skills",
-        "knime",
-        "workflows",
-        "automation"
-      ]
-    },
-    {
-      "level": 6,
-      "topic": "Benford's law, lift, word clouds and filtering",
-      "text": "A marketing team built a model to target customers for a campaign and asks you whether it is worth using. How would you use lift to evaluate it?",
-      "ideal_answer": "Lift measures how much better the model is than random targeting: it is the response rate among the customers selected by the model divided by the overall response rate. For example, if the overall response rate is 2 percent and the top 10 percent of customers scored by the model respond at 8 percent, the lift for that decile is 4. A lift or gains chart shows this across deciles, and a lift greater than 1 means the model adds value. I would check lift on a separate validation set, then compare the extra revenue from responses with the campaign cost to decide how many deciles to target.",
-      "keywords": [
-        "lift",
-        "random",
-        "response rate",
-        "divided",
-        "decile",
-        "greater than 1",
-        "validation set"
-      ]
-    }
-  ]
+ "subject": "Data Science with Visual Programming",
+ "applies_to": [
+  {
+   "course": "BSC_DS",
+   "year": 3,
+   "semester": 6
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Introduction to data tools and sources of data",
+   "text": "What is KNIME and what is meant by visual programming in data science?",
+   "ideal_answer": "KNIME, the Konstanz Information Miner, is a free, open-source data analytics platform. In visual programming, instead of writing code, you build an analysis as a workflow by dragging nodes onto a canvas and connecting them; each node performs one task, such as reading a file, filtering rows, computing statistics or training a model. Data flows from one node to the next through the connections. This makes analysis easier for non-programmers and makes the steps easy to see, reuse and share. Rattle in R is another GUI-based tool.",
+   "keywords": [
+    "knime",
+    "open-source",
+    "workflow",
+    "nodes",
+    "drag",
+    "connect",
+    "instead of writing code"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Analysis ToolPak and packages for additional data",
+   "text": "What is the Analysis ToolPak in Excel?",
+   "ideal_answer": "The Analysis ToolPak is an Excel add-in that provides ready-made tools for statistical and engineering analysis. Once enabled through Excel Options and Add-ins, it appears as Data Analysis on the Data tab. It includes tools such as Descriptive Statistics, Histogram, t-Test, F-Test, ANOVA, Correlation and Regression. You choose the tool, specify the input range and output location, and it produces a table of results.",
+   "keywords": [
+    "add-in",
+    "excel",
+    "data analysis",
+    "descriptive statistics",
+    "t-test",
+    "regression"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Confidence intervals and random sampling",
+   "text": "What is a confidence interval? Explain what a 95 percent confidence interval means.",
+   "ideal_answer": "A confidence interval is a range of values, calculated from sample data, that is likely to contain the true population parameter, such as the population mean. It is usually computed as the sample estimate plus or minus a margin of error, based on the standard error and a critical value. A 95 percent confidence interval means that if we repeated the sampling many times and built an interval each time, about 95 percent of those intervals would contain the true parameter. A larger sample gives a narrower interval.",
+   "keywords": [
+    "range",
+    "population parameter",
+    "sample",
+    "margin of error",
+    "standard error",
+    "95 percent",
+    "repeated the sampling"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Correlation and regression in KNIME and Rattle",
+   "text": "What is the difference between correlation and regression?",
+   "ideal_answer": "Correlation measures the strength and direction of the linear relationship between two variables, giving a coefficient r from minus 1 to plus 1, and it treats both variables symmetrically. Regression builds an equation, such as y equals a plus b x, that predicts a dependent variable from one or more independent variables. So correlation tells how closely two variables move together, while regression tells how much y changes for a change in x and can be used for prediction. Neither proves causation.",
+   "keywords": [
+    "correlation",
+    "strength",
+    "direction",
+    "minus 1 to plus 1",
+    "regression",
+    "equation",
+    "predict",
+    "dependent variable"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Parametric t-test in Excel, Rattle and KNIME",
+   "text": "You want to test whether the average exam score of two different classes is significantly different. How would you do this with a t-test, and how do you interpret the result?",
+   "ideal_answer": "Use an independent two-sample t-test, available in Excel's Analysis ToolPak, in Rattle, or with KNIME's Independent Groups t-test node. The null hypothesis is that the two population means are equal and the alternative is that they differ. The test computes a t-statistic and a p-value; if the p-value is less than the significance level, usually 0.05, we reject the null hypothesis and conclude the means are significantly different. The test assumes roughly normal data and independent samples, and you choose the equal or unequal variance version.",
+   "keywords": [
+    "two-sample t-test",
+    "null hypothesis",
+    "population means are equal",
+    "p-value",
+    "0.05",
+    "reject",
+    "normal"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Descriptive statistics and cumulative probability charts across tools",
+   "text": "What does a cumulative probability chart show, and how would you read the median from it?",
+   "ideal_answer": "A cumulative probability chart, or cumulative distribution plot, shows for each value on the x-axis the proportion of observations less than or equal to that value, so the curve rises from 0 to 1 or 100 percent. It helps compare distributions and see percentiles at a glance. To read the median, find 0.5 or 50 percent on the y-axis, move across to the curve and read the corresponding x value. Similarly, the 25 percent and 75 percent points give the first and third quartiles.",
+   "keywords": [
+    "cumulative",
+    "less than or equal",
+    "0 to 1",
+    "percentile",
+    "median",
+    "50 percent",
+    "quartiles"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Power analysis and F-test",
+   "text": "Why is the F-test often performed before a two-sample t-test, and what does it check?",
+   "ideal_answer": "The F-test compares the variances of two groups by computing the ratio of the two sample variances, with the null hypothesis that the population variances are equal. The standard two-sample t-test comes in two versions, one assuming equal variances and the other, Welch's test, not assuming them. So the F-test result helps choose which t-test to use: if the p-value is above 0.05 we use the equal-variance t-test, otherwise the unequal-variance version. Excel provides this as F-Test Two-Sample for Variances.",
+   "keywords": [
+    "f-test",
+    "variances",
+    "ratio",
+    "equal variances",
+    "welch",
+    "which t-test",
+    "p-value"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Multiple regression/correlation",
+   "text": "Why might a multiple regression model show a high R-squared but have predictors with unexpected signs or non-significant coefficients?",
+   "ideal_answer": "This is usually caused by multicollinearity, where two or more independent variables are highly correlated with each other. The model as a whole can explain the dependent variable well, giving a high R-squared, but it cannot separate the individual effect of correlated predictors, so their coefficients become unstable, with large standard errors, unexpected signs and high p-values. It can be detected using a correlation matrix or the variance inflation factor, VIF. Remedies include removing or combining correlated variables, or using regularisation.",
+   "keywords": [
+    "multicollinearity",
+    "correlated predictors",
+    "r-squared",
+    "unstable",
+    "standard errors",
+    "variance inflation factor"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Benford's law, lift, word clouds and filtering",
+   "text": "How can Benford's law be used to detect possible fraud in a company's expense data, and what are its limitations?",
+   "ideal_answer": "Benford's law says that in many naturally occurring numerical data sets the leading digit is small more often: 1 appears as the first digit about 30 percent of the time, decreasing to about 4.6 percent for 9. To check for fraud, compare the first-digit distribution of the expense amounts with the Benford distribution, for example with a chi-square test; large deviations, such as too many amounts just under an approval limit, can signal fabricated numbers. Its limitations are that it applies only to data spanning several orders of magnitude without fixed limits or assigned numbers, so a deviation is a red flag for investigation, not proof of fraud.",
+   "keywords": [
+    "benford's law",
+    "leading digit",
+    "30 percent",
+    "first-digit distribution",
+    "chi-square",
+    "orders of magnitude",
+    "not proof"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Power analysis and F-test",
+   "text": "A study found no significant difference between two teaching methods, using only 10 students per group. What problem might exist, and how would power analysis help?",
+   "ideal_answer": "With such a small sample, the test may have low statistical power, which is the probability of detecting a real effect when it exists, so the non-significant result could be a Type II error, a false negative. Power depends on sample size, effect size, significance level and variability. Power analysis, done before the study, calculates the sample size needed to reach a desired power, usually 0.8, for an expected effect size at alpha 0.05. So the conclusion should be that the study was inconclusive, and a larger study planned with power analysis is needed.",
+   "keywords": [
+    "statistical power",
+    "small sample",
+    "type ii error",
+    "effect size",
+    "sample size",
+    "0.8",
+    "inconclusive"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Importing data into Excel, OpenOffice, R/Rattle, RStudio and KNIME",
+   "text": "Your manager asks whether the team should use Excel, R with RStudio or KNIME for a recurring monthly analysis of large sales data. How would you decide?",
+   "ideal_answer": "Excel is familiar and fast for small ad-hoc analysis, but it has a row limit of about one million, manual steps are hard to repeat and audit, and errors creep in. R with RStudio is powerful, scriptable and reproducible with huge package support, but it requires programming skills. KNIME offers reproducible, visual workflows that can handle large data, integrate databases, R and Python, and be rerun or scheduled each month, which suits mixed-skill teams. I would consider data size, the team's skills, the need for automation and reproducibility, and cost; for a recurring large analysis KNIME or R scripts are better than manual Excel work.",
+   "keywords": [
+    "excel",
+    "row limit",
+    "reproducible",
+    "r",
+    "programming skills",
+    "knime",
+    "workflows",
+    "automation"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Benford's law, lift, word clouds and filtering",
+   "text": "A marketing team built a model to target customers for a campaign and asks you whether it is worth using. How would you use lift to evaluate it?",
+   "ideal_answer": "Lift measures how much better the model is than random targeting: it is the response rate among the customers selected by the model divided by the overall response rate. For example, if the overall response rate is 2 percent and the top 10 percent of customers scored by the model respond at 8 percent, the lift for that decile is 4. A lift or gains chart shows this across deciles, and a lift greater than 1 means the model adds value. I would check lift on a separate validation set, then compare the extra revenue from responses with the campaign cost to decide how many deciles to target.",
+   "keywords": [
+    "lift",
+    "random",
+    "response rate",
+    "divided",
+    "decile",
+    "greater than 1",
+    "validation set"
+   ]
+  }
+ ]
 }

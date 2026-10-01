@@ -1,183 +1,183 @@
 {
-  "subject": "Database Management Systems",
-  "applies_to": [
-    {
-      "course": "BSC_IT",
-      "year": 1,
-      "semester": 2
-    }
-  ],
-  "questions": [
-    {
-      "level": 1,
-      "topic": "Database systems, view of data and database architecture",
-      "text": "What is a DBMS and what are its main advantages over a file processing system?",
-      "ideal_answer": "A Database Management System is software that stores, organises and manages data and lets users create, retrieve, update and delete it in a controlled way. Compared with file processing systems, a DBMS reduces data redundancy and inconsistency, enforces integrity constraints, and provides security through access control. It also supports concurrent access by many users, backup and recovery, and data independence, and allows easy querying with a language like SQL.",
-      "keywords": [
-        "software",
-        "redundancy",
-        "inconsistency",
-        "integrity",
-        "security",
-        "concurrent access",
-        "recovery"
-      ]
-    },
-    {
-      "level": 1,
-      "topic": "Relational model: keys and integrity rules",
-      "text": "What is a primary key and what is a foreign key?",
-      "ideal_answer": "A primary key is a column or set of columns that uniquely identifies each row in a table; its values must be unique and cannot be NULL. A foreign key is a column in one table that refers to the primary key of another table, creating a link between the two tables. The foreign key enforces referential integrity, meaning it can only hold values that exist in the referenced table, or NULL.",
-      "keywords": [
-        "primary key",
-        "uniquely identifies",
-        "cannot be null",
-        "foreign key",
-        "refers",
-        "referential integrity"
-      ]
-    },
-    {
-      "level": 2,
-      "topic": "Data models and degrees of data abstraction",
-      "text": "Explain the three levels of data abstraction in a DBMS.",
-      "ideal_answer": "The physical or internal level is the lowest and describes how data is actually stored on disk, such as files, indexes and blocks. The logical or conceptual level describes what data is stored and the relationships among it, for example tables, columns and constraints, for the whole database. The view or external level is the highest and shows only the part of the database relevant to a particular user or application, hiding the rest. These levels give data independence, so changes at one level need not affect the level above.",
-      "keywords": [
-        "physical",
-        "logical",
-        "view",
-        "stored",
-        "relationships",
-        "data independence"
-      ]
-    },
-    {
-      "level": 2,
-      "topic": "SQL: complex queries, joins, views",
-      "text": "What is the difference between an INNER JOIN and a LEFT OUTER JOIN?",
-      "ideal_answer": "An INNER JOIN returns only the rows where the join condition matches in both tables. A LEFT OUTER JOIN returns all rows from the left table, together with the matching rows from the right table. When a left-table row has no match, the right table's columns are filled with NULL. For example, a LEFT JOIN of customers to orders lists every customer, including those with no orders.",
-      "keywords": [
-        "inner join",
-        "matching rows",
-        "both tables",
-        "left join",
-        "all rows",
-        "null"
-      ]
-    },
-    {
-      "level": 3,
-      "topic": "ER model, constraints and ER diagrams",
-      "text": "In an ER diagram for a college, a student can enrol in many courses and a course can have many students. How do you represent this relationship and convert it into tables?",
-      "ideal_answer": "This is a many-to-many relationship between the STUDENT and COURSE entities, drawn as a diamond named, for example, ENROLS connected to both entity rectangles with cardinality M and N. When converting to relational tables, STUDENT and COURSE each become a table with its own primary key. The relationship becomes a separate junction table, such as ENROLMENT, containing student_id and course_id as foreign keys, and together they form its composite primary key. Any relationship attributes, like enrolment date or grade, are stored in this junction table.",
-      "keywords": [
-        "many-to-many",
-        "entity",
-        "relationship",
-        "junction table",
-        "foreign keys",
-        "composite primary key"
-      ]
-    },
-    {
-      "level": 3,
-      "topic": "File structures, hashing and indexing",
-      "text": "How does an index speed up a query, and what is its cost?",
-      "ideal_answer": "An index is a separate data structure, usually a B+ tree or a hash table, that stores key values with pointers to the rows containing them. Instead of scanning the whole table, the DBMS searches the index to find the matching rows directly, which turns a full table scan into a few disk reads. The cost is extra storage space, and every INSERT, UPDATE or DELETE must also update the index, which slows down writes. So indexes should be created on columns frequently used in WHERE clauses, joins and sorting.",
-      "keywords": [
-        "index",
-        "b+ tree",
-        "pointer",
-        "full table scan",
-        "storage",
-        "slows down writes"
-      ]
-    },
-    {
-      "level": 4,
-      "topic": "Functional dependencies and normalization",
-      "text": "A table ORDERS has columns order_id, product_id, quantity and product_name, with primary key (order_id, product_id). Which normal form does it violate and how would you fix it?",
-      "ideal_answer": "product_name depends only on product_id, which is just part of the composite primary key. This is a partial dependency, so the table violates Second Normal Form, which requires every non-key attribute to depend on the whole primary key. The fix is to decompose it into ORDER_ITEMS with order_id, product_id and quantity, and PRODUCTS with product_id and product_name. This removes redundancy, since a product name is stored only once, and avoids update anomalies.",
-      "keywords": [
-        "partial dependency",
-        "second normal form",
-        "composite primary key",
-        "decompose",
-        "redundancy",
-        "anomalies"
-      ]
-    },
-    {
-      "level": 4,
-      "topic": "Transaction processing and concurrency control",
-      "text": "Explain the ACID properties of a transaction with the example of a bank transfer.",
-      "ideal_answer": "Atomicity means the transfer is all or nothing: if money is debited from account A but the credit to account B fails, the debit is rolled back. Consistency means the database moves from one valid state to another, for example the total money across both accounts stays the same. Isolation means concurrent transactions do not see each other's intermediate results, so another transaction cannot read A after the debit but before the credit. Durability means that once the transfer is committed, it survives system crashes because it is recorded in the log and on disk.",
-      "keywords": [
-        "atomicity",
-        "consistency",
-        "isolation",
-        "durability",
-        "rolled back",
-        "commit"
-      ]
-    },
-    {
-      "level": 5,
-      "topic": "Transaction processing and concurrency control",
-      "text": "Two users read the same seat as available and both book it at the same time. What concurrency problem is this and how does a DBMS prevent it?",
-      "ideal_answer": "This is the lost update problem, where two transactions read the same value and both write, so one update overwrites the other. A DBMS prevents it with concurrency control, typically locking: under two-phase locking a transaction must acquire an exclusive lock before writing, and with SELECT ... FOR UPDATE the first booking locks the seat row so the second must wait and will then see it as booked. Alternatives are optimistic concurrency control, which checks a version number at commit and aborts conflicting transactions, or using a higher isolation level such as serializable. The goal is a serializable schedule.",
-      "keywords": [
-        "lost update",
-        "locking",
-        "exclusive lock",
-        "two-phase locking",
-        "serializable",
-        "for update"
-      ]
-    },
-    {
-      "level": 5,
-      "topic": "Database recovery techniques",
-      "text": "The database server crashes while several transactions are running, some committed and some not. How does log-based recovery restore a correct state?",
-      "ideal_answer": "The DBMS writes every change to a log on stable storage before applying it to the database, following the write-ahead logging rule. Each log record holds the transaction ID, the data item, and the old and new values, plus start and commit records. After the crash, the recovery manager redoes the changes of all transactions that have a commit record, so committed work is not lost, and undoes the changes of transactions without a commit record using the old values. Checkpoints limit how far back in the log recovery must scan.",
-      "keywords": [
-        "log",
-        "write-ahead logging",
-        "redo",
-        "undo",
-        "committed",
-        "checkpoint"
-      ]
-    },
-    {
-      "level": 6,
-      "topic": "Query processing and optimization",
-      "text": "A report query joining three large tables has become very slow in production. How would you investigate and optimise it?",
-      "ideal_answer": "First, look at the execution plan using EXPLAIN to see how the optimizer runs the query, checking for full table scans, poor join orders or expensive sorts. Make sure the join and filter columns have suitable indexes and that table statistics are up to date, because the cost-based optimizer relies on them. Rewrite the query to filter early, select only needed columns instead of SELECT *, and avoid functions on indexed columns in the WHERE clause. For heavy reports, consider a materialized view or summary table, or running them on a read replica, and measure the improvement after each change.",
-      "keywords": [
-        "execution plan",
-        "explain",
-        "full table scan",
-        "index",
-        "statistics",
-        "optimizer",
-        "materialized view"
-      ]
-    },
-    {
-      "level": 6,
-      "topic": "SQL: views and schema modification",
-      "text": "You need to add a new NOT NULL column to a table with millions of rows used by a live application, and give some users access to only part of the data. How would you approach both tasks?",
-      "ideal_answer": "For the schema change, add the column first as nullable or with a default value using ALTER TABLE, backfill existing rows in batches, and only then add the NOT NULL constraint, ideally during a low-traffic window, after testing on a copy and taking a backup. This avoids long locks and failures on existing rows. For restricted access, create a view that selects only the permitted columns and rows, and grant those users SELECT privileges on the view instead of the base table. This keeps sensitive data hidden while the application continues to use the base table.",
-      "keywords": [
-        "alter table",
-        "default value",
-        "backfill",
-        "not null",
-        "view",
-        "grant",
-        "backup"
-      ]
-    }
-  ]
+ "subject": "Database Management Systems",
+ "applies_to": [
+  {
+   "course": "BSC_IT",
+   "year": 1,
+   "semester": 2
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Database systems, view of data and database architecture",
+   "text": "What is a DBMS and what are its main advantages over a file processing system?",
+   "ideal_answer": "A Database Management System is software that stores, organises and manages data and lets users create, retrieve, update and delete it in a controlled way. Compared with file processing systems, a DBMS reduces data redundancy and inconsistency, enforces integrity constraints, and provides security through access control. It also supports concurrent access by many users, backup and recovery, and data independence, and allows easy querying with a language like SQL.",
+   "keywords": [
+    "software",
+    "redundancy",
+    "inconsistency",
+    "integrity",
+    "security",
+    "concurrent access",
+    "recovery"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Relational model: keys and integrity rules",
+   "text": "What is a primary key and what is a foreign key?",
+   "ideal_answer": "A primary key is a column or set of columns that uniquely identifies each row in a table; its values must be unique and cannot be NULL. A foreign key is a column in one table that refers to the primary key of another table, creating a link between the two tables. The foreign key enforces referential integrity, meaning it can only hold values that exist in the referenced table, or NULL.",
+   "keywords": [
+    "primary key",
+    "uniquely identifies",
+    "cannot be null",
+    "foreign key",
+    "refers",
+    "referential integrity"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Data models and degrees of data abstraction",
+   "text": "Explain the three levels of data abstraction in a DBMS.",
+   "ideal_answer": "The physical or internal level is the lowest and describes how data is actually stored on disk, such as files, indexes and blocks. The logical or conceptual level describes what data is stored and the relationships among it, for example tables, columns and constraints, for the whole database. The view or external level is the highest and shows only the part of the database relevant to a particular user or application, hiding the rest. These levels give data independence, so changes at one level need not affect the level above.",
+   "keywords": [
+    "physical",
+    "logical",
+    "view",
+    "stored",
+    "relationships",
+    "data independence"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "SQL: complex queries, joins, views",
+   "text": "What is the difference between an INNER JOIN and a LEFT OUTER JOIN?",
+   "ideal_answer": "An INNER JOIN returns only the rows where the join condition matches in both tables. A LEFT OUTER JOIN returns all rows from the left table, together with the matching rows from the right table. When a left-table row has no match, the right table's columns are filled with NULL. For example, a LEFT JOIN of customers to orders lists every customer, including those with no orders.",
+   "keywords": [
+    "inner join",
+    "matching rows",
+    "both tables",
+    "left join",
+    "all rows",
+    "null"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "ER model, constraints and ER diagrams",
+   "text": "In an ER diagram for a college, a student can enrol in many courses and a course can have many students. How do you represent this relationship and convert it into tables?",
+   "ideal_answer": "This is a many-to-many relationship between the STUDENT and COURSE entities, drawn as a diamond named, for example, ENROLS connected to both entity rectangles with cardinality M and N. When converting to relational tables, STUDENT and COURSE each become a table with its own primary key. The relationship becomes a separate junction table, such as ENROLMENT, containing student_id and course_id as foreign keys, and together they form its composite primary key. Any relationship attributes, like enrolment date or grade, are stored in this junction table.",
+   "keywords": [
+    "many-to-many",
+    "entity",
+    "relationship",
+    "junction table",
+    "foreign keys",
+    "composite primary key"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "File structures, hashing and indexing",
+   "text": "How does an index speed up a query, and what is its cost?",
+   "ideal_answer": "An index is a separate data structure, usually a B+ tree or a hash table, that stores key values with pointers to the rows containing them. Instead of scanning the whole table, the DBMS searches the index to find the matching rows directly, which turns a full table scan into a few disk reads. The cost is extra storage space, and every INSERT, UPDATE or DELETE must also update the index, which slows down writes. So indexes should be created on columns frequently used in WHERE clauses, joins and sorting.",
+   "keywords": [
+    "index",
+    "b+ tree",
+    "pointer",
+    "full table scan",
+    "storage",
+    "slows down writes"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Functional dependencies and normalization",
+   "text": "A table ORDERS has columns order_id, product_id, quantity and product_name, with primary key (order_id, product_id). Which normal form does it violate and how would you fix it?",
+   "ideal_answer": "product_name depends only on product_id, which is just part of the composite primary key. This is a partial dependency, so the table violates Second Normal Form, which requires every non-key attribute to depend on the whole primary key. The fix is to decompose it into ORDER_ITEMS with order_id, product_id and quantity, and PRODUCTS with product_id and product_name. This removes redundancy, since a product name is stored only once, and avoids update anomalies.",
+   "keywords": [
+    "partial dependency",
+    "second normal form",
+    "composite primary key",
+    "decompose",
+    "redundancy",
+    "anomalies"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Transaction processing and concurrency control",
+   "text": "Explain the ACID properties of a transaction with the example of a bank transfer.",
+   "ideal_answer": "Atomicity means the transfer is all or nothing: if money is debited from account A but the credit to account B fails, the debit is rolled back. Consistency means the database moves from one valid state to another, for example the total money across both accounts stays the same. Isolation means concurrent transactions do not see each other's intermediate results, so another transaction cannot read A after the debit but before the credit. Durability means that once the transfer is committed, it survives system crashes because it is recorded in the log and on disk.",
+   "keywords": [
+    "atomicity",
+    "consistency",
+    "isolation",
+    "durability",
+    "rolled back",
+    "commit"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Transaction processing and concurrency control",
+   "text": "Two users read the same seat as available and both book it at the same time. What concurrency problem is this and how does a DBMS prevent it?",
+   "ideal_answer": "This is the lost update problem, where two transactions read the same value and both write, so one update overwrites the other. A DBMS prevents it with concurrency control, typically locking: under two-phase locking a transaction must acquire an exclusive lock before writing, and with SELECT ... FOR UPDATE the first booking locks the seat row so the second must wait and will then see it as booked. Alternatives are optimistic concurrency control, which checks a version number at commit and aborts conflicting transactions, or using a higher isolation level such as serializable. The goal is a serializable schedule.",
+   "keywords": [
+    "lost update",
+    "locking",
+    "exclusive lock",
+    "two-phase locking",
+    "serializable",
+    "for update"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Database recovery techniques",
+   "text": "The database server crashes while several transactions are running, some committed and some not. How does log-based recovery restore a correct state?",
+   "ideal_answer": "The DBMS writes every change to a log on stable storage before applying it to the database, following the write-ahead logging rule. Each log record holds the transaction ID, the data item, and the old and new values, plus start and commit records. After the crash, the recovery manager redoes the changes of all transactions that have a commit record, so committed work is not lost, and undoes the changes of transactions without a commit record using the old values. Checkpoints limit how far back in the log recovery must scan.",
+   "keywords": [
+    "log",
+    "write-ahead logging",
+    "redo",
+    "undo",
+    "committed",
+    "checkpoint"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Query processing and optimization",
+   "text": "A report query joining three large tables has become very slow in production. How would you investigate and optimise it?",
+   "ideal_answer": "First, look at the execution plan using EXPLAIN to see how the optimizer runs the query, checking for full table scans, poor join orders or expensive sorts. Make sure the join and filter columns have suitable indexes and that table statistics are up to date, because the cost-based optimizer relies on them. Rewrite the query to filter early, select only needed columns instead of SELECT *, and avoid functions on indexed columns in the WHERE clause. For heavy reports, consider a materialized view or summary table, or running them on a read replica, and measure the improvement after each change.",
+   "keywords": [
+    "execution plan",
+    "explain",
+    "full table scan",
+    "index",
+    "statistics",
+    "optimizer",
+    "materialized view"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "SQL: views and schema modification",
+   "text": "You need to add a new NOT NULL column to a table with millions of rows used by a live application, and give some users access to only part of the data. How would you approach both tasks?",
+   "ideal_answer": "For the schema change, add the column first as nullable or with a default value using ALTER TABLE, backfill existing rows in batches, and only then add the NOT NULL constraint, ideally during a low-traffic window, after testing on a copy and taking a backup. This avoids long locks and failures on existing rows. For restricted access, create a view that selects only the permitted columns and rows, and grant those users SELECT privileges on the view instead of the base table. This keeps sensitive data hidden while the application continues to use the base table.",
+   "keywords": [
+    "alter table",
+    "default value",
+    "backfill",
+    "not null",
+    "view",
+    "grant",
+    "backup"
+   ]
+  }
+ ]
 }

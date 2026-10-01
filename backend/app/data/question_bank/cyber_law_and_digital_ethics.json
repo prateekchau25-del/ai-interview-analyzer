@@ -1,9 +1,21 @@
 {
   "subject": "Cyber Law and Digital Ethics",
   "applies_to": [
-    {"course": "BSC_IT", "year": 1, "semester": 1},
-    {"course": "BSC_DS", "year": 1, "semester": 1},
-    {"course": "BSC_AI", "year": 1, "semester": 1}
+    {
+      "course": "BSC_IT",
+      "year": 1,
+      "semester": 1
+    },
+    {
+      "course": "BSC_DS",
+      "year": 1,
+      "semester": 1
+    },
+    {
+      "course": "BSC_AI",
+      "year": 1,
+      "semester": 1
+    }
   ],
   "questions": [
     {
@@ -11,84 +23,168 @@
       "topic": "Cyber crime under the IT Act 2000",
       "text": "What is cyber crime, and which Indian law primarily deals with it?",
       "ideal_answer": "Cyber crime is any unlawful act in which a computer, network or digital device is used as a tool, a target, or both. Examples include hacking, cyber fraud, identity theft, phishing, cyber defamation and e-mail abuse. In India it is primarily dealt with by the Information Technology Act, 2000, which defines offences and prescribes penalties. Some cyber offences are also punishable under general criminal law such as the Indian Penal Code, now the Bharatiya Nyaya Sanhita.",
-      "keywords": ["unlawful act", "computer", "network", "information technology act", "2000", "hacking"]
+      "keywords": [
+        "unlawful act",
+        "computer",
+        "network",
+        "information technology act",
+        "2000",
+        "hacking"
+      ]
     },
     {
       "level": 1,
       "topic": "Digital signatures and certifying authorities",
       "text": "What is a digital signature?",
       "ideal_answer": "A digital signature is an electronic method of authenticating an electronic record using asymmetric cryptography and a hash function. The signer creates the signature with their private key, and anyone can verify it using the signer's public key. It provides authentication of the signer, integrity of the document and non-repudiation. Under the IT Act 2000, digital signatures are legally recognised and are issued through Digital Signature Certificates by licensed Certifying Authorities.",
-      "keywords": ["private key", "public key", "hash", "authentication", "integrity", "non-repudiation"]
+      "keywords": [
+        "private key",
+        "public key",
+        "hash",
+        "authentication",
+        "integrity",
+        "non-repudiation"
+      ]
     },
     {
       "level": 2,
       "topic": "Click-wrap and shrink-wrap contracts",
       "text": "What is the difference between a click-wrap contract and a shrink-wrap contract?",
       "ideal_answer": "A click-wrap contract is an online agreement that the user accepts by clicking a button such as 'I Agree' before installing software or using a website. A shrink-wrap contract is a licence packed inside a physical software package, whose terms the user is deemed to accept by opening the wrapping or using the software. The key difference is the mode of acceptance: an explicit click online versus conduct after purchase of a physical product. Both are generally treated as valid e-contracts if the user had reasonable notice of the terms.",
-      "keywords": ["click-wrap", "i agree", "shrink-wrap", "packaging", "acceptance", "licence"]
+      "keywords": [
+        "click-wrap",
+        "i agree",
+        "shrink-wrap",
+        "package",
+        "acceptance",
+        "licence"
+      ]
     },
     {
       "level": 2,
       "topic": "Cyber squatting and domain names",
       "text": "What is cyber squatting? Give a simple example.",
       "ideal_answer": "Cyber squatting is registering, using or selling a domain name that is identical or confusingly similar to someone else's trademark or well-known name, in bad faith, usually to profit from it. For example, someone registers a domain like a famous brand's name before the brand does and then demands a high price to transfer it. It can also be used to divert traffic or mislead customers. Victims can seek remedies through the UDRP, the INDRP for .in domains, or courts under trademark law.",
-      "keywords": ["domain name", "trademark", "bad faith", "registering", "profit", "udrp"]
+      "keywords": [
+        "domain name",
+        "trademark",
+        "bad faith",
+        "registering",
+        "profit",
+        "udrp"
+      ]
     },
     {
       "level": 3,
       "topic": "Electronic records as evidence",
       "text": "How can an electronic record, such as an email, be produced as evidence in an Indian court?",
       "ideal_answer": "The IT Act 2000 amended the Indian Evidence Act to recognise electronic records as documentary evidence. An electronic record is admissible as secondary evidence through a computer output such as a printout or copy, provided the conditions of Section 65B of the Evidence Act are satisfied, now Section 63 of the Bharatiya Sakshya Adhiniyam. This requires a certificate identifying the record, describing how it was produced and the device used, signed by a responsible person. Courts have held this certificate is mandatory for secondary electronic evidence, so the email must be shown to be authentic and unaltered.",
-      "keywords": ["evidence act", "electronic record", "section 65b", "certificate", "admissible", "authentic"]
+      "keywords": [
+        "evidence act",
+        "electronic record",
+        "section 65b",
+        "certificate",
+        "admissible",
+        "authentic"
+      ]
     },
     {
       "level": 3,
       "topic": "Copyright protection on the Internet and software piracy",
       "text": "A student downloads a paid software package from a cracked website and shares it with friends. Which legal issues arise?",
       "ideal_answer": "This is software piracy, because software is protected as a literary work under the Copyright Act, 1957. Copying, distributing or using an unlicensed copy infringes the owner's exclusive rights. Sharing it with friends adds unauthorised distribution, which increases liability. The Copyright Act provides civil remedies like damages and injunctions as well as criminal penalties including imprisonment and fine, and knowingly using infringing software is also an offence. Cracked software also creates security risks such as malware.",
-      "keywords": ["software piracy", "copyright act", "literary work", "infringement", "distribution", "licence"]
+      "keywords": [
+        "software piracy",
+        "copyright act",
+        "literary work",
+        "infringes",
+        "distribution",
+        "unlicensed"
+      ]
     },
     {
       "level": 4,
       "topic": "Jurisdiction in the cyber world",
       "text": "Why is jurisdiction a difficult issue in cyber law, and how does the IT Act address it?",
       "ideal_answer": "Jurisdiction is difficult because the Internet has no physical borders: the offender, the server and the victim may all be in different countries, each with different laws. Traditional jurisdiction is based on territory, which does not map well onto online acts. The IT Act 2000, under Sections 1(2) and 75, gives it extra-territorial application, so it applies to an offence committed outside India by any person if the act involves a computer, computer system or network located in India. Enforcement still depends on international cooperation such as extradition treaties and mutual legal assistance.",
-      "keywords": ["borders", "territory", "extra-territorial", "section 75", "located in india", "international cooperation"]
+      "keywords": [
+        "borders",
+        "territory",
+        "extra-territorial",
+        "offence committed outside india",
+        "located in india",
+        "international cooperation"
+      ]
     },
     {
       "level": 4,
       "topic": "Penalties, adjudication and arrest without warrant",
       "text": "Under the IT Act, what is the difference between a penalty for damage to a computer system and a criminal offence like hacking, and who decides each?",
       "ideal_answer": "Section 43 deals with civil liability: unauthorised access, downloading, introducing viruses or damaging a computer system makes the person liable to pay compensation. Such claims are decided by an Adjudicating Officer for amounts up to five crore rupees, and by civil courts above that, with appeals to the appellate tribunal. Section 66 makes the same acts a criminal offence when done dishonestly or fraudulently, punishable with imprisonment up to three years or fine up to five lakh rupees or both, tried by criminal courts. The difference is intention: Section 43 needs no criminal intent, while Section 66 requires dishonest or fraudulent intent.",
-      "keywords": ["section 43", "compensation", "adjudicating officer", "section 66", "dishonestly", "imprisonment"]
+      "keywords": [
+        "section 43",
+        "compensation",
+        "adjudicating officer",
+        "section 66",
+        "dishonestly",
+        "imprisonment"
+      ]
     },
     {
       "level": 5,
       "topic": "Copyright, ISP liability and intermediaries",
       "text": "A user uploads defamatory content to a social media platform. When can the platform claim protection from liability under Indian law?",
       "ideal_answer": "Under Section 79 of the IT Act, an intermediary such as a social media platform or ISP gets safe harbour protection for third-party content. The conditions are that it only provides access or hosting, does not initiate the transmission, select the receiver or modify the content, and observes due diligence as per the Intermediary Guidelines. It loses protection if it conspired in the act, or fails to expeditiously remove or disable the content after receiving actual knowledge through a court order or government notification, as clarified in the Shreya Singhal case. The user who uploaded the content remains liable for defamation.",
-      "keywords": ["section 79", "intermediary", "safe harbour", "due diligence", "court order", "takedown"]
+      "keywords": [
+        "section 79",
+        "intermediary",
+        "safe harbour",
+        "due diligence",
+        "court order",
+        "remove"
+      ]
     },
     {
       "level": 5,
       "topic": "Cyber squatting, domain names and meta-tagging",
       "text": "A competitor puts your company's brand name in the hidden meta tags of its website so that it appears in search results for your brand. Is this a legal problem and why?",
       "ideal_answer": "This is meta-tagging misuse: the competitor uses your trademark in invisible keywords to divert search traffic to its own site. It can amount to trademark infringement and passing off, because it uses your mark in the course of trade and creates initial interest confusion or unfair advantage from your reputation. Courts have granted injunctions in such cases where the use was in bad faith. Remedies include an injunction, removal of the tags and damages. Modern search engines give less weight to meta keywords, but the legal principle about misusing a trademark remains.",
-      "keywords": ["meta tags", "trademark", "infringement", "passing off", "confusion", "injunction"]
+      "keywords": [
+        "meta-tagging",
+        "trademark",
+        "infringement",
+        "passing off",
+        "confusion",
+        "injunction"
+      ]
     },
     {
       "level": 6,
       "topic": "E-commerce taxation and permanent establishment",
       "text": "A foreign company sells digital advertising to Indian customers without having any office in India. How does the concept of permanent establishment affect its taxation, and how has India responded?",
       "ideal_answer": "Under tax treaties, a foreign company's business profits are taxed in India only if it has a permanent establishment, traditionally a fixed place of business like an office or branch. Digital businesses can earn large revenue from Indian users without any physical presence, so traditional PE rules let them escape Indian tax. India responded with the Equalisation Levy, introduced in 2016 at six percent on online advertising services, and the concept of Significant Economic Presence, which treats substantial revenue or user base in India as a taxable nexus. The 2 percent levy on e-commerce operators was abolished from August 2024, and the 6 percent levy on online advertising was withdrawn from April 2025.",
-      "keywords": ["permanent establishment", "fixed place of business", "tax treaty", "equalisation levy", "significant economic presence", "nexus"]
+      "keywords": [
+        "permanent establishment",
+        "fixed place of business",
+        "tax treaties",
+        "equalisation levy",
+        "significant economic presence",
+        "nexus"
+      ]
     },
     {
       "level": 6,
       "topic": "Protection of cyber consumers and IT Act amendments",
       "text": "You work at an Indian startup that stores customers' personal data, and a data breach exposes it. What legal obligations and best practices should the company follow?",
       "ideal_answer": "Under the IT Act, Section 43A makes a body corporate liable to pay compensation if it is negligent in implementing reasonable security practices for sensitive personal data, and CERT-In rules require reporting cyber incidents within six hours. The Digital Personal Data Protection Act 2023 requires the company to notify the Data Protection Board and affected users of the breach and allows heavy penalties for failing to take reasonable safeguards. Best practices include an incident response plan, containing the breach, preserving logs as evidence, encryption, access control, and standards like ISO 27001. Being transparent with customers protects consumer trust and limits legal liability.",
-      "keywords": ["section 43a", "reasonable security practices", "cert-in", "dpdp act", "notify", "encryption"]
+      "keywords": [
+        "section 43a",
+        "reasonable security practices",
+        "cert-in",
+        "digital personal data protection act",
+        "notify",
+        "encryption"
+      ]
     }
   ]
 }

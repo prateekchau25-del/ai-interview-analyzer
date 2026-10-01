@@ -1,8 +1,16 @@
 {
   "subject": "Prompt Engineering with ChatGPT",
   "applies_to": [
-    {"course": "BSC_AI", "year": 1, "semester": 2},
-    {"course": "BCA", "year": 1, "semester": 1}
+    {
+      "course": "BSC_AI",
+      "year": 1,
+      "semester": 2
+    },
+    {
+      "course": "BCA",
+      "year": 1,
+      "semester": 1
+    }
   ],
   "questions": [
     {
@@ -10,84 +18,168 @@
       "topic": "Introduction and importance of prompt engineering",
       "text": "What is prompt engineering?",
       "ideal_answer": "Prompt engineering is the practice of designing and refining the input text, called a prompt, given to a generative AI model such as ChatGPT so that it produces accurate, relevant and useful output. It involves giving clear instructions, context, examples and the desired output format. It is important because the same model can give very different quality answers depending on how the prompt is written. It is used in content writing, coding, chatbots, data analysis and image generation.",
-      "keywords": ["designing", "prompt", "input", "generative ai", "instructions", "output"]
+      "keywords": [
+        "designing",
+        "prompt",
+        "input",
+        "generative ai",
+        "instructions",
+        "output"
+      ]
     },
     {
       "level": 1,
       "topic": "Introduction to LLMs",
       "text": "What is a large language model?",
       "ideal_answer": "A large language model, or LLM, is a deep learning model, usually based on the transformer architecture, trained on huge amounts of text to understand and generate human language. It works by predicting the next token, a word or part of a word, given the previous text. It has billions of parameters learned during pre-training and is often fine-tuned to follow instructions. Examples include GPT-4 behind ChatGPT, Gemini, Claude and LLaMA.",
-      "keywords": ["transformer", "trained", "large amounts of text", "next token", "parameters", "gpt"]
+      "keywords": [
+        "transformer",
+        "trained",
+        "huge amounts of text",
+        "next token",
+        "parameters",
+        "gpt"
+      ]
     },
     {
       "level": 2,
       "topic": "Types of prompts: zero-shot and few-shot",
       "text": "What is the difference between zero-shot and few-shot prompting? Give an example.",
       "ideal_answer": "In zero-shot prompting, the model is given only the instruction with no examples, for example 'Classify this review as positive or negative: The food was cold.' In few-shot prompting, the prompt includes a few solved examples of input and output before the actual task, such as two labelled reviews followed by the new review. Few-shot prompting helps the model understand the exact format and pattern expected, and usually improves accuracy on specific or unusual tasks. Zero-shot is simpler and works well for common tasks.",
-      "keywords": ["zero-shot", "no examples", "few-shot", "examples", "format", "accuracy"]
+      "keywords": [
+        "zero-shot",
+        "no examples",
+        "few-shot",
+        "examples",
+        "format",
+        "accuracy"
+      ]
     },
     {
       "level": 2,
       "topic": "Basic structure and components of prompts",
       "text": "What are the main components of a well-structured prompt?",
       "ideal_answer": "A well-structured prompt usually has an instruction or task that says clearly what to do, context or background information, input data that the model should work on, and an output indicator that specifies the format, such as a table, bullet points or word limit. It may also include a role or persona, for example 'Act as a teacher', and constraints like tone or audience. Examples can be added for few-shot prompting. Including these components reduces ambiguity and gives more relevant answers.",
-      "keywords": ["instruction", "context", "input data", "output format", "role", "constraints"]
+      "keywords": [
+        "instruction",
+        "context",
+        "input data",
+        "format",
+        "role",
+        "constraints"
+      ]
     },
     {
       "level": 3,
       "topic": "Chain-of-thought prompting",
       "text": "How does chain-of-thought prompting work, and on which kind of task does it help?",
       "ideal_answer": "Chain-of-thought prompting asks the model to show its reasoning step by step before giving the final answer, for example by adding 'Let's think step by step' or by providing examples that include worked reasoning. Breaking the problem into intermediate steps helps the model avoid jumping to a wrong answer. It helps most on multi-step reasoning tasks such as arithmetic word problems, logic puzzles and planning. It also makes the answer easier to check, since you can see where the reasoning went wrong.",
-      "keywords": ["step by step", "reasoning", "intermediate steps", "final answer", "multi-step", "arithmetic"]
+      "keywords": [
+        "step by step",
+        "reasoning",
+        "intermediate steps",
+        "final answer",
+        "multi-step",
+        "arithmetic"
+      ]
     },
     {
       "level": 3,
       "topic": "Role-based prompting and defining personality",
       "text": "You want ChatGPT to help you prepare for a job interview. How would you use role-based prompting to do this?",
       "ideal_answer": "Role-based prompting assigns the model a persona so its responses match that role's knowledge, tone and behaviour. For interview practice, I would write: 'Act as a technical interviewer for a junior Python developer role. Ask me one question at a time, wait for my answer, then give feedback and a score out of 10.' I would add context like my resume skills and the difficulty level. The role makes the questions realistic and the format instructions keep the conversation interactive.",
-      "keywords": ["role", "persona", "act as", "interviewer", "one question at a time", "feedback"]
+      "keywords": [
+        "role",
+        "persona",
+        "act as",
+        "interviewer",
+        "one question at a time",
+        "feedback"
+      ]
     },
     {
       "level": 4,
       "topic": "Challenges and limitations of prompts: hallucination",
       "text": "Why do LLMs sometimes hallucinate, and how can prompting reduce it?",
       "ideal_answer": "Hallucination is when an LLM generates confident but false or made-up information, such as fake citations. It happens because the model predicts likely-sounding text based on patterns in its training data rather than looking up verified facts, and it may lack up-to-date or specific knowledge. Prompting can reduce it by giving the relevant source text and asking the model to answer only from it, asking it to say 'I don't know' when unsure, asking for sources, and lowering ambiguity. However, prompting cannot fully eliminate hallucination, so important outputs must be verified.",
-      "keywords": ["hallucination", "false information", "predicts", "training data", "provide context", "verify"]
+      "keywords": [
+        "hallucination",
+        "false",
+        "predicts",
+        "training data",
+        "source text",
+        "verified"
+      ]
     },
     {
       "level": 4,
       "topic": "Prompt optimization: ambiguity",
       "text": "Compare the prompts 'Write about climate change' and 'Write a 150-word summary of three causes of climate change for school students, as bullet points'. Why does the second produce better output?",
       "ideal_answer": "The first prompt is vague, so the model must guess the length, focus, audience and format, and the output may be long, generic or off-target. The second prompt removes ambiguity by specifying the task as a summary, the scope as three causes, the length as 150 words, the audience as school students and the format as bullet points. Because the model has clear constraints, the output is more relevant, consistent and easier to use. This shows the principles of being specific and defining the output format.",
-      "keywords": ["vague", "ambiguity", "specific", "length", "audience", "format"]
+      "keywords": [
+        "vague",
+        "ambiguity",
+        "specific",
+        "length",
+        "audience",
+        "format"
+      ]
     },
     {
       "level": 5,
       "topic": "Prompt optimization: output format",
       "text": "Your program sends a prompt to an LLM API and parses the reply as JSON, but it sometimes breaks because the model adds extra text. How would you fix this?",
       "ideal_answer": "First, make the prompt explicit: state the exact JSON schema with field names and types, give an example output, and instruct the model to return only JSON with no explanation or markdown. Lower the temperature to make output more consistent. If the API supports it, use JSON mode or structured output features that force valid JSON. In code, always validate the parsed result, strip code fences if present, and retry or fall back gracefully when parsing fails.",
-      "keywords": ["json schema", "example output", "only json", "temperature", "json mode", "validate"]
+      "keywords": [
+        "json schema",
+        "example output",
+        "only json",
+        "temperature",
+        "json mode",
+        "validate"
+      ]
     },
     {
       "level": 5,
       "topic": "Prompting for image generation: DALL-E, Midjourney",
       "text": "An image generator keeps producing images that don't match your idea of 'a futuristic Mumbai street'. How would you improve the prompt?",
       "ideal_answer": "I would make the prompt more descriptive by specifying the subject, setting and details, such as flying vehicles, neon signboards in Hindi and English, and monsoon rain. I would add the style, such as photorealistic or digital art, the lighting and time of day, the camera angle or composition, and the aspect ratio. In tools that support it, I would use negative prompts to exclude unwanted elements, like blurry or distorted text. Then I would iterate, changing one element at a time and comparing results.",
-      "keywords": ["descriptive", "subject", "style", "lighting", "negative prompt", "iterate"]
+      "keywords": [
+        "descriptive",
+        "subject",
+        "style",
+        "lighting",
+        "negative prompt",
+        "iterate"
+      ]
     },
     {
       "level": 6,
       "topic": "Applications: chatbots",
       "text": "You are building a customer support chatbot for a college using an LLM. How would you design its prompts so that it is helpful, accurate and safe?",
       "ideal_answer": "I would write a system prompt that defines the chatbot's role, tone and scope, for example answering only questions about admissions, fees and courses at the college. To keep answers accurate, I would use retrieval-augmented generation: retrieve the relevant official documents and include them in the prompt, instructing the bot to answer only from that context and to say it doesn't know otherwise. I would add guardrails to refuse off-topic or harmful requests, avoid collecting unnecessary personal data, and escalate complex cases to a human. Finally, I would test with real questions, including tricky ones and prompt injection attempts, and refine the prompts based on logs.",
-      "keywords": ["system prompt", "scope", "retrieval-augmented generation", "context", "guardrails", "testing"]
+      "keywords": [
+        "system prompt",
+        "scope",
+        "retrieval-augmented generation",
+        "context",
+        "guardrails",
+        "test"
+      ]
     },
     {
       "level": 6,
       "topic": "Ethics: bias, fairness, privacy and responsible AI",
       "text": "Your company wants to use ChatGPT to screen job applicants' resumes. What ethical risks exist and how would you handle them?",
       "ideal_answer": "The main risk is bias: the model may favour or penalise candidates based on gender, college, region or names because of biases in its training data, leading to unfair decisions. There are also privacy risks, since resumes contain personal data that may be sent to an external service, and transparency issues, since candidates may not know AI is judging them. To handle this, I would remove identifying details before processing, use clear job-related criteria in the prompt, audit outputs for bias across groups, comply with data protection laws like the DPDP Act, inform candidates, and keep a human making the final decision.",
-      "keywords": ["bias", "fairness", "privacy", "personal data", "transparency", "human oversight"]
+      "keywords": [
+        "bias",
+        "unfair",
+        "privacy",
+        "personal data",
+        "transparency",
+        "human making the final decision"
+      ]
     }
   ]
 }

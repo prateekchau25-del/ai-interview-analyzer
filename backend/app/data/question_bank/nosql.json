@@ -17,7 +17,7 @@
         "non-relational",
         "not only sql",
         "flexible schema",
-        "horizontal scaling",
+        "scale horizontally",
         "cluster",
         "key-value"
       ]
@@ -28,7 +28,7 @@
       "text": "What is sharding?",
       "ideal_answer": "Sharding is a distribution technique in which data is horizontally partitioned and different parts of the data, called shards, are stored on different servers. Each node handles reads and writes only for its own shard, so load is spread across the cluster. Data is assigned to shards using a shard key, for example by range or by hash. Sharding improves write and read scalability, but by itself does not provide redundancy, so it is often combined with replication.",
       "keywords": [
-        "horizontal partitioning",
+        "horizontally partitioned",
         "shards",
         "different servers",
         "shard key",
@@ -44,10 +44,10 @@
       "keywords": [
         "key-value",
         "opaque",
-        "lookup by key",
+        "retrieved by its key",
         "document",
         "json",
-        "query on fields"
+        "indexing on fields"
       ]
     },
     {
@@ -57,7 +57,7 @@
       "ideal_answer": "In master-slave replication, one master node accepts all writes and copies them to slave nodes, which serve reads. It scales reads well, but the master is a single point of failure for writes and a bottleneck. In peer-to-peer replication, all nodes are equal and any node can accept reads and writes, so there is no single point of failure and writes scale better. The drawback of peer-to-peer is write-write conflicts and consistency issues, since two nodes may update the same record at the same time.",
       "keywords": [
         "master",
-        "slaves",
+        "slave nodes",
         "writes",
         "single point of failure",
         "peer-to-peer",
@@ -73,7 +73,7 @@
         "nodes",
         "edges",
         "relationships",
-        "traversal",
+        "traverses",
         "joins",
         "neo4j"
       ]
@@ -101,7 +101,7 @@
         "impedance mismatch",
         "in-memory",
         "objects",
-        "relational tables",
+        "flat tables",
         "aggregate",
         "joins"
       ]
@@ -130,7 +130,7 @@
         "greater than n",
         "overlap",
         "stale data",
-        "availability",
+        "available",
         "version stamps"
       ]
     },
@@ -142,10 +142,10 @@
       "keywords": [
         "nosql injection",
         "operator",
-        "bypass authentication",
-        "validate input",
+        "bypasses authentication",
+        "validate",
         "sanitise",
-        "least privilege"
+        "least-privilege"
       ]
     },
     {
@@ -173,7 +173,7 @@
         "partition key",
         "clustering column",
         "time bucket",
-        "eventual consistency"
+        "eventual"
       ]
     }
   ]

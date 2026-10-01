@@ -42,7 +42,7 @@
    "text": "What is the difference between breadth-first search and depth-first search?",
    "ideal_answer": "Breadth-first search explores all nodes at the current depth before moving to the next level, and uses a FIFO queue. Depth-first search goes as deep as possible along one branch before backtracking, and uses a LIFO stack or recursion. BFS is complete and finds the shallowest solution, which is optimal when all step costs are equal, but needs a lot of memory. DFS uses much less memory but is not optimal and can fail to terminate in infinite or cyclic search spaces.",
    "keywords": [
-    "level by level",
+    "current depth",
     "queue",
     "stack",
     "backtracking",
@@ -73,7 +73,6 @@
    "keywords": [
     "actual cost",
     "heuristic",
-    "path cost",
     "priority queue",
     "admissible",
     "optimal"
@@ -90,7 +89,7 @@
     "transition model",
     "goal test",
     "path cost",
-    "blank tile"
+    "blank"
    ]
   },
   {
@@ -117,7 +116,7 @@
     "plateau",
     "ridge",
     "greedy",
-    "random restart",
+    "random-restart",
     "simulated annealing"
    ]
   },
@@ -141,7 +140,7 @@
    "text": "A disease affects 1% of people and a test is 90% accurate for both sick and healthy people. If a person tests positive, why is the chance they actually have the disease low?",
    "ideal_answer": "This is solved with Bayes' theorem, P(disease given positive) = P(positive given disease) times P(disease) divided by P(positive). True positives are 0.9 times 0.01 = 0.009, and false positives are 0.1 times 0.99 = 0.099. So P(positive) is 0.108 and the posterior probability is 0.009 / 0.108, which is about 8.3%. The probability is low because the prior (base rate) is very small, so false positives from the large healthy population outnumber the true positives.",
    "keywords": [
-    "bayes theorem",
+    "bayes' theorem",
     "prior",
     "posterior",
     "false positives",
@@ -157,7 +156,7 @@
    "keywords": [
     "hallucination",
     "bias",
-    "privacy",
+    "private data",
     "retrieval-augmented generation",
     "human escalation",
     "evaluation"
@@ -173,7 +172,7 @@
     "model-based",
     "goal-based",
     "utility-based",
-    "learning agent",
+    "learning component",
     "partially observable"
    ]
   }

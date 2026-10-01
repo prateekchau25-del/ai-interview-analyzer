@@ -50,9 +50,9 @@
         "initialise",
         "object",
         "new",
-        "same name as class",
+        "same name as the class",
         "no return type",
-        "default constructor"
+        "default no-argument constructor"
       ]
     },
     {
@@ -89,7 +89,7 @@
       "text": "What is printed by this code: try { int x = 10 / 0; System.out.println(\"A\"); } catch (ArithmeticException e) { System.out.println(\"B\"); } finally { System.out.println(\"C\"); }",
       "ideal_answer": "The output is B followed by C. Dividing an integer by zero throws an ArithmeticException, so the statement printing A is skipped and control moves to the matching catch block, which prints B. The finally block always executes whether or not an exception occurs, so it prints C. Finally is typically used to release resources like files or database connections.",
       "keywords": [
-        "divide by zero",
+        "by zero",
         "finally",
         "arithmeticexception",
         "skipped",
@@ -108,7 +108,7 @@
         "contract",
         "multiple inheritance",
         "state",
-        "default methods"
+        "default and static methods"
       ]
     },
     {
@@ -120,7 +120,7 @@
         "false",
         "true",
         "references",
-        "string pool",
+        "string constant pool",
         "heap",
         "content"
       ]
@@ -133,7 +133,7 @@
       "keywords": [
         "race condition",
         "not atomic",
-        "lost update",
+        "update gets lost",
         "synchronized",
         "atomicinteger",
         "join"
@@ -160,9 +160,9 @@
       "ideal_answer": "Vector and ArrayList are both resizable arrays, but Vector's methods are synchronized, which makes every operation pay a locking cost even in single-threaded code. Vector also doubles its capacity when full, while ArrayList grows by about 50 percent. ArrayList is faster and is the modern standard for single-threaded use. However, if the Vector is shared between threads, replacing it blindly could cause race conditions, so in those places you should use Collections.synchronizedList or CopyOnWriteArrayList, and run tests after the change.",
       "keywords": [
         "synchronized",
-        "thread-safe",
+        "locking",
         "arraylist",
-        "performance",
+        "faster",
         "capacity",
         "copyonwritearraylist"
       ]

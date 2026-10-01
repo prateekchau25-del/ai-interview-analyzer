@@ -1,90 +1,194 @@
 {
-  "subject": "Cloud Computing",
-  "applies_to": [{"course": "BCA", "year": 3, "semester": 5}],
-  "questions": [
-    {
-      "level": 1,
-      "topic": "Cloud computing basics, characteristics, pros and cons",
-      "text": "What is cloud computing? Give two advantages and two disadvantages.",
-      "ideal_answer": "Cloud computing is the delivery of computing services such as servers, storage, databases, networking and software over the internet on demand, with pay-as-you-go pricing. Advantages include lower upfront cost since no hardware purchase is needed, and scalability, as resources can be increased or decreased quickly; it also provides access from anywhere. Disadvantages include dependence on internet connectivity, and concerns about security, privacy and less control over data; vendor lock-in is another drawback.",
-      "keywords": ["internet", "on demand", "pay-as-you-go", "scalability", "lower cost", "internet connectivity", "security", "vendor lock-in"]
-    },
-    {
-      "level": 1,
-      "topic": "Types of virtualization",
-      "text": "What is virtualization? Name its common types.",
-      "ideal_answer": "Virtualization is the technology that creates virtual versions of physical resources, such as servers, storage, networks or operating systems, so that one physical machine can run multiple isolated virtual machines. It is done using software called a hypervisor. Common types are server or hardware virtualization, storage virtualization, network virtualization, desktop virtualization, application virtualization and operating system level virtualization. Virtualization is the foundation of cloud computing because it enables resource pooling and better utilization.",
-      "keywords": ["virtual versions", "physical resources", "virtual machines", "hypervisor", "server", "storage", "network"]
-    },
-    {
-      "level": 2,
-      "topic": "Cloud service models and deployment models",
-      "text": "Explain the hybrid and community cloud deployment models with examples.",
-      "ideal_answer": "A hybrid cloud combines a private cloud or on-premises infrastructure with a public cloud, connected so that data and applications can move between them. For example, a bank may keep customer data in its private cloud but use the public cloud for extra capacity during peak loads, called cloud bursting. A community cloud is shared by several organizations with common concerns, such as security, compliance or mission, and the cost is shared among them. For example, government departments or hospitals may share a community cloud that meets their regulatory requirements.",
-      "keywords": ["hybrid", "private", "public", "cloud bursting", "community", "shared", "common concerns", "compliance"]
-    },
-    {
-      "level": 2,
-      "topic": "Cloud tools: VMware, Eucalyptus, CloudSim, OpenNebula",
-      "text": "What are CloudSim and OpenNebula used for?",
-      "ideal_answer": "CloudSim is an open-source Java-based simulation toolkit used to model and simulate cloud environments, such as data centres, hosts, virtual machines and scheduling policies, without needing real infrastructure. It is used mainly by researchers and students to test resource allocation and scheduling algorithms. OpenNebula is an open-source cloud management platform used to build and manage private and hybrid clouds. It manages virtual machines, storage and networks over hypervisors like KVM and VMware, providing an IaaS cloud.",
-      "keywords": ["cloudsim", "simulation", "java", "scheduling", "opennebula", "private cloud", "manage virtual machines"]
-    },
-    {
-      "level": 3,
-      "topic": "Migrating into the cloud: seven-step model",
-      "text": "Explain the seven-step model of migrating an application into the cloud.",
-      "ideal_answer": "The seven-step model of cloud migration consists of: first, assessment, to evaluate the cost, benefits and readiness of the application; second, isolation, to identify the application's dependencies on its current environment; third, mapping, to decide which components go to the cloud and which stay on-premises; fourth, re-architecting, to redesign parts of the application to suit the cloud; fifth, augmentation, to use cloud features like elasticity and managed services; sixth, testing, to validate functionality and performance in the cloud; and seventh, optimization, to continuously improve cost and performance. The process is iterative.",
-      "keywords": ["assessment", "isolation", "mapping", "re-architect", "augmentation", "testing", "optimization"]
-    },
-    {
-      "level": 3,
-      "topic": "CPU, network and storage virtualization",
-      "text": "How does full virtualization differ from para-virtualization?",
-      "ideal_answer": "In full virtualization, the hypervisor completely simulates the underlying hardware, so an unmodified guest operating system runs as if on real hardware, using techniques like binary translation or hardware-assisted virtualization such as Intel VT-x and AMD-V. In para-virtualization, the guest operating system is modified to know it is virtualized and communicates directly with the hypervisor through special calls called hypercalls. Para-virtualization reduces overhead and can give better performance, but it needs a modified guest OS, while full virtualization supports any OS, such as Windows, without changes. Xen is a well-known example supporting para-virtualization.",
-      "keywords": ["full virtualization", "unmodified", "binary translation", "hardware-assisted", "para-virtualization", "modified", "hypercalls"]
-    },
-    {
-      "level": 4,
-      "topic": "SaaS, PaaS and IaaS services",
-      "text": "A startup wants to launch a web application quickly with a small team. Would you recommend IaaS or PaaS, and why?",
-      "ideal_answer": "I would recommend PaaS, because the provider manages the servers, operating system, runtime, scaling and patching, so the small team can focus only on writing and deploying code, which speeds up launch. Examples are Heroku, Google App Engine and Azure App Service. IaaS gives more control over the operating system and configuration, but the team must manage servers, security patches and scaling themselves, which needs more time and expertise. The trade-off is that PaaS offers less flexibility and possible vendor lock-in, so IaaS may be chosen later if the app needs custom software or tuning.",
-      "keywords": ["paas", "provider manages", "focus on code", "iaas", "more control", "patches", "vendor lock-in"]
-    },
-    {
-      "level": 4,
-      "topic": "Cloud lifecycle model and reference architecture",
-      "text": "Explain the NIST cloud reference architecture and the roles of its actors.",
-      "ideal_answer": "The NIST cloud reference architecture defines five major actors. The cloud consumer uses cloud services. The cloud provider makes services available and manages the infrastructure, service orchestration and security. The cloud auditor independently assesses services for security, privacy and performance. The cloud broker manages the use, performance and delivery of services and negotiates between providers and consumers. The cloud carrier provides connectivity and transport of services between providers and consumers. This model gives a common vocabulary to understand responsibilities.",
-      "keywords": ["nist", "cloud consumer", "cloud provider", "cloud auditor", "cloud broker", "cloud carrier"]
-    },
-    {
-      "level": 5,
-      "topic": "Risks in cloud computing and data security",
-      "text": "A company's data stored in a cloud storage bucket was exposed publicly. What likely went wrong and how should it be prevented?",
-      "ideal_answer": "The most likely cause is a misconfiguration, such as the storage bucket being set to public access or having overly permissive access policies. Under the shared responsibility model, the provider secures the infrastructure but the customer is responsible for configuring access and protecting data. To prevent this, block public access by default, apply least privilege IAM policies, encrypt data at rest and in transit, and enable logging and monitoring of access. Automated configuration checks, such as cloud security posture management tools, and regular audits help detect such mistakes early.",
-      "keywords": ["misconfiguration", "public access", "shared responsibility", "least privilege", "encrypt", "logging", "audits"]
-    },
-    {
-      "level": 5,
-      "topic": "Federated cloud, cloud ecosystem and governance",
-      "text": "What is a federated cloud, and what challenges arise when multiple cloud providers work together?",
-      "ideal_answer": "A federated cloud, or cloud federation, is an arrangement where multiple cloud providers interconnect their infrastructures so that workloads and resources can be shared or moved between them, for load balancing, wider geographic reach or avoiding lock-in. Challenges include interoperability between different APIs and virtualization formats, managing identity and access across providers, and ensuring consistent security policies. Data location, legal compliance, SLA agreements, billing between providers and performance across networks must also be governed. Standards and brokers are used to address these issues.",
-      "keywords": ["multiple cloud providers", "interconnect", "interoperability", "identity", "security policies", "compliance", "sla"]
-    },
-    {
-      "level": 6,
-      "topic": "Windows Azure, Google Cloud and Amazon cloud services",
-      "text": "A college wants to host its student portal and store student records in the cloud. Map the required components to services on AWS, Azure or Google Cloud and explain your choices.",
-      "ideal_answer": "For compute, the portal can run on virtual machines such as AWS EC2, Azure Virtual Machines or Google Compute Engine, or on a PaaS like Azure App Service or AWS Elastic Beanstalk to reduce management. Student records need a managed relational database such as Amazon RDS, Azure SQL Database or Google Cloud SQL, which provide backups and high availability. Documents and photos can be stored in object storage like Amazon S3, Azure Blob Storage or Google Cloud Storage. Access should be controlled with IAM, data encrypted, and the region chosen in India for latency and data protection compliance. A load balancer and auto-scaling handle admission-time traffic peaks.",
-      "keywords": ["ec2", "app service", "managed database", "rds", "object storage", "s3", "iam", "region"]
-    },
-    {
-      "level": 6,
-      "topic": "Cloud storage and data management",
-      "text": "Your company stores large amounts of log data in the cloud and storage costs are rising. How would you manage this data cost-effectively while meeting retention rules?",
-      "ideal_answer": "I would classify the data by how often it is accessed and by legal retention requirements. Frequently used recent logs stay in standard storage, while older logs are moved automatically to cheaper tiers such as infrequent access or archive storage like Amazon S3 Glacier or Azure Archive using lifecycle policies. Logs that are no longer required are deleted automatically after the retention period. Compression and efficient formats reduce size, and deduplication avoids redundant copies. I would also consider retrieval time and cost from archive tiers, and protect data with encryption and access controls.",
-      "keywords": ["access frequency", "retention", "storage tiers", "archive", "lifecycle policies", "compression", "retrieval"]
-    }
-  ]
+ "subject": "Cloud Computing",
+ "applies_to": [
+  {
+   "course": "BCA",
+   "year": 3,
+   "semester": 5
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Cloud computing basics, characteristics, pros and cons",
+   "text": "What is cloud computing? Give two advantages and two disadvantages.",
+   "ideal_answer": "Cloud computing is the delivery of computing services such as servers, storage, databases, networking and software over the internet on demand, with pay-as-you-go pricing. Advantages include lower upfront cost since no hardware purchase is needed, and scalability, as resources can be increased or decreased quickly; it also provides access from anywhere. Disadvantages include dependence on internet connectivity, and concerns about security, privacy and less control over data; vendor lock-in is another drawback.",
+   "keywords": [
+    "internet",
+    "on demand",
+    "pay-as-you-go",
+    "scalability",
+    "lower cost",
+    "internet connectivity",
+    "security",
+    "vendor lock-in"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Types of virtualization",
+   "text": "What is virtualization? Name its common types.",
+   "ideal_answer": "Virtualization is the technology that creates virtual versions of physical resources, such as servers, storage, networks or operating systems, so that one physical machine can run multiple isolated virtual machines. It is done using software called a hypervisor. Common types are server or hardware virtualization, storage virtualization, network virtualization, desktop virtualization, application virtualization and operating system level virtualization. Virtualization is the foundation of cloud computing because it enables resource pooling and better utilization.",
+   "keywords": [
+    "virtual versions",
+    "physical resources",
+    "virtual machines",
+    "hypervisor",
+    "server",
+    "storage",
+    "network"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Cloud service models and deployment models",
+   "text": "Explain the hybrid and community cloud deployment models with examples.",
+   "ideal_answer": "A hybrid cloud combines a private cloud or on-premises infrastructure with a public cloud, connected so that data and applications can move between them. For example, a bank may keep customer data in its private cloud but use the public cloud for extra capacity during peak loads, called cloud bursting. A community cloud is shared by several organizations with common concerns, such as security, compliance or mission, and the cost is shared among them. For example, government departments or hospitals may share a community cloud that meets their regulatory requirements.",
+   "keywords": [
+    "hybrid",
+    "private",
+    "public",
+    "cloud bursting",
+    "community",
+    "shared",
+    "common concerns",
+    "compliance"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Cloud tools: VMware, Eucalyptus, CloudSim, OpenNebula",
+   "text": "What are CloudSim and OpenNebula used for?",
+   "ideal_answer": "CloudSim is an open-source Java-based simulation toolkit used to model and simulate cloud environments, such as data centres, hosts, virtual machines and scheduling policies, without needing real infrastructure. It is used mainly by researchers and students to test resource allocation and scheduling algorithms. OpenNebula is an open-source cloud management platform used to build and manage private and hybrid clouds. It manages virtual machines, storage and networks over hypervisors like KVM and VMware, providing an IaaS cloud.",
+   "keywords": [
+    "cloudsim",
+    "simulation",
+    "java",
+    "scheduling",
+    "opennebula",
+    "private cloud",
+    "manage virtual machines"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Migrating into the cloud: seven-step model",
+   "text": "Explain the seven-step model of migrating an application into the cloud.",
+   "ideal_answer": "The seven-step model of cloud migration consists of: first, assessment, to evaluate the cost, benefits and readiness of the application; second, isolation, to identify the application's dependencies on its current environment; third, mapping, to decide which components go to the cloud and which stay on-premises; fourth, re-architecting, to redesign parts of the application to suit the cloud; fifth, augmentation, to use cloud features like elasticity and managed services; sixth, testing, to validate functionality and performance in the cloud; and seventh, optimization, to continuously improve cost and performance. The process is iterative.",
+   "keywords": [
+    "assessment",
+    "isolation",
+    "mapping",
+    "re-architect",
+    "augmentation",
+    "testing",
+    "optimization"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "CPU, network and storage virtualization",
+   "text": "How does full virtualization differ from para-virtualization?",
+   "ideal_answer": "In full virtualization, the hypervisor completely simulates the underlying hardware, so an unmodified guest operating system runs as if on real hardware, using techniques like binary translation or hardware-assisted virtualization such as Intel VT-x and AMD-V. In para-virtualization, the guest operating system is modified to know it is virtualized and communicates directly with the hypervisor through special calls called hypercalls. Para-virtualization reduces overhead and can give better performance, but it needs a modified guest OS, while full virtualization supports any OS, such as Windows, without changes. Xen is a well-known example supporting para-virtualization.",
+   "keywords": [
+    "full virtualization",
+    "unmodified",
+    "binary translation",
+    "hardware-assisted",
+    "para-virtualization",
+    "modified",
+    "hypercalls"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "SaaS, PaaS and IaaS services",
+   "text": "A startup wants to launch a web application quickly with a small team. Would you recommend IaaS or PaaS, and why?",
+   "ideal_answer": "I would recommend PaaS, because the provider manages the servers, operating system, runtime, scaling and patching, so the small team can focus only on writing and deploying code, which speeds up launch. Examples are Heroku, Google App Engine and Azure App Service. IaaS gives more control over the operating system and configuration, but the team must manage servers, security patches and scaling themselves, which needs more time and expertise. The trade-off is that PaaS offers less flexibility and possible vendor lock-in, so IaaS may be chosen later if the app needs custom software or tuning.",
+   "keywords": [
+    "paas",
+    "provider manages",
+    "focus on code",
+    "iaas",
+    "more control",
+    "patches",
+    "vendor lock-in"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Cloud lifecycle model and reference architecture",
+   "text": "Explain the NIST cloud reference architecture and the roles of its actors.",
+   "ideal_answer": "The NIST cloud reference architecture defines five major actors. The cloud consumer uses cloud services. The cloud provider makes services available and manages the infrastructure, service orchestration and security. The cloud auditor independently assesses services for security, privacy and performance. The cloud broker manages the use, performance and delivery of services and negotiates between providers and consumers. The cloud carrier provides connectivity and transport of services between providers and consumers. This model gives a common vocabulary to understand responsibilities.",
+   "keywords": [
+    "nist",
+    "cloud consumer",
+    "cloud provider",
+    "cloud auditor",
+    "cloud broker",
+    "cloud carrier"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Risks in cloud computing and data security",
+   "text": "A company's data stored in a cloud storage bucket was exposed publicly. What likely went wrong and how should it be prevented?",
+   "ideal_answer": "The most likely cause is a misconfiguration, such as the storage bucket being set to public access or having overly permissive access policies. Under the shared responsibility model, the provider secures the infrastructure but the customer is responsible for configuring access and protecting data. To prevent this, block public access by default, apply least privilege IAM policies, encrypt data at rest and in transit, and enable logging and monitoring of access. Automated configuration checks, such as cloud security posture management tools, and regular audits help detect such mistakes early.",
+   "keywords": [
+    "misconfiguration",
+    "public access",
+    "shared responsibility",
+    "least privilege",
+    "encrypt",
+    "logging",
+    "audits"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Federated cloud, cloud ecosystem and governance",
+   "text": "What is a federated cloud, and what challenges arise when multiple cloud providers work together?",
+   "ideal_answer": "A federated cloud, or cloud federation, is an arrangement where multiple cloud providers interconnect their infrastructures so that workloads and resources can be shared or moved between them, for load balancing, wider geographic reach or avoiding lock-in. Challenges include interoperability between different APIs and virtualization formats, managing identity and access across providers, and ensuring consistent security policies. Data location, legal compliance, SLA agreements, billing between providers and performance across networks must also be governed. Standards and brokers are used to address these issues.",
+   "keywords": [
+    "multiple cloud providers",
+    "interconnect",
+    "interoperability",
+    "identity",
+    "security policies",
+    "compliance",
+    "sla"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Windows Azure, Google Cloud and Amazon cloud services",
+   "text": "A college wants to host its student portal and store student records in the cloud. Map the required components to services on AWS, Azure or Google Cloud and explain your choices.",
+   "ideal_answer": "For compute, the portal can run on virtual machines such as AWS EC2, Azure Virtual Machines or Google Compute Engine, or on a PaaS like Azure App Service or AWS Elastic Beanstalk to reduce management. Student records need a managed relational database such as Amazon RDS, Azure SQL Database or Google Cloud SQL, which provide backups and high availability. Documents and photos can be stored in object storage like Amazon S3, Azure Blob Storage or Google Cloud Storage. Access should be controlled with IAM, data encrypted, and the region chosen in India for latency and data protection compliance. A load balancer and auto-scaling handle admission-time traffic peaks.",
+   "keywords": [
+    "ec2",
+    "app service",
+    "managed database",
+    "rds",
+    "object storage",
+    "s3",
+    "iam",
+    "region"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Cloud storage and data management",
+   "text": "Your company stores large amounts of log data in the cloud and storage costs are rising. How would you manage this data cost-effectively while meeting retention rules?",
+   "ideal_answer": "I would classify the data by how often it is accessed and by legal retention requirements. Frequently used recent logs stay in standard storage, while older logs are moved automatically to cheaper tiers such as infrequent access or archive storage like Amazon S3 Glacier or Azure Archive using lifecycle policies. Logs that are no longer required are deleted automatically after the retention period. Compression and efficient formats reduce size, and deduplication avoids redundant copies. I would also consider retrieval time and cost from archive tiers, and protect data with encryption and access controls.",
+   "keywords": [
+    "access frequency",
+    "retention",
+    "storage tiers",
+    "archive",
+    "lifecycle policies",
+    "compression",
+    "retrieval"
+   ]
+  }
+ ]
 }

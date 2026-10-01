@@ -18,7 +18,7 @@
     "principal",
     "rate",
     "compound interest",
-    "interest on interest",
+    "interest earns interest",
     "amount"
    ]
   },
@@ -31,7 +31,7 @@
     "highest common factor",
     "divides",
     "least common multiple",
-    "smallest multiple",
+    "smallest number",
     "product of the numbers"
    ]
   },
@@ -42,7 +42,7 @@
    "ideal_answer": "The total of the 5 numbers is 5 times 20 = 100. After removing one number, the total of the remaining 4 numbers is 4 times 18 = 72. The removed number is the difference of the totals, 100 minus 72. So the number removed is 28.",
    "keywords": [
     "total",
-    "average",
+    "remaining",
     "difference",
     "28"
    ]
@@ -95,7 +95,7 @@
     "venn diagram",
     "possibility",
     "middle term",
-    "not definite"
+    "no definite"
    ]
   },
   {
@@ -107,7 +107,7 @@
     "loss",
     "4%",
     "discount",
-    "higher base",
+    "higher increased price",
     "x squared"
    ]
   },
@@ -118,9 +118,9 @@
    "ideal_answer": "The surface area of a sphere is 4 pi r squared, so it depends on r squared; doubling r multiplies the surface area by 2 squared, which is 4 times. The volume is four-thirds pi r cubed, so it depends on r cubed; doubling r multiplies the volume by 2 cubed, which is 8 times. In general, when all lengths are scaled by a factor k, areas scale by k squared and volumes by k cubed. This is why large objects have a smaller surface-to-volume ratio.",
    "keywords": [
     "surface area",
-    "four times",
+    "4 times",
     "r cubed",
-    "eight times",
+    "8 times",
     "k squared",
     "k cubed"
    ]
@@ -132,7 +132,7 @@
    "ideal_answer": "A 3 by 3 by 3 cube has n = 3. Cubes with exactly two painted faces lie on the edges excluding corners: 12 edges times (n minus 2) = 12 times 1 = 12. Cubes with exactly one painted face are at the centre of each face: 6 times (n minus 2) squared = 6. Cubes with no painted face are in the interior: (n minus 2) cubed = 1, and the 8 corner cubes have three faces painted, making 8 + 12 + 6 + 1 = 27.",
    "keywords": [
     "edges",
-    "two faces",
+    "two painted faces",
     "corner",
     "centre of each face"
    ]
@@ -143,12 +143,11 @@
    "text": "A software company's user base grows by 10% every month starting from 10,000 users. How would you estimate when it will reach 20,000 users, and what assumption are you making?",
    "ideal_answer": "This is geometric growth, so users after n months = 10,000 times 1.1 to the power n. We need 1.1 to the power n = 2, so n = log 2 divided by log 1.1, which is about 0.301 / 0.0414, or roughly 7.3 months. So it reaches 20,000 users during the 8th month. A quick check is the rule of 72: 72 divided by 10 gives about 7.2 months to double. The assumption is a constant 10% monthly growth rate, which rarely holds for long in real businesses due to market saturation.",
    "keywords": [
-    "geometric progression",
     "geometric growth",
-    "logarithm",
+    "log 2",
     "7.3 months",
     "rule of 72",
-    "constant growth rate"
+    "constant 10% monthly growth"
    ]
   },
   {
@@ -161,8 +160,7 @@
     "mean price",
     "dearer",
     "cheaper",
-    "2 to 1",
-    "weighted average"
+    "2 to 1"
    ]
   }
  ]

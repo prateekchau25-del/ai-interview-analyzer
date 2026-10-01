@@ -168,7 +168,7 @@
       "level": 6,
       "topic": "Sets and relations in AI",
       "text": "In a recommendation system, users and items can be modelled using sets and relations. How would you represent 'user liked item' and find items liked by both of two users?",
-      "ideal_answer": "The 'liked' relation is a subset of the Cartesian product of the set of users and the set of items, so each pair (u, i) means user u liked item i. It can be stored as a binary relation matrix, with 1 when the pair is in the relation, or as a set of items for each user. Items liked by both users u and v are the intersection of their item sets. The size of the intersection divided by the size of the union gives the Jaccard similarity, which can be used to recommend items from similar users. This relation is not symmetric or reflexive because it connects two different sets.",
+      "ideal_answer": "The 'liked' relation is a subset of the Cartesian product of the set of users and the set of items, so each pair (u, i) means user u liked item i. It can be stored as a binary relation matrix, with 1 when the pair is in the relation, or as a set of items for each user. Items liked by both users u and v are the intersection of their item sets. The size of the intersection divided by the size of the union gives the Jaccard similarity, which can be used to recommend items from similar users. Because it relates two different sets, properties like reflexive or symmetric do not apply to it as they would to a relation on a single set.",
       "keywords": [
         "relation",
         "cartesian product",

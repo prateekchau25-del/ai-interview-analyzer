@@ -98,11 +98,11 @@
       "text": "Why does a swap function written as void swap(int a, int b) fail to swap two variables in main, and how do pointers fix it?",
       "ideal_answer": "C passes arguments by value, so swap(int a, int b) receives copies of the variables, and swapping the copies does not affect the originals in main. To fix it, the function should take pointers, void swap(int *a, int *b), and be called with addresses, swap(&x, &y). Inside, it swaps the values using dereferencing, *a and *b, through a temporary variable. Because the function now works on the actual memory locations, the change is visible in main; this simulates call by reference.",
       "keywords": [
-        "call by value",
+        "by value",
         "copies",
         "pointers",
         "address",
-        "dereference",
+        "dereferencing",
         "call by reference"
       ]
     },
@@ -115,7 +115,7 @@
         "structure",
         "separate memory",
         "union",
-        "shared memory",
+        "share the same memory",
         "largest member",
         "padding"
       ]
@@ -127,7 +127,7 @@
       "ideal_answer": "The bug is missing break statements. In a C switch, once a matching case is found, execution falls through into all following cases until a break or the end of the switch is reached. So with input 1, the statements of case 2 and default also execute. The fix is to add break at the end of each case. Fall-through is occasionally intentional, for example to group several cases with the same action, and then it should be commented.",
       "keywords": [
         "break",
-        "fall through",
+        "falls through",
         "matching case",
         "following cases",
         "default",
@@ -170,7 +170,7 @@
       "keywords": [
         "typedef",
         "alias",
-        "readability",
+        "readable",
         "portability",
         "rounding errors",
         "overflow"

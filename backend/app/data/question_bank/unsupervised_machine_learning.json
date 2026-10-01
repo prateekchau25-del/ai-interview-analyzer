@@ -1,0 +1,191 @@
+{
+ "subject": "Unsupervised Machine Learning",
+ "applies_to": [
+  {
+   "course": "BSC_DS",
+   "year": 3,
+   "semester": 6
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Concept, importance and challenges of unsupervised learning",
+   "text": "What is unsupervised learning? Give two examples of unsupervised tasks.",
+   "ideal_answer": "Unsupervised learning is a type of machine learning in which the model is trained on unlabelled data, with no target output, and must discover hidden patterns, groupings or structure on its own. Examples of unsupervised tasks are clustering, such as customer segmentation, dimensionality reduction, such as PCA, association rule mining, such as market basket analysis, and anomaly detection. It is important because most real-world data is unlabelled and labelling is expensive.",
+   "keywords": [
+    "unlabelled",
+    "no target",
+    "patterns",
+    "clustering",
+    "dimensionality reduction",
+    "association rule"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Association rule mining basics",
+   "text": "What are support, confidence and lift in association rule mining?",
+   "ideal_answer": "For a rule A implies B, support is the fraction of all transactions that contain both A and B, showing how frequent the itemset is. Confidence is the fraction of transactions containing A that also contain B, which is support of A and B divided by support of A. Lift is the confidence divided by the support of B, and it shows how much more likely B is bought with A than by chance. A lift greater than 1 indicates a positive association, equal to 1 means independence, and less than 1 a negative association.",
+   "keywords": [
+    "support",
+    "fraction of transactions",
+    "confidence",
+    "lift",
+    "greater than 1",
+    "independence"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Clustering and its applications",
+   "text": "What is clustering? Give some real-world applications.",
+   "ideal_answer": "Clustering is an unsupervised learning technique that groups data points so that points in the same cluster are more similar to each other than to points in other clusters, based on a similarity or distance measure. Applications include customer segmentation for targeted marketing, grouping similar documents or news articles, image segmentation, detecting anomalies such as fraud as points that do not fit any cluster, and grouping genes with similar behaviour in biology.",
+   "keywords": [
+    "groups",
+    "similar",
+    "distance",
+    "customer segmentation",
+    "documents",
+    "image segmentation",
+    "anomalies"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Hierarchical clustering: types and issues",
+   "text": "What is the difference between agglomerative and divisive hierarchical clustering?",
+   "ideal_answer": "Agglomerative clustering is a bottom-up approach: it starts with each data point as its own cluster and repeatedly merges the two closest clusters until one cluster remains or a stopping condition is met. Divisive clustering is a top-down approach: it starts with all points in one cluster and repeatedly splits clusters into smaller ones. Both produce a dendrogram, a tree diagram that can be cut at a chosen level to get the desired number of clusters. Agglomerative clustering is more commonly used, and the distance between clusters is defined by a linkage method such as single, complete or average linkage.",
+   "keywords": [
+    "agglomerative",
+    "bottom-up",
+    "merges",
+    "divisive",
+    "top-down",
+    "splits",
+    "dendrogram",
+    "linkage"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "K-means clustering: steps, issues, strengths and weaknesses",
+   "text": "How do you choose the number of clusters k in K-means? Explain the elbow method.",
+   "ideal_answer": "In the elbow method, we run K-means for a range of k values, such as 1 to 10, and compute the within-cluster sum of squares, also called inertia, for each k. We plot inertia against k. Inertia always decreases as k increases, but after a certain point the decrease slows sharply, forming an elbow shape in the curve. The k at the elbow is chosen as a good balance between compactness and the number of clusters. The silhouette score, which measures how well each point fits its own cluster compared to the nearest other cluster, can also be used, along with domain knowledge.",
+   "keywords": [
+    "range of k",
+    "within-cluster sum of squares",
+    "inertia",
+    "plot",
+    "elbow",
+    "silhouette score"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Apriori algorithm",
+   "text": "Explain how the Apriori algorithm finds frequent itemsets.",
+   "ideal_answer": "Apriori works level by level using the Apriori property, which says that every subset of a frequent itemset must also be frequent, or equivalently, any superset of an infrequent itemset is infrequent. First, it scans the database to find frequent 1-itemsets that meet the minimum support. Then it joins frequent k-itemsets to generate candidate itemsets of size k plus 1, prunes candidates having any infrequent subset, and scans the database to count their support. This repeats until no new frequent itemsets are found. Finally, association rules are generated from frequent itemsets using a minimum confidence threshold.",
+   "keywords": [
+    "apriori property",
+    "subset",
+    "frequent",
+    "minimum support",
+    "candidate",
+    "prune",
+    "minimum confidence"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Curse of dimensionality",
+   "text": "What is the curse of dimensionality, and why does it hurt distance-based methods like K-means and k-nearest neighbours?",
+   "ideal_answer": "The curse of dimensionality refers to problems that arise as the number of features grows: the volume of the space increases exponentially, so data becomes very sparse and much more data is needed to cover the space. In high dimensions, the distances between points become very similar, so the nearest and farthest neighbours are almost equally far. Distance-based methods like K-means and kNN rely on meaningful distance differences, so their clusters and neighbours become unreliable. Irrelevant features also add noise. Dimensionality reduction and feature selection help reduce this problem.",
+   "keywords": [
+    "number of features",
+    "exponentially",
+    "sparse",
+    "distances",
+    "similar",
+    "distance-based",
+    "dimensionality reduction"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Dimensionality reduction: feature reduction and selection criteria",
+   "text": "Compare feature selection and feature extraction as dimensionality reduction approaches.",
+   "ideal_answer": "Feature selection chooses a subset of the original features and discards the rest, for example by removing low-variance or highly correlated features, using filter, wrapper or embedded methods. Because the original features are kept, the result is easy to interpret. Feature extraction, also called feature reduction, creates new features by combining or transforming the original ones, such as principal components in PCA. Extraction can capture more information in fewer dimensions, but the new features are harder to interpret. The choice depends on whether interpretability or compact representation is more important.",
+   "keywords": [
+    "subset",
+    "original features",
+    "variance",
+    "correlated",
+    "interpret",
+    "new features",
+    "pca"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Principal Component Analysis (PCA)",
+   "text": "You apply PCA to a dataset with salary in rupees and age in years, and the first component is almost entirely salary. What went wrong and how do you fix it?",
+   "ideal_answer": "PCA finds directions of maximum variance using the covariance matrix, so features with large numeric scales, like salary in lakhs of rupees, have much larger variance and dominate the first principal component regardless of their importance. The fix is to standardize the features, subtracting the mean and dividing by the standard deviation, before applying PCA, which is equivalent to using the correlation matrix. After that, components reflect the actual correlation structure. I would then decide the number of components using the explained variance ratio, for example keeping enough to explain about 95 percent of the variance.",
+   "keywords": [
+    "maximum variance",
+    "covariance matrix",
+    "scale",
+    "dominate",
+    "standardize",
+    "correlation matrix",
+    "explained variance"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "K-means clustering: issues, strengths and weaknesses",
+   "text": "K-means gives different clusters each time you run it, and it splits a long curved cluster into pieces. Explain both problems and how to address them.",
+   "ideal_answer": "K-means depends on the random initialization of centroids and converges to a local minimum, so different starting points give different results. This is reduced by using k-means plus plus initialization and running the algorithm several times with different seeds, keeping the solution with the lowest within-cluster sum of squares. K-means also assumes clusters are roughly spherical and of similar size, because it assigns points to the nearest centroid, so it cannot capture long, curved or irregular shapes. For such data, density-based methods like DBSCAN, hierarchical clustering with single linkage, or spectral clustering are better choices.",
+   "keywords": [
+    "random initialization",
+    "local minimum",
+    "k-means plus plus",
+    "multiple runs",
+    "spherical",
+    "dbscan",
+    "spectral clustering"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Market basket analysis",
+   "text": "A supermarket chain wants to use market basket analysis to improve sales. How would you carry out the project and turn the rules into business actions?",
+   "ideal_answer": "I would collect transaction data, clean it, and convert it into a basket format where each transaction lists items bought together, possibly at category level to avoid too many rare items. Then I would apply Apriori or FP-Growth with suitable minimum support and confidence, and rank rules by lift to find strong, non-obvious associations. Rules would be reviewed with business teams, since frequent but trivial rules, like bread with milk, may not be useful. Actions include product placement, combo offers and bundles, cross-selling recommendations and inventory planning. The impact should be measured using A/B tests or before-and-after sales comparisons.",
+   "keywords": [
+    "transaction data",
+    "basket",
+    "apriori",
+    "fp-growth",
+    "lift",
+    "product placement",
+    "cross-selling",
+    "a/b tests"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Concept, importance and challenges of unsupervised learning",
+   "text": "A bank wants to detect unusual transactions but has almost no labelled fraud cases. How would you use unsupervised learning, and how would you validate results without labels?",
+   "ideal_answer": "Since labels are not available, I would treat this as anomaly detection: engineer features like transaction amount, time, location and frequency, scale them, and use methods such as Isolation Forest, density-based clustering like DBSCAN, or distance from cluster centroids to flag points that do not fit normal patterns. A key challenge of unsupervised learning is evaluation without ground truth, so I would have fraud analysts review the top flagged transactions, measure precision on these reviewed cases, and track internal metrics like silhouette score for stability. Feedback from analysts can gradually create labels for a later supervised model. Thresholds must balance missed fraud against false alarms that annoy customers.",
+   "keywords": [
+    "anomaly detection",
+    "features",
+    "isolation forest",
+    "dbscan",
+    "no ground truth",
+    "analysts review",
+    "false alarms"
+   ]
+  }
+ ]
+}

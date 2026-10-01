@@ -1,90 +1,193 @@
 {
-  "subject": "Cloud Computing",
-  "applies_to": [{"course": "BSC_IT", "year": 2, "semester": 4}],
-  "questions": [
-    {
-      "level": 1,
-      "topic": "Definition, evolution and characteristics of cloud computing",
-      "text": "What is cloud computing? State its essential characteristics.",
-      "ideal_answer": "Cloud computing is the on-demand delivery of computing resources such as servers, storage, databases and software over the internet with pay-as-you-go pricing. As per the NIST definition, its essential characteristics are on-demand self-service, broad network access, resource pooling, rapid elasticity and measured service. This means users can provision resources themselves, access them from anywhere, share a pool of provider resources, scale up or down quickly and pay only for what they use.",
-      "keywords": ["on-demand", "internet", "pay-as-you-go", "self-service", "resource pooling", "rapid elasticity", "measured service"]
-    },
-    {
-      "level": 1,
-      "topic": "Containers and Docker",
-      "text": "What is a container and what is Docker?",
-      "ideal_answer": "A container is a lightweight, standalone package that contains an application along with its libraries, dependencies and configuration, so it runs the same way in any environment. Containers share the host operating system kernel, so they start quickly and use fewer resources than virtual machines. Docker is a popular platform for building, shipping and running containers. A Docker image is a read-only template built from a Dockerfile, and a container is a running instance of that image.",
-      "keywords": ["lightweight", "dependencies", "share", "kernel", "docker", "image", "dockerfile"]
-    },
-    {
-      "level": 2,
-      "topic": "Service models: IaaS, PaaS, SaaS",
-      "text": "Explain the differences between IaaS, PaaS and SaaS with one example each.",
-      "ideal_answer": "IaaS, Infrastructure as a Service, provides virtual machines, storage and networking, and the user manages the operating system, runtime and applications; an example is AWS EC2. PaaS, Platform as a Service, provides a ready platform with runtime and middleware so developers only deploy code and manage their data; an example is Google App Engine or Azure App Service. SaaS, Software as a Service, delivers complete applications over the internet that the user simply uses; an example is Gmail or Microsoft 365. Moving from IaaS to SaaS, the provider manages more and the user controls less.",
-      "keywords": ["infrastructure", "virtual machines", "platform", "deploy code", "software", "ec2", "gmail"]
-    },
-    {
-      "level": 2,
-      "topic": "Deployment models: public, private, hybrid, community",
-      "text": "What is the difference between a public cloud and a private cloud?",
-      "ideal_answer": "A public cloud is owned and operated by a third-party provider like AWS, Azure or Google Cloud, and its resources are shared by many customers over the internet. It has low upfront cost, high scalability and pay-per-use pricing. A private cloud is used exclusively by a single organization, either hosted on-premises or by a provider. It gives more control, security and customization, which suits sensitive data, but costs more to build and maintain. A hybrid cloud combines both.",
-      "keywords": ["third-party provider", "shared", "pay-per-use", "single organization", "control", "security", "hybrid"]
-    },
-    {
-      "level": 3,
-      "topic": "Virtualization, hypervisors and virtual machines",
-      "text": "How does a hypervisor work? Explain Type 1 and Type 2 hypervisors.",
-      "ideal_answer": "A hypervisor is software that creates and runs virtual machines by abstracting the physical CPU, memory, storage and network and allocating them to each VM, while keeping VMs isolated. A Type 1 or bare-metal hypervisor runs directly on the hardware without a host operating system, such as VMware ESXi, Microsoft Hyper-V or Xen, and is used in data centres for better performance. A Type 2 or hosted hypervisor runs as an application on top of a host operating system, such as VirtualBox or VMware Workstation, and is mainly used on desktops for testing. Type 2 has more overhead because requests pass through the host OS.",
-      "keywords": ["virtual machines", "isolated", "bare-metal", "type 1", "type 2", "host operating system", "virtualbox"]
-    },
-    {
-      "level": 3,
-      "topic": "Web services: SOAP, REST, JSON/XML",
-      "text": "A mobile app needs to fetch a list of products from a cloud backend. How would a REST API handle this, and how is REST different from SOAP?",
-      "ideal_answer": "In REST, products are resources identified by URLs, so the app sends an HTTP GET request to an endpoint like /products. The server responds with a status code such as 200 OK and the product list, usually in lightweight JSON format. REST is stateless, so each request carries all needed information, and it uses standard HTTP methods like GET, POST, PUT and DELETE. SOAP is a protocol that uses XML messages with a strict envelope format and a WSDL contract, and has built-in standards for security and transactions, but it is heavier and slower than REST.",
-      "keywords": ["resources", "http get", "json", "stateless", "status code", "soap", "xml"]
-    },
-    {
-      "level": 4,
-      "topic": "Cloud storage: object, block and file storage",
-      "text": "Compare object, block and file storage in the cloud, and say which you would use for a database, user photos and a shared team folder.",
-      "ideal_answer": "Block storage splits data into fixed-size blocks attached to a single server like a virtual disk, giving low latency, so it is best for databases and VM boot volumes, for example AWS EBS. Object storage stores data as objects with metadata and a unique ID in a flat structure accessed over HTTP, which is highly scalable and cheap, so it suits user photos, backups and media, for example Amazon S3. File storage organizes data in a hierarchy of folders and is shared by many servers using protocols like NFS or SMB, so it fits a shared team folder, for example Amazon EFS or Azure Files.",
-      "keywords": ["block storage", "low latency", "database", "object storage", "metadata", "s3", "file storage", "shared"]
-    },
-    {
-      "level": 4,
-      "topic": "Cloud computing architecture",
-      "text": "Explain the front-end and back-end of cloud computing architecture and why this separation is useful.",
-      "ideal_answer": "The front end is the client side that users interact with, such as a web browser, mobile app or client software, which connects to the cloud over the internet. The back end is managed by the provider and includes servers, storage, virtualization, the management software or middleware, security and the service layer that delivers applications. The network connects the two. This separation lets users access services from any device without knowing infrastructure details, while the provider can scale, maintain and secure the back end centrally.",
-      "keywords": ["front end", "client", "back end", "servers", "storage", "internet", "scale"]
-    },
-    {
-      "level": 5,
-      "topic": "Containers and Docker",
-      "text": "An application works on a developer's laptop but crashes on the cloud server with missing library errors. How would containers solve this, and how is this different from using a virtual machine?",
-      "ideal_answer": "The problem is environment inconsistency, where the server lacks the same libraries, versions or configuration as the laptop. With Docker, the app and all its dependencies are packaged into an image using a Dockerfile, so the same image runs identically on the laptop, test and production servers. A virtual machine could also provide a consistent environment, but each VM includes a full guest operating system, making it heavier, slower to start and larger in size. Containers share the host kernel, so they are lightweight and start in seconds, while VMs give stronger isolation.",
-      "keywords": ["environment", "dependencies", "image", "dockerfile", "guest operating system", "host kernel", "isolation"]
-    },
-    {
-      "level": 5,
-      "topic": "Cloud security, IAM, monitoring and cost management",
-      "text": "A company's monthly cloud bill suddenly doubled. How would you investigate and control the cost?",
-      "ideal_answer": "I would use the provider's cost tools, such as AWS Cost Explorer or Azure Cost Management, to find which services, regions or resources caused the increase. Common causes are idle or oversized instances, forgotten test resources, unattached storage volumes, high data transfer and auto-scaling misconfigurations. I would rightsize or stop unused resources, use auto-scaling correctly, and choose reserved or spot instances for suitable workloads. I would also set budgets and billing alerts, apply resource tags to track ownership, and use IAM policies to restrict who can create expensive resources.",
-      "keywords": ["cost explorer", "idle", "rightsize", "reserved instances", "budgets", "alerts", "tags"]
-    },
-    {
-      "level": 6,
-      "topic": "Cloud platforms: AWS, Azure, Google Cloud",
-      "text": "Your startup must choose between AWS, Azure and Google Cloud for a new web application. What factors would you consider?",
-      "ideal_answer": "I would compare the services needed, such as compute, managed databases, AI or analytics, and check which platform offers them best; AWS has the widest range of services, Azure integrates well with Microsoft products and Active Directory, and Google Cloud is strong in data analytics, machine learning and Kubernetes. Pricing models, free credits for startups and the expected total cost are key factors. I would also consider data centre regions close to Indian users for latency and data residency, the team's existing skills, support, compliance certifications and avoiding vendor lock-in by using portable tools like containers.",
-      "keywords": ["services", "pricing", "regions", "latency", "skills", "compliance", "vendor lock-in"]
-    },
-    {
-      "level": 6,
-      "topic": "Case studies: e-commerce, LMS, banking",
-      "text": "Design a cloud setup for an e-commerce website that sees huge traffic spikes during festival sales. What components and best practices would you use?",
-      "ideal_answer": "I would run the web servers in an auto-scaling group behind a load balancer, so new instances are added automatically during traffic spikes and removed afterwards. Static content like product images would be stored in object storage and served through a CDN to reduce load and latency. A managed database with read replicas and a caching layer like Redis would handle heavy read traffic. Deploying across multiple availability zones gives high availability. Security would use IAM, HTTPS and a web application firewall, and monitoring with alerts would track performance and cost.",
-      "keywords": ["auto-scaling", "load balancer", "cdn", "read replicas", "caching", "availability zones", "monitoring"]
-    }
-  ]
+ "subject": "Cloud Computing",
+ "applies_to": [
+  {
+   "course": "BSC_IT",
+   "year": 2,
+   "semester": 4
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Definition, evolution and characteristics of cloud computing",
+   "text": "What is cloud computing? State its essential characteristics.",
+   "ideal_answer": "Cloud computing is the on-demand delivery of computing resources such as servers, storage, databases and software over the internet with pay-as-you-go pricing. As per the NIST definition, its essential characteristics are on-demand self-service, broad network access, resource pooling, rapid elasticity and measured service. This means users can provision resources themselves, access them from anywhere, share a pool of provider resources, scale up or down quickly and pay only for what they use.",
+   "keywords": [
+    "on-demand",
+    "internet",
+    "pay-as-you-go",
+    "self-service",
+    "resource pooling",
+    "rapid elasticity",
+    "measured service"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Containers and Docker",
+   "text": "What is a container and what is Docker?",
+   "ideal_answer": "A container is a lightweight, standalone package that contains an application along with its libraries, dependencies and configuration, so it runs the same way in any environment. Containers share the host operating system kernel, so they start quickly and use fewer resources than virtual machines. Docker is a popular platform for building, shipping and running containers. A Docker image is a read-only template built from a Dockerfile, and a container is a running instance of that image.",
+   "keywords": [
+    "lightweight",
+    "dependencies",
+    "share",
+    "kernel",
+    "docker",
+    "image",
+    "dockerfile"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Service models: IaaS, PaaS, SaaS",
+   "text": "Explain the differences between IaaS, PaaS and SaaS with one example each.",
+   "ideal_answer": "IaaS, Infrastructure as a Service, provides virtual machines, storage and networking, and the user manages the operating system, runtime and applications; an example is AWS EC2. PaaS, Platform as a Service, provides a ready platform with runtime and middleware so developers only deploy code and manage their data; an example is Google App Engine or Azure App Service. SaaS, Software as a Service, delivers complete applications over the internet that the user simply uses; an example is Gmail or Microsoft 365. Moving from IaaS to SaaS, the provider manages more and the user controls less.",
+   "keywords": [
+    "infrastructure",
+    "virtual machines",
+    "platform",
+    "deploy code",
+    "software",
+    "ec2",
+    "gmail"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Deployment models: public, private, hybrid, community",
+   "text": "What is the difference between a public cloud and a private cloud?",
+   "ideal_answer": "A public cloud is owned and operated by a third-party provider like AWS, Azure or Google Cloud, and its resources are shared by many customers over the internet. It has low upfront cost, high scalability and pay-per-use pricing. A private cloud is used exclusively by a single organization, either hosted on-premises or by a provider. It gives more control, security and customization, which suits sensitive data, but costs more to build and maintain. A hybrid cloud combines both.",
+   "keywords": [
+    "third-party provider",
+    "shared",
+    "pay-per-use",
+    "single organization",
+    "control",
+    "security",
+    "hybrid"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Virtualization, hypervisors and virtual machines",
+   "text": "How does a hypervisor work? Explain Type 1 and Type 2 hypervisors.",
+   "ideal_answer": "A hypervisor is software that creates and runs virtual machines by abstracting the physical CPU, memory, storage and network and allocating them to each VM, while keeping VMs isolated. A Type 1 or bare-metal hypervisor runs directly on the hardware without a host operating system, such as VMware ESXi, Microsoft Hyper-V or Xen, and is used in data centres for better performance. A Type 2 or hosted hypervisor runs as an application on top of a host operating system, such as VirtualBox or VMware Workstation, and is mainly used on desktops for testing. Type 2 has more overhead because requests pass through the host OS.",
+   "keywords": [
+    "virtual machines",
+    "isolated",
+    "bare-metal",
+    "type 1",
+    "type 2",
+    "host operating system",
+    "virtualbox"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Web services: SOAP, REST, JSON/XML",
+   "text": "A mobile app needs to fetch a list of products from a cloud backend. How would a REST API handle this, and how is REST different from SOAP?",
+   "ideal_answer": "In REST, products are resources identified by URLs, so the app sends an HTTP GET request to an endpoint like /products. The server responds with a status code such as 200 OK and the product list, usually in lightweight JSON format. REST is stateless, so each request carries all needed information, and it uses standard HTTP methods like GET, POST, PUT and DELETE. SOAP is a protocol that uses XML messages with a strict envelope format and a WSDL contract, and has built-in standards for security and transactions, but it is heavier and slower than REST.",
+   "keywords": [
+    "resources",
+    "http get",
+    "json",
+    "stateless",
+    "status code",
+    "soap",
+    "xml"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Cloud storage: object, block and file storage",
+   "text": "Compare object, block and file storage in the cloud, and say which you would use for a database, user photos and a shared team folder.",
+   "ideal_answer": "Block storage splits data into fixed-size blocks attached to a single server like a virtual disk, giving low latency, so it is best for databases and VM boot volumes, for example AWS EBS. Object storage stores data as objects with metadata and a unique ID in a flat structure accessed over HTTP, which is highly scalable and cheap, so it suits user photos, backups and media, for example Amazon S3. File storage organizes data in a hierarchy of folders and is shared by many servers using protocols like NFS or SMB, so it fits a shared team folder, for example Amazon EFS or Azure Files.",
+   "keywords": [
+    "block storage",
+    "low latency",
+    "database",
+    "object storage",
+    "metadata",
+    "s3",
+    "file storage",
+    "shared"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Cloud computing architecture",
+   "text": "Explain the front-end and back-end of cloud computing architecture and why this separation is useful.",
+   "ideal_answer": "The front end is the client side that users interact with, such as a web browser, mobile app or client software, which connects to the cloud over the internet. The back end is managed by the provider and includes servers, storage, virtualization, the management software or middleware, security and the service layer that delivers applications. The network connects the two. This separation lets users access services from any device without knowing infrastructure details, while the provider can scale, maintain and secure the back end centrally.",
+   "keywords": [
+    "front end",
+    "client",
+    "back end",
+    "servers",
+    "storage",
+    "internet",
+    "scale"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Containers and Docker",
+   "text": "An application works on a developer's laptop but crashes on the cloud server with missing library errors. How would containers solve this, and how is this different from using a virtual machine?",
+   "ideal_answer": "The problem is environment inconsistency, where the server lacks the same libraries, versions or configuration as the laptop. With Docker, the app and all its dependencies are packaged into an image using a Dockerfile, so the same image runs identically on the laptop, test and production servers. A virtual machine could also provide a consistent environment, but each VM includes a full guest operating system, making it heavier, slower to start and larger in size. Containers share the host kernel, so they are lightweight and start in seconds, while VMs give stronger isolation.",
+   "keywords": [
+    "environment",
+    "dependencies",
+    "image",
+    "dockerfile",
+    "guest operating system",
+    "host kernel",
+    "isolation"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Cloud security, IAM, monitoring and cost management",
+   "text": "A company's monthly cloud bill suddenly doubled. How would you investigate and control the cost?",
+   "ideal_answer": "I would use the provider's cost tools, such as AWS Cost Explorer or Azure Cost Management, to find which services, regions or resources caused the increase. Common causes are idle or oversized instances, forgotten test resources, unattached storage volumes, high data transfer and auto-scaling misconfigurations. I would rightsize or stop unused resources, use auto-scaling correctly, and choose reserved or spot instances for suitable workloads. I would also set budgets and billing alerts, apply resource tags to track ownership, and use IAM policies to restrict who can create expensive resources.",
+   "keywords": [
+    "cost explorer",
+    "idle",
+    "rightsize",
+    "reserved instances",
+    "budgets",
+    "alerts",
+    "tags"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Cloud platforms: AWS, Azure, Google Cloud",
+   "text": "Your startup must choose between AWS, Azure and Google Cloud for a new web application. What factors would you consider?",
+   "ideal_answer": "I would compare the services needed, such as compute, managed databases, AI or analytics, and check which platform offers them best; AWS has the widest range of services, Azure integrates well with Microsoft products and Active Directory, and Google Cloud is strong in data analytics, machine learning and Kubernetes. Pricing models, free credits for startups and the expected total cost are key factors. I would also consider data centre regions close to Indian users for latency and data residency, the team's existing skills, support, compliance certifications and avoiding vendor lock-in by using portable tools like containers.",
+   "keywords": [
+    "services",
+    "pricing",
+    "regions",
+    "latency",
+    "skills",
+    "compliance",
+    "vendor lock-in"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Case studies: e-commerce, LMS, banking",
+   "text": "Design a cloud setup for an e-commerce website that sees huge traffic spikes during festival sales. What components and best practices would you use?",
+   "ideal_answer": "I would run the web servers in an auto-scaling group behind a load balancer, so new instances are added automatically during traffic spikes and removed afterwards. Static content like product images would be stored in object storage and served through a CDN to reduce load and latency. A managed database with read replicas and a caching layer like Redis would handle heavy read traffic. Deploying across multiple availability zones gives high availability. Security would use IAM, HTTPS and a web application firewall, and monitoring with alerts would track performance and cost.",
+   "keywords": [
+    "auto-scaling",
+    "load balancer",
+    "cdn",
+    "read replicas",
+    "caching",
+    "availability zones",
+    "monitoring"
+   ]
+  }
+ ]
 }

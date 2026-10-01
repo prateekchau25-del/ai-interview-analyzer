@@ -29,11 +29,9 @@
    "ideal_answer": "The additive law states that P(A or B) = P(A) + P(B) - P(A and B); for mutually exclusive events it becomes P(A) + P(B). The multiplicative law states that P(A and B) = P(A) times P(B given A). For independent events it simplifies to P(A and B) = P(A) times P(B). For example, the probability of getting two heads in two fair coin tosses is 0.5 times 0.5 = 0.25.",
    "keywords": [
     "additive law",
-    "union",
     "mutually exclusive",
     "multiplicative law",
-    "independent events",
-    "conditional"
+    "independent events"
    ]
   },
   {
@@ -72,7 +70,6 @@
    "keywords": [
     "binomial distribution",
     "independent trials",
-    "fixed number of trials",
     "two outcomes",
     "0.0729"
    ]
@@ -83,10 +80,9 @@
    "text": "Machine A makes 60% of items with 2% defective and machine B makes 40% with 5% defective. If an item is defective, how do you find the probability it came from machine B?",
    "ideal_answer": "Use Bayes' theorem. First find total probability of defect: 0.6 times 0.02 + 0.4 times 0.05 = 0.012 + 0.020 = 0.032. Then P(B given defective) = P(defective given B) times P(B) divided by P(defective) = 0.020 / 0.032. This equals 0.625, so there is a 62.5% chance the defective item came from machine B.",
    "keywords": [
-    "bayes theorem",
+    "bayes' theorem",
     "total probability",
     "0.032",
-    "conditional probability",
     "0.625"
    ]
   },
@@ -122,13 +118,13 @@
    "level": 5,
    "topic": "Control charts for variables: X-bar and R charts; p-chart",
    "text": "On an X-bar chart all points are within control limits, but seven consecutive points are above the centre line. Is the process in control? Explain.",
-   "ideal_answer": "No, the process should not be considered in statistical control even though no point is outside the limits. A run of seven or more consecutive points on one side of the centre line is a non-random pattern that signals a likely shift in the process mean. Run rules such as the Western Electric rules are used to detect such patterns, trends and cycles. The cause, such as tool wear, a new material batch or an operator change, should be investigated and corrected.",
+   "ideal_answer": "No, the process should not be considered in statistical control even though no point is outside the limits. A run of seven or more consecutive points on one side of the centre line is a non-random pattern that signals a likely shift in the process mean. Run rules such as the Western Electric rules are used to detect such patterns, trends and cycles. The assignable cause, such as tool wear, a new material batch or an operator change, should be investigated and corrected.",
    "keywords": [
-    "not in control",
+    "statistical control",
     "run",
     "centre line",
     "non-random pattern",
-    "process mean shift",
+    "shift in the process mean",
     "western electric rules",
     "assignable cause"
    ]
@@ -151,7 +147,7 @@
    "level": 6,
    "topic": "Six sigma concepts",
    "text": "A software company wants to reduce bugs in releases using Six Sigma. How would you apply the DMAIC approach?",
-   "ideal_answer": "Six Sigma aims to reduce process variation so that there are no more than 3.4 defects per million opportunities. In Define, we state the problem, such as bugs per release, and the goals. In Measure, we collect data on defect counts and where they arise, and in Analyze we find root causes using tools like Pareto charts and fishbone diagrams. In Improve we implement fixes such as code reviews and automated testing, and in Control we monitor defect rates with control charts to sustain the gains.",
+   "ideal_answer": "Six Sigma uses the DMAIC cycle and aims to reduce process variation so that there are no more than 3.4 defects per million opportunities. In Define, we state the problem, such as bugs per release, and the goals. In Measure, we collect data on defect counts and where they arise, and in Analyze we find root causes using tools like Pareto charts and fishbone diagrams. In Improve we implement fixes such as code reviews and automated testing, and in Control we monitor defect rates with control charts to sustain the gains.",
    "keywords": [
     "dmaic",
     "define",

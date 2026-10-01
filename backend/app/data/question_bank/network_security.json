@@ -1,0 +1,199 @@
+{
+  "subject": "Network Security",
+  "applies_to": [
+    {
+      "course": "BSC_IT",
+      "year": 3,
+      "semester": 5
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "CIA triad, defense models and zones of trust",
+      "text": "What is the CIA triad in information security?",
+      "ideal_answer": "The CIA triad is the core model of information security, made of confidentiality, integrity and availability. Confidentiality means information is accessible only to authorized people, achieved through encryption and access control. Integrity means data is accurate and not altered without authorization, ensured using hashing, checksums and digital signatures. Availability means systems and data are accessible to authorized users when needed, supported by redundancy, backups and protection against denial-of-service attacks.",
+      "keywords": [
+        "confidentiality",
+        "integrity",
+        "availability",
+        "authorized",
+        "encryption",
+        "hashing",
+        "denial-of-service"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "Firewalls: functions and design",
+      "text": "What is a firewall?",
+      "ideal_answer": "A firewall is a network security device or software that monitors and controls incoming and outgoing network traffic based on a set of security rules. It acts as a barrier between a trusted internal network and untrusted networks like the internet. It allows or blocks traffic based on factors like IP addresses, ports, protocols and, in advanced firewalls, application content. Types include packet filtering, stateful inspection, proxy or application-level gateways and next-generation firewalls.",
+      "keywords": [
+        "monitors",
+        "incoming",
+        "outgoing",
+        "rules",
+        "barrier",
+        "trusted",
+        "ports",
+        "stateful"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Authentication and authorization",
+      "text": "What is the difference between authentication and authorization?",
+      "ideal_answer": "Authentication is the process of verifying who a user is, for example by checking a password, OTP, fingerprint or digital certificate. Authorization happens after authentication and decides what the authenticated user is allowed to access or do, such as reading a file or accessing an admin page, based on permissions or roles. Authentication answers who are you, while authorization answers what are you allowed to do. Multi-factor authentication strengthens authentication by combining something you know, have and are.",
+      "keywords": [
+        "verifying",
+        "identity",
+        "password",
+        "after authentication",
+        "permissions",
+        "roles",
+        "multi-factor"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Threats, types of attacks and risk analysis",
+      "text": "What is the difference between a passive attack and an active attack? Give examples.",
+      "ideal_answer": "In a passive attack, the attacker only monitors or eavesdrops on communication to obtain information without changing it, so it is hard to detect; examples are packet sniffing and traffic analysis. The main defence against passive attacks is encryption. In an active attack, the attacker modifies data, disrupts the system or injects false data; examples are man-in-the-middle, replay attacks, masquerading and denial-of-service. Active attacks are easier to detect but harder to completely prevent, so detection and recovery are important.",
+      "keywords": [
+        "passive",
+        "eavesdrop",
+        "sniffing",
+        "encryption",
+        "active",
+        "modifies",
+        "man-in-the-middle",
+        "denial-of-service"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Symmetric-key and public-key cryptography; PKI",
+      "text": "How do symmetric and public-key cryptography work together when you open an HTTPS website?",
+      "ideal_answer": "Symmetric cryptography, like AES, uses one shared secret key for encryption and decryption and is fast, but the key must be shared securely. Public-key cryptography uses a key pair, a public key and a private key, and solves the key exchange problem but is slower. In HTTPS, the server sends its digital certificate, issued by a trusted certificate authority in the PKI, and the browser verifies it. Then a key exchange, typically Diffie-Hellman authenticated with the server's key, is used to agree on a shared session key. The actual data is then encrypted with fast symmetric encryption using that session key.",
+      "keywords": [
+        "symmetric",
+        "aes",
+        "public key",
+        "private key",
+        "certificate",
+        "certificate authority",
+        "session key",
+        "key exchange"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Wireless network security",
+      "text": "Why is WEP considered insecure, and what makes WPA2 and WPA3 better?",
+      "ideal_answer": "WEP uses the RC4 cipher with a short 24-bit initialization vector that repeats quickly and weak integrity checking, so attackers can capture enough packets and crack the key within minutes. WPA2 replaced it with AES-based CCMP encryption, providing strong confidentiality and integrity, and uses a four-way handshake for key management. However, WPA2-Personal with a weak password can be cracked by offline dictionary attacks on the captured handshake. WPA3 uses SAE, simultaneous authentication of equals, which resists offline dictionary attacks and provides forward secrecy. Enterprise networks should use WPA2 or WPA3-Enterprise with 802.1X authentication.",
+      "keywords": [
+        "rc4",
+        "initialization vector",
+        "crack",
+        "aes",
+        "ccmp",
+        "four-way handshake",
+        "sae",
+        "dictionary attacks"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Intrusion detection/prevention systems and SIEM",
+      "text": "Compare signature-based and anomaly-based intrusion detection, and explain how an IPS differs from an IDS.",
+      "ideal_answer": "Signature-based detection compares traffic with a database of known attack patterns, so it is accurate with few false positives for known attacks, but it cannot detect new or zero-day attacks until signatures are updated. Anomaly-based detection learns a baseline of normal behaviour and flags deviations, so it can detect unknown attacks but tends to produce more false positives. An IDS monitors traffic and generates alerts but does not block it, usually working passively on a copy of the traffic. An IPS is placed inline and can actively block or drop malicious traffic in real time.",
+      "keywords": [
+        "signature-based",
+        "known attacks",
+        "zero-day",
+        "anomaly-based",
+        "false positives",
+        "alerts",
+        "inline",
+        "block"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Secure network design and network device hardening",
+      "text": "Why is a DMZ used in network design, and which servers should be placed in it?",
+      "ideal_answer": "A DMZ, or demilitarized zone, is a separate network segment between the internet and the internal network, protected by firewalls. Servers that must be accessible from the internet, such as public web servers, mail servers, DNS servers and reverse proxies, are placed in the DMZ. Firewall rules allow limited traffic from the internet into the DMZ and tightly restrict traffic from the DMZ to the internal network. So if a public server is compromised, the attacker cannot directly reach internal systems like databases and employee machines. This applies the principle of defence in depth and zones of trust.",
+      "keywords": [
+        "demilitarized zone",
+        "separate segment",
+        "firewalls",
+        "web servers",
+        "internal network",
+        "compromised",
+        "defence in depth"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Storage and database security",
+      "text": "A login form is vulnerable to SQL injection and the database stores plain-text passwords. Explain the risks and how you would fix both issues.",
+      "ideal_answer": "SQL injection happens when user input is directly concatenated into a SQL query, letting an attacker change the query, for example to bypass login or dump the whole user table. The fix is to use parameterized queries or prepared statements, validate input, and give the application's database account only the least privileges it needs. Storing plain-text passwords means a database leak exposes all user passwords, which are often reused on other sites. Passwords should be stored using a slow, salted hashing algorithm such as bcrypt, scrypt or Argon2, not encryption or fast hashes like MD5. Existing passwords should be migrated and users may be asked to reset them.",
+      "keywords": [
+        "sql injection",
+        "concatenated",
+        "parameterized queries",
+        "prepared statements",
+        "least privilege",
+        "salted",
+        "bcrypt",
+        "hashing"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Information security overview and security methodology",
+      "text": "After a security audit, you find that all employees share one admin password and patches are months behind. How would you prioritize fixing these issues?",
+      "ideal_answer": "I would follow a risk-based methodology: identify assets, assess threats and vulnerabilities, and fix the highest risks first. Shared admin passwords remove accountability and give everyone full privileges, so I would immediately create individual accounts, apply least privilege and role-based access, enable multi-factor authentication and use a password manager or privileged access management. For patches, I would first apply critical security patches to internet-facing systems and servers, then set up a regular patch management process with testing. Logging and monitoring would be enabled, and security policies and user awareness training would be documented to prevent recurrence.",
+      "keywords": [
+        "risk-based",
+        "individual accounts",
+        "accountability",
+        "least privilege",
+        "multi-factor authentication",
+        "patch management",
+        "critical"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "VoIP security and OS security models",
+      "text": "Your company is moving its phone system to VoIP. What security threats should you plan for and what controls would you put in place?",
+      "ideal_answer": "VoIP threats include eavesdropping on calls, toll fraud where attackers make expensive calls through the system, denial-of-service attacks that drop calls, SIP registration hijacking, caller ID spoofing and spam calls. To protect calls, signalling should be encrypted using SIP over TLS and media encrypted using SRTP. Voice traffic should be placed on a separate VLAN from data, protected by a session border controller and firewalls that understand SIP. Strong passwords for phones and accounts, disabling unused features, restricting international calling and monitoring call records for unusual patterns help prevent toll fraud. Systems must be patched and have QoS and redundancy for availability.",
+      "keywords": [
+        "eavesdropping",
+        "toll fraud",
+        "denial-of-service",
+        "tls",
+        "srtp",
+        "vlan",
+        "session border controller"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Secure application design and physical security",
+      "text": "You are leading development of a web application that handles customer payments. What secure design practices and physical security measures would you insist on?",
+      "ideal_answer": "I would follow secure design principles such as least privilege, defence in depth, secure defaults and validating all input, and perform threat modelling early. The application should use HTTPS everywhere, protect against OWASP Top 10 risks such as injection and cross-site scripting, use secure session management and strong authentication, and avoid storing card data by using a PCI DSS-compliant payment gateway with tokenization. Secrets should be kept in a vault, and code should go through reviews, security testing and dependency scanning. For physical security, servers must be in a data centre with access control, CCTV, visitor logs, and environmental protection like fire suppression and backup power.",
+      "keywords": [
+        "least privilege",
+        "defence in depth",
+        "input validation",
+        "owasp",
+        "pci dss",
+        "tokenization",
+        "access control",
+        "cctv"
+      ]
+    }
+  ]
+}

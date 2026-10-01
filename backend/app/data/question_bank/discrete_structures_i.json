@@ -1,7 +1,11 @@
 {
   "subject": "Discrete Structures-I",
   "applies_to": [
-    {"course": "BSC_IT", "year": 1, "semester": 1}
+    {
+      "course": "BSC_IT",
+      "year": 1,
+      "semester": 1
+    }
   ],
   "questions": [
     {
@@ -9,84 +13,168 @@
       "topic": "Language of sets, relations and functions",
       "text": "What is a set, and what is meant by a subset?",
       "ideal_answer": "A set is a well-defined, unordered collection of distinct objects called elements or members. Set A is a subset of set B if every element of A is also an element of B. For example, {1, 2} is a subset of {1, 2, 3}. The empty set is a subset of every set, and every set is a subset of itself.",
-      "keywords": ["collection", "distinct", "elements", "subset", "every element", "empty set"]
+      "keywords": [
+        "collection",
+        "distinct",
+        "elements",
+        "subset",
+        "every element",
+        "empty set"
+      ]
     },
     {
       "level": 1,
       "topic": "Divisibility, floor and ceiling",
       "text": "What are the floor and ceiling functions? Give their values for 2.7.",
       "ideal_answer": "The floor of a real number x is the greatest integer less than or equal to x. The ceiling of x is the smallest integer greater than or equal to x. For 2.7, the floor is 2 and the ceiling is 3. If x is already an integer, its floor and ceiling are both equal to x.",
-      "keywords": ["floor", "greatest integer", "less than or equal", "ceiling", "smallest integer", "greater than or equal"]
+      "keywords": [
+        "floor",
+        "greatest integer",
+        "less than or equal",
+        "ceiling",
+        "smallest integer",
+        "greater than or equal"
+      ]
     },
     {
       "level": 2,
       "topic": "Logic of compound statements",
       "text": "What is the difference between a tautology and a contradiction? Give one example of each.",
       "ideal_answer": "A tautology is a compound statement that is true for every possible combination of truth values of its components, for example 'p or not p'. A contradiction is a compound statement that is false for every combination of truth values, for example 'p and not p'. Both can be verified with a truth table. The negation of a tautology is a contradiction and vice versa.",
-      "keywords": ["tautology", "always true", "contradiction", "always false", "truth table", "p or not p"]
+      "keywords": [
+        "tautology",
+        "true for every",
+        "contradiction",
+        "false for every",
+        "truth table",
+        "p or not p"
+      ]
     },
     {
       "level": 2,
       "topic": "Predicates and quantified statements",
       "text": "What is the difference between the universal and existential quantifiers? Give an example of each.",
       "ideal_answer": "The universal quantifier, 'for all', states that a predicate is true for every element in the domain, for example 'for all real numbers x, x squared is greater than or equal to 0'. The existential quantifier, 'there exists', states that the predicate is true for at least one element in the domain, for example 'there exists an integer x such that x plus 2 equals 5'. A universal statement is disproved by one counterexample, while an existential statement is proved by one example. The negation of 'for all x, P(x)' is 'there exists x such that not P(x)'.",
-      "keywords": ["universal", "for all", "existential", "there exists", "at least one", "domain"]
+      "keywords": [
+        "universal",
+        "for all",
+        "existential",
+        "there exists",
+        "at least one",
+        "domain"
+      ]
     },
     {
       "level": 3,
       "topic": "Methods of proof: contradiction",
       "text": "Explain how proof by contradiction works, using the proof that the square root of 2 is irrational.",
       "ideal_answer": "In proof by contradiction, we assume the negation of the statement to be proved and show that it leads to a logical contradiction, so the original statement must be true. For root 2, assume it is rational, so root 2 equals a over b in lowest terms with no common factor. Squaring gives a squared equals 2 b squared, so a squared is even and therefore a is even; write a as 2k. Then 4 k squared equals 2 b squared, so b squared and hence b is even. Both a and b are even, contradicting the assumption that they have no common factor, so root 2 is irrational.",
-      "keywords": ["assume", "negation", "contradiction", "rational", "lowest terms", "even"]
+      "keywords": [
+        "assume",
+        "negation",
+        "contradiction",
+        "rational",
+        "lowest terms",
+        "even"
+      ]
     },
     {
       "level": 3,
       "topic": "Quotient-remainder theorem",
       "text": "State the quotient-remainder theorem and apply it to divide -11 by 4.",
       "ideal_answer": "The quotient-remainder theorem states that for any integer n and positive integer d, there exist unique integers q and r such that n equals d times q plus r, with 0 less than or equal to r less than d. For n equal to -11 and d equal to 4, we get -11 equals 4 times -3 plus 1. So the quotient is -3 and the remainder is 1. The remainder must be non-negative, which is why the quotient is -3 and not -2.",
-      "keywords": ["unique", "quotient", "remainder", "divisor", "less than d", "non-negative"]
+      "keywords": [
+        "unique",
+        "quotient",
+        "remainder",
+        "positive integer",
+        "less than d",
+        "non-negative"
+      ]
     },
     {
       "level": 4,
       "topic": "Conditional statements",
       "text": "For the statement 'if p then q', explain the converse, inverse and contrapositive. Which one is logically equivalent to the original and why?",
       "ideal_answer": "For 'if p then q', the converse is 'if q then p', the inverse is 'if not p then not q', and the contrapositive is 'if not q then not p'. The contrapositive is logically equivalent to the original statement, which can be shown with a truth table since both are false only when p is true and q is false. The converse and inverse are not equivalent to the original, but they are equivalent to each other. This is why proof by contraposition is a valid proof method.",
-      "keywords": ["converse", "inverse", "contrapositive", "logically equivalent", "truth table", "if not q then not p"]
+      "keywords": [
+        "converse",
+        "inverse",
+        "contrapositive",
+        "logically equivalent",
+        "truth table",
+        "if not q then not p"
+      ]
     },
     {
       "level": 4,
       "topic": "Mathematical induction and well-ordering principle",
       "text": "Explain why mathematical induction is a valid proof technique, and how it relates to the well-ordering principle.",
       "ideal_answer": "Induction proves a statement P(n) for all integers n from a starting value by proving the basis step P(a), and the inductive step that P(k) implies P(k plus 1) for every k. It is valid because the basis and the inductive step together reach every integer one after another, like a chain of dominoes. Formally, it follows from the well-ordering principle, which says every non-empty set of positive integers has a least element. If P(n) failed for some n, the set of counterexamples would have a smallest element m, but then P(m minus 1) is true and implies P(m), a contradiction.",
-      "keywords": ["basis step", "inductive step", "k plus 1", "well-ordering principle", "least element", "contradiction"]
+      "keywords": [
+        "basis step",
+        "inductive step",
+        "k plus 1",
+        "well-ordering principle",
+        "least element",
+        "contradiction"
+      ]
     },
     {
       "level": 5,
       "topic": "Recursion and solving recurrence relations by iteration",
       "text": "Solve the recurrence a(n) = a(n-1) + 2 with a(0) = 3 by iteration, and explain how you would check your answer.",
       "ideal_answer": "By iteration, a(1) equals 3 plus 2, a(2) equals 3 plus 2 times 2, and in general a(n) equals a(n minus k) plus 2k. Continuing until k equals n gives a(n) equals a(0) plus 2n, which is 3 plus 2n. This is an arithmetic sequence. To check it, verify the initial condition, a(0) equals 3, and then prove the formula by mathematical induction: if a(k) equals 3 plus 2k, then a(k plus 1) equals 3 plus 2k plus 2, which is 3 plus 2 times (k plus 1).",
-      "keywords": ["iteration", "3 plus 2n", "pattern", "arithmetic sequence", "initial condition", "induction"]
+      "keywords": [
+        "iteration",
+        "3 plus 2n",
+        "in general",
+        "arithmetic sequence",
+        "initial condition",
+        "induction"
+      ]
     },
     {
       "level": 5,
       "topic": "Functions: one-to-one, onto, inverse, composition",
       "text": "When does a function have an inverse? Is f(x) = x squared from real numbers to real numbers invertible, and how can you fix it?",
       "ideal_answer": "A function has an inverse only if it is a bijection, meaning it is both one-to-one and onto. f(x) equals x squared from R to R is not one-to-one, because f(2) equals f(-2) equals 4, and it is not onto, because negative numbers have no pre-image. So it has no inverse on that domain and codomain. If we restrict the domain to non-negative reals and the codomain to non-negative reals, it becomes a bijection, and its inverse is the square root function.",
-      "keywords": ["bijection", "one-to-one", "onto", "pre-image", "restrict the domain", "square root"]
+      "keywords": [
+        "bijection",
+        "one-to-one",
+        "onto",
+        "pre-image",
+        "restrict the domain",
+        "square root"
+      ]
     },
     {
       "level": 6,
       "topic": "Relations: equivalence and partial order relations",
       "text": "In a software build system, module A depends on module B, which must be built first. Which type of relation models these dependencies, what properties should it have, and how is it useful?",
       "ideal_answer": "The 'must be built before or equal to' relation should be a partial order, which is reflexive, antisymmetric and transitive. Antisymmetry means two different modules cannot each depend on the other, so there are no circular dependencies, and transitivity means if A needs B and B needs C, then A indirectly needs C. A partial order can be drawn as a Hasse diagram, and a topological sort of it gives a valid build sequence. If the dependency graph has a cycle, it is not a partial order and the build cannot be ordered, so build tools detect and report such cycles.",
-      "keywords": ["partial order", "reflexive", "antisymmetric", "transitive", "cycle", "topological sort"]
+      "keywords": [
+        "partial order",
+        "reflexive",
+        "antisymmetric",
+        "transitive",
+        "cycle",
+        "topological sort"
+      ]
     },
     {
       "level": 6,
       "topic": "Boolean algebras and set identities",
       "text": "A search engine filter returns documents matching 'not (A or B)'. A developer rewrites it as 'not A or not B'. Is this correct? Explain using set theory or Boolean algebra.",
       "ideal_answer": "The rewrite is incorrect. By De Morgan's law, the complement of A union B equals the complement of A intersection the complement of B, so 'not (A or B)' equals 'not A and not B'. The developer's version, 'not A or not B', is actually equivalent to 'not (A and B)', which returns many more documents, such as those matching only A. This can be verified with a Venn diagram or a truth table. In practice, such logical errors in filters cause wrong results, so query rewrites should be checked against these Boolean identities.",
-      "keywords": ["de morgan", "complement", "union", "intersection", "not a and not b", "incorrect"]
+      "keywords": [
+        "de morgan",
+        "complement",
+        "union",
+        "intersection",
+        "not a and not b",
+        "incorrect"
+      ]
     }
   ]
 }

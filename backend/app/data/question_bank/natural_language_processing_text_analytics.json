@@ -61,7 +61,7 @@
         "previous words",
         "markov assumption",
         "bigram",
-        "corpus counts"
+        "counts in a corpus"
       ]
     },
     {
@@ -87,7 +87,7 @@
         "bag of words",
         "prior",
         "likelihood",
-        "independence",
+        "independent",
         "laplace smoothing",
         "higher probability"
       ]
@@ -99,10 +99,10 @@
       "ideal_answer": "Every regular expression describes a regular language, and every regular language can be recognised by a finite-state automaton, so regular expressions and FSAs are equivalent in power; regex engines compile patterns into automata. They are useful in NLP for tokenisation, pattern matching like dates and emails, and morphological analysis with finite-state transducers. However, an FSA has only finite memory, so it cannot handle unbounded nested or recursive structures such as centre-embedded clauses, which natural language syntax allows. Parsing such structures requires more powerful models like context-free grammars.",
       "keywords": [
         "regular language",
-        "finite-state automata",
+        "finite-state automaton",
         "equivalent",
         "finite memory",
-        "nested structures",
+        "nested",
         "context-free grammar"
       ]
     },
@@ -140,7 +140,7 @@
       "text": "A basic encoder-decoder translation model works well on short sentences but poorly on long ones. Why, and how is this fixed? How would you evaluate the output?",
       "ideal_answer": "In a basic RNN encoder-decoder, the encoder compresses the whole source sentence into a single fixed-length context vector, which becomes a bottleneck, so information from long sentences is lost. The attention mechanism fixes this by letting the decoder look at all encoder hidden states and compute a weighted combination focused on the relevant source words at each output step. Transformers extend this with self-attention and no recurrence. Output is evaluated automatically with BLEU, which measures n-gram overlap with reference translations with a brevity penalty, or metrics like METEOR and chrF, along with human evaluation of adequacy and fluency.",
       "keywords": [
-        "fixed-length vector",
+        "fixed-length context vector",
         "bottleneck",
         "attention",
         "transformer",
@@ -159,7 +159,7 @@
         "bm25",
         "inverted index",
         "cosine similarity",
-        "precision and recall"
+        "precision, recall"
       ]
     },
     {

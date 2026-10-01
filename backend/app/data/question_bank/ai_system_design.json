@@ -1,18 +1,193 @@
 {
-  "subject": "AI System Design",
-  "applies_to": [{"course": "BSC_AI", "year": 3, "semester": 5}],
-  "questions": [
-    {"level": 1, "topic": "Overview of ML systems", "text": "What is an ML system, and what components does it include besides the model?", "ideal_answer": "An ML system is the complete software system that uses a machine learning model to deliver predictions in production. Besides the trained model, it includes data collection and storage, data pipelines for preprocessing and feature engineering, and the training pipeline. It also includes model serving infrastructure, monitoring and logging, and processes for retraining and versioning. In real systems the model code is only a small part of the whole, and most effort goes into data and infrastructure.", "keywords": ["production", "data pipeline", "feature engineering", "training", "serving", "monitoring", "retraining"]},
-    {"level": 1, "topic": "Feature engineering, feature stores", "text": "What is a feature store?", "ideal_answer": "A feature store is a central system for storing, managing and serving machine learning features. It lets teams define a feature once and reuse it across many models. It usually has an offline store with historical feature values for training and an online store with low-latency access for real-time inference. By using the same feature definitions in training and serving, it prevents training-serving skew. Feast is an example of an open-source feature store.", "keywords": ["central", "reuse", "offline store", "online store", "low latency", "training-serving skew"]},
-    {"level": 2, "topic": "Deployment strategies and model serving", "text": "What is the difference between batch prediction and online prediction?", "ideal_answer": "Batch prediction generates predictions for many inputs at once on a schedule, such as every night, and stores them for later use. Online or real-time prediction generates a prediction immediately when a request arrives, usually through an API. Batch prediction is cheaper and simpler and suits cases like daily recommendations, but its results can be stale. Online prediction gives fresh results for things like fraud detection, but it requires low latency and always-available serving infrastructure.", "keywords": ["schedule", "stored", "on request", "api", "stale", "low latency"]},
-    {"level": 2, "topic": "Model versioning, reproducibility and MLOps", "text": "What is MLOps, and why is model versioning important?", "ideal_answer": "MLOps is a set of practices that combines machine learning, DevOps and data engineering to build, deploy, monitor and maintain ML models reliably in production. It includes automation like CI/CD pipelines, experiment tracking and automated retraining. Model versioning keeps track of each trained model along with the code, data version and hyperparameters used to create it. This enables reproducibility, comparison between versions and quick rollback to an earlier model if a new one performs badly. Tools like MLflow and DVC support versioning.", "keywords": ["devops", "deploy", "monitor", "ci/cd", "reproducibility", "rollback", "mlflow"]},
-    {"level": 3, "topic": "Data engineering fundamentals: data collection and preprocessing", "text": "What preprocessing steps would you apply to raw tabular data before training a model, and why must they be applied the same way at inference?", "ideal_answer": "Typical steps are handling missing values by imputation or removal, removing duplicates and outliers, encoding categorical variables with one-hot or label encoding, and scaling numeric features with standardisation or normalisation. The data is then split into training, validation and test sets, and statistics like the mean for scaling must be computed on the training set only to avoid data leakage. At inference, the exact same transformations with the same fitted parameters must be applied. Otherwise the model sees inputs in a different format than it was trained on, which causes training-serving skew and wrong predictions. Saving the preprocessing as a pipeline with the model helps ensure this.", "keywords": ["missing values", "encoding", "scaling", "data leakage", "same transformations", "training-serving skew", "pipeline"]},
-    {"level": 3, "topic": "Model selection, evaluation and distributed training", "text": "How does data-parallel distributed training work?", "ideal_answer": "In data-parallel training, the same model is copied to several GPUs or machines, and each training batch is split so that each worker processes a different part of the data. Every worker computes gradients on its own data shard. The gradients are then averaged across workers, using all-reduce or a parameter server, and every copy of the model is updated with the same averaged gradient so the replicas stay in sync. This speeds up training on large datasets. When the model itself is too big for one device, model parallelism is used instead.", "keywords": ["copied", "workers", "split batch", "gradients", "averaged", "all-reduce", "model parallelism"]},
-    {"level": 4, "topic": "Handling data and model drift", "text": "What is the difference between data drift and concept drift? Why do both hurt model performance?", "ideal_answer": "Data drift, or covariate shift, means the distribution of input features changes over time, for example a new age group of users, while the relationship between inputs and output stays the same. Concept drift means the relationship between inputs and the target changes, for example the same transaction patterns now indicate fraud differently because fraudsters changed tactics. Both hurt performance because the model learned patterns from old data that no longer match reality. Data drift can be detected from inputs alone using statistical tests like PSI or KS, while concept drift usually needs ground-truth labels to detect.", "keywords": ["data drift", "input distribution", "concept drift", "relationship", "target", "statistical tests", "ground-truth labels"]},
-    {"level": 4, "topic": "Deployment strategies", "text": "Compare canary deployment and shadow deployment for releasing a new model.", "ideal_answer": "In a canary deployment, a small percentage of live traffic is sent to the new model and its predictions are actually used, and traffic is increased gradually if metrics look good. In a shadow deployment, the new model receives a copy of all live requests, but its predictions are only logged and not returned to users. Shadow deployment carries no user risk and allows comparison with the current model, but it doubles inference cost and cannot measure user-facing outcomes like clicks. Canary deployment measures real impact but exposes some users to possible errors, so it needs quick rollback.", "keywords": ["canary", "small percentage", "gradually", "shadow", "copy of requests", "logged", "rollback"]},
-    {"level": 5, "topic": "Model monitoring, logging and performance optimization", "text": "A deployed image classification API has p99 latency far above the target. How would you investigate and reduce it?", "ideal_answer": "First I would profile the request path with logs and tracing to see whether time is spent in preprocessing, model inference, network or queueing. For the model, I would apply optimisations like quantisation to INT8, pruning, or knowledge distillation into a smaller model, and use an optimised runtime such as ONNX Runtime or TensorRT. Dynamic batching on a GPU improves throughput, but the batch wait time must be capped so it does not add latency. I would also scale out with more replicas and autoscaling, cache frequent results, and keep models warm to avoid cold starts. After each change I would re-measure p99, not just average latency.", "keywords": ["profile", "tracing", "quantisation", "distillation", "onnx runtime", "batching", "autoscaling", "p99"]},
-    {"level": 5, "topic": "Scalable and real-time ML system design", "text": "Your model performed very well offline, but after deployment its accuracy is much lower even though the input data has not changed. What could be causing this?", "ideal_answer": "A common cause is training-serving skew, where features are computed differently in the training pipeline and the serving code, such as different scaling, encodings or missing value handling. Another cause is data leakage during training, where features contained information about the label that is not available at prediction time, which inflated offline accuracy. Time-related leakage, like using a random split instead of a time-based split, has the same effect. Features available offline may also arrive late or be missing in real time. To diagnose, I would log serving features and compare them with training features for the same records, and use a shared feature pipeline or feature store.", "keywords": ["training-serving skew", "feature computation", "data leakage", "time-based split", "log features", "compare", "feature store"]},
-    {"level": 6, "topic": "Edge AI and IoT applications", "text": "A company wants to run a defect-detection model on cameras in a factory with poor internet connectivity. How would you design this as an edge AI system?", "ideal_answer": "Inference should run on edge devices near the cameras, such as a Jetson board, so it works without reliable internet and gives low latency. The model must be compressed through quantisation, pruning or using a small architecture like MobileNet, and converted to a format like TensorFlow Lite or ONNX for the hardware. Results and selected images can be buffered locally and synced to the cloud when the connection is available, for monitoring and retraining. Model updates should be pushed over the air with versioning and rollback. Devices must be secured with encryption and authentication, and their health and accuracy monitored.", "keywords": ["edge devices", "low latency", "quantisation", "tensorflow lite", "sync", "over the air", "rollback", "security"]},
-    {"level": 6, "topic": "Responsible AI and ML system security", "text": "You are deploying a resume-screening model for a large employer. What responsible AI and security measures would you put in place?", "ideal_answer": "For fairness, I would check whether the training data reflects past hiring bias, remove sensitive attributes and their proxies like name or college, and measure metrics such as selection rates across groups. For transparency, I would provide explanations of which factors influenced a score, and keep a human reviewer for final decisions. Personal data must be protected with encryption, access control and data minimisation in line with privacy laws such as India's DPDP Act. For security, I would guard against adversarial inputs like hidden keywords in resumes, and secure the model API with authentication and rate limiting. Decisions should be logged for audits and the model regularly re-evaluated.", "keywords": ["bias", "fairness", "proxies", "explanations", "human reviewer", "privacy", "adversarial", "audit"]}
-  ]
+ "subject": "AI System Design",
+ "applies_to": [
+  {
+   "course": "BSC_AI",
+   "year": 3,
+   "semester": 5
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Overview of ML systems",
+   "text": "What is an ML system, and what components does it include besides the model?",
+   "ideal_answer": "An ML system is the complete software system that uses a machine learning model to deliver predictions in production. Besides the trained model, it includes data collection and storage, data pipelines for preprocessing and feature engineering, and the training pipeline. It also includes model serving infrastructure, monitoring and logging, and processes for retraining and versioning. In real systems the model code is only a small part of the whole, and most effort goes into data and infrastructure.",
+   "keywords": [
+    "production",
+    "data pipeline",
+    "feature engineering",
+    "training",
+    "serving",
+    "monitoring",
+    "retraining"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Feature engineering, feature stores",
+   "text": "What is a feature store?",
+   "ideal_answer": "A feature store is a central system for storing, managing and serving machine learning features. It lets teams define a feature once and reuse it across many models. It usually has an offline store with historical feature values for training and an online store with low-latency access for real-time inference. By using the same feature definitions in training and serving, it prevents training-serving skew. Feast is an example of an open-source feature store.",
+   "keywords": [
+    "central",
+    "reuse",
+    "offline store",
+    "online store",
+    "low latency",
+    "training-serving skew"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Deployment strategies and model serving",
+   "text": "What is the difference between batch prediction and online prediction?",
+   "ideal_answer": "Batch prediction generates predictions for many inputs at once on a schedule, such as every night, and stores them for later use. Online or real-time prediction generates a prediction immediately when a request arrives, usually through an API. Batch prediction is cheaper and simpler and suits cases like daily recommendations, but its results can be stale. Online prediction gives fresh results for things like fraud detection, but it requires low latency and always-available serving infrastructure.",
+   "keywords": [
+    "schedule",
+    "stored",
+    "on request",
+    "api",
+    "stale",
+    "low latency"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Model versioning, reproducibility and MLOps",
+   "text": "What is MLOps, and why is model versioning important?",
+   "ideal_answer": "MLOps is a set of practices that combines machine learning, DevOps and data engineering to build, deploy, monitor and maintain ML models reliably in production. It includes automation like CI/CD pipelines, experiment tracking and automated retraining. Model versioning keeps track of each trained model along with the code, data version and hyperparameters used to create it. This enables reproducibility, comparison between versions and quick rollback to an earlier model if a new one performs badly. Tools like MLflow and DVC support versioning.",
+   "keywords": [
+    "devops",
+    "deploy",
+    "monitor",
+    "ci/cd",
+    "reproducibility",
+    "rollback",
+    "mlflow"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Data engineering fundamentals: data collection and preprocessing",
+   "text": "What preprocessing steps would you apply to raw tabular data before training a model, and why must they be applied the same way at inference?",
+   "ideal_answer": "Typical steps are handling missing values by imputation or removal, removing duplicates and outliers, encoding categorical variables with one-hot or label encoding, and scaling numeric features with standardisation or normalisation. The data is then split into training, validation and test sets, and statistics like the mean for scaling must be computed on the training set only to avoid data leakage. At inference, the exact same transformations with the same fitted parameters must be applied. Otherwise the model sees inputs in a different format than it was trained on, which causes training-serving skew and wrong predictions. Saving the preprocessing as a pipeline with the model helps ensure this.",
+   "keywords": [
+    "missing values",
+    "encoding",
+    "scaling",
+    "data leakage",
+    "same transformations",
+    "training-serving skew",
+    "pipeline"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Model selection, evaluation and distributed training",
+   "text": "How does data-parallel distributed training work?",
+   "ideal_answer": "In data-parallel training, the same model is copied to several GPUs or machines, and each training batch is split so that each worker processes a different part of the data. Every worker computes gradients on its own data shard. The gradients are then averaged across workers, using all-reduce or a parameter server, and every copy of the model is updated with the same averaged gradient so the replicas stay in sync. This speeds up training on large datasets. When the model itself is too big for one device, model parallelism is used instead.",
+   "keywords": [
+    "copied",
+    "workers",
+    "split batch",
+    "gradients",
+    "averaged",
+    "all-reduce",
+    "model parallelism"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Handling data and model drift",
+   "text": "What is the difference between data drift and concept drift? Why do both hurt model performance?",
+   "ideal_answer": "Data drift, or covariate shift, means the distribution of input features changes over time, for example a new age group of users, while the relationship between inputs and output stays the same. Concept drift means the relationship between inputs and the target changes, for example the same transaction patterns now indicate fraud differently because fraudsters changed tactics. Both hurt performance because the model learned patterns from old data that no longer match reality. Data drift can be detected from inputs alone using statistical tests like PSI or KS, while concept drift usually needs ground-truth labels to detect.",
+   "keywords": [
+    "data drift",
+    "input distribution",
+    "concept drift",
+    "relationship",
+    "target",
+    "statistical tests",
+    "ground-truth labels"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Deployment strategies",
+   "text": "Compare canary deployment and shadow deployment for releasing a new model.",
+   "ideal_answer": "In a canary deployment, a small percentage of live traffic is sent to the new model and its predictions are actually used, and traffic is increased gradually if metrics look good. In a shadow deployment, the new model receives a copy of all live requests, but its predictions are only logged and not returned to users. Shadow deployment carries no user risk and allows comparison with the current model, but it doubles inference cost and cannot measure user-facing outcomes like clicks. Canary deployment measures real impact but exposes some users to possible errors, so it needs quick rollback.",
+   "keywords": [
+    "canary",
+    "small percentage",
+    "gradually",
+    "shadow",
+    "copy of requests",
+    "logged",
+    "rollback"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Model monitoring, logging and performance optimization",
+   "text": "A deployed image classification API has p99 latency far above the target. How would you investigate and reduce it?",
+   "ideal_answer": "First I would profile the request path with logs and tracing to see whether time is spent in preprocessing, model inference, network or queueing. For the model, I would apply optimisations like quantisation to INT8, pruning, or knowledge distillation into a smaller model, and use an optimised runtime such as ONNX Runtime or TensorRT. Dynamic batching on a GPU improves throughput, but the batch wait time must be capped so it does not add latency. I would also scale out with more replicas and autoscaling, cache frequent results, and keep models warm to avoid cold starts. After each change I would re-measure p99, not just average latency.",
+   "keywords": [
+    "profile",
+    "tracing",
+    "quantisation",
+    "distillation",
+    "onnx runtime",
+    "batching",
+    "autoscaling",
+    "p99"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Scalable and real-time ML system design",
+   "text": "Your model performed very well offline, but after deployment its accuracy is much lower even though the input data has not changed. What could be causing this?",
+   "ideal_answer": "A common cause is training-serving skew, where features are computed differently in the training pipeline and the serving code, such as different scaling, encodings or missing value handling. Another cause is data leakage during training, where features contained information about the label that is not available at prediction time, which inflated offline accuracy. Time-related leakage, like using a random split instead of a time-based split, has the same effect. Features available offline may also arrive late or be missing in real time. To diagnose, I would log serving features and compare them with training features for the same records, and use a shared feature pipeline or feature store.",
+   "keywords": [
+    "training-serving skew",
+    "feature computation",
+    "data leakage",
+    "time-based split",
+    "log features",
+    "compare",
+    "feature store"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Edge AI and IoT applications",
+   "text": "A company wants to run a defect-detection model on cameras in a factory with poor internet connectivity. How would you design this as an edge AI system?",
+   "ideal_answer": "Inference should run on edge devices near the cameras, such as a Jetson board, so it works without reliable internet and gives low latency. The model must be compressed through quantisation, pruning or using a small architecture like MobileNet, and converted to a format like TensorFlow Lite or ONNX for the hardware. Results and selected images can be buffered locally and synced to the cloud when the connection is available, for monitoring and retraining. Model updates should be pushed over the air with versioning and rollback. Devices must be secured with encryption and authentication, and their health and accuracy monitored.",
+   "keywords": [
+    "edge devices",
+    "low latency",
+    "quantisation",
+    "tensorflow lite",
+    "sync",
+    "over the air",
+    "rollback",
+    "security"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Responsible AI and ML system security",
+   "text": "You are deploying a resume-screening model for a large employer. What responsible AI and security measures would you put in place?",
+   "ideal_answer": "For fairness, I would check whether the training data reflects past hiring bias, remove sensitive attributes and their proxies like name or college, and measure metrics such as selection rates across groups. For transparency, I would provide explanations of which factors influenced a score, and keep a human reviewer for final decisions. Personal data must be protected with encryption, access control and data minimisation in line with privacy laws such as India's DPDP Act. For security, I would guard against adversarial inputs like hidden keywords in resumes, and secure the model API with authentication and rate limiting. Decisions should be logged for audits and the model regularly re-evaluated.",
+   "keywords": [
+    "bias",
+    "fairness",
+    "proxies",
+    "explanations",
+    "human reviewer",
+    "privacy",
+    "adversarial",
+    "audit"
+   ]
+  }
+ ]
 }

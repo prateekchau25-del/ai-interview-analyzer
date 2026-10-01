@@ -1,192 +1,192 @@
 {
-  "subject": "Mobile App Development",
-  "applies_to": [
-    {
-      "course": "BSC_IT",
-      "year": 3,
-      "semester": 5
-    }
-  ],
-  "questions": [
-    {
-      "level": 1,
-      "topic": "Flutter architecture and advantages",
-      "text": "What is Flutter and what language does it use?",
-      "ideal_answer": "Flutter is an open-source UI toolkit by Google for building natively compiled, cross-platform applications for Android, iOS, web and desktop from a single codebase. It uses the Dart programming language. Flutter draws its own UI using its rendering engine instead of native components, and everything in the UI is a widget. Features such as hot reload make development fast.",
-      "keywords": [
-        "google",
-        "open-source",
-        "cross-platform",
-        "single codebase",
-        "dart",
-        "widget",
-        "hot reload"
-      ]
-    },
-    {
-      "level": 1,
-      "topic": "Native vs hybrid vs cross-platform apps; Android ecosystem",
-      "text": "What is the difference between native, hybrid and cross-platform mobile apps?",
-      "ideal_answer": "A native app is built for one platform using its own language and tools, such as Kotlin or Java for Android and Swift for iOS, giving the best performance and full access to device features. A hybrid app is built with web technologies like HTML, CSS and JavaScript and runs inside a WebView wrapper, for example with Ionic or Cordova, which is quick to build but slower. A cross-platform app, such as one built with Flutter or React Native, uses one codebase to produce apps for multiple platforms with near-native performance.",
-      "keywords": [
-        "native",
-        "kotlin",
-        "swift",
-        "hybrid",
-        "webview",
-        "cross-platform",
-        "one codebase"
-      ]
-    },
-    {
-      "level": 2,
-      "topic": "Stateless vs stateful widgets; widget tree and build method",
-      "text": "What is the difference between a StatelessWidget and a StatefulWidget in Flutter?",
-      "ideal_answer": "A StatelessWidget has no mutable state; its appearance depends only on the configuration passed to it, so it does not change once built, for example a static Text or Icon. A StatefulWidget has a separate State object that holds data which can change during the widget's lifetime, such as a counter or form input. When that data changes, calling setState tells Flutter to call build again and redraw the widget. Stateful widgets also have lifecycle methods like initState and dispose.",
-      "keywords": [
-        "statelesswidget",
-        "no mutable state",
-        "statefulwidget",
-        "state object",
-        "setstate",
-        "build",
-        "initstate"
-      ]
-    },
-    {
-      "level": 2,
-      "topic": "Dart fundamentals: variables, functions, control statements",
-      "text": "In Dart, what is the difference between var, final and const?",
-      "ideal_answer": "var declares a variable whose type is inferred from its initial value, and its value can be changed later. final declares a variable that can be assigned only once, but its value can be determined at runtime, such as the current time. const declares a compile-time constant, so its value must be known at compile time and it is deeply immutable. In Flutter, using const widgets improves performance because they are not rebuilt unnecessarily.",
-      "keywords": [
-        "var",
-        "inferred",
-        "final",
-        "assigned only once",
-        "runtime",
-        "const",
-        "compile-time"
-      ]
-    },
-    {
-      "level": 3,
-      "topic": "Layouts: Row, Column, Stack, Container, Expanded",
-      "text": "You place three buttons in a Row and they overflow the screen with a yellow and black stripe. Why does this happen and how can Expanded fix it?",
-      "ideal_answer": "A Row lays out its children horizontally and gives each child its natural width, so if their total width exceeds the available screen width, Flutter shows the yellow and black overflow warning. Wrapping each button in an Expanded widget makes the children share the remaining space of the Row instead of using their natural width, so they fit the screen. The flex property controls the share each child gets, for example flex 2 takes twice the space of flex 1. Alternatives are Flexible, Wrap, or a horizontal scroll view.",
-      "keywords": [
-        "row",
-        "horizontally",
-        "overflow",
-        "expanded",
-        "remaining space",
-        "flex",
-        "wrap"
-      ]
-    },
-    {
-      "level": 3,
-      "topic": "Navigation: named routes, bottom navigation and drawer",
-      "text": "How do you navigate between screens using named routes in Flutter?",
-      "ideal_answer": "Flutter uses a Navigator that manages a stack of routes, or screens. With named routes, you define a routes map in MaterialApp, such as '/' for the home screen and '/profile' for the profile screen, and set initialRoute. To open a screen, call Navigator.pushNamed(context, '/profile'), which pushes it on the stack, and to go back call Navigator.pop(context). Data can be passed using the arguments parameter and read with ModalRoute.of(context).settings.arguments.",
-      "keywords": [
-        "navigator",
-        "stack",
-        "routes",
-        "materialapp",
-        "pushnamed",
-        "pop",
-        "arguments"
-      ]
-    },
-    {
-      "level": 4,
-      "topic": "OOP in Dart and null safety",
-      "text": "What is null safety in Dart, and what happens with the statement String name = null; compared with String? name = null; ?",
-      "ideal_answer": "With sound null safety, variables are non-nullable by default, so they cannot hold null unless declared otherwise. String name = null; gives a compile-time error because String cannot be null. String? name = null; is allowed because the question mark makes the type nullable. To use a nullable value safely you use checks like if name is not null, the ?. operator, the ?? operator to give a default value, or the ! operator to assert it is not null, which throws an error at runtime if it is null. This prevents many null reference crashes.",
-      "keywords": [
-        "null safety",
-        "non-nullable",
-        "compile-time error",
-        "nullable",
-        "question mark",
-        "default value",
-        "assert"
-      ]
-    },
-    {
-      "level": 4,
-      "topic": "Flutter architecture and advantages",
-      "text": "Why can Flutter apps achieve near-native performance, unlike many hybrid apps?",
-      "ideal_answer": "Flutter's Dart code is compiled ahead of time into native ARM machine code for release builds, so it does not run through a JavaScript bridge or a WebView. Flutter also draws every pixel itself using its own rendering engine, Skia or the newer Impeller, instead of relying on platform UI components, so rendering is consistent and can reach 60 or 120 frames per second. Hybrid apps run HTML and JavaScript inside a WebView, which adds overhead. During development Flutter uses just-in-time compilation to enable hot reload.",
-      "keywords": [
-        "ahead of time",
-        "native arm machine code",
-        "javascript bridge",
-        "rendering engine",
-        "skia",
-        "webview",
-        "just-in-time"
-      ]
-    },
-    {
-      "level": 5,
-      "topic": "Stateless vs stateful widgets; widget tree and build method",
-      "text": "Your Flutter screen becomes slow and janky because the whole page rebuilds every time a single counter changes. How would you diagnose and fix this?",
-      "ideal_answer": "Calling setState at the top of a large widget rebuilds that entire subtree, so a small change triggers costly rebuilds. Use Flutter DevTools, with the performance overlay and the rebuild tracker, to find which widgets rebuild and which frames are slow. Fix it by splitting the screen into smaller widgets so that only the part showing the counter is stateful, marking unchanging widgets as const, and using tools like ValueListenableBuilder or a state management solution such as Provider so only listeners rebuild. Also avoid heavy work like parsing or network calls inside build.",
-      "keywords": [
-        "setstate",
-        "rebuild",
-        "devtools",
-        "smaller widgets",
-        "const",
-        "provider",
-        "inside build"
-      ]
-    },
-    {
-      "level": 5,
-      "topic": "User interaction: buttons, forms, gestures",
-      "text": "How would you validate a login form in Flutter so that the email must be valid and the password at least 8 characters, before sending it to the server?",
-      "ideal_answer": "Wrap the fields in a Form widget with a GlobalKey of FormState, and use TextFormField widgets for email and password. Give each field a validator function that returns an error message string if the input is invalid, for example if the email does not match an email pattern or the password length is less than 8, and returns null if it is valid. When the login button is pressed, call formKey.currentState.validate(), which runs all validators and shows the errors, and only send data to the server if it returns true. Use obscureText for the password field and still validate again on the server.",
-      "keywords": [
-        "form",
-        "globalkey",
-        "textformfield",
-        "validator",
-        "returns null",
-        "validate",
-        "obscuretext"
-      ]
-    },
-    {
-      "level": 6,
-      "topic": "Material Design: Scaffold, AppBar, themes",
-      "text": "Your client wants their app to follow their brand colours everywhere and support dark mode. How would you implement this consistently in Flutter?",
-      "ideal_answer": "Define the styling centrally in MaterialApp using ThemeData for light mode and darkTheme for dark mode, ideally with ColorScheme.fromSeed using the brand colour and Material 3. Set themeMode to ThemeMode.system so the app follows the device setting, or let the user choose. In widgets, read colours and text styles from Theme.of(context) instead of hard-coding them, so every screen, AppBar and button updates automatically. Check colour contrast in both modes for accessibility, and test the UI on different screens.",
-      "keywords": [
-        "themedata",
-        "darktheme",
-        "colorscheme",
-        "thememode",
-        "theme.of",
-        "hard-coding",
-        "contrast"
-      ]
-    },
-    {
-      "level": 6,
-      "topic": "Navigation: bottom navigation and drawer",
-      "text": "You are designing an app with five main sections and several less-used settings pages. How would you choose between bottom navigation and a drawer, and what user experience issues would you consider?",
-      "ideal_answer": "Material Design recommends a bottom navigation bar for three to five top-level destinations that users switch between often, because it is always visible and easy to reach with a thumb. A navigation drawer suits many destinations or less frequently used pages such as settings, help or account, since it is hidden until opened. So I would put the five main sections in a BottomNavigationBar or NavigationBar inside a Scaffold, and the settings pages in a Drawer or a profile screen. I would also preserve each tab's state, for example with an IndexedStack, and keep navigation consistent on both Android and iOS.",
-      "keywords": [
-        "bottom navigation",
-        "three to five",
-        "frequent",
-        "drawer",
-        "less frequent",
-        "scaffold",
-        "preserve each tab's state"
-      ]
-    }
-  ]
+ "subject": "Mobile App Development",
+ "applies_to": [
+  {
+   "course": "BSC_IT",
+   "year": 3,
+   "semester": 5
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Flutter architecture and advantages",
+   "text": "What is Flutter and what language does it use?",
+   "ideal_answer": "Flutter is an open-source UI toolkit by Google for building natively compiled, cross-platform applications for Android, iOS, web and desktop from a single codebase. It uses the Dart programming language. Flutter draws its own UI using its rendering engine instead of native components, and everything in the UI is a widget. Features such as hot reload make development fast.",
+   "keywords": [
+    "google",
+    "open-source",
+    "cross-platform",
+    "single codebase",
+    "dart",
+    "widget",
+    "hot reload"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Native vs hybrid vs cross-platform apps; Android ecosystem",
+   "text": "What is the difference between native, hybrid and cross-platform mobile apps?",
+   "ideal_answer": "A native app is built for one platform using its own language and tools, such as Kotlin or Java for Android and Swift for iOS, giving the best performance and full access to device features. A hybrid app is built with web technologies like HTML, CSS and JavaScript and runs inside a WebView wrapper, for example with Ionic or Cordova, which is quick to build but slower. A cross-platform app, such as one built with Flutter or React Native, uses one codebase to produce apps for multiple platforms with near-native performance.",
+   "keywords": [
+    "native",
+    "kotlin",
+    "swift",
+    "hybrid",
+    "webview",
+    "cross-platform",
+    "one codebase"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Stateless vs stateful widgets; widget tree and build method",
+   "text": "What is the difference between a StatelessWidget and a StatefulWidget in Flutter?",
+   "ideal_answer": "A StatelessWidget has no mutable state; its appearance depends only on the configuration passed to it, so it does not change once built, for example a static Text or Icon. A StatefulWidget has a separate State object that holds data which can change during the widget's lifetime, such as a counter or form input. When that data changes, calling setState tells Flutter to call build again and redraw the widget. Stateful widgets also have lifecycle methods like initState and dispose.",
+   "keywords": [
+    "statelesswidget",
+    "no mutable state",
+    "statefulwidget",
+    "state object",
+    "setstate",
+    "build",
+    "initstate"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Dart fundamentals: variables, functions, control statements",
+   "text": "In Dart, what is the difference between var, final and const?",
+   "ideal_answer": "var declares a variable whose type is inferred from its initial value, and its value can be changed later. final declares a variable that can be assigned only once, but its value can be determined at runtime, such as the current time. const declares a compile-time constant, so its value must be known at compile time and it is deeply immutable. In Flutter, using const widgets improves performance because they are not rebuilt unnecessarily.",
+   "keywords": [
+    "var",
+    "inferred",
+    "final",
+    "assigned only once",
+    "runtime",
+    "const",
+    "compile-time"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Layouts: Row, Column, Stack, Container, Expanded",
+   "text": "You place three buttons in a Row and they overflow the screen with a yellow and black stripe. Why does this happen and how can Expanded fix it?",
+   "ideal_answer": "A Row lays out its children horizontally and gives each child its natural width, so if their total width exceeds the available screen width, Flutter shows the yellow and black overflow warning. Wrapping each button in an Expanded widget makes the children share the remaining space of the Row instead of using their natural width, so they fit the screen. The flex property controls the share each child gets, for example flex 2 takes twice the space of flex 1. Alternatives are Flexible, Wrap, or a horizontal scroll view.",
+   "keywords": [
+    "row",
+    "horizontally",
+    "overflow",
+    "expanded",
+    "remaining space",
+    "flex",
+    "wrap"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Navigation: named routes, bottom navigation and drawer",
+   "text": "How do you navigate between screens using named routes in Flutter?",
+   "ideal_answer": "Flutter uses a Navigator that manages a stack of routes, or screens. With named routes, you define a routes map in MaterialApp, such as '/' for the home screen and '/profile' for the profile screen, and set initialRoute. To open a screen, call Navigator.pushNamed(context, '/profile'), which pushes it on the stack, and to go back call Navigator.pop(context). Data can be passed using the arguments parameter and read with ModalRoute.of(context).settings.arguments.",
+   "keywords": [
+    "navigator",
+    "stack",
+    "routes",
+    "materialapp",
+    "pushnamed",
+    "pop",
+    "arguments"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "OOP in Dart and null safety",
+   "text": "What is null safety in Dart, and what happens with the statement String name = null; compared with String? name = null; ?",
+   "ideal_answer": "With sound null safety, variables are non-nullable by default, so they cannot hold null unless declared otherwise. String name = null; gives a compile-time error because String cannot be null. String? name = null; is allowed because the question mark makes the type nullable. To use a nullable value safely you use checks like if name is not null, the ?. operator, the ?? operator to give a default value, or the ! operator to assert it is not null, which throws an error at runtime if it is null. This prevents many null reference crashes.",
+   "keywords": [
+    "null safety",
+    "non-nullable",
+    "compile-time error",
+    "nullable",
+    "question mark",
+    "default value",
+    "assert"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Flutter architecture and advantages",
+   "text": "Why can Flutter apps achieve near-native performance, unlike many hybrid apps?",
+   "ideal_answer": "Flutter's Dart code is compiled ahead of time into native ARM machine code for release builds, so it does not run through a JavaScript bridge or a WebView. Flutter also draws every pixel itself using its own rendering engine, Skia or the newer Impeller, instead of relying on platform UI components, so rendering is consistent and can reach 60 or 120 frames per second. Hybrid apps run HTML and JavaScript inside a WebView, which adds overhead. During development Flutter uses just-in-time compilation to enable hot reload.",
+   "keywords": [
+    "ahead of time",
+    "native arm machine code",
+    "javascript bridge",
+    "rendering engine",
+    "skia",
+    "webview",
+    "just-in-time"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Stateless vs stateful widgets; widget tree and build method",
+   "text": "Your Flutter screen becomes slow and janky because the whole page rebuilds every time a single counter changes. How would you diagnose and fix this?",
+   "ideal_answer": "Calling setState at the top of a large widget rebuilds that entire subtree, so a small change triggers costly rebuilds. Use Flutter DevTools, with the performance overlay and the rebuild tracker, to find which widgets rebuild and which frames are slow. Fix it by splitting the screen into smaller widgets so that only the part showing the counter is stateful, marking unchanging widgets as const, and using tools like ValueListenableBuilder or a state management solution such as Provider so only listeners rebuild. Also avoid heavy work like parsing or network calls inside build.",
+   "keywords": [
+    "setstate",
+    "rebuild",
+    "devtools",
+    "smaller widgets",
+    "const",
+    "provider",
+    "inside build"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "User interaction: buttons, forms, gestures",
+   "text": "How would you validate a login form in Flutter so that the email must be valid and the password at least 8 characters, before sending it to the server?",
+   "ideal_answer": "Wrap the fields in a Form widget with a GlobalKey of FormState, and use TextFormField widgets for email and password. Give each field a validator function that returns an error message string if the input is invalid, for example if the email does not match an email pattern or the password length is less than 8, and returns null if it is valid. When the login button is pressed, call formKey.currentState.validate(), which runs all validators and shows the errors, and only send data to the server if it returns true. Use obscureText for the password field and still validate again on the server.",
+   "keywords": [
+    "form",
+    "globalkey",
+    "textformfield",
+    "validator",
+    "returns null",
+    "validate",
+    "obscuretext"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Material Design: Scaffold, AppBar, themes",
+   "text": "Your client wants their app to follow their brand colours everywhere and support dark mode. How would you implement this consistently in Flutter?",
+   "ideal_answer": "Define the styling centrally in MaterialApp using ThemeData for light mode and darkTheme for dark mode, ideally with ColorScheme.fromSeed using the brand colour and Material 3. Set themeMode to ThemeMode.system so the app follows the device setting, or let the user choose. In widgets, read colours and text styles from Theme.of(context) instead of hard-coding them, so every screen, AppBar and button updates automatically. Check colour contrast in both modes for accessibility, and test the UI on different screens.",
+   "keywords": [
+    "themedata",
+    "darktheme",
+    "colorscheme",
+    "thememode",
+    "theme.of",
+    "hard-coding",
+    "contrast"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Navigation: bottom navigation and drawer",
+   "text": "You are designing an app with five main sections and several less-used settings pages. How would you choose between bottom navigation and a drawer, and what user experience issues would you consider?",
+   "ideal_answer": "Material Design recommends a bottom navigation bar for three to five top-level destinations that users switch between often, because it is always visible and easy to reach with a thumb. A navigation drawer suits many destinations or less frequently used pages such as settings, help or account, since it is hidden until opened. So I would put the five main sections in a BottomNavigationBar or NavigationBar inside a Scaffold, and the settings pages in a Drawer or a profile screen. I would also preserve each tab's state, for example with an IndexedStack, and keep navigation consistent on both Android and iOS.",
+   "keywords": [
+    "bottom navigation",
+    "three to five",
+    "frequent",
+    "drawer",
+    "less frequent",
+    "scaffold",
+    "preserve each tab's state"
+   ]
+  }
+ ]
 }

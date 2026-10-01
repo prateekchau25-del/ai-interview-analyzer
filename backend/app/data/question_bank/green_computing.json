@@ -1,195 +1,195 @@
 {
-  "subject": "Green Computing",
-  "applies_to": [
-    {
-      "course": "BSC_IT",
-      "year": 1,
-      "semester": 2
-    },
-    {
-      "course": "BSC_DS",
-      "year": 1,
-      "semester": 2
-    },
-    {
-      "course": "BSC_AI",
-      "year": 1,
-      "semester": 2
-    }
-  ],
-  "questions": [
-    {
-      "level": 1,
-      "topic": "Green IT problems: toxins, power consumption, equipment disposal, carbon footprint",
-      "text": "What is green computing?",
-      "ideal_answer": "Green computing, or green IT, is the practice of designing, manufacturing, using and disposing of computers, servers and related systems in a way that reduces their impact on the environment. It aims to lower energy consumption and carbon emissions, reduce the use of hazardous materials, and promote recycling and proper disposal of electronic waste. It also improves cost efficiency, since using less power saves money.",
-      "keywords": [
-        "environment",
-        "energy consumption",
-        "carbon emissions",
-        "hazardous materials",
-        "recycling",
-        "electronic waste"
-      ]
-    },
-    {
-      "level": 1,
-      "topic": "Global initiatives and standards: Basel Convention, WEEE, RoHS",
-      "text": "What is the RoHS directive?",
-      "ideal_answer": "RoHS stands for Restriction of Hazardous Substances, a European Union directive that restricts the use of certain hazardous materials in electrical and electronic equipment. It limits substances such as lead, mercury, cadmium, hexavalent chromium, and the flame retardants PBB and PBDE. The aim is to reduce the harm these toxins cause to health and the environment, especially when electronics are disposed of or recycled.",
-      "keywords": [
-        "restriction of hazardous substances",
-        "european union",
-        "lead",
-        "mercury",
-        "cadmium",
-        "electronic equipment"
-      ]
-    },
-    {
-      "level": 2,
-      "topic": "Global initiatives and standards: Basel Convention, WEEE, RoHS",
-      "text": "What is the difference between the WEEE directive and the Basel Convention?",
-      "ideal_answer": "The WEEE directive, Waste Electrical and Electronic Equipment, is a European Union law that makes producers responsible for the collection, recycling and recovery of electronic waste. The Basel Convention is an international treaty that controls the movement of hazardous waste between countries, especially to stop developed countries dumping it in developing countries. So WEEE focuses on recycling and producer responsibility within the EU, while Basel regulates cross-border shipment of hazardous waste worldwide.",
-      "keywords": [
-        "weee",
-        "producer responsibility",
-        "recycling",
-        "basel convention",
-        "international treaty",
-        "cross-border"
-      ]
-    },
-    {
-      "level": 2,
-      "topic": "Hardware certifications: EPEAT, Energy Star",
-      "text": "What is Energy Star and how does it help when buying IT equipment?",
-      "ideal_answer": "Energy Star is an energy-efficiency certification programme started by the US Environmental Protection Agency. Products such as computers, monitors and printers carrying the Energy Star label meet strict energy-efficiency standards, including low power use in sleep and idle modes. Choosing Energy Star equipment lowers electricity bills and reduces carbon emissions over the product's life. It gives buyers a simple, trusted way to compare devices.",
-      "keywords": [
-        "energy star",
-        "certification",
-        "environmental protection agency",
-        "energy-efficiency",
-        "sleep",
-        "label"
-      ]
-    },
-    {
-      "level": 3,
-      "topic": "Minimizing power usage: virtualization",
-      "text": "How does server virtualization reduce power consumption in a data centre?",
-      "ideal_answer": "Many physical servers typically run at very low utilisation, often around 10 to 15 percent, yet each still consumes power and needs cooling. Virtualization uses a hypervisor to run many virtual machines on one physical server, so workloads from several underused servers can be consolidated onto fewer machines running at higher utilisation. Fewer physical servers means less electricity for computing, less cooling, less floor space and less hardware to eventually dispose of. Features like live migration also let idle hosts be powered down.",
-      "keywords": [
-        "virtualization",
-        "hypervisor",
-        "virtual machines",
-        "consolidated",
-        "utilisation",
-        "cooling"
-      ]
-    },
-    {
-      "level": 3,
-      "topic": "Data centre cooling: hot aisle/cold aisle, airflow, economizers",
-      "text": "Explain the hot aisle / cold aisle arrangement in a data centre.",
-      "ideal_answer": "Server racks are arranged in alternating rows so that the fronts of two rows face each other across a cold aisle and the backs face each other across a hot aisle. Cool air from the cooling system is supplied into the cold aisle, drawn through the servers' front intakes, and the heated exhaust air is released into the hot aisle and returned to the cooling units. This prevents hot exhaust from mixing with cool intake air, so cooling works more efficiently and uses less energy. Containment with doors or panels improves it further.",
-      "keywords": [
-        "racks",
-        "cold aisle",
-        "hot aisle",
-        "intake",
-        "exhaust",
-        "mixing",
-        "containment"
-      ]
-    },
-    {
-      "level": 4,
-      "topic": "Changing the way of work: telecommuting and outsourcing",
-      "text": "Why is telecommuting considered a green practice, and what are its limitations?",
-      "ideal_answer": "Telecommuting lets employees work from home using IT, which removes daily travel and therefore cuts fuel use and carbon emissions, and it lets companies reduce office space, lighting and cooling. However, the savings can be partly offset by higher energy use at homes, by home equipment that is less efficient than shared office equipment, and by increased data-centre and network usage for video calls and cloud services. Not every job can be done remotely, and it needs secure remote-access infrastructure.",
-      "keywords": [
-        "telecommuting",
-        "travel",
-        "carbon emissions",
-        "office space",
-        "energy use at homes",
-        "remote-access"
-      ]
-    },
-    {
-      "level": 4,
-      "topic": "Hardware certifications: thin clients and server consolidation",
-      "text": "Why can thin clients be greener than ordinary desktop PCs in a college computer lab?",
-      "ideal_answer": "A thin client is a low-power device that relies on a central server for processing and storage, so it uses much less electricity than a full desktop, often a fraction of the power. It has fewer components and no local hard disk, so it lasts longer, produces less heat and less e-waste. Management and updates are centralised on the server, which reduces maintenance. The trade-off is dependence on the server and network, so the server must be sized properly.",
-      "keywords": [
-        "thin client",
-        "central server",
-        "low-power",
-        "less heat",
-        "e-waste",
-        "centralised"
-      ]
-    },
-    {
-      "level": 5,
-      "topic": "Recycling, refurbishing and hard-drive disposal",
-      "text": "Your organisation is disposing of 200 old laptops. What steps would you take to do this in a secure and environmentally responsible way?",
-      "ideal_answer": "First, decide which laptops can be refurbished and reused or donated, since reuse is greener than recycling. Before any device leaves, securely sanitise the storage by overwriting it with data-wiping software, or physically destroy or degauss drives that hold sensitive data, and keep certificates of destruction. Send the remaining equipment to an authorised e-waste recycler that complies with the e-waste rules, so that toxic materials like lead and mercury are handled safely. Maintain records of asset tags and disposal for audit purposes.",
-      "keywords": [
-        "refurbish",
-        "reuse",
-        "data-wiping",
-        "degauss",
-        "authorised e-waste recycler",
-        "e-waste rules",
-        "records"
-      ]
-    },
-    {
-      "level": 5,
-      "topic": "Minimizing power usage: data de-duplication",
-      "text": "How does data de-duplication help green IT, and what issue must you be careful about?",
-      "ideal_answer": "Data de-duplication finds identical blocks or files and stores only one copy, replacing the duplicates with references to it. This greatly reduces the amount of storage needed, especially for backups, which means fewer disks, less power and less cooling. The issue is that many files now depend on a single stored copy, so if that copy is corrupted, many files are affected; therefore the de-duplicated store needs strong integrity checks and redundancy. It also uses CPU to compute hashes and compare data.",
-      "keywords": [
-        "de-duplication",
-        "one copy",
-        "references",
-        "storage",
-        "backups",
-        "corrupted",
-        "hashes"
-      ]
-    },
-    {
-      "level": 6,
-      "topic": "Greening information systems: metrics",
-      "text": "As an IT manager you must report how energy-efficient your company's data centre is. Which metric would you use and how would you improve it?",
-      "ideal_answer": "The standard metric is Power Usage Effectiveness, PUE, which is total facility power divided by the power used by IT equipment; an ideal value is 1.0 and a lower PUE means less energy is wasted on cooling, lighting and power losses. To improve it, use hot aisle and cold aisle containment, raise the cooling set point within safe limits, use free-air cooling or economizers, and use efficient UPS and power supplies. You can also consolidate servers through virtualization, which reduces wasted IT load itself. Track PUE regularly and benchmark it against industry values.",
-      "keywords": [
-        "power usage effectiveness",
-        "pue",
-        "total facility power",
-        "power used by it equipment",
-        "cooling",
-        "economizer",
-        "benchmark"
-      ]
-    },
-    {
-      "level": 6,
-      "topic": "Staying green: audits, benchmarking, Chief Green Officer",
-      "text": "Your company wants to start a long-term green IT programme. How would you organise it so that it lasts beyond one initiative?",
-      "ideal_answer": "Start with a green audit to measure current energy use, equipment, e-waste and carbon footprint, creating a baseline. Appoint an accountable leader such as a Chief Green Officer and set measurable targets, like reducing power usage or paper consumption by a certain percentage. Benchmark against industry standards, adopt green procurement policies like buying Energy Star or EPEAT equipment, and involve employees through awareness and incentives. Review progress with regular audits and publish the results so the programme stays accountable.",
-      "keywords": [
-        "green audit",
-        "baseline",
-        "chief green officer",
-        "targets",
-        "benchmark",
-        "procurement",
-        "regular audits"
-      ]
-    }
-  ]
+ "subject": "Green Computing",
+ "applies_to": [
+  {
+   "course": "BSC_IT",
+   "year": 1,
+   "semester": 2
+  },
+  {
+   "course": "BSC_DS",
+   "year": 1,
+   "semester": 2
+  },
+  {
+   "course": "BSC_AI",
+   "year": 1,
+   "semester": 2
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Green IT problems: toxins, power consumption, equipment disposal, carbon footprint",
+   "text": "What is green computing?",
+   "ideal_answer": "Green computing, or green IT, is the practice of designing, manufacturing, using and disposing of computers, servers and related systems in a way that reduces their impact on the environment. It aims to lower energy consumption and carbon emissions, reduce the use of hazardous materials, and promote recycling and proper disposal of electronic waste. It also improves cost efficiency, since using less power saves money.",
+   "keywords": [
+    "environment",
+    "energy consumption",
+    "carbon emissions",
+    "hazardous materials",
+    "recycling",
+    "electronic waste"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Global initiatives and standards: Basel Convention, WEEE, RoHS",
+   "text": "What is the RoHS directive?",
+   "ideal_answer": "RoHS stands for Restriction of Hazardous Substances, a European Union directive that restricts the use of certain hazardous materials in electrical and electronic equipment. It limits substances such as lead, mercury, cadmium, hexavalent chromium, and the flame retardants PBB and PBDE. The aim is to reduce the harm these toxins cause to health and the environment, especially when electronics are disposed of or recycled.",
+   "keywords": [
+    "restriction of hazardous substances",
+    "european union",
+    "lead",
+    "mercury",
+    "cadmium",
+    "electronic equipment"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Global initiatives and standards: Basel Convention, WEEE, RoHS",
+   "text": "What is the difference between the WEEE directive and the Basel Convention?",
+   "ideal_answer": "The WEEE directive, Waste Electrical and Electronic Equipment, is a European Union law that makes producers responsible for the collection, recycling and recovery of electronic waste. The Basel Convention is an international treaty that controls the movement of hazardous waste between countries, especially to stop developed countries dumping it in developing countries. So WEEE focuses on recycling and producer responsibility within the EU, while Basel regulates cross-border shipment of hazardous waste worldwide.",
+   "keywords": [
+    "weee",
+    "producer responsibility",
+    "recycling",
+    "basel convention",
+    "international treaty",
+    "cross-border"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Hardware certifications: EPEAT, Energy Star",
+   "text": "What is Energy Star and how does it help when buying IT equipment?",
+   "ideal_answer": "Energy Star is an energy-efficiency certification programme started by the US Environmental Protection Agency. Products such as computers, monitors and printers carrying the Energy Star label meet strict energy-efficiency standards, including low power use in sleep and idle modes. Choosing Energy Star equipment lowers electricity bills and reduces carbon emissions over the product's life. It gives buyers a simple, trusted way to compare devices.",
+   "keywords": [
+    "energy star",
+    "certification",
+    "environmental protection agency",
+    "energy-efficiency",
+    "sleep",
+    "label"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Minimizing power usage: virtualization",
+   "text": "How does server virtualization reduce power consumption in a data centre?",
+   "ideal_answer": "Many physical servers typically run at very low utilisation, often around 10 to 15 percent, yet each still consumes power and needs cooling. Virtualization uses a hypervisor to run many virtual machines on one physical server, so workloads from several underused servers can be consolidated onto fewer machines running at higher utilisation. Fewer physical servers means less electricity for computing, less cooling, less floor space and less hardware to eventually dispose of. Features like live migration also let idle hosts be powered down.",
+   "keywords": [
+    "virtualization",
+    "hypervisor",
+    "virtual machines",
+    "consolidated",
+    "utilisation",
+    "cooling"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Data centre cooling: hot aisle/cold aisle, airflow, economizers",
+   "text": "Explain the hot aisle / cold aisle arrangement in a data centre.",
+   "ideal_answer": "Server racks are arranged in alternating rows so that the fronts of two rows face each other across a cold aisle and the backs face each other across a hot aisle. Cool air from the cooling system is supplied into the cold aisle, drawn through the servers' front intakes, and the heated exhaust air is released into the hot aisle and returned to the cooling units. This prevents hot exhaust from mixing with cool intake air, so cooling works more efficiently and uses less energy. Containment with doors or panels improves it further.",
+   "keywords": [
+    "racks",
+    "cold aisle",
+    "hot aisle",
+    "intake",
+    "exhaust",
+    "mixing",
+    "containment"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Changing the way of work: telecommuting and outsourcing",
+   "text": "Why is telecommuting considered a green practice, and what are its limitations?",
+   "ideal_answer": "Telecommuting lets employees work from home using IT, which removes daily travel and therefore cuts fuel use and carbon emissions, and it lets companies reduce office space, lighting and cooling. However, the savings can be partly offset by higher energy use at homes, by home equipment that is less efficient than shared office equipment, and by increased data-centre and network usage for video calls and cloud services. Not every job can be done remotely, and it needs secure remote-access infrastructure.",
+   "keywords": [
+    "telecommuting",
+    "travel",
+    "carbon emissions",
+    "office space",
+    "energy use at homes",
+    "remote-access"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Hardware certifications: thin clients and server consolidation",
+   "text": "Why can thin clients be greener than ordinary desktop PCs in a college computer lab?",
+   "ideal_answer": "A thin client is a low-power device that relies on a central server for processing and storage, so it uses much less electricity than a full desktop, often a fraction of the power. It has fewer components and no local hard disk, so it lasts longer, produces less heat and less e-waste. Management and updates are centralised on the server, which reduces maintenance. The trade-off is dependence on the server and network, so the server must be sized properly.",
+   "keywords": [
+    "thin client",
+    "central server",
+    "low-power",
+    "less heat",
+    "e-waste",
+    "centralised"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Recycling, refurbishing and hard-drive disposal",
+   "text": "Your organisation is disposing of 200 old laptops. What steps would you take to do this in a secure and environmentally responsible way?",
+   "ideal_answer": "First, decide which laptops can be refurbished and reused or donated, since reuse is greener than recycling. Before any device leaves, securely sanitise the storage by overwriting it with data-wiping software, or physically destroy or degauss drives that hold sensitive data, and keep certificates of destruction. Send the remaining equipment to an authorised e-waste recycler that complies with the e-waste rules, so that toxic materials like lead and mercury are handled safely. Maintain records of asset tags and disposal for audit purposes.",
+   "keywords": [
+    "refurbish",
+    "reuse",
+    "data-wiping",
+    "degauss",
+    "authorised e-waste recycler",
+    "e-waste rules",
+    "records"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Minimizing power usage: data de-duplication",
+   "text": "How does data de-duplication help green IT, and what issue must you be careful about?",
+   "ideal_answer": "Data de-duplication finds identical blocks or files and stores only one copy, replacing the duplicates with references to it. This greatly reduces the amount of storage needed, especially for backups, which means fewer disks, less power and less cooling. The issue is that many files now depend on a single stored copy, so if that copy is corrupted, many files are affected; therefore the de-duplicated store needs strong integrity checks and redundancy. It also uses CPU to compute hashes and compare data.",
+   "keywords": [
+    "de-duplication",
+    "one copy",
+    "references",
+    "storage",
+    "backups",
+    "corrupted",
+    "hashes"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Greening information systems: metrics",
+   "text": "As an IT manager you must report how energy-efficient your company's data centre is. Which metric would you use and how would you improve it?",
+   "ideal_answer": "The standard metric is Power Usage Effectiveness, PUE, which is total facility power divided by the power used by IT equipment; an ideal value is 1.0 and a lower PUE means less energy is wasted on cooling, lighting and power losses. To improve it, use hot aisle and cold aisle containment, raise the cooling set point within safe limits, use free-air cooling or economizers, and use efficient UPS and power supplies. You can also consolidate servers through virtualization, which reduces wasted IT load itself. Track PUE regularly and benchmark it against industry values.",
+   "keywords": [
+    "power usage effectiveness",
+    "pue",
+    "total facility power",
+    "power used by it equipment",
+    "cooling",
+    "economizer",
+    "benchmark"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Staying green: audits, benchmarking, Chief Green Officer",
+   "text": "Your company wants to start a long-term green IT programme. How would you organise it so that it lasts beyond one initiative?",
+   "ideal_answer": "Start with a green audit to measure current energy use, equipment, e-waste and carbon footprint, creating a baseline. Appoint an accountable leader such as a Chief Green Officer and set measurable targets, like reducing power usage or paper consumption by a certain percentage. Benchmark against industry standards, adopt green procurement policies like buying Energy Star or EPEAT equipment, and involve employees through awareness and incentives. Review progress with regular audits and publish the results so the programme stays accountable.",
+   "keywords": [
+    "green audit",
+    "baseline",
+    "chief green officer",
+    "targets",
+    "benchmark",
+    "procurement",
+    "regular audits"
+   ]
+  }
+ ]
 }

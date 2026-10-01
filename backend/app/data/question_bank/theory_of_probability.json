@@ -174,12 +174,11 @@
       "ideal_answer": "The number of calls until the first success follows a geometric distribution with p = 0.2. Counting the call on which the first sale happens, the expected number of calls is 1 / p = 5. The number of calls until the r-th success follows a negative binomial distribution, and its expected value is r / p, so for the third sale it is 3 / 0.2 = 15 calls. These models assume independent calls with constant success probability, which the manager should verify, since in practice success rates may vary by time or customer segment.",
       "keywords": [
         "geometric",
-        "1 / p",
         "5 calls",
         "negative binomial",
-        "r / p",
         "15 calls",
-        "independent"
+        "independent",
+        "success probability"
       ]
     }
   ]

@@ -70,7 +70,7 @@
       "text": "How does the A* search algorithm decide which node to expand next?",
       "ideal_answer": "A* evaluates each node with f(n) equals g(n) plus h(n), where g(n) is the actual cost from the start to node n and h(n) is the heuristic estimate of the cost from n to the goal. It keeps nodes in a priority queue and always expands the node with the lowest f value. This balances the cost already paid with the estimated remaining cost. If the heuristic is admissible, meaning it never overestimates the true cost, A* is guaranteed to find an optimal path; for example, straight-line distance is used for route finding.",
       "keywords": [
-        "estimated cost",
+        "heuristic estimate",
         "path cost",
         "heuristic",
         "lowest f",
@@ -102,7 +102,7 @@
         "alpha",
         "beta",
         "prune",
-        "same result",
+        "identical",
         "move ordering"
       ]
     },
@@ -142,7 +142,7 @@
       "keywords": [
         "bayes theorem",
         "prior",
-        "likelihood",
+        "rare",
         "false positive",
         "8.3 percent",
         "base rate"
@@ -155,11 +155,11 @@
       "ideal_answer": "The tree is overfitting: it has grown deep and memorised the training data. First I would prune it or limit its depth and minimum samples per leaf, and check performance with cross-validation. A stronger fix is an ensemble such as random forest, which uses bagging over many trees trained on bootstrap samples with random feature subsets, or gradient boosting, which trains trees sequentially to correct errors; both generalise better. The trade-off is that ensembles are harder to interpret than one tree, and banks must explain loan decisions, so I would use feature importance or SHAP explanations and check the model for bias against protected groups.",
       "keywords": [
         "overfitting",
-        "pruning",
+        "prune",
         "cross-validation",
         "random forest",
         "boosting",
-        "interpretability"
+        "interpret"
       ]
     },
     {

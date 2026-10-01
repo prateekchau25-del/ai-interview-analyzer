@@ -1,90 +1,184 @@
 {
-  "subject": "Software Engineering",
-  "applies_to": [{"course": "BCA", "year": 2, "semester": 3}],
-  "questions": [
-    {
-      "level": 1,
-      "topic": "Software Development Life Cycle (SDLC)",
-      "text": "What is the Software Development Life Cycle?",
-      "ideal_answer": "The Software Development Life Cycle, or SDLC, is a structured process that defines the phases for building software from start to finish. The typical phases are requirement gathering and analysis, design, implementation or coding, testing, deployment and maintenance. It helps teams deliver quality software on time and within budget by giving clear steps, deliverables and responsibilities for each phase.",
-      "keywords": ["structured process", "requirements", "design", "coding", "testing", "deployment", "maintenance"]
-    },
-    {
-      "level": 1,
-      "topic": "Characteristics of software and software engineering ethics",
-      "text": "What are the main characteristics of software that make it different from hardware?",
-      "ideal_answer": "Software is developed or engineered, not manufactured in the traditional sense, so most of its cost is in development rather than production. Software does not wear out physically like hardware, but it deteriorates over time because of changes and new defects introduced during maintenance. Much software is still custom built rather than assembled from standard components, though reuse is increasing. Software is also intangible and easy to copy and change, which makes it flexible but harder to manage.",
-      "keywords": ["developed not manufactured", "does not wear out", "deteriorates", "changes", "custom built", "intangible"]
-    },
-    {
-      "level": 2,
-      "topic": "Functional and non-functional requirements, SRS",
-      "text": "What is the difference between functional and non-functional requirements? Give an example of each for an online banking app.",
-      "ideal_answer": "Functional requirements describe what the system should do, the specific features and behaviours, for example 'the user shall be able to transfer money to a registered beneficiary'. Non-functional requirements describe how well the system performs its functions, its quality attributes, such as performance, security, usability and reliability, for example 'the app shall log out the user after 5 minutes of inactivity' or 'pages shall load within 2 seconds'. Both are documented in the Software Requirements Specification.",
-      "keywords": ["functional", "what the system does", "non-functional", "quality attributes", "performance", "security", "srs"]
-    },
-    {
-      "level": 2,
-      "topic": "Levels of testing, black box and white box testing",
-      "text": "What is the difference between black box testing and white box testing?",
-      "ideal_answer": "Black box testing checks the software's functionality against the requirements without looking at the internal code, using inputs and expected outputs; techniques include equivalence partitioning and boundary value analysis. White box testing examines the internal structure and logic of the code, designing tests to cover statements, branches and paths. Black box testing is usually done by testers, while white box testing is mostly done by developers who know the code.",
-      "keywords": ["black box", "without internal code", "requirements", "white box", "internal structure", "branch coverage", "boundary value"]
-    },
-    {
-      "level": 3,
-      "topic": "UML use case and class diagrams",
-      "text": "How would you draw a use case diagram for a library management system?",
-      "ideal_answer": "First identify the actors, the external users or systems, such as Member, Librarian and perhaps a Payment system. Draw a system boundary box labelled Library Management System, and inside it draw use cases as ovals, such as Search Book, Issue Book, Return Book, Pay Fine and Add Book. Connect actors to the use cases they perform with lines. Use include relationships for mandatory shared behaviour, like Issue Book including Verify Member, and extend relationships for optional behaviour, like Return Book extended by Pay Fine.",
-      "keywords": ["actors", "system boundary", "use cases", "ovals", "include", "extend"]
-    },
-    {
-      "level": 3,
-      "topic": "Project planning and cost estimation (LOC, FP)",
-      "text": "How does function point analysis estimate the size of a software project?",
-      "ideal_answer": "Function point analysis measures size based on the functionality delivered to the user, not lines of code. It counts five components: external inputs, external outputs, external inquiries, internal logical files and external interface files, and weights each as simple, average or complex. The sum gives unadjusted function points, which are multiplied by a value adjustment factor based on 14 general system characteristics. The resulting function points can then be used to estimate effort, cost and schedule, and they are independent of programming language.",
-      "keywords": ["functionality", "external inputs", "external outputs", "internal logical files", "value adjustment factor", "language independent"]
-    },
-    {
-      "level": 4,
-      "topic": "SDLC models: waterfall, incremental, spiral, agile",
-      "text": "Compare the waterfall model with the spiral model. When would you choose each?",
-      "ideal_answer": "The waterfall model is linear and sequential, each phase completes before the next begins, and it suits small projects with clear, stable requirements, but changes are costly and working software appears late. The spiral model is iterative and risk-driven; each loop includes planning, risk analysis, engineering and customer evaluation, and builds the product progressively. Spiral suits large, complex or high-risk projects with unclear requirements, but it is costly and needs risk analysis expertise. So choose waterfall for well-understood, stable projects and spiral where risks are high.",
-      "keywords": ["linear", "sequential", "stable requirements", "iterative", "risk analysis", "large complex projects"]
-    },
-    {
-      "level": 4,
-      "topic": "Software design: coupling and cohesion",
-      "text": "Why should a good software design have high cohesion and low coupling?",
-      "ideal_answer": "Cohesion is how closely related the responsibilities within a single module are, and coupling is how much modules depend on each other. High cohesion means each module does one well-defined job, which makes it easier to understand, test and reuse. Low coupling means changes in one module have little effect on others, so the system is easier to maintain and modify and errors do not spread. Together they make the design modular and reduce the cost of future changes.",
-      "keywords": ["cohesion", "coupling", "single responsibility", "dependency", "maintainability", "modular"]
-    },
-    {
-      "level": 5,
-      "topic": "Levels of testing",
-      "text": "Every module of a project passed unit testing, yet the system failed when modules were combined. Why can this happen, and how should testing be planned?",
-      "ideal_answer": "Unit testing checks each module in isolation, often with stubs and drivers, so it does not catch problems in how modules interact, such as mismatched interfaces, wrong data formats, incorrect assumptions or timing issues. That is why integration testing is needed, done incrementally using top-down or bottom-up approaches to locate interface defects. After that, system testing checks the whole system against functional and non-functional requirements, and acceptance testing confirms it meets user needs. Regression testing should be repeated after each fix.",
-      "keywords": ["unit testing", "isolation", "interfaces", "integration testing", "system testing", "acceptance testing", "regression"]
-    },
-    {
-      "level": 5,
-      "topic": "Risk management and software configuration management",
-      "text": "Two developers overwrote each other's changes and a release went out with the wrong version of a file. What software configuration management practices would prevent this?",
-      "ideal_answer": "Software configuration management controls changes to software artifacts throughout the project. Using a version control system like Git with branches lets developers work in parallel and merge changes, detecting conflicts instead of silently overwriting. Configuration items should be identified and baselined, and changes should go through change control, such as pull requests with reviews. Releases should be built from tagged versions through an automated build so the exact contents are known, and status accounting and audits track what changed and why.",
-      "keywords": ["version control", "git", "baseline", "change control", "merge conflicts", "tagged release"]
-    },
-    {
-      "level": 6,
-      "topic": "Agile Scrum and DevOps CI/CD concepts",
-      "text": "Your team releases software every three months and each release has many bugs. How would adopting Scrum and CI/CD help, and what challenges might you face?",
-      "ideal_answer": "Scrum would divide work into short sprints of 2 to 4 weeks, with a prioritised product backlog, sprint planning, daily stand-ups, sprint reviews and retrospectives, so working increments are delivered and reviewed frequently. CI/CD means every code change is automatically built and tested in continuous integration, and then automatically deployed to staging or production in continuous delivery or deployment. Bugs are found early and releases become small and low-risk. Challenges include building enough automated tests, changing team culture, training, initial tool setup cost and convincing management and clients to engage regularly.",
-      "keywords": ["sprints", "product backlog", "retrospective", "continuous integration", "automated tests", "continuous deployment"]
-    },
-    {
-      "level": 6,
-      "topic": "Software reliability, metrics and component-based reuse",
-      "text": "Your manager wants to measure developer productivity by lines of code written per day. What are the problems with this metric and what would you suggest instead?",
-      "ideal_answer": "Lines of code reward verbose code and penalise efficient, reusable or refactored code, and they vary greatly with programming language and coding style. They encourage quantity over quality and say nothing about defects or value delivered to users. Better options are size measures like function points, quality metrics such as defect density, mean time between failures for reliability, and delivery metrics like lead time, deployment frequency and change failure rate. Metrics should be used to improve the process, not to judge individuals, and several should be used together.",
-      "keywords": ["lines of code", "language dependent", "quality", "function points", "defect density", "mean time between failures"]
-    }
-  ]
+ "subject": "Software Engineering",
+ "applies_to": [
+  {
+   "course": "BCA",
+   "year": 2,
+   "semester": 3
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Software Development Life Cycle (SDLC)",
+   "text": "What is the Software Development Life Cycle?",
+   "ideal_answer": "The Software Development Life Cycle, or SDLC, is a structured process that defines the phases for building software from start to finish. The typical phases are requirement gathering and analysis, design, implementation or coding, testing, deployment and maintenance. It helps teams deliver quality software on time and within budget by giving clear steps, deliverables and responsibilities for each phase.",
+   "keywords": [
+    "structured process",
+    "requirements",
+    "design",
+    "coding",
+    "testing",
+    "deployment",
+    "maintenance"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Characteristics of software and software engineering ethics",
+   "text": "What are the main characteristics of software that make it different from hardware?",
+   "ideal_answer": "Software is developed or engineered, not manufactured in the traditional sense, so most of its cost is in development rather than production. Software does not wear out physically like hardware, but it deteriorates over time because of changes and new defects introduced during maintenance. Much software is still custom built rather than assembled from standard components, though reuse is increasing. Software is also intangible and easy to copy and change, which makes it flexible but harder to manage.",
+   "keywords": [
+    "developed not manufactured",
+    "does not wear out",
+    "deteriorates",
+    "changes",
+    "custom built",
+    "intangible"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Functional and non-functional requirements, SRS",
+   "text": "What is the difference between functional and non-functional requirements? Give an example of each for an online banking app.",
+   "ideal_answer": "Functional requirements describe what the system should do, the specific features and behaviours, for example 'the user shall be able to transfer money to a registered beneficiary'. Non-functional requirements describe how well the system performs its functions, its quality attributes, such as performance, security, usability and reliability, for example 'the app shall log out the user after 5 minutes of inactivity' or 'pages shall load within 2 seconds'. Both are documented in the Software Requirements Specification.",
+   "keywords": [
+    "functional",
+    "what the system does",
+    "non-functional",
+    "quality attributes",
+    "performance",
+    "security",
+    "srs"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Levels of testing, black box and white box testing",
+   "text": "What is the difference between black box testing and white box testing?",
+   "ideal_answer": "Black box testing checks the software's functionality against the requirements without looking at the internal code, using inputs and expected outputs; techniques include equivalence partitioning and boundary value analysis. White box testing examines the internal structure and logic of the code, designing tests to cover statements, branches and paths. Black box testing is usually done by testers, while white box testing is mostly done by developers who know the code.",
+   "keywords": [
+    "black box",
+    "without internal code",
+    "requirements",
+    "white box",
+    "internal structure",
+    "branch coverage",
+    "boundary value"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "UML use case and class diagrams",
+   "text": "How would you draw a use case diagram for a library management system?",
+   "ideal_answer": "First identify the actors, the external users or systems, such as Member, Librarian and perhaps a Payment system. Draw a system boundary box labelled Library Management System, and inside it draw use cases as ovals, such as Search Book, Issue Book, Return Book, Pay Fine and Add Book. Connect actors to the use cases they perform with lines. Use include relationships for mandatory shared behaviour, like Issue Book including Verify Member, and extend relationships for optional behaviour, like Return Book extended by Pay Fine.",
+   "keywords": [
+    "actors",
+    "system boundary",
+    "use cases",
+    "ovals",
+    "include",
+    "extend"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Project planning and cost estimation (LOC, FP)",
+   "text": "How does function point analysis estimate the size of a software project?",
+   "ideal_answer": "Function point analysis measures size based on the functionality delivered to the user, not lines of code. It counts five components: external inputs, external outputs, external inquiries, internal logical files and external interface files, and weights each as simple, average or complex. The sum gives unadjusted function points, which are multiplied by a value adjustment factor based on 14 general system characteristics. The resulting function points can then be used to estimate effort, cost and schedule, and they are independent of programming language.",
+   "keywords": [
+    "functionality",
+    "external inputs",
+    "external outputs",
+    "internal logical files",
+    "value adjustment factor",
+    "language independent"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "SDLC models: waterfall, incremental, spiral, agile",
+   "text": "Compare the waterfall model with the spiral model. When would you choose each?",
+   "ideal_answer": "The waterfall model is linear and sequential, each phase completes before the next begins, and it suits small projects with clear, stable requirements, but changes are costly and working software appears late. The spiral model is iterative and risk-driven; each loop includes planning, risk analysis, engineering and customer evaluation, and builds the product progressively. Spiral suits large, complex or high-risk projects with unclear requirements, but it is costly and needs risk analysis expertise. So choose waterfall for well-understood, stable projects and spiral where risks are high.",
+   "keywords": [
+    "linear",
+    "sequential",
+    "stable requirements",
+    "iterative",
+    "risk analysis",
+    "large complex projects"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Software design: coupling and cohesion",
+   "text": "Why should a good software design have high cohesion and low coupling?",
+   "ideal_answer": "Cohesion is how closely related the responsibilities within a single module are, and coupling is how much modules depend on each other. High cohesion means each module does one well-defined job, which makes it easier to understand, test and reuse. Low coupling means changes in one module have little effect on others, so the system is easier to maintain and modify and errors do not spread. Together they make the design modular and reduce the cost of future changes.",
+   "keywords": [
+    "cohesion",
+    "coupling",
+    "single responsibility",
+    "dependency",
+    "maintainability",
+    "modular"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Levels of testing",
+   "text": "Every module of a project passed unit testing, yet the system failed when modules were combined. Why can this happen, and how should testing be planned?",
+   "ideal_answer": "Unit testing checks each module in isolation, often with stubs and drivers, so it does not catch problems in how modules interact, such as mismatched interfaces, wrong data formats, incorrect assumptions or timing issues. That is why integration testing is needed, done incrementally using top-down or bottom-up approaches to locate interface defects. After that, system testing checks the whole system against functional and non-functional requirements, and acceptance testing confirms it meets user needs. Regression testing should be repeated after each fix.",
+   "keywords": [
+    "unit testing",
+    "isolation",
+    "interfaces",
+    "integration testing",
+    "system testing",
+    "acceptance testing",
+    "regression"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Risk management and software configuration management",
+   "text": "Two developers overwrote each other's changes and a release went out with the wrong version of a file. What software configuration management practices would prevent this?",
+   "ideal_answer": "Software configuration management controls changes to software artifacts throughout the project. Using a version control system like Git with branches lets developers work in parallel and merge changes, detecting conflicts instead of silently overwriting. Configuration items should be identified and baselined, and changes should go through change control, such as pull requests with reviews. Releases should be built from tagged versions through an automated build so the exact contents are known, and status accounting and audits track what changed and why.",
+   "keywords": [
+    "version control",
+    "git",
+    "baseline",
+    "change control",
+    "merge conflicts",
+    "tagged release"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Agile Scrum and DevOps CI/CD concepts",
+   "text": "Your team releases software every three months and each release has many bugs. How would adopting Scrum and CI/CD help, and what challenges might you face?",
+   "ideal_answer": "Scrum would divide work into short sprints of 2 to 4 weeks, with a prioritised product backlog, sprint planning, daily stand-ups, sprint reviews and retrospectives, so working increments are delivered and reviewed frequently. CI/CD means every code change is automatically built and tested in continuous integration, and then automatically deployed to staging or production in continuous delivery or deployment. Bugs are found early and releases become small and low-risk. Challenges include building enough automated tests, changing team culture, training, initial tool setup cost and convincing management and clients to engage regularly.",
+   "keywords": [
+    "sprints",
+    "product backlog",
+    "retrospective",
+    "continuous integration",
+    "automated tests",
+    "continuous deployment"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Software reliability, metrics and component-based reuse",
+   "text": "Your manager wants to measure developer productivity by lines of code written per day. What are the problems with this metric and what would you suggest instead?",
+   "ideal_answer": "Lines of code reward verbose code and penalise efficient, reusable or refactored code, and they vary greatly with programming language and coding style. They encourage quantity over quality and say nothing about defects or value delivered to users. Better options are size measures like function points, quality metrics such as defect density, mean time between failures for reliability, and delivery metrics like lead time, deployment frequency and change failure rate. Metrics should be used to improve the process, not to judge individuals, and several should be used together.",
+   "keywords": [
+    "lines of code",
+    "language dependent",
+    "quality",
+    "function points",
+    "defect density",
+    "mean time between failures"
+   ]
+  }
+ ]
 }
