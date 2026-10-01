@@ -66,3 +66,38 @@ def test_teacher_must_pick_a_subject(fake_api):
     next(b for b in at.button if b.label == "Save teacher profile").click().run()
     assert any("at least one subject" in e.value for e in at.error)
     assert "teacher" not in fake_api
+
+
+REPORT = {
+    "interview_id": 7, "status": "completed", "overall_score": 78.4,
+    "verdict": "Good - Minor Improvements Needed",
+    "technical_score": 81.0, "soft_score": 70.0,
+    "candidate": {"name": "Asha", "college": "KES", "roll_no": "IT-1", "role": "student", "teaching": None,
+                  "course": "B.Sc. Information Technology", "year": "SY (2nd year)"},
+    "summary": {"communication": 74.0, "ats_score": 91.0, "ats_pass": True, "correct_count": 9,
+                "total_answered": 20, "skipped_count": 1, "peak_level": "Advanced", "followup_count": 3,
+                "level_trail": [2, 3, 4, 4, 5], "subject_scores": {"DBMS": {"avg": 88, "questions": 3}},
+                "delivery": {"fluency": 70, "voice_confidence": 85, "confident_language": 67, "avg_wpm": 128,
+                             "total_fillers": 6, "total_hedges": 4,
+                             "emotion_counts": {"calm": 5, "nervous": 2},
+                             "frequent_voice_notes": ["Your voice was quiet - speak a little louder."]},
+                "big_five": {"traits": {"openness": {"score": 64, "leaning": "curious"}},
+                             "words_analyzed": 900, "model_accuracy": 0.58, "disclaimer": "Indicator only."}},
+    "resume": None,
+    "answers": [{"n": 1, "question": "What is a primary key?", "kind": "technical", "level": 2,
+                 "level_name": "Beginner", "score": 92.0, "verdict": "correct", "skipped": False,
+                 "transcript": "unique row id", "feedback": "Good", "explanation": None}],
+}
+
+
+def test_report_page_renders_delivery_and_big_five(fake_api):
+    sys.modules["api"].report = lambda iid: REPORT
+    at = AppTest.from_file(str(FRONTEND / "app.py"), default_timeout=30).run()
+    at.switch_page("pages/3_report.py")
+    at.query_params["interview"] = "7"
+    at.run()
+    assert not at.exception, at.exception
+    subs = [s.value for s in at.subheader]
+    assert "How you spoke" in subs and "Knowledge by subject" in subs
+    metrics = {m.label: m.value for m in at.metric}
+    assert metrics["Voice confidence"] == "85/100" and metrics["Overall score"] == "78%"

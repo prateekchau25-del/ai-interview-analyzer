@@ -78,6 +78,35 @@ if s.get("level_trail"):
     st.plotly_chart(ui.level_trail_chart(s["level_trail"]))
     st.caption("≥85% correct → next question one level harder. Two misses in a row → one level easier.")
 
+# ---------------------------------------------------------------- delivery (how you spoke)
+dl = s.get("delivery") or {}
+if any(dl.get(k) is not None for k in ("fluency", "voice_confidence", "confident_language")):
+    st.subheader("How you spoke")
+    d1, d2, d3, d4 = st.columns(4)
+    for col, key, label in ((d1, "fluency", "Fluency"), (d2, "voice_confidence", "Voice confidence"),
+                            (d3, "confident_language", "Confident language")):
+        col.metric(label, f"{dl[key]:.0f}/100" if dl.get(key) is not None else "n/a")
+    d4.metric("Average pace", f"{dl['avg_wpm']:.0f} wpm" if dl.get("avg_wpm") else "n/a")
+    extra = [f"filler words: {dl.get('total_fillers', 0)}", f"hedging phrases: {dl.get('total_hedges', 0)}"]
+    if dl.get("emotion_counts"):
+        extra.append("tone across answers: " + ", ".join(
+            f"{k} ×{v}" for k, v in sorted(dl["emotion_counts"].items(), key=lambda kv: -kv[1])))
+    st.caption(" · ".join(extra))
+    for note in dl.get("frequent_voice_notes", []):
+        st.markdown(f"- 💡 {note}")
+    st.caption("Communication score = average of fluency, voice confidence and confident language. "
+               "Tone is estimated by a speech-emotion model (≈63% accurate on unseen speakers), so treat "
+               "it as a hint.")
+
+b5 = s.get("big_five")
+if b5:
+    with st.expander("🧭 Communication style indicator (Big Five) - experimental"):
+        st.caption(b5["disclaimer"] + f" Model accuracy ≈ {b5['model_accuracy'] * 100:.0f}% per trait; "
+                   f"based on {b5['words_analyzed']} words you spoke.")
+        for trait, v in b5["traits"].items():
+            st.markdown(f"**{trait.title()}**: leans *{v['leaning']}*")
+            st.progress(v["score"] / 100)
+
 # ---------------------------------------------------------------- answers in detail
 st.subheader("Your answers")
 for i, a in enumerate(answers, 1):

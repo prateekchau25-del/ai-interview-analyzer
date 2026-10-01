@@ -72,6 +72,18 @@ if last:
             sp = last["speech"]
             st.caption(f"Pace {sp['words_per_minute']:.0f} words/min ({sp['pace_label']}) · "
                        f"filler words {sp['filler_count']} · long pauses {sp['long_pause_count']}")
+        dl = last.get("delivery") or {}
+        bits = []
+        if dl.get("voice_confidence") is not None:
+            bits.append(f"voice confidence {dl['voice_confidence']:.0f}/100 ({dl['expressiveness']})")
+        if dl.get("emotion_group"):
+            bits.append(f"tone sounded {dl['emotion_group']}")
+        if dl.get("confident_language") is not None:
+            bits.append(f"confident language {dl['confident_language']:.0f}/100")
+        if bits:
+            st.caption("🗣️ " + " · ".join(bits))
+        for note in dl.get("voice_notes", []):
+            st.caption(f"💡 {note}")
         if last.get("transcript"):
             with st.expander("What we heard"):
                 st.write(last["transcript"])
