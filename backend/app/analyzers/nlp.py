@@ -170,6 +170,42 @@ def grade_answer(question: str, model_answer: str, keywords: list[str], transcri
     return _grade_embedding(model_answer, keywords, transcript)
 
 
+FOLLOWUP_SYSTEM = """You are a sharp but friendly technical interviewer. Ask ONE short counter/follow-up
+question that builds directly on what the candidate just said (quote or refer to their own words).
+- If their answer was incomplete, probe the most important missing point.
+- If it was correct, go one level deeper: ask "why", "what happens if", an edge case or a real-world use.
+Keep it answerable verbally in under a minute. Also give the model answer and 3-6 keywords.
+Return JSON: {"text": "...", "ideal_answer": "...", "keywords": ["..."]}"""
+
+
+def generate_followup(question: str, model_answer: str, transcript: str, grade: Grade) -> dict:
+    """Counter question based on the candidate's own answer, with its model answer for grading."""
+    if llm.is_enabled():
+        try:
+            data = llm.chat_json(
+                FOLLOWUP_SYSTEM,
+                f"Original question: {question}\nModel answer: {model_answer}\n"
+                f"Candidate said: {transcript}\nScore: {grade.score:.0f}/100\n"
+                f"Missing points: {', '.join(grade.missing_points) or 'none'}",
+                temperature=0.5,
+            )
+            if data.get("text") and data.get("ideal_answer"):
+                return {"text": data["text"], "ideal_answer": data["ideal_answer"],
+                        "keywords": [str(k) for k in data.get("keywords", [])][:6], "method": "llm"}
+        except llm.LLMUnavailable as e:
+            log.warning("Follow-up generation failed, using template: %s", e)
+
+    if grade.missing_points:
+        point = grade.missing_points[0]
+        text = (f"You did not mention '{point}'. Can you explain what {point} means here "
+                f"and how it relates to your answer?")
+        keywords = [point]
+    else:
+        text = "Good. Can you give a real-world example of this, and explain why it works that way?"
+        keywords = []
+    return {"text": text, "ideal_answer": model_answer, "keywords": keywords, "method": "template"}
+
+
 def explain_answer(question: str, model_answer: str, candidate_answer: str | None = None) -> str:
     """Teacher-style explanation for the end-of-interview 'show me the answer' step."""
     if llm.is_enabled():

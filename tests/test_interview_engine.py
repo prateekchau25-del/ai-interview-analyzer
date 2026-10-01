@@ -1,6 +1,7 @@
 import random
 
 from backend.app.services.interview_engine import (
+    MAX_FOLLOWUPS,
     MAX_LEVEL,
     MIN_LEVEL,
     RESUME_COUNT,
@@ -52,10 +53,13 @@ def run_interview(answer_fn, year=3, has_resume=True, seed=0):
         if step["phase"] in ("review", "finished"):
             return state, phases, asked, step["phase"]
         q = step["question"]
+        if step["phase"] == "followup":
+            parent = next(a for a in asked if a.id == step["parent_id"])
+            q = QuestionRef(100000 + len(asked), "followup", parent.level, parent.year, parent.subject)
         phases.append(step["phase"])
         asked.append(q)
         score = answer_fn(q, state)
-        record_answer(state, q, score, skipped=score == 0)
+        record_answer(state, q, score, skipped=score == 0, rng=rng)
 
 
 def test_flow_order_and_counts():
@@ -66,7 +70,8 @@ def test_flow_order_and_counts():
     assert phases.count("technical") == TECHNICAL_COUNT
     assert phases.count("resume") == RESUME_COUNT
     assert phases.count("intro") + phases.count("soft") == SOFT_COUNT
-    assert phases == sorted(phases, key=["intro", "technical", "resume", "soft"].index)
+    main = [ph for ph in phases if ph != "followup"]
+    assert main == sorted(main, key=["intro", "technical", "resume", "soft"].index)
     assert end == "finished"  # all correct -> nothing to review
     assert len({q.id for q in asked}) == len(asked)  # never repeats a question
 
@@ -120,5 +125,33 @@ def test_state_roundtrip_and_summary():
     restored = InterviewState.from_dict(state.to_dict())
     assert restored == state
     s = summary(state)
-    assert s["total_answered"] == TECHNICAL_COUNT + RESUME_COUNT + SOFT_COUNT
+    assert s["total_answered"] == TECHNICAL_COUNT + RESUME_COUNT + SOFT_COUNT + s["followup_count"]
     assert s["peak_level"] in ("Intermediate", "Advanced")
+
+
+def test_partial_answer_triggers_followup_without_changing_level():
+    # intro ok, then every technical answer is partial (70), follow-ups answered correctly (90)
+    state, phases, asked, _ = run_interview(lambda q, s: 90 if q.kind in ("soft", "followup") else 70)
+    assert phases[1:3] == ["technical", "followup"]  # counter question right after the partial answer
+    assert phases.count("followup") == MAX_FOLLOWUPS  # capped
+    assert phases.count("technical") == TECHNICAL_COUNT  # follow-ups are extra, not part of the 15
+    for i, q in enumerate(asked):
+        if q.kind == "followup":
+            assert asked[i - 1].kind in ("technical", "resume")
+
+
+def test_no_followup_after_wrong_or_skipped():
+    _, phases, _, _ = run_interview(lambda q, s: 90 if q.kind == "soft" else 20)
+    assert "followup" not in phases
+    _, phases, _, _ = run_interview(lambda q, s: 90 if q.kind == "soft" else 0)
+    assert "followup" not in phases
+
+
+def test_followup_answers_do_not_move_level():
+    state = InterviewState(course="BSC_IT", year=3)
+    record_answer(state, QuestionRef(1, "technical", START_LEVEL, 3, "OS"), 70)
+    assert state.followup_for == 1 and state.level == START_LEVEL
+    record_answer(state, QuestionRef(2, "followup", START_LEVEL, 3, "OS"), 95)  # correct follow-up
+    assert state.level == START_LEVEL and state.followup_for is None
+    record_answer(state, QuestionRef(3, "followup", START_LEVEL, 3, "OS"), 10)  # wrong follow-up
+    assert state.level == START_LEVEL and 3 in state.parked

@@ -3,6 +3,8 @@
 Flow of one interview:
     intro (1 soft question) -> 15 technical (adaptive level) -> resume questions -> soft-skill questions
     -> review of parked (wrong/skipped) questions -> finished
+    Follow-up (counter) questions about the candidate's own answer are inserted after some technical/resume
+    answers: always after a partially correct answer, sometimes after a correct one (max 4 per interview).
 
 Level rules:
     answer >= 85%                  -> level up (max Professional)
@@ -22,6 +24,10 @@ RESUME_COUNT = 3
 SOFT_COUNT = 3  # including the intro question -> 6 soft/resume questions in total
 PASS_THRESHOLD = 85.0
 WRONG_STREAK_FOR_LEVEL_DOWN = 2
+MAX_FOLLOWUPS = 4
+PARTIAL_MIN = 50.0  # 50-84% = partially correct -> probe the missing part
+FOLLOWUP_ON_CORRECT_PROB = 0.3  # occasionally dig deeper after a correct answer
+FOLLOWUP_PARENT_KINDS = ("technical", "resume")
 
 COURSES = {
     "BSC_IT": "B.Sc. Information Technology",
@@ -40,7 +46,7 @@ def level_name(level: int) -> str:
 class QuestionRef:
     """Lightweight view of a bank question, enough for selection."""
     id: int
-    kind: str  # technical | soft | resume
+    kind: str  # technical | soft | resume | followup
     level: int
     year: int | None = None
     subject: str | None = None
@@ -69,6 +75,7 @@ class InterviewState:
     history: list[AskedRecord] = field(default_factory=list)
     parked: list[int] = field(default_factory=list)  # question ids answered wrong/skipped
     pending_question_id: int | None = None
+    followup_for: int | None = None  # question id whose answer should get a counter question next
 
     # ---- serialisation (stored as JSON on the interview row) ----
     def to_dict(self) -> dict:
@@ -155,6 +162,10 @@ def choose_question(state: InterviewState, pool: QuestionPool, kind: str,
 def next_step(state: InterviewState, pool: QuestionPool, rng: random.Random | None = None) -> dict:
     """Decide what comes next. Returns {"phase", "question"} where question may be None
     (technical bank exhausted -> caller may generate one with the LLM)."""
+    if state.followup_for is not None:
+        # The caller generates the follow-up text from the candidate's last answer.
+        state.phase = "followup"
+        return {"phase": "followup", "question": None, "parent_id": state.followup_for}
     phase = _next_phase(state)
     state.phase = phase
     if phase in ("review", "finished"):
@@ -171,8 +182,20 @@ def next_step(state: InterviewState, pool: QuestionPool, rng: random.Random | No
     return {"phase": phase, "question": q}
 
 
-def record_answer(state: InterviewState, q: QuestionRef, score: float, skipped: bool = False) -> dict:
-    """Apply one graded answer and the level rules. Returns what changed (for the UI)."""
+def _wants_followup(state: InterviewState, q: QuestionRef, score: float, skipped: bool,
+                    rng: random.Random) -> bool:
+    if q.kind not in FOLLOWUP_PARENT_KINDS or skipped or state.count("followup") >= MAX_FOLLOWUPS:
+        return False
+    if PARTIAL_MIN <= score < PASS_THRESHOLD:
+        return True
+    return score >= PASS_THRESHOLD and rng.random() < FOLLOWUP_ON_CORRECT_PROB
+
+
+def record_answer(state: InterviewState, q: QuestionRef, score: float, skipped: bool = False,
+                  rng: random.Random | None = None) -> dict:
+    """Apply one graded answer and the level rules. Returns what changed (for the UI).
+    Follow-up answers never change the level."""
+    rng = rng or random.Random()
     is_correct = (not skipped) and score >= PASS_THRESHOLD
     state.history.append(AskedRecord(question_id=q.id, kind=q.kind, level=q.level, subject=q.subject,
                                      score=round(score, 1), is_correct=is_correct, skipped=skipped))
@@ -191,8 +214,13 @@ def record_answer(state: InterviewState, q: QuestionRef, score: float, skipped: 
                 state.level = max(MIN_LEVEL, state.level - 1)
                 state.wrong_streak = 0
     change = "up" if state.level > old else "down" if state.level < old else "same"
+
+    if q.kind == "followup":
+        state.followup_for = None
+    elif _wants_followup(state, q, score, skipped, rng):
+        state.followup_for = q.id
     return {"is_correct": is_correct, "level": state.level, "level_name": state.level_name,
-            "level_change": change}
+            "level_change": change, "followup_next": state.followup_for is not None}
 
 
 def summary(state: InterviewState) -> dict:
@@ -202,6 +230,7 @@ def summary(state: InterviewState) -> dict:
 
     tech = [h for h in state.history if h.kind == "technical"]
     soft = [h for h in state.history if h.kind in ("soft", "resume")]
+    follow = [h for h in state.history if h.kind == "followup"]
     peak = max((h.level for h in tech), default=state.level)
     # Harder questions answered correctly count more (level-weighted accuracy).
     weighted = sum((h.score or 0) * math.sqrt(h.level) for h in tech)
@@ -210,6 +239,8 @@ def summary(state: InterviewState) -> dict:
         "technical_avg": avg([h.score or 0 for h in tech]),
         "technical_weighted": round(weighted / weight_total, 1) if weight_total else 0.0,
         "soft_avg": avg([h.score or 0 for h in soft]),
+        "followup_avg": avg([h.score or 0 for h in follow]),
+        "followup_count": len(follow),
         "correct_count": sum(1 for h in state.history if h.is_correct),
         "skipped_count": sum(1 for h in state.history if h.skipped),
         "total_answered": len(state.history),
