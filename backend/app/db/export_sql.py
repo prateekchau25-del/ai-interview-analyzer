@@ -12,7 +12,7 @@ from alembic import command
 from alembic.config import Config
 
 from backend.app.core.config import PROJECT_ROOT
-from backend.app.db.seed import BEHAVIORAL, ROLES
+from backend.app.db.seed import ROLES, load_question_bank, load_soft_skills
 
 OUT = PROJECT_ROOT / "database" / "schema.sql"
 
@@ -34,6 +34,23 @@ def schema_sql() -> str:
     return buf.getvalue()
 
 
+def _question_sql(kind: str, q: dict, role_title: str | None = None, order_index: int = 0) -> str:
+    role = f"(SELECT id FROM job_roles WHERE title = {_q(role_title)})" if role_title else "NULL"
+    course = _q(q["course"]) if q.get("course") else "NULL"
+    subject = _q(q["subject"]) if q.get("subject") else "NULL"
+    topic = _q(q["topic"]) if q.get("topic") else "NULL"
+    num = lambda v: "NULL" if v is None else str(int(v))  # noqa: E731
+    default_time = 120 if kind == "technical" else 90
+    return (
+        "INSERT INTO questions (role_id, order_index, text, ideal_answer, keywords, category, "
+        "time_limit_sec, kind, course, year, semester, subject, topic, level, source) VALUES ("
+        f"{role}, {order_index}, {_q(q['text'])}, {_q(q['ideal_answer'])}, {_j(q.get('keywords', []))}, "
+        f"{_q('technical' if kind == 'technical' else 'soft')}, {q.get('time_limit_sec', default_time)}, "
+        f"{_q(kind)}, {course}, {num(q.get('year'))}, {num(q.get('semester'))}, {subject}, {topic}, "
+        f"{q.get('level', 0)}, {_q('seed' if role_title else 'bank')});"
+    )
+
+
 def seed_sql() -> str:
     lines = ["-- Seed data (same as backend/app/db/seed.py)", "BEGIN;"]
     for role in ROLES:
@@ -41,15 +58,10 @@ def seed_sql() -> str:
             "INSERT INTO job_roles (title, description, required_skills) VALUES "
             f"({_q(role['title'])}, {_q(role['description'])}, {_j(role['required_skills'])});"
         )
-        all_q = BEHAVIORAL[:1] + role["questions"] + BEHAVIORAL[1:]
-        for i, q in enumerate(all_q):
-            lines.append(
-                "INSERT INTO questions (role_id, order_index, text, ideal_answer, keywords, category, "
-                "time_limit_sec) VALUES ("
-                f"(SELECT id FROM job_roles WHERE title = {_q(role['title'])}), {i}, {_q(q['text'])}, "
-                f"{_q(q['ideal_answer'])}, {_j(q['keywords'])}, {_q(q.get('category', 'technical'))}, "
-                f"{q.get('time_limit_sec', 120)});"
-            )
+        for i, q in enumerate(role["questions"]):
+            lines.append(_question_sql("technical", q, role["title"], i))
+    lines += [_question_sql("soft", q) for q in load_soft_skills()]
+    lines += [_question_sql("technical", q) for q in load_question_bank()]
     lines.append("COMMIT;")
     return "\n".join(lines) + "\n"
 

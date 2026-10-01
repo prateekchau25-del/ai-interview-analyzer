@@ -99,7 +99,10 @@ class InterviewState:
 
 class QuestionPool(Protocol):
     def candidates(self, kind: str, course: str, max_year: int, level: int | None,
-                   exclude_ids: set[int]) -> list[QuestionRef]: ...
+                   exclude_ids: set[int]) -> list[QuestionRef]:
+        """kind: technical | resume | soft (non-intro soft questions) | intro (soft, topic 'intro').
+        Returned refs use kind 'soft' for both soft and intro questions."""
+        ...
 
 
 def years_in_scope(year: int) -> list[int]:
@@ -157,9 +160,10 @@ def next_step(state: InterviewState, pool: QuestionPool, rng: random.Random | No
     if phase in ("review", "finished"):
         state.pending_question_id = None
         return {"phase": phase, "question": None}
-    kind = "soft" if phase == "intro" else phase
-    q = choose_question(state, pool, kind, rng)
-    if q is None and kind == "resume":
+    q = choose_question(state, pool, phase, rng)  # phase name == pool kind (intro|technical|resume|soft)
+    if q is None and phase == "intro":
+        q = choose_question(state, pool, "soft", rng)
+    if q is None and phase == "resume":
         # No resume questions available: treat as done and move on.
         state.has_resume = False
         return next_step(state, pool, rng)

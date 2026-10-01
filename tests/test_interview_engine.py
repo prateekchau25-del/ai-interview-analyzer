@@ -27,14 +27,20 @@ class FakePool:
                     for _ in range(3):
                         i += 1
                         self.qs.append(QuestionRef(i, "technical", level, year, f"{subj}-Y{year}"))
-        for kind in ("soft", "resume"):
+        self.intro_ids = set()
+        for kind in ("intro", "soft", "resume"):
             for _ in range(10):
                 i += 1
-                self.qs.append(QuestionRef(i, kind, 0))
+                if kind == "intro":
+                    self.intro_ids.add(i)
+                self.qs.append(QuestionRef(i, "soft" if kind == "intro" else kind, 0))
 
     def candidates(self, kind, course, max_year, level, exclude_ids):
-        return [q for q in self.qs if q.kind == kind and q.id not in exclude_ids
-                and (q.year is None or q.year <= max_year) and (level is None or q.level == level)]
+        want = "soft" if kind == "intro" else kind
+        return [q for q in self.qs if q.kind == want and q.id not in exclude_ids
+                and (q.year is None or q.year <= max_year) and (level is None or q.level == level)
+                and (kind != "intro" or q.id in self.intro_ids)
+                and (kind != "soft" or q.id not in self.intro_ids)]
 
 
 def run_interview(answer_fn, year=3, has_resume=True, seed=0):
@@ -55,6 +61,8 @@ def run_interview(answer_fn, year=3, has_resume=True, seed=0):
 def test_flow_order_and_counts():
     state, phases, asked, end = run_interview(lambda q, s: 90)
     assert phases[0] == "intro"
+    assert asked[0].id in FakePool().intro_ids  # opens with a "tell me about yourself" question
+    assert all(q.id not in FakePool().intro_ids for q in asked[1:])
     assert phases.count("technical") == TECHNICAL_COUNT
     assert phases.count("resume") == RESUME_COUNT
     assert phases.count("intro") + phases.count("soft") == SOFT_COUNT

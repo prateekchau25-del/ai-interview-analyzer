@@ -1,33 +1,23 @@
-"""Default job roles and question bank, inserted on first start."""
+"""Default data, inserted idempotently on every setup/start.
+
+- data/soft_skills.json        -> soft-skill / HR questions (kind="soft")
+- data/question_bank/*.json    -> syllabus technical questions with model answers (kind="technical")
+- ROLES (below)                -> legacy job-role demo questions
+"""
+import json
+import logging
+from pathlib import Path
+
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from backend.app.db.models import JobRole, Question
 
-BEHAVIORAL = [
-    {
-        "text": "Tell me about yourself and why you are interested in this role.",
-        "ideal_answer": (
-            "A concise professional summary covering education, key skills, one or two relevant "
-            "projects or work experiences with measurable impact, and a clear link between the "
-            "candidate's goals and the responsibilities of this role and company."
-        ),
-        "keywords": ["experience", "project", "skills", "goal", "role", "team"],
-        "category": "hr",
-        "time_limit_sec": 90,
-    },
-    {
-        "text": "Describe a challenging situation at work or college and how you handled it.",
-        "ideal_answer": (
-            "Using the STAR method: describe the Situation and the Task, the specific Actions the "
-            "candidate personally took, and the Result with measurable outcome, followed by what "
-            "they learned and would do differently."
-        ),
-        "keywords": ["situation", "task", "action", "result", "learned", "team", "deadline"],
-        "category": "behavioral",
-        "time_limit_sec": 120,
-    },
-]
+log = logging.getLogger(__name__)
+
+DATA_DIR = Path(__file__).resolve().parents[1] / "data"
+SOFT_SKILLS_FILE = DATA_DIR / "soft_skills.json"
+QUESTION_BANK_DIR = DATA_DIR / "question_bank"
 
 ROLES = [
     {
@@ -184,26 +174,60 @@ ROLES = [
 ]
 
 
-def seed_defaults(db: Session) -> None:
+def load_soft_skills() -> list[dict]:
+    return json.loads(SOFT_SKILLS_FILE.read_text(encoding="utf-8"))["questions"]
+
+
+def load_question_bank() -> list[dict]:
+    """Flatten data/question_bank/*.json into question dicts.
+
+    File format: {"course", "year", "semester", "subject", "questions": [
+        {"level": 1-6, "topic", "text", "ideal_answer", "keywords": [...]}, ...]}
+    """
+    rows = []
+    for f in sorted(QUESTION_BANK_DIR.glob("*.json")):
+        data = json.loads(f.read_text(encoding="utf-8"))
+        for q in data["questions"]:
+            rows.append({**q, "course": data["course"], "year": data["year"],
+                         "semester": data.get("semester"), "subject": data["subject"]})
+    return rows
+
+
+def _seed_roles(db: Session) -> None:
     if db.scalar(select(JobRole.id).limit(1)) is not None:
         return
     for role_data in ROLES:
-        role = JobRole(
-            title=role_data["title"],
-            description=role_data["description"],
-            required_skills=role_data["required_skills"],
-        )
-        all_q = BEHAVIORAL[:1] + role_data["questions"] + BEHAVIORAL[1:]
-        for i, q in enumerate(all_q):
-            role.questions.append(
-                Question(
-                    order_index=i,
-                    text=q["text"],
-                    ideal_answer=q["ideal_answer"],
-                    keywords=q["keywords"],
-                    category=q.get("category", "technical"),
-                    time_limit_sec=q.get("time_limit_sec", 120),
-                )
-            )
+        role = JobRole(title=role_data["title"], description=role_data["description"],
+                       required_skills=role_data["required_skills"])
+        for i, q in enumerate(role_data["questions"]):
+            role.questions.append(Question(order_index=i, text=q["text"], ideal_answer=q["ideal_answer"],
+                                           keywords=q["keywords"], kind="technical", source="seed"))
         db.add(role)
+
+
+def _insert_missing(db: Session, kind: str, rows: list[dict]) -> int:
+    """Insert questions not already present (matched on kind + course + text)."""
+    existing = set(db.execute(select(Question.course, Question.text).where(Question.kind == kind)).all())
+    added = 0
+    for r in rows:
+        if (r.get("course"), r["text"]) in existing:
+            continue
+        db.add(Question(
+            kind=kind, text=r["text"], ideal_answer=r["ideal_answer"], keywords=r.get("keywords", []),
+            category="technical" if kind == "technical" else "soft",
+            course=r.get("course"), year=r.get("year"), semester=r.get("semester"),
+            subject=r.get("subject"), topic=r.get("topic"), level=r.get("level", 0),
+            source="bank", time_limit_sec=r.get("time_limit_sec", 120 if kind == "technical" else 90),
+        ))
+        existing.add((r.get("course"), r["text"]))
+        added += 1
+    return added
+
+
+def seed_defaults(db: Session) -> None:
+    _seed_roles(db)
+    soft = _insert_missing(db, "soft", load_soft_skills())
+    tech = _insert_missing(db, "technical", load_question_bank())
     db.commit()
+    if soft or tech:
+        log.info("Seeded %d soft-skill and %d technical questions", soft, tech)

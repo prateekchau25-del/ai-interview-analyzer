@@ -1,0 +1,104 @@
+{
+  "meta": {
+    "description": "Soft-skill and HR questions for IT/DS/AI/BCA students. topic='intro' questions open the interview.",
+    "answer_style": "ideal_answer describes what a strong answer contains (graded on structure and content, not exact words)."
+  },
+  "questions": [
+    {
+      "topic": "intro",
+      "text": "Tell me about yourself.",
+      "ideal_answer": "A short structured introduction: name, current course and year, key technical skills, one or two projects or internships with what the candidate built or achieved, strengths or interests, and a career goal that connects to the role.",
+      "keywords": ["course", "skills", "project", "goal", "interest", "learn"]
+    },
+    {
+      "topic": "intro",
+      "text": "Introduce yourself and tell me why you chose your course.",
+      "ideal_answer": "Brief introduction (name, course, year), a genuine reason for choosing the course such as interest in technology or problem solving, what the candidate has learned or built so far, and how it connects to future career goals.",
+      "keywords": ["course", "interest", "technology", "learn", "project", "career"]
+    },
+    {
+      "topic": "intro",
+      "text": "Walk me through your background and what you are good at.",
+      "ideal_answer": "A structured summary of education and current course, strongest technical and soft skills backed by an example or project, achievements or certifications, and what the candidate wants to do next.",
+      "keywords": ["education", "skills", "example", "project", "strength", "achievement"]
+    },
+    {
+      "topic": "intro",
+      "text": "Give me a two-minute introduction about yourself and your goals.",
+      "ideal_answer": "Concise self introduction with course and year, key skills, a highlight project or activity, personal strengths, and clear short-term and long-term career goals.",
+      "keywords": ["skills", "project", "strength", "short term", "long term", "goal"]
+    },
+    {
+      "topic": "teamwork",
+      "text": "Describe a time you worked in a team. What was your role?",
+      "ideal_answer": "STAR answer: the situation and team project, the candidate's specific role and responsibilities, actions taken to coordinate, communicate and help others, the result or outcome, and what was learned about teamwork.",
+      "keywords": ["team", "role", "responsibility", "communicate", "result", "learned"]
+    },
+    {
+      "topic": "pressure",
+      "text": "How do you handle pressure or tight deadlines?",
+      "ideal_answer": "Explains a method such as prioritising tasks, breaking work into smaller parts, planning time and staying calm, supported by a real example of meeting a deadline, and the result.",
+      "keywords": ["prioritize", "plan", "deadline", "calm", "example", "result"]
+    },
+    {
+      "topic": "strengths",
+      "text": "What are your strengths and weaknesses?",
+      "ideal_answer": "Names one or two relevant strengths with a proof example, and one genuine weakness that is not critical to the job, along with concrete steps being taken to improve it.",
+      "keywords": ["strength", "example", "weakness", "improve", "working on"]
+    },
+    {
+      "topic": "conflict",
+      "text": "Tell me about a disagreement with a teammate and how you resolved it.",
+      "ideal_answer": "STAR answer: describes the disagreement respectfully, listening to the other view, discussing calmly, finding common ground or a compromise based on facts or the project goal, the outcome, and the lesson learned.",
+      "keywords": ["listen", "discuss", "understand", "compromise", "solution", "outcome"]
+    },
+    {
+      "topic": "failure",
+      "text": "Tell me about a mistake or failure and what you learned from it.",
+      "ideal_answer": "Honestly describes a real mistake, takes ownership, explains what was done to fix it, and the specific lesson learned and how behaviour changed afterwards.",
+      "keywords": ["mistake", "responsibility", "fixed", "learned", "improve", "now"]
+    },
+    {
+      "topic": "leadership",
+      "text": "Describe a situation where you showed leadership.",
+      "ideal_answer": "STAR answer: a situation where the candidate took initiative or led a group, how tasks were planned and divided, how others were motivated or supported, the measurable result, and the learning.",
+      "keywords": ["initiative", "lead", "plan", "motivate", "team", "result"]
+    },
+    {
+      "topic": "learning",
+      "text": "How do you learn a new technology quickly?",
+      "ideal_answer": "Describes a learning process: official documentation and tutorials, building a small hands-on project, practising regularly, asking mentors or communities, and gives an example of a technology learned this way.",
+      "keywords": ["documentation", "practice", "project", "hands on", "example", "community"]
+    },
+    {
+      "topic": "motivation",
+      "text": "Why should we hire you?",
+      "ideal_answer": "Connects the candidate's skills, projects and qualities to the needs of the role, highlights what makes them different such as quick learning or a relevant project, and shows enthusiasm and commitment.",
+      "keywords": ["skills", "project", "role", "learn", "contribute", "value"]
+    },
+    {
+      "topic": "goals",
+      "text": "Where do you see yourself in five years?",
+      "ideal_answer": "Realistic career growth plan related to the field: becoming skilled in a specific area, taking more responsibility, continuous learning or certifications, and contributing to the organisation.",
+      "keywords": ["grow", "skills", "responsibility", "learn", "contribute", "role"]
+    },
+    {
+      "topic": "communication",
+      "text": "How would you explain a technical concept to someone who is not technical?",
+      "ideal_answer": "Uses simple language without jargon, a real-life analogy, focuses on why it matters to the listener, checks their understanding, and gives a short example of doing this.",
+      "keywords": ["simple", "analogy", "example", "avoid jargon", "understand"]
+    },
+    {
+      "topic": "time_management",
+      "text": "How do you manage your time between studies, projects and other activities?",
+      "ideal_answer": "Explains planning tools such as a schedule, to-do list or calendar, prioritising by importance and deadlines, avoiding distractions, and an example of balancing multiple responsibilities.",
+      "keywords": ["schedule", "priority", "plan", "deadline", "balance", "example"]
+    },
+    {
+      "topic": "ethics",
+      "text": "What would you do if you saw a teammate copying code or data without permission?",
+      "ideal_answer": "Shows integrity: speaks privately and respectfully with the teammate first, explains plagiarism, licence or data privacy risks, encourages fixing it or giving credit, and escalates to the mentor or faculty if it continues.",
+      "keywords": ["integrity", "talk", "plagiarism", "permission", "credit", "escalate"]
+    }
+  ]
+}
