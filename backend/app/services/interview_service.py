@@ -289,8 +289,31 @@ def _make_followup(db: Session, interview: Interview, parent_qid: int) -> Questi
     return q
 
 
+def delivery_analysis(transcript: str, keywords: list[str], audio_path: str | Path | None) -> dict:
+    """How the answer was said: word choice (always) + voice prosody and emotion (voice answers).
+    Never raises - a failed signal is simply left out."""
+    from backend.app.analyzers import lexical, prosody, voice_emotion
+
+    out: dict = {}
+    if transcript and transcript.strip():
+        out["lexical"] = lexical.analyze(transcript, keywords).to_dict()
+    if audio_path:
+        try:
+            out["prosody"] = prosody.analyze(audio_path).to_dict()
+        except Exception as e:  # corrupt/too-short audio
+            log.warning("Prosody analysis failed: %s", e)
+        try:
+            emo = voice_emotion.predict(audio_path)
+            if emo:
+                out["emotion"] = emo
+        except Exception as e:
+            log.warning("Voice emotion failed: %s", e)
+    return out
+
+
 def submit_answer(db: Session, interview: Interview, transcript: str, *, speech: dict | None = None,
-                  media_path: str | None = None, rng: random.Random | None = None) -> dict:
+                  media_path: str | None = None, audio_path: str | Path | None = None,
+                  rng: random.Random | None = None) -> dict:
     """Grade the answer to the pending question and advance the engine."""
     state = _state(interview)
     if not state.pending_question_id:
@@ -302,12 +325,16 @@ def submit_answer(db: Session, interview: Interview, transcript: str, *, speech:
     if q.kind == "followup":
         ref.kind = "followup"
     result = eng.record_answer(state, ref, grade.score, skipped=grade.skipped, rng=rng)
+    delivery = {} if grade.skipped else delivery_analysis(transcript, q.keywords or [], audio_path)
+    grade_json = {**grade.to_dict(), **delivery}
+    if speech:
+        grade_json["speech"] = speech
 
     db.add(Answer(
         interview_id=interview.id, question_id=q.id, question_text=q.text, kind=ref.kind, level=q.level,
         order_index=len(state.history), transcript=transcript, media_path=media_path,
         status="queued" if media_path else "completed", score=grade.score, verdict=grade.verdict,
-        skipped=grade.skipped, grade={**grade.to_dict(), "speech": speech} if speech else grade.to_dict(),
+        skipped=grade.skipped, grade=grade_json,
         duration_sec=(speech or {}).get("duration_sec"),
     ))
     q.times_asked = (q.times_asked or 0) + 1
@@ -329,7 +356,22 @@ def submit_answer(db: Session, interview: Interview, transcript: str, *, speech:
         "missing_points": grade.missing_points, "grading_method": grade.method,
         "level": result["level"], "level_name": result["level_name"], "level_change": result["level_change"],
         "followup_next": result["followup_next"], "transcript": transcript,
+        "delivery": _delivery_brief(delivery),
     }
+
+
+def _delivery_brief(d: dict) -> dict:
+    out = {}
+    if "prosody" in d:
+        p = d["prosody"]
+        out.update(voice_confidence=p["voice_confidence"], expressiveness=p["expressiveness"],
+                   voice_notes=p["notes"][:2])
+    if "emotion" in d:
+        out.update(emotion_group=d["emotion"]["group"], emotion_confidence=d["emotion"]["group_confidence"])
+    if "lexical" in d:
+        out.update(confident_language=d["lexical"]["confidence_language_score"],
+                   hedges=d["lexical"]["hedge_count"])
+    return out
 
 
 # ------------------------------------------------------------------ end of interview
@@ -357,13 +399,42 @@ def explain_parked(db: Session, interview: Interview) -> list[dict]:
     return review_items(db, interview)
 
 
+def delivery_summary(answers: list[Answer]) -> dict:
+    """Averages of how answers were delivered. communication = mean of fluency, voice confidence and
+    confident language (whichever were measured)."""
+    def avg(xs):
+        xs = [x for x in xs if x is not None]
+        return round(sum(xs) / len(xs), 1) if xs else None
+
+    graded = [a.grade for a in answers if a.grade and not a.skipped]
+    fluency = avg([g.get("speech", {}).get("fluency_score") for g in graded])
+    voice = avg([g.get("prosody", {}).get("voice_confidence") for g in graded])
+    language = avg([g.get("lexical", {}).get("confidence_language_score") for g in graded])
+    emotions: dict[str, int] = {}
+    for g in graded:
+        if g.get("emotion"):
+            emotions[g["emotion"]["group"]] = emotions.get(g["emotion"]["group"], 0) + 1
+    notes: dict[str, int] = {}
+    for g in graded:
+        for n in g.get("prosody", {}).get("notes", []):
+            notes[n] = notes.get(n, 0) + 1
+    parts = [x for x in (fluency, voice, language) if x is not None]
+    return {
+        "fluency": fluency, "voice_confidence": voice, "confident_language": language,
+        "communication": round(sum(parts) / len(parts), 1) if parts else None,
+        "emotion_counts": emotions,
+        "frequent_voice_notes": [n for n, _ in sorted(notes.items(), key=lambda kv: -kv[1])[:3]],
+        "avg_wpm": avg([g.get("speech", {}).get("words_per_minute") for g in graded]),
+        "total_fillers": sum(g.get("speech", {}).get("filler_count", 0) for g in graded),
+        "total_hedges": sum(g.get("lexical", {}).get("hedge_count", 0) for g in graded),
+    }
+
+
 def finish_interview(db: Session, interview: Interview) -> dict:
     state = _state(interview)
     s = eng.summary(state)
-    fluency = [a.grade.get("speech", {}).get("fluency_score") for a in interview.answers
-               if a.grade and a.grade.get("speech")]
-    fluency = [f for f in fluency if f is not None]
-    communication = round(sum(fluency) / len(fluency), 1) if fluency else None
+    delivery = delivery_summary(interview.answers)
+    communication = delivery["communication"]
     parts = [(s["technical_weighted"], W_TECHNICAL), (s["soft_avg"], W_SOFT)]
     if communication is not None:
         parts.append((communication, W_COMMUNICATION))
@@ -373,7 +444,14 @@ def finish_interview(db: Session, interview: Interview) -> dict:
     interview.soft_score = s["soft_avg"]
     interview.overall_score = overall
     interview.verdict = verdict_for(overall)
-    interview.summary = {**s, "communication": communication,
+    from backend.app.analyzers import personality
+
+    try:  # indicator only - never part of any score
+        big_five = personality.indicator([a.transcript for a in interview.answers if not a.skipped])
+    except Exception as e:
+        log.warning("Personality indicator failed: %s", e)
+        big_five = None
+    interview.summary = {**s, "communication": communication, "delivery": delivery, "big_five": big_five,
                          "ats_score": interview.candidate.ats_score,
                          "ats_pass": (interview.candidate.ats_score or 0) >= 85}
     interview.status = "completed"

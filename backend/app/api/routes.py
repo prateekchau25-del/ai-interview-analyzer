@@ -188,7 +188,7 @@ def submit_answer(
     interview = _interview(db, interview_id)
     if interview.status not in ("in_progress",):
         raise HTTPException(409, f"Interview is {interview.status}")
-    speech, media_path, transcript = None, None, ""
+    speech, media_path, transcript, wav = None, None, "", None
     if skip:
         transcript = ""
     elif audio is not None:
@@ -206,12 +206,14 @@ def submit_answer(
         pending = svc.next_question(db, interview)
         result = speech_an.transcribe(prepared.audio_path, initial_prompt=pending.get("text"))
         speech, media_path, transcript = result.to_dict(), str(src), result.transcript
+        wav = prepared.audio_path
     elif text is not None:
         transcript = text
     else:
         raise HTTPException(422, "Send an audio file, text, or skip=true")
     try:
-        result = svc.submit_answer(db, interview, transcript, speech=speech, media_path=media_path)
+        result = svc.submit_answer(db, interview, transcript, speech=speech, media_path=media_path,
+                                   audio_path=wav)
     except ValueError as e:
         raise HTTPException(409, str(e)) from e
     if speech:
