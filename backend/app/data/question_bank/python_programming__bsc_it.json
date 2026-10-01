@@ -1,0 +1,187 @@
+{
+ "subject": "Python Programming",
+ "applies_to": [
+  {
+   "course": "BSC_IT",
+   "year": 2,
+   "semester": 3
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Python features, installation, debugging and error types",
+   "text": "What are the main features of Python?",
+   "ideal_answer": "Python is a high-level, interpreted, general-purpose programming language with simple, readable syntax that uses indentation to define blocks. It is dynamically typed, so variable types are decided at runtime. It supports multiple paradigms, including procedural, object-oriented and functional programming. It is open-source, portable across platforms, and has a large standard library and many third-party packages.",
+   "keywords": [
+    "high-level",
+    "interpreted",
+    "readable",
+    "indentation",
+    "dynamically typed",
+    "object-oriented",
+    "standard library"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Lists, tuples and dictionaries",
+   "text": "What is a dictionary in Python?",
+   "ideal_answer": "A dictionary is a built-in data type that stores data as key-value pairs inside curly braces, for example {'name': 'Ravi', 'age': 20}. Keys must be unique and immutable, such as strings, numbers or tuples, while values can be of any type. Values are accessed by key, like d['name'], rather than by index. Dictionaries are mutable and, from Python 3.7, preserve insertion order.",
+   "keywords": [
+    "key-value pairs",
+    "curly braces",
+    "unique",
+    "immutable keys",
+    "mutable",
+    "accessed by key"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Lists, tuples and dictionaries",
+   "text": "What is the difference between a list and a tuple?",
+   "ideal_answer": "A list is mutable, so its elements can be added, removed or changed, and it is written with square brackets. A tuple is immutable, so it cannot be changed after creation, and it is written with parentheses. Because tuples are immutable they are slightly faster, use less memory and can be used as dictionary keys. Lists are used for collections that change, while tuples are used for fixed data such as coordinates.",
+   "keywords": [
+    "list",
+    "mutable",
+    "square brackets",
+    "tuple",
+    "immutable",
+    "parentheses",
+    "dictionary keys"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Conditional statements and loops",
+   "text": "What is the difference between break and continue in a Python loop?",
+   "ideal_answer": "The break statement immediately exits the loop completely, and control moves to the first statement after the loop. The continue statement skips the rest of the current iteration and moves to the next iteration of the loop. For example, in a loop from 1 to 5, break at 3 prints 1 and 2, while continue at 3 prints 1, 2, 4 and 5. Also, a loop's else block runs only if the loop was not ended by break.",
+   "keywords": [
+    "break",
+    "exits the loop",
+    "continue",
+    "skips",
+    "current iteration",
+    "next iteration"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Strings: slicing, immutability and string methods",
+   "text": "If s = 'PYTHON', what do s[1:4], s[::-1] and s[-2] give, and why?",
+   "ideal_answer": "Slicing s[start:stop] includes the start index and excludes the stop index, so s[1:4] gives characters at indices 1, 2 and 3, which is 'YTH'. s[::-1] uses a step of -1, so it walks backwards through the whole string and gives 'NOHTYP', the reversed string. Negative indices count from the end, with -1 as the last character, so s[-2] is 'O'. None of these change s, because strings are immutable and slicing returns a new string.",
+   "keywords": [
+    "slicing",
+    "stop index excluded",
+    "yth",
+    "step",
+    "reversed",
+    "negative index",
+    "immutable"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Files and exception handling, user-defined exceptions",
+   "text": "How does try, except, else and finally work in Python exception handling?",
+   "ideal_answer": "Code that may raise an error is placed in the try block. If an exception occurs, the matching except block handles it, for example except ZeroDivisionError or except ValueError. The else block runs only if no exception occurred in the try block. The finally block always runs, whether an exception happened or not, so it is used for cleanup such as closing files or database connections.",
+   "keywords": [
+    "try",
+    "except",
+    "else",
+    "no exception",
+    "finally",
+    "always runs",
+    "cleanup"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Functions, parameters, recursion and fruitful functions",
+   "text": "What is the output of calling f(1) and then f(2), if f is defined as def f(x, lst=[]): lst.append(x); return lst? Why?",
+   "ideal_answer": "f(1) returns [1] and f(2) returns [1, 2], not [2]. This happens because default argument values are evaluated only once, when the function is defined, not each time it is called. So the same list object is shared across all calls that do not pass lst, and it keeps growing. The correct practice is to use None as the default, such as lst=None, and create a new list inside the function if lst is None.",
+   "keywords": [
+    "shared",
+    "default argument",
+    "evaluated once",
+    "function definition",
+    "same list",
+    "mutable",
+    "none"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Variables, expressions, operators and type conversion",
+   "text": "What is the difference between == and 'is' in Python? Give an example where they give different results.",
+   "ideal_answer": "The == operator checks value equality, meaning whether two objects have the same content. The 'is' operator checks identity, meaning whether two variables refer to the exact same object in memory, which can be checked with id(). For example, if a = [1, 2] and b = [1, 2], then a == b is True but a is b is False because they are two separate list objects. 'is' should be used mainly for comparisons with singletons like None.",
+   "keywords": [
+    "value equality",
+    "identity",
+    "same object",
+    "memory",
+    "id",
+    "none"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Multithreading and modules (math, random, time)",
+   "text": "Why might using multiple threads not speed up a CPU-heavy Python program, and what would you use instead?",
+   "ideal_answer": "In CPython, the Global Interpreter Lock, or GIL, allows only one thread to execute Python bytecode at a time. So for CPU-bound tasks like heavy calculations, multiple threads do not run in parallel and may even be slower due to switching overhead. Threads still help for I/O-bound tasks, such as network or file operations, because the GIL is released while waiting. For CPU-bound work, the multiprocessing module or concurrent.futures ProcessPoolExecutor should be used, since separate processes each have their own interpreter and GIL.",
+   "keywords": [
+    "global interpreter lock",
+    "one thread",
+    "cpu-bound",
+    "i/o-bound",
+    "multiprocessing",
+    "separate processes"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Regular expressions",
+   "text": "You use re.match(r'\\d+', 'Order 123') and get None, though the string has digits. Why, and how would you fix it?",
+   "ideal_answer": "re.match only checks for a match at the beginning of the string, and 'Order 123' starts with a letter, so it returns None. re.search scans the whole string and returns the first match anywhere, so re.search(r'\\d+', 'Order 123') finds '123'. To get all numbers, re.findall returns a list of all matches. Using a raw string with the r prefix is good practice so backslashes are not treated as escape characters.",
+   "keywords": [
+    "re.match",
+    "beginning of the string",
+    "re.search",
+    "anywhere",
+    "re.findall",
+    "raw string"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Connecting Python GUI to MySQL: insert, update, delete",
+   "text": "You are building a Tkinter app that saves student records to MySQL. How would you write the database code safely and reliably?",
+   "ideal_answer": "I would use a connector such as mysql-connector-python and always use parameterized queries with placeholders like %s instead of building SQL with string concatenation, which prevents SQL injection. After INSERT, UPDATE or DELETE, I would call commit, and on errors call rollback inside a try-except block, showing a messagebox to the user. Connections and cursors should be closed in finally or with context managers, and credentials should not be hard-coded but read from a config file or environment variables. Input should be validated before saving, and long database operations should not freeze the GUI main loop.",
+   "keywords": [
+    "parameterized queries",
+    "sql injection",
+    "commit",
+    "rollback",
+    "try-except",
+    "close connection",
+    "validation"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Classes, objects, inheritance, method overriding and data hiding",
+   "text": "You are designing classes for a payroll system with permanent and contract employees. How would you use inheritance, method overriding and data hiding?",
+   "ideal_answer": "I would create a base class Employee with common attributes such as name and ID and a method calculate_salary. PermanentEmployee and ContractEmployee would inherit from Employee and override calculate_salary, since salary rules differ, which allows polymorphism when processing a list of employees. Sensitive data like salary or bank details would use private attributes with double underscore name mangling, accessed through methods or properties with validation. Using super().__init__ avoids duplicating initialization code, and composition can be preferred over deep inheritance hierarchies.",
+   "keywords": [
+    "base class",
+    "inheritance",
+    "method overriding",
+    "polymorphism",
+    "private attributes",
+    "name mangling",
+    "super"
+   ]
+  }
+ ]
+}

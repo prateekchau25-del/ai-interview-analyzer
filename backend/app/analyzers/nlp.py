@@ -158,10 +158,55 @@ def _grade_embedding(model_answer: str, keywords: list[str], transcript: str) ->
                  feedback=feedback, missing_points=missing[:5], method="embedding")
 
 
-def grade_answer(question: str, model_answer: str, keywords: list[str], transcript: str) -> Grade:
+SOFT_SYSTEM = """You are an experienced HR interviewer evaluating a spoken answer from an Indian college
+student to a soft-skill/HR question. There is no single correct answer: judge structure (e.g. STAR),
+relevance, a concrete personal example, clarity and professionalism, using the guidance on what a strong
+answer contains. Ignore grammar, filler words and Hinglish.
+Scoring (0-100): 85+ strong, 70-84 good, 50-69 average, below 50 weak.
+Return JSON: {"score": int, "feedback": "2 short encouraging sentences with one specific tip",
+"missing_points": ["what would make it stronger", ...]}"""
+
+
+def _grade_soft(question: str, guidance: str, keywords: list[str], transcript: str) -> Grade:
+    if llm.is_enabled():
+        try:
+            data = llm.chat_json(SOFT_SYSTEM, f"Question: {question}\nA strong answer contains: {guidance}\n"
+                                              f"Candidate's answer: {transcript}")
+            score = float(max(0, min(100, data.get("score", 0))))
+            return Grade(score=score, is_correct=score >= PASS_THRESHOLD, skipped=False,
+                         verdict="good" if score >= 70 else "average" if score >= 50 else "weak",
+                         feedback=str(data.get("feedback", "")).strip(),
+                         missing_points=[str(p) for p in data.get("missing_points", [])][:4], method="llm")
+        except llm.LLMUnavailable as e:
+            log.warning("LLM soft grading failed, using heuristic: %s", e)
+    # Heuristic: coverage of expected elements, enough substance, and a concrete example (numbers/"when I").
+    cov, missing = keyword_coverage(transcript, keywords)
+    words = len(transcript.split())
+    substance = min(1.0, words / 70)
+    example = 1.0 if re.search(r"\b(when i|for example|in my|i (built|led|worked|did|created)|\d+)\b",
+                               transcript.lower()) else 0.0
+    score = round(100 * (0.45 * cov + 0.35 * substance + 0.20 * example), 1)
+    tips = []
+    if words < 40:
+        tips.append("Give a fuller answer (about 45-90 seconds).")
+    if not example:
+        tips.append("Add a concrete example from your own experience.")
+    if missing:
+        tips.append("You could also mention: " + ", ".join(missing[:3]) + ".")
+    return Grade(score=score, is_correct=score >= PASS_THRESHOLD, skipped=False,
+                 verdict="good" if score >= 70 else "average" if score >= 50 else "weak",
+                 feedback=" ".join(tips) or "Good, well-structured answer.", missing_points=missing[:4],
+                 method="heuristic")
+
+
+def grade_answer(question: str, model_answer: str, keywords: list[str], transcript: str,
+                 kind: str = "technical") -> Grade:
+    """kind='soft' uses an HR rubric (no right/wrong); every other kind is graded for correctness."""
     if is_dont_know(transcript):
         return Grade(score=0, is_correct=False, skipped=True, verdict="skipped",
                      feedback="No problem, we will come back to this question at the end.", method="rule")
+    if kind == "soft":
+        return _grade_soft(question, model_answer, keywords, transcript)
     if llm.is_enabled():
         try:
             return _grade_llm(question, model_answer, transcript)

@@ -1,0 +1,169 @@
+{
+ "subject": "Quantitative Techniques",
+ "applies_to": [
+  {
+   "course": "BCA",
+   "year": 3,
+   "semester": 5
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Percentages, profit and loss, simple and compound interest",
+   "text": "What is the difference between simple interest and compound interest?",
+   "ideal_answer": "Simple interest is calculated only on the original principal, using SI = P times R times T divided by 100. Compound interest is calculated on the principal plus the interest already earned, so interest earns interest. The amount with compound interest is A = P times (1 + R/100) to the power n, and compound interest = A minus P. For the same principal, rate and time beyond one period, compound interest is greater than simple interest.",
+   "keywords": [
+    "simple interest",
+    "principal",
+    "rate",
+    "compound interest",
+    "interest on interest",
+    "amount"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Number system: LCM, HCF, divisibility, remainder theorem",
+   "text": "What are HCF and LCM? How are they related for two numbers?",
+   "ideal_answer": "The HCF, or highest common factor, of two numbers is the largest number that divides both of them exactly. The LCM, or least common multiple, is the smallest number that is a multiple of both. For any two numbers, the product of the HCF and LCM equals the product of the numbers. For example, for 12 and 18, HCF is 6 and LCM is 36, and 6 times 36 = 216 = 12 times 18.",
+   "keywords": [
+    "highest common factor",
+    "divides",
+    "least common multiple",
+    "smallest multiple",
+    "product of the numbers"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Ratio, proportion, averages, mixtures and alligations",
+   "text": "The average of 5 numbers is 20. If one number is removed, the average becomes 18. What number was removed?",
+   "ideal_answer": "The total of the 5 numbers is 5 times 20 = 100. After removing one number, the total of the remaining 4 numbers is 4 times 18 = 72. The removed number is the difference of the totals, 100 minus 72. So the number removed is 28.",
+   "keywords": [
+    "total",
+    "average",
+    "difference",
+    "28"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Blood relations, directions and ranking",
+   "text": "Ravi walks 4 km north, then turns right and walks 3 km. How far is he from his starting point and in which direction?",
+   "ideal_answer": "Walking north and then turning right means he walks 3 km east. His path forms a right-angled triangle with sides 4 km and 3 km. Using Pythagoras' theorem, the distance is the square root of 4 squared plus 3 squared, which is the square root of 25 = 5 km. He is 5 km away in the north-east direction from his starting point.",
+   "keywords": [
+    "east",
+    "right-angled triangle",
+    "pythagoras",
+    "5 km",
+    "north-east"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Time and work, time speed and distance",
+   "text": "A can finish a job in 10 days and B in 15 days. How long will they take working together?",
+   "ideal_answer": "A does 1/10 of the work per day and B does 1/15 of the work per day. Together they do 1/10 + 1/15 = 3/30 + 2/30 = 5/30 = 1/6 of the work per day. So they finish the whole job in 6 days. The method is to add the per-day work rates and take the reciprocal.",
+   "keywords": [
+    "per day",
+    "work rates",
+    "6 days",
+    "reciprocal"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Analogy, classification and coding-decoding",
+   "text": "If in a code language CAT is written as DBU, how is DOG written? Explain the rule.",
+   "ideal_answer": "Each letter of CAT is shifted one position forward in the alphabet: C becomes D, A becomes B and T becomes U. Applying the same rule of plus one to DOG, D becomes E, O becomes P and G becomes H. So DOG is written as EPH. In coding-decoding questions, we first find the pattern from the given example and then apply it consistently.",
+   "keywords": [
+    "shifted",
+    "one position forward",
+    "alphabet",
+    "eph",
+    "pattern"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Syllogisms, statement-conclusion, assertion-reasoning",
+   "text": "Statements: All programmers are engineers. Some engineers are managers. Conclusion: Some programmers are managers. Does the conclusion follow? Why?",
+   "ideal_answer": "The conclusion does not follow definitely. All programmers are inside the set of engineers, and some engineers are managers, but those managers may be engineers who are not programmers. The middle term 'engineers' is not distributed in either premise, so no definite link between programmers and managers can be drawn. A Venn diagram shows a possible case where no programmer is a manager, so the conclusion is only a possibility.",
+   "keywords": [
+    "does not follow",
+    "venn diagram",
+    "possibility",
+    "middle term",
+    "not definite"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Percentages, profit and loss, simple and compound interest",
+   "text": "A shopkeeper increases a price by 20% and then gives a 20% discount. Does he make a profit, loss, or break even? Why?",
+   "ideal_answer": "He makes a loss of 4%. If the original price is 100, after a 20% increase it becomes 120. A 20% discount on 120 is 24, so the final price is 96, which is 4% less than the original. The loss happens because the discount is calculated on the higher increased price, and the general result for an x% increase followed by an x% decrease is a loss of x squared divided by 100 percent.",
+   "keywords": [
+    "loss",
+    "4%",
+    "discount",
+    "higher base",
+    "x squared"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Geometry and mensuration: area, perimeter, volume",
+   "text": "If the radius of a sphere is doubled, what happens to its surface area and volume? Explain why.",
+   "ideal_answer": "The surface area of a sphere is 4 pi r squared, so it depends on r squared; doubling r multiplies the surface area by 2 squared, which is 4 times. The volume is four-thirds pi r cubed, so it depends on r cubed; doubling r multiplies the volume by 2 cubed, which is 8 times. In general, when all lengths are scaled by a factor k, areas scale by k squared and volumes by k cubed. This is why large objects have a smaller surface-to-volume ratio.",
+   "keywords": [
+    "surface area",
+    "four times",
+    "r cubed",
+    "eight times",
+    "k squared",
+    "k cubed"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Non-verbal reasoning: figure series, mirror images, dice and cubes",
+   "text": "A cube painted on all faces is cut into 27 equal small cubes. How many small cubes have exactly two faces painted, one face painted and no face painted?",
+   "ideal_answer": "A 3 by 3 by 3 cube has n = 3. Cubes with exactly two painted faces lie on the edges excluding corners: 12 edges times (n minus 2) = 12 times 1 = 12. Cubes with exactly one painted face are at the centre of each face: 6 times (n minus 2) squared = 6. Cubes with no painted face are in the interior: (n minus 2) cubed = 1, and the 8 corner cubes have three faces painted, making 8 + 12 + 6 + 1 = 27.",
+   "keywords": [
+    "edges",
+    "two faces",
+    "corner",
+    "centre of each face"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Algebra: equations, logarithms, progressions",
+   "text": "A software company's user base grows by 10% every month starting from 10,000 users. How would you estimate when it will reach 20,000 users, and what assumption are you making?",
+   "ideal_answer": "This is geometric growth, so users after n months = 10,000 times 1.1 to the power n. We need 1.1 to the power n = 2, so n = log 2 divided by log 1.1, which is about 0.301 / 0.0414, or roughly 7.3 months. So it reaches 20,000 users during the 8th month. A quick check is the rule of 72: 72 divided by 10 gives about 7.2 months to double. The assumption is a constant 10% monthly growth rate, which rarely holds for long in real businesses due to market saturation.",
+   "keywords": [
+    "geometric progression",
+    "geometric growth",
+    "logarithm",
+    "7.3 months",
+    "rule of 72",
+    "constant growth rate"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Ratio, proportion, averages, mixtures and alligations",
+   "text": "A cloud provider charges 8 rupees per hour for server A and 14 rupees per hour for server B. If a team wants an average cost of 10 rupees per hour, in what ratio should they use the two servers? Explain the method.",
+   "ideal_answer": "Using the rule of alligation, the ratio of quantities equals (price of dearer minus mean price) to (mean price minus price of cheaper). Here it is (14 minus 10) to (10 minus 8) = 4 to 2 = 2 to 1. So the team should use server A and server B hours in the ratio 2:1. Check: (2 times 8 + 1 times 14) divided by 3 = 30 / 3 = 10 rupees per hour.",
+   "keywords": [
+    "alligation",
+    "mean price",
+    "dearer",
+    "cheaper",
+    "2 to 1",
+    "weighted average"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,190 @@
+{
+ "subject": "Advanced Database Programming",
+ "applies_to": [
+  {
+   "course": "BSC_IT",
+   "year": 3,
+   "semester": 5
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "PL/SQL basics: variables, executable statements, anonymous blocks",
+   "text": "What is PL/SQL and what is the structure of a PL/SQL block?",
+   "ideal_answer": "PL/SQL is Oracle's procedural extension of SQL that adds variables, conditions, loops and exception handling to SQL statements. A PL/SQL block has an optional DECLARE section for variables, cursors and constants, a mandatory BEGIN section containing executable statements, an optional EXCEPTION section for handling errors, and ends with END. A block without a name is called an anonymous block and is not stored in the database. Named blocks such as procedures and functions are stored in the database.",
+   "keywords": [
+    "procedural extension",
+    "oracle",
+    "declare",
+    "begin",
+    "exception",
+    "end",
+    "anonymous block"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Control structures: while, loop, for, GOTO",
+   "text": "What are the types of loops available in PL/SQL?",
+   "ideal_answer": "PL/SQL has three types of loops: the basic or simple LOOP, the WHILE loop and the FOR loop. A basic LOOP repeats its statements until an EXIT or EXIT WHEN condition is met, so it always runs at least once. A WHILE loop checks its condition before each iteration and runs as long as the condition is true. A numeric FOR loop runs a fixed number of times over a range, such as FOR i IN 1..10, with the counter declared automatically, and REVERSE counts downwards.",
+   "keywords": [
+    "basic loop",
+    "exit when",
+    "while loop",
+    "condition",
+    "for loop",
+    "range",
+    "reverse"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Cursors: implicit, explicit and parameterized",
+   "text": "What is the difference between an implicit cursor and an explicit cursor?",
+   "ideal_answer": "An implicit cursor is created automatically by Oracle for every DML statement and for SELECT INTO statements that return a single row. Its attributes are accessed using SQL%ROWCOUNT, SQL%FOUND and SQL%NOTFOUND. An explicit cursor is declared by the programmer for a SELECT query that may return multiple rows. It must be opened, fetched row by row and closed, and gives the programmer control over processing each row.",
+   "keywords": [
+    "implicit cursor",
+    "automatically",
+    "select into",
+    "sql%rowcount",
+    "explicit cursor",
+    "multiple rows",
+    "open fetch close"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Stored procedures and functions",
+   "text": "What is the difference between a stored procedure and a function in PL/SQL?",
+   "ideal_answer": "Both are named PL/SQL blocks stored in the database. A function must return exactly one value using the RETURN statement, while a procedure does not have to return a value but can pass values back through OUT parameters. A function can be called from a SQL statement such as SELECT, as long as it does not perform DML, whereas a procedure cannot be called from SQL and is invoked with EXECUTE or from another block. Functions are typically used for computations and procedures for performing actions.",
+   "keywords": [
+    "stored",
+    "function",
+    "return",
+    "procedure",
+    "out parameters",
+    "called from select",
+    "execute"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Sequences in PL/SQL",
+   "text": "How do you create and use a sequence to generate primary key values in Oracle?",
+   "ideal_answer": "A sequence is a database object that generates unique numbers, created with a statement like CREATE SEQUENCE emp_seq START WITH 1 INCREMENT BY 1. To get the next value, we use emp_seq.NEXTVAL, for example in an INSERT statement to fill the primary key column. emp_seq.CURRVAL returns the current value in the session after NEXTVAL has been called. Options like CACHE improve performance, and sequence numbers may have gaps after rollbacks or restarts.",
+   "keywords": [
+    "create sequence",
+    "unique numbers",
+    "start with",
+    "increment by",
+    "nextval",
+    "currval",
+    "gaps"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Exception handling: system-defined and user-defined",
+   "text": "How do you define and raise a user-defined exception in PL/SQL?",
+   "ideal_answer": "A user-defined exception is declared in the DECLARE section as a variable of type EXCEPTION, for example low_balance EXCEPTION. In the executable section, it is raised explicitly with the RAISE statement when a condition is met, such as when the balance is below the withdrawal amount. It is then handled in the EXCEPTION section using WHEN low_balance THEN followed by the handling code. Alternatively, RAISE_APPLICATION_ERROR can raise a custom error number between -20000 and -20999 with a message.",
+   "keywords": [
+    "declare",
+    "exception",
+    "raise",
+    "when",
+    "then",
+    "raise_application_error"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Triggers: row-level, statement-level and INSTEAD OF",
+   "text": "An UPDATE statement modifies 50 rows of a table. How many times does a row-level trigger and a statement-level trigger fire, and why?",
+   "ideal_answer": "A row-level trigger, defined with FOR EACH ROW, fires once for every affected row, so it fires 50 times. A statement-level trigger fires only once for the whole UPDATE statement, regardless of how many rows are affected, even if no rows are affected. Row-level triggers can access the old and new values of each row through :OLD and :NEW, so they are used for row auditing or validation. Statement-level triggers are used for actions like logging that the statement occurred or checking security.",
+   "keywords": [
+    "row-level",
+    "for each row",
+    "50 times",
+    "statement-level",
+    "once",
+    "old and new values"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Conditional statements: IF, ELSIF ladder, CASE",
+   "text": "Compare an IF-ELSIF ladder with a CASE statement in PL/SQL. When is CASE better?",
+   "ideal_answer": "Both choose one branch among several conditions and execute only the first matching branch. An IF-ELSIF ladder evaluates conditions in order and is flexible because each condition can test different variables or ranges. A simple CASE statement compares one expression against several values, which is cleaner and more readable when checking a single variable, such as mapping grade letters to remarks. A searched CASE allows conditions like an IF ladder, and CASE can also be used as an expression that returns a value, and a CASE statement without a matching branch or ELSE raises CASE_NOT_FOUND.",
+   "keywords": [
+    "if-elsif",
+    "first matching",
+    "simple case",
+    "single expression",
+    "searched case",
+    "readable",
+    "case_not_found"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Collections and composite data types",
+   "text": "A PL/SQL block processes one million rows one at a time in a cursor loop and is very slow. How would you improve its performance?",
+   "ideal_answer": "Row-by-row processing causes a context switch between the PL/SQL engine and the SQL engine for every row, which is slow. I would use bulk processing: BULK COLLECT to fetch rows into a collection, such as a nested table or associative array, in batches using the LIMIT clause to control memory. Then FORALL performs the INSERT, UPDATE or DELETE for the whole collection in one context switch. If possible, replacing the loop with a single set-based SQL statement is even faster, and SAVE EXCEPTIONS can capture row errors in FORALL.",
+   "keywords": [
+    "context switch",
+    "bulk collect",
+    "collection",
+    "limit",
+    "forall",
+    "set-based",
+    "save exceptions"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Triggers: row-level, statement-level and INSTEAD OF",
+   "text": "A row-level trigger on the EMP table queries the same EMP table and fails with a 'mutating table' error. Why does this happen and how can it be solved?",
+   "ideal_answer": "The ORA-04091 mutating table error occurs when a row-level trigger tries to read or modify the same table that the triggering statement is changing, because the table is in an inconsistent, mid-change state. Oracle prevents this to avoid unpredictable results. One solution is a compound trigger, which collects needed row data in the row-level section and does the query in the AFTER STATEMENT section. Other options are using a statement-level trigger, moving the logic into a stored procedure, or rethinking the design.",
+   "keywords": [
+    "mutating table",
+    "ora-04091",
+    "row-level trigger",
+    "same table",
+    "compound trigger",
+    "statement-level",
+    "after statement"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "PL/SQL packages",
+   "text": "You are building a banking module with many related procedures and functions. Why would you organise them into a PL/SQL package and how?",
+   "ideal_answer": "A package groups related procedures, functions, variables, cursors and exceptions into one named unit with two parts: the specification, which declares the public interface, and the body, which contains the implementation and private items. This gives encapsulation, because callers only see the specification, and modularity, which makes the code easier to maintain. The whole package is loaded into memory on first call, which improves performance, and the body can be changed without invalidating dependent code if the specification stays the same. It also supports overloading, package-level state and grants execute permission on the package only, improving security.",
+   "keywords": [
+    "specification",
+    "body",
+    "encapsulation",
+    "public",
+    "private",
+    "performance",
+    "overloading"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Exception handling: system-defined and user-defined",
+   "text": "In a production funds-transfer procedure, how would you design error handling so that money is never lost and problems can be traced?",
+   "ideal_answer": "The debit and credit should be in a single transaction, committed only after both succeed, and on any error the handler must ROLLBACK so the database stays consistent. Specific system exceptions such as NO_DATA_FOUND and user-defined exceptions like insufficient_funds should be handled with clear messages. Errors should be logged with SQLCODE, SQLERRM and the backtrace into a log table using an autonomous transaction, so the log survives the rollback. Avoid swallowing errors with WHEN OTHERS THEN NULL; instead log and re-raise them so the caller knows the transfer failed.",
+   "keywords": [
+    "single transaction",
+    "rollback",
+    "no_data_found",
+    "user-defined",
+    "sqlerrm",
+    "autonomous transaction",
+    "re-raise"
+   ]
+  }
+ ]
+}

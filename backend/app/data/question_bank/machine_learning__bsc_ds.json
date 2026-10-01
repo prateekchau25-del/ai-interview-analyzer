@@ -1,0 +1,180 @@
+{
+  "subject": "Machine Learning",
+  "applies_to": [
+    {
+      "course": "BSC_DS",
+      "year": 3,
+      "semester": 5
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Machine learning problems, training vs testing",
+      "text": "Why do we split data into training and test sets in machine learning?",
+      "ideal_answer": "The training set is used to fit the model's parameters, while the test set is held out and used only once at the end to estimate how well the model performs on new, unseen data. Evaluating on the training data would give an over-optimistic result because the model may have memorised it. A separate validation set or cross-validation is used for tuning hyperparameters, so the test set stays unbiased. A common split is 70 to 80 percent training and the rest for testing.",
+      "keywords": [
+        "training set",
+        "fit",
+        "test set",
+        "unseen data",
+        "generalisation",
+        "validation"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "Rule learning and association rule mining",
+      "text": "What is association rule mining? Define support and confidence.",
+      "ideal_answer": "Association rule mining discovers interesting relationships between items in large transaction datasets, in the form of rules like 'if bread then butter', as used in market basket analysis. Support of an itemset is the fraction of transactions that contain it. Confidence of a rule X implies Y is support of X and Y together divided by support of X, that is, how often Y appears when X appears. Algorithms like Apriori find rules that meet minimum support and confidence thresholds; lift is also used to measure interest.",
+      "keywords": [
+        "association rules",
+        "market basket",
+        "support",
+        "confidence",
+        "apriori",
+        "transactions"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Predictive and descriptive tasks",
+      "text": "What is the difference between predictive and descriptive machine learning tasks? Give an example of each.",
+      "ideal_answer": "A predictive task learns from labelled data to predict a target variable for new instances, as in supervised learning; examples are classification of emails as spam and regression of house prices. A descriptive task finds patterns or structure in data without a target variable, as in unsupervised learning; examples are clustering customers into segments and association rule mining. Predictive models are evaluated against known labels, while descriptive models are judged by how useful or interpretable the patterns are.",
+      "keywords": [
+        "predictive",
+        "target variable",
+        "labelled",
+        "descriptive",
+        "patterns",
+        "clustering"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Geometric, logical and probabilistic models",
+      "text": "Explain the difference between geometric, logical and probabilistic models with one example each.",
+      "ideal_answer": "Geometric models represent instances as points in a feature space and use geometric concepts like lines, planes and distances to make decisions; examples are linear classifiers, SVM and k-nearest neighbour. Logical models use logical expressions or rules to divide the instance space, such as if-then rules and decision trees. Probabilistic models describe the relationship between features and the target using probability distributions and predict using probabilities, such as Naive Bayes. Some models combine these views.",
+      "keywords": [
+        "geometric",
+        "distance",
+        "svm",
+        "logical",
+        "decision trees",
+        "probabilistic"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Feature types, transformation and selection",
+      "text": "A dataset has columns for city name, age and annual income in rupees. How would you prepare these features for a distance-based model like KNN?",
+      "ideal_answer": "City name is a categorical nominal feature, so it should be converted using one-hot encoding rather than numbering, which would create a false order. Age and income are quantitative but on very different scales, so income would dominate the distance; they should be standardised with z-score or min-max normalised. Income is often skewed, so a log transformation can help before scaling. Missing values should be handled, and scaling parameters must be fitted on training data only to avoid data leakage.",
+      "keywords": [
+        "categorical",
+        "one-hot encoding",
+        "scales",
+        "standardisation",
+        "normalisation",
+        "log transformation"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Nearest neighbour classification and k-means clustering",
+      "text": "Explain the steps of the k-means clustering algorithm.",
+      "ideal_answer": "First choose the number of clusters k and initialise k centroids, randomly or with k-means++. Then assign each data point to the nearest centroid using a distance such as Euclidean distance. Next recompute each centroid as the mean of the points assigned to it. Repeat the assignment and update steps until the centroids stop changing or a maximum number of iterations is reached; this minimises the within-cluster sum of squares. Since results depend on initialisation, it is run several times, and k can be chosen by the elbow method or silhouette score.",
+      "keywords": [
+        "k centroids",
+        "assign",
+        "nearest centroid",
+        "mean",
+        "repeat until convergence",
+        "elbow method"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Regularized regression",
+      "text": "Compare ridge and lasso regression. Why does lasso perform feature selection while ridge does not?",
+      "ideal_answer": "Both add a penalty on the size of the coefficients to the least-squares loss to reduce overfitting. Ridge uses the L2 penalty, the sum of squared coefficients, which shrinks all coefficients towards zero but rarely makes any exactly zero. Lasso uses the L1 penalty, the sum of absolute values, whose constraint region has corners on the axes, so the optimum often lands where some coefficients are exactly zero. Thus lasso removes irrelevant features, giving a sparse model, while ridge is better when many features are correlated and all contribute. Elastic net combines both, and the penalty strength lambda is tuned by cross-validation.",
+      "keywords": [
+        "penalty",
+        "ridge",
+        "l2",
+        "lasso",
+        "l1",
+        "exactly zero"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "VC dimension and growth function",
+      "text": "What is the VC dimension, and what is the VC dimension of a linear classifier in two dimensions? Why does it matter?",
+      "ideal_answer": "The VC dimension of a hypothesis class is the largest number of points that it can shatter, meaning it can classify them correctly for every possible assignment of labels. The growth function counts the maximum number of distinct labellings the class can produce on n points. A linear classifier, a line, in two dimensions can shatter three points in general position but no set of 4 points, as the XOR arrangement shows, so its VC dimension is 3; in d dimensions it is d plus 1. It matters because it measures model capacity: generalisation bounds show that the gap between training and test error grows with VC dimension relative to the number of training examples.",
+      "keywords": [
+        "shatter",
+        "growth function",
+        "three points",
+        "d plus 1",
+        "capacity",
+        "generalisation"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Perceptron, SVM and kernel methods",
+      "text": "A perceptron trained on XOR data never converges. Why, and what are two ways to solve the problem?",
+      "ideal_answer": "The perceptron learning algorithm converges only if the data is linearly separable, and XOR is not, since no single straight line can separate the classes, so the weights keep changing forever. One solution is to transform the features, for example adding the product x1 times x2, or use a kernel method like an SVM with a polynomial or RBF kernel, which maps the data into a higher-dimensional space where it becomes linearly separable. Another solution is a multi-layer perceptron with a hidden layer and non-linear activation, trained by backpropagation. In practice, also limit the number of epochs so training stops.",
+      "keywords": [
+        "linearly separable",
+        "xor",
+        "never converges",
+        "kernel",
+        "feature transformation",
+        "multi-layer perceptron"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Regression performance, error measures and overfitting",
+      "text": "Your regression model has an RMSE of 2 on training data and 25 on test data. What is going on, and how would you diagnose and fix it?",
+      "ideal_answer": "The very large gap between training and test error indicates overfitting: the model has fit noise in the training data and generalises poorly. To diagnose, plot learning curves of training and validation error against training size or complexity, and check for data leakage or a difference in distribution between training and test sets. Fixes include using regularisation like ridge or lasso, reducing model complexity such as polynomial degree or tree depth, feature selection, and gathering more training data. Hyperparameters should be tuned with cross-validation, and MAE can be checked alongside RMSE since RMSE is sensitive to outliers.",
+      "keywords": [
+        "overfitting",
+        "gap",
+        "learning curves",
+        "regularisation",
+        "reduce complexity",
+        "cross-validation"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Decision trees, regression trees and Naive Bayes classifier",
+      "text": "A hospital asks you to build a model to predict patient readmission and doctors insist on understanding each prediction. Would you choose a decision tree or Naive Bayes, and how would you ensure it is reliable?",
+      "ideal_answer": "A decision tree is a good choice because each prediction follows a readable path of if-then rules, such as age over 65 and previous admissions over 2, which doctors can verify. Naive Bayes is fast and works with little data, but its independence assumption is unrealistic for correlated medical features, and its probabilistic reasoning is less intuitive to explain. To make the tree reliable, I would limit depth and prune it to avoid overfitting, handle class imbalance, validate with cross-validation using recall and AUC, and test on data from a different time period. I would also check the rules with doctors and audit for bias across patient groups.",
+      "keywords": [
+        "decision tree",
+        "interpretable",
+        "if-then rules",
+        "independence assumption",
+        "pruning",
+        "validation"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Hierarchical clustering",
+      "text": "A marketing team wants to segment customers but does not know how many segments exist. Would you use k-means or hierarchical clustering, and what practical issues would you consider?",
+      "ideal_answer": "Hierarchical agglomerative clustering does not need k in advance: it starts with each customer as its own cluster and repeatedly merges the closest clusters, producing a dendrogram that can be cut at a suitable level to choose the number of segments. However, it takes O(n squared) memory and is slow for large customer bases, while k-means scales well but needs k chosen using the elbow method or silhouette score. A practical approach is to run hierarchical clustering on a sample to decide k, then run k-means on the full data. In either case, features must be scaled, the linkage choice like Ward affects results, and the segments must be checked for business meaning.",
+      "keywords": [
+        "hierarchical",
+        "dendrogram",
+        "number of clusters",
+        "k-means",
+        "scalability",
+        "silhouette"
+      ]
+    }
+  ]
+}

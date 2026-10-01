@@ -1,0 +1,182 @@
+{
+  "subject": "Advanced Database Management Systems",
+  "applies_to": [
+    {
+      "course": "BSC_DS",
+      "year": 1,
+      "semester": 2
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "PL/SQL basics: anonymous blocks",
+      "text": "What is PL/SQL and what are the sections of a PL/SQL block?",
+      "ideal_answer": "PL/SQL is Oracle's procedural extension to SQL that adds variables, conditions, loops and error handling to SQL statements. A PL/SQL block has an optional DECLARE section for variables, constants and cursors, a mandatory BEGIN section containing the executable statements, an optional EXCEPTION section for handling errors, and it ends with END. A block without a name is called an anonymous block and is not stored in the database.",
+      "keywords": [
+        "procedural",
+        "declare",
+        "begin",
+        "exception",
+        "end",
+        "anonymous block"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "Cursors: implicit, explicit and parameterized",
+      "text": "What is a cursor in PL/SQL?",
+      "ideal_answer": "A cursor is a pointer to a private memory area, called the context area, that Oracle uses to process a SQL statement and hold the rows it returns. It lets PL/SQL process a query's result set one row at a time. Implicit cursors are created automatically by Oracle for DML and SELECT INTO statements, while explicit cursors are declared by the programmer for queries that return multiple rows.",
+      "keywords": [
+        "pointer",
+        "context area",
+        "result set",
+        "one row at a time",
+        "implicit",
+        "explicit"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Stored procedures and functions",
+      "text": "What is the difference between a stored procedure and a function in PL/SQL?",
+      "ideal_answer": "Both are named PL/SQL blocks stored in the database. A function must return exactly one value using the RETURN statement, and it can be called from a SQL statement such as a SELECT, provided it has no side effects like DML. A procedure does not have to return a value; it can pass values back through OUT or IN OUT parameters, and it is called as a standalone statement or from another block, not inside a SELECT. Procedures are typically used to perform an action, functions to compute a value.",
+      "keywords": [
+        "return",
+        "one value",
+        "out parameter",
+        "select",
+        "procedure",
+        "function"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Conditional statements: if, elsif, case",
+      "text": "What is the difference between an IF-ELSIF ladder and a CASE statement in PL/SQL?",
+      "ideal_answer": "An IF-ELSIF ladder checks a series of boolean conditions one after another and executes the first branch whose condition is true, with an optional ELSE. A CASE statement selects one branch based on the value of a single selector expression, or with a searched CASE, on a list of WHEN conditions. CASE is usually more readable when comparing one variable against many values. If no WHEN matches and there is no ELSE, a CASE statement raises the CASE_NOT_FOUND exception, whereas IF simply does nothing.",
+      "keywords": [
+        "if-elsif",
+        "case",
+        "selector",
+        "when",
+        "else",
+        "case_not_found"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Control structures in PL/SQL: loops",
+      "text": "Explain the basic LOOP, WHILE loop and numeric FOR loop in PL/SQL and when you would use each.",
+      "ideal_answer": "A basic LOOP runs repeatedly until an EXIT or EXIT WHEN condition is met inside the body, so it always runs at least once. A WHILE loop checks its condition before each iteration and runs only while the condition is true, so it may run zero times. A numeric FOR loop runs over a fixed integer range such as FOR i IN 1..10, and the loop counter is declared and incremented automatically. Use FOR when the number of iterations is known, WHILE when it depends on a condition, and basic LOOP when the exit test falls in the middle or end of the body.",
+      "keywords": [
+        "loop",
+        "exit when",
+        "while",
+        "for",
+        "range",
+        "counter"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Exception handling: system-defined and user-defined exceptions",
+      "text": "How do you handle the case where a SELECT INTO query in PL/SQL returns no row or more than one row?",
+      "ideal_answer": "SELECT INTO must return exactly one row. If it returns no row Oracle raises the predefined exception NO_DATA_FOUND, and if it returns more than one row it raises TOO_MANY_ROWS. You handle them in the EXCEPTION section with WHEN NO_DATA_FOUND THEN and WHEN TOO_MANY_ROWS THEN, for example by printing a message or assigning a default value. A WHEN OTHERS handler can catch any remaining errors, often logging SQLCODE and SQLERRM.",
+      "keywords": [
+        "select into",
+        "no_data_found",
+        "too_many_rows",
+        "exception section",
+        "when others",
+        "predefined"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Triggers: row-level, statement-level and instead-of triggers",
+      "text": "An UPDATE statement modifies 50 rows of a table. How many times will a row-level trigger and a statement-level trigger on that table fire, and why?",
+      "ideal_answer": "A row-level trigger, declared with FOR EACH ROW, fires once for every affected row, so it fires 50 times. A statement-level trigger fires only once for the whole UPDATE statement, regardless of how many rows are affected, even zero. Row-level triggers can use the :OLD and :NEW pseudo-records to see each row's values before and after the change, while statement-level triggers cannot. Statement-level triggers suit tasks like auditing that the statement ran, row-level triggers suit per-row validation or history.",
+      "keywords": [
+        "for each row",
+        "50 times",
+        "once",
+        "statement-level",
+        ":old",
+        ":new"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Cursors: implicit, explicit and parameterized",
+      "text": "Why would you use a parameterized cursor instead of a regular explicit cursor?",
+      "ideal_answer": "A parameterized cursor accepts parameters when it is opened, such as CURSOR c_emp(p_dept NUMBER) IS SELECT ... WHERE dept_id = p_dept. This lets the same cursor definition be reused with different values, for example opening it once for department 10 and again for department 20, instead of declaring a separate cursor for each case. It makes code shorter and more maintainable, and avoids relying on global variables inside the query. The parameter values are passed in OPEN or in a cursor FOR loop.",
+      "keywords": [
+        "parameter",
+        "reuse",
+        "open",
+        "different values",
+        "definition",
+        "maintainable"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Triggers: row-level triggers",
+      "text": "A row-level trigger on the EMPLOYEES table runs a SELECT on EMPLOYEES itself and fails with ORA-04091 mutating table error. Why does this happen and how can you fix it?",
+      "ideal_answer": "A mutating table is one that is currently being modified by the DML statement that fired the trigger. Oracle does not allow a row-level trigger to query or modify that same table, because its data is in an inconsistent, half-changed state, so it raises ORA-04091. Fixes include using a statement-level trigger which runs after all rows are changed, using a compound trigger that collects row data in a collection and processes it in the AFTER STATEMENT section, or moving the logic into a stored procedure. Sometimes the check can be replaced by a constraint instead.",
+      "keywords": [
+        "mutating table",
+        "row-level",
+        "same table",
+        "statement-level",
+        "compound trigger",
+        "inconsistent"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Collections and composite data types",
+      "text": "A PL/SQL program fetches one million rows with a cursor loop one row at a time and is very slow. How would you improve its performance?",
+      "ideal_answer": "Row-by-row fetching causes a context switch between the PL/SQL engine and the SQL engine for every row, which is slow. You can use BULK COLLECT to fetch many rows into a collection in one go, ideally with a LIMIT clause such as 1000 rows per fetch to control memory usage. For the DML part, use FORALL to send all the inserts or updates in a single batch. If possible, replace the whole loop with a single set-based SQL statement, which is usually fastest.",
+      "keywords": [
+        "context switch",
+        "bulk collect",
+        "limit",
+        "forall",
+        "collection",
+        "set-based"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "PL/SQL packages for modular database applications",
+      "text": "Your team is building a payroll module with many related procedures, functions and shared variables. Why would you organise it as a PL/SQL package, and what best practices would you follow?",
+      "ideal_answer": "A package groups related procedures, functions, types, cursors and variables into one named unit with a specification and a body. The specification is the public interface, while the body holds the implementation and private helpers, so callers are shielded from internal changes and the body can be recompiled without invalidating dependent code. Packages are loaded into memory once per session, which improves performance, and package variables can hold session-level state. Best practices include exposing only what is needed in the spec, using consistent exception handling and logging, avoiding too much global state, and using overloading for similar operations.",
+      "keywords": [
+        "package",
+        "specification",
+        "body",
+        "public",
+        "private",
+        "shielded",
+        "recompile"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Exception handling: user-defined exceptions",
+      "text": "In a banking application a fund-transfer procedure must reject transfers that exceed the account balance and must never leave money debited without being credited. How would you design its error handling?",
+      "ideal_answer": "Check the balance first and, if it is insufficient, raise a user-defined exception, declared in the declaration section or raised with RAISE_APPLICATION_ERROR with a custom error number between -20000 and -20999 and a clear message. Perform the debit and credit in one transaction so that both succeed or neither does. In the exception handler, ROLLBACK any partial changes, log the error details, and re-raise the error so the calling application knows the transfer failed. Avoid a bare WHEN OTHERS THEN NULL, because it silently hides errors.",
+      "keywords": [
+        "user-defined exception",
+        "raise_application_error",
+        "transaction",
+        "rollback",
+        "one transaction",
+        "log",
+        "re-raise"
+      ]
+    }
+  ]
+}

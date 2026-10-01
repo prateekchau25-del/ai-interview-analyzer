@@ -1,0 +1,180 @@
+{
+  "subject": "Artificial Intelligence",
+  "applies_to": [
+    {
+      "course": "BSC_DS",
+      "year": 2,
+      "semester": 4
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Intelligent agents and PEAS",
+      "text": "What is an intelligent agent in AI?",
+      "ideal_answer": "An intelligent agent is an entity that perceives its environment through sensors and acts upon that environment through actuators. A rational agent chooses the action expected to maximise its performance measure, based on its percept sequence and built-in knowledge. Examples are a robot vacuum cleaner, a self-driving car or a chess program. Agents are described using PEAS: performance measure, environment, actuators and sensors.",
+      "keywords": [
+        "perceives",
+        "environment",
+        "sensors",
+        "actuators",
+        "rational",
+        "performance measure"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "Problem formulation and state space representation",
+      "text": "What is a state space in AI problem solving?",
+      "ideal_answer": "A state space is the set of all possible states reachable from the initial state by applying a sequence of actions. A problem is formulated by defining the initial state, the actions or operators, the transition model, the goal test and the path cost. The state space can be represented as a graph where nodes are states and edges are actions. Solving the problem means searching this space for a path from the initial state to a goal state, for example in the 8-puzzle or water jug problem.",
+      "keywords": [
+        "states",
+        "initial state",
+        "actions",
+        "goal test",
+        "path cost",
+        "graph"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Uninformed search: DFS, BFS",
+      "text": "What is the difference between breadth-first search and depth-first search?",
+      "ideal_answer": "Breadth-first search explores all nodes at the current depth before moving to the next level, using a FIFO queue. Depth-first search goes as deep as possible along one branch before backtracking, using a LIFO stack or recursion. BFS is complete and finds the shallowest solution, which is optimal when all step costs are equal, but uses a lot of memory, order b to the power d. DFS uses much less memory, linear in depth, but is not optimal and may not be complete in infinite or cyclic spaces.",
+      "keywords": [
+        "level by level",
+        "queue",
+        "deep",
+        "stack",
+        "optimal",
+        "memory"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Propositional and first-order predicate logic",
+      "text": "What is the difference between propositional logic and first-order predicate logic?",
+      "ideal_answer": "Propositional logic deals with whole statements, called propositions, that are either true or false, combined with connectives like and, or, not and implies, such as 'It is raining'. It cannot express internal structure or generalisations. First-order predicate logic adds objects, predicates, functions and quantifiers, 'for all' and 'there exists', so it can represent statements like 'All humans are mortal' as for all x, Human(x) implies Mortal(x). This makes FOL far more expressive for knowledge representation.",
+      "keywords": [
+        "propositions",
+        "true or false",
+        "connectives",
+        "predicates",
+        "quantifiers",
+        "expressive"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Informed search: A*",
+      "text": "How does the A* search algorithm decide which node to expand next?",
+      "ideal_answer": "A* evaluates each node with f(n) equals g(n) plus h(n), where g(n) is the actual cost from the start to node n and h(n) is the heuristic estimate of the cost from n to the goal. It keeps nodes in a priority queue and always expands the node with the lowest f value. This balances the cost already paid with the estimated remaining cost. If the heuristic is admissible, meaning it never overestimates the true cost, A* is guaranteed to find an optimal path; for example, straight-line distance is used for route finding.",
+      "keywords": [
+        "estimated cost",
+        "path cost",
+        "heuristic",
+        "lowest f",
+        "admissible",
+        "optimal"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Constraint satisfaction: map colouring",
+      "text": "How would you formulate map colouring of Indian states with three colours as a constraint satisfaction problem?",
+      "ideal_answer": "A CSP has variables, domains and constraints. Here the variables are the states, such as Maharashtra, Gujarat and Karnataka, the domain of each variable is the set of colours red, green and blue, and the constraints are that any two neighbouring states must have different colours. It can be solved with backtracking search, assigning one state at a time and backtracking when a constraint is violated. Heuristics like minimum remaining values and forward checking make it much faster.",
+      "keywords": [
+        "variables",
+        "domains",
+        "constraints",
+        "neighbouring",
+        "different colours",
+        "backtracking"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Adversarial search: minimax and alpha-beta pruning",
+      "text": "Why does alpha-beta pruning give the same result as minimax while exploring fewer nodes?",
+      "ideal_answer": "Minimax explores the whole game tree, with MAX choosing the highest and MIN the lowest value at alternate levels. Alpha-beta keeps two bounds: alpha, the best value MAX can guarantee so far, and beta, the best value MIN can guarantee so far. When a branch is found where alpha is greater than or equal to beta, the remaining children of that node cannot affect the final decision, because the opponent would never let play reach there, so they are pruned. Since only irrelevant branches are skipped, the result is identical to minimax, and with good move ordering the time drops from b to the d to about b to the d over 2.",
+      "keywords": [
+        "minimax",
+        "alpha",
+        "beta",
+        "prune",
+        "same result",
+        "move ordering"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Hill climbing and simulated annealing",
+      "text": "Why can hill climbing get stuck, and how does simulated annealing overcome this?",
+      "ideal_answer": "Hill climbing always moves to a better neighbouring state, so it gets stuck at a local maximum, on a plateau where neighbours are equal, or on ridges, even though a better global solution exists. Simulated annealing sometimes accepts worse moves, with a probability of e to the power delta E over T that depends on how much worse the move is and on a temperature T. At first the temperature is high, so many bad moves are accepted and the search explores widely; the temperature is gradually lowered so it eventually behaves like hill climbing. This lets it escape local maxima, and with a slow enough cooling schedule it finds the global optimum with high probability.",
+      "keywords": [
+        "local maximum",
+        "plateau",
+        "worse moves",
+        "probability",
+        "temperature",
+        "cooling schedule"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Forward chaining, backward chaining and resolution",
+      "text": "You are building an expert system for diagnosing faults in a car. Would you use forward chaining or backward chaining, and why?",
+      "ideal_answer": "Forward chaining is data-driven: it starts from known facts and repeatedly applies rules whose conditions are satisfied to derive new facts until a goal is reached or nothing new can be inferred. Backward chaining is goal-driven: it starts from a hypothesis and works backwards to find facts that support it. For diagnosis, backward chaining is usually better, because there are a limited number of possible faults, and the system can test each hypothesis, like a dead battery, by asking only the relevant questions. Forward chaining suits monitoring situations where new sensor data keeps arriving and we want all its consequences.",
+      "keywords": [
+        "forward chaining",
+        "data-driven",
+        "backward chaining",
+        "goal-driven",
+        "hypothesis",
+        "diagnosis"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Uncertainty and Bayes theorem",
+      "text": "A disease affects 1% of people. A test detects it 90% of the time and gives a false positive 10% of the time. If a person tests positive, what is the probability they have the disease, and why is it so low?",
+      "ideal_answer": "By Bayes' theorem, P(disease given positive) equals P(positive given disease) times P(disease) divided by P(positive). P(positive) equals 0.9 times 0.01 plus 0.1 times 0.99, which is 0.009 plus 0.099, equal to 0.108. So the probability is 0.009 divided by 0.108, about 0.083 or 8.3 percent. It is low because the disease is rare, so the false positives from the large healthy population far outnumber the true positives. This shows why the prior probability, or base rate, must be considered.",
+      "keywords": [
+        "bayes theorem",
+        "prior",
+        "likelihood",
+        "false positive",
+        "8.3 percent",
+        "base rate"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Ensemble learning and decision trees",
+      "text": "A bank's single decision tree model for loan approval performs well on training data but poorly on new applicants. What would you do and what trade-offs would you consider?",
+      "ideal_answer": "The tree is overfitting: it has grown deep and memorised the training data. First I would prune it or limit its depth and minimum samples per leaf, and check performance with cross-validation. A stronger fix is an ensemble such as random forest, which uses bagging over many trees trained on bootstrap samples with random feature subsets, or gradient boosting, which trains trees sequentially to correct errors; both generalise better. The trade-off is that ensembles are harder to interpret than one tree, and banks must explain loan decisions, so I would use feature importance or SHAP explanations and check the model for bias against protected groups.",
+      "keywords": [
+        "overfitting",
+        "pruning",
+        "cross-validation",
+        "random forest",
+        "boosting",
+        "interpretability"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Intelligent agents, environments and PEAS",
+      "text": "Describe the PEAS for an automated delivery drone and classify its environment. How do these properties affect the design?",
+      "ideal_answer": "Performance measure: on-time delivery, safety, battery usage and package condition. Environment: airspace, buildings, weather, people and landing spots. Actuators: propellers, motors and package release mechanism. Sensors: GPS, cameras, lidar, IMU and battery sensors. The environment is partially observable, stochastic, dynamic, continuous, sequential and multi-agent. Because of this, the drone needs a model-based, goal or utility-based agent that keeps an internal state, handles uncertainty with probabilistic reasoning, and replans in real time.",
+      "keywords": [
+        "performance measure",
+        "environment",
+        "actuators",
+        "sensors",
+        "partially observable",
+        "stochastic"
+      ]
+    }
+  ]
+}

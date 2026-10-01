@@ -1,0 +1,185 @@
+{
+  "subject": "Probability and Statistics",
+  "applies_to": [
+    {
+      "course": "BCA",
+      "year": 2,
+      "semester": 3
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Sample space, events and axioms of probability",
+      "text": "What is a sample space and an event? Give an example.",
+      "ideal_answer": "A sample space is the set of all possible outcomes of a random experiment. An event is any subset of the sample space, that is, a collection of one or more outcomes. For example, when a die is rolled, the sample space is {1, 2, 3, 4, 5, 6}, and getting an even number is the event {2, 4, 6}, whose probability is 3 out of 6, or one half.",
+      "keywords": [
+        "all possible outcomes",
+        "random experiment",
+        "event",
+        "subset",
+        "die",
+        "probability"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "Measures of central tendency",
+      "text": "What are the mean, median and mode?",
+      "ideal_answer": "The mean, or arithmetic mean, is the sum of all observations divided by the number of observations. The median is the middle value when the data are arranged in order; with an even number of values it is the average of the two middle values. The mode is the value that occurs most frequently. For example, for 2, 3, 3, 5 and 7, the mean is 4, the median is 3 and the mode is 3.",
+      "keywords": [
+        "mean",
+        "sum",
+        "divided",
+        "median",
+        "middle value",
+        "mode",
+        "most frequently"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Discrete and continuous random variables, PMF and PDF",
+      "text": "What is the difference between a discrete and a continuous random variable?",
+      "ideal_answer": "A discrete random variable takes a countable set of values, such as the number of heads in three coin tosses, and is described by a probability mass function that gives the probability of each value, with all probabilities adding to 1. A continuous random variable can take any value in an interval, such as height or time, and is described by a probability density function; probabilities are areas under the curve, and the probability of any single exact value is zero. The total area under the PDF equals 1.",
+      "keywords": [
+        "discrete",
+        "countable",
+        "probability mass function",
+        "continuous",
+        "interval",
+        "probability density function",
+        "area"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Addition and multiplication theorems of probability",
+      "text": "State the addition theorem of probability and explain when events are mutually exclusive.",
+      "ideal_answer": "The addition theorem states that for any two events A and B, P(A or B) equals P(A) plus P(B) minus P(A and B), the probability of their intersection, subtracting the overlap so it is not counted twice. Events are mutually exclusive if they cannot happen at the same time, so P(A and B) is zero and the formula reduces to P(A) plus P(B). For example, getting a 1 and getting a 6 on a single die roll are mutually exclusive, so the probability of either is 1/6 plus 1/6, which is 1/3.",
+      "keywords": [
+        "addition theorem",
+        "p(a) plus p(b)",
+        "minus",
+        "intersection",
+        "mutually exclusive",
+        "same time"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Conditional probability and Bayes' theorem",
+      "text": "A bag has 3 red and 2 blue balls. Two balls are drawn one after another without replacement. What is the probability that both are red?",
+      "ideal_answer": "Use the multiplication theorem with conditional probability. The probability that the first ball is red is 3 out of 5. Since the ball is not replaced, there are now 2 red balls out of 4, so the probability that the second is red given the first was red is 2 out of 4. The probability that both are red is 3/5 times 2/4, which equals 6/20 or 3/10, that is 0.3.",
+      "keywords": [
+        "multiplication theorem",
+        "conditional probability",
+        "3/5",
+        "2/4",
+        "not replaced",
+        "3/10"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Binomial, Poisson, exponential and normal distributions",
+      "text": "A fair coin is tossed 4 times. Using the binomial distribution, find the probability of getting exactly 2 heads.",
+      "ideal_answer": "The binomial formula is P(X = r) equals nCr times p to the power r times q to the power n minus r. Here n is 4, r is 2, p is 0.5 and q is 0.5. 4C2 is 6, and 0.5 to the power 4 is 1/16, so the probability is 6 times 1/16, which is 6/16 or 3/8, that is 0.375. The binomial distribution applies because there are a fixed number of independent trials, each with the same probability of success.",
+      "keywords": [
+        "binomial",
+        "ncr",
+        "4c2",
+        "6/16",
+        "3/8",
+        "independent trials"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Coefficient of variation",
+      "text": "Class A has mean marks 60 with standard deviation 12, and Class B has mean 80 with standard deviation 12. Which class is more consistent and why?",
+      "ideal_answer": "Since the means are different, we compare relative variability using the coefficient of variation, which is the standard deviation divided by the mean, times 100. For Class A it is 12 divided by 60 times 100, which is 20 percent. For Class B it is 12 divided by 80 times 100, which is 15 percent. The lower coefficient of variation means less relative variability, so Class B is more consistent, even though both standard deviations are equal.",
+      "keywords": [
+        "coefficient of variation",
+        "standard deviation",
+        "mean",
+        "20 percent",
+        "15 percent",
+        "class b",
+        "consistent"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Measures of central tendency",
+      "text": "In a data set of salaries where a few employees earn extremely high amounts, which is a better measure of central tendency, mean or median, and why?",
+      "ideal_answer": "The median is better here. The mean uses every value, so a few extremely high salaries, which are outliers, pull the mean upward and make it unrepresentative of a typical employee. The median is the middle value of the ordered data and is not affected by how extreme the largest values are, so it better represents the typical salary. Such data is positively or right skewed, where the mean is greater than the median.",
+      "keywords": [
+        "median",
+        "outliers",
+        "extremely high",
+        "pull the mean",
+        "skewed",
+        "typical"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Karl Pearson's correlation and rank correlation",
+      "text": "A study finds a strong positive correlation between ice-cream sales and drowning deaths. Can we conclude that ice-cream causes drowning? Explain the possible issues.",
+      "ideal_answer": "No, correlation does not imply causation. Karl Pearson's correlation coefficient only measures the strength and direction of a linear relationship between two variables. Here both variables are likely driven by a third, confounding variable, hot weather or summer, which increases both ice-cream sales and swimming. Proving causation needs controlled experiments or careful analysis that accounts for confounders. One should also check for outliers and non-linear relationships, which can distort the correlation coefficient.",
+      "keywords": [
+        "correlation",
+        "causation",
+        "linear relationship",
+        "confounding variable",
+        "summer",
+        "outliers"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Conditional probability and Bayes' theorem",
+      "text": "A disease affects 1 percent of people. A test detects it 99 percent of the time but also gives a false positive for 5 percent of healthy people. If a person tests positive, is it likely they have the disease? Explain using Bayes' theorem.",
+      "ideal_answer": "By Bayes' theorem, P(disease given positive) equals P(positive given disease) times P(disease) divided by P(positive). P(positive) equals 0.99 times 0.01 plus 0.05 times 0.99, which is 0.0099 plus 0.0495, or 0.0594. So the probability of disease given a positive test is 0.0099 divided by 0.0594, which is about 0.167, or roughly 17 percent. So most positive results are false positives, because the disease is rare; the low prior probability, the base rate, strongly affects the result.",
+      "keywords": [
+        "bayes' theorem",
+        "prior",
+        "false positive",
+        "p(positive)",
+        "17 percent",
+        "base rate"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Regression analysis and lines of regression",
+      "text": "A company uses past data to fit a regression line of sales on advertising spend and wants to predict sales for a budget ten times larger than any in the data. What would you advise?",
+      "ideal_answer": "The regression line of Y on X, Y = a + bX, estimates sales from advertising using the least squares method, where b is the regression coefficient showing the change in sales per unit change in spend. Predictions are reliable only within the range of observed data; predicting for a budget ten times larger is extrapolation, and the relationship may not stay linear because of saturation and diminishing returns. I would advise checking the fit with the coefficient of determination and residuals, collecting data at higher spend levels or testing gradually, and presenting predictions with uncertainty intervals rather than a single number.",
+      "keywords": [
+        "regression line",
+        "least squares",
+        "regression coefficient",
+        "extrapolation",
+        "linear",
+        "diminishing returns",
+        "residuals"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Measures of dispersion: quartile deviation, standard deviation",
+      "text": "As a data analyst you must report the variability of delivery times, which contain some extreme delays. Would you report standard deviation or quartile deviation, and why?",
+      "ideal_answer": "Standard deviation is the square root of the average squared deviation from the mean, so it uses all values and is heavily influenced by extreme delays. Quartile deviation is half the difference between the third and first quartiles, Q3 minus Q1 divided by 2, so it depends only on the middle 50 percent of the data and is robust to outliers. For skewed delivery times with extreme delays, quartile deviation, together with the median, better describes typical variability. However, I would also report the extreme delays separately, since they matter to customers.",
+      "keywords": [
+        "standard deviation",
+        "mean",
+        "extreme delays",
+        "quartile deviation",
+        "q3 minus q1",
+        "middle 50 percent",
+        "robust"
+      ]
+    }
+  ]
+}

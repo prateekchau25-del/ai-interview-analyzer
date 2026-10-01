@@ -1,0 +1,185 @@
+{
+  "subject": "Software Testing",
+  "applies_to": [
+    {
+      "course": "BSC_IT",
+      "year": 3,
+      "semester": 6
+    },
+    {
+      "course": "BCA",
+      "year": 3,
+      "semester": 6
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Fundamentals of testing",
+      "text": "What is software testing, and why is it necessary?",
+      "ideal_answer": "Software testing is the process of evaluating a software product to find defects and to check that it meets the specified requirements and user needs. It is necessary because developers make mistakes, and defects that reach users can cause failures, financial loss, safety risks and damage to reputation. Testing gives confidence in quality and reduces risk. It cannot prove that software is defect-free; it can only show the presence of defects.",
+      "keywords": [
+        "evaluate",
+        "defects",
+        "requirements",
+        "quality",
+        "risk",
+        "presence of defects"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "Special tests: regression",
+      "text": "What is regression testing?",
+      "ideal_answer": "Regression testing is re-running previously passed tests after a change to the software, such as a bug fix, enhancement or configuration change, to make sure the change has not broken existing functionality. It is needed because changes in one part of the code can have unexpected side effects elsewhere. Because it is repeated often, regression testing is a strong candidate for test automation. It differs from retesting, which only checks that a specific fixed defect is now resolved.",
+      "keywords": [
+        "re-running tests",
+        "after changes",
+        "existing functionality",
+        "side effects",
+        "automation",
+        "retesting"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Verification and validation",
+      "text": "What is the difference between verification and validation?",
+      "ideal_answer": "Verification checks whether the product is being built correctly according to its specifications, asking 'Are we building the product right?'. It is mostly static, done through reviews, walkthroughs and inspections of documents and code without executing them. Validation checks whether the right product is being built to meet the user's actual needs, asking 'Are we building the right product?'. It is dynamic, done by executing the software through testing such as system and acceptance testing.",
+      "keywords": [
+        "verification",
+        "building the product right",
+        "reviews",
+        "validation",
+        "building the right product",
+        "executing"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Testing across the life cycle: test types",
+      "text": "What is the difference between black-box and white-box testing?",
+      "ideal_answer": "Black-box testing tests the software's functionality based on requirements, without any knowledge of the internal code structure, using techniques like equivalence partitioning, boundary value analysis and decision tables. White-box testing designs tests based on the internal structure and logic of the code, using techniques like statement, branch and path coverage. Black-box testing is usually done by testers at system and acceptance level, while white-box testing is mostly done by developers at unit level.",
+      "keywords": [
+        "black-box",
+        "requirements",
+        "without internal code",
+        "white-box",
+        "internal structure",
+        "coverage"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Boundary value and equivalence class testing",
+      "text": "An age field accepts values from 18 to 60. Which test values would you choose using equivalence partitioning and boundary value analysis?",
+      "ideal_answer": "Equivalence partitioning divides inputs into classes that should behave the same: one valid class, 18 to 60, and two invalid classes, below 18 and above 60, so one value from each such as 35, 10 and 70 is tested. Boundary value analysis tests at and around the edges because defects often occur there: 17, 18 and 19 at the lower boundary, and 59, 60 and 61 at the upper boundary. Non-numeric and empty inputs can also be tested as invalid classes. Together these give good coverage with few test cases.",
+      "keywords": [
+        "equivalence partitioning",
+        "valid class",
+        "invalid class",
+        "boundary value analysis",
+        "lower boundary",
+        "upper boundary"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Decision table testing",
+      "text": "How would you use a decision table to test a login rule: access is granted only if the username is valid and the password is correct?",
+      "ideal_answer": "A decision table lists the conditions, the possible combinations of their values as rules, and the expected action for each. Here there are two conditions, valid username and correct password, so there are 2 to the power 2, which is four combinations: both true grants access, while valid username with wrong password, invalid username with correct password, and both wrong all deny access with an error message. Each column, or rule, becomes a test case. Decision tables ensure that all combinations of business rules are covered and none is missed.",
+      "keywords": [
+        "conditions",
+        "combinations",
+        "actions",
+        "rules",
+        "four combinations",
+        "test case"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "V-model of testing",
+      "text": "Explain the V-model. Why is it better than testing only at the end of development?",
+      "ideal_answer": "The V-model links each development phase on the left side to a corresponding test level on the right side: requirements to acceptance testing, system design to system testing, architectural design to integration testing, and detailed design to unit testing. Test planning and design for each level begin as soon as the matching development document is ready. This means testing activities start early, so ambiguities and defects in requirements and design are found through reviews before coding. Finding defects early is much cheaper than finding them at the end, when fixes may require rework across many phases.",
+      "keywords": [
+        "development phase",
+        "test level",
+        "acceptance testing",
+        "unit testing",
+        "early testing",
+        "cheaper"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Integration testing approaches",
+      "text": "Compare top-down and bottom-up integration testing, including the role of stubs and drivers.",
+      "ideal_answer": "In top-down integration, the top-level modules are tested first and lower modules are added gradually; missing lower modules are replaced by stubs, which are dummy modules that return fixed responses. It allows early testing of the main control flow and an early prototype, but lower-level functionality is tested late. In bottom-up integration, the lowest modules are tested first and combined upwards; missing higher-level callers are replaced by drivers, which call the module under test. It finds defects in critical low-level modules early, but the complete system is visible only at the end. A mix of both, called sandwich integration, is common.",
+      "keywords": [
+        "top-down",
+        "stubs",
+        "bottom-up",
+        "drivers",
+        "control flow",
+        "sandwich"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Path and data-flow testing",
+      "text": "What is cyclomatic complexity, and how would you use it to decide the number of test cases for a function with two separate if statements?",
+      "ideal_answer": "Cyclomatic complexity is a metric for the number of linearly independent paths through a program, calculated from the control flow graph as edges minus nodes plus 2, or as the number of decision points plus 1. A function with two separate, sequential if statements has 2 decision points, so its cyclomatic complexity is 3. This means at least 3 test cases are needed for basis path coverage, to execute each independent path. Note that covering all four true and false combinations of the two conditions needs 4 tests, so basis path testing gives a minimum, not exhaustive coverage. High complexity also signals code that is hard to test and maintain.",
+      "keywords": [
+        "independent paths",
+        "control flow graph",
+        "edges minus nodes",
+        "decision points plus 1",
+        "cyclomatic complexity",
+        "basis path"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Special tests: performance",
+      "text": "A web application works fine in testing but becomes very slow during result day when thousands of students log in. What testing should have been done and how?",
+      "ideal_answer": "Performance testing should have been done, specifically load testing to check behaviour at the expected peak number of users, and stress testing to find the breaking point beyond that load. Using tools like JMeter or Locust, realistic user scenarios such as login and viewing results would be simulated with thousands of concurrent virtual users, while measuring response time, throughput, error rate and server resource usage like CPU, memory and database connections. The test environment should resemble production. The results would identify bottlenecks such as slow queries or missing caching, which are fixed and then re-tested.",
+      "keywords": [
+        "load testing",
+        "stress testing",
+        "concurrent users",
+        "response time",
+        "jmeter",
+        "bottlenecks"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Test policy, test strategy and test planning",
+      "text": "You are the test lead for a new mobile banking app with a tight release deadline. How would you plan testing when you cannot test everything?",
+      "ideal_answer": "I would use risk-based testing: identify features by business impact and likelihood of failure, so critical areas like login, fund transfer, payments and security get the most thorough testing, while low-risk cosmetic areas get lighter coverage. The test plan would define scope, objectives, approach, resources, schedule, environments, entry and exit criteria, and deliverables. I would automate regression and smoke tests in a CI pipeline, run security and performance tests, and test on a matrix of popular devices and OS versions. Progress would be tracked with defect and coverage metrics, and any remaining risks would be clearly communicated to stakeholders before the release decision.",
+      "keywords": [
+        "risk-based testing",
+        "prioritise",
+        "test plan",
+        "exit criteria",
+        "automation",
+        "stakeholders"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Acceptance testing and quality management",
+      "text": "A client rejects a delivered project in user acceptance testing even though all system tests passed. What went wrong, and how would you prevent this in future?",
+      "ideal_answer": "System testing verifies the software against the documented specifications, but acceptance testing validates it against the client's real business needs, so the likely problem is that the requirements were incomplete, misunderstood or changed without being captured. To prevent this, involve the client early through requirement reviews, prototypes and demos, and define clear, measurable acceptance criteria before development. Maintain a traceability matrix linking requirements to tests, and run alpha or beta testing or frequent sprint reviews to get feedback early. Following quality management practices like continuous improvement, root cause analysis of this failure should feed into the process.",
+      "keywords": [
+        "acceptance testing",
+        "business needs",
+        "requirements",
+        "acceptance criteria",
+        "traceability matrix",
+        "early feedback"
+      ]
+    }
+  ]
+}

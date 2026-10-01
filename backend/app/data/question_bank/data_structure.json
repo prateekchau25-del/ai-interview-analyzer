@@ -1,0 +1,188 @@
+{
+  "subject": "Data Structure",
+  "applies_to": [
+    {
+      "course": "BSC_DS",
+      "year": 2,
+      "semester": 3
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Python OOP for data structures: classes, inheritance, encapsulation",
+      "text": "What is encapsulation in Python object-oriented programming?",
+      "ideal_answer": "Encapsulation means bundling data (attributes) and the methods that operate on that data inside a single unit called a class, and restricting direct access to some of the internal details. In Python, a single leading underscore marks an attribute as internal by convention, and a double leading underscore triggers name mangling to make it harder to access from outside. Access is then provided through methods or properties. For example, a Stack class can keep its list in a private attribute and expose only push and pop, so users cannot corrupt the internal structure.",
+      "keywords": [
+        "bundling",
+        "attributes",
+        "methods",
+        "class",
+        "restricting access",
+        "underscore",
+        "name mangling"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "Hashing, hash tables",
+      "text": "What is hashing and what is a hash function?",
+      "ideal_answer": "Hashing is a technique to store and retrieve data quickly by converting a key into an index of a table called a hash table. A hash function takes a key and computes an integer index where the value is stored, for example key mod table size. A good hash function is fast and distributes keys uniformly to reduce collisions. With hashing, search, insertion and deletion take constant time, O(1), on average. Python dictionaries and sets are implemented using hash tables.",
+      "keywords": [
+        "key",
+        "index",
+        "hash table",
+        "hash function",
+        "collisions",
+        "constant time"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Singly, doubly and circular linked lists",
+      "text": "What is the difference between a singly linked list and a doubly linked list?",
+      "ideal_answer": "In a singly linked list, each node contains data and a single pointer to the next node, so traversal is possible only in the forward direction. In a doubly linked list, each node has two pointers, one to the next node and one to the previous node, so it can be traversed in both directions. A doubly linked list makes deleting a given node and moving backwards easier, but it uses extra memory for the previous pointer and needs more pointer updates during insertion and deletion.",
+      "keywords": [
+        "node",
+        "next pointer",
+        "forward",
+        "previous pointer",
+        "both directions",
+        "extra memory"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Asymptotic analysis: Big O, Omega, Theta",
+      "text": "What do Big O, Big Omega and Big Theta notations represent?",
+      "ideal_answer": "These notations describe how the running time or space of an algorithm grows as the input size n increases. Big O gives an asymptotic upper bound, often used for the worst case. Big Omega gives an asymptotic lower bound, often associated with the best case. Big Theta gives a tight bound, when the upper and lower bounds are the same order. For example, linear search is O(n) and Omega(1), while summing all elements of an array is Theta(n).",
+      "keywords": [
+        "growth",
+        "input size",
+        "upper bound",
+        "lower bound",
+        "tight bound",
+        "worst case"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Stacks and bracket matching",
+      "text": "How would you use a stack to check whether the brackets in an expression like '{[()]}' are balanced?",
+      "ideal_answer": "We scan the expression from left to right. Whenever an opening bracket such as (, [ or { appears, we push it onto the stack. When a closing bracket appears, we check that the stack is not empty and that the top of the stack is the matching opening bracket; if so we pop it, otherwise the expression is unbalanced. After scanning everything, the expression is balanced only if the stack is empty. For '{[()]}' every closing bracket matches the top, and the stack ends empty, so it is balanced.",
+      "keywords": [
+        "scan",
+        "opening bracket",
+        "push",
+        "closing bracket",
+        "matching",
+        "pop",
+        "stack is empty"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "collections module: deque, Counter, defaultdict, namedtuple",
+      "text": "Why is collections.deque preferred over a Python list for implementing a queue?",
+      "ideal_answer": "A queue needs insertion at the rear and removal from the front. With a Python list, pop(0) or insert(0, x) is O(n) because all remaining elements must be shifted. A deque, or double-ended queue, from the collections module is implemented as a doubly linked list of blocks, so append, appendleft, pop and popleft are all O(1). So a queue can be implemented efficiently using append to enqueue and popleft to dequeue. A deque can also be given a maxlen to keep only the most recent items.",
+      "keywords": [
+        "front",
+        "linear time",
+        "shifted",
+        "double-ended",
+        "popleft",
+        "constant time"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Trees: traversals, binary search trees",
+      "text": "Why does an inorder traversal of a binary search tree give sorted output? What would be the inorder traversal of a BST built by inserting 50, 30, 70, 20, 40?",
+      "ideal_answer": "In a binary search tree, every key in the left subtree is smaller than the node and every key in the right subtree is larger. Inorder traversal visits the left subtree, then the node, then the right subtree, so smaller values are always visited before larger ones, giving ascending order. For the insertions, 50 is the root, 30 and 70 are its left and right children, and 20 and 40 are the children of 30. The inorder traversal is 20, 30, 40, 50, 70.",
+      "keywords": [
+        "left subtree",
+        "smaller",
+        "right subtree",
+        "larger",
+        "left node right",
+        "ascending",
+        "20 30 40 50 70"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Sorting: bubble, insertion, selection and quick sort",
+      "text": "Compare insertion sort and quick sort. Why might insertion sort be faster on a nearly sorted list?",
+      "ideal_answer": "Insertion sort builds the sorted list one element at a time by shifting larger elements right; its worst and average case are O(n squared) but its best case on sorted input is O(n). Quick sort uses divide and conquer: it picks a pivot, partitions elements around it and recursively sorts the parts, giving O(n log n) on average but O(n squared) in the worst case, for example with a bad pivot on already sorted data. On a nearly sorted list, insertion sort only does a few shifts, so it runs close to linear time. Insertion sort is stable and in place, while typical quick sort is in place but not stable.",
+      "keywords": [
+        "insertion sort",
+        "shifting",
+        "best case",
+        "pivot",
+        "partition",
+        "n log n",
+        "nearly sorted"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Hashing: open addressing, chaining",
+      "text": "Your hash table's performance degrades as more items are inserted. What causes this and how do chaining and open addressing handle it?",
+      "ideal_answer": "The performance degrades because of collisions, when different keys map to the same index; as the load factor, the ratio of items to table size, increases, collisions grow and operations approach O(n). In separate chaining, each slot holds a linked list or bucket of all keys hashed to it, so long chains slow searches. In open addressing, a colliding key is placed in another empty slot found by probing, such as linear probing, quadratic probing or double hashing, but this causes clustering at high load. The fix is to use a good hash function and rehash into a larger table when the load factor crosses a threshold, like 0.7.",
+      "keywords": [
+        "collisions",
+        "load factor",
+        "chaining",
+        "open addressing",
+        "probing",
+        "clustering",
+        "rehash"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Algorithm design: recursion, backtracking, divide and conquer",
+      "text": "A naive recursive Fibonacci function becomes extremely slow for n = 40. Why, and how can you fix it?",
+      "ideal_answer": "The naive recursion fib(n) = fib(n-1) + fib(n-2) recomputes the same subproblems many times, so the number of calls grows exponentially, roughly O(2 to the power n). For n = 40 this means hundreds of millions of calls. The fix is memoization, storing already computed results in a dictionary or using functools.lru_cache, so each value is computed once, giving O(n) time. Alternatively, a bottom-up iterative approach with two variables gives O(n) time and O(1) space and also avoids recursion depth limits.",
+      "keywords": [
+        "recomputes",
+        "subproblems",
+        "exponential",
+        "memoization",
+        "lru_cache",
+        "iterative",
+        "linear time"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Graphs: representations, BFS and DFS traversals, priority queues",
+      "text": "You are building a feature to find the fewest connections between two users in a social network with millions of users. Which graph representation and traversal would you use and why?",
+      "ideal_answer": "I would store the graph as an adjacency list, because social networks are sparse and an adjacency matrix would need memory proportional to n squared, which is impossible for millions of users. To find the fewest connections in an unweighted graph, I would use breadth-first search, since BFS explores level by level and the first time it reaches the target gives the shortest path in number of edges. A visited set prevents revisiting nodes, and storing parent pointers lets us rebuild the path. For speed, bidirectional BFS from both users can be used, and if edges had weights, Dijkstra's algorithm with a priority queue would be needed.",
+      "keywords": [
+        "adjacency list",
+        "sparse",
+        "breadth-first search",
+        "shortest path",
+        "visited",
+        "bidirectional",
+        "dijkstra"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Pattern matching: brute force and Rabin-Karp",
+      "text": "A plagiarism checker must search many patterns in large documents. Why might Rabin-Karp be better than brute-force matching, and what issues must you handle?",
+      "ideal_answer": "Brute-force matching compares the pattern at every position character by character, taking O(n times m) time in the worst case. Rabin-Karp computes a hash of the pattern and a rolling hash of each text window, updating the window hash in constant time as it slides, and compares characters only when the hashes match. This gives O(n + m) average time and is efficient for searching multiple patterns by comparing window hashes with a set of pattern hashes. The issue is hash collisions, called spurious hits, so a character-by-character check is required on a hash match, and a large prime modulus should be used to reduce collisions; the worst case can still be O(n times m).",
+      "keywords": [
+        "brute force",
+        "rolling hash",
+        "window",
+        "hash match",
+        "multiple patterns",
+        "spurious hits",
+        "prime modulus"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+ "subject": "Artificial Intelligence",
+ "applies_to": [
+  {
+   "course": "BSC_AI",
+   "year": 1,
+   "semester": 2
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Definition, characteristics, history, scope and applications of AI",
+   "text": "What is Artificial Intelligence?",
+   "ideal_answer": "Artificial Intelligence is the branch of computer science that builds machines and programs able to perform tasks that normally need human intelligence. These tasks include learning from experience, reasoning, problem solving, understanding language and perceiving the environment. The term was coined by John McCarthy in 1956. Common applications are virtual assistants, recommendation systems, self-driving cars and medical diagnosis.",
+   "keywords": [
+    "computer science",
+    "human intelligence",
+    "learning",
+    "reasoning",
+    "problem solving",
+    "john mccarthy"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Types of intelligent agents",
+   "text": "What is an intelligent agent in AI?",
+   "ideal_answer": "An intelligent agent is anything that perceives its environment through sensors and acts upon that environment through actuators. It chooses actions that help it achieve its goals or maximise its performance measure. A rational agent selects the action expected to give the best outcome based on its percepts and knowledge. Examples include a robot vacuum cleaner, a chess program and a self-driving car.",
+   "keywords": [
+    "perceives",
+    "environment",
+    "sensors",
+    "actuators",
+    "rational",
+    "performance measure"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Uninformed search: BFS, uniform cost search, DFS",
+   "text": "What is the difference between breadth-first search and depth-first search?",
+   "ideal_answer": "Breadth-first search explores all nodes at the current depth before moving to the next level, and uses a FIFO queue. Depth-first search goes as deep as possible along one branch before backtracking, and uses a LIFO stack or recursion. BFS is complete and finds the shallowest solution, which is optimal when all step costs are equal, but needs a lot of memory. DFS uses much less memory but is not optimal and can fail to terminate in infinite or cyclic search spaces.",
+   "keywords": [
+    "level by level",
+    "queue",
+    "stack",
+    "backtracking",
+    "complete",
+    "optimal",
+    "memory"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Ethics and AI",
+   "text": "What are some ethical concerns related to AI? Give simple examples.",
+   "ideal_answer": "Major ethical concerns in AI include bias and fairness, privacy, transparency, accountability and job displacement. Bias occurs when a model trained on skewed data discriminates, for example a hiring model that favours one gender. Privacy is at risk when AI systems collect and analyse personal data such as faces or locations without consent. Transparency means people should be able to understand why an AI made a decision, and accountability means someone must be responsible when it causes harm.",
+   "keywords": [
+    "bias",
+    "fairness",
+    "privacy",
+    "transparency",
+    "accountability",
+    "job displacement"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Informed search: greedy best-first and A* search",
+   "text": "How does the A* search algorithm work?",
+   "ideal_answer": "A* is an informed search algorithm that expands the node with the lowest value of f(n) = g(n) + h(n). Here g(n) is the actual cost from the start to node n and h(n) is the heuristic estimate of the cost from n to the goal. It keeps nodes in a priority queue ordered by f(n) and repeatedly expands the cheapest one until the goal is selected. If the heuristic is admissible, meaning it never overestimates the true cost, A* is complete and optimal.",
+   "keywords": [
+    "actual cost",
+    "heuristic",
+    "path cost",
+    "priority queue",
+    "admissible",
+    "optimal"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Representation of search problems; completeness, optimality, time and space complexity",
+   "text": "How would you formulate the 8-puzzle as a search problem?",
+   "ideal_answer": "A search problem is defined by an initial state, actions, a transition model, a goal test and a path cost. In the 8-puzzle, a state is the arrangement of the eight numbered tiles and the blank on a 3 by 3 board, and the initial state is the given scrambled board. The actions are moving the blank up, down, left or right, and the transition model gives the new board after the move. The goal test checks whether the tiles are in the target order, and each move has a path cost of 1, so the best solution uses the fewest moves.",
+   "keywords": [
+    "initial state",
+    "actions",
+    "transition model",
+    "goal test",
+    "path cost",
+    "blank tile"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "First-order logic, rules of inference, forward and backward chaining",
+   "text": "Compare forward chaining and backward chaining. When would you prefer each?",
+   "ideal_answer": "Forward chaining is data-driven: it starts from known facts and applies rules to reach conclusions. Backward chaining is goal-driven: it starts from the goal and works backwards to find facts that support it. Forward chaining is preferred when many conclusions are possible from incoming data, such as monitoring or planning systems. Backward chaining is preferred when there is a specific goal or query to prove, such as diagnosis in expert systems or Prolog queries, because it only explores relevant rules.",
+   "keywords": [
+    "data-driven",
+    "goal-driven",
+    "forward chaining",
+    "backward chaining",
+    "expert systems",
+    "relevant rules"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Local search: hill climbing and travelling salesman problem",
+   "text": "Why can hill climbing fail to find the best solution, and how can this be overcome?",
+   "ideal_answer": "Hill climbing is a greedy local search that always moves to a better neighbouring state and stops when no neighbour is better. It can get stuck at a local maximum, on a plateau where neighbours have equal values, or on a ridge. Because it keeps no history and never moves downhill, it cannot escape these situations. Solutions include random-restart hill climbing, allowing sideways moves, stochastic hill climbing and simulated annealing, which sometimes accepts worse moves to escape local maxima.",
+   "keywords": [
+    "local maximum",
+    "plateau",
+    "ridge",
+    "greedy",
+    "random restart",
+    "simulated annealing"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Informed search: greedy best-first and A* search",
+   "text": "You use A* for route finding but it returns a path that is not the shortest. What could be wrong and how would you fix it?",
+   "ideal_answer": "The most likely cause is an inadmissible heuristic that overestimates the true remaining cost, which makes A* skip the optimal path. In graph search the heuristic should also be consistent, otherwise a node may be closed before its cheapest path is found unless reopening is allowed. Other causes are incorrect edge costs or stopping when the goal is generated instead of when it is removed from the priority queue. The fix is to use an admissible and consistent heuristic such as straight-line distance, verify costs, and terminate only when the goal is expanded.",
+   "keywords": [
+    "admissible",
+    "overestimates",
+    "consistent",
+    "heuristic",
+    "priority queue",
+    "straight-line distance"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Probabilistic and Bayesian reasoning under uncertainty",
+   "text": "A disease affects 1% of people and a test is 90% accurate for both sick and healthy people. If a person tests positive, why is the chance they actually have the disease low?",
+   "ideal_answer": "This is solved with Bayes' theorem, P(disease given positive) = P(positive given disease) times P(disease) divided by P(positive). True positives are 0.9 times 0.01 = 0.009, and false positives are 0.1 times 0.99 = 0.099. So P(positive) is 0.108 and the posterior probability is 0.009 / 0.108, which is about 8.3%. The probability is low because the prior (base rate) is very small, so false positives from the large healthy population outnumber the true positives.",
+   "keywords": [
+    "bayes theorem",
+    "prior",
+    "posterior",
+    "false positives",
+    "base rate",
+    "true positives"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Generative AI: generative models, tools, benefits and limitations",
+   "text": "Your company wants to use a generative AI chatbot to answer customer queries. What benefits, limitations and safeguards would you consider?",
+   "ideal_answer": "Generative AI can answer queries 24/7, scale cheaply and produce fluent, personalised replies, reducing support workload. Its main limitations are hallucination, where it confidently gives false information, bias, outdated knowledge and possible leakage of private data. Safeguards include grounding answers in company documents through retrieval-augmented generation, restricting the bot to approved topics, filtering harmful output and masking personal data. A human escalation path, logging and regular evaluation of answers are also best practice.",
+   "keywords": [
+    "hallucination",
+    "bias",
+    "privacy",
+    "retrieval-augmented generation",
+    "human escalation",
+    "evaluation"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Types of intelligent agents",
+   "text": "You are designing an AI agent for a warehouse robot that picks orders. Which type of agent would you choose and why?",
+   "ideal_answer": "A simple reflex agent is not enough because the warehouse is partially observable and the robot must reach goals such as fetching specific items. A model-based, goal-based agent keeps an internal model of the warehouse map and plans paths to the target shelf. Better still is a utility-based agent that chooses among possible plans by optimising factors like time, battery and collision risk. A learning component can improve performance over time from experience, and safety constraints must always override efficiency.",
+   "keywords": [
+    "simple reflex",
+    "model-based",
+    "goal-based",
+    "utility-based",
+    "learning agent",
+    "partially observable"
+   ]
+  }
+ ]
+}

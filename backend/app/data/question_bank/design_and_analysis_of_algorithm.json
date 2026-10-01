@@ -1,0 +1,180 @@
+{
+  "subject": "Design and Analysis of Algorithm",
+  "applies_to": [
+    {
+      "course": "BCA",
+      "year": 2,
+      "semester": 4
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Performance analysis: time and space complexity",
+      "text": "What are time complexity and space complexity of an algorithm?",
+      "ideal_answer": "Time complexity measures how the running time of an algorithm, counted as the number of basic operations, grows as a function of the input size n. Space complexity measures how much memory the algorithm needs as a function of the input size, including auxiliary space for variables, data structures and the recursion stack. Both are usually expressed in asymptotic notation, such as O(n) or O(n log n). They let us compare algorithms independent of hardware.",
+      "keywords": [
+        "running time",
+        "input size",
+        "basic operations",
+        "memory",
+        "asymptotic",
+        "grows"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "Backtracking: n-Queens",
+      "text": "What is backtracking?",
+      "ideal_answer": "Backtracking is an algorithm design technique that builds a solution incrementally, one component at a time, and abandons a partial solution as soon as it determines that it cannot lead to a valid complete solution. It then goes back to the previous step and tries the next option. The search is organised as a depth-first traversal of a state space tree, and pruning infeasible branches saves time. Examples are the n-Queens problem, sum of subsets and Hamiltonian circuit.",
+      "keywords": [
+        "incrementally",
+        "partial solution",
+        "abandon",
+        "go back",
+        "state space tree",
+        "depth-first"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Asymptotic notations O, Omega, Theta",
+      "text": "What is the difference between Big O, Big Omega and Big Theta notation?",
+      "ideal_answer": "Big O gives an asymptotic upper bound: f(n) is O(g(n)) if f grows no faster than a constant times g for large n. Big Omega gives an asymptotic lower bound: f grows at least as fast as a constant times g. Big Theta gives a tight bound, meaning f is both O(g) and Omega(g), so it grows at the same rate as g. For example, 3n squared plus 5n is Theta of n squared, and also O of n cubed but not Omega of n cubed.",
+      "keywords": [
+        "big o",
+        "upper bound",
+        "big omega",
+        "lower bound",
+        "big theta",
+        "tight bound"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Greedy vs dynamic programming",
+      "text": "What is the difference between the greedy approach and dynamic programming?",
+      "ideal_answer": "A greedy algorithm builds a solution by making the locally best choice at each step without reconsidering it, hoping it leads to a global optimum; it is fast but correct only for problems with the greedy choice property, like fractional knapsack or Kruskal's algorithm. Dynamic programming breaks a problem into overlapping subproblems, solves each once and stores the results in a table, combining them to get the optimal answer. DP works when the problem has optimal substructure and overlapping subproblems, like 0/1 knapsack. DP always finds the optimum for such problems but usually needs more time and memory than greedy.",
+      "keywords": [
+        "locally best choice",
+        "greedy choice property",
+        "overlapping subproblems",
+        "table",
+        "optimal substructure",
+        "knapsack"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Divide and conquer: binary search",
+      "text": "How does binary search work, and what is its time complexity? What precondition does it need?",
+      "ideal_answer": "Binary search requires the array to be sorted. It compares the key with the middle element; if they are equal the search ends, if the key is smaller it continues in the left half, otherwise in the right half. Each step halves the search space, so the worst-case time complexity is O(log n), compared with O(n) for sequential search. The best case is O(1) when the middle element is the key.",
+      "keywords": [
+        "sorted",
+        "middle element",
+        "left half",
+        "right half",
+        "halves",
+        "log n"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Greedy: Dijkstra's algorithm",
+      "text": "Explain how Dijkstra's algorithm finds the shortest paths from a source vertex.",
+      "ideal_answer": "Dijkstra's algorithm sets the distance of the source to 0 and all other vertices to infinity. It repeatedly picks the unvisited vertex with the smallest tentative distance, marks it as finalised, and relaxes its edges: for each neighbour, if the distance through this vertex is smaller, it updates the neighbour's distance. This continues until all vertices are finalised. With a binary heap priority queue it runs in O((V plus E) log V). It works only when all edge weights are non-negative.",
+      "keywords": [
+        "source",
+        "infinity",
+        "smallest distance",
+        "relax",
+        "priority queue",
+        "non-negative weights"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Divide and conquer: merge sort vs quick sort",
+      "text": "Compare merge sort and quick sort. Why is quick sort often faster in practice despite a worse worst case?",
+      "ideal_answer": "Merge sort always runs in O(n log n) time, is stable, but needs O(n) extra space for merging. Quick sort runs in O(n log n) on average but O(n squared) in the worst case, such as when a bad pivot is chosen on already-sorted input, and it is not stable. Quick sort is often faster in practice because it sorts in place with good cache locality and has a small constant factor. Its worst case is made very unlikely by choosing a random pivot or median-of-three.",
+      "keywords": [
+        "merge sort",
+        "stable",
+        "extra space",
+        "quick sort",
+        "worst case",
+        "pivot"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Analysis of recursive algorithms",
+      "text": "What is the time complexity of an algorithm with recurrence T(n) = 2T(n/2) + n, and how do you derive it?",
+      "ideal_answer": "The answer is Theta of n log n. Using the recursion tree, each level does a total of n work, since the problem splits into two halves and the combine step is linear, and there are log base 2 of n levels until the subproblem size becomes 1. So the total is n times log n. By the Master theorem with a equals 2, b equals 2 and f(n) equals n, n to the log base b of a is n, which equals f(n), so case 2 gives Theta of n log n. Merge sort has this recurrence.",
+      "keywords": [
+        "n log n",
+        "recursion tree",
+        "levels",
+        "master theorem",
+        "case 2",
+        "merge sort"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Dynamic programming: 0/1 knapsack",
+      "text": "Why does the greedy approach of picking items by highest value-to-weight ratio fail for 0/1 knapsack, and how does dynamic programming solve it?",
+      "ideal_answer": "In 0/1 knapsack, items cannot be split, so a greedy choice by ratio can fill capacity poorly. For example, with capacity 50 and items of weight 10, 20 and 30 with values 60, 100 and 120, greedy takes the first two for 160, while the optimum is the second and third for 220. Dynamic programming builds a table where K[i][w] is the best value using the first i items with capacity w, and K[i][w] equals the maximum of K[i minus 1][w] and the item's value plus K[i minus 1][w minus its weight]. This runs in O(n times W) time, which is pseudo-polynomial.",
+      "keywords": [
+        "cannot be split",
+        "greedy",
+        "table",
+        "maximum",
+        "capacity",
+        "pseudo-polynomial"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Floyd-Warshall all pairs shortest paths",
+      "text": "How does the Floyd-Warshall algorithm work, and how can it detect a negative cycle?",
+      "ideal_answer": "Floyd-Warshall computes shortest paths between all pairs of vertices using dynamic programming. It starts with the adjacency weight matrix and, for each intermediate vertex k, updates every pair i, j with d[i][j] equals the minimum of d[i][j] and d[i][k] plus d[k][j]. After considering all vertices as intermediates, the matrix holds all shortest distances, in O(V cubed) time and O(V squared) space. It handles negative edge weights, and if any diagonal entry d[i][i] becomes negative, the graph contains a negative cycle.",
+      "keywords": [
+        "all pairs",
+        "dynamic programming",
+        "intermediate vertex",
+        "v cubed",
+        "negative edge",
+        "diagonal"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "BFS, DFS, topological sorting",
+      "text": "You are building a course-registration system where some courses have prerequisites. How would you find a valid order to take all courses and detect impossible prerequisite loops?",
+      "ideal_answer": "Model the courses as vertices of a directed graph with an edge from each prerequisite to the course that needs it. A valid order is a topological sort, which exists only if the graph is a directed acyclic graph. Using Kahn's algorithm, repeatedly take courses with in-degree zero, add them to the order and decrease the in-degree of their neighbours; if some courses are never processed, there is a cycle. Alternatively, DFS detects a cycle when it meets a back edge to a vertex on the current recursion stack. Both run in O(V plus E), which scales well, and the system should report the courses in the cycle to the admin.",
+      "keywords": [
+        "directed graph",
+        "topological sort",
+        "dag",
+        "in-degree",
+        "cycle",
+        "kahn"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "P, NP, NP-complete and NP-hard problems",
+      "text": "Your manager asks you to write a program that always finds the optimal delivery route visiting 500 locations quickly. How would you respond, using the idea of NP-hardness?",
+      "ideal_answer": "This is the travelling salesman problem, whose optimisation version is NP-hard, and its decision version is NP-complete. No polynomial-time algorithm is known for NP-complete problems, and finding one would prove P equals NP, so an exact algorithm for 500 locations would take impractically long. In practice I would use approximation algorithms or heuristics such as nearest neighbour, 2-opt local search, genetic algorithms or a solver like Google OR-Tools, which give near-optimal routes quickly. I would explain the trade-off between solution quality and running time and agree on an acceptable gap from optimal.",
+      "keywords": [
+        "travelling salesman",
+        "np-hard",
+        "np-complete",
+        "polynomial time",
+        "heuristics",
+        "approximation"
+      ]
+    }
+  ]
+}

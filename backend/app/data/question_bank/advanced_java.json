@@ -1,0 +1,90 @@
+{
+  "subject": "Advanced Java",
+  "applies_to": [{"course": "BSC_IT", "year": 3, "semester": 5}],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Servlets: API, life cycle and annotations",
+      "text": "What is a servlet?",
+      "ideal_answer": "A servlet is a Java class that runs on a web server inside a servlet container, such as Tomcat, and handles client requests to generate dynamic web content. It usually extends HttpServlet and overrides methods like doGet and doPost to process HTTP requests and send HTTP responses. Servlets are mapped to URLs using web.xml or the @WebServlet annotation.",
+      "keywords": ["java class", "servlet container", "tomcat", "httpservlet", "doget", "dopost", "dynamic"]
+    },
+    {
+      "level": 1,
+      "topic": "JDBC architecture and database access",
+      "text": "What is JDBC?",
+      "ideal_answer": "JDBC, Java Database Connectivity, is a Java API that lets Java programs connect to relational databases and execute SQL statements. It provides interfaces such as DriverManager, Connection, Statement, PreparedStatement and ResultSet. A database-specific JDBC driver converts JDBC calls into the database's own protocol, so the same Java code can work with MySQL, Oracle or others by changing the driver and URL.",
+      "keywords": ["java database connectivity", "api", "driver", "connection", "preparedstatement", "resultset"]
+    },
+    {
+      "level": 2,
+      "topic": "RequestDispatcher, cookies and session tracking",
+      "text": "What is the difference between RequestDispatcher forward and response sendRedirect?",
+      "ideal_answer": "RequestDispatcher forward passes the same request and response to another resource on the server, such as a servlet or JSP; it happens entirely on the server, the browser URL does not change, and request attributes are preserved. sendRedirect sends a response telling the browser to make a new request to a different URL, so the URL changes, a new request is created, and the old request attributes are lost. Redirect can go to external sites and is slower because it needs an extra round trip.",
+      "keywords": ["forward", "server side", "same request", "url does not change", "sendredirect", "new request", "browser"]
+    },
+    {
+      "level": 2,
+      "topic": "JSP: life cycle, elements and implicit objects",
+      "text": "What are JSP implicit objects? Name a few.",
+      "ideal_answer": "JSP implicit objects are objects created automatically by the JSP container that can be used directly in a JSP page without declaring them. There are nine: request, response, out, session, application, config, pageContext, page and exception. For example, request gives access to form parameters, out writes output to the client, session stores user-specific data and application stores data shared by the whole web application. The exception object is available only in error pages.",
+      "keywords": ["created by container", "request", "response", "out", "session", "application"]
+    },
+    {
+      "level": 3,
+      "topic": "Servlets: life cycle",
+      "text": "Explain the life cycle of a servlet.",
+      "ideal_answer": "The servlet container loads the servlet class and creates a single instance, either on the first request or at startup. It then calls init() once to initialise resources. For each client request, the container calls service(), usually on a new thread, which dispatches to doGet, doPost or other methods based on the HTTP method. When the servlet is removed or the server shuts down, destroy() is called once to release resources, after which the object is garbage collected.",
+      "keywords": ["loaded", "single instance", "init", "service", "doget", "destroy", "thread"]
+    },
+    {
+      "level": 3,
+      "topic": "Expression Language and JSTL",
+      "text": "How do Expression Language and JSTL help in writing cleaner JSP pages? Give an example.",
+      "ideal_answer": "Expression Language, written as ${...}, gives a simple syntax to access data stored in request, session or application scopes, bean properties and parameters without Java code, for example ${user.name} or ${param.city}. JSTL, the JSP Standard Tag Library, provides tags for common tasks like loops, conditions, formatting and SQL, such as <c:forEach> to loop through a list and <c:if> for conditions. Together they remove scriptlets, so pages are easier to read and maintain and follow MVC by keeping business logic in servlets.",
+      "keywords": ["expression language", "no scriptlets", "scopes", "jstl", "c:foreach", "c:if", "mvc"]
+    },
+    {
+      "level": 4,
+      "topic": "JDBC: Statement vs PreparedStatement",
+      "text": "Why is PreparedStatement preferred over Statement in JDBC?",
+      "ideal_answer": "PreparedStatement uses a precompiled SQL query with question-mark placeholders, and values are set using methods like setString and setInt. Because the values are sent separately from the SQL, user input cannot change the query structure, which prevents SQL injection. The query can be compiled once and executed many times with different parameters, improving performance. It also handles data types and special characters properly, making code cleaner than concatenating strings into a Statement.",
+      "keywords": ["precompiled", "placeholders", "sql injection", "setstring", "performance", "reuse"]
+    },
+    {
+      "level": 4,
+      "topic": "Enterprise JavaBeans: session beans",
+      "text": "Compare stateless, stateful and singleton session beans. Give a use case for each.",
+      "ideal_answer": "A stateless session bean keeps no client-specific state between method calls, so the container can pool instances and serve many clients, which is good for operations like currency conversion or tax calculation. A stateful session bean maintains conversational state for one client across multiple calls, like a shopping cart, and is tied to that client for the session. A singleton session bean has only one instance per application shared by all clients, useful for application-wide caching or configuration, and it needs concurrency control. Stateless beans scale best, while stateful beans use more memory.",
+      "keywords": ["stateless", "pooled", "stateful", "conversational state", "shopping cart", "singleton", "one instance"]
+    },
+    {
+      "level": 5,
+      "topic": "Servlets: thread safety",
+      "text": "A servlet stores the logged-in username in an instance variable, and users sometimes see other users' names. What is the bug and how do you fix it?",
+      "ideal_answer": "The container creates only one instance of a servlet and handles concurrent requests on multiple threads using that same instance. Instance variables are therefore shared by all requests, so one request can overwrite the username while another is still using it, a race condition. The fix is to use local variables inside doGet or doPost, which are thread-safe because each thread has its own stack, and store user-specific data in the HttpSession or request attributes. Synchronization should be avoided as a fix because it hurts performance.",
+      "keywords": ["one instance", "multiple threads", "instance variable", "race condition", "local variables", "httpsession"]
+    },
+    {
+      "level": 5,
+      "topic": "Persistence, object/relational mapping and JPA",
+      "text": "A JPA application loads a list of 100 orders and then accesses each order's customer, generating 101 SQL queries. What is this problem and how do you fix it?",
+      "ideal_answer": "This is the N plus 1 select problem. One query loads the orders, and then, because the customer relationship is lazily loaded, a separate query runs for each order's customer when it is accessed. It causes heavy database load and slow pages. The fix is to fetch the related data in one query, using a JPQL JOIN FETCH, an entity graph, or batch fetching. Making everything eager loading is not a good general fix, because it can load far more data than needed in other cases.",
+      "keywords": ["n plus 1", "lazy loading", "separate query", "join fetch", "entity graph", "eager loading"]
+    },
+    {
+      "level": 6,
+      "topic": "JDBC architecture; Interceptors and JNDI",
+      "text": "Your Java web application opens a new JDBC connection for every request and becomes very slow under load. How would you redesign database access for production?",
+      "ideal_answer": "Opening a database connection is expensive, involving network setup and authentication, so creating one per request wastes time and can exhaust the database's connection limit. I would use a connection pool, configured as a DataSource in the application server and looked up through JNDI, or a library like HikariCP, so connections are reused. The pool size, timeouts and validation should be tuned to the expected load. Code must always return connections to the pool by closing them in try-with-resources, and queries should use PreparedStatement and transactions properly.",
+      "keywords": ["expensive", "connection pool", "datasource", "jndi", "try-with-resources", "pool size"]
+    },
+    {
+      "level": 6,
+      "topic": "Enterprise JavaBeans: message-driven beans",
+      "text": "In an e-commerce system, sending order confirmation emails and updating inventory makes checkout slow. How could message-driven beans help, and what trade-offs should you consider?",
+      "ideal_answer": "The checkout can place an order message on a JMS queue and return to the user immediately. A message-driven bean listens on that queue and processes messages asynchronously, sending emails and updating inventory in the background, so the user does not wait. The container manages a pool of MDB instances for concurrency, and the queue absorbs load spikes and decouples the components. Trade-offs include eventual consistency, so inventory may update a little later, the need to handle failures with retries and dead-letter queues, preventing duplicate processing, and more complex monitoring.",
+      "keywords": ["jms queue", "message-driven bean", "asynchronous", "decoupling", "eventual consistency", "retries"]
+    }
+  ]
+}

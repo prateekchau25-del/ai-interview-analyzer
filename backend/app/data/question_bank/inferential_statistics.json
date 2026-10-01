@@ -1,0 +1,90 @@
+{
+  "subject": "Inferential Statistics",
+  "applies_to": [{"course": "BSC_DS", "year": 2, "semester": 4}],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Stating hypotheses, types of errors and level of significance",
+      "text": "What are the null hypothesis and the alternative hypothesis?",
+      "ideal_answer": "The null hypothesis, H0, is the default statement of no effect or no difference, for example that a new drug has the same mean effect as the old one. The alternative hypothesis, H1 or Ha, is the claim we are trying to find evidence for, that there is an effect or difference. Hypothesis testing uses sample data to decide whether there is enough evidence to reject the null hypothesis in favour of the alternative; we never prove the null true, we only fail to reject it.",
+      "keywords": ["null hypothesis", "no effect", "alternative hypothesis", "reject", "fail to reject", "evidence"]
+    },
+    {
+      "level": 1,
+      "topic": "P-values, rejection regions and critical values",
+      "text": "What is a p-value?",
+      "ideal_answer": "A p-value is the probability of getting a test result at least as extreme as the one observed, assuming the null hypothesis is true. A small p-value means the observed data would be unlikely if the null were true, which is evidence against the null. If the p-value is less than the chosen significance level, such as 0.05, we reject the null hypothesis. It is not the probability that the null hypothesis is true.",
+      "keywords": ["probability", "at least as extreme", "assuming null is true", "significance level", "0.05", "reject"]
+    },
+    {
+      "level": 2,
+      "topic": "Types of errors",
+      "text": "What is the difference between a Type I error and a Type II error?",
+      "ideal_answer": "A Type I error is rejecting the null hypothesis when it is actually true, a false positive, and its probability is the significance level alpha. A Type II error is failing to reject the null hypothesis when it is actually false, a false negative, and its probability is beta. The power of a test is 1 minus beta. For a fixed sample size, decreasing alpha increases beta, and increasing sample size can reduce both.",
+      "keywords": ["type i", "false positive", "alpha", "type ii", "false negative", "beta", "power"]
+    },
+    {
+      "level": 2,
+      "topic": "z-test and t-test for a mean",
+      "text": "When do you use a z-test and when do you use a t-test for a mean?",
+      "ideal_answer": "A z-test is used when the population standard deviation is known, or when the sample is large, typically more than 30, so the sample standard deviation is a good estimate. A t-test is used when the population standard deviation is unknown and estimated from the sample, especially with small samples. The t-distribution has heavier tails than the normal distribution, depending on degrees of freedom n minus 1, and approaches the normal as the sample size grows. Both assume the data are roughly normal or the sample is large.",
+      "keywords": ["population standard deviation known", "large sample", "unknown", "small sample", "degrees of freedom", "heavier tails"]
+    },
+    {
+      "level": 3,
+      "topic": "Contingency tables: chi-square test",
+      "text": "How would you test whether gender and choice of course are independent using survey data?",
+      "ideal_answer": "Arrange the data in a contingency table with gender as rows and course as columns, showing observed counts. Set the null hypothesis that the two variables are independent. For each cell, compute the expected frequency as row total times column total divided by the grand total, then compute chi-square as the sum of observed minus expected squared, divided by expected. Compare it with the critical value at (rows minus 1) times (columns minus 1) degrees of freedom, or use the p-value; if significant, reject independence. Expected counts should generally be at least 5 in each cell.",
+      "keywords": ["contingency table", "independence", "expected frequency", "observed", "degrees of freedom", "chi-square"]
+    },
+    {
+      "level": 3,
+      "topic": "One-way ANOVA",
+      "text": "You want to compare the average marks of students taught by three different teaching methods. Which test would you use and how does it work?",
+      "ideal_answer": "I would use one-way ANOVA, since there is one factor, teaching method, with three groups. The null hypothesis is that all three group means are equal. ANOVA compares the variance between group means with the variance within groups using the F-statistic, which is the between-group mean square divided by the within-group mean square. A large F and small p-value means at least one mean differs, and a post-hoc test like Tukey's HSD shows which groups differ. It assumes normality, equal variances and independent observations.",
+      "keywords": ["one-way anova", "between groups", "within groups", "f-statistic", "post-hoc", "tukey"]
+    },
+    {
+      "level": 4,
+      "topic": "Non-parametric tests: Mann-Whitney U",
+      "text": "Why would you use a Mann-Whitney U test instead of an independent two-sample t-test?",
+      "ideal_answer": "The t-test assumes the data in each group are approximately normally distributed and is sensitive to outliers. The Mann-Whitney U test, also called the Wilcoxon rank-sum test, is non-parametric and works on the ranks of the data rather than the raw values, so it does not require normality. It is used for small samples with skewed data, outliers or ordinal data such as ratings. The trade-off is that when the data really are normal, it has somewhat less power than the t-test.",
+      "keywords": ["normality", "non-parametric", "ranks", "outliers", "ordinal", "less power"]
+    },
+    {
+      "level": 4,
+      "topic": "Goodness of fit tests: Shapiro-Wilk, Kolmogorov-Smirnov",
+      "text": "A Shapiro-Wilk test on your data gives a p-value of 0.30. What do you conclude, and why is this test commonly run before a t-test?",
+      "ideal_answer": "The null hypothesis of the Shapiro-Wilk test is that the data come from a normal distribution. A p-value of 0.30 is greater than 0.05, so we fail to reject the null, meaning there is no significant evidence against normality. This does not prove the data are normal, but it supports using parametric tests like the t-test, which assume normality. If the p-value were small, we would consider a non-parametric test or a transformation; Kolmogorov-Smirnov and Anderson-Darling are alternative goodness-of-fit tests.",
+      "keywords": ["normal distribution", "null hypothesis", "fail to reject", "greater than 0.05", "parametric", "assumption"]
+    },
+    {
+      "level": 5,
+      "topic": "Hypothesis testing: multiple comparisons",
+      "text": "An analyst runs 20 separate t-tests at the 5 percent level and finds one significant result. Why should we be cautious, and what should be done instead?",
+      "ideal_answer": "At a 5 percent significance level, each test has a 5 percent chance of a false positive, so across 20 tests we would expect about one significant result just by chance, and the probability of at least one false positive is about 64 percent. This is the multiple comparisons problem, which inflates the family-wise Type I error rate. Corrections like the Bonferroni method, dividing alpha by the number of tests, or controlling the false discovery rate with Benjamini-Hochberg should be applied. When comparing several group means, ANOVA followed by a post-hoc test is better than many separate t-tests.",
+      "keywords": ["multiple comparisons", "false positive", "family-wise error", "bonferroni", "false discovery rate", "anova"]
+    },
+    {
+      "level": 5,
+      "topic": "Regression: logistic and Poisson regression",
+      "text": "A data scientist uses ordinary linear regression to predict the number of website complaints per day and gets negative predictions. What is wrong and what model should be used?",
+      "ideal_answer": "Complaint counts are non-negative whole numbers, often skewed, and their variance usually grows with the mean, which violates linear regression assumptions of constant variance and normal errors. Linear regression can also predict negative values, which make no sense for counts. Poisson regression is designed for count data; it models the log of the expected count as a linear function of predictors, so predictions are always positive. If the variance is much larger than the mean, called overdispersion, negative binomial regression is better. Similarly, logistic regression is used for binary outcomes.",
+      "keywords": ["count data", "non-negative", "poisson regression", "log link", "overdispersion", "negative binomial"]
+    },
+    {
+      "level": 6,
+      "topic": "z-test and t-test; level of significance",
+      "text": "A company A/B tests a new checkout page. With 2 million users, the conversion rate rises from 3.00 to 3.02 percent with p less than 0.01. Should they roll it out? Discuss statistical versus practical significance.",
+      "ideal_answer": "The result is statistically significant, but with a very large sample even tiny differences become significant, so a low p-value does not mean the effect is important. The practical effect is only 0.02 percentage points, so we should look at the effect size and confidence interval and estimate the business impact in revenue. We should compare that gain with the cost of development, risk and maintenance of the new page. The decision should also check that the test was designed properly, with randomization, a pre-decided sample size and no repeated peeking at results.",
+      "keywords": ["statistical significance", "practical significance", "large sample", "effect size", "confidence interval", "business impact"]
+    },
+    {
+      "level": 6,
+      "topic": "Two-way ANOVA, ANCOVA; hypothesis testing packages in R, Python and Excel",
+      "text": "You need to analyse whether both fertilizer type and irrigation method affect crop yield, including their interaction, and present it to a client. Which test and tools would you use?",
+      "ideal_answer": "Two-way ANOVA is appropriate because there are two categorical factors, fertilizer and irrigation, and it tests each main effect as well as their interaction effect, meaning whether the effect of fertilizer depends on irrigation. If a continuous variable like soil quality also affects yield, ANCOVA can include it as a covariate. I would first check assumptions of normality of residuals and equal variances using Shapiro-Wilk and Levene's test. In Python, statsmodels' ols with anova_lm, or aov in R, does this, and Excel's Data Analysis ToolPak has two-factor ANOVA. For the client, I would present an interaction plot and effect sizes rather than just p-values.",
+      "keywords": ["two-way anova", "main effects", "interaction", "ancova", "levene", "statsmodels"]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "subject": "Big Data Technologies",
+  "applies_to": [
+    {"course": "BSC_DS", "year": 3, "semester": 6}
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Definition, sources and 4Vs of big data",
+      "text": "What is big data, and what are its 4 Vs?",
+      "ideal_answer": "Big data refers to datasets so large, fast or complex that they cannot be stored and processed efficiently with traditional databases and tools. The 4 Vs are volume, the huge amount of data; velocity, the speed at which data is generated and processed; variety, the different forms such as structured, semi-structured and unstructured data; and veracity, the uncertainty or quality of the data. Sources include social media, sensors, logs and online transactions. Value is often added as a fifth V.",
+      "keywords": ["volume", "velocity", "variety", "veracity", "traditional databases", "unstructured"]
+    },
+    {
+      "level": 1,
+      "topic": "HDFS architecture",
+      "text": "What is HDFS?",
+      "ideal_answer": "HDFS, the Hadoop Distributed File System, is the storage layer of Hadoop that stores very large files across a cluster of commodity machines. Files are split into large blocks, 128 MB by default, and each block is replicated, three times by default, on different DataNodes for fault tolerance. A NameNode stores the metadata, such as the file namespace and block locations. HDFS is designed for write-once, read-many access with high throughput.",
+      "keywords": ["hadoop distributed file system", "blocks", "128 mb", "replication", "namenode", "datanode"]
+    },
+    {
+      "level": 2,
+      "topic": "Batch vs real-time processing",
+      "text": "What is the difference between batch processing and real-time processing? Give an example of each.",
+      "ideal_answer": "Batch processing collects data over a period and processes it all together at scheduled times, which is efficient for large volumes but has high latency; for example, generating daily sales reports or monthly payroll using Hadoop MapReduce. Real-time or stream processing handles data continuously as it arrives with very low latency, for example credit card fraud detection or live traffic updates, using tools like Spark Streaming, Kafka or Flink. The choice depends on how quickly results are needed.",
+      "keywords": ["batch", "scheduled", "high latency", "real-time", "continuously", "low latency"]
+    },
+    {
+      "level": 2,
+      "topic": "Hadoop ecosystem: Pig and Hive",
+      "text": "What is the difference between Hive and Pig in the Hadoop ecosystem?",
+      "ideal_answer": "Hive is a data warehouse tool that lets users query data stored in HDFS using HiveQL, a SQL-like declarative language, which suits analysts familiar with SQL and structured data in tables. Pig uses Pig Latin, a procedural data-flow scripting language in which you describe a step-by-step sequence of transformations, which suits programmers doing ETL on semi-structured data. Both convert their scripts into MapReduce, Tez or Spark jobs, so users do not write low-level Java code. Hive was developed at Facebook and Pig at Yahoo.",
+      "keywords": ["hive", "hiveql", "sql-like", "pig latin", "data flow", "mapreduce jobs"]
+    },
+    {
+      "level": 3,
+      "topic": "MapReduce architecture and examples",
+      "text": "Explain how a MapReduce word count job processes a set of text files.",
+      "ideal_answer": "The input files are divided into input splits, and each split is processed by a mapper in parallel. The mapper reads each line, splits it into words and emits a key-value pair of the word and 1. In the shuffle and sort phase, all pairs with the same word are grouped and sent to the same reducer, sorted by key. The reducer sums the list of ones for each word and writes the word and its total count to HDFS. A combiner can perform local summing on the mapper side to reduce network traffic.",
+      "keywords": ["input splits", "mapper", "word and 1", "shuffle and sort", "reducer", "sum"]
+    },
+    {
+      "level": 3,
+      "topic": "Cassandra data model and CRUD operations",
+      "text": "How is data organised in Cassandra, and what is the role of the partition key?",
+      "ideal_answer": "Cassandra organises data into a keyspace, which contains tables, and tables contain rows identified by a primary key. The primary key consists of a partition key and optional clustering columns. The partition key is hashed to decide which node stores the row, so all rows with the same partition key are stored together in one partition, while clustering columns sort the rows within that partition. Queries should filter by the partition key, because tables are designed around the queries rather than normalised like in an RDBMS. CRUD is done with CQL statements like INSERT, SELECT, UPDATE and DELETE.",
+      "keywords": ["keyspace", "table", "partition key", "hashed", "clustering columns", "cql"]
+    },
+    {
+      "level": 4,
+      "topic": "Apache Spark architecture vs MapReduce",
+      "text": "Why is Apache Spark usually much faster than Hadoop MapReduce for iterative algorithms like machine learning?",
+      "ideal_answer": "Hadoop MapReduce writes intermediate results to disk after every map and reduce stage, so an iterative algorithm that runs many passes over the same data reads and writes HDFS repeatedly, which is slow. Spark keeps data in memory across operations using RDDs and DataFrames, which can be cached and reused across iterations. Spark also builds a DAG of the whole job and optimises it before execution, pipelining operations within a stage. As a result Spark can be up to 100 times faster for in-memory workloads, though it needs more RAM.",
+      "keywords": ["disk", "intermediate results", "in-memory", "cache", "dag", "iterative"]
+    },
+    {
+      "level": 4,
+      "topic": "RDD transformations and actions",
+      "text": "In PySpark, what happens when you run rdd.map(f).filter(g) and nothing appears to execute? When does the work actually happen?",
+      "ideal_answer": "map and filter are transformations, which are lazy: they do not compute anything but only record the operation in the lineage, building a DAG. The work happens only when an action is called, such as count, collect, take or saveAsTextFile, which triggers Spark to create a job, divide it into stages and tasks and execute them on the executors. Lazy evaluation lets Spark optimise the whole chain, for example pipelining map and filter in a single pass. The lineage also lets Spark recompute lost partitions for fault tolerance.",
+      "keywords": ["transformations", "lazy evaluation", "action", "collect", "dag", "lineage"]
+    },
+    {
+      "level": 5,
+      "topic": "Hadoop architecture and daemons",
+      "text": "What happens in an HDFS cluster when a DataNode fails, and what happens if the NameNode fails? How is the NameNode made reliable?",
+      "ideal_answer": "DataNodes send heartbeats to the NameNode; if heartbeats stop, the NameNode marks the DataNode dead and re-replicates its blocks from the remaining replicas to other DataNodes, so no data is lost and jobs continue. The NameNode holds all metadata, so in classic Hadoop it was a single point of failure, and if it failed the whole file system became unavailable. The Secondary NameNode only performs checkpointing by merging the edit log with the fsimage; it is not a hot backup. Hadoop 2 introduced NameNode High Availability, with an active and a standby NameNode sharing edits through JournalNodes, and ZooKeeper for automatic failover.",
+      "keywords": ["heartbeat", "re-replicate", "single point of failure", "secondary namenode", "standby namenode", "zookeeper"]
+    },
+    {
+      "level": 5,
+      "topic": "HDFS: small files problem",
+      "text": "A team stores millions of tiny 10 KB log files in HDFS and finds the cluster slow and the NameNode running out of memory. Why, and how would you fix it?",
+      "ideal_answer": "Every file and block in HDFS is an object in the NameNode's memory, taking roughly 150 bytes each, so millions of small files exhaust NameNode RAM even though total data is small. MapReduce or Spark also creates one task per small file, causing huge scheduling overhead. The fix is to combine small files into larger ones close to the block size, for example using SequenceFiles, Hadoop Archives, or by compacting them into Parquet or ORC files with a periodic job. Better still, the ingestion pipeline should batch the logs, for example through Kafka or Flume, before writing to HDFS.",
+      "keywords": ["small files", "namenode memory", "metadata", "too many tasks", "sequencefile", "combine"]
+    },
+    {
+      "level": 6,
+      "topic": "Data warehouse vs big data; Spark SQL",
+      "text": "A retail company has a traditional data warehouse but now wants to analyse clickstream and social media data along with sales. How would you design the solution?",
+      "ideal_answer": "A traditional data warehouse is schema-on-write and best for structured, cleaned data, but clickstream and social media data are high-volume and semi-structured or unstructured. I would build a data lake on HDFS or cloud object storage to land raw data in formats like JSON, then use Spark to clean it and convert it to columnar formats like Parquet, partitioned by date. Analysts can query it with Spark SQL or Hive using schema-on-read, and the curated aggregates can be loaded into the existing warehouse for BI reports. This hybrid lakehouse approach keeps the warehouse's reliability while adding scale and flexibility, with governance and access control over the lake.",
+      "keywords": ["data warehouse", "schema-on-write", "data lake", "spark", "parquet", "schema-on-read"]
+    },
+    {
+      "level": 6,
+      "topic": "NoSQL types and CAP theorem",
+      "text": "For a food delivery app, you must pick NoSQL stores for user sessions, restaurant menus, delivery-location tracking and a 'people who ordered this also ordered' feature. Which NoSQL types would you choose and why?",
+      "ideal_answer": "For user sessions I would use a key-value store like Redis, since sessions are looked up by a session ID and need very fast access with expiry. Restaurant menus fit a document database like MongoDB, because each menu is a nested JSON-like document with a varying structure. Delivery-location tracking produces heavy write-intensive time-series data, which suits a column-family store like Cassandra. The recommendation feature involves relationships between users and items, which suits a graph database like Neo4j. Under the CAP theorem, most of these choose availability with eventual consistency, which is acceptable, but payments should stay in a strongly consistent relational database.",
+      "keywords": ["key-value", "document", "column family", "graph", "cap theorem", "eventual consistency"]
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "subject": "Image Processing & Computer Vision",
+  "applies_to": [{"course": "BSC_DS", "year": 3, "semester": 6}],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Goals of computer vision, image formation",
+      "text": "What is computer vision and what are its main goals?",
+      "ideal_answer": "Computer vision is a field of artificial intelligence that enables computers to extract meaningful information from digital images and videos, similar to how humans see and understand scenes. Its main goals are to recognize and classify objects, detect and locate them, segment images into regions, track motion, and reconstruct the 3D structure of a scene. Applications include face recognition, medical imaging, self-driving cars and industrial inspection.",
+      "keywords": ["artificial intelligence", "images", "videos", "recognize", "detect", "segment", "3d"]
+    },
+    {
+      "level": 1,
+      "topic": "Image segmentation",
+      "text": "What is image segmentation?",
+      "ideal_answer": "Image segmentation is the process of dividing an image into meaningful regions or segments, where pixels in each region share similar properties such as intensity, colour or texture. Its purpose is to separate objects from the background or from each other to simplify analysis. Common techniques are thresholding, edge-based segmentation, region growing, clustering such as k-means, watershed and deep learning methods. Semantic segmentation assigns a class label to every pixel.",
+      "keywords": ["dividing", "regions", "pixels", "similar", "thresholding", "region growing", "every pixel"]
+    },
+    {
+      "level": 2,
+      "topic": "Image transforms and image filtering",
+      "text": "What is the difference between a mean filter and a median filter? When is the median filter better?",
+      "ideal_answer": "A mean filter replaces each pixel with the average of the pixel values in its neighbourhood, such as a 3 by 3 window, which smooths the image and reduces Gaussian noise but blurs edges. A median filter replaces each pixel with the median value of its neighbourhood, which is a non-linear operation. The median filter is better for removing salt-and-pepper noise, because extreme noisy values are ignored rather than averaged in. It also preserves edges better than the mean filter.",
+      "keywords": ["average", "neighbourhood", "blurs edges", "median", "non-linear", "salt-and-pepper", "preserves edges"]
+    },
+    {
+      "level": 2,
+      "topic": "Colour image processing",
+      "text": "What is the difference between the RGB and HSV colour models? Why is HSV often used for colour-based object detection?",
+      "ideal_answer": "The RGB model represents a colour as a combination of red, green and blue intensities, which matches how displays and cameras work. The HSV model represents colour using hue, the type of colour; saturation, the purity of colour; and value, the brightness. In RGB, a change in lighting changes all three channels, making it hard to define a colour range. In HSV, the hue stays relatively stable under lighting changes, so colour thresholding, like detecting a red ball, is easier and more robust.",
+      "keywords": ["red", "green", "blue", "hue", "saturation", "value", "lighting", "thresholding"]
+    },
+    {
+      "level": 3,
+      "topic": "Edge detection",
+      "text": "Explain the steps of the Canny edge detection algorithm.",
+      "ideal_answer": "First, the image is smoothed with a Gaussian filter to reduce noise. Second, the intensity gradient magnitude and direction are computed, usually with Sobel operators. Third, non-maximum suppression thins the edges by keeping only pixels that are local maxima along the gradient direction. Fourth, double thresholding classifies pixels as strong, weak or non-edges using high and low thresholds. Finally, edge tracking by hysteresis keeps weak edges only if they are connected to strong edges, giving thin, continuous edges.",
+      "keywords": ["gaussian", "gradient", "sobel", "non-maximum suppression", "double thresholding", "hysteresis"]
+    },
+    {
+      "level": 3,
+      "topic": "Mathematical morphology",
+      "text": "How do erosion and dilation work on a binary image, and what are opening and closing used for?",
+      "ideal_answer": "Morphological operations process a binary image using a small shape called a structuring element. Erosion keeps a foreground pixel only if the structuring element fits entirely inside the foreground, so objects shrink and small noise dots disappear. Dilation sets a pixel to foreground if the structuring element overlaps any foreground pixel, so objects grow and small holes fill. Opening is erosion followed by dilation and removes small noise objects while keeping the shape. Closing is dilation followed by erosion and fills small holes and gaps.",
+      "keywords": ["structuring element", "erosion", "shrink", "dilation", "grow", "opening", "closing"]
+    },
+    {
+      "level": 4,
+      "topic": "Corner detectors, HOG, SIFT and SURF features",
+      "text": "Why are SIFT features preferred over simple corner detectors like Harris for matching objects across different images?",
+      "ideal_answer": "The Harris corner detector finds points with large intensity changes in all directions and is rotation invariant, but it is not scale invariant, so the same corner may not be detected when the image is zoomed. SIFT detects keypoints across multiple scales using a difference of Gaussians pyramid, assigns each a dominant orientation, and builds a 128-dimensional descriptor from gradient histograms. This makes SIFT invariant to scale and rotation and robust to illumination and small viewpoint changes. Therefore SIFT keypoints can be reliably matched between different images, though it is slower than Harris; SURF is a faster approximation.",
+      "keywords": ["harris", "rotation invariant", "scale invariant", "difference of gaussians", "orientation", "128", "descriptor"]
+    },
+    {
+      "level": 4,
+      "topic": "Geometric transformations and camera models",
+      "text": "Compare affine and projective (perspective) transformations. How many point correspondences are needed to estimate each?",
+      "ideal_answer": "An affine transformation includes translation, rotation, scaling and shearing; it preserves parallel lines and ratios along lines, and it has 6 parameters, so it needs 3 point correspondences. A projective transformation, or homography, models perspective effects, such as viewing a plane from an angle; it preserves straight lines but not parallelism, so parallel lines may meet at a vanishing point. A homography is a 3 by 3 matrix with 8 degrees of freedom, so it needs at least 4 point correspondences. Homographies are used for image stitching and correcting document perspective.",
+      "keywords": ["affine", "parallel lines", "3 points", "projective", "homography", "perspective", "4 points"]
+    },
+    {
+      "level": 5,
+      "topic": "Neural networks, CNNs and autoencoders for vision",
+      "text": "Your CNN for classifying plant diseases has 98% training accuracy but only 70% on new field photos. What could be wrong and how would you fix it?",
+      "ideal_answer": "This large gap indicates overfitting and possibly a domain shift, since field photos may have different lighting, backgrounds and angles than the training images. I would use data augmentation such as rotation, flipping, brightness changes and cropping, and collect more diverse real field images. Regularization methods like dropout and weight decay, and early stopping based on validation accuracy, reduce overfitting. Transfer learning from a pre-trained model like ResNet is helpful with limited data. I would also check for data leakage between training and validation sets and examine misclassified examples.",
+      "keywords": ["overfitting", "domain shift", "data augmentation", "dropout", "early stopping", "transfer learning", "validation"]
+    },
+    {
+      "level": 5,
+      "topic": "Pattern recognition: template matching",
+      "text": "Template matching works well in your test images but fails when the object appears larger, rotated or under different lighting. Why, and what alternatives would you use?",
+      "ideal_answer": "Template matching slides a fixed template over the image and computes a similarity measure, such as normalized cross-correlation, at each position. Because the template has a fixed size and orientation, it fails when the object is scaled or rotated, and raw intensity comparison is sensitive to lighting changes and occlusion. Normalized cross-correlation reduces lighting sensitivity, and a multi-scale or rotated set of templates can help but is slow. Better alternatives are feature-based matching with scale and rotation invariant features like SIFT or ORB with RANSAC, or a trained object detector such as a CNN-based model.",
+      "keywords": ["slides", "similarity", "normalized cross-correlation", "fixed size", "rotation", "lighting", "sift", "cnn"]
+    },
+    {
+      "level": 6,
+      "topic": "Motion estimation, object tracking, face and gesture recognition",
+      "text": "A retail store wants to count people entering through a door using a CCTV camera. How would you design the system and what practical issues would you handle?",
+      "ideal_answer": "I would use an object detector such as a YOLO-type CNN to detect people in each frame, then a tracker such as a Kalman filter based tracker like SORT or DeepSORT to give each person a consistent ID across frames. A virtual line is drawn at the door, and a person is counted as entering or leaving when their track crosses the line in a given direction. Practical issues include occlusion when people walk close together, lighting changes, camera angle, and real-time performance on edge hardware. Privacy must be respected by processing on-device, not storing faces, and following data protection rules.",
+      "keywords": ["object detector", "yolo", "tracker", "kalman filter", "consistent id", "virtual line", "occlusion", "privacy"]
+    },
+    {
+      "level": 6,
+      "topic": "Texture and colour descriptors, shape representation",
+      "text": "A factory wants an automated vision system to reject defective tiles with scratches or wrong colour on a conveyor belt. How would you approach it?",
+      "ideal_answer": "First, I would control the imaging setup with fixed, uniform lighting and a fixed camera position, since consistent images make inspection much more reliable. Colour defects can be detected by comparing colour histograms or mean colour in a stable colour space like HSV or Lab with a reference tile. Scratches and surface defects can be detected using texture descriptors like local binary patterns or GLCM features, or edge detection, and shape representation can check cracks or broken corners. With enough labelled samples, a CNN classifier or anomaly detection model trained on good tiles can be used. The system must run in real time, and thresholds should be tuned to balance false rejects and missed defects.",
+      "keywords": ["uniform lighting", "colour histogram", "hsv", "texture", "local binary patterns", "anomaly detection", "real time", "false rejects"]
+    }
+  ]
+}

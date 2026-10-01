@@ -1,0 +1,183 @@
+{
+  "subject": "Discrete Mathematics for AI",
+  "applies_to": [
+    {
+      "course": "BSC_AI",
+      "year": 2,
+      "semester": 3
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Sets: union, intersection, complement, Cartesian product",
+      "text": "What is the Cartesian product of two sets? Give an example.",
+      "ideal_answer": "The Cartesian product of sets A and B, written A cross B, is the set of all ordered pairs (a, b) where a belongs to A and b belongs to B. If A has m elements and B has n elements, A cross B has m times n elements. For example, if A = {1, 2} and B = {x, y}, then A cross B = {(1, x), (1, y), (2, x), (2, y)}. Since the pairs are ordered, A cross B is generally not equal to B cross A.",
+      "keywords": [
+        "ordered pairs",
+        "a cross b",
+        "m times n",
+        "belongs",
+        "not equal"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "Propositional logic: tautologies, contradictions",
+      "text": "What is a tautology and what is a contradiction in propositional logic?",
+      "ideal_answer": "A tautology is a compound proposition that is true for every possible combination of truth values of its variables, for example p or not p. A contradiction is a compound proposition that is false for every combination of truth values, for example p and not p. A proposition that is neither, being true for some assignments and false for others, is called a contingency. Truth tables are used to check which category a proposition belongs to.",
+      "keywords": [
+        "always true",
+        "always false",
+        "p or not p",
+        "p and not p",
+        "contingency",
+        "truth table"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Functions: one-to-one, onto, bijection",
+      "text": "What is the difference between a one-to-one function and an onto function?",
+      "ideal_answer": "A function is one-to-one, or injective, if different inputs always give different outputs, so no two elements of the domain map to the same element of the codomain. A function is onto, or surjective, if every element of the codomain is the image of at least one element of the domain, so the range equals the codomain. A function that is both one-to-one and onto is a bijection, and only bijections have an inverse function. For example, f(x) = 2x from integers to integers is one-to-one but not onto, since odd numbers are not images.",
+      "keywords": [
+        "injective",
+        "different outputs",
+        "surjective",
+        "codomain",
+        "range",
+        "bijection",
+        "inverse"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Boolean algebra laws and simplification",
+      "text": "State De Morgan's laws in Boolean algebra and give an example of their use.",
+      "ideal_answer": "De Morgan's first law says the complement of A OR B equals NOT A AND NOT B. The second law says the complement of A AND B equals NOT A OR NOT B. In words, when a complement is taken over a group, AND becomes OR, OR becomes AND, and each variable is complemented. They are used to simplify expressions and to implement circuits using only NAND or only NOR gates. In logic, not (it is raining or it is cold) means it is not raining and it is not cold.",
+      "keywords": [
+        "complement",
+        "not a and not b",
+        "not a or not b",
+        "and becomes or",
+        "nand",
+        "nor"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Relations: reflexive, symmetric, transitive and equivalence relations",
+      "text": "Is the relation 'has the same remainder when divided by 3' on integers an equivalence relation? Explain.",
+      "ideal_answer": "Yes, it is an equivalence relation because it is reflexive, symmetric and transitive. It is reflexive since every integer has the same remainder as itself. It is symmetric since if a and b have the same remainder, then b and a do too. It is transitive since if a and b share a remainder and b and c share a remainder, then a and c share it. It divides the integers into three equivalence classes, those with remainders 0, 1 and 2.",
+      "keywords": [
+        "reflexive",
+        "symmetric",
+        "transitive",
+        "equivalence relation",
+        "equivalence classes",
+        "three"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Predicate logic: quantifiers and translating English sentences",
+      "text": "Translate 'Every student has passed at least one exam' into predicate logic.",
+      "ideal_answer": "Let S(x) mean x is a student, E(y) mean y is an exam and P(x, y) mean x passed y. The sentence is: for all x, S(x) implies there exists y such that E(y) and P(x, y). The universal quantifier for all is used with implication, while the existential quantifier there exists is used with conjunction. The order of quantifiers matters: putting there exists y first would wrongly mean one single exam was passed by every student.",
+      "keywords": [
+        "for all",
+        "there exists",
+        "implies",
+        "and",
+        "predicate",
+        "order of quantifiers"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Karnaugh maps",
+      "text": "Why do Karnaugh maps use Gray code ordering, and how do groupings simplify an expression?",
+      "ideal_answer": "In a K-map, rows and columns are ordered in Gray code, such as 00, 01, 11, 10, so that adjacent cells differ in only one variable, including wrap-around between edges. When two adjacent cells containing 1 are grouped, the variable that changes between them is eliminated because of the law A plus not A equals 1. Groups must contain 1, 2, 4 or 8 cells, that is powers of two. Making groups as large as possible and as few as possible gives the minimal sum-of-products expression.",
+      "keywords": [
+        "gray code",
+        "adjacent cells",
+        "one variable",
+        "eliminated",
+        "powers of two",
+        "sum of products",
+        "wrap-around"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Propositional logic: connectives, truth tables",
+      "text": "Why is the implication 'if p then q' considered true when p is false? Explain with an example.",
+      "ideal_answer": "An implication p implies q is false only when p is true and q is false; in all other cases it is true. When p is false, the promise has not been broken, so the statement is said to be vacuously true. For example, 'If it rains, I will carry an umbrella' is not violated on a day it does not rain, whether or not I carry an umbrella. p implies q is logically equivalent to not p or q, which is true whenever p is false.",
+      "keywords": [
+        "false only",
+        "p true q false",
+        "vacuously true",
+        "not p or q",
+        "equivalent"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Mapping input features to outputs in AI models",
+      "text": "A classifier is viewed as a function from feature vectors to class labels. Can this function be one-to-one? What does that tell you about the problem?",
+      "ideal_answer": "In general a classifier is not one-to-one because many different feature vectors map to the same class label; the domain is very large while the codomain is a small set of classes. It is usually onto, since each class should be predicted for some input. Because it is not one-to-one, the function has no inverse, so we cannot recover the exact input from the predicted label. Also, if two identical feature vectors in the training data have different labels, the mapping is not a function at all, which signals noisy labels or missing features.",
+      "keywords": [
+        "many-to-one",
+        "feature vectors",
+        "class label",
+        "onto",
+        "no inverse",
+        "noisy labels",
+        "missing features"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Boolean algebra laws and simplification",
+      "text": "Simplify the Boolean expression A B + A B' + A' B and explain each step.",
+      "ideal_answer": "First, take A common from the first two terms: A B + A B' = A (B + B'). By the complement law, B + B' = 1, so this becomes A. The expression is now A + A' B. Using the absorption-type law A + A' B = A + B, the final result is A + B. We can verify with a truth table: the expression is 0 only when both A and B are 0, which is exactly A OR B.",
+      "keywords": [
+        "common factor",
+        "complement law",
+        "absorption",
+        "a or b",
+        "truth table",
+        "or"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Logical reasoning in expert systems",
+      "text": "You are building a rule-based expert system for diagnosing network faults. How would you use propositional or predicate logic in its knowledge base, and how would it reason?",
+      "ideal_answer": "Facts would be represented as predicates, for example Down(router1) or NoPing(server2), and expert knowledge as if-then rules, such as for all x, NoPing(x) and LinkUp(x) implies ServiceFault(x). The inference engine applies modus ponens: if the conditions of a rule are true, its conclusion is added as a new fact. Forward chaining can derive all faults from observed symptoms, while backward chaining can test a specific hypothesis like 'is the switch faulty'. Rules should be kept consistent and free of contradictions, and the system should record which rules fired so it can explain its diagnosis.",
+      "keywords": [
+        "predicates",
+        "if-then rules",
+        "inference engine",
+        "modus ponens",
+        "forward chaining",
+        "backward chaining",
+        "explanation"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Sets and relations in AI",
+      "text": "In a recommendation system, users and items can be modelled using sets and relations. How would you represent 'user liked item' and find items liked by both of two users?",
+      "ideal_answer": "The 'liked' relation is a subset of the Cartesian product of the set of users and the set of items, so each pair (u, i) means user u liked item i. It can be stored as a binary relation matrix, with 1 when the pair is in the relation, or as a set of items for each user. Items liked by both users u and v are the intersection of their item sets. The size of the intersection divided by the size of the union gives the Jaccard similarity, which can be used to recommend items from similar users. This relation is not symmetric or reflexive because it connects two different sets.",
+      "keywords": [
+        "relation",
+        "cartesian product",
+        "ordered pair",
+        "matrix",
+        "intersection",
+        "union",
+        "jaccard similarity"
+      ]
+    }
+  ]
+}

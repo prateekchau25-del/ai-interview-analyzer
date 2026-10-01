@@ -3,6 +3,7 @@ from contextlib import contextmanager
 
 from sqlalchemy import create_engine, event
 from sqlalchemy.orm import Session, sessionmaker
+from sqlalchemy.pool import StaticPool
 
 from backend.app.core.config import get_settings
 
@@ -14,10 +15,12 @@ if not settings.database_url:
     )
 _is_sqlite = settings.database_url.startswith("sqlite")
 
+_in_memory = settings.database_url in ("sqlite://", "sqlite:///:memory:")  # tests only
 engine = create_engine(
     settings.database_url,
     pool_pre_ping=True,
     connect_args={"check_same_thread": False, "timeout": 30} if _is_sqlite else {},
+    **({"poolclass": StaticPool} if _in_memory else {}),
 )
 
 if _is_sqlite:
@@ -25,7 +28,8 @@ if _is_sqlite:
     def _sqlite_pragmas(dbapi_conn, _):
         cur = dbapi_conn.cursor()
         cur.execute("PRAGMA foreign_keys=ON")
-        cur.execute("PRAGMA journal_mode=WAL")
+        if not _in_memory:
+            cur.execute("PRAGMA journal_mode=WAL")
         cur.close()
 
 SessionLocal = sessionmaker(bind=engine, expire_on_commit=False)

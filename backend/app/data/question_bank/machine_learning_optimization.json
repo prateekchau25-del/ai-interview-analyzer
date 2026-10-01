@@ -1,0 +1,90 @@
+{
+  "subject": "Machine Learning & Optimization",
+  "applies_to": [{"course": "BSC_AI", "year": 3, "semester": 5}],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Types of machine learning: supervised, unsupervised, reinforcement",
+      "text": "What are the three main types of machine learning?",
+      "ideal_answer": "The three main types are supervised, unsupervised and reinforcement learning. In supervised learning, the model learns from labelled data, where each input has a known output, for tasks like classification and regression. In unsupervised learning, the model finds patterns or structure in unlabelled data, for example clustering customers. In reinforcement learning, an agent learns by interacting with an environment and receiving rewards or penalties, aiming to maximize the total reward, as in game playing or robotics.",
+      "keywords": ["supervised", "labelled", "unsupervised", "unlabelled", "clustering", "reinforcement", "reward"]
+    },
+    {
+      "level": 1,
+      "topic": "Performance metrics: confusion matrix",
+      "text": "What is a confusion matrix?",
+      "ideal_answer": "A confusion matrix is a table used to evaluate a classification model by comparing predicted labels with actual labels. For binary classification it has four cells: true positives, true negatives, false positives and false negatives. False positives are negatives wrongly predicted as positive, and false negatives are positives wrongly predicted as negative. Metrics such as accuracy, precision, recall and F1 score are calculated from it.",
+      "keywords": ["table", "classification", "predicted", "actual", "true positives", "false positives", "false negatives"]
+    },
+    {
+      "level": 2,
+      "topic": "Issues and applications of machine learning",
+      "text": "Give some real-world applications of machine learning and some common issues faced while building ML systems.",
+      "ideal_answer": "Applications include spam filtering, product recommendations, fraud detection in banking, medical diagnosis, speech recognition, image recognition and price prediction. Common issues include poor quality or insufficient data, missing values and noise, and imbalanced classes. Models can overfit or underfit, and training data may contain bias, leading to unfair predictions. Other issues are lack of interpretability, high computational cost and changes in data over time, called data drift, which reduce accuracy after deployment.",
+      "keywords": ["spam filtering", "recommendations", "fraud detection", "insufficient data", "overfit", "bias", "data drift"]
+    },
+    {
+      "level": 2,
+      "topic": "Linear, multivariate linear and logistic regression",
+      "text": "What is the difference between linear regression and logistic regression?",
+      "ideal_answer": "Linear regression is used to predict a continuous numerical value, such as house price, by fitting a straight line or hyperplane, and it is usually trained by minimizing the mean squared error. Logistic regression is used for classification, such as spam or not spam. It applies the sigmoid function to a linear combination of inputs to output a probability between 0 and 1, and a threshold like 0.5 gives the class. Logistic regression is trained by minimizing log loss, also called cross-entropy.",
+      "keywords": ["continuous", "mean squared error", "classification", "sigmoid", "probability", "threshold", "log loss"]
+    },
+    {
+      "level": 3,
+      "topic": "Decision trees using Gini index; CART",
+      "text": "How does the CART algorithm use the Gini index to build a decision tree?",
+      "ideal_answer": "The Gini index measures the impurity of a node as 1 minus the sum of the squared class probabilities; it is 0 for a pure node and maximum when classes are equally mixed. CART considers every feature and possible split point and creates binary splits. For each candidate split, it computes the weighted average Gini index of the two child nodes and chooses the split that gives the lowest impurity, that is, the largest reduction in Gini. This is repeated recursively until a stopping condition, like maximum depth or minimum samples, is reached, and the tree may then be pruned.",
+      "keywords": ["gini index", "impurity", "squared", "binary splits", "weighted", "lowest", "recursively", "pruned"]
+    },
+    {
+      "level": 3,
+      "topic": "Clustering: distance metrics, K-means",
+      "text": "Explain the steps of the K-means clustering algorithm.",
+      "ideal_answer": "First, choose the number of clusters k and initialize k centroids, randomly or using k-means plus plus. Second, assign each data point to the nearest centroid, usually using Euclidean distance. Third, recompute each centroid as the mean of the points assigned to it. Repeat the assignment and update steps until the centroids stop changing or a maximum number of iterations is reached. K-means minimizes the within-cluster sum of squared distances.",
+      "keywords": ["k", "centroids", "nearest", "euclidean distance", "mean", "repeat", "within-cluster sum of squares"]
+    },
+    {
+      "level": 4,
+      "topic": "Training vs generalization error, bias-variance trade-off",
+      "text": "Explain the bias-variance trade-off. Why does a very deep decision tree tend to overfit?",
+      "ideal_answer": "Bias is error due to overly simple assumptions, causing underfitting, where both training and test errors are high. Variance is error due to the model being too sensitive to the training data, causing overfitting, where training error is low but generalization error is high. Increasing model complexity usually reduces bias but increases variance, so we aim for a balance that minimizes total test error. A very deep decision tree can create a leaf for almost every training example, memorizing noise, so it has low bias but high variance. Limiting depth, pruning or using ensembles reduces this.",
+      "keywords": ["bias", "underfitting", "variance", "overfitting", "complexity", "generalization error", "pruning"]
+    },
+    {
+      "level": 4,
+      "topic": "Ensemble learning: bagging, boosting, random forest",
+      "text": "Compare bagging and boosting. Which one mainly reduces variance and which mainly reduces bias?",
+      "ideal_answer": "Bagging, or bootstrap aggregating, trains many models independently and in parallel on different bootstrap samples of the data and combines them by voting or averaging; random forest is an example that also uses random feature subsets. Bagging mainly reduces variance, so it works well with high-variance models like deep trees. Boosting trains models sequentially, where each new model focuses on the errors of the previous ones, for example by increasing weights of misclassified samples in AdaBoost or fitting residuals in gradient boosting. Boosting mainly reduces bias, but it can overfit noisy data if not regularized.",
+      "keywords": ["bootstrap", "parallel", "voting", "reduces variance", "sequentially", "errors", "reduces bias"]
+    },
+    {
+      "level": 5,
+      "topic": "Performance metrics: precision, recall, F-measure, ROC",
+      "text": "A fraud detection model shows 99% accuracy, but it misses most fraud cases. Why is accuracy misleading here, and which metrics would you use?",
+      "ideal_answer": "Fraud data is highly imbalanced; if only 1% of transactions are fraud, a model that predicts everything as not fraud still gets 99% accuracy while catching no fraud. So we should use precision, the fraction of predicted frauds that are actually fraud, and recall, the fraction of actual frauds that are detected. The F1 score is the harmonic mean of precision and recall. The ROC curve and AUC, and especially the precision-recall curve, show performance across thresholds. Since missing fraud is costly, we would focus on recall while keeping precision acceptable, adjusting the threshold or using class weights or resampling.",
+      "keywords": ["imbalanced", "precision", "recall", "f1 score", "harmonic mean", "roc", "threshold"]
+    },
+    {
+      "level": 5,
+      "topic": "Support vector machines, kernel trick and support vector regression",
+      "text": "Your data is not linearly separable and a linear SVM performs poorly. How does the kernel trick help, and what hyperparameters must you tune?",
+      "ideal_answer": "The kernel trick lets the SVM work as if the data were mapped into a higher-dimensional feature space where it becomes linearly separable, without computing that mapping explicitly; it only computes inner products using a kernel function. Common kernels are polynomial and RBF or Gaussian kernels. The C parameter controls the trade-off between a wide margin and misclassification penalties; a large C can overfit. For the RBF kernel, gamma controls how far the influence of a single point reaches, and a large gamma also causes overfitting. These are tuned using cross-validation with grid or random search, and features should be scaled first.",
+      "keywords": ["higher-dimensional", "linearly separable", "kernel function", "rbf", "c parameter", "gamma", "cross-validation", "scaled"]
+    },
+    {
+      "level": 6,
+      "topic": "Ensemble learning; k-fold cross validation",
+      "text": "You must choose a final model for a loan approval system from several candidates with a limited dataset. How would you evaluate them fairly, and what else would you consider before deployment?",
+      "ideal_answer": "I would first keep a separate hold-out test set, then use stratified k-fold cross-validation on the remaining data, where the data is split into k folds and each fold is used once for validation, to compare models and tune hyperparameters. This gives a more reliable estimate than a single split on limited data. Data preprocessing must be fitted only within training folds to avoid leakage. Beyond accuracy, I would check metrics suited to the business cost, interpretability, since loan decisions must be explained to customers and regulators, and fairness across groups like gender. After deployment, I would monitor performance and data drift.",
+      "keywords": ["hold-out test set", "stratified", "k-fold cross-validation", "leakage", "interpretability", "fairness", "monitor"]
+    },
+    {
+      "level": 6,
+      "topic": "Clustering: distance metrics, K-means and hierarchical clustering",
+      "text": "A marketing team asks you to segment customers using purchase amount, visit frequency and age. How would you choose between K-means and hierarchical clustering, and what preprocessing is needed?",
+      "ideal_answer": "Since features are on different scales, such as amount in thousands and age in tens, I would standardize them first, because distance metrics like Euclidean distance would otherwise be dominated by large-scale features; outliers should also be handled. K-means is fast and scales well to many customers, but needs k chosen in advance, using the elbow method or silhouette score, and assumes roughly spherical clusters. Hierarchical clustering does not need k in advance and gives a dendrogram showing nested groupings, but it is slow for large datasets. I would likely use K-means for large data, possibly using hierarchical clustering on a sample to explore k, and then profile clusters so marketing can interpret them.",
+      "keywords": ["standardize", "euclidean distance", "k-means", "elbow method", "silhouette", "hierarchical", "dendrogram"]
+    }
+  ]
+}

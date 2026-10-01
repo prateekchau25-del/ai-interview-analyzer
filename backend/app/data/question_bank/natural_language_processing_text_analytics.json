@@ -1,0 +1,180 @@
+{
+  "subject": "Natural Language Processing & Text Analytics",
+  "applies_to": [
+    {
+      "course": "BSC_DS",
+      "year": 3,
+      "semester": 5
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Origins, challenges and applications of NLP",
+      "text": "What is natural language processing, and what are some of its applications?",
+      "ideal_answer": "Natural language processing is a field of AI and linguistics that enables computers to understand, interpret and generate human language in text or speech. Applications include machine translation, sentiment analysis, chatbots, speech recognition, spam filtering, information retrieval and text summarisation. A major challenge is ambiguity, since the same word or sentence can have several meanings, along with variation in grammar, slang and multiple languages.",
+      "keywords": [
+        "computers",
+        "human language",
+        "understand",
+        "machine translation",
+        "sentiment analysis",
+        "ambiguity"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "Part-of-speech tagging",
+      "text": "What is part-of-speech tagging?",
+      "ideal_answer": "Part-of-speech tagging is the process of assigning each word in a sentence its grammatical category, such as noun, verb, adjective, adverb or preposition, based on its definition and context. For example, in 'I book a ticket', book is tagged as a verb, while in 'I read a book' it is a noun. Taggers can be rule-based, stochastic like Hidden Markov Models, or neural. POS tags are used in parsing, named entity recognition and information extraction.",
+      "keywords": [
+        "grammatical category",
+        "noun",
+        "verb",
+        "context",
+        "hidden markov model",
+        "tagger"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Lexical resources: stemmers",
+      "text": "What is the difference between stemming and lemmatization?",
+      "ideal_answer": "Stemming removes prefixes or suffixes using simple rules to reduce a word to its stem, which may not be a real word; for example, the Porter stemmer reduces 'studies' to 'studi'. Lemmatization reduces a word to its dictionary base form, called the lemma, using vocabulary and morphological analysis, often with the part of speech; for example 'studies' becomes 'study' and 'better' becomes 'good'. Stemming is faster but cruder, while lemmatization is more accurate but slower and needs resources like WordNet.",
+      "keywords": [
+        "stemming",
+        "suffixes",
+        "stem",
+        "lemmatization",
+        "dictionary form",
+        "lemma"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Statistical language models: n-grams",
+      "text": "What is an n-gram language model? Give an example of a bigram.",
+      "ideal_answer": "An n-gram is a contiguous sequence of n words, and an n-gram language model estimates the probability of a word given the previous n minus 1 words, based on the Markov assumption. For a bigram model, n equals 2, so the probability of a word depends only on the previous word; for example, in 'I love NLP' the bigrams are 'I love' and 'love NLP'. Probabilities are estimated from counts in a corpus, such as count of 'love NLP' divided by count of 'love'. They are used in speech recognition, spelling correction and text prediction.",
+      "keywords": [
+        "sequence of n words",
+        "probability",
+        "previous words",
+        "markov assumption",
+        "bigram",
+        "corpus counts"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Spelling error detection and correction",
+      "text": "How does minimum edit distance help in spelling correction? What is the edit distance between 'cat' and 'cut'?",
+      "ideal_answer": "Minimum edit distance is the smallest number of insertions, deletions and substitutions needed to transform one string into another, computed with dynamic programming, as in Levenshtein distance. For spelling correction, the system detects a non-word by checking a dictionary and then suggests dictionary words with the smallest edit distance, often ranked by word frequency or a noisy channel model. The edit distance between 'cat' and 'cut' is 1, since only 'a' is substituted with 'u'. Real-word errors, like 'form' instead of 'from', need context such as n-gram models.",
+      "keywords": [
+        "insertions",
+        "deletions",
+        "substitutions",
+        "dynamic programming",
+        "dictionary",
+        "levenshtein"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Naive Bayes text classification and sentiment analysis",
+      "text": "How would a Naive Bayes classifier determine whether a movie review is positive or negative?",
+      "ideal_answer": "The review is represented as a bag of words, ignoring word order. During training, the classifier learns the prior probability of each class and the likelihood of each word given the class, from labelled reviews, with Laplace smoothing for unseen words. For a new review, it computes for each class the prior multiplied by the product of the likelihoods of its words, assuming the words are independent given the class, usually using sums of log probabilities. It assigns the class with the higher probability, positive or negative. Handling negation like 'not good' improves accuracy.",
+      "keywords": [
+        "bag of words",
+        "prior",
+        "likelihood",
+        "independence",
+        "laplace smoothing",
+        "higher probability"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Regular expressions and finite-state automata",
+      "text": "How are regular expressions related to finite-state automata, and why can't they be used to fully parse natural language sentences?",
+      "ideal_answer": "Every regular expression describes a regular language, and every regular language can be recognised by a finite-state automaton, so regular expressions and FSAs are equivalent in power; regex engines compile patterns into automata. They are useful in NLP for tokenisation, pattern matching like dates and emails, and morphological analysis with finite-state transducers. However, an FSA has only finite memory, so it cannot handle unbounded nested or recursive structures such as centre-embedded clauses, which natural language syntax allows. Parsing such structures requires more powerful models like context-free grammars.",
+      "keywords": [
+        "regular language",
+        "finite-state automata",
+        "equivalent",
+        "finite memory",
+        "nested structures",
+        "context-free grammar"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Context-free grammar and parsing",
+      "text": "Compare top-down and bottom-up parsing. Why does the CYK algorithm require the grammar in Chomsky Normal Form?",
+      "ideal_answer": "Top-down parsing starts from the start symbol S and expands rules to try to match the input words; it never explores trees that cannot be sentences but may waste time on expansions inconsistent with the words. Bottom-up parsing starts from the words and combines them into larger constituents until reaching S; it only builds structures consistent with the input but may build ones that cannot lead to S. CYK is a bottom-up dynamic programming algorithm that fills a table where each cell holds the non-terminals covering a span of words. It requires Chomsky Normal Form, where each rule produces either two non-terminals or one terminal, so every span can be split into exactly two parts and the table can be filled in O(n cubed) time.",
+      "keywords": [
+        "top-down",
+        "start symbol",
+        "bottom-up",
+        "dynamic programming",
+        "chomsky normal form",
+        "two non-terminals"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Processing Indian languages; Paninian framework",
+      "text": "Why do NLP techniques designed for English often perform poorly on Hindi or Marathi, and how does the Paninian framework help?",
+      "ideal_answer": "Indian languages are morphologically rich, relatively free in word order and often written in scripts like Devanagari, with code-mixing such as Hinglish and less labelled data, so English methods that depend on fixed word order and simple morphology fail. The Paninian framework, based on Panini's grammar, analyses sentences through karaka relations, the semantic roles of nouns with respect to the verb, such as karta for agent and karma for object. These relations are identified mainly from case markers or vibhaktis and postpositions rather than word position, which suits free word order languages. Practical systems also need good morphological analysers, script normalisation and multilingual models.",
+      "keywords": [
+        "morphologically rich",
+        "free word order",
+        "code-mixing",
+        "paninian",
+        "karaka",
+        "vibhakti"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Encoder-decoder machine translation and MT evaluation",
+      "text": "A basic encoder-decoder translation model works well on short sentences but poorly on long ones. Why, and how is this fixed? How would you evaluate the output?",
+      "ideal_answer": "In a basic RNN encoder-decoder, the encoder compresses the whole source sentence into a single fixed-length context vector, which becomes a bottleneck, so information from long sentences is lost. The attention mechanism fixes this by letting the decoder look at all encoder hidden states and compute a weighted combination focused on the relevant source words at each output step. Transformers extend this with self-attention and no recurrence. Output is evaluated automatically with BLEU, which measures n-gram overlap with reference translations with a brevity penalty, or metrics like METEOR and chrF, along with human evaluation of adequacy and fluency.",
+      "keywords": [
+        "fixed-length vector",
+        "bottleneck",
+        "attention",
+        "transformer",
+        "bleu",
+        "human evaluation"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Information retrieval models",
+      "text": "You are building a search feature for a college's document repository. Which retrieval model would you use, and how would you improve result quality?",
+      "ideal_answer": "A good starting point is the vector space model with TF-IDF weighting or BM25, which ranks documents by how often query terms appear in them, weighted by how rare the terms are across the collection, using cosine similarity. Documents are pre-processed with tokenisation, stop-word removal and stemming, and stored in an inverted index for fast lookup. Unlike the Boolean model, this gives ranked results. To improve quality, I would add spelling correction, synonym expansion using WordNet, and semantic search with sentence embeddings to match meaning, not just words. Results should be evaluated with precision, recall and user feedback.",
+      "keywords": [
+        "vector space model",
+        "tf-idf",
+        "bm25",
+        "inverted index",
+        "cosine similarity",
+        "precision and recall"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Sentiment analysis in production",
+      "text": "A company wants to monitor customer sentiment from tweets in English, Hindi and Hinglish. What challenges would you expect and how would you build a reliable system?",
+      "ideal_answer": "Challenges include code-mixed Hinglish written in Roman script, spelling variations, slang, emojis, sarcasm, negation and domain-specific words, as well as limited labelled data for Indian languages. I would collect and label a representative sample of the company's tweets, normalise text by handling emojis, transliteration and repeated characters, and fine-tune a multilingual transformer such as mBERT, XLM-R or MuRIL rather than relying only on a lexicon or Naive Bayes baseline. The model should be evaluated with F1 per class and per language, since data is often imbalanced. In production, I would monitor for drift, periodically relabel new data and route uncertain predictions for human review.",
+      "keywords": [
+        "code-mixed",
+        "sarcasm",
+        "labelled data",
+        "multilingual transformer",
+        "f1 score",
+        "drift"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "subject": "Edge Computing",
+  "applies_to": [
+    {"course": "BSC_AI", "year": 3, "semester": 5}
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "From cloud to edge computing",
+      "text": "What is edge computing?",
+      "ideal_answer": "Edge computing is a distributed computing model in which data is processed close to where it is generated, at or near devices such as sensors, cameras, gateways or local servers, instead of sending everything to a central cloud data centre. This reduces latency, saves network bandwidth and allows operation even with poor connectivity. It also improves privacy because sensitive data can stay local. Examples include smart cameras analysing video on-site and self-driving cars processing sensor data on board.",
+      "keywords": ["close to the source", "devices", "central cloud", "latency", "bandwidth", "privacy"]
+    },
+    {
+      "level": 1,
+      "topic": "MQTT for edge pipelines",
+      "text": "What is MQTT?",
+      "ideal_answer": "MQTT, Message Queuing Telemetry Transport, is a lightweight publish-subscribe messaging protocol designed for IoT devices with limited resources and unreliable, low-bandwidth networks. Devices publish messages to topics on a central broker, and clients subscribed to those topics receive them, so publishers and subscribers are decoupled. It runs over TCP and has a very small header. It offers three quality of service levels: at most once, at least once and exactly once.",
+      "keywords": ["lightweight", "publish-subscribe", "broker", "topics", "iot", "quality of service"]
+    },
+    {
+      "level": 2,
+      "topic": "Limitations of cloud for low latency",
+      "text": "Why is the cloud alone not suitable for low-latency applications, and how does edge computing help?",
+      "ideal_answer": "Cloud data centres are often far from devices, so data must travel over the internet and back, adding round-trip delays of tens to hundreds of milliseconds, plus variable network congestion. Sending huge volumes of raw data like video to the cloud also needs high bandwidth and costs money, and applications fail if connectivity is lost. Edge computing processes data near the source, giving millisecond-level responses, reducing bandwidth by sending only summaries, and continuing to work offline. This is critical for applications like autonomous vehicles, industrial control and AR.",
+      "keywords": ["distance", "round-trip", "latency", "bandwidth", "connectivity", "near the source"]
+    },
+    {
+      "level": 2,
+      "topic": "Edge data centers and lightweight edge clouds",
+      "text": "What is the difference between an edge data centre and a cloud data centre?",
+      "ideal_answer": "A cloud data centre is a very large, centralised facility with huge compute and storage capacity, located in a few regions and serving users over long distances. An edge data centre is a small, distributed facility located close to end users or devices, for example at a cell tower, factory or city, with limited resources. Edge data centres provide low latency and local processing, while cloud data centres provide massive scale, long-term storage and heavy computation like model training. They are usually used together in a hierarchy.",
+      "keywords": ["centralised", "large", "small", "distributed", "close to users", "low latency"]
+    },
+    {
+      "level": 3,
+      "topic": "IoT edge platforms: Azure IoT Hub, AWS",
+      "text": "How do platforms like AWS IoT Greengrass or Azure IoT Edge help in running an edge application?",
+      "ideal_answer": "These platforms extend cloud services to edge devices. A runtime installed on a local gateway or device can run code, containers or ML models locally, for example Lambda functions in Greengrass or Docker-based modules in Azure IoT Edge. The device keeps processing and acting on data even when offline and syncs with the cloud, using IoT Hub or AWS IoT Core, when connected. The cloud is used to securely register devices, deploy and update modules remotely, monitor them and store aggregated data.",
+      "keywords": ["runtime", "gateway", "run locally", "offline", "deploy remotely", "iot hub"]
+    },
+    {
+      "level": 3,
+      "topic": "Docker and Kubernetes for edge",
+      "text": "How are containers useful for deploying applications to many edge devices?",
+      "ideal_answer": "A container packages an application with all its libraries and dependencies, so it runs the same way on any device with a container runtime, regardless of differences in the underlying system. Containers are lightweight compared with virtual machines, which suits resource-constrained edge hardware. With an orchestrator like Kubernetes, or lightweight versions like K3s or KubeEdge, updates can be rolled out to hundreds of devices from one place, failed containers are restarted automatically, and workloads can be scheduled to the right node. Images should be built for the device's CPU architecture, such as ARM.",
+      "keywords": ["container", "dependencies", "lightweight", "kubernetes", "k3s", "rolling updates"]
+    },
+    {
+      "level": 4,
+      "topic": "Distributed systems at the edge: clock synchronization",
+      "text": "Why can't edge devices simply use their own clocks to order events, and how is this problem solved?",
+      "ideal_answer": "Each device's physical clock drifts at a slightly different rate, and there is no global clock, so timestamps from different devices may be inconsistent and events can appear in the wrong order. Physical clocks can be synchronised using protocols like NTP or PTP, or algorithms like Cristian's and Berkeley, but some error always remains. When only causal order matters, logical clocks are used: Lamport clocks ensure that if event A happened before B, A gets a smaller timestamp, and vector clocks can also detect concurrent events. Edge systems with intermittent connectivity rely heavily on such techniques.",
+      "keywords": ["clock drift", "no global clock", "ntp", "logical clocks", "lamport", "vector clocks"]
+    },
+    {
+      "level": 4,
+      "topic": "MQTT and Kafka for end-to-end edge pipelines",
+      "text": "In an edge pipeline, why would you use MQTT at the device side and Kafka at the cloud side instead of using only one of them?",
+      "ideal_answer": "MQTT is lightweight, designed for constrained devices and unreliable networks, and handles many connected clients with small messages and QoS levels, so it suits sensors and gateways. However, it is not built for long-term storage or replaying data. Kafka is a distributed, durable commit log that stores streams on disk, supports high throughput, partitions, consumer groups and replay, which suits back-end analytics and stream processing. But Kafka clients are too heavy for tiny devices. So devices publish to an MQTT broker, and a bridge or connector forwards the data into Kafka topics for processing.",
+      "keywords": ["mqtt", "lightweight", "constrained devices", "kafka", "durable", "replay"]
+    },
+    {
+      "level": 5,
+      "topic": "Edge analytics and data management",
+      "text": "A factory has 2,000 vibration sensors sending data every millisecond, and the cloud bill and network are overloaded. How would you redesign the data flow using edge analytics?",
+      "ideal_answer": "Process the raw data at an edge gateway near the machines instead of sending every reading to the cloud. The gateway can filter noise, downsample, aggregate readings into summaries like averages and peaks per second, and compute features such as FFT frequency bands. An anomaly detection model running at the edge sends alerts immediately and uploads raw data only around abnormal events. Only summaries, alerts and periodic samples go to the cloud for long-term storage, dashboards and model retraining. Local buffering handles network outages, and this greatly cuts bandwidth and cost while improving response time.",
+      "keywords": ["edge gateway", "filter", "aggregate", "anomaly detection", "send only summaries", "buffering"]
+    },
+    {
+      "level": 5,
+      "topic": "Federating edge resources and security",
+      "text": "Edge devices are physically exposed in public places. What security risks does this create and how would you mitigate them?",
+      "ideal_answer": "Edge devices can be physically stolen or tampered with, may run outdated firmware, often use default passwords, and have a large attack surface across many locations. Mitigations include secure boot and a hardware root of trust like a TPM to prevent tampered firmware, encrypting data at rest and in transit with TLS, and giving each device a unique identity with certificates rather than shared passwords. Signed over-the-air updates keep firmware patched, and zero-trust network access limits what a compromised device can reach. Central monitoring should detect unusual device behaviour and allow quick revocation.",
+      "keywords": ["physical tampering", "secure boot", "encryption", "certificates", "over-the-air updates", "zero trust"]
+    },
+    {
+      "level": 6,
+      "topic": "Edge AI use cases: autonomous vehicles",
+      "text": "For a self-driving car, which tasks should run on the vehicle's edge computer and which in the cloud? Explain the trade-offs.",
+      "ideal_answer": "Safety-critical, real-time tasks must run on the vehicle: sensor fusion from cameras, lidar and radar, object detection, path planning and braking decisions, because they need millisecond latency and must work without network connectivity. The cloud handles tasks that are not time-critical: training and improving models on fleet data, HD map updates, fleet analytics and over-the-air software updates. Nearby edge servers or roadside units connected through 5G can support cooperative tasks like traffic information sharing. The trade-off is that on-board hardware has limited power, heat and cost budgets, so models are optimised with quantisation or pruning, while the cloud offers unlimited compute but unreliable latency.",
+      "keywords": ["real-time", "on-board", "latency", "connectivity", "model training", "quantisation"]
+    },
+    {
+      "level": 6,
+      "topic": "Edge AI use cases: healthcare and smart cities",
+      "text": "A hospital wants AI-based patient monitoring using cameras and wearables. Would you process the data at the edge or in the cloud, and why?",
+      "ideal_answer": "I would use a hybrid design with most processing at the edge. Running inference on local edge servers inside the hospital keeps sensitive video and health data on-premises, which helps privacy and compliance with laws like the DPDP Act, and gives instant alerts for falls or abnormal vital signs even if internet fails. Only anonymised or aggregated data and alerts would be sent to the cloud for long-term analytics, model retraining and dashboards. The trade-offs are higher local hardware and maintenance cost and the need to manage model updates across sites, which can be handled with containerised deployments and central monitoring.",
+      "keywords": ["hybrid", "edge inference", "privacy", "low latency", "anonymised", "model retraining"]
+    }
+  ]
+}

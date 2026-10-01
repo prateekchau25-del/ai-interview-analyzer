@@ -1,0 +1,181 @@
+{
+  "subject": "Discrete Structures-II",
+  "applies_to": [
+    {
+      "course": "BSC_IT",
+      "year": 1,
+      "semester": 2
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Pigeonhole principle",
+      "text": "What is the pigeonhole principle?",
+      "ideal_answer": "The pigeonhole principle states that if n plus 1 or more objects are placed into n boxes, then at least one box must contain two or more objects. In the generalised form, if N objects are placed into k boxes, at least one box contains at least the ceiling of N divided by k objects. For example, among 13 people at least two share the same birth month. It is used to prove that some repetition or collision must exist.",
+      "keywords": [
+        "objects",
+        "boxes",
+        "at least one box",
+        "two or more",
+        "ceiling",
+        "generalised"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "Complete, regular, bipartite and planar graphs",
+      "text": "What is a bipartite graph?",
+      "ideal_answer": "A bipartite graph is a graph whose vertex set can be divided into two disjoint sets such that every edge joins a vertex in one set to a vertex in the other set. No edge connects two vertices of the same set. A complete bipartite graph K m,n has every vertex of the first set joined to every vertex of the second set. A graph is bipartite if and only if it has no odd-length cycle, which also means it is 2-colourable.",
+      "keywords": [
+        "two disjoint sets",
+        "every edge",
+        "same set",
+        "complete bipartite",
+        "odd cycle",
+        "2-colourable"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Permutations and combinations",
+      "text": "What is the difference between a permutation and a combination? Give a simple example.",
+      "ideal_answer": "A permutation is an arrangement of objects where order matters, while a combination is a selection where order does not matter. The number of permutations of r objects from n is nPr = n! divided by (n minus r)!, and the number of combinations is nCr = n! divided by r! times (n minus r)!. For example, choosing a president and secretary from 5 people gives 5P2 = 20 ways, but choosing a 2-member committee gives 5C2 = 10 ways.",
+      "keywords": [
+        "arrangement",
+        "selection",
+        "order matters",
+        "factorial"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Ordered sets, Hasse diagrams, supremum and infimum",
+      "text": "What is a partially ordered set, and what is a Hasse diagram?",
+      "ideal_answer": "A partially ordered set or poset is a set with a relation that is reflexive, antisymmetric and transitive, for example divisibility on positive integers. A Hasse diagram is a simplified drawing of a finite poset. Self-loops are removed because reflexivity is understood, and edges implied by transitivity are removed. Edges are drawn upward from smaller to larger elements, so arrow heads are omitted.",
+      "keywords": [
+        "reflexive",
+        "antisymmetric",
+        "transitive",
+        "poset",
+        "self-loops removed",
+        "transitive edges",
+        "upward"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Paths, connectivity, Eulerian and traversable graphs",
+      "text": "How do you decide whether a connected graph has an Euler circuit or an Euler path?",
+      "ideal_answer": "An Euler circuit uses every edge exactly once and returns to the starting vertex, and an Euler path uses every edge exactly once but may end at a different vertex. A connected graph has an Euler circuit if and only if every vertex has even degree. It has an Euler path but not a circuit if and only if exactly two vertices have odd degree, and the path must start at one odd vertex and end at the other. If more than two vertices have odd degree, neither exists.",
+      "keywords": [
+        "every edge once",
+        "even degree",
+        "two odd vertices",
+        "connected",
+        "euler circuit",
+        "euler path"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Linear recurrence relations with constant coefficients",
+      "text": "How do you solve the recurrence a_n = 5a_(n-1) - 6a_(n-2)?",
+      "ideal_answer": "This is a linear homogeneous recurrence with constant coefficients, so we form the characteristic equation r squared minus 5r plus 6 equals 0. Its roots are r = 2 and r = 3, which are distinct. The general solution is a_n = A times 2 to the power n plus B times 3 to the power n. The constants A and B are found using the given initial conditions such as a_0 and a_1.",
+      "keywords": [
+        "characteristic equation",
+        "roots",
+        "distinct",
+        "power n",
+        "general solution",
+        "initial conditions"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "DFS, BFS and topological sort",
+      "text": "Why can topological sort be done only on a directed acyclic graph, and how does DFS help produce it?",
+      "ideal_answer": "A topological order lists vertices so that for every directed edge u to v, u comes before v. If the graph had a cycle, each vertex in the cycle would need to come before the others, which is impossible, so the graph must be a directed acyclic graph. Using DFS, a vertex is added to a list when it finishes, that is after all its descendants are explored. Reversing the finishing order gives a valid topological order. Kahn's algorithm, which repeatedly removes vertices of in-degree zero, is an alternative.",
+      "keywords": [
+        "directed acyclic graph",
+        "cycle",
+        "edge u to v",
+        "finishing order",
+        "reverse",
+        "in-degree zero"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Graphs and multigraphs, isomorphic graphs",
+      "text": "Two graphs both have 5 vertices and 6 edges. Why is that not enough to say they are isomorphic, and what else would you check?",
+      "ideal_answer": "Isomorphism requires a one-to-one correspondence between vertices that preserves adjacency, and equal vertex and edge counts are only necessary conditions. We should also compare the degree sequences, which must be identical. Other invariants to check are the number of cycles of each length, connectivity, and whether vertices of a given degree are adjacent in the same way. If any invariant differs, the graphs are not isomorphic; if all match, we must still find an explicit bijection that preserves edges.",
+      "keywords": [
+        "bijection",
+        "adjacency",
+        "necessary",
+        "degree sequence",
+        "invariants",
+        "cycles"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Advanced counting: inclusion-exclusion",
+      "text": "How many integers from 1 to 100 are divisible by 2 or 3 or 5? Explain the method.",
+      "ideal_answer": "We use the inclusion-exclusion principle for three sets: |A union B union C| = |A| + |B| + |C| minus |A intersect B| minus |A intersect C| minus |B intersect C| plus |A intersect B intersect C|. Here divisible by 2 is 50, by 3 is 33, by 5 is 20, by 6 is 16, by 10 is 10, by 15 is 6, and by 30 is 3. So the count is 50 + 33 + 20 minus 16 minus 10 minus 6 plus 3, which equals 74. Simply adding the three counts would double-count numbers divisible by more than one.",
+      "keywords": [
+        "inclusion-exclusion",
+        "union",
+        "intersection",
+        "subtract",
+        "add back",
+        "74"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Directed graphs, Warshall's algorithm and shortest paths",
+      "text": "What does Warshall's algorithm compute, how does it work, and what is its time complexity?",
+      "ideal_answer": "Warshall's algorithm computes the transitive closure of a directed graph, that is the reachability matrix telling whether there is a path from each vertex i to each vertex j. It starts with the adjacency matrix and, for each intermediate vertex k from 1 to n, sets entry i,j to 1 if it is already 1 or if both i,k and k,j are 1. After all n vertices have been considered as intermediates, the matrix shows all reachable pairs. It uses three nested loops, so its time complexity is O(n cubed).",
+      "keywords": [
+        "transitive closure",
+        "reachability",
+        "adjacency matrix",
+        "intermediate vertex",
+        "n cubed",
+        "path"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Binary trees, heaps and Huffman's algorithm",
+      "text": "A file-compression tool must encode characters with very different frequencies. How would Huffman's algorithm build the code, and why is the result efficient?",
+      "ideal_answer": "Huffman's algorithm puts every character in a min-priority queue, usually a min-heap, keyed by frequency. It repeatedly removes the two lowest-frequency nodes, joins them under a new parent whose frequency is their sum, and inserts the parent back, until one tree remains. Each character's code is the path from root to leaf, with 0 for left and 1 for right. Frequent characters get short codes and rare ones get long codes, minimising the total encoded length. Because characters are only at leaves, the code is prefix-free so it can be decoded without ambiguity.",
+      "keywords": [
+        "min-heap",
+        "frequency",
+        "two lowest",
+        "merge",
+        "prefix-free",
+        "shorter codes",
+        "leaves"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Complete, regular, bipartite and planar graphs; graph colouring",
+      "text": "A college must schedule exams so that no student has two exams at the same time, using as few time slots as possible. How would you model this with graph colouring?",
+      "ideal_answer": "Each exam is a vertex, and an edge joins two exams if at least one student takes both. A proper vertex colouring assigns colours so that adjacent vertices get different colours, and each colour represents a time slot. The minimum number of slots equals the chromatic number of the graph. Finding the chromatic number exactly is NP-hard, so in practice a greedy algorithm such as Welsh-Powell, colouring vertices in decreasing order of degree, gives a good schedule. A lower bound is the size of the largest clique.",
+      "keywords": [
+        "vertex",
+        "edge",
+        "colouring",
+        "time slot",
+        "chromatic number",
+        "greedy",
+        "welsh-powell"
+      ]
+    }
+  ]
+}

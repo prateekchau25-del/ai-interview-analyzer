@@ -1,0 +1,186 @@
+{
+  "subject": "Operating System",
+  "applies_to": [
+    {
+      "course": "BCA",
+      "year": 1,
+      "semester": 2
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Operating system components, services and types",
+      "text": "What is an operating system and what are its main functions?",
+      "ideal_answer": "An operating system is system software that acts as an interface between the user and the computer hardware and manages the computer's resources. Its main functions are process management, memory management, file management, and device or I/O management. It also provides security and protection, a user interface, and services such as error detection. Examples include Windows, Linux and Android.",
+      "keywords": [
+        "interface",
+        "hardware",
+        "resources",
+        "process management",
+        "memory management",
+        "file management",
+        "device"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "Process states, transitions and process control block",
+      "text": "What is a Process Control Block?",
+      "ideal_answer": "A Process Control Block, or PCB, is a data structure maintained by the operating system for every process, holding all the information needed to manage it. It contains the process ID, process state, program counter, CPU registers, CPU scheduling information like priority, memory management information, accounting information, and I/O status such as open files. During a context switch, the OS saves the running process's state in its PCB and loads the next process's state from its PCB.",
+      "keywords": [
+        "data structure",
+        "process id",
+        "process state",
+        "program counter",
+        "registers",
+        "context switch"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Threads and multithreading models",
+      "text": "What is the difference between a process and a thread?",
+      "ideal_answer": "A process is a program in execution with its own separate address space, code, data, and resources such as open files. A thread is the smallest unit of execution within a process; multiple threads of the same process share its code, data and files but each has its own program counter, registers and stack. Threads are lighter, so creating them and switching between them is faster than for processes, and they communicate easily through shared memory. However, a fault in one thread can affect the whole process, whereas processes are isolated from each other.",
+      "keywords": [
+        "program in execution",
+        "address space",
+        "thread",
+        "share",
+        "stack",
+        "lighter",
+        "switching"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Multiprogramming, time sharing, distributed and real-time systems",
+      "text": "What is the difference between multiprogramming and time-sharing systems?",
+      "ideal_answer": "In multiprogramming, several programs are kept in memory at once and when one waits for I/O the CPU switches to another, so the goal is to maximise CPU utilisation. Time sharing, or multitasking, is an extension in which the CPU switches among programs very quickly using small time slices, so each interactive user feels they have the computer to themselves. The main goal of time sharing is minimum response time for users. So multiprogramming switches mainly when a job waits, while time sharing switches after every time quantum.",
+      "keywords": [
+        "multiprogramming",
+        "memory",
+        "cpu utilisation",
+        "time sharing",
+        "time slice",
+        "response time"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "CPU scheduling: FCFS, SJF, Round Robin",
+      "text": "Three processes arrive at time 0 with burst times 24, 3 and 3 milliseconds in that order. What is the average waiting time under FCFS, and how would SJF change it?",
+      "ideal_answer": "Under FCFS they run in arrival order: P1 waits 0, P2 waits 24 and P3 waits 27, so the average waiting time is 51 divided by 3, which is 17 milliseconds. Under SJF the shorter jobs run first, P2 and P3 then P1, so the waiting times are 0, 3 and 6, giving an average of 9 divided by 3, which is 3 milliseconds. This shows the convoy effect in FCFS, where short processes wait behind a long one, and that SJF gives the minimum average waiting time.",
+      "keywords": [
+        "fcfs",
+        "17",
+        "sjf",
+        "minimum",
+        "waiting time",
+        "convoy effect"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "System calls and operating system structure",
+      "text": "What is a system call? Explain how a program uses one to read a file.",
+      "ideal_answer": "A system call is the programming interface through which a user program requests a service from the operating system kernel, such as file access, process creation or I/O. When a program wants to read a file, it calls a library function such as read, which places the parameters in registers and executes a trap instruction. The CPU switches from user mode to kernel mode, the kernel performs the read from disk into the program's buffer, and then control returns to user mode with the result. System call categories include process control, file management, device management, information maintenance and communication.",
+      "keywords": [
+        "system call",
+        "kernel",
+        "trap",
+        "user mode",
+        "kernel mode",
+        "file management"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Process synchronization: critical section, semaphores, monitors",
+      "text": "Why is a binary semaphore used for mutual exclusion, and what conditions must a correct critical-section solution satisfy?",
+      "ideal_answer": "A binary semaphore, initialised to 1, protects a critical section: a process calls wait, which decrements it, before entering and signal, which increments it, after leaving, so only one process can be inside at a time and others are blocked. A correct critical-section solution must satisfy three conditions. Mutual exclusion: only one process is in the critical section at a time. Progress: if no process is inside, the choice of who enters next cannot be postponed indefinitely. Bounded waiting: there is a limit on how many times others can enter before a waiting process gets its turn.",
+      "keywords": [
+        "binary semaphore",
+        "wait",
+        "signal",
+        "mutual exclusion",
+        "progress",
+        "bounded waiting"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Memory management: swapping, fragmentation, paging, segmentation",
+      "text": "Compare paging and segmentation. Which type of fragmentation does each suffer from and why?",
+      "ideal_answer": "Paging divides a process's logical memory into fixed-size pages and physical memory into frames of the same size, using a page table for translation. Because sizes are fixed, there is no external fragmentation, but the last page may be partly empty, causing internal fragmentation. Segmentation divides a program into variable-size logical units such as code, data and stack, using a segment table with base and limit. Since segments vary in size, it has no internal fragmentation but suffers from external fragmentation as free memory gets broken into small holes.",
+      "keywords": [
+        "paging",
+        "fixed-size",
+        "page table",
+        "internal fragmentation",
+        "segmentation",
+        "variable-size",
+        "external fragmentation"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Deadlocks: prevention, avoidance, Banker's algorithm, detection",
+      "text": "Two processes are stuck: P1 holds a printer and waits for a scanner, while P2 holds the scanner and waits for the printer. What are the necessary conditions for this deadlock and how could you prevent it?",
+      "ideal_answer": "This is a deadlock, which requires four conditions to hold together: mutual exclusion, hold and wait, no preemption, and circular wait. Prevention breaks at least one condition. The most practical here is to break circular wait by imposing a fixed ordering on resources, for example every process must request the printer before the scanner. Alternatively, break hold and wait by requiring a process to request all resources at once, or allow preemption. Deadlock avoidance, such as the Banker's algorithm, instead grants a request only if the system stays in a safe state.",
+      "keywords": [
+        "mutual exclusion",
+        "hold and wait",
+        "no preemption",
+        "circular wait",
+        "fixed ordering on resources",
+        "banker's algorithm",
+        "safe state"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Virtual memory: demand paging, page replacement, thrashing",
+      "text": "A system's CPU utilisation suddenly drops while the disk is extremely busy after more programs are started. What is happening and how can it be fixed?",
+      "ideal_answer": "This is thrashing: there are too many processes for the available physical memory, so each lacks enough frames for its working set and page faults occur constantly. The system spends most of its time swapping pages in and out rather than executing, so CPU utilisation falls; the scheduler may wrongly add more processes, making it worse. It can be fixed by reducing the degree of multiprogramming, for example suspending some processes, by using the working-set model or page-fault frequency control to allocate enough frames, or by adding more RAM.",
+      "keywords": [
+        "thrashing",
+        "page faults",
+        "working set",
+        "frames",
+        "degree of multiprogramming",
+        "page-fault frequency"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Disk structure and disk scheduling algorithms",
+      "text": "A database server handles a heavy stream of random disk requests on a hard disk. Which disk scheduling algorithm would you choose and why, considering both performance and fairness?",
+      "ideal_answer": "FCFS is fair but causes long seek times, and SSTF, shortest seek time first, reduces seek time but can starve requests far from the head. SCAN, the elevator algorithm, moves the head in one direction serving requests and then reverses, which gives good throughput without starvation. C-SCAN or C-LOOK serves requests in only one direction and jumps back, giving more uniform waiting times, which suits heavy loads. So for a busy server C-LOOK or C-SCAN is a good balance; on SSDs there is no seek time, so simple FCFS or no-op scheduling is usually used.",
+      "keywords": [
+        "seek time",
+        "sstf",
+        "starvation",
+        "scan",
+        "c-scan",
+        "c-look",
+        "fair"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "CPU scheduling: Round Robin",
+      "text": "You are configuring Round Robin scheduling for an interactive system. How would you choose the time quantum, and what happens if it is too large or too small?",
+      "ideal_answer": "In Round Robin each process gets a fixed time quantum on the CPU and then goes to the back of the ready queue. If the quantum is too large, Round Robin behaves like FCFS and interactive users experience poor response time. If it is too small, the CPU spends a large fraction of time on context switches, which is pure overhead, reducing throughput. A good rule is to make the quantum large compared with the context-switch time and such that about 80 percent of CPU bursts finish within one quantum, typically 10 to 100 milliseconds.",
+      "keywords": [
+        "time quantum",
+        "ready queue",
+        "fcfs",
+        "response time",
+        "context switch",
+        "overhead",
+        "80 percent"
+      ]
+    }
+  ]
+}

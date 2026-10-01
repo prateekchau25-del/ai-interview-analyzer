@@ -1,0 +1,90 @@
+{
+  "subject": "Computer Architecture",
+  "applies_to": [{"course": "BCA", "year": 1, "semester": 1}],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Digital vs analog signals",
+      "text": "What is the difference between an analog signal and a digital signal?",
+      "ideal_answer": "An analog signal is continuous and can take any value within a range at any instant, like a sound wave or temperature reading. A digital signal is discrete and takes only a limited set of values, usually two levels representing binary 0 and 1. Digital signals are less affected by noise, easier to store and process with logic circuits, which is why computers use them.",
+      "keywords": ["continuous", "discrete", "binary", "noise", "two levels"]
+    },
+    {
+      "level": 1,
+      "topic": "Von Neumann architecture",
+      "text": "What is the Von Neumann architecture?",
+      "ideal_answer": "The Von Neumann architecture is a computer design in which program instructions and data are stored together in the same memory. Its main parts are the CPU, which contains the arithmetic logic unit and the control unit with registers, the memory unit, and input and output devices, all connected by a system bus. Instructions are fetched from memory and executed one after another in a fetch-decode-execute cycle. Because instructions and data share one bus, it suffers from the Von Neumann bottleneck.",
+      "keywords": ["stored program", "same memory", "alu", "control unit", "fetch decode execute", "bus"]
+    },
+    {
+      "level": 2,
+      "topic": "Number systems and conversions",
+      "text": "Convert the decimal number 25 into binary, octal and hexadecimal, and explain how you did it.",
+      "ideal_answer": "To convert to binary, repeatedly divide 25 by 2 and read the remainders from bottom to top, giving 11001. For octal, divide by 8: 25 divided by 8 is 3 remainder 1, so it is 31 in octal. For hexadecimal, divide by 16: 25 divided by 16 is 1 remainder 9, so it is 19 in hexadecimal. Alternatively, group the binary digits in threes for octal and fours for hexadecimal.",
+      "keywords": ["11001", "31", "19", "repeated division", "remainders"]
+    },
+    {
+      "level": 2,
+      "topic": "Half adder and full adder",
+      "text": "What is the difference between a half adder and a full adder?",
+      "ideal_answer": "A half adder adds two single bits and produces a sum and a carry; the sum is A XOR B and the carry is A AND B. It cannot accept a carry from a previous stage. A full adder adds three bits, two input bits and a carry-in, and produces a sum and carry-out. The full adder sum is A XOR B XOR Cin, and it can be built from two half adders and an OR gate, so full adders can be chained to add multi-bit numbers.",
+      "keywords": ["two bits", "three bits", "carry in", "xor", "and", "two half adders"]
+    },
+    {
+      "level": 3,
+      "topic": "Boolean laws and theorems",
+      "text": "State De Morgan's theorems and use one to simplify the complement of (A plus B).",
+      "ideal_answer": "De Morgan's first theorem says the complement of a sum equals the product of the complements: (A + B)' = A' . B'. The second theorem says the complement of a product equals the sum of the complements: (A . B)' = A' + B'. So the complement of (A + B) simplifies to A' AND B'. In gate terms, a NOR gate is equivalent to an AND gate with inverted inputs, and a NAND gate is equivalent to an OR gate with inverted inputs.",
+      "keywords": ["de morgan", "complement", "product of complements", "sum of complements", "nand", "nor"]
+    },
+    {
+      "level": 3,
+      "topic": "Multiplexer and demultiplexer",
+      "text": "How does a 4-to-1 multiplexer work, and how is it different from a demultiplexer?",
+      "ideal_answer": "A 4-to-1 multiplexer has four data inputs, two select lines and one output. The binary value on the select lines chooses which one of the four inputs is passed to the output, for example select 10 passes input I2. A demultiplexer does the reverse: it takes one input and, based on the select lines, routes it to one of several outputs. So a multiplexer is a many-to-one data selector and a demultiplexer is a one-to-many data distributor.",
+      "keywords": ["select lines", "four inputs", "one output", "data selector", "data distributor", "one to many"]
+    },
+    {
+      "level": 4,
+      "topic": "Karnaugh maps: SOP and POS, don't care conditions",
+      "text": "Why are don't care conditions useful when simplifying a Boolean function with a Karnaugh map?",
+      "ideal_answer": "Don't care conditions are input combinations for which the output does not matter, either because they never occur or their output is irrelevant, such as invalid BCD codes 1010 to 1111. In a K-map they are marked with X and can be treated as 1 or 0, whichever helps. By including them as 1s when forming groups, we can make larger groups of 1, 2, 4 or 8 cells, which eliminates more variables. This gives a simpler SOP or POS expression and fewer gates in the final circuit.",
+      "keywords": ["don't care", "x", "larger groups", "fewer variables", "simpler expression", "fewer gates"]
+    },
+    {
+      "level": 4,
+      "topic": "SR and D flip-flops",
+      "text": "Why is the D flip-flop often preferred over the SR flip-flop?",
+      "ideal_answer": "An SR flip-flop has an invalid or forbidden state when both S and R are 1, because the outputs become undefined or Q and Q-bar are not complementary. A D flip-flop is built from an SR flip-flop by connecting D to S and the inverse of D to R, so S and R can never both be 1. As a result, on the clock edge the output Q simply takes the value of D. This removes the invalid state and makes the D flip-flop ideal for storing a single bit in registers.",
+      "keywords": ["invalid state", "s and r both 1", "inverter", "clock edge", "q follows d", "registers"]
+    },
+    {
+      "level": 5,
+      "topic": "Binary arithmetic, Gray code and error-detecting codes",
+      "text": "A system sends 7-bit ASCII characters with an even parity bit. The receiver gets 10110110. Is there an error, and what are the limitations of this check?",
+      "ideal_answer": "With even parity, the total number of 1s including the parity bit must be even. The received word 10110110 has five 1s, which is odd, so the receiver detects an error. However, a single parity bit can only detect an odd number of bit errors; if two bits flip, the count stays even and the error goes unnoticed. Parity also cannot tell which bit is wrong, so it cannot correct errors; codes like Hamming code or CRC are needed for that.",
+      "keywords": ["even parity", "five 1s", "odd", "error detected", "two bit errors", "cannot correct", "hamming code"]
+    },
+    {
+      "level": 5,
+      "topic": "4-bit shift registers and synchronous counters",
+      "text": "Why do designers prefer a synchronous counter over a ripple (asynchronous) counter for high-speed circuits?",
+      "ideal_answer": "In a ripple counter, each flip-flop is clocked by the output of the previous one, so propagation delays add up stage by stage. This causes the outputs to change at different times, creating temporary wrong states or glitches and limiting the maximum clock frequency. In a synchronous counter all flip-flops share the same clock and change together, with logic gates deciding which ones toggle. So delay does not accumulate, outputs are stable at the same time, and the counter can run at higher speed, at the cost of extra gating logic.",
+      "keywords": ["common clock", "propagation delay", "accumulate", "glitches", "higher speed", "extra logic"]
+    },
+    {
+      "level": 6,
+      "topic": "Von Neumann architecture",
+      "text": "A team finds their processor is often idle waiting for memory. Explain the Von Neumann bottleneck and how modern systems reduce it.",
+      "ideal_answer": "The Von Neumann bottleneck happens because instructions and data share the same memory and bus, and memory is much slower than the CPU, so the processor waits for transfers. Modern systems reduce it with cache memory, a small fast memory close to the CPU that holds frequently used instructions and data. Many CPUs use separate instruction and data caches, which is a modified Harvard design, and also use pipelining and prefetching. Wider buses and faster memory help too, though each adds cost and design complexity.",
+      "keywords": ["shared bus", "memory slower", "cache", "harvard", "pipelining", "prefetching"]
+    },
+    {
+      "level": 6,
+      "topic": "4-bit shift registers",
+      "text": "You need to send 8-bit data from a microcontroller to a device using only one data wire. How would shift registers help, and what is the trade-off?",
+      "ideal_answer": "A parallel-in serial-out shift register can load the 8 bits at once and then shift them out one bit per clock pulse on a single wire. At the receiving side, a serial-in parallel-out shift register collects the bits one by one and presents all 8 bits in parallel after 8 clock pulses. This saves wires and pins, which reduces cost and board space. The trade-off is speed, because sending 8 bits serially takes 8 clock cycles instead of one, and both sides need a shared clock or timing agreement.",
+      "keywords": ["parallel in serial out", "serial in parallel out", "clock pulse", "fewer wires", "slower", "synchronization"]
+    }
+  ]
+}

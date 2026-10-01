@@ -1,0 +1,90 @@
+{
+  "subject": "Introduction to Data Science",
+  "applies_to": [{"course": "BCA", "year": 3, "semester": 5}],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Definition and scope of data science",
+      "text": "What is data science?",
+      "ideal_answer": "Data science is an interdisciplinary field that uses statistics, programming, machine learning and domain knowledge to extract useful insights and knowledge from data. It covers collecting, cleaning, analysing, modelling and visualising data, structured or unstructured, to support decision making and build predictive systems. Examples include recommendation systems, fraud detection and demand forecasting.",
+      "keywords": ["interdisciplinary", "statistics", "programming", "machine learning", "insights", "decision making"]
+    },
+    {
+      "level": 1,
+      "topic": "Mean, median, mode, variance and standard deviation",
+      "text": "What are mean, median and mode?",
+      "ideal_answer": "The mean is the arithmetic average, the sum of all values divided by the number of values. The median is the middle value when the data are sorted, or the average of the two middle values for an even count. The mode is the value that occurs most frequently. They are all measures of central tendency; the median is preferred when data have outliers because it is not affected by extreme values.",
+      "keywords": ["mean", "average", "median", "middle value", "mode", "most frequent", "central tendency"]
+    },
+    {
+      "level": 2,
+      "topic": "Structured, semi-structured and unstructured data",
+      "text": "Explain structured, semi-structured and unstructured data with an example of each.",
+      "ideal_answer": "Structured data is organised in a fixed schema of rows and columns, such as a student table in a relational database. Semi-structured data does not follow a rigid table but has tags or keys that give it some organisation, such as JSON, XML or email with headers. Unstructured data has no predefined format, such as images, videos, audio and free text like social media posts. Most of the world's data is unstructured, and it needs special techniques like NLP or computer vision to analyse.",
+      "keywords": ["structured", "rows and columns", "semi-structured", "json", "unstructured", "images", "text"]
+    },
+    {
+      "level": 2,
+      "topic": "Data science vs data analytics vs big data",
+      "text": "What is the difference between data science, data analytics and big data?",
+      "ideal_answer": "Big data refers to datasets so large, fast or varied that traditional tools cannot handle them, described by the Vs: volume, velocity and variety. Data analytics focuses on examining existing data to answer specific questions and find trends, often using statistics, SQL and dashboards, mainly to explain what happened. Data science is broader: it includes analytics but also uses machine learning and programming to build predictive models and data products. Big data is the data itself, while analytics and data science are ways of working with data.",
+      "keywords": ["big data", "volume", "velocity", "variety", "data analytics", "predictive models"]
+    },
+    {
+      "level": 3,
+      "topic": "Data science lifecycle",
+      "text": "Describe the data science lifecycle using a project to predict student dropouts.",
+      "ideal_answer": "First, understand the problem: identify students at risk of dropping out so the college can help them. Next, collect data such as attendance, marks, fees and demographics from college systems. Then clean and prepare the data, handling missing values and creating features. Explore the data to find patterns, then build and evaluate a classification model using metrics like recall. Finally deploy the model, for example as a monthly report for mentors, and monitor and update it over time.",
+      "keywords": ["problem understanding", "data collection", "data cleaning", "exploration", "modelling", "evaluation", "deployment"]
+    },
+    {
+      "level": 3,
+      "topic": "Data cleaning: missing values and duplicates",
+      "text": "A customer dataset has missing ages and duplicate customer records. How would you handle them?",
+      "ideal_answer": "For duplicates, identify records that repeat using key fields like customer ID, email or phone, then remove exact duplicates and merge near-duplicates carefully. For missing ages, first check how many are missing and why. If very few, the rows can be dropped; otherwise impute them, using the median since age may be skewed, or a group-wise median, or a model-based method. You can also add an indicator column showing the value was missing. In pandas, functions like drop_duplicates, isnull and fillna are used.",
+      "keywords": ["duplicates", "unique key", "missing values", "drop rows", "imputation", "median", "fillna"]
+    },
+    {
+      "level": 4,
+      "topic": "Data transformation and normalization",
+      "text": "Why is it important to normalise or scale features such as salary and age before applying algorithms like k-nearest neighbours or k-means?",
+      "ideal_answer": "Salary is in lakhs while age is in tens, so without scaling, distance calculations are dominated by the feature with the larger range, and age would hardly matter. Distance-based algorithms like k-NN and k-means, and gradient-based methods, therefore give biased or slow results. Min-max normalization rescales values to a range like 0 to 1, while standardization or z-score converts them to mean 0 and standard deviation 1. The scaler should be fitted on training data only and then applied to test data to avoid data leakage.",
+      "keywords": ["different ranges", "distance", "dominates", "min-max normalization", "standardization", "z-score"]
+    },
+    {
+      "level": 4,
+      "topic": "Mean, median, mode, variance and standard deviation",
+      "text": "Two classes both have an average mark of 60, but one has a standard deviation of 5 and the other of 20. What does this tell you?",
+      "ideal_answer": "Standard deviation measures how spread out values are around the mean; it is the square root of variance. A standard deviation of 5 means most students in that class scored close to 60, so performance is consistent. A standard deviation of 20 means marks are widely spread, with some students scoring very high and others very low, so the class is much more varied. The mean alone hides this difference, so a measure of spread should always be reported with it.",
+      "keywords": ["standard deviation", "spread", "square root of variance", "consistent", "widely spread", "mean alone"]
+    },
+    {
+      "level": 5,
+      "topic": "Correlation analysis and interpreting results",
+      "text": "An analysis finds a strong positive correlation between ice cream sales and drowning incidents. Can we conclude that ice cream causes drowning? Explain.",
+      "ideal_answer": "No, correlation does not imply causation. The correlation coefficient only measures the strength and direction of a linear relationship between two variables. Here, a confounding variable, hot weather or summer, increases both ice cream sales and swimming, which leads to more drownings. To establish causation we need controlled experiments, or careful causal analysis controlling for confounders. Correlations can also be spurious or caused by chance, especially with many variables.",
+      "keywords": ["correlation does not imply causation", "confounding variable", "hot weather", "linear relationship", "controlled experiment", "spurious"]
+    },
+    {
+      "level": 5,
+      "topic": "Data cleaning; mean vs median with outliers",
+      "text": "A company reports the average salary of its employees as 25 lakh, but most employees earn about 6 lakh. How is this possible, and what should be reported?",
+      "ideal_answer": "The mean is sensitive to extreme values, so a few very high salaries, such as those of top executives, pull the average far above what a typical employee earns. The salary distribution is right-skewed. The median, the middle value, is not affected much by outliers and better represents the typical salary. A good report would give the median, perhaps with percentiles or a box plot, and mention the outliers rather than relying only on the mean.",
+      "keywords": ["mean", "outliers", "right-skewed", "median", "typical value", "percentiles"]
+    },
+    {
+      "level": 6,
+      "topic": "Applications in healthcare, finance, retail, education",
+      "text": "A retail chain wants to use data science to reduce unsold stock in its stores. How would you approach this, and what challenges would you expect?",
+      "ideal_answer": "I would frame it as a demand forecasting problem: predict product sales per store and week. Data would include past sales, prices, promotions, holidays and festivals, weather and store location, and it must be cleaned and joined. A time-series or machine learning model would forecast demand, and those forecasts would guide ordering and stock transfers between stores. Success is measured with forecast error and reduction in unsold stock and stock-outs. Challenges include poor data quality, new products without history, sudden demand changes, and getting store managers to trust and use the model.",
+      "keywords": ["demand forecasting", "past sales", "promotions", "time series", "forecast error", "data quality"]
+    },
+    {
+      "level": 6,
+      "topic": "Data sources: databases, web, sensors, surveys",
+      "text": "Your team plans to collect data by scraping a website and running an online survey for a research project. What quality, legal and ethical issues should you consider?",
+      "ideal_answer": "For web scraping, check the website's terms of service and robots.txt, avoid overloading the server, prefer official APIs, and do not collect personal data without a lawful basis. For surveys, obtain informed consent, explain how data will be used, keep responses anonymous or protected, and follow laws like India's Digital Personal Data Protection Act. On quality, web data can be incomplete or change format, and online surveys suffer from sampling bias and non-response bias, so results may not represent the whole population. Clear question design, validation and documentation of sources improve reliability.",
+      "keywords": ["terms of service", "robots.txt", "informed consent", "personal data", "sampling bias", "data quality"]
+    }
+  ]
+}

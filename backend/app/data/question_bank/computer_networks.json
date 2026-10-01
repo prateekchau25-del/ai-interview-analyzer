@@ -1,0 +1,90 @@
+{
+  "subject": "Computer Networks",
+  "applies_to": [{"course": "BCA", "year": 2, "semester": 4}],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Network types: LAN, MAN, WAN",
+      "text": "What are LAN, MAN and WAN?",
+      "ideal_answer": "A LAN, or Local Area Network, connects devices in a small area such as a home, office or college building, and offers high speed at low cost. A MAN, or Metropolitan Area Network, covers a city or large campus, such as a city-wide cable network. A WAN, or Wide Area Network, spans countries or continents, linking LANs using leased lines, satellites or the internet; the internet itself is the largest WAN.",
+      "keywords": ["local area network", "metropolitan area network", "wide area network", "building", "city", "countries"]
+    },
+    {
+      "level": 1,
+      "topic": "Application protocols: DNS",
+      "text": "What is DNS?",
+      "ideal_answer": "DNS, the Domain Name System, is the internet's naming system that translates human-readable domain names like google.com into IP addresses that computers use to communicate. When you type a URL, your computer asks a DNS resolver, which queries root, top-level domain and authoritative name servers to find the IP address. Results are cached to speed up later lookups. DNS mainly uses UDP port 53.",
+      "keywords": ["domain name system", "domain names", "ip addresses", "resolver", "name servers", "port 53"]
+    },
+    {
+      "level": 2,
+      "topic": "Network topologies",
+      "text": "Compare star and bus topology.",
+      "ideal_answer": "In a bus topology, all devices are connected to a single backbone cable, so it is cheap and easy to set up, but a break in the main cable brings down the whole network and collisions increase with more devices. In a star topology, every device connects to a central hub or switch, so a failure of one cable affects only that device and faults are easy to find. However, a star topology needs more cable, and if the central switch fails the whole network fails. Star is the most common topology in modern LANs.",
+      "keywords": ["bus", "single backbone cable", "star", "central switch", "single point of failure", "more cable"]
+    },
+    {
+      "level": 2,
+      "topic": "TCP vs UDP",
+      "text": "What is the difference between TCP and UDP?",
+      "ideal_answer": "TCP is connection-oriented: it sets up a connection with a three-way handshake and provides reliable, ordered delivery using acknowledgements, retransmission, flow control and congestion control. UDP is connectionless and sends datagrams without guarantees of delivery or order, so it has less overhead and lower delay. TCP is used for web browsing, email and file transfer, while UDP is used for video streaming, online games, VoIP and DNS.",
+      "keywords": ["connection-oriented", "connectionless", "three-way handshake", "reliable", "acknowledgement", "low overhead"]
+    },
+    {
+      "level": 3,
+      "topic": "OSI and TCP/IP models",
+      "text": "Name the seven layers of the OSI model and briefly state what each does.",
+      "ideal_answer": "The physical layer transmits raw bits over the medium. The data link layer handles framing, MAC addressing and error detection on a single link. The network layer handles logical IP addressing and routing between networks. The transport layer provides end-to-end delivery, segmentation and reliability using TCP or UDP. The session layer manages sessions or dialogs, the presentation layer handles data format, encryption and compression, and the application layer provides network services to users, such as HTTP and SMTP.",
+      "keywords": ["physical", "data link", "network", "transport", "session", "presentation", "application"]
+    },
+    {
+      "level": 3,
+      "topic": "Application protocols: DHCP",
+      "text": "How does a laptop get an IP address automatically when it joins a Wi-Fi network?",
+      "ideal_answer": "It uses DHCP, the Dynamic Host Configuration Protocol, through four steps known as DORA. The client broadcasts a DHCP Discover message, the DHCP server replies with an Offer containing an available IP address, the client sends a Request to accept it, and the server sends an Acknowledgement. Along with the IP address, the server provides the subnet mask, default gateway and DNS server. The address is leased for a fixed time and must be renewed.",
+      "keywords": ["dhcp", "discover", "offer", "request", "acknowledgement", "lease"]
+    },
+    {
+      "level": 4,
+      "topic": "IPv4 addressing, subnetting and CIDR",
+      "text": "For the network 192.168.10.0/26, what is the subnet mask, how many usable hosts are there, and what is the broadcast address?",
+      "ideal_answer": "A /26 prefix means 26 network bits, so the subnet mask is 255.255.255.192. That leaves 6 host bits, giving 2 to the power 6, which is 64 addresses. Subtracting the network address and the broadcast address gives 62 usable hosts. The network address is 192.168.10.0 and the broadcast address is 192.168.10.63, so usable hosts range from 192.168.10.1 to 192.168.10.62.",
+      "keywords": ["255.255.255.192", "6 host bits", "64 addresses", "62 usable hosts", "192.168.10.63", "broadcast"]
+    },
+    {
+      "level": 4,
+      "topic": "Routing: distance vector (RIP) and link state (OSPF)",
+      "text": "Compare distance vector routing like RIP with link state routing like OSPF. Why is OSPF preferred in large networks?",
+      "ideal_answer": "In distance vector routing, each router shares its whole routing table only with its neighbours periodically and uses the Bellman-Ford algorithm, with hop count as the metric in RIP and a maximum of 15 hops. It converges slowly and can suffer from the count-to-infinity problem. In link state routing, each router floods information about its links to all routers, builds a complete map of the network and computes shortest paths with Dijkstra's algorithm. OSPF converges faster, supports cost based on bandwidth, has no hop limit and uses areas for scalability, so it suits large networks, though it needs more memory and CPU.",
+      "keywords": ["neighbours", "bellman-ford", "hop count", "count-to-infinity", "dijkstra", "faster convergence"]
+    },
+    {
+      "level": 5,
+      "topic": "Error detection and correction: Hamming code",
+      "text": "Why is Hamming code able to correct a single-bit error while a simple parity bit can only detect it? How many parity bits are needed for 4 data bits?",
+      "ideal_answer": "A single parity bit only tells us that an odd number of bits changed, not which bit changed. Hamming code uses multiple parity bits placed at positions that are powers of two, each checking a different overlapping group of bits. When the receiver recomputes the parity checks, the pattern of failed checks forms a binary number called the syndrome, which gives the exact position of the wrong bit, so it can be flipped back. The number of parity bits r must satisfy 2 to the power r is at least m + r + 1, so for 4 data bits, 3 parity bits are needed, giving Hamming(7,4).",
+      "keywords": ["multiple parity bits", "powers of two", "syndrome", "position of error", "3 parity bits", "hamming(7,4)"]
+    },
+    {
+      "level": 5,
+      "topic": "Flow control: stop-and-wait, sliding window",
+      "text": "A file transfer over a long-distance high-speed link using stop-and-wait is extremely slow. Why, and how does sliding window fix it?",
+      "ideal_answer": "In stop-and-wait, the sender sends one frame and then waits for its acknowledgement before sending the next. On a long, high-bandwidth link, the round-trip time is large compared to the time to transmit one frame, so the link sits idle most of the time and utilization is very low. Sliding window allows the sender to send multiple frames, up to the window size, before needing acknowledgements, keeping the pipe full. Go-Back-N or Selective Repeat handle lost frames, and the window should be about the bandwidth-delay product for full utilization.",
+      "keywords": ["acknowledgement", "round-trip time", "idle", "low utilization", "window size", "bandwidth-delay product"]
+    },
+    {
+      "level": 6,
+      "topic": "Network security: firewalls, VPN, SSL/TLS",
+      "text": "A company wants employees working from home to securely access internal servers. What would you set up and why?",
+      "ideal_answer": "I would set up a VPN, which creates an encrypted tunnel over the internet between the employee's device and the company network, using protocols like IPsec or SSL/TLS. Employees authenticate with strong credentials and multi-factor authentication before access is granted. A firewall at the network edge would allow only VPN traffic and block direct access to internal servers, with rules giving each user access only to what they need. Internal web applications should also use HTTPS with TLS, and logs should be monitored. A zero-trust approach can further verify every request, at the cost of more setup.",
+      "keywords": ["vpn", "encrypted tunnel", "multi-factor authentication", "firewall", "least privilege", "tls"]
+    },
+    {
+      "level": 6,
+      "topic": "Application protocols: NAT; IPv6",
+      "text": "Your office has 200 devices but your ISP gave you only one public IPv4 address. How do all devices access the internet, and what are the drawbacks? How does IPv6 change this?",
+      "ideal_answer": "The router uses NAT, specifically Port Address Translation, to let all devices with private IP addresses like 192.168.x.x share one public IP. When a device sends a packet, the router replaces the private source IP and port with its public IP and a unique port, and records this in a translation table so replies go back to the right device. Drawbacks are that outside devices cannot easily start connections to internal hosts, which complicates hosting servers and peer-to-peer apps and needs port forwarding, and it breaks true end-to-end connectivity. IPv6 has 128-bit addresses, so every device can get a globally unique address, removing the need for NAT, with a firewall used for protection instead.",
+      "keywords": ["nat", "port address translation", "private ip", "translation table", "port forwarding", "128-bit"]
+    }
+  ]
+}

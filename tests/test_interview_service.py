@@ -37,7 +37,7 @@ def db():
     engine.dispose()
 
 
-def fake_grade(question, model_answer, keywords, transcript):
+def fake_grade(question, model_answer, keywords, transcript, kind="technical"):
     score = {"correct": 95.0, "partial": 70.0, "wrong": 20.0}.get(transcript, 0.0)
     return Grade(score=score, is_correct=score >= 85, skipped=transcript == "", verdict="x",
                  feedback="fb", missing_points=["point a"] if score < 85 else [], method="fake")

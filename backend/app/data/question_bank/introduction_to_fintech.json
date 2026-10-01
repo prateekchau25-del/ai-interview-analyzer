@@ -1,0 +1,195 @@
+{
+  "subject": "Introduction to FinTech",
+  "applies_to": [
+    {
+      "course": "BSC_IT",
+      "year": 2,
+      "semester": 3
+    },
+    {
+      "course": "BSC_DS",
+      "year": 2,
+      "semester": 3
+    },
+    {
+      "course": "BSC_AI",
+      "year": 2,
+      "semester": 3
+    },
+    {
+      "course": "BCA",
+      "year": 2,
+      "semester": 3
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "FinTech: meaning, definition and types",
+      "text": "What is FinTech? Name some types of FinTech companies.",
+      "ideal_answer": "FinTech, short for financial technology, refers to the use of technology such as mobile apps, the internet, cloud, AI and blockchain to deliver or improve financial services. Types of FinTech companies include digital payments like PhonePe and Paytm, digital lending, InsurTech for insurance, WealthTech for investment like Zerodha and Groww, RegTech for regulatory compliance, and neo-banks. FinTech makes financial services faster, cheaper and more accessible.",
+      "keywords": [
+        "financial technology",
+        "financial services",
+        "payments",
+        "lending",
+        "insurtech",
+        "wealthtech"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "BankTech and Central Bank Digital Currency (CBDC)",
+      "text": "What is a Central Bank Digital Currency? Give the Indian example.",
+      "ideal_answer": "A Central Bank Digital Currency is the digital form of a country's legal tender, issued and backed by the central bank. Unlike cryptocurrencies such as Bitcoin, it is centralised, regulated and has the same value as physical cash. In India it is the Digital Rupee, or e-rupee, issued by the Reserve Bank of India, launched as pilots in 2022 in wholesale and retail versions. It is a direct liability of the central bank, unlike money in a bank account.",
+      "keywords": [
+        "digital form",
+        "legal tender",
+        "central bank",
+        "digital rupee",
+        "reserve bank of india",
+        "centralised"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "E-wallets and payment systems",
+      "text": "What is the difference between an e-wallet and UPI?",
+      "ideal_answer": "An e-wallet, a prepaid payment instrument, stores money loaded in advance inside the wallet, and payments are made from that balance; it is regulated by RBI and has balance limits. UPI, the Unified Payments Interface built by NPCI, transfers money directly between bank accounts in real time using a virtual payment address or UPI ID, so there is no need to preload money. UPI works across apps and banks, while wallet money is usually tied to a particular provider. Apps like Paytm and PhonePe offer both.",
+      "keywords": [
+        "prepaid",
+        "preloaded balance",
+        "upi",
+        "npci",
+        "bank account",
+        "real time"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "FinTech evolution 1.0, 2.0 and 3.0",
+      "text": "Briefly describe the evolution of FinTech from 1.0 to 3.0.",
+      "ideal_answer": "FinTech 1.0, from about 1866 to 1967, was the analogue era of financial infrastructure such as the transatlantic telegraph cable connecting global finance. FinTech 2.0, from about 1967 to 2008, was the digitalisation of traditional banks, with ATMs, electronic payment networks like SWIFT, and online banking. FinTech 3.0, after the 2008 financial crisis, saw new technology startups, not just banks, directly offering financial services through mobile apps, peer-to-peer lending and digital payments. Some also describe FinTech 3.5 for the rapid growth in emerging markets like India and China.",
+      "keywords": [
+        "analogue",
+        "telegraph",
+        "digitalisation",
+        "atm",
+        "startups",
+        "2008"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Technologies that power FinTech",
+      "text": "How does artificial intelligence help a digital lending app decide whether to give a loan?",
+      "ideal_answer": "AI-based credit scoring uses machine learning models trained on past borrower data to predict the probability that an applicant will default. Besides the credit bureau score, it can use alternative data like transaction history, income patterns and repayment behaviour, with consent. This helps assess thin-file customers such as students or small shopkeepers who have no credit history. AI also automates KYC verification and fraud detection, so loans can be approved in minutes. The models must be fair, explainable and compliant with RBI's digital lending guidelines.",
+      "keywords": [
+        "machine learning",
+        "credit scoring",
+        "default",
+        "alternative data",
+        "kyc",
+        "fraud detection"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "FinTech in banking and insurance",
+      "text": "How is technology changing the insurance industry? Give two examples of InsurTech.",
+      "ideal_answer": "InsurTech uses technology to make insurance easier to buy, price and claim. Online aggregators like Policybazaar let customers compare and buy policies digitally. Telematics and IoT devices enable usage-based motor insurance, where premiums depend on actual driving behaviour. AI speeds up claim settlement, for example by assessing car damage from photos, and detects fraudulent claims. This reduces paperwork and costs and expands insurance to more people.",
+      "keywords": [
+        "insurtech",
+        "online",
+        "comparison",
+        "usage-based",
+        "telematics",
+        "claim settlement"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "FinTech users and customer service",
+      "text": "Why do banks increasingly use chatbots for customer service, and what are their limitations?",
+      "ideal_answer": "Chatbots provide 24 by 7 support, answer common queries like balance or card blocking instantly, handle thousands of users at once, support multiple languages and reduce cost compared with call centres. They are built using natural language processing and integrate with banking systems. Their limitations are that they struggle with complex or unusual problems, may misunderstand queries, can frustrate customers, and must protect sensitive data. So banks use them for routine tasks and hand over to human agents for complex issues.",
+      "keywords": [
+        "24 by 7",
+        "instant",
+        "cost",
+        "natural language processing",
+        "complex queries",
+        "human agent"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "BankTech and CBDC",
+      "text": "Compare the Digital Rupee with UPI payments. If UPI already exists, why would RBI introduce a CBDC?",
+      "ideal_answer": "A UPI payment moves commercial bank money from one bank account to another, so it depends on banks, and the money is a liability of the bank. The Digital Rupee is central bank money itself, held in a digital wallet, like digital cash, and is a direct liability of RBI. RBI introduced CBDC to reduce the cost of printing and managing cash, enable offline and programmable payments, improve cross-border payments, provide a safe sovereign alternative to private cryptocurrencies, and promote financial inclusion. It also settles transactions with finality without needing interbank settlement.",
+      "keywords": [
+        "commercial bank money",
+        "bank account",
+        "central bank money",
+        "liability of rbi",
+        "offline",
+        "cryptocurrencies"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Technologies that power FinTech: security",
+      "text": "A payment app is facing rising fraud from stolen phones and phishing. What technical measures would you recommend?",
+      "ideal_answer": "Use strong authentication: multi-factor authentication with device binding, so the account works only on the registered device and SIM, and biometric or UPI PIN verification for each transaction. Encrypt data in transit with TLS and at rest, and tokenise card details instead of storing them. Deploy machine-learning fraud detection to flag unusual transactions by amount, location or device, and set limits and cooling periods for new devices. Also educate users about phishing and never sharing OTPs, and provide quick ways to block the account.",
+      "keywords": [
+        "multi-factor authentication",
+        "device binding",
+        "encryption",
+        "tokenisation",
+        "fraud detection",
+        "phishing"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Recent trends in FinTech: blockchain",
+      "text": "A startup claims that putting all bank transactions on a public blockchain will solve every banking problem. What are the strengths and limitations of this idea?",
+      "ideal_answer": "Blockchain provides a distributed, tamper-resistant ledger, so records are transparent and hard to alter, which helps with audit trails, trade finance and cross-border settlement. However, public blockchains have limited transaction throughput and high latency compared with systems like UPI, and some consume a lot of energy. Putting customer transactions on a public chain also conflicts with privacy and data protection laws, and regulatory compliance like KYC is difficult. Banks therefore prefer permissioned blockchains for specific use cases rather than replacing core banking systems.",
+      "keywords": [
+        "distributed ledger",
+        "tamper-resistant",
+        "transparency",
+        "scalability",
+        "privacy",
+        "permissioned blockchain"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Scope of FinTech in future and regulation",
+      "text": "You are a developer at a FinTech startup launching a lending app in India. Which regulatory and data-handling practices should the product follow?",
+      "ideal_answer": "Under RBI's digital lending guidelines, loans must be disbursed and repaid directly between the borrower's bank account and the regulated entity, the app must show a Key Fact Statement with the full annual percentage rate, and there must be a grievance redressal officer. KYC must follow RBI norms, often through e-KYC or video KYC. The app should collect only the data needed with explicit consent, not access contacts or photos for recovery, store data in India, and comply with the DPDP Act 2023. Security practices like encryption and audits, plus fair, explainable credit models, help build trust and avoid regulatory penalties.",
+      "keywords": [
+        "rbi",
+        "digital lending guidelines",
+        "key fact statement",
+        "kyc",
+        "consent",
+        "dpdp act"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Recent trends in FinTech: open banking and account aggregators",
+      "text": "How does India's Account Aggregator framework change how FinTech apps access a customer's financial data, compared with asking for bank statement PDFs or passwords?",
+      "ideal_answer": "Account Aggregators are RBI-regulated NBFC entities that let a customer share financial data from one institution, called the Financial Information Provider such as a bank, with another, the Financial Information User such as a lender, through a consent-based digital flow. The customer approves a consent artefact specifying what data is shared, for what purpose and for how long, and can revoke it. The data is shared encrypted, and the aggregator itself cannot read it. Compared with uploading PDFs or sharing net-banking passwords, this is more secure, tamper-proof, faster and privacy-preserving, and it enables cash-flow based lending to small businesses.",
+      "keywords": [
+        "account aggregator",
+        "consent",
+        "rbi",
+        "encrypted",
+        "revoke",
+        "data sharing"
+      ]
+    }
+  ]
+}

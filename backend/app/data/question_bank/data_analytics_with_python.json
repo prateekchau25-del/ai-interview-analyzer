@@ -1,0 +1,182 @@
+{
+  "subject": "Data Analytics with Python",
+  "applies_to": [
+    {
+      "course": "BSC_DS",
+      "year": 2,
+      "semester": 3
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Pandas Series and DataFrame objects",
+      "text": "What is the difference between a Pandas Series and a DataFrame?",
+      "ideal_answer": "A Series is a one-dimensional labelled array that holds values of a single data type along with an index. A DataFrame is a two-dimensional labelled table made up of rows and columns, where each column is a Series and different columns can have different data types. Both have an index for row labels, and a DataFrame also has column labels. Selecting a single column from a DataFrame returns a Series.",
+      "keywords": [
+        "one-dimensional",
+        "two-dimensional",
+        "index",
+        "columns",
+        "labelled",
+        "different data types"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "Creating NumPy arrays, indexing and slicing",
+      "text": "Name three ways to create a NumPy array.",
+      "ideal_answer": "A NumPy array can be created from a Python list using np.array, for example np.array([1, 2, 3]). np.zeros and np.ones create arrays of a given shape filled with zeros or ones. np.arange creates evenly spaced values with a step, similar to range, and np.linspace creates a given number of evenly spaced values between a start and an end. Random arrays can be created with np.random functions such as np.random.rand.",
+      "keywords": [
+        "np.array",
+        "np.zeros",
+        "np.ones",
+        "np.arange",
+        "np.linspace",
+        "np.random"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Importing and exporting data from various file formats",
+      "text": "How do you read data from CSV and Excel files into Pandas and save a DataFrame back to a file?",
+      "ideal_answer": "pd.read_csv reads a CSV file into a DataFrame and pd.read_excel reads an Excel sheet, with the sheet_name parameter choosing the sheet. Other readers include read_json and read_sql. To save, df.to_csv writes a CSV file and df.to_excel writes an Excel file. Passing index=False avoids writing the row index as an extra column.",
+      "keywords": [
+        "read_csv",
+        "read_excel",
+        "sheet_name",
+        "to_csv",
+        "to_excel",
+        "index=false"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Mathematical operations with NumPy arrays",
+      "text": "What happens when you multiply two NumPy arrays of the same shape using *, and how is that different from matrix multiplication?",
+      "ideal_answer": "Using * on two NumPy arrays of the same shape performs element-wise multiplication, so each element is multiplied with the element in the same position. Matrix multiplication instead takes dot products of rows of the first matrix with columns of the second. It is done with np.dot, np.matmul or the @ operator. For matrix multiplication, the number of columns of the first must equal the number of rows of the second, which is not required for element-wise multiplication of equal shapes.",
+      "keywords": [
+        "element-wise",
+        "same position",
+        "matrix multiplication",
+        "dot product",
+        "matmul",
+        "columns equal rows"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Data selection and filtering with Boolean indexing",
+      "text": "How would you select all employees from a DataFrame whose salary is above 50000 and who work in the Sales department?",
+      "ideal_answer": "We use Boolean indexing by building a condition for each requirement and combining them with the & operator. The expression is df[(df['salary'] > 50000) & (df['dept'] == 'Sales')]. Each condition must be in parentheses because & has higher precedence than comparison operators. The combined condition is a Boolean Series, and only rows where it is True are returned. The same can be written as df.query(\"salary > 50000 and dept == 'Sales'\").",
+      "keywords": [
+        "boolean indexing",
+        "condition",
+        "and operator",
+        "parentheses",
+        "boolean series",
+        "query"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Grouping data and aggregation functions",
+      "text": "How would you find the average and maximum marks for each subject in a DataFrame of student marks?",
+      "ideal_answer": "We use groupby to split the data by subject and then apply aggregation functions. df.groupby('subject')['marks'].mean() gives the average for each subject. To get several statistics at once, we use agg, as in df.groupby('subject')['marks'].agg(['mean', 'max']). Groupby follows the split-apply-combine approach: the data is split into groups, a function is applied to each group, and the results are combined into a new DataFrame.",
+      "keywords": [
+        "groupby",
+        "subject",
+        "mean",
+        "max",
+        "agg",
+        "split-apply-combine"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Sorting, reshaping and merging data",
+      "text": "What is the difference between melt and pivot in Pandas, and why would you use them?",
+      "ideal_answer": "melt converts a DataFrame from wide format to long format by turning several columns into two columns, one holding the variable name and one holding the value. pivot does the opposite, converting long format to wide format by spreading the values of one column into new columns. Long format is useful for groupby operations and plotting libraries like Seaborn, while wide format is easier for people to read. pivot fails if there are duplicate index-column pairs, in which case pivot_table with an aggregation function should be used.",
+      "keywords": [
+        "melt",
+        "wide to long",
+        "pivot",
+        "long to wide",
+        "duplicate",
+        "pivot_table"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Handling missing data in Pandas",
+      "text": "A column has values 10, NaN and 20. What do sum() and mean() return in Pandas, and why?",
+      "ideal_answer": "sum() returns 30 and mean() returns 15. By default, Pandas aggregation functions skip NaN values because skipna is True. So the mean is computed over the two non-missing values, 30 divided by 2, not over three values. If skipna=False is passed, the result would be NaN. This behaviour is convenient, but the analyst should still check how many values are missing because it can bias results.",
+      "keywords": [
+        "30",
+        "15",
+        "skipna",
+        "skip nan",
+        "non-missing",
+        "bias"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Sorting, reshaping and merging data",
+      "text": "After merging an orders table with a customers table, the number of rows is much larger than the original orders. What went wrong and how would you diagnose it?",
+      "ideal_answer": "This usually happens because the key column, such as customer_id, is not unique in the customers table, so each order matches several customer rows and the merge creates a many-to-many result. I would check duplicates using customers['customer_id'].duplicated().sum() and value_counts. The fix is to remove or resolve the duplicate customer records before merging. Pandas merge has a validate parameter, such as validate='many_to_one', which raises an error if the key is not unique. Also check that key data types match and use indicator=True to see unmatched rows.",
+      "keywords": [
+        "duplicate keys",
+        "many-to-many",
+        "duplicated",
+        "validate",
+        "many_to_one",
+        "indicator"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Pivot tables and cross tabulation",
+      "text": "When would you use pd.crosstab instead of pivot_table, and how would you show the results as percentages?",
+      "ideal_answer": "pd.crosstab is designed to compute a frequency table, that is counts of how often each combination of two or more categorical variables occurs, such as gender versus purchased product. pivot_table is more general and summarises a numeric value column using an aggregation function like sum or mean. crosstab can also aggregate values using the values and aggfunc parameters. To get percentages, crosstab has a normalize parameter: normalize='index' gives row percentages, 'columns' gives column percentages and 'all' gives percentages of the grand total. margins=True adds row and column totals.",
+      "keywords": [
+        "frequency table",
+        "categorical",
+        "pivot_table",
+        "aggfunc",
+        "normalize",
+        "margins"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Matplotlib: box plots and annotations",
+      "text": "You must present salary data from five departments to management and highlight outliers. Which Matplotlib plot would you use, and how would you make it clear?",
+      "ideal_answer": "A box plot is best because it shows the median, the quartiles and the spread of each department side by side, and it marks outliers as separate points beyond the whiskers, which are usually 1.5 times the interquartile range. I would draw one box per department on a shared axis using plt.boxplot or Pandas boxplot with by='department'. I would add a title, axis labels with currency units, and use annotate to label the most extreme outliers with an arrow. Consistent colours and a clean scale help managers compare departments quickly.",
+      "keywords": [
+        "box plot",
+        "median",
+        "quartiles",
+        "outliers",
+        "whiskers",
+        "interquartile range",
+        "annotate"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Importing and exporting data; handling missing data",
+      "text": "You receive a messy 2 GB sales CSV with wrong date formats, missing prices and duplicate rows. Describe your Pandas cleaning workflow.",
+      "ideal_answer": "Because the file is large, I would load it with read_csv using usecols to read only needed columns, dtype to set efficient types, or chunksize to process it in parts. I would convert dates using pd.to_datetime with the correct format and errors='coerce' so invalid dates become NaT for review. Duplicate rows would be removed using drop_duplicates. Missing prices could be filled from a product price list or with a median per product, or dropped if they are few, documenting the choice. Finally, I would check summaries with info and describe, and save the cleaned data, for example as Parquet, for faster reuse.",
+      "keywords": [
+        "chunksize",
+        "dtype",
+        "to_datetime",
+        "coerce",
+        "drop_duplicates",
+        "fillna",
+        "parquet"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "subject": "NoSQL",
+  "applies_to": [
+    {
+      "course": "BSC_AI",
+      "year": 1,
+      "semester": 2
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Why NoSQL: emergence of NoSQL",
+      "text": "What is a NoSQL database?",
+      "ideal_answer": "A NoSQL database is a non-relational database that stores data in models other than fixed tables with rows and columns, such as key-value, document, column-family or graph. NoSQL stands for 'Not Only SQL'. These databases are usually schemaless or have flexible schemas and are designed to scale horizontally across clusters of commodity servers. They emerged to handle very large volumes of data and web-scale traffic, for example MongoDB, Cassandra, Redis and Neo4j.",
+      "keywords": [
+        "non-relational",
+        "not only sql",
+        "flexible schema",
+        "horizontal scaling",
+        "cluster",
+        "key-value"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "Distribution models: sharding",
+      "text": "What is sharding?",
+      "ideal_answer": "Sharding is a distribution technique in which data is horizontally partitioned and different parts of the data, called shards, are stored on different servers. Each node handles reads and writes only for its own shard, so load is spread across the cluster. Data is assigned to shards using a shard key, for example by range or by hash. Sharding improves write and read scalability, but by itself does not provide redundancy, so it is often combined with replication.",
+      "keywords": [
+        "horizontal partitioning",
+        "shards",
+        "different servers",
+        "shard key",
+        "scalability",
+        "replication"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Aggregate data models: key-value vs document",
+      "text": "What is the difference between a key-value store and a document database?",
+      "ideal_answer": "In a key-value store, each value is stored against a unique key and the value is opaque to the database, so data can only be retrieved by its key; Redis and Riak are examples. In a document database, the value is a structured document such as JSON or BSON, and the database understands its internal structure. This allows querying and indexing on fields inside the document, not just the key; MongoDB is an example. Key-value stores are simpler and faster for lookups, while document databases offer richer queries.",
+      "keywords": [
+        "key-value",
+        "opaque",
+        "lookup by key",
+        "document",
+        "json",
+        "query on fields"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Distribution models: master-slave and peer-to-peer replication",
+      "text": "What is the difference between master-slave replication and peer-to-peer replication?",
+      "ideal_answer": "In master-slave replication, one master node accepts all writes and copies them to slave nodes, which serve reads. It scales reads well, but the master is a single point of failure for writes and a bottleneck. In peer-to-peer replication, all nodes are equal and any node can accept reads and writes, so there is no single point of failure and writes scale better. The drawback of peer-to-peer is write-write conflicts and consistency issues, since two nodes may update the same record at the same time.",
+      "keywords": [
+        "master",
+        "slaves",
+        "writes",
+        "single point of failure",
+        "peer-to-peer",
+        "conflicts"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Graph databases",
+      "text": "How does a graph database store data, and why is it suitable for a social network's 'friends of friends' feature?",
+      "ideal_answer": "A graph database stores data as nodes, which are entities like users, and edges or relationships connecting them, both of which can have properties. Relationships are stored directly, so the database traverses from a node to its neighbours by following pointers instead of doing expensive joins. For friends of friends, it starts at a user, follows FRIEND edges one hop, then another hop, which is fast even with millions of users. In a relational database, the same query would need repeated self-joins that become slow as depth increases. Neo4j with the Cypher query language is a common example.",
+      "keywords": [
+        "nodes",
+        "edges",
+        "relationships",
+        "traversal",
+        "joins",
+        "neo4j"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Map-Reduce",
+      "text": "Explain how map-reduce would compute the total sales per product from a large collection of order records.",
+      "ideal_answer": "In the map phase, each order record is processed independently, in parallel on the nodes that hold the data, and emits key-value pairs with the product ID as key and the sale amount as value. The framework then shuffles and groups all values with the same key together, partitioning keys across reducers. In the reduce phase, each reducer receives a product ID and the list of its amounts and sums them to output the total sales for that product. A combiner can pre-sum amounts locally on each node to reduce data sent over the network.",
+      "keywords": [
+        "map",
+        "key-value pairs",
+        "product id",
+        "shuffle",
+        "reduce",
+        "combiner"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Why NoSQL: impedance mismatch",
+      "text": "What is impedance mismatch, and why does an aggregate-oriented NoSQL database reduce it?",
+      "ideal_answer": "Impedance mismatch is the difference between the in-memory data structures used in application code, such as objects with nested lists, and the relational model, which stores data in flat tables of rows and columns. To save an object like an order with its line items, the application must split it across several tables and join them back when reading, often using an ORM. Aggregate-oriented NoSQL databases store a whole aggregate, such as the order with its items, as one unit, for example a single document. This matches the application's structure, reduces mapping code and joins, and also makes the aggregate a natural unit for distribution.",
+      "keywords": [
+        "impedance mismatch",
+        "in-memory",
+        "objects",
+        "relational tables",
+        "aggregate",
+        "joins"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Consistency, CAP theorem",
+      "text": "What does the CAP theorem state, and why do distributed NoSQL systems usually trade consistency for availability?",
+      "ideal_answer": "The CAP theorem states that a distributed system can guarantee at most two of three properties at the same time: consistency, meaning every read sees the latest write; availability, meaning every request gets a response; and partition tolerance, meaning the system continues working despite network partitions. Since network partitions cannot be avoided in a distributed cluster, the real choice during a partition is between consistency and availability. Many NoSQL systems like Cassandra choose availability and offer eventual consistency, because for web applications like shopping carts it is better to stay responsive than reject requests. Systems needing strict correctness, like banking, may choose consistency instead.",
+      "keywords": [
+        "consistency",
+        "availability",
+        "partition tolerance",
+        "two of three",
+        "network partition",
+        "eventual consistency"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Quorums and version stamps",
+      "text": "In a replicated database with N = 3 replicas, how do you choose write quorum W and read quorum R to get strong consistency, and what are the trade-offs?",
+      "ideal_answer": "For strong consistency, the read and write quorums must overlap, which requires R plus W greater than N. With N equal to 3, a common choice is W equal to 2 and R equal to 2, so every read contacts at least one replica that has the latest write. Choosing W equal to 3 and R equal to 1 gives fast reads but writes fail if any replica is down, while W equal to 1 and R equal to 1 is fast and highly available but may return stale data. Version stamps or vector clocks are used to identify which replica holds the latest value and detect conflicts.",
+      "keywords": [
+        "quorum",
+        "greater than n",
+        "overlap",
+        "stale data",
+        "availability",
+        "version stamps"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Database security: SQL injection",
+      "text": "Is a MongoDB application immune to injection attacks because it does not use SQL? Explain with an example and the fix.",
+      "ideal_answer": "No, NoSQL databases are vulnerable to NoSQL injection. For example, if a login API passes user JSON input directly into a query, an attacker can send a password value like {\"$ne\": null}, which matches any password and bypasses authentication. JavaScript-based operators like $where can also allow code injection. The fixes are to validate and sanitise input, enforce expected data types, never build queries by concatenating strings, disable server-side JavaScript if not needed, and apply authentication and least-privilege authorization on the database.",
+      "keywords": [
+        "nosql injection",
+        "operator",
+        "bypass authentication",
+        "validate input",
+        "sanitise",
+        "least privilege"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Key-value databases: use cases and when not to use",
+      "text": "Your team wants to use Redis, a key-value store, as the main database for an e-commerce site including orders and reporting. What would you advise?",
+      "ideal_answer": "Key-value stores like Redis are excellent for session data, user profiles, shopping carts and caching, because lookups by key are extremely fast. However, they are a poor fit when you need relationships between data, queries on attributes of the value, multi-key transactions, or reporting across many records, since data can only be fetched by key. Orders need durable, transactional storage and reporting needs ad-hoc queries, so a relational or document database is better for them. I would recommend polyglot persistence: Redis for sessions, carts and cache, and a database such as PostgreSQL or MongoDB as the system of record.",
+      "keywords": [
+        "session",
+        "shopping cart",
+        "caching",
+        "relationships",
+        "transactions",
+        "polyglot persistence"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Column-family databases (Cassandra)",
+      "text": "A company needs to store billions of IoT sensor readings per day with high write throughput and queries by sensor and time range. Would Cassandra be a good choice, and how would you model the data?",
+      "ideal_answer": "Cassandra is a good choice because it is a column-family store with a masterless peer-to-peer architecture, linear horizontal scaling and very high write throughput using an append-only log-structured storage engine. Data should be modelled around the queries: use a partition key of sensor ID, often combined with a time bucket like the day to avoid huge partitions, and a clustering column of timestamp so readings are sorted by time within the partition. Time-range queries for a sensor then read a single partition efficiently. Trade-offs are that Cassandra has no joins and limited ad-hoc queries, and its tunable consistency is usually eventual, which is acceptable for sensor data.",
+      "keywords": [
+        "column-family",
+        "write throughput",
+        "partition key",
+        "clustering column",
+        "time bucket",
+        "eventual consistency"
+      ]
+    }
+  ]
+}

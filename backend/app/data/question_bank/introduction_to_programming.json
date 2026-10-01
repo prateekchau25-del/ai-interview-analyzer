@@ -1,0 +1,180 @@
+{
+  "subject": "Introduction to Programming",
+  "applies_to": [
+    {
+      "course": "BSC_IT",
+      "year": 1,
+      "semester": 1
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Algorithms, pseudocode and flowchart symbols",
+      "text": "What is an algorithm, and what are its main characteristics?",
+      "ideal_answer": "An algorithm is a finite, step-by-step sequence of well-defined instructions to solve a problem. Its main characteristics are input, output, definiteness, meaning each step is clear and unambiguous, finiteness, meaning it terminates after a finite number of steps, and effectiveness, meaning each step is basic enough to be carried out. Algorithms are independent of any programming language and can be expressed as pseudocode or flowcharts.",
+      "keywords": [
+        "step-by-step",
+        "instructions",
+        "input",
+        "output",
+        "finiteness",
+        "definiteness"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "C character set, identifiers, keywords",
+      "text": "What is the difference between a keyword and an identifier in C?",
+      "ideal_answer": "A keyword is a reserved word with a predefined meaning in C, such as int, if, while or return, and it cannot be used as a name. An identifier is a user-defined name given to variables, functions, arrays and so on. Identifiers must start with a letter or underscore, can contain letters, digits and underscores, are case-sensitive and cannot be keywords. C89 has 32 keywords.",
+      "keywords": [
+        "keyword",
+        "reserved",
+        "predefined meaning",
+        "identifier",
+        "user-defined",
+        "underscore"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Compiler, linker and preprocessor",
+      "text": "What are the roles of the preprocessor, compiler and linker in building a C program?",
+      "ideal_answer": "The preprocessor runs first and handles directives starting with hash, such as #include to insert header files, #define for macros and conditional compilation. The compiler then translates the preprocessed source code into object code, reporting syntax errors. The linker combines the object files with library code, such as the code for printf, and resolves references to produce the final executable file. The loader then loads the executable into memory to run.",
+      "keywords": [
+        "preprocessor",
+        "header files",
+        "compiler",
+        "object code",
+        "linker",
+        "executable"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Control flow: while and do-while",
+      "text": "What is the difference between a while loop and a do-while loop in C?",
+      "ideal_answer": "A while loop is an entry-controlled loop: the condition is checked before the body executes, so the body may run zero times. A do-while loop is an exit-controlled loop: the body executes first and the condition is checked afterwards, so the body always runs at least once. A do-while statement ends with a semicolon after the condition. Do-while is useful for menu-driven programs where the menu must be shown at least once.",
+      "keywords": [
+        "entry-controlled",
+        "before",
+        "exit-controlled",
+        "at least once",
+        "zero times",
+        "semicolon"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Operators: increment/decrement",
+      "text": "If int a = 5; and we execute int b = a++ + ++a; is the result well defined in C? Explain pre-increment and post-increment.",
+      "ideal_answer": "Pre-increment, ++a, increments the variable first and then uses the new value, while post-increment, a++, uses the current value and increments afterwards. For example, b = a++ assigns 5 to b and makes a 6, while b = ++a makes a 6 and assigns 6. However, a++ + ++a modifies a twice without an intervening sequence point, so it is undefined behaviour in C and different compilers can give different results. Such expressions should be avoided and split into separate statements.",
+      "keywords": [
+        "pre-increment",
+        "post-increment",
+        "new value",
+        "current value",
+        "undefined behaviour",
+        "sequence point"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Typecasting",
+      "text": "What is the output of: int a = 7, b = 2; float c = a / b; printf(\"%f\", c); and how would you get the correct result?",
+      "ideal_answer": "The output is 3.000000, because a and b are both integers, so a / b performs integer division and gives 3, which is then converted to float. To get 3.5, at least one operand must be converted to float before the division, using an explicit type cast such as (float)a / b. This is called explicit typecasting, while the automatic conversion of int to float during assignment is implicit type conversion.",
+      "keywords": [
+        "implicit",
+        "integer division",
+        "explicit",
+        "type cast",
+        "float",
+        "3.5"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Pointers with function arguments",
+      "text": "Why does a swap function written as void swap(int a, int b) fail to swap two variables in main, and how do pointers fix it?",
+      "ideal_answer": "C passes arguments by value, so swap(int a, int b) receives copies of the variables, and swapping the copies does not affect the originals in main. To fix it, the function should take pointers, void swap(int *a, int *b), and be called with addresses, swap(&x, &y). Inside, it swaps the values using dereferencing, *a and *b, through a temporary variable. Because the function now works on the actual memory locations, the change is visible in main; this simulates call by reference.",
+      "keywords": [
+        "call by value",
+        "copies",
+        "pointers",
+        "address",
+        "dereference",
+        "call by reference"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Structures and unions",
+      "text": "Compare a structure and a union in C. If a struct and a union each contain an int and a double, how do their sizes differ?",
+      "ideal_answer": "In a structure, each member has its own separate memory, so all members can hold values at the same time and the size is at least the sum of the member sizes, plus any padding. In a union, all members share the same memory location, so only one member holds a valid value at a time, and the size equals the size of the largest member, rounded up for alignment. With a 4-byte int and an 8-byte double, the struct is typically 16 bytes due to padding, while the union is 8 bytes. Unions are used to save memory when only one of several types is needed at a time.",
+      "keywords": [
+        "structure",
+        "separate memory",
+        "union",
+        "shared memory",
+        "largest member",
+        "padding"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Control flow: switch, break",
+      "text": "A student's switch statement prints messages for case 1, case 2 and default even when the input is 1. What is the bug and how is it fixed?",
+      "ideal_answer": "The bug is missing break statements. In a C switch, once a matching case is found, execution falls through into all following cases until a break or the end of the switch is reached. So with input 1, the statements of case 2 and default also execute. The fix is to add break at the end of each case. Fall-through is occasionally intentional, for example to group several cases with the same action, and then it should be commented.",
+      "keywords": [
+        "break",
+        "fall through",
+        "matching case",
+        "following cases",
+        "default",
+        "switch"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Pointers and arrays",
+      "text": "A function returns the address of a local array: int* make() { int arr[5]; ... return arr; }. Why is this a problem and how can it be fixed?",
+      "ideal_answer": "The local array is created on the stack and its lifetime ends when the function returns, so the returned pointer becomes a dangling pointer. Accessing it is undefined behaviour and may show garbage values or crash. Fixes include allocating the array dynamically with malloc and freeing it later, declaring it static, or letting the caller pass in an array to fill. Each has trade-offs: malloc needs free to avoid memory leaks, and static is shared between calls.",
+      "keywords": [
+        "local",
+        "stack",
+        "dangling pointer",
+        "undefined behaviour",
+        "malloc",
+        "static"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "User-defined and library functions",
+      "text": "You are writing a student marks management program in C for your college. How would you organise it using functions, and why is this better than one large main function?",
+      "ideal_answer": "I would split the program into user-defined functions, each doing one task, such as inputMarks, calculateTotal, calculateGrade, displayReport and searchStudent, with main only calling them in order. Data such as an array of student structures would be passed as parameters rather than using many global variables. I would use library functions like printf, scanf and strcpy instead of rewriting them, and keep function prototypes in a header file. This modular approach improves readability, reusability and testing, makes debugging easier because errors are isolated to one function, and lets team members work on different functions.",
+      "keywords": [
+        "user-defined functions",
+        "modular",
+        "parameters",
+        "library functions",
+        "reusability",
+        "debugging"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "typedef and data types",
+      "text": "In an embedded or banking project, why might a team use typedef and carefully chosen data types instead of plain int and float everywhere?",
+      "ideal_answer": "typedef creates an alias for an existing type, such as typedef unsigned int StudentId or typedef struct Account Account, which makes code more readable and lets the underlying type be changed in one place. The size of int varies across platforms, so embedded code often uses fixed-width types like int32_t from stdint.h for portability. For money, float and double cause rounding errors because they cannot represent decimal fractions like 0.1 exactly, so amounts are often stored as integers in paise. Choosing the right type also prevents overflow and saves memory.",
+      "keywords": [
+        "typedef",
+        "alias",
+        "readability",
+        "portability",
+        "rounding errors",
+        "overflow"
+      ]
+    }
+  ]
+}

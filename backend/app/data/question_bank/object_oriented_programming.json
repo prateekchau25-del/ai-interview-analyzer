@@ -1,0 +1,183 @@
+{
+  "subject": "Object Oriented Programming",
+  "applies_to": [
+    {
+      "course": "BSC_IT",
+      "year": 1,
+      "semester": 2
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Objects, classes, abstraction, encapsulation",
+      "text": "What is a class and what is an object in object-oriented programming?",
+      "ideal_answer": "A class is a user-defined blueprint or template that defines data members and member functions for a type of entity. An object is an instance of a class that occupies memory and has its own values for the data members. For example, Car can be a class with members like speed and a function accelerate, and myCar is an object of that class. Many objects can be created from one class.",
+      "keywords": [
+        "blueprint",
+        "data members",
+        "member functions",
+        "instance",
+        "memory"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "Constructors and destructors",
+      "text": "What is a constructor in C++?",
+      "ideal_answer": "A constructor is a special member function that has the same name as the class and is called automatically when an object is created. It is used to initialise the data members of the object. A constructor has no return type, not even void. Constructors can be overloaded, for example a default constructor, a parameterised constructor and a copy constructor.",
+      "keywords": [
+        "same name",
+        "automatically",
+        "object is created",
+        "initialise",
+        "no return type",
+        "overloaded"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Procedure-oriented vs object-oriented programming",
+      "text": "What is the difference between procedure-oriented programming and object-oriented programming?",
+      "ideal_answer": "Procedure-oriented programming divides a program into functions and focuses on the steps or procedures, with data often shared globally between functions. Object-oriented programming divides a program into objects that combine data and the functions that operate on it. OOP protects data through encapsulation and access specifiers, while in POP global data can be changed by any function. OOP also supports inheritance and polymorphism, which make code more reusable and easier to maintain. C is procedure-oriented and C++ supports object-oriented programming.",
+      "keywords": [
+        "functions",
+        "objects",
+        "global data",
+        "encapsulation",
+        "inheritance",
+        "polymorphism",
+        "reusable"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Friend functions and friend classes",
+      "text": "What is a friend function in C++ and why is it used?",
+      "ideal_answer": "A friend function is a non-member function that is given access to the private and protected members of a class by declaring it inside the class with the keyword friend. It is not called using an object with the dot operator because it is not a member of the class. It is used when a function needs to work on private data of two or more classes, or for operator overloading such as the insertion operator. Because it bypasses encapsulation, it should be used sparingly.",
+      "keywords": [
+        "non-member",
+        "friend keyword",
+        "private",
+        "protected",
+        "two classes",
+        "encapsulation"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Inheritance: single, multiple, multilevel, hybrid; derived class constructors",
+      "text": "When an object of a derived class is created, in what order are the base and derived constructors and destructors called?",
+      "ideal_answer": "When a derived class object is created, the base class constructor runs first and then the derived class constructor runs. This is because the derived part may depend on the base part being initialised. Destructors are called in the reverse order, so the derived class destructor runs first and then the base class destructor. If the base class has a parameterised constructor, the derived class constructor must pass arguments to it using the member initialiser list.",
+      "keywords": [
+        "base constructor first",
+        "derived constructor",
+        "reverse order",
+        "derived destructor first",
+        "initialiser list"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Function overloading and operator overloading",
+      "text": "How would you overload the plus operator for a Complex number class in C++?",
+      "ideal_answer": "We define a member function named operator+ that takes another Complex object as a parameter, usually by const reference. Inside, it creates a new Complex object whose real part is the sum of the two real parts and whose imaginary part is the sum of the two imaginary parts, and returns it. Then c3 = c1 + c2 calls c1.operator+(c2). Binary operators overloaded as member functions take one explicit argument, because the left operand is the calling object. It can also be written as a friend function taking two arguments.",
+      "keywords": [
+        "operator",
+        "member function",
+        "parameter",
+        "return",
+        "binary operator",
+        "calling object",
+        "friend function"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Virtual functions and dynamic binding",
+      "text": "A base class pointer points to a derived class object and calls a function show() that exists in both classes. Which version runs if show() is virtual and if it is not, and why?",
+      "ideal_answer": "If show() is not virtual, the base class version runs because the call is resolved at compile time using the pointer type; this is static or early binding. If show() is declared virtual in the base class, the derived class version runs because the call is resolved at run time using the actual object type; this is dynamic or late binding. C++ implements this using a virtual table and a virtual pointer in each object. This mechanism provides run-time polymorphism.",
+      "keywords": [
+        "virtual",
+        "base version",
+        "derived version",
+        "compile time",
+        "run time",
+        "dynamic binding",
+        "vtable"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Inheritance: multiple and hybrid",
+      "text": "What is the diamond problem in multiple inheritance, and how does C++ solve it?",
+      "ideal_answer": "The diamond problem occurs when class D inherits from B and C, and both B and C inherit from a common base A. D then gets two copies of A's members, so accessing them is ambiguous for the compiler. C++ solves this using virtual base classes, by declaring class B : virtual public A and class C : virtual public A. Then only one shared copy of A is included in D, removing the ambiguity. This situation is an example of hybrid inheritance.",
+      "keywords": [
+        "common base",
+        "two copies",
+        "ambiguous",
+        "virtual base class",
+        "one copy",
+        "hybrid inheritance"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Virtual destructors",
+      "text": "A program deletes a derived class object through a base class pointer, and the derived class allocates memory in its constructor. What bug can occur and how do you prevent it?",
+      "ideal_answer": "If the base class destructor is not virtual, deleting through a base pointer calls only the base class destructor, which is undefined behaviour in C++. The derived class destructor is skipped, so the memory it allocated is never freed, causing a memory leak. The fix is to declare the base class destructor as virtual. Then delete calls the derived destructor first and the base destructor next. As a rule, any class meant to be used polymorphically should have a virtual destructor.",
+      "keywords": [
+        "virtual destructor",
+        "base pointer",
+        "derived destructor",
+        "memory leak",
+        "undefined behaviour",
+        "polymorphic"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Exception handling: throw and catch",
+      "text": "In a C++ program, a function throws an exception but the catch block never seems to handle it and the program terminates. What could be wrong?",
+      "ideal_answer": "The thrown type may not match the type in any catch block, for example throwing an int but catching a char or a string; C++ does not do normal type conversions when matching. The throw may also happen outside any try block, or the catch blocks may be in the wrong place. If no matching handler is found, std::terminate is called and the program ends. To fix it, place the call inside a try block, catch the exact type or a base class by reference, and add a catch-all handler, catch(...), as a last resort.",
+      "keywords": [
+        "type mismatch",
+        "try block",
+        "catch",
+        "terminate",
+        "by reference",
+        "catch-all"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Virtual functions, pure virtual functions, abstract classes",
+      "text": "You are designing a payment module that must support credit card, UPI and net banking, with new methods added later. How would you use abstract classes and polymorphism in C++?",
+      "ideal_answer": "I would create an abstract base class Payment with a pure virtual function such as virtual void pay(double amount) = 0, so it cannot be instantiated and acts as an interface. Each method, like CreditCard, UPI and NetBanking, inherits from Payment and overrides pay with its own logic. The rest of the code works with Payment pointers or references, so the correct pay is chosen at run time through dynamic binding. Adding a new method only needs a new derived class, without changing existing code, which follows the open-closed principle. The base class should also have a virtual destructor.",
+      "keywords": [
+        "abstract class",
+        "pure virtual function",
+        "override",
+        "base pointer",
+        "dynamic binding",
+        "open-closed",
+        "virtual destructor"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "File handling: file operations, modes and file pointers",
+      "text": "You need a C++ program that appends daily sales records to a file and later reads a specific record directly. Which file streams, modes and file pointer functions would you use?",
+      "ideal_answer": "I would use ofstream or fstream opened in append mode, ios::app, to append new records at the end without erasing old data, and binary mode, ios::binary, if fixed-size records are written with write. For reading, ifstream with ios::in is used. To read a specific record directly, I would use seekg to move the get pointer to record number times sizeof(record), then read it; tellg and tellp give the current position. The program should check is_open or the stream state for errors and close the file after use.",
+      "keywords": [
+        "ofstream",
+        "ifstream",
+        "append mode",
+        "binary mode",
+        "seekg",
+        "tellg",
+        "close"
+      ]
+    }
+  ]
+}

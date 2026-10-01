@@ -1,0 +1,181 @@
+{
+ "subject": "Probability and Quality Control Charts",
+ "applies_to": [
+  {
+   "course": "BSC_AI",
+   "year": 1,
+   "semester": 2
+  }
+ ],
+ "questions": [
+  {
+   "level": 1,
+   "topic": "Quality control and its importance",
+   "text": "What is quality control?",
+   "ideal_answer": "Quality control is the process of checking and monitoring products or processes to make sure they meet specified standards. It involves inspection, measurement and testing to detect defects and variation. Statistical quality control uses statistical methods such as control charts and sampling to monitor a process. Its importance lies in reducing defects and waste, lowering costs and improving customer satisfaction.",
+   "keywords": [
+    "standards",
+    "inspection",
+    "defects",
+    "variation",
+    "control charts",
+    "customer satisfaction"
+   ]
+  },
+  {
+   "level": 1,
+   "topic": "Basic probability: additive and multiplicative laws",
+   "text": "State the additive and multiplicative laws of probability.",
+   "ideal_answer": "The additive law states that P(A or B) = P(A) + P(B) - P(A and B); for mutually exclusive events it becomes P(A) + P(B). The multiplicative law states that P(A and B) = P(A) times P(B given A). For independent events it simplifies to P(A and B) = P(A) times P(B). For example, the probability of getting two heads in two fair coin tosses is 0.5 times 0.5 = 0.25.",
+   "keywords": [
+    "additive law",
+    "union",
+    "mutually exclusive",
+    "multiplicative law",
+    "independent events",
+    "conditional"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Discrete and continuous random variables; expectation and variance",
+   "text": "What is the difference between a discrete and a continuous random variable? Give an example of each.",
+   "ideal_answer": "A discrete random variable takes a countable number of distinct values, such as the number of defective items in a batch or the outcome of a die roll. A continuous random variable can take any value within an interval, such as the weight of a product or the time to failure of a machine. Discrete variables are described by a probability mass function, where probabilities of individual values add to 1. Continuous variables are described by a probability density function, where probabilities are areas under the curve and the probability of any single exact value is zero.",
+   "keywords": [
+    "countable",
+    "discrete",
+    "continuous",
+    "interval",
+    "probability mass function",
+    "probability density function"
+   ]
+  },
+  {
+   "level": 2,
+   "topic": "Measures of central tendency and variation; histograms, box plots, scatter plots",
+   "text": "What does a box plot show, and what is it useful for?",
+   "ideal_answer": "A box plot is a graph based on the five-number summary: minimum, first quartile, median, third quartile and maximum. The box spans from Q1 to Q3, so its length is the interquartile range, and a line inside the box marks the median. Whiskers extend to the smallest and largest values within 1.5 times the IQR, and points beyond are shown as outliers. It is useful for seeing spread, skewness and outliers and for comparing distributions of several groups.",
+   "keywords": [
+    "five-number summary",
+    "quartile",
+    "median",
+    "interquartile range",
+    "whiskers",
+    "outliers"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Binomial, Poisson and negative binomial distributions",
+   "text": "A machine produces 10% defective items. If 5 items are chosen at random, how do you find the probability that exactly 2 are defective?",
+   "ideal_answer": "This follows a binomial distribution because there are a fixed number of independent trials, each with two outcomes and constant probability p = 0.1. The probability of exactly k successes is nCk times p to the power k times (1 - p) to the power (n - k). Here P(X = 2) = 5C2 times 0.1 squared times 0.9 cubed = 10 times 0.01 times 0.729, which is 0.0729. So the probability is about 7.3%.",
+   "keywords": [
+    "binomial distribution",
+    "independent trials",
+    "fixed number of trials",
+    "two outcomes",
+    "0.0729"
+   ]
+  },
+  {
+   "level": 3,
+   "topic": "Conditional probability and Bayes' theorem",
+   "text": "Machine A makes 60% of items with 2% defective and machine B makes 40% with 5% defective. If an item is defective, how do you find the probability it came from machine B?",
+   "ideal_answer": "Use Bayes' theorem. First find total probability of defect: 0.6 times 0.02 + 0.4 times 0.05 = 0.012 + 0.020 = 0.032. Then P(B given defective) = P(defective given B) times P(B) divided by P(defective) = 0.020 / 0.032. This equals 0.625, so there is a 62.5% chance the defective item came from machine B.",
+   "keywords": [
+    "bayes theorem",
+    "total probability",
+    "0.032",
+    "conditional probability",
+    "0.625"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Sampling distribution of mean and proportion; central limit theorem",
+   "text": "What does the central limit theorem state and why is it so important in statistics?",
+   "ideal_answer": "The central limit theorem states that the sampling distribution of the sample mean approaches a normal distribution as the sample size increases, regardless of the shape of the population distribution, provided the population has finite variance. The mean of this sampling distribution equals the population mean and its standard deviation, called the standard error, equals sigma divided by the square root of n. A sample size of about 30 or more is usually considered enough. It is important because it lets us use normal-based methods for confidence intervals, hypothesis tests and control charts even when the data are not normal.",
+   "keywords": [
+    "sample mean",
+    "normal distribution",
+    "sample size",
+    "standard error",
+    "square root of n",
+    "population mean"
+   ]
+  },
+  {
+   "level": 4,
+   "topic": "Normal, gamma and chi-square distributions",
+   "text": "Why is the normal distribution important, and what does the 68-95-99.7 rule say?",
+   "ideal_answer": "The normal distribution is a symmetric, bell-shaped continuous distribution defined by its mean and standard deviation, in which mean, median and mode are equal. Many natural measurements and, by the central limit theorem, sample means follow it approximately. The empirical rule says about 68% of values lie within one standard deviation of the mean, about 95% within two and about 99.7% within three. This is the basis for 3-sigma control limits in quality control charts.",
+   "keywords": [
+    "bell-shaped",
+    "symmetric",
+    "mean",
+    "standard deviation",
+    "empirical rule",
+    "within three"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Control charts for variables: X-bar and R charts; p-chart",
+   "text": "On an X-bar chart all points are within control limits, but seven consecutive points are above the centre line. Is the process in control? Explain.",
+   "ideal_answer": "No, the process should not be considered in statistical control even though no point is outside the limits. A run of seven or more consecutive points on one side of the centre line is a non-random pattern that signals a likely shift in the process mean. Run rules such as the Western Electric rules are used to detect such patterns, trends and cycles. The cause, such as tool wear, a new material batch or an operator change, should be investigated and corrected.",
+   "keywords": [
+    "not in control",
+    "run",
+    "centre line",
+    "non-random pattern",
+    "process mean shift",
+    "western electric rules",
+    "assignable cause"
+   ]
+  },
+  {
+   "level": 5,
+   "topic": "Control charts for variables: X-bar and R charts; p-chart",
+   "text": "When would you use a p-chart instead of X-bar and R charts?",
+   "ideal_answer": "X-bar and R charts are used for variables data, which are continuous measurements like length or weight, to monitor the process mean and range. A p-chart is used for attributes data, where each item is classified as defective or non-defective, and it monitors the proportion defective in each sample. Its centre line is p-bar and its control limits are p-bar plus or minus 3 times the square root of p-bar(1 - p-bar)/n. If sample sizes vary, the p-chart limits are calculated separately for each sample.",
+   "keywords": [
+    "variables data",
+    "attributes data",
+    "proportion defective",
+    "p-bar",
+    "control limits",
+    "sample size"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Six sigma concepts",
+   "text": "A software company wants to reduce bugs in releases using Six Sigma. How would you apply the DMAIC approach?",
+   "ideal_answer": "Six Sigma aims to reduce process variation so that there are no more than 3.4 defects per million opportunities. In Define, we state the problem, such as bugs per release, and the goals. In Measure, we collect data on defect counts and where they arise, and in Analyze we find root causes using tools like Pareto charts and fishbone diagrams. In Improve we implement fixes such as code reviews and automated testing, and in Control we monitor defect rates with control charts to sustain the gains.",
+   "keywords": [
+    "dmaic",
+    "define",
+    "measure",
+    "analyze",
+    "improve",
+    "control",
+    "3.4 defects per million"
+   ]
+  },
+  {
+   "level": 6,
+   "topic": "Creating control charts for process monitoring using software",
+   "text": "You are asked to set up automated control charts to monitor server response times in production. How would you design it and what pitfalls would you avoid?",
+   "ideal_answer": "I would collect response times in rational subgroups, for example the average of samples per minute, and first compute control limits from a stable baseline period, using X-bar and R or individual charts. Tools like Python with pandas and matplotlib, Minitab or Excel can calculate the centre line and 3-sigma limits and plot them automatically. Alerts should trigger on points beyond the limits and on run rules. Pitfalls to avoid include confusing specification limits with control limits, recalculating limits with out-of-control data, ignoring the skewed distribution of response times, and too many false alarms from overly sensitive rules.",
+   "keywords": [
+    "rational subgroups",
+    "baseline",
+    "control limits",
+    "3-sigma",
+    "run rules",
+    "specification limits",
+    "false alarms"
+   ]
+  }
+ ]
+}

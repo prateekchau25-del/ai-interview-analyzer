@@ -1,0 +1,183 @@
+{
+  "subject": "Introduction to Programming with C",
+  "applies_to": [
+    {
+      "course": "BSC_AI",
+      "year": 1,
+      "semester": 1
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Structure of a C program, header files and main()",
+      "text": "What is the basic structure of a C program, and what is the role of the main function?",
+      "ideal_answer": "A C program usually begins with preprocessor directives such as #include for header files like stdio.h, followed by global declarations, the main function and other user-defined functions. Header files contain declarations of library functions such as printf and scanf. The main function is the entry point where program execution begins. It normally returns an int, where returning 0 indicates successful termination.",
+      "keywords": [
+        "preprocessor",
+        "include",
+        "header file",
+        "main",
+        "entry point",
+        "return 0"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "Tokens, keywords, identifiers, variables and data types",
+      "text": "What are tokens in C? Name the different types.",
+      "ideal_answer": "A token is the smallest individual unit of a C program that the compiler recognises. The types of tokens are keywords, identifiers, constants, string literals, operators and special symbols or punctuators. Keywords are reserved words like int, if and while that cannot be used as names. Identifiers are names given by the programmer to variables and functions.",
+      "keywords": [
+        "smallest unit",
+        "keywords",
+        "identifiers",
+        "constants",
+        "operators",
+        "special symbols"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Decision making: if, if-else, switch",
+      "text": "What is the difference between an if-else ladder and a switch statement in C?",
+      "ideal_answer": "An if-else ladder can test any condition, including ranges, relational and logical expressions, and floating-point values. A switch statement compares one integer or character expression against constant case labels for equality. A switch needs break statements, otherwise control falls through to the next case, and it has a default case for unmatched values. Switch is cleaner and often faster when choosing among many fixed values, while if-else is needed for ranges and complex conditions.",
+      "keywords": [
+        "condition",
+        "ranges",
+        "integer",
+        "case",
+        "break",
+        "fall through",
+        "default"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Loops: while, do-while, for",
+      "text": "What is the difference between a while loop and a do-while loop?",
+      "ideal_answer": "A while loop is an entry-controlled loop: the condition is checked before the body executes, so the body may execute zero times. A do-while loop is an exit-controlled loop: the body executes first and the condition is checked afterwards, so the body executes at least once. A do-while loop ends with a semicolon after the while condition. Do-while is useful for menu-driven programs where the menu must be shown at least once.",
+      "keywords": [
+        "entry-controlled",
+        "exit-controlled",
+        "condition",
+        "at least once",
+        "zero times",
+        "semicolon"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Formatted I/O with printf() and scanf()",
+      "text": "Why do we write an ampersand before a variable in scanf but not in printf? Explain with an int variable.",
+      "ideal_answer": "scanf needs to store the input value into the variable, so it must be given the memory address of the variable, which the address-of operator ampersand provides, as in scanf(\"%d\", &x). printf only needs the value to print, so we pass x directly, as in printf(\"%d\", x). The %d format specifier tells both functions that the data is an integer. Forgetting the ampersand in scanf causes undefined behaviour, often a crash. Array names such as character strings do not need an ampersand because the name already gives the address.",
+      "keywords": [
+        "address",
+        "ampersand",
+        "store",
+        "value",
+        "format specifier",
+        "undefined behaviour"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Arithmetic, relational, logical, bitwise operators; type conversion",
+      "text": "In C, what are the values of 7 / 2, 7 % 2 and 7.0 / 2, and why?",
+      "ideal_answer": "7 / 2 gives 3 because both operands are integers, so integer division truncates the fractional part. 7 % 2 gives 1 because the modulus operator returns the remainder of integer division. 7.0 / 2 gives 3.5 because one operand is a double, so the integer 2 is implicitly converted to double and floating-point division is done. This automatic conversion to the wider type is called implicit type conversion or type promotion.",
+      "keywords": [
+        "integer division",
+        "truncates",
+        "remainder",
+        "modulus",
+        "3.5",
+        "implicit type conversion"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Parameter passing: call by value and call by reference",
+      "text": "A swap function takes two int parameters and swaps them inside, but the values in main do not change. Why, and how do you fix it?",
+      "ideal_answer": "C uses call by value, so the function receives copies of the arguments, and swapping the copies does not affect the original variables in main. To fix it, we use call by reference through pointers: declare the function as swap(int *a, int *b) and call it as swap(&x, &y). Inside, we swap the values using dereferencing, with a temporary variable holding *a, then *a = *b and *b = temp. Since the function works on the original addresses, the change is visible in main.",
+      "keywords": [
+        "call by value",
+        "copies",
+        "pointers",
+        "address",
+        "call by reference",
+        "dereferencing"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Loops: goto, break and continue",
+      "text": "In a for loop from i = 1 to 5, if we use continue when i equals 3, what is printed? What if we use break instead?",
+      "ideal_answer": "With continue, when i equals 3 the rest of that iteration is skipped and the loop moves to the next iteration, so it prints 1 2 4 5. With break, when i equals 3 the loop terminates immediately, so it prints 1 2. Continue only skips the current iteration, whereas break exits the innermost loop or switch completely. In a for loop, continue still executes the increment expression before re-checking the condition.",
+      "keywords": [
+        "continue",
+        "skip",
+        "1 2 4 5",
+        "break",
+        "terminates",
+        "1 2",
+        "increment"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "One- and two-dimensional arrays",
+      "text": "A program declares int a[5] and runs a loop from i = 0 to i <= 5 to fill it. What is the problem, and why does C not catch it?",
+      "ideal_answer": "The array has valid indices 0 to 4, but the loop also accesses a[5], which is out of bounds. This is an off-by-one error and writing to a[5] causes undefined behaviour; it may overwrite other variables, corrupt memory or crash the program. C does not perform bounds checking on arrays for performance reasons, so the compiler usually does not report it. The fix is to use the condition i less than 5, or better i less than size, with the size kept in a constant.",
+      "keywords": [
+        "0 to 4",
+        "out of bounds",
+        "off-by-one",
+        "undefined behaviour",
+        "bounds checking",
+        "less than 5"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Library and user-defined functions, scope of variables, recursion",
+      "text": "A recursive factorial function works for small n but crashes for very large n. What are the possible causes, and how would you fix them?",
+      "ideal_answer": "Each recursive call uses a stack frame, so very deep recursion can cause stack overflow and crash the program. A missing or wrong base case, such as not stopping at n equal to 0 or 1, causes infinite recursion with the same result. Also factorial grows very fast, so an int overflows beyond 12 factorial, giving wrong values even before a crash. Fixes are to ensure a correct base case, use an iterative loop instead of recursion, and use a larger type like unsigned long long, which still overflows after 20 factorial.",
+      "keywords": [
+        "stack frame",
+        "stack overflow",
+        "base case",
+        "integer overflow",
+        "iterative",
+        "long long"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Structures, typedef and enumerated data types",
+      "text": "You are writing a C program to manage student records with roll number, name, marks and a grade category. How would you use structures, typedef and enum to design it?",
+      "ideal_answer": "I would define a structure that groups related fields of different types, such as int roll number, a char array for name and float marks, into one record. Using typedef, for example typedef struct student Student, gives a short readable type name. The grade category can be an enum such as enum grade with values DISTINCTION, FIRST, SECOND and FAIL, which is clearer and safer than using raw numbers. All records can be stored in an array of structures and accessed with the dot operator, or the arrow operator when using pointers to structures. Passing a structure pointer to functions avoids copying large records.",
+      "keywords": [
+        "structure",
+        "different types",
+        "typedef",
+        "enum",
+        "array of structures",
+        "dot operator",
+        "arrow operator"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Pointers: pointer arithmetic, handling arrays using pointers",
+      "text": "A teammate processes a large int array by passing it to a function and walking through it with a pointer. Explain how pointer arithmetic works here and what care must be taken.",
+      "ideal_answer": "When an array is passed to a function, its name decays to a pointer to the first element, so no copy of the array is made, which is efficient. If p points to an int, p + 1 moves forward by sizeof(int) bytes, so *(p + i) is the same as a[i]. Because the function only gets a pointer, the array size must be passed as a separate parameter. The loop must stop before going past the last element, since accessing beyond it is undefined behaviour. If the function should not modify the data, the parameter should be declared const int *.",
+      "keywords": [
+        "decays",
+        "first element",
+        "sizeof",
+        "array size",
+        "undefined behaviour",
+        "const"
+      ]
+    }
+  ]
+}

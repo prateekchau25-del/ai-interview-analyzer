@@ -1,0 +1,90 @@
+{
+  "subject": "Natural Language Processing",
+  "applies_to": [{"course": "BCA", "year": 3, "semester": 5}],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Applications, components and steps in NLP",
+      "text": "What is Natural Language Processing? Give some applications.",
+      "ideal_answer": "Natural Language Processing is a field of artificial intelligence that enables computers to understand, interpret and generate human language in text or speech form. It has two main components: natural language understanding and natural language generation. Applications include machine translation, chatbots, sentiment analysis, spam filtering, speech recognition, text summarisation and search engines.",
+      "keywords": ["artificial intelligence", "human language", "understanding", "generation", "machine translation", "sentiment analysis"]
+    },
+    {
+      "level": 1,
+      "topic": "Morphology: lexemes, morphemes",
+      "text": "What is a morpheme?",
+      "ideal_answer": "A morpheme is the smallest unit of a language that carries meaning. For example, the word 'unhappiness' has three morphemes: 'un', 'happy' and 'ness'. Free morphemes, like 'happy', can stand alone as words, while bound morphemes, like prefixes and suffixes, must be attached to another morpheme. Morphology is the study of how words are formed from morphemes.",
+      "keywords": ["smallest unit", "meaning", "free morpheme", "bound morpheme", "prefix", "suffix"]
+    },
+    {
+      "level": 2,
+      "topic": "Morphology: inflectional and derivational",
+      "text": "What is the difference between inflectional and derivational morphology? Give examples.",
+      "ideal_answer": "Inflectional morphology adds affixes to express grammatical features like tense, number or person without changing the word's basic meaning or part of speech, for example walk to walked, or cat to cats. Derivational morphology creates a new word, often with a different meaning or part of speech, for example happy to happiness, adjective to noun, or teach to teacher. Inflection produces forms of the same lexeme, while derivation produces a new lexeme.",
+      "keywords": ["inflectional", "tense", "number", "same part of speech", "derivational", "new word", "lexeme"]
+    },
+    {
+      "level": 2,
+      "topic": "Dependency graphs and phrase structure trees",
+      "text": "What is the difference between a phrase structure tree and a dependency graph?",
+      "ideal_answer": "A phrase structure, or constituency, tree breaks a sentence into nested constituents like noun phrases and verb phrases, using non-terminal labels such as S, NP and VP, with words at the leaves. A dependency graph shows direct binary relations between words, where each word except the root depends on a head word, with labelled relations like subject or object. Dependency graphs have no phrase nodes, so they are simpler and handle free word order languages like Hindi better, while constituency trees show phrase grouping.",
+      "keywords": ["constituency", "noun phrase", "verb phrase", "dependency", "head word", "relations"]
+    },
+    {
+      "level": 3,
+      "topic": "WordNet and word sense disambiguation (Lesk algorithm)",
+      "text": "How does the Lesk algorithm decide the meaning of the word 'bank' in the sentence 'I sat on the bank of the river'?",
+      "ideal_answer": "The Lesk algorithm performs word sense disambiguation using dictionary definitions, such as glosses from WordNet. For each possible sense of 'bank', like a financial institution or sloping land beside water, it compares the words in the sense's definition with the words in the surrounding context. It counts the overlapping words and selects the sense with the highest overlap. Here, the context word 'river' overlaps with the definition of the land beside water, so that sense is chosen.",
+      "keywords": ["word sense disambiguation", "dictionary definitions", "wordnet", "gloss", "overlap", "context"]
+    },
+    {
+      "level": 3,
+      "topic": "NLP using Python and NLTK",
+      "text": "Describe how you would preprocess a set of product reviews using Python and NLTK before analysis.",
+      "ideal_answer": "First, convert the text to lowercase and remove unwanted characters such as punctuation, numbers or HTML tags. Then tokenize the text into words using word_tokenize. Remove stop words like 'the' and 'is' using NLTK's stopwords list, but keep negations like 'not' for sentiment tasks. Then apply stemming with PorterStemmer or lemmatization with WordNetLemmatizer to reduce words to their base form. Optionally apply part-of-speech tagging, after which the cleaned tokens can be converted into features for analysis.",
+      "keywords": ["lowercase", "tokenize", "stop words", "stemming", "lemmatization", "nltk"]
+    },
+    {
+      "level": 4,
+      "topic": "Shift-reduce parsing, chart parsing, CYK algorithm",
+      "text": "What does the CYK algorithm require of the grammar, and why does it use dynamic programming?",
+      "ideal_answer": "The CYK algorithm requires the context-free grammar to be in Chomsky Normal Form, where every rule produces either two non-terminals or a single terminal. It is a bottom-up parsing algorithm that fills a triangular table where each cell stores which non-terminals can generate a particular substring. It uses dynamic programming because results for shorter substrings are stored and reused to build longer ones, avoiding repeated work. This gives a time complexity of O(n cubed) times the grammar size, and the sentence is accepted if the start symbol appears in the top cell.",
+      "keywords": ["chomsky normal form", "bottom-up", "table", "substrings", "dynamic programming", "o(n cubed)"]
+    },
+    {
+      "level": 4,
+      "topic": "Probabilistic context-free grammar (PCFG)",
+      "text": "Why is a probabilistic context-free grammar useful for parsing a sentence like 'I saw the man with the telescope'?",
+      "ideal_answer": "This sentence is structurally ambiguous: 'with the telescope' can attach to 'saw', meaning I used the telescope, or to 'the man', meaning the man had it. A plain context-free grammar produces both parse trees and cannot choose between them. A PCFG assigns a probability to each grammar rule, learned from a treebank, and the probability of a tree is the product of the probabilities of the rules used. The parser, for example probabilistic CYK, chooses the most probable tree, which resolves the ambiguity.",
+      "keywords": ["ambiguity", "attachment", "rule probabilities", "treebank", "product of probabilities", "most probable parse"]
+    },
+    {
+      "level": 5,
+      "topic": "Emotion and sentiment analysis, affect lexicons",
+      "text": "A lexicon-based sentiment analyser labels the review 'The movie was not good at all' as positive. Why does this happen, and how would you improve it?",
+      "ideal_answer": "A simple lexicon-based approach looks up each word in an affect lexicon and adds up scores; 'good' has a positive score and the negation 'not' is ignored, so the sentence comes out positive. It can also fail on sarcasm, intensifiers and domain-specific words. To improve it, handle negation by flipping the polarity of words within a window after 'not' or 'never', and handle intensifiers like 'very' and contrast words like 'but', as tools like VADER do. A better solution is a machine learning or transformer model trained on labelled reviews, which learns context.",
+      "keywords": ["affect lexicon", "negation", "polarity", "sarcasm", "vader", "machine learning"]
+    },
+    {
+      "level": 5,
+      "topic": "Coreference resolution: anaphora and cataphora",
+      "text": "In the sentence 'The trophy did not fit in the suitcase because it was too big', what does 'it' refer to, and why is coreference resolution hard for computers?",
+      "ideal_answer": "Here 'it' refers to the trophy, because something too big does not fit; if the word were 'small', it would refer to the suitcase. This is anaphora, where a pronoun refers back to an earlier noun; cataphora is when the pronoun comes before the noun it refers to. It is hard because simple rules like choosing the nearest noun or matching gender and number are not enough, and the correct answer requires world knowledge and reasoning. Modern systems use neural models trained on annotated data, but such cases remain challenging.",
+      "keywords": ["trophy", "anaphora", "pronoun", "cataphora", "world knowledge", "nearest noun"]
+    },
+    {
+      "level": 6,
+      "topic": "Lexical and compositional semantics, semantic role labeling",
+      "text": "You are building a voice assistant for train ticket booking. How would semantic role labeling help extract the booking details from user sentences?",
+      "ideal_answer": "Semantic role labeling identifies the predicate in a sentence and the roles of its arguments, answering who did what to whom, when and where. In 'Book a ticket from Mumbai to Pune for tomorrow morning', the predicate is 'book', and roles include the theme 'ticket', the source 'Mumbai', the destination 'Pune' and the time 'tomorrow morning'. Because roles are assigned by meaning rather than word position, sentences like 'Tomorrow I want to go to Pune from Mumbai' give the same slots. In practice this is combined with intent detection and named entity recognition, and must handle missing information by asking follow-up questions.",
+      "keywords": ["semantic role labeling", "predicate", "arguments", "source", "destination", "intent detection"]
+    },
+    {
+      "level": 6,
+      "topic": "Morphological processing and typology",
+      "text": "Your company's English NLP pipeline works well, but performs poorly when applied to Marathi or Hindi text. What linguistic and practical issues might cause this, and how would you address them?",
+      "ideal_answer": "Languages differ in morphological typology: English is fairly analytic, while Marathi and Hindi are more inflected and agglutinative, attaching many suffixes for case, gender and tense, so one root has many word forms. English stemmers, tokenizers and stop-word lists do not work, and data becomes sparse. These languages also have freer word order, different scripts like Devanagari and frequent code-mixing with English. The fix is to use language-specific tools like Indic NLP Library or iNLTK, morphological analysers, subword tokenization like BPE, and multilingual models such as IndicBERT or MuRIL, plus labelled data in the target language.",
+      "keywords": ["morphological typology", "agglutinative", "inflection", "suffixes", "code-mixing", "subword tokenization", "multilingual models"]
+    }
+  ]
+}

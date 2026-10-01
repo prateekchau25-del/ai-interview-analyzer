@@ -1,0 +1,193 @@
+{
+  "subject": "Neural Network",
+  "applies_to": [
+    {
+      "course": "BCA",
+      "year": 3,
+      "semester": 5
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Biological neuron vs artificial neuron",
+      "text": "What is an artificial neuron and how is it related to a biological neuron?",
+      "ideal_answer": "An artificial neuron is a mathematical model inspired by the biological neuron. In a biological neuron, dendrites receive signals, the cell body or soma processes them, and the axon sends the output through synapses. Similarly, an artificial neuron receives inputs, multiplies each by a weight that plays the role of synapse strength, adds them with a bias, and passes the sum through an activation function to produce an output. This output can be sent as input to other neurons.",
+      "keywords": [
+        "dendrites",
+        "soma",
+        "axon",
+        "synapse",
+        "inputs",
+        "weight",
+        "activation function"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "ANN components: weights, bias, activation functions",
+      "text": "What are weights and bias in an artificial neural network?",
+      "ideal_answer": "Weights are parameters that determine the strength or importance of each input to a neuron; each input is multiplied by its weight. The bias is an extra parameter added to the weighted sum, which shifts the activation function and allows the neuron to produce output even when all inputs are zero, like the intercept in a line equation. The neuron computes the weighted sum of inputs plus bias and applies an activation function. Weights and biases are learned during training.",
+      "keywords": [
+        "weights",
+        "importance",
+        "multiplied",
+        "bias",
+        "shift",
+        "weighted sum",
+        "learned"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Supervised, unsupervised and reinforcement learning",
+      "text": "Explain the difference between supervised, unsupervised and reinforcement learning with one example each.",
+      "ideal_answer": "Supervised learning trains a model on labelled data, where each input has a known correct output, for example classifying emails as spam or not spam. Unsupervised learning works on unlabelled data and finds hidden patterns or groups, for example clustering customers into segments. Reinforcement learning trains an agent that interacts with an environment and learns by trial and error from rewards and penalties, for example a program learning to play a game. Neural networks can be used in all three.",
+      "keywords": [
+        "labelled data",
+        "supervised",
+        "unlabelled",
+        "clustering",
+        "reinforcement",
+        "agent",
+        "reward"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Overfitting and underfitting",
+      "text": "What is the difference between overfitting and underfitting?",
+      "ideal_answer": "Overfitting happens when a model learns the training data too well, including its noise, so it has very high training accuracy but performs poorly on new, unseen data; it usually comes from a model that is too complex or trained too long. Underfitting happens when a model is too simple or not trained enough to capture the underlying pattern, so it performs poorly on both training and test data. The goal is a good fit that generalises well, which is checked by comparing training and validation performance.",
+      "keywords": [
+        "overfitting",
+        "training data",
+        "noise",
+        "unseen data",
+        "underfitting",
+        "too simple",
+        "generalises"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Single layer perceptron and perceptron learning algorithm",
+      "text": "How does the perceptron learning algorithm update its weights?",
+      "ideal_answer": "The perceptron computes the weighted sum of inputs plus bias and applies a step function to output 0 or 1. For each training example, the output is compared with the target. If it is correct, the weights do not change; if it is wrong, each weight is updated as new weight equals old weight plus learning rate times the error, target minus output, times the input, and the bias is updated similarly. This is repeated over the training data for several epochs until all examples are classified correctly or a maximum number of epochs is reached. It is guaranteed to converge only if the data is linearly separable.",
+      "keywords": [
+        "weighted sum",
+        "step function",
+        "error",
+        "learning rate",
+        "target minus output",
+        "epochs",
+        "linearly separable"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Multilayer perceptron and forward propagation",
+      "text": "Explain forward propagation in a multilayer perceptron.",
+      "ideal_answer": "A multilayer perceptron has an input layer, one or more hidden layers and an output layer, with each neuron connected to all neurons of the next layer. In forward propagation, the input values are passed to the first hidden layer, where each neuron computes the weighted sum of its inputs plus bias and applies an activation function such as ReLU. These outputs become the inputs to the next layer, and the process repeats layer by layer until the output layer produces the prediction, for example using softmax for classification. The prediction is then compared with the target using a loss function.",
+      "keywords": [
+        "input layer",
+        "hidden layers",
+        "output layer",
+        "weighted sum",
+        "activation function",
+        "layer by layer",
+        "prediction"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "XOR problem and limitations of perceptron",
+      "text": "Why can a single-layer perceptron not solve the XOR problem, and how does a multilayer network solve it?",
+      "ideal_answer": "A single-layer perceptron draws a single straight line, or hyperplane, as its decision boundary, so it can only solve linearly separable problems like AND and OR. In XOR, the output is 1 for inputs (0,1) and (1,0) and 0 for (0,0) and (1,1); these points cannot be separated by one straight line, so XOR is not linearly separable. A multilayer perceptron with a hidden layer and non-linear activation can combine several linear boundaries, for example one hidden neuron computing OR and another NAND, with the output neuron computing their AND, which gives XOR. This limitation, highlighted by Minsky and Papert, motivated multilayer networks.",
+      "keywords": [
+        "single straight line",
+        "linearly separable",
+        "xor",
+        "not linearly separable",
+        "hidden layer",
+        "non-linear",
+        "multilayer"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Activation functions: step, sigmoid, ReLU, tanh",
+      "text": "Why is ReLU usually preferred over sigmoid in the hidden layers of deep networks?",
+      "ideal_answer": "The sigmoid function squashes inputs into the range 0 to 1, and for large positive or negative inputs it saturates, so its gradient becomes nearly zero; its maximum gradient is only 0.25. In deep networks these small gradients are multiplied across layers during backpropagation, causing the vanishing gradient problem and very slow learning. ReLU, defined as max of 0 and x, has a gradient of 1 for positive inputs, so it does not saturate there and is very cheap to compute, which makes training faster. Its drawback is the dying ReLU problem, where neurons stuck in the negative region output zero, which Leaky ReLU addresses.",
+      "keywords": [
+        "sigmoid",
+        "saturate",
+        "vanishing gradient",
+        "relu",
+        "max of 0 and x",
+        "gradient of 1",
+        "dying relu"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Gradient descent and weight update",
+      "text": "While training a network, the loss keeps jumping up and down and sometimes increases instead of decreasing. What could be the cause and how would you fix it?",
+      "ideal_answer": "The most likely cause is a learning rate that is too high, so each gradient descent step overshoots the minimum and the loss oscillates or diverges. Other causes are unnormalised input features, very small batch sizes which make gradients noisy, bad weight initialisation, or exploding gradients. Fixes include lowering the learning rate or using a learning-rate schedule, using an adaptive optimiser such as Adam, normalising or standardising the inputs, increasing the batch size, and applying gradient clipping. Checking the data for errors and plotting the training and validation loss curves helps confirm the fix.",
+      "keywords": [
+        "learning rate",
+        "too high",
+        "overshoot",
+        "normalising",
+        "batch size",
+        "adam",
+        "gradient clipping"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Overfitting and underfitting",
+      "text": "Your neural network gets 99 percent accuracy on training data but only 70 percent on validation data. What techniques would you use to fix this?",
+      "ideal_answer": "This large gap shows overfitting, where the network has memorised the training data instead of learning general patterns. Techniques include getting more training data or using data augmentation, adding dropout layers which randomly turn off neurons during training, and applying L1 or L2 regularisation to penalise large weights. Early stopping halts training when validation loss stops improving. Reducing the model's complexity, with fewer layers or neurons, and using batch normalisation or cross-validation can also help.",
+      "keywords": [
+        "overfitting",
+        "more training data",
+        "data augmentation",
+        "dropout",
+        "regularisation",
+        "early stopping",
+        "reducing the model's complexity"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Building ANN models with TensorFlow/Keras",
+      "text": "You are building a Keras model to classify customer reviews as positive or negative for a company. What choices would you make for the output layer, loss function and evaluation, and why?",
+      "ideal_answer": "For binary classification, use a single output neuron with a sigmoid activation, which gives the probability of the positive class, and the binary cross-entropy loss, compiled with an optimiser such as Adam. Split the data into training, validation and test sets, and use early stopping on validation loss. Besides accuracy, evaluate precision, recall and F1-score with a confusion matrix, especially if the classes are imbalanced, since accuracy alone can be misleading. Text must be converted to numbers through tokenisation and embeddings, and the model should be monitored after deployment for drift.",
+      "keywords": [
+        "sigmoid",
+        "single output neuron",
+        "binary cross-entropy",
+        "adam",
+        "validation",
+        "precision",
+        "recall",
+        "imbalanced"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Applications: pattern, image and speech recognition",
+      "text": "A hospital wants to use a neural network to detect pneumonia from chest X-rays but has only 2,000 labelled images. How would you approach this project responsibly?",
+      "ideal_answer": "With limited data, use a convolutional neural network with transfer learning, starting from a model pre-trained on a large image dataset like ImageNet and fine-tuning it on the X-rays, along with data augmentation such as small rotations and shifts. Split the data by patient into training, validation and test sets to avoid data leakage. Since missing a disease is costly, focus on recall or sensitivity as well as specificity, and check performance on data from different hospitals and machines. The model should assist, not replace, doctors, with explainability methods such as heatmaps, and patient privacy must be protected.",
+      "keywords": [
+        "convolutional neural network",
+        "transfer learning",
+        "pre-trained",
+        "data augmentation",
+        "data leakage",
+        "sensitivity",
+        "privacy"
+      ]
+    }
+  ]
+}

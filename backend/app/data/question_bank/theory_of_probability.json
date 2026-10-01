@@ -1,0 +1,186 @@
+{
+  "subject": "Theory of Probability",
+  "applies_to": [
+    {
+      "course": "BSC_DS",
+      "year": 1,
+      "semester": 2
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Univariate discrete and continuous random variables",
+      "text": "What is a random variable? Distinguish between a discrete and a continuous random variable.",
+      "ideal_answer": "A random variable is a function that assigns a real number to each outcome of a random experiment. A discrete random variable takes a finite or countably infinite set of values, such as the number of heads in three coin tosses, and is described by a probability mass function. A continuous random variable takes any value in an interval, such as height or time, and is described by a probability density function. For a continuous variable the probability of any single exact value is zero.",
+      "keywords": [
+        "function",
+        "real number",
+        "outcome",
+        "countable",
+        "probability mass function",
+        "interval",
+        "probability density function"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "Bernoulli, binomial and Poisson distributions",
+      "text": "What is a binomial distribution and what are its mean and variance?",
+      "ideal_answer": "A binomial distribution gives the probability of getting x successes in n independent Bernoulli trials, where each trial has the same probability of success p. Its probability mass function is P(X = x) = nCx p^x q^(n - x), where q = 1 - p and x = 0 to n. The mean is np and the variance is npq. Since q is less than 1, the variance of a binomial distribution is always less than its mean.",
+      "keywords": [
+        "independent trials",
+        "successes",
+        "probability of success",
+        "combination",
+        "mean np",
+        "variance npq"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Moment generating, cumulant generating and characteristic functions",
+      "text": "What is a moment generating function and why is it useful?",
+      "ideal_answer": "The moment generating function of a random variable X is defined as M(t) = E(e^(tX)), when this expectation exists for t in a neighbourhood of zero. It is called moment generating because the r-th raw moment about the origin is obtained by differentiating M(t) r times and putting t = 0, or as the coefficient of t^r / r! in its expansion. It is useful for finding mean and variance easily. The MGF uniquely determines the distribution, and the MGF of a sum of independent variables is the product of their MGFs.",
+      "keywords": [
+        "expectation",
+        "exponential",
+        "differentiating",
+        "t equals zero",
+        "raw moments",
+        "uniquely determines",
+        "product"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Joint probability mass and density functions",
+      "text": "What is a joint probability mass function? Give its properties.",
+      "ideal_answer": "A joint probability mass function of two discrete random variables X and Y gives the probability that X takes the value x and Y takes the value y at the same time, written p(x, y) = P(X = x, Y = y). Its properties are that every p(x, y) is greater than or equal to zero, and the sum of p(x, y) over all pairs of x and y equals 1. It is usually shown as a two-way table. Marginal distributions are obtained by summing the joint pmf over the other variable.",
+      "keywords": [
+        "two discrete random variables",
+        "same time",
+        "non-negative",
+        "sum equals 1",
+        "two-way table",
+        "marginal"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Bernoulli, binomial and Poisson distributions",
+      "text": "On average 2 customers arrive at a bank counter per minute. Which distribution models this, and how do you find the probability that no customer arrives in a minute?",
+      "ideal_answer": "The number of arrivals in a fixed time interval at a constant average rate is modelled by a Poisson distribution with parameter lambda equal to the mean, here lambda = 2. The Poisson pmf is P(X = x) = e^(-lambda) lambda^x / x!. For no customer, x = 0, so P(X = 0) = e^(-2), which is about 0.135. For a Poisson distribution, the mean and variance are both equal to lambda.",
+      "keywords": [
+        "poisson",
+        "lambda",
+        "factorial",
+        "e to the power minus 2",
+        "0.135",
+        "mean and variance"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Marginal and conditional distributions; independence of random variables",
+      "text": "Given the joint distribution of X and Y, how do you find the marginal distribution of X, and how do you check whether X and Y are independent?",
+      "ideal_answer": "For discrete variables, the marginal pmf of X is obtained by summing the joint pmf over all values of Y, that is p(x) = sum over y of p(x, y); for continuous variables, the joint density is integrated over y. X and Y are independent if and only if the joint distribution equals the product of the marginals for every pair, p(x, y) = p(x) times p(y). If this fails for even one pair, the variables are dependent. Equivalently, under independence the conditional distribution of X given Y equals the marginal distribution of X.",
+      "keywords": [
+        "marginal",
+        "summing",
+        "integrating",
+        "independent",
+        "product of marginals",
+        "every pair",
+        "conditional"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Geometric, negative binomial and hypergeometric distributions",
+      "text": "When would you use a hypergeometric distribution instead of a binomial distribution? Explain with an example.",
+      "ideal_answer": "The binomial distribution assumes independent trials with a constant probability of success, which is true for sampling with replacement. The hypergeometric distribution is used when sampling is done without replacement from a finite population, so the probability of success changes after each draw and trials are not independent. For example, choosing 5 cards from a deck and counting the number of hearts follows a hypergeometric distribution. When the population is very large compared to the sample size, the hypergeometric distribution can be approximated by the binomial.",
+      "keywords": [
+        "without replacement",
+        "finite population",
+        "with replacement",
+        "independent",
+        "constant probability",
+        "approximated by binomial"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Relationship between moments and cumulants",
+      "text": "What are cumulants and how are the first few cumulants related to moments?",
+      "ideal_answer": "Cumulants are obtained from the cumulant generating function K(t), which is the natural logarithm of the moment generating function, K(t) = log M(t). The r-th cumulant kappa r is the coefficient of t^r / r! in the expansion of K(t). The first cumulant equals the mean, the second cumulant equals the variance, which is the second central moment, and the third cumulant equals the third central moment. The fourth cumulant equals mu4 minus 3 mu2 squared. Cumulants are useful because the cumulant of a sum of independent variables is the sum of their cumulants.",
+      "keywords": [
+        "cumulant generating function",
+        "logarithm",
+        "mean",
+        "variance",
+        "third central moment",
+        "sum of independent"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Truncated binomial and Poisson distributions; fitting of distributions",
+      "text": "You record the number of defects per item, but items with zero defects were never recorded. What problem does this cause in fitting a Poisson distribution and how do you handle it?",
+      "ideal_answer": "Since zero values are missing, the data come from a zero-truncated Poisson distribution, and fitting an ordinary Poisson would overestimate the mean and give wrong expected frequencies. The correct model divides the Poisson probabilities by 1 minus P(X = 0), so P(X = x) = e^(-lambda) lambda^x / (x! (1 - e^(-lambda))) for x = 1, 2, 3 and so on. Lambda is estimated from the sample mean using the truncated mean formula, lambda / (1 - e^(-lambda)), usually solved numerically. Then expected frequencies are computed and the goodness of fit is checked with a chi-square test.",
+      "keywords": [
+        "zero-truncated",
+        "overestimate",
+        "divide",
+        "lambda",
+        "expected frequencies",
+        "chi-square"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Transformation of random variables and Jacobian",
+      "text": "How do you find the joint density of U and V when U and V are functions of two continuous random variables X and Y? What conditions must hold?",
+      "ideal_answer": "If U = g1(X, Y) and V = g2(X, Y) is a one-to-one transformation, we first solve for X and Y in terms of U and V. Then we compute the Jacobian J, the determinant of the matrix of partial derivatives of x and y with respect to u and v. The joint density is f(u, v) = f(x, y) times the absolute value of J, with x and y replaced by their expressions in u and v. We must also find the new range of U and V. The transformation must be one-to-one with continuous partial derivatives and non-zero Jacobian; otherwise the domain must be split into parts.",
+      "keywords": [
+        "one-to-one",
+        "inverse",
+        "jacobian",
+        "determinant",
+        "partial derivatives",
+        "absolute value",
+        "range"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Conditional expectation and variance, regression function",
+      "text": "A data scientist wants to predict a customer's spending Y from their income X. How does the idea of conditional expectation E(Y | X) help, and what does the law of total variance tell us?",
+      "ideal_answer": "The conditional expectation E(Y | X = x) gives the average spending for customers with income x, and as a function of x it is called the regression function of Y on X. It is the best predictor of Y from X in the sense of minimizing mean squared error. By the law of total expectation, E(Y) = E(E(Y | X)). The law of total variance says Var(Y) = E(Var(Y | X)) + Var(E(Y | X)), so total variance splits into the part explained by income and the unexplained variation within each income level. A large explained part means income is a strong predictor.",
+      "keywords": [
+        "conditional expectation",
+        "regression function",
+        "best predictor",
+        "mean squared error",
+        "total expectation",
+        "law of total variance",
+        "explained"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Geometric, negative binomial and hypergeometric distributions",
+      "text": "A call centre's sales team has a 20% chance of success per independent call. The manager asks how many calls are expected until the first sale and until the third sale. Which distributions apply and what are the answers?",
+      "ideal_answer": "The number of calls until the first success follows a geometric distribution with p = 0.2. Counting the call on which the first sale happens, the expected number of calls is 1 / p = 5. The number of calls until the r-th success follows a negative binomial distribution, and its expected value is r / p, so for the third sale it is 3 / 0.2 = 15 calls. These models assume independent calls with constant success probability, which the manager should verify, since in practice success rates may vary by time or customer segment.",
+      "keywords": [
+        "geometric",
+        "1 / p",
+        "5 calls",
+        "negative binomial",
+        "r / p",
+        "15 calls",
+        "independent"
+      ]
+    }
+  ]
+}

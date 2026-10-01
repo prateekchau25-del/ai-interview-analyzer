@@ -1,0 +1,90 @@
+{
+  "subject": "Embedded System with Arduino",
+  "applies_to": [{"course": "BSC_IT", "year": 2, "semester": 3}],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Sensors: definition and types",
+      "text": "What is a sensor? Give the difference between an analog and a digital sensor.",
+      "ideal_answer": "A sensor is a device that detects a physical quantity such as light, temperature, pressure or motion and converts it into an electrical signal that a microcontroller can read. An analog sensor gives a continuously varying voltage, such as an LDR or LM35 temperature sensor, and is read on Arduino analog pins using analogRead, which returns a value from 0 to 1023. A digital sensor gives discrete values, either HIGH or LOW or digital data through a protocol, such as a PIR motion sensor or DHT11, and is read using digital pins.",
+      "keywords": ["physical quantity", "electrical signal", "analog", "continuous", "analogread", "digital", "high or low"]
+    },
+    {
+      "level": 1,
+      "topic": "Interfacing LEDs: blinking",
+      "text": "What are the setup() and loop() functions in an Arduino sketch? Explain using the LED blink program.",
+      "ideal_answer": "Every Arduino sketch has two main functions. The setup() function runs only once when the board is powered on or reset, and is used for initialization, such as pinMode(13, OUTPUT) to make the LED pin an output. The loop() function runs repeatedly forever after setup. In the blink program, loop() calls digitalWrite(13, HIGH) to turn the LED on, delay(1000) to wait one second, digitalWrite(13, LOW) to turn it off, and delay(1000) again, so the LED keeps blinking.",
+      "keywords": ["setup", "runs once", "pinmode", "output", "loop", "repeatedly", "digitalwrite", "delay"]
+    },
+    {
+      "level": 2,
+      "topic": "Interfacing Arduino with light, temperature sensors",
+      "text": "How does an LDR work and how do you connect it to an Arduino to measure light?",
+      "ideal_answer": "An LDR, or light dependent resistor, is a resistor whose resistance decreases as light intensity increases. Since Arduino reads voltage, not resistance, the LDR is connected in a voltage divider with a fixed resistor, such as 10 kilo-ohm, between 5V and ground. The junction point of the LDR and resistor is connected to an analog pin, for example A0. analogRead(A0) then gives a value between 0 and 1023 that changes with light, which can be used to switch on a light when it gets dark.",
+      "keywords": ["light dependent resistor", "resistance decreases", "voltage divider", "fixed resistor", "analog pin", "analogread"]
+    },
+    {
+      "level": 2,
+      "topic": "Servo and stepper motor control",
+      "text": "What is the difference between a servo motor and a stepper motor?",
+      "ideal_answer": "A servo motor rotates to a specific angle, usually between 0 and 180 degrees, using a built-in feedback control circuit, and is controlled by a PWM signal; in Arduino we use the Servo library with write(angle). A stepper motor rotates in fixed steps, such as 1.8 degrees per step, and can rotate continuously in either direction with precise position control without feedback. A stepper needs a driver like ULN2003 or A4988. Servos are used for robot arms and steering, while steppers are used in 3D printers and CNC machines.",
+      "keywords": ["servo", "angle", "feedback", "pwm", "stepper", "steps", "driver"]
+    },
+    {
+      "level": 3,
+      "topic": "Ultrasonic range finder",
+      "text": "How does an HC-SR04 ultrasonic sensor measure distance with Arduino?",
+      "ideal_answer": "The Arduino sends a 10 microsecond HIGH pulse to the Trig pin, which makes the sensor emit a burst of ultrasonic sound waves at 40 kHz. The waves reflect from an object and return to the sensor, and the Echo pin stays HIGH for the round-trip travel time. Arduino measures this time using pulseIn on the Echo pin. The distance is calculated as time multiplied by the speed of sound, about 0.034 centimetres per microsecond, divided by 2, because the sound travels to the object and back.",
+      "keywords": ["trig", "ultrasonic", "reflect", "echo", "pulsein", "speed of sound", "divided by 2"]
+    },
+    {
+      "level": 3,
+      "topic": "DC motor speed and direction control",
+      "text": "How can an Arduino control both the speed and direction of a DC motor?",
+      "ideal_answer": "An Arduino pin cannot supply enough current to drive a motor directly, so a motor driver such as the L293D or L298N H-bridge is used. The H-bridge changes the direction of current through the motor, so setting one input pin HIGH and the other LOW turns the motor one way, and reversing them turns it the other way. Speed is controlled with PWM by using analogWrite on the enable pin with a value from 0 to 255, which changes the average voltage. The motor uses an external power supply with a common ground with the Arduino.",
+      "keywords": ["motor driver", "h-bridge", "l293d", "direction", "pwm", "analogwrite", "enable pin"]
+    },
+    {
+      "level": 4,
+      "topic": "Interfacing LEDs: 7-segment display, LED dot matrix",
+      "text": "Why is multiplexing used for multi-digit 7-segment displays or LED dot matrices, and how does it work?",
+      "ideal_answer": "Driving each LED segment of several digits separately would need too many Arduino pins. In multiplexing, the segment lines of all digits are connected together, and each digit's common pin is controlled separately. The Arduino turns on one digit at a time, outputs that digit's segment pattern, then quickly moves to the next digit. Because this switching is very fast, persistence of vision makes all digits appear lit at once. This reduces pin count, and ICs like the 74HC595 shift register or MAX7219 driver can further simplify wiring.",
+      "keywords": ["pins", "multiplexing", "one digit at a time", "common", "fast", "persistence of vision", "shift register"]
+    },
+    {
+      "level": 4,
+      "topic": "LCD control: displaying and scrolling text",
+      "text": "How do you display and scroll text on a 16x2 LCD with Arduino, and why is the 4-bit mode commonly used?",
+      "ideal_answer": "We use the LiquidCrystal library, create an object with the pins for RS, Enable and data lines D4 to D7, and call lcd.begin(16, 2) in setup. lcd.setCursor(column, row) positions the cursor and lcd.print() displays text. For scrolling, scrollDisplayLeft() or scrollDisplayRight() is called in a loop with a small delay, or the autoscroll function is used. The LCD can work in 8-bit or 4-bit mode; 4-bit mode is preferred because it needs only 4 data pins instead of 8, saving Arduino pins with only a small speed cost. A potentiometer on the V0 pin adjusts the contrast.",
+      "keywords": ["liquidcrystal", "begin", "setcursor", "print", "scrolldisplayleft", "4-bit mode", "fewer pins"]
+    },
+    {
+      "level": 5,
+      "topic": "Gas/smoke and water detector sensors",
+      "text": "Your MQ-2 gas sensor alarm gives false alarms right after power-on and its readings vary between devices. How would you troubleshoot and make it reliable?",
+      "ideal_answer": "MQ-series gas sensors have a heater and need a warm-up or preheat time, often a few minutes and longer for first use, before readings stabilize, so the alarm should ignore readings during warm-up. Each sensor has a different baseline, so it should be calibrated in clean air and the threshold set relative to that baseline rather than using a fixed value. Readings should be smoothed by averaging several samples, and hysteresis can be used so the alarm does not flicker around the threshold. I would also check the power supply, since the heater needs stable current, and account for temperature and humidity effects.",
+      "keywords": ["warm-up", "heater", "calibrate", "baseline", "threshold", "averaging", "hysteresis"]
+    },
+    {
+      "level": 5,
+      "topic": "Reading and writing SD cards",
+      "text": "You log sensor data to an SD card with Arduino, but sometimes the file is empty or corrupted after power is removed. What could be wrong and how do you fix it?",
+      "ideal_answer": "Data written with file.print is first held in a buffer and is only saved to the card when file.flush() or file.close() is called, so cutting power before that loses or corrupts data. The fix is to call flush() regularly or open, write and close the file for each log entry. The card should be formatted as FAT16 or FAT32, and SD.begin() with the correct chip select pin must be checked for success. SD modules use the SPI interface and need 3.3V logic, so a proper module with level shifting and a stable power supply is required, as cards draw current spikes while writing.",
+      "keywords": ["buffer", "flush", "close", "fat32", "chip select", "spi", "power supply"]
+    },
+    {
+      "level": 6,
+      "topic": "Ethernet shield and Internet-connected Arduino projects",
+      "text": "You are building an Internet-connected weather station with an Arduino and Ethernet shield that sends readings to a web server. What design and security considerations would you keep in mind?",
+      "ideal_answer": "The Ethernet shield uses the W5100 or W5500 chip over SPI, and the Ethernet library is used with a MAC address and either DHCP or a static IP. The Arduino can act as a client that sends readings to a server using HTTP requests at fixed intervals, preferably in a compact format like JSON, using millis instead of delay to keep the program responsive. It should handle network failures by retrying and reconnecting, and can buffer readings locally. For security, use an API key or token, avoid exposing the device directly to the internet, and prefer HTTPS or MQTT over TLS through a gateway since basic Arduino boards have limited resources for encryption.",
+      "keywords": ["ethernet library", "dhcp", "http", "client", "millis", "reconnect", "api key", "tls"]
+    },
+    {
+      "level": 6,
+      "topic": "Servo and stepper motor control; robots",
+      "text": "You are building an obstacle-avoiding robot car with an Arduino. Which components would you use and how would you design its logic and power supply?",
+      "ideal_answer": "I would use an Arduino Uno, two DC geared motors with an L298N or L293D motor driver, an ultrasonic sensor, often mounted on a servo to scan left and right, and a battery pack. The logic reads the distance continuously; if the obstacle is farther than a threshold like 20 centimetres the robot moves forward, otherwise it stops, scans both sides with the servo and turns toward the side with more space. The motors should be powered from a separate battery through the driver, with a common ground, because motor current spikes can reset the Arduino. Using millis instead of long delays keeps sensing responsive.",
+      "keywords": ["motor driver", "ultrasonic sensor", "servo", "threshold", "turn", "separate battery", "common ground"]
+    }
+  ]
+}

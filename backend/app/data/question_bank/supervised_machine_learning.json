@@ -1,0 +1,93 @@
+{
+  "subject": "Supervised Machine Learning",
+  "applies_to": [
+    {"course": "BSC_DS", "year": 2, "semester": 3},
+    {"course": "BSC_AI", "year": 2, "semester": 4}
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Need for and applications of machine learning",
+      "text": "What is supervised machine learning?",
+      "ideal_answer": "Supervised learning is a type of machine learning in which the model is trained on labelled data, meaning each training example has input features and the correct output. The model learns a mapping from inputs to outputs so it can predict the output for new, unseen data. It is divided into classification, where the output is a category such as spam or not spam, and regression, where the output is a continuous value such as house price. Examples of algorithms are linear regression, decision trees and SVM.",
+      "keywords": ["labelled data", "input", "output", "mapping", "classification", "regression"]
+    },
+    {
+      "level": 1,
+      "topic": "Cross validation",
+      "text": "What is k-fold cross validation?",
+      "ideal_answer": "K-fold cross validation is a technique to estimate how well a model generalises. The dataset is split into k equal parts called folds. The model is trained k times, each time using k minus 1 folds for training and the remaining fold for validation, so every fold is used once for validation. The k scores are averaged to get a more reliable performance estimate than a single train-test split; k is commonly 5 or 10.",
+      "keywords": ["folds", "k times", "training", "validation", "average", "generalise"]
+    },
+    {
+      "level": 2,
+      "topic": "Binary, multi-class and multi-label classification",
+      "text": "What is the difference between multi-class and multi-label classification? Give an example of each.",
+      "ideal_answer": "In multi-class classification, each instance belongs to exactly one of three or more classes, for example classifying a handwritten digit as one of 0 to 9. In multi-label classification, each instance can belong to several classes at the same time, for example a movie tagged as both comedy and romance, or a news article with multiple topics. Multi-class typically uses softmax outputs, while multi-label uses an independent sigmoid or binary classifier for each label. Binary classification is the special case with only two classes.",
+      "keywords": ["multi-class", "exactly one", "multi-label", "multiple labels", "softmax", "sigmoid"]
+    },
+    {
+      "level": 2,
+      "topic": "Linear and logistic regression",
+      "text": "What is the difference between linear regression and logistic regression?",
+      "ideal_answer": "Linear regression predicts a continuous numeric value by fitting a straight line, y equals w x plus b, usually by minimising the mean squared error. Logistic regression is used for classification: it passes the linear combination through the sigmoid function to produce a probability between 0 and 1, and a threshold such as 0.5 gives the class. Logistic regression is trained by minimising log loss, or cross-entropy. For example, linear regression predicts a house price, while logistic regression predicts whether an email is spam.",
+      "keywords": ["continuous", "mean squared error", "classification", "sigmoid", "probability", "log loss"]
+    },
+    {
+      "level": 3,
+      "topic": "K-Nearest Neighbour: working and distance computation",
+      "text": "How does the K-Nearest Neighbour algorithm classify a new data point?",
+      "ideal_answer": "KNN stores all the training data. To classify a new point, it computes the distance, usually Euclidean distance, from that point to every training point, selects the k closest points, and assigns the class that is most common among them by majority vote. For regression it takes the average of their values. Because features with large ranges dominate the distance, the features should be scaled first. KNN is a lazy, non-parametric learner with no training phase, but prediction is slow on large datasets.",
+      "keywords": ["distance", "euclidean", "k closest", "majority vote", "feature scaling", "lazy learner"]
+    },
+    {
+      "level": 3,
+      "topic": "Decision trees, entropy and information gain",
+      "text": "How does the ID3 algorithm choose which attribute to split on at a node?",
+      "ideal_answer": "ID3 uses entropy to measure the impurity of the labels at a node, where entropy is minus the sum of p log base 2 of p over the classes; it is 0 for a pure node and maximum when classes are equally mixed. For each attribute, it computes the weighted average entropy of the child nodes after splitting on it. Information gain is the parent's entropy minus this weighted child entropy. ID3 chooses the attribute with the highest information gain, then repeats recursively on each child until nodes are pure or no attributes remain.",
+      "keywords": ["entropy", "impurity", "weighted average", "information gain", "highest", "recursively"]
+    },
+    {
+      "level": 4,
+      "topic": "Classification metrics: precision and recall",
+      "text": "A cancer screening model has 99% accuracy on a dataset where only 1% of patients have cancer. Why might this model still be useless, and which metrics should you look at?",
+      "ideal_answer": "With such class imbalance, a model that predicts 'no cancer' for everyone already gets 99 percent accuracy while detecting no cancer cases, so accuracy is misleading. We should look at sensitivity, or recall, which is true positives divided by true positives plus false negatives and shows how many actual cancer cases are caught. Precision, true positives divided by true positives plus false positives, shows how many positive predictions are correct. The F1 score, the harmonic mean of precision and recall, and the ROC-AUC give a balanced view. For cancer screening, high recall is most important because missing a case is costly.",
+      "keywords": ["class imbalance", "accuracy misleading", "recall", "precision", "f1 score", "false negatives"]
+    },
+    {
+      "level": 4,
+      "topic": "Bias and variance; overfitting and underfitting",
+      "text": "Explain the bias-variance trade-off and how it relates to overfitting and underfitting.",
+      "ideal_answer": "Bias is the error from overly simple assumptions, which makes the model miss real patterns; high bias causes underfitting, with poor performance on both training and test data. Variance is the error from being too sensitive to the training data, so the model learns noise; high variance causes overfitting, with very good training performance but poor test performance. Increasing model complexity usually lowers bias but raises variance, so the goal is a balance that minimises total test error. For example, a degree-1 polynomial may underfit while a degree-15 polynomial may overfit.",
+      "keywords": ["bias", "variance", "underfitting", "overfitting", "complexity", "test error"]
+    },
+    {
+      "level": 5,
+      "topic": "Support vector machines: soft margin and kernels",
+      "text": "Your data is not linearly separable and also contains a few noisy points. How would you configure an SVM, and what do the C and gamma parameters control?",
+      "ideal_answer": "Use a soft-margin SVM, which allows some points to be inside the margin or misclassified using slack variables, together with a kernel such as the RBF kernel, which implicitly maps data into a higher-dimensional space where it becomes separable, using the kernel trick. The C parameter controls the penalty for misclassification: a large C tries to classify every point correctly, giving a narrow margin and risk of overfitting, while a small C allows more errors and a wider margin. Gamma controls how far the influence of each training point reaches in the RBF kernel; high gamma gives a very wiggly boundary that overfits. C and gamma should be tuned with cross-validated grid search, and features should be scaled.",
+      "keywords": ["soft margin", "slack", "rbf kernel", "kernel trick", "c parameter", "gamma"]
+    },
+    {
+      "level": 5,
+      "topic": "Bayes learning and Naive Bayes classifier",
+      "text": "In a Naive Bayes spam filter, a word in a new email never appeared in spam training emails, and the whole spam probability becomes zero. Why does this happen and how is it fixed?",
+      "ideal_answer": "Naive Bayes computes the class probability as the prior multiplied by the product of the likelihoods of each word given the class, assuming words are conditionally independent given the class. If a word never appeared in spam during training, its estimated likelihood is zero, and multiplying by zero makes the whole spam probability zero regardless of other evidence. The fix is Laplace or additive smoothing, which adds one, or a small alpha, to every word count so no probability is zero. Implementations also sum log probabilities instead of multiplying to avoid numerical underflow.",
+      "keywords": ["likelihood", "conditional independence", "zero probability", "laplace smoothing", "add one", "log probabilities"]
+    },
+    {
+      "level": 6,
+      "topic": "Classification metrics: ROC/AUC and thresholds",
+      "text": "A bank's fraud detection model outputs a probability. Business wants fewer missed frauds, but the support team complains about too many false alarms. How would you choose the decision threshold?",
+      "ideal_answer": "Lowering the threshold increases recall, catching more fraud, but also increases false positives, while raising it does the opposite, so there is a precision-recall trade-off. I would plot the ROC curve and the precision-recall curve on validation data, and since fraud is highly imbalanced, the precision-recall curve is more informative. Then I would assign business costs to a missed fraud and a false alarm and choose the threshold that minimises total expected cost, or meets a minimum recall at acceptable precision. The threshold should be monitored over time because fraud patterns drift, and borderline cases could be sent for manual review.",
+      "keywords": ["threshold", "recall", "false positives", "precision-recall curve", "roc curve", "cost"]
+    },
+    {
+      "level": 6,
+      "topic": "Parametric vs non-parametric algorithms and general ML architecture",
+      "text": "You must deploy a model on a mobile app that predicts loan eligibility with fast responses and small memory. Would you choose a parametric model like logistic regression or a non-parametric one like KNN? Justify your choice.",
+      "ideal_answer": "A parametric model like logistic regression summarises the data with a fixed number of parameters, so after training the model is tiny and prediction is just a quick weighted sum, which suits a mobile app. KNN is non-parametric: it must store the entire training dataset and compute distances to all points for every prediction, which needs lots of memory and is slow, and it would also expose training data on the device. Logistic regression is also interpretable, which helps explain loan decisions. Its limitation is that it assumes a linear decision boundary, so I would use feature engineering and validate performance; if more accuracy is needed, a small tree ensemble could be considered.",
+      "keywords": ["parametric", "fixed number of parameters", "non-parametric", "stores training data", "fast prediction", "interpretable"]
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "subject": "Design Thinking and Innovation",
+  "applies_to": [{"course": "BCA", "year": 2, "semester": 4}],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Definition, history and applications of design thinking",
+      "text": "What is design thinking?",
+      "ideal_answer": "Design thinking is a human-centred, iterative approach to solving problems that starts by deeply understanding the needs of users. It combines empathy, creative idea generation and rapid prototyping and testing to find solutions that are desirable for users, technically feasible and viable for the business. It was popularised by IDEO and Stanford's d.school and is used in product design, software, services and business strategy.",
+      "keywords": ["human-centred", "iterative", "user needs", "empathy", "prototyping", "testing"]
+    },
+    {
+      "level": 1,
+      "topic": "Five stages: empathize, define, ideate, prototype, test",
+      "text": "What are the five stages of design thinking?",
+      "ideal_answer": "The five stages are empathize, define, ideate, prototype and test. In empathize, you understand users through research; in define, you frame a clear problem statement based on user needs; in ideate, you generate many possible solutions; in prototype, you build quick, cheap versions of selected ideas; and in test, you get user feedback on the prototypes. The process is non-linear, so teams often loop back to earlier stages.",
+      "keywords": ["empathize", "define", "ideate", "prototype", "test", "non-linear"]
+    },
+    {
+      "level": 2,
+      "topic": "Role of empathy, creativity and innovation",
+      "text": "What is the difference between empathy and sympathy in design thinking, and why does empathy matter?",
+      "ideal_answer": "Sympathy is feeling sorry for someone from the outside, while empathy is understanding a person's experience, feelings and needs from their own point of view. In design thinking, empathy means observing and listening to users to discover their real problems, including unspoken needs. It matters because it prevents designers from building solutions based on their own assumptions, and leads to products that users actually want and find useful.",
+      "keywords": ["empathy", "sympathy", "user's perspective", "needs", "assumptions", "observe"]
+    },
+    {
+      "level": 2,
+      "topic": "Low-fidelity and high-fidelity prototyping",
+      "text": "What is the difference between a low-fidelity and a high-fidelity prototype? Give an example of each for a mobile app.",
+      "ideal_answer": "A low-fidelity prototype is a quick, cheap and rough representation of an idea, such as paper sketches or simple wireframes of the app screens, used early to test the concept and flow. A high-fidelity prototype looks and behaves close to the final product, such as an interactive clickable mock-up made in Figma with real colours, content and navigation. Low-fidelity prototypes are easy to change and encourage honest feedback, while high-fidelity prototypes are used later to test detailed usability and visual design.",
+      "keywords": ["low-fidelity", "paper sketches", "wireframes", "high-fidelity", "interactive", "figma"]
+    },
+    {
+      "level": 3,
+      "topic": "Problem framing using 'How Might We' questions",
+      "text": "Students complain that the college canteen queue takes too long. Frame this problem as a 'How Might We' question and explain why that format helps.",
+      "ideal_answer": "A good How Might We question would be: 'How might we help students get their canteen food quickly during the short lunch break?' The word 'how' assumes a solution exists, 'might' allows many possible ideas without committing to one, and 'we' makes it a shared team effort. The question is focused on the user's need rather than a specific solution like an app, and is neither too broad nor too narrow. This framing turns a complaint into an opportunity and sets up the ideation stage.",
+      "keywords": ["how might we", "user need", "not a solution", "too broad", "too narrow", "ideation"]
+    },
+    {
+      "level": 3,
+      "topic": "User research: interviews, surveys, observation, ethnography",
+      "text": "You are designing an app for elderly people to book doctor appointments. Which user research methods would you use and why?",
+      "ideal_answer": "I would conduct one-on-one interviews with elderly users and their caregivers to understand their needs, fears and difficulties with technology, using open-ended questions. I would observe them as they try booking appointments by phone or with existing apps, because observation reveals problems people do not mention, like small text or confusing steps. Ethnographic study in their natural setting, such as at clinics, gives deeper context. Surveys can be used to gather quantitative data from more people, but qualitative methods are more important early on.",
+      "keywords": ["interviews", "open-ended questions", "observation", "ethnography", "surveys", "qualitative"]
+    },
+    {
+      "level": 4,
+      "topic": "Ideation: brainstorming, mind mapping, SCAMPER",
+      "text": "Explain SCAMPER and why it can produce better ideas than unstructured brainstorming.",
+      "ideal_answer": "SCAMPER is an ideation checklist that prompts you to Substitute, Combine, Adapt, Modify, Put to another use, Eliminate and Reverse or Rearrange parts of an existing product or process. Each prompt forces you to look at the idea from a specific angle, for example eliminating the login step of an app. Unstructured brainstorming can get stuck on obvious ideas or be dominated by a few people. SCAMPER gives a systematic structure, so even individuals can generate many varied ideas, especially for improving existing products.",
+      "keywords": ["substitute", "combine", "adapt", "modify", "eliminate", "reverse", "structured"]
+    },
+    {
+      "level": 4,
+      "topic": "Testing, feedback and iteration",
+      "text": "Why is design thinking iterative instead of a straight linear process?",
+      "ideal_answer": "Our first understanding of the problem and first ideas are rarely perfect. Testing prototypes with real users reveals wrong assumptions, usability problems and new needs, so teams go back to redefine the problem, ideate again or improve the prototype. Repeating small cycles of build, test and learn reduces risk, because mistakes are found early when they are cheap to fix. This is similar to agile software development, where feedback after each iteration shapes the next.",
+      "keywords": ["iterative", "user feedback", "wrong assumptions", "fail early", "cheap to fix", "cycles"]
+    },
+    {
+      "level": 5,
+      "topic": "Testing, feedback and iteration",
+      "text": "During usability testing, users keep saying they like your prototype, but most fail to complete the main task. How would you interpret and handle this?",
+      "ideal_answer": "Users often give polite positive feedback, so what they do is more reliable than what they say. The low task completion shows a real usability problem, so behaviour should be given priority over opinions. I would observe where users get stuck, ask them to think aloud, and ask open, non-leading questions about what they expected to happen. Then I would identify patterns across users, redesign the problem steps, and retest with new users while measuring task success rate and time on task.",
+      "keywords": ["behaviour over opinions", "task completion", "think aloud", "non-leading questions", "patterns", "retest"]
+    },
+    {
+      "level": 5,
+      "topic": "Five stages: define",
+      "text": "A team skipped the define stage and jumped straight from interviews to building features. What problems might arise, and how would a good problem statement have helped?",
+      "ideal_answer": "Without a clear definition, the team may build features based on scattered opinions or the loudest user, solve the wrong problem or create a cluttered product without focus. Team members may also have different understandings of what they are solving. In the define stage, research findings are synthesised, for example using affinity mapping and personas, into a focused, user-centred problem statement or point of view, such as 'user needs a way to ... because ...'. This aligns the team, guides ideation and gives a clear basis for testing whether the solution works.",
+      "keywords": ["problem statement", "synthesis", "affinity mapping", "personas", "point of view", "align team"]
+    },
+    {
+      "level": 6,
+      "topic": "Case studies of design thinking projects",
+      "text": "A bank wants to improve its mobile app because many customers abandon loan applications halfway. How would you apply design thinking to this problem?",
+      "ideal_answer": "In the empathize stage, I would study app analytics to find where users drop off, interview customers who abandoned applications and observe users filling the form. In define, I would frame a problem statement such as 'How might we make applying for a loan quick and stress-free on mobile?'. In ideate, the team would brainstorm ideas like pre-filled data, fewer steps, document upload by photo and saving progress. Then we would build prototypes, test them with real customers, measure completion rates and iterate, while balancing user needs against regulatory requirements like KYC and the cost of development.",
+      "keywords": ["empathize", "drop-off", "problem statement", "ideate", "prototype", "test", "regulatory"]
+    },
+    {
+      "level": 6,
+      "topic": "Definition and applications of design thinking",
+      "text": "Your manager says design thinking slows down the project and the team should just build what the client asked for. How would you respond, considering trade-offs?",
+      "ideal_answer": "I would explain that design thinking reduces the risk of building something users do not use, which is far more expensive to fix after release. Quick user research and low-cost prototypes can validate the client's request in days, not months. However, I would accept that it must be time-boxed and scaled to the project; for a small, well-understood feature, a light version with a few user tests is enough. I would suggest running short design sprints alongside development, so we keep delivery speed while still checking assumptions with real users.",
+      "keywords": ["reduce risk", "user validation", "low-cost prototypes", "time-boxed", "design sprint", "trade-off"]
+    }
+  ]
+}

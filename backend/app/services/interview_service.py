@@ -261,7 +261,7 @@ def submit_answer(db: Session, interview: Interview, transcript: str, *, speech:
     if not state.pending_question_id:
         raise ValueError("No question is waiting for an answer.")
     q = db.get(Question, state.pending_question_id)
-    grade = nlp.grade_answer(q.text, q.ideal_answer, q.keywords or [], transcript or "")
+    grade = nlp.grade_answer(q.text, q.ideal_answer, q.keywords or [], transcript or "", kind=q.kind)
 
     ref = to_ref(q)
     if q.kind == "followup":
@@ -280,7 +280,10 @@ def submit_answer(db: Session, interview: Interview, transcript: str, *, speech:
     db.commit()
 
     if grade.skipped:
-        message = "No problem. We will come back to this question at the end."
+        message = ("Okay, let's move on." if q.kind == "soft"
+                   else "No problem. We will come back to this question at the end.")
+    elif q.kind == "soft":
+        message = "Thank you for your answer."  # soft skills: feedback, not right/wrong
     elif result["is_correct"]:
         message = "Correct answer! Well done."
     else:

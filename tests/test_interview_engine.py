@@ -95,7 +95,8 @@ def test_level_goes_down_after_two_wrong_and_floors():
     assert tech_levels[:4] == [START_LEVEL, START_LEVEL, START_LEVEL - 1, START_LEVEL - 1]
     assert state.level == MIN_LEVEL
     assert end == "review"
-    assert len(state.parked) == len(asked)  # every wrong answer is parked for the end
+    # every wrong non-soft answer is parked for the end; soft-skill answers only get feedback
+    assert len(state.parked) == sum(1 for q in asked if q.kind != "soft")
 
 
 def test_single_wrong_does_not_drop_level():

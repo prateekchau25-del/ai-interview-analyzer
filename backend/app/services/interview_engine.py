@@ -200,7 +200,8 @@ def record_answer(state: InterviewState, q: QuestionRef, score: float, skipped: 
     state.history.append(AskedRecord(question_id=q.id, kind=q.kind, level=q.level, subject=q.subject,
                                      score=round(score, 1), is_correct=is_correct, skipped=skipped))
     state.pending_question_id = None
-    if not is_correct and q.id not in state.parked:
+    # Soft-skill answers have no single right answer: they get feedback, not a "show me the answer" review.
+    if q.kind != "soft" and not is_correct and q.id not in state.parked:
         state.parked.append(q.id)
 
     old = state.level

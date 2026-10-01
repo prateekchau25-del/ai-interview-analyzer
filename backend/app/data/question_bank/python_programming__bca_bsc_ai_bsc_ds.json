@@ -1,0 +1,194 @@
+{
+  "subject": "Python Programming",
+  "applies_to": [
+    {
+      "course": "BSC_DS",
+      "year": 1,
+      "semester": 2
+    },
+    {
+      "course": "BSC_AI",
+      "year": 1,
+      "semester": 2
+    },
+    {
+      "course": "BCA",
+      "year": 2,
+      "semester": 3
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Lists and tuples",
+      "text": "What is the difference between a list and a tuple in Python?",
+      "ideal_answer": "A list is a mutable ordered sequence, so its elements can be added, removed or changed after creation, and it is written with square brackets. A tuple is an immutable ordered sequence written with parentheses, so its elements cannot be changed once created. Because tuples are immutable, they are hashable if their elements are hashable and can be used as dictionary keys. Tuples are slightly faster and use less memory than lists.",
+      "keywords": [
+        "mutable",
+        "immutable",
+        "square brackets",
+        "parentheses",
+        "dictionary keys",
+        "ordered"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "NumPy arrays, universal functions and aggregations",
+      "text": "What is a NumPy array, and why is it faster than a Python list for numerical work?",
+      "ideal_answer": "A NumPy array, or ndarray, is a fixed-type, multi-dimensional array that stores elements of the same data type in a contiguous block of memory. Because the type is fixed and memory is contiguous, operations are executed in compiled C code without Python-level loops. This is called vectorisation and makes calculations much faster than looping over a Python list. NumPy arrays also use less memory because they do not store a separate Python object for each element.",
+      "keywords": [
+        "ndarray",
+        "same data type",
+        "contiguous memory",
+        "vectorisation",
+        "compiled",
+        "less memory"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Regular expressions: sequence characters, quantifiers",
+      "text": "In Python regular expressions, what do \\d, \\w, + and * mean? Give a simple example.",
+      "ideal_answer": "\\d matches any single digit from 0 to 9, and \\w matches any word character, meaning a letter, digit or underscore. The quantifier + means one or more occurrences of the previous item, while * means zero or more occurrences. For example, re.findall(r'\\d+', 'Room 12 floor 3') returns ['12', '3']. Raw strings with the r prefix are used so that backslashes are passed correctly to the re module.",
+      "keywords": [
+        "digit",
+        "word character",
+        "one or more",
+        "zero or more",
+        "findall",
+        "raw string"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Pandas objects, indexing/selection",
+      "text": "What is the difference between loc and iloc in Pandas?",
+      "ideal_answer": "loc selects rows and columns by label, meaning the index labels and column names. iloc selects by integer position, starting from 0, like normal Python indexing. With loc, a slice includes the end label, while with iloc the end position is excluded. For example, df.loc['a':'c'] includes row c, but df.iloc[0:3] returns rows at positions 0, 1 and 2.",
+      "keywords": [
+        "label",
+        "integer position",
+        "column names",
+        "slice",
+        "end included",
+        "end excluded"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Date and time handling, timedelta, calendar module",
+      "text": "How would you find the date 45 days after today and the number of days between two dates in Python?",
+      "ideal_answer": "We import date and timedelta from the datetime module. date.today() gives today's date, and adding timedelta(days=45) to it gives the date 45 days later. Subtracting one date object from another returns a timedelta object. Its days attribute gives the number of days between the two dates. To display a date in a custom format, we can use the strftime method, and strptime converts a string into a datetime.",
+      "keywords": [
+        "datetime",
+        "date.today",
+        "timedelta",
+        "subtracting",
+        "days attribute",
+        "strftime"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Pandas: handling missing data",
+      "text": "A Pandas DataFrame has some missing values in an Age column. How would you find and handle them?",
+      "ideal_answer": "Missing values in Pandas are represented as NaN or None. We can detect them using isnull() or isna(), and df['Age'].isnull().sum() counts them. dropna() removes rows that contain missing values, which is suitable when only a few rows are affected. fillna() replaces them, for example with the mean or median of the column, as in df['Age'].fillna(df['Age'].median()). The choice depends on how much data is missing and whether removing rows would bias the analysis.",
+      "keywords": [
+        "nan",
+        "isnull",
+        "sum",
+        "dropna",
+        "fillna",
+        "median"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Broadcasting in NumPy",
+      "text": "If a has shape (3, 1) and b has shape (4,), what is the shape of a + b in NumPy, and why?",
+      "ideal_answer": "The result has shape (3, 4), that is 3 by 4, because of broadcasting. NumPy compares shapes from the rightmost dimension. b of shape (4,) is treated as (1, 4) by adding a leading dimension. Then in each dimension, a size of 1 is stretched to match the other, so (3, 1) and (1, 4) both become (3, 4). Broadcasting fails only when two dimensions differ and neither is 1. No data is actually copied, which keeps it memory efficient.",
+      "keywords": [
+        "broadcasting",
+        "3 by 4",
+        "rightmost",
+        "size 1",
+        "stretched",
+        "incompatible"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Hierarchical indexing, concat, merge and join",
+      "text": "What is the difference between pd.concat and pd.merge? When would you use each?",
+      "ideal_answer": "pd.concat stacks DataFrames along an axis, either one below another for axis 0 or side by side for axis 1, aligning on the index without matching key values. It is used when combining data with the same columns, such as monthly sales files. pd.merge joins DataFrames based on common key columns, like SQL joins. It supports inner, left, right and outer joins through the how parameter. Use merge when, for example, combining an orders table with a customers table on customer_id.",
+      "keywords": [
+        "concat",
+        "stacks",
+        "axis",
+        "merge",
+        "key column",
+        "sql join",
+        "how"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "IPython: debugging, profiling and timing",
+      "text": "Your data-processing function in a Jupyter notebook is very slow. How would you use IPython tools to find out why?",
+      "ideal_answer": "First, use the %timeit magic to measure how long a statement takes over several runs, or %%timeit for a whole cell. Then use %prun to run the function under the profiler, which shows how much time each function call takes, so the bottleneck can be identified. For line-by-line timing, the %lprun magic from the line_profiler extension can be used, and %memit from memory_profiler checks memory. If there is an error, %debug opens the interactive debugger at the point of the exception. Often the fix is to replace Python loops with vectorised NumPy or Pandas operations.",
+      "keywords": [
+        "%timeit",
+        "%prun",
+        "profiler",
+        "%lprun",
+        "bottleneck",
+        "%debug",
+        "vectorised"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Masks, Boolean logic, fancy indexing",
+      "text": "A student writes arr[arr > 5 and arr < 10] on a NumPy array and gets a ValueError. Why, and what is the correct way?",
+      "ideal_answer": "The Python keyword and tries to convert each whole array into a single True or False value, which is ambiguous for arrays with more than one element, so NumPy raises a ValueError. For element-wise Boolean logic on arrays, we must use the bitwise operators & for and, | for or and ~ for not. Because these operators have higher precedence than comparisons, each condition must be in parentheses. The correct form is arr[(arr > 5) & (arr < 10)], which uses a Boolean mask to select matching elements.",
+      "keywords": [
+        "ambiguous",
+        "truth value",
+        "bitwise",
+        "element-wise",
+        "parentheses",
+        "boolean mask"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Aggregation, grouping, pivot tables and time series",
+      "text": "A retail company gives you daily sales data with date, store and amount columns. How would you produce monthly total sales per store using Pandas?",
+      "ideal_answer": "First I would convert the date column to datetime using pd.to_datetime so that time-series features work. One approach is to set date as the index and use groupby on store together with resample('M') and sum to get monthly totals. Another approach is to create a month column with dt.to_period('M') and then use groupby(['store', 'month'])['amount'].sum(). A pivot_table with index as month, columns as store, values as amount and aggfunc sum gives a clear table for reporting. I would also check for missing or duplicate records before aggregating.",
+      "keywords": [
+        "to_datetime",
+        "groupby",
+        "resample",
+        "sum",
+        "pivot_table",
+        "aggfunc",
+        "month"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Visualization with Matplotlib and Seaborn",
+      "text": "Your manager wants one figure showing the sales trend over time and the distribution of order values side by side. How would you build it with Matplotlib or Seaborn, and what makes it readable?",
+      "ideal_answer": "I would create a figure with two subplots using plt.subplots(1, 2) to get two axes side by side. On the first axis, a line plot shows the sales trend over time, and on the second, a histogram or Seaborn histplot shows the distribution of order values. Each subplot should have a clear title, axis labels with units and a legend if there are multiple series. I would use tight_layout to avoid overlapping labels and pick a sensible bin size for the histogram. Finally, the figure can be saved with savefig for sharing in reports.",
+      "keywords": [
+        "subplots",
+        "line plot",
+        "histogram",
+        "axis labels",
+        "title",
+        "tight_layout",
+        "savefig"
+      ]
+    }
+  ]
+}

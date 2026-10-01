@@ -1,0 +1,90 @@
+{
+  "subject": "Advanced Python Programming",
+  "applies_to": [{"course": "BSC_AI", "year": 2, "semester": 3}],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "List, dictionary and set comprehensions",
+      "text": "What is a list comprehension in Python?",
+      "ideal_answer": "A list comprehension is a concise way to create a new list from an iterable in a single expression. Its syntax is square brackets containing an expression, a for clause and an optional if condition, for example [x * x for x in range(10) if x % 2 == 0] gives the squares of even numbers. It is more readable and usually faster than building the list with a for loop and append. Python also supports dictionary and set comprehensions using curly braces.",
+      "keywords": ["concise", "new list", "iterable", "for clause", "if condition", "square brackets"]
+    },
+    {
+      "level": 1,
+      "topic": "Lambda expressions",
+      "text": "What is a lambda function in Python?",
+      "ideal_answer": "A lambda function is a small anonymous function defined with the lambda keyword. It can take any number of arguments but contains only a single expression, whose value is returned automatically. For example, lambda x: x * 2 doubles its input. Lambdas are commonly used as short arguments to functions like map, filter, sorted and reduce.",
+      "keywords": ["anonymous", "lambda keyword", "single expression", "arguments", "returned", "map"]
+    },
+    {
+      "level": 2,
+      "topic": "Iterators and generators",
+      "text": "What is the difference between an iterator and a generator in Python?",
+      "ideal_answer": "An iterator is any object that implements the __iter__ and __next__ methods, returning items one at a time and raising StopIteration when finished. A generator is a simple way to create an iterator using a function with the yield keyword, or a generator expression. Each time next is called, the generator resumes from where it paused and remembers its state. So every generator is an iterator, but generators need much less code than writing an iterator class by hand.",
+      "keywords": ["iter method", "next method", "stopiteration", "yield", "state", "every generator is an iterator"]
+    },
+    {
+      "level": 2,
+      "topic": "Method overloading and overriding",
+      "text": "What is the difference between method overloading and method overriding in Python?",
+      "ideal_answer": "Method overriding is when a subclass defines a method with the same name as a method in its parent class, replacing the parent's behaviour; super() can still call the parent version. Method overloading means having multiple methods with the same name but different parameters. Python does not support traditional overloading, since a later definition replaces the earlier one, so it is simulated using default arguments, *args and **kwargs, or functools.singledispatch. Operator overloading is done using magic methods like __add__.",
+      "keywords": ["overriding", "subclass", "same name", "overloading", "default arguments", "variable arguments"]
+    },
+    {
+      "level": 3,
+      "topic": "Decorators and closures",
+      "text": "How does a decorator work in Python? Explain with a timing decorator example.",
+      "ideal_answer": "A decorator is a function that takes another function as an argument and returns a new function that adds behaviour before or after calling the original, without changing its code. For a timing decorator, the inner wrapper function records the start time, calls the original function with *args and **kwargs, records the end time, prints the difference and returns the result. Writing @timer above a function definition is the same as func = timer(func). The wrapper is a closure because it remembers the original function from the enclosing scope, and functools.wraps is used to keep the original name and docstring.",
+      "keywords": ["function as argument", "wrapper", "closure", "returns new function", "functools.wraps"]
+    },
+    {
+      "level": 3,
+      "topic": "Advanced file handling: context managers",
+      "text": "What is a context manager, and what happens when you use 'with open(...) as f' in Python?",
+      "ideal_answer": "A context manager is an object that sets up and cleans up a resource automatically, by implementing __enter__ and __exit__ methods. In 'with open(file) as f', the file is opened and __enter__ returns the file object assigned to f. When the block ends, whether normally or because of an exception, __exit__ is called and the file is closed automatically. This prevents resource leaks; custom context managers can also be made with contextlib.contextmanager.",
+      "keywords": ["enter method", "exit method", "automatically closed", "exception", "resource", "contextlib"]
+    },
+    {
+      "level": 4,
+      "topic": "Multiple inheritance and MRO",
+      "text": "Class D inherits from B and C, and both B and C inherit from A and override a method show(). If you call D().show(), which version runs and why?",
+      "ideal_answer": "B's version of show() runs. Python uses the Method Resolution Order, computed with the C3 linearization algorithm, to decide where to look for methods. For class D(B, C), the MRO is D, B, C, A, object, so Python searches D first, then B, finds show() there and calls it. You can check this with D.__mro__ or D.mro(). If B's show() calls super().show(), the next class in the MRO, C, is called, not A directly, which solves the diamond problem.",
+      "keywords": ["method resolution order", "c3 linearization", "searches b before c", "b's version", "super", "diamond problem"]
+    },
+    {
+      "level": 4,
+      "topic": "Multithreading, multiprocessing and async/await",
+      "text": "Why does multithreading not speed up a CPU-heavy Python program, and what would you use instead?",
+      "ideal_answer": "In standard CPython, the Global Interpreter Lock allows only one thread to execute Python bytecode at a time. So for CPU-bound work, threads take turns rather than running in parallel, and there is little or no speedup. Multiprocessing creates separate processes, each with its own interpreter and GIL, so they can run truly in parallel on multiple CPU cores. Threads and async/await are still useful for I/O-bound tasks like network or file operations, where the GIL is released while waiting.",
+      "keywords": ["global interpreter lock", "one thread", "cpu-bound", "multiprocessing", "multiple cores", "i/o-bound"]
+    },
+    {
+      "level": 5,
+      "topic": "Design patterns: Singleton",
+      "text": "You implement a Singleton database-connection class in Python. What problems can occur in a multithreaded program, and how would you make it safe?",
+      "ideal_answer": "A Singleton ensures only one instance of a class exists, usually by checking a class variable in __new__ and creating the instance if it is None. In a multithreaded program, two threads may check at the same moment, both see None and create two instances, which is a race condition. The fix is to protect creation with a threading.Lock, often using double-checked locking so the lock is only taken when the instance is missing. Alternatively, a module-level instance works because modules are imported once, and you should also consider that one shared connection may itself not be thread-safe, so a connection pool may be better.",
+      "keywords": ["single instance", "__new__", "race condition", "threading.lock", "double-checked locking", "connection pool"]
+    },
+    {
+      "level": 5,
+      "topic": "Custom exceptions, logging and debugging",
+      "text": "A production script uses print statements and a bare except that hides all errors. How would you improve its error handling with custom exceptions and logging?",
+      "ideal_answer": "A bare except catches everything, including KeyboardInterrupt and real bugs, and hides the cause, so we should catch only specific exceptions. Define custom exceptions by subclassing Exception, such as InvalidRecordError, and raise them with clear messages so callers can handle each case differently. Replace print with the logging module, using levels such as DEBUG, INFO, WARNING, ERROR and CRITICAL, and write logs to a file with timestamps. Use logger.exception inside except blocks to record the full traceback, and use finally or context managers for cleanup.",
+      "keywords": ["bare except", "specific exceptions", "subclass exception", "logging module", "levels", "traceback"]
+    },
+    {
+      "level": 6,
+      "topic": "Modules, packages, virtual environments and dependency management",
+      "text": "Your ML project works on your laptop but fails on a teammate's machine with version errors. How would you manage environments and dependencies to fix this?",
+      "ideal_answer": "Each project should use its own virtual environment, created with venv or conda, so its packages do not clash with system or other project packages. Dependencies should be recorded with pinned versions in a requirements.txt using pip freeze, or in a pyproject.toml with a lock file using tools like Poetry or uv. Teammates then create a fresh virtual environment and install from that file to get identical versions. The Python version itself should also be documented, and for full reproducibility Docker can be used. The virtual environment folder should not be committed to Git, only the dependency files.",
+      "keywords": ["virtual environment", "venv", "requirements.txt", "pinned versions", "pip freeze", "lock file"]
+    },
+    {
+      "level": 6,
+      "topic": "Database connectivity (SQLite/MySQL) and CRUD operations",
+      "text": "You are building a Python app that inserts user-entered data into MySQL. A reviewer says your code, which builds SQL with string formatting, is unsafe. Explain the issue and the best practices you would follow.",
+      "ideal_answer": "Building SQL by inserting user input with string formatting allows SQL injection, where malicious input changes the query, for example to delete tables or read other users' data. The fix is to use parameterized queries with placeholders, such as cursor.execute with %s for MySQL or ? for SQLite and passing values separately, so the driver escapes them safely. Other best practices are committing transactions after changes and rolling back on errors, closing cursors and connections using context managers, using connection pooling, and storing credentials in environment variables rather than code.",
+      "keywords": ["sql injection", "parameterized queries", "placeholders", "commit", "rollback", "close connection"]
+    }
+  ]
+}

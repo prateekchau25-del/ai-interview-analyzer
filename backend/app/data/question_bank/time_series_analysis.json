@@ -1,0 +1,190 @@
+{
+  "subject": "Time Series Analysis",
+  "applies_to": [
+    {
+      "course": "BCA",
+      "year": 3,
+      "semester": 5
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Definition and characteristics of time series data",
+      "text": "What is time series data? Give two examples.",
+      "ideal_answer": "Time series data is a sequence of observations of a variable recorded at successive points in time, usually at equal intervals such as daily, monthly or yearly. The order of observations matters because each value may depend on previous values. Examples include daily closing prices of a stock, monthly sales of a shop, hourly temperature readings and yearly population figures. Time series analysis studies these patterns to understand the past and forecast future values.",
+      "keywords": [
+        "observations",
+        "successive points in time",
+        "equal intervals",
+        "order matters",
+        "forecast",
+        "stock prices"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "Components: trend, seasonal, cyclical, irregular",
+      "text": "What are the four components of a time series?",
+      "ideal_answer": "The four components are trend, seasonal variation, cyclical variation and irregular variation. Trend is the long-term upward or downward movement of the series. Seasonal variation is a regular pattern that repeats within a fixed period of a year or less, like higher ice-cream sales every summer. Cyclical variation is a wave-like movement over more than a year, linked to business cycles. Irregular variation consists of random, unpredictable changes caused by events like strikes or floods.",
+      "keywords": [
+        "trend",
+        "seasonal",
+        "cyclical",
+        "irregular",
+        "long-term",
+        "repeats",
+        "random"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Seasonal and cyclical variations",
+      "text": "What is the difference between seasonal variation and cyclical variation?",
+      "ideal_answer": "Seasonal variation repeats over a fixed and known period of one year or less, such as monthly or quarterly patterns caused by weather, festivals or holidays, so it is regular and predictable. Cyclical variation has a period longer than one year, often 2 to 10 years, and its length and amplitude are not fixed. Cyclical movements are usually caused by business cycles of prosperity, recession, depression and recovery. Because of its fixed period, seasonality is easier to measure and forecast than cyclical variation.",
+      "keywords": [
+        "fixed period",
+        "one year or less",
+        "festivals",
+        "longer than one year",
+        "not fixed",
+        "business cycles"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Naive forecasting, moving average, exponential smoothing",
+      "text": "What is naive forecasting, and when is it useful?",
+      "ideal_answer": "Naive forecasting uses the most recent observed value as the forecast for the next period, so the forecast for tomorrow equals today's value. A seasonal naive forecast uses the value from the same season in the previous cycle, such as the same month last year. It needs no calculation and works reasonably for series that behave like a random walk, such as many stock prices. It is mainly used as a benchmark: any more complex forecasting model should perform better than the naive forecast to be worth using.",
+      "keywords": [
+        "most recent value",
+        "next period",
+        "seasonal naive",
+        "random walk",
+        "benchmark",
+        "compare"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Measuring trend: semi-average, moving average, least squares",
+      "text": "How is a 3-year moving average calculated to measure trend? Apply it to sales of 10, 12, 14, 18 for four years.",
+      "ideal_answer": "A 3-year moving average takes the average of each group of three consecutive years and places it against the middle year. For sales 10, 12, 14 the average is 12, placed against year 2. For 12, 14, 18 the average is 44 divided by 3, about 14.67, placed against year 3. The first and last years do not get a trend value. Moving averages smooth out short-term fluctuations to show the trend, and when the period equals the cycle length they also remove the cyclical or seasonal effect.",
+      "keywords": [
+        "three consecutive",
+        "average",
+        "middle year",
+        "12",
+        "14.67",
+        "smooth",
+        "fluctuations"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Additive and multiplicative decomposition models",
+      "text": "What is the difference between additive and multiplicative decomposition models?",
+      "ideal_answer": "In the additive model, the observed value equals trend plus seasonal plus cyclical plus irregular components, Y = T + S + C + I, and the components are in the same units as the data. In the multiplicative model, Y = T times S times C times I, that is trend times seasonal times cyclical times irregular, where seasonal and other effects are expressed as percentages or ratios of the trend. The additive model is suitable when seasonal fluctuations stay roughly constant in size over time. The multiplicative model is suitable when seasonal fluctuations grow or shrink in proportion to the trend level. Taking logs converts a multiplicative model into an additive one.",
+      "keywords": [
+        "trend plus seasonal",
+        "trend times seasonal",
+        "constant",
+        "proportion",
+        "ratios",
+        "logarithm"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Seasonal index: simple average, ratio to moving average",
+      "text": "Why is the ratio-to-moving-average method considered better than the simple average method for computing seasonal indices?",
+      "ideal_answer": "The simple average method averages the values for each season across years and expresses them as a percentage of the overall average, but it assumes there is no trend. If the data has a trend, later seasons are inflated and earlier seasons deflated, which distorts the indices. The ratio-to-moving-average method first computes a centred moving average, such as a 4-quarter or 12-month centred average, to estimate trend and cycle. Each original value is divided by this moving average to remove those effects, leaving seasonal and irregular parts, which are averaged per season and adjusted so the indices sum to 400 for quarters or 1200 for months. This gives more accurate seasonal indices.",
+      "keywords": [
+        "no trend",
+        "distorts",
+        "centred moving average",
+        "divided",
+        "removes trend",
+        "adjusted",
+        "400"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Irregular variations and their causes",
+      "text": "Why can irregular variations not be forecast, and how are they usually isolated?",
+      "ideal_answer": "Irregular variations are caused by random, unforeseen events such as floods, strikes, wars or pandemics, and also by minor random noise. They do not follow any regular pattern or period, so they cannot be predicted from past data. They are isolated by removing the other components: in the multiplicative model, the series is divided by trend, seasonal and cyclical values, and in the additive model, they are subtracted. Moving averages also smooth out irregular variations. The residual left behind represents the irregular component.",
+      "keywords": [
+        "random",
+        "unforeseen events",
+        "no pattern",
+        "cannot be predicted",
+        "removing components",
+        "residual"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Naive forecasting, moving average, exponential smoothing",
+      "text": "In simple exponential smoothing, what happens if the smoothing constant alpha is very close to 1 or very close to 0? How would you choose it?",
+      "ideal_answer": "Simple exponential smoothing computes the new forecast as alpha times the latest actual value plus 1 minus alpha times the previous forecast, so older data gets exponentially decreasing weights. If alpha is close to 1, the forecast reacts strongly to recent changes and behaves almost like a naive forecast, but it also follows random noise. If alpha is close to 0, the forecast is very smooth and stable but slow to respond to real changes. Alpha is chosen by testing values on historical data and selecting the one that minimises forecast error, such as mean squared error or MAPE. Simple exponential smoothing suits data without trend or seasonality; Holt and Holt-Winters methods handle those.",
+      "keywords": [
+        "alpha",
+        "latest actual",
+        "previous forecast",
+        "exponentially decreasing",
+        "noise",
+        "smooth",
+        "minimise error",
+        "holt-winters"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "AR, MA and ARIMA models introduction",
+      "text": "Before fitting an ARIMA model, why must the series be stationary, and how do you make it stationary?",
+      "ideal_answer": "A stationary series has a constant mean, variance and autocorrelation over time. AR and MA models assume these properties stay the same, so their estimated parameters would be unreliable on a series with trend or changing variance. Stationarity is checked with plots, the ACF, or the Augmented Dickey-Fuller test. A trend is removed by differencing, subtracting each value from the previous one, and the number of differences is the d in ARIMA(p, d, q). A log transformation stabilises growing variance, and seasonal differencing removes seasonality, as in SARIMA.",
+      "keywords": [
+        "constant mean",
+        "constant variance",
+        "autocorrelation",
+        "dickey-fuller",
+        "differencing",
+        "arima",
+        "log transformation"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Role of time series in data science",
+      "text": "A retail chain asks you to forecast next quarter's monthly demand for each store. Describe your approach and how you would validate the forecast.",
+      "ideal_answer": "I would first clean the data, handle missing dates and outliers, and plot each store's series to see trend, seasonality and festival effects like Diwali. I would decompose the series and start with a seasonal naive forecast as a baseline, then try models like Holt-Winters exponential smoothing or SARIMA, adding external factors such as promotions if available. For validation, I must not use a random split; I would use a time-based holdout or rolling-origin cross-validation, training on earlier months and testing on later ones. Accuracy would be measured with MAE or MAPE and compared with the baseline. Finally, I would provide prediction intervals and retrain regularly as new data arrives.",
+      "keywords": [
+        "seasonality",
+        "decompose",
+        "baseline",
+        "holt-winters",
+        "sarima",
+        "time-based split",
+        "mape",
+        "prediction intervals"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Measuring trend: least squares; cyclical variations",
+      "text": "A manager fits a straight-line trend by least squares to 10 years of sales and uses it to predict the next 5 years. What risks would you point out?",
+      "ideal_answer": "The least squares trend line, y = a + bx, assumes the growth is linear and constant, but real sales may grow non-linearly or saturate, so a parabolic or exponential trend might fit better. A straight trend ignores seasonal and cyclical variations, so it cannot predict business-cycle downturns or peaks. Extrapolating five years ahead is risky because the further we predict, the larger the uncertainty, and structural changes like new competitors or regulations break past patterns. I would check residuals for patterns, compare alternative trend models, present a range rather than a single number, and update the forecast as new data comes in.",
+      "keywords": [
+        "least squares",
+        "linear",
+        "non-linear",
+        "cyclical",
+        "extrapolation",
+        "uncertainty",
+        "structural changes",
+        "residuals"
+      ]
+    }
+  ]
+}

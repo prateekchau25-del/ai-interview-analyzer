@@ -1,0 +1,187 @@
+{
+  "subject": "Web Technologies",
+  "applies_to": [
+    {
+      "course": "BCA",
+      "year": 1,
+      "semester": 2
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Internet overview and history of the web",
+      "text": "What is the difference between the Internet and the World Wide Web?",
+      "ideal_answer": "The Internet is a global network of interconnected computer networks that communicate using the TCP/IP protocols. The World Wide Web is a service that runs on top of the Internet, made up of web pages and resources linked by hyperlinks and identified by URLs, accessed through browsers using HTTP. The Web was invented by Tim Berners-Lee in 1989 at CERN. Other Internet services, such as email and FTP, are not part of the Web.",
+      "keywords": [
+        "global network",
+        "tcp/ip",
+        "world wide web",
+        "hyperlinks",
+        "http",
+        "tim berners-lee"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "CSS syntax; inline, internal and external CSS",
+      "text": "What is CSS and what is the basic syntax of a CSS rule?",
+      "ideal_answer": "CSS, Cascading Style Sheets, is the language used to describe the presentation of HTML documents, such as colours, fonts, spacing and layout, separately from the content. A CSS rule consists of a selector, which chooses the elements to style, followed by a declaration block in curly braces. Each declaration is a property and a value separated by a colon and ends with a semicolon, for example p { color: blue; }.",
+      "keywords": [
+        "cascading style sheets",
+        "presentation",
+        "selector",
+        "declaration",
+        "property",
+        "value"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Web protocols HTTP, HTTPS, FTP",
+      "text": "What is the difference between HTTP and HTTPS?",
+      "ideal_answer": "HTTP, HyperText Transfer Protocol, transfers web data in plain text, so it can be read or modified by anyone intercepting it. HTTPS is HTTP over TLS, previously SSL, which encrypts the communication between the browser and the server and verifies the server's identity using a digital certificate. HTTP uses port 80 by default and HTTPS uses port 443. HTTPS is needed for logins, payments and any sensitive data, and browsers mark HTTP sites as not secure.",
+      "keywords": [
+        "plain text",
+        "tls",
+        "encrypts",
+        "certificate",
+        "port 80",
+        "port 443"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "CSS syntax; inline, internal and external CSS",
+      "text": "Explain inline, internal and external CSS with one example of where each is used.",
+      "ideal_answer": "Inline CSS is written in the style attribute of a single element, like a p tag with style equal to color red, and affects only that element. Internal CSS is written inside a style tag in the head of one HTML page and applies to that page only. External CSS is written in a separate .css file and linked with a link tag, so many pages can share the same styles, which is best for whole websites. When rules conflict, inline styles have the highest priority, then internal and external according to their order in the document.",
+      "keywords": [
+        "inline",
+        "style attribute",
+        "internal",
+        "style tag",
+        "external",
+        "link tag",
+        "priority"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "HTML5 document structure and key elements",
+      "text": "Describe the basic structure of an HTML5 document.",
+      "ideal_answer": "An HTML5 document starts with the declaration <!DOCTYPE html>, which tells the browser to use standards mode. Next comes the html root element, usually with a lang attribute. Inside it, the head element contains metadata such as the meta charset UTF-8 tag, the viewport meta tag, the title, and links to CSS files. The body element contains all the visible content, such as headings, paragraphs, images and links.",
+      "keywords": [
+        "doctype",
+        "html",
+        "head",
+        "meta charset",
+        "title",
+        "body"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "HTML5 forms: new input types and attributes",
+      "text": "You need a registration form that collects an email, a date of birth and an age between 18 and 60, and makes the email mandatory. Which HTML5 input types and attributes would you use?",
+      "ideal_answer": "Use input type equal to email for the email, which lets the browser check the email format, and add the required attribute so the form cannot be submitted when it is empty. Use input type equal to date for the date of birth, which shows a date picker. Use input type equal to number with min equal to 18 and max equal to 60 for the age, so the browser validates the range. A placeholder attribute can show hints, and labels should be linked to each input for accessibility.",
+      "keywords": [
+        "email",
+        "required",
+        "date",
+        "number",
+        "min",
+        "max",
+        "validates"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "CSS selectors, combinators, pseudo-classes and pseudo-elements",
+      "text": "What is the difference between a pseudo-class and a pseudo-element in CSS? Give an example of each.",
+      "ideal_answer": "A pseudo-class selects an element based on its state or position, and is written with a single colon, for example a:hover styles a link when the mouse is over it, and li:first-child selects the first list item. A pseudo-element styles a specific part of an element or inserts generated content, and is written with a double colon, for example p::first-line styles the first line of a paragraph and ::before adds content before an element. So pseudo-classes target whole elements in a particular state, while pseudo-elements target parts of an element.",
+      "keywords": [
+        "pseudo-class",
+        "state",
+        "single colon",
+        "hover",
+        "pseudo-element",
+        "double colon",
+        "before"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "CSS selectors, combinators",
+      "text": "Given the selectors 'div p' and 'div > p', which paragraphs does each one select and why?",
+      "ideal_answer": "'div p' is the descendant combinator, so it selects every p element anywhere inside a div, including paragraphs nested deeper inside other elements within the div. 'div > p' is the child combinator, so it selects only p elements that are direct children of a div. For example, a p inside a section that is inside a div is matched by 'div p' but not by 'div > p'. Other combinators include the adjacent sibling plus sign and the general sibling tilde.",
+      "keywords": [
+        "descendant combinator",
+        "anywhere",
+        "child combinator",
+        "direct children",
+        "nested",
+        "sibling"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "W3C standards, WCAG accessibility",
+      "text": "A government website must be usable by visually impaired people using screen readers. What HTML and CSS issues would you check to make it accessible?",
+      "ideal_answer": "Follow the WCAG guidelines, which are based on the principles that content must be perceivable, operable, understandable and robust. Give every meaningful image descriptive alt text, use semantic elements and proper heading order so screen readers can navigate, and link every form input to a label. Ensure sufficient colour contrast and do not convey information by colour alone, allow text to be resized, and make everything usable with the keyboard with a visible focus. Add captions or transcripts for audio and video, and use ARIA attributes only where native HTML is not enough.",
+      "keywords": [
+        "wcag",
+        "alt text",
+        "semantic",
+        "label",
+        "colour contrast",
+        "keyboard",
+        "captions"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "CSS text and font properties",
+      "text": "You use a custom web font for your site, but on some users' machines the text appears in a completely different font or is invisible while loading. Why does this happen and how do you fix it?",
+      "ideal_answer": "Custom fonts are downloaded with @font-face, and if the font file fails to load, is blocked or is in an unsupported format, the browser falls back to another font. While the font loads, some browsers hide text, causing invisible text. To fix it, always specify a font-family stack with fallbacks ending in a generic family like sans-serif, provide the font in a widely supported format such as WOFF2, and use font-display: swap so fallback text is shown immediately and swapped when the custom font arrives. Preloading the font file also helps.",
+      "keywords": [
+        "@font-face",
+        "fallback",
+        "font-family",
+        "generic family",
+        "woff2",
+        "font-display: swap"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "W3C standards, semantic web and SEO",
+      "text": "A client's business website ranks poorly on Google. As the front-end developer, what HTML-level improvements would you make for SEO?",
+      "ideal_answer": "Give every page a unique, descriptive title tag and meta description containing relevant keywords. Use semantic HTML5 elements like header, nav, main, article and footer, with exactly one h1 and a logical heading hierarchy, so search engines understand the structure. Add alt text to images, use descriptive link text and clean URLs, and add structured data such as schema.org markup. Also make the site mobile-friendly with a viewport meta tag, and fast by optimising images and CSS, because page speed and mobile usability affect ranking.",
+      "keywords": [
+        "title tag",
+        "meta description",
+        "semantic",
+        "h1",
+        "alt text",
+        "structured data",
+        "mobile-friendly"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "HTML5 semantic elements and multimedia audio/video tags",
+      "text": "You are adding product demo videos to an e-commerce page that must work across browsers and devices. How would you embed them using HTML5 and what best practices would you follow?",
+      "ideal_answer": "Use the HTML5 video element with the controls attribute, and provide multiple source elements in different formats, such as MP4 with H.264 and WebM, so each browser can choose one it supports, plus fallback text for very old browsers. Add a poster image, set preload to metadata or none to avoid wasting bandwidth, and avoid autoplay with sound; if autoplay is needed it must be muted. Include a track element with captions for accessibility, and make the video responsive with CSS such as width 100 percent. For large libraries, host videos on a streaming service or CDN.",
+      "keywords": [
+        "video element",
+        "controls",
+        "source",
+        "mp4",
+        "webm",
+        "poster",
+        "captions",
+        "responsive"
+      ]
+    }
+  ]
+}

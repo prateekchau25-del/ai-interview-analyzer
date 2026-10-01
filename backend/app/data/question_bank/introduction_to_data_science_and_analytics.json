@@ -1,0 +1,90 @@
+{
+  "subject": "Introduction to Data Science and Analytics",
+  "applies_to": [{"course": "BSC_DS", "year": 1, "semester": 2}],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "What is data science; datafication",
+      "text": "What is datafication?",
+      "ideal_answer": "Datafication is the process of turning aspects of everyday life and human activity into data that can be recorded, tracked and analysed. Examples include social media turning friendships and likes into data, fitness bands turning steps and heartbeats into data, and online shopping recording browsing behaviour. This data can then be used for analysis, prediction and decision making, which fuels data science.",
+      "keywords": ["datafication", "everyday life", "converted into data", "tracked", "analysed", "social media"]
+    },
+    {
+      "level": 1,
+      "topic": "Supervised, unsupervised and reinforcement learning",
+      "text": "What is supervised learning?",
+      "ideal_answer": "Supervised learning is a type of machine learning in which a model is trained on labelled data, meaning each input example comes with the correct output. The model learns a mapping from inputs to outputs so it can predict the output for new, unseen inputs. It is used for classification, such as spam detection, and regression, such as predicting house prices.",
+      "keywords": ["labelled data", "input", "output", "prediction", "classification", "regression"]
+    },
+    {
+      "level": 2,
+      "topic": "Statistical inference, populations and samples",
+      "text": "What is the difference between a population and a sample, and why do we use samples?",
+      "ideal_answer": "A population is the complete set of all individuals or items we want to study, such as all college students in India. A sample is a smaller subset selected from the population, such as 500 randomly chosen students. We use samples because studying the whole population is often too costly, slow or impossible. Using statistical inference, we draw conclusions about population parameters from sample statistics, so the sample should be random and representative.",
+      "keywords": ["population", "sample", "subset", "statistical inference", "representative", "random"]
+    },
+    {
+      "level": 2,
+      "topic": "Data science profile and skill sets",
+      "text": "What skills make up a good data scientist's profile?",
+      "ideal_answer": "A data scientist needs a mix of skills: mathematics and statistics, programming in languages like Python or R, and machine learning knowledge. They also need data handling skills such as data cleaning, databases and SQL, and data visualization to present findings. Domain knowledge helps them ask the right questions, and communication skills help explain results to non-technical people. Most people are strong in some areas, so data science is usually done in teams with complementary profiles.",
+      "keywords": ["statistics", "programming", "machine learning", "visualization", "domain knowledge", "communication"]
+    },
+    {
+      "level": 3,
+      "topic": "The data science process",
+      "text": "Describe the steps of the data science process.",
+      "ideal_answer": "The process starts with understanding the real-world problem and collecting raw data. The raw data is then processed and cleaned to handle missing values, errors and duplicates. Next comes exploratory data analysis to understand patterns and distributions. Then a model or algorithm such as regression, classification or clustering is built and evaluated. Finally, the results are communicated through visualizations and reports, or built into a data product, and feedback from the real world is used to improve the process.",
+      "keywords": ["collect data", "cleaning", "exploratory data analysis", "model", "evaluate", "communicate results"]
+    },
+    {
+      "level": 3,
+      "topic": "k-Nearest Neighbours",
+      "text": "How does the k-Nearest Neighbours algorithm classify a new data point?",
+      "ideal_answer": "k-Nearest Neighbours stores all the labelled training data. To classify a new point, it computes the distance, usually Euclidean distance, between the new point and every training point. It selects the k closest points and assigns the class that appears most often among them, which is a majority vote. The choice of k matters, and features should be scaled because distance is sensitive to feature ranges.",
+      "keywords": ["distance", "euclidean", "k nearest", "majority vote", "labelled", "scaling"]
+    },
+    {
+      "level": 4,
+      "topic": "Exploratory data analysis",
+      "text": "Why should exploratory data analysis be done before building any model?",
+      "ideal_answer": "Exploratory data analysis helps you understand the data before making assumptions. Using summary statistics such as mean, median and standard deviation, and plots such as histograms, box plots and scatter plots, you can see distributions, detect outliers, missing values and errors, and spot relationships between variables. This guides data cleaning, feature selection and the choice of a suitable model. Skipping EDA can lead to models built on wrong assumptions or bad data, which give misleading results.",
+      "keywords": ["summary statistics", "plots", "outliers", "missing values", "relationships", "model choice"]
+    },
+    {
+      "level": 4,
+      "topic": "Uninformed search: BFS and DFS",
+      "text": "Compare breadth-first search and depth-first search. Which one guarantees the shortest path in an unweighted graph and why?",
+      "ideal_answer": "Breadth-first search explores all nodes at the current depth before moving deeper, using a queue. Depth-first search goes as deep as possible along one branch before backtracking, using a stack or recursion. BFS guarantees the shortest path in an unweighted graph because it reaches nodes in order of increasing number of edges from the start. DFS uses less memory but may find a longer path first or get stuck in deep or infinite branches, while BFS can need a lot of memory.",
+      "keywords": ["breadth first", "depth first", "queue", "stack", "shortest path", "memory"]
+    },
+    {
+      "level": 5,
+      "topic": "k-means clustering",
+      "text": "Your k-means clustering gives different results each time and one cluster contains a few extreme points. What is causing this and how would you fix it?",
+      "ideal_answer": "k-means depends on the random initial placement of centroids, so different runs can converge to different local optima. Using k-means++ initialization and running the algorithm multiple times, keeping the result with the lowest within-cluster sum of squares, makes results more stable. Extreme points pull centroids because k-means uses means, which are sensitive to outliers, so outliers should be detected and removed or handled. Features should also be scaled, and k can be chosen using the elbow method or silhouette score.",
+      "keywords": ["random initialization", "centroids", "k-means++", "local optimum", "outliers", "elbow method"]
+    },
+    {
+      "level": 5,
+      "topic": "Naive Bayes",
+      "text": "What assumption does Naive Bayes make, and what problem occurs when a word in a test email never appeared in the training data for a class?",
+      "ideal_answer": "Naive Bayes applies Bayes' theorem and assumes that all features are conditionally independent of each other given the class. In text classification, if a word never appeared in spam training emails, its estimated probability for spam is zero. Because probabilities are multiplied, that single zero makes the whole spam probability zero regardless of other evidence. This is fixed with Laplace or add-one smoothing, which adds a small count to every word so no probability is exactly zero.",
+      "keywords": ["bayes theorem", "conditional independence", "zero probability", "multiplied", "laplace smoothing", "add-one"]
+    },
+    {
+      "level": 6,
+      "topic": "Apriori algorithm",
+      "text": "A supermarket wants to use the Apriori algorithm on its billing data to plan product placement. How would you explain the approach and how to judge which rules are useful?",
+      "ideal_answer": "Apriori finds frequent itemsets, groups of items often bought together, by first finding frequent single items and then extending them, pruning any itemset whose subset is not frequent. From frequent itemsets it creates association rules like bread implies butter. Support measures how often the items appear together, confidence measures how often the rule is true when the first item is bought, and lift compares this to random chance. Rules with lift greater than 1 and reasonable support and confidence are useful for placement or combo offers, and thresholds must be tuned since too low a support creates too many trivial rules.",
+      "keywords": ["frequent itemsets", "association rules", "support", "confidence", "lift", "pruning"]
+    },
+    {
+      "level": 6,
+      "topic": "Heuristic search: A*",
+      "text": "A delivery app needs to find the shortest route between two locations on a city map. Why would you choose A* search, and what must be true of its heuristic?",
+      "ideal_answer": "A* evaluates each node using f(n) = g(n) + h(n), where g is the actual cost from the start and h is the estimated cost to the goal. It expands the node with the lowest f value, so it is guided towards the goal and explores far fewer nodes than uninformed searches like BFS or Dijkstra's. For a road map, straight-line distance is a good heuristic. A* is guaranteed to find the optimal path if the heuristic is admissible, meaning it never overestimates the true cost. A weaker heuristic is safe but slower, while an overestimating one is faster but may give suboptimal routes.",
+      "keywords": ["actual cost", "estimated cost", "heuristic", "admissible", "never overestimates", "optimal path"]
+    }
+  ]
+}

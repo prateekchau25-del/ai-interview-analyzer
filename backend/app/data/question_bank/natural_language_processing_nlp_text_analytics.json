@@ -1,0 +1,193 @@
+{
+  "subject": "Natural Language Processing (NLP) & Text Analytics",
+  "applies_to": [
+    {
+      "course": "BSC_DS",
+      "year": 3,
+      "semester": 6
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Origins, challenges and applications of NLP",
+      "text": "What is Natural Language Processing, and why is ambiguity a major challenge in it?",
+      "ideal_answer": "Natural Language Processing is a field of AI that enables computers to understand, interpret and generate human language in text or speech. Applications include machine translation, chatbots, sentiment analysis and information retrieval. Ambiguity is a major challenge because the same word or sentence can have several meanings. Lexical ambiguity occurs when a word like bank has multiple meanings, and syntactic ambiguity occurs when a sentence can be parsed in more than one way. Resolving it requires context and world knowledge.",
+      "keywords": [
+        "human language",
+        "understand",
+        "generate",
+        "ambiguity",
+        "lexical",
+        "syntactic",
+        "context"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "Part-of-speech tagging",
+      "text": "What is part-of-speech tagging?",
+      "ideal_answer": "Part-of-speech tagging is the process of assigning a grammatical category, such as noun, verb, adjective or adverb, to each word in a sentence. The correct tag depends on context; for example, book is a noun in 'read a book' and a verb in 'book a ticket'. Taggers can be rule-based, statistical such as Hidden Markov Models, or neural. POS tags are used in parsing, named entity recognition and information extraction.",
+      "keywords": [
+        "grammatical category",
+        "noun",
+        "verb",
+        "context",
+        "hidden markov model",
+        "parsing"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Lexical resources: WordNet, FrameNet, stemmers, corpora",
+      "text": "What is the difference between stemming and lemmatization?",
+      "ideal_answer": "Stemming removes word endings using simple rules to get a root form, which may not be a real word; for example, the Porter stemmer reduces studies to studi. Lemmatization uses vocabulary and morphological analysis, often with the part of speech, to return the dictionary base form called the lemma; studies becomes study and better becomes good. Stemming is faster but cruder, while lemmatization is more accurate but slower. Both reduce different forms of a word to a common form to improve search and text analysis.",
+      "keywords": [
+        "stemming",
+        "rules",
+        "not a real word",
+        "porter",
+        "lemmatization",
+        "dictionary form",
+        "lemma"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Statistical language models: n-grams",
+      "text": "What is an n-gram language model? Explain using a bigram example.",
+      "ideal_answer": "An n-gram language model predicts the probability of a word based on the previous n minus 1 words, using the Markov assumption. In a bigram model, the probability of a word depends only on the immediately previous word. It is estimated from a corpus as the count of the word pair divided by the count of the previous word; for example, P(tea | drink) = count(drink tea) / count(drink). The probability of a sentence is the product of these conditional probabilities. Smoothing such as Laplace is needed so unseen n-grams do not get zero probability.",
+      "keywords": [
+        "probability",
+        "previous words",
+        "markov assumption",
+        "bigram",
+        "count",
+        "corpus",
+        "smoothing"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Spelling error detection and correction",
+      "text": "How does minimum edit distance help in spelling correction? What is the edit distance between 'cat' and 'cut'?",
+      "ideal_answer": "Minimum edit distance, or Levenshtein distance, is the smallest number of insertions, deletions and substitutions needed to transform one string into another. In spelling correction, when a word is not in the dictionary, candidate words with small edit distance are suggested, often ranked using word frequency or a language model. It is computed efficiently with dynamic programming using a table of prefix distances. The edit distance between cat and cut is 1, since only one substitution, a to u, is needed.",
+      "keywords": [
+        "levenshtein",
+        "insertion",
+        "deletion",
+        "substitution",
+        "dynamic programming",
+        "candidates",
+        "1"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Naive Bayes text classification and sentiment analysis",
+      "text": "How would you build a simple sentiment classifier for product reviews using Naive Bayes?",
+      "ideal_answer": "First, collect reviews labelled as positive or negative and preprocess them by lowercasing, tokenising, and removing noise. Convert each review into features using a bag-of-words or TF-IDF representation. Train a Multinomial Naive Bayes classifier, which learns the prior probability of each class and the probability of each word given the class, with Laplace smoothing. For a new review, it computes the posterior for each class and picks the higher one. Evaluate with precision, recall and F1, and handle negations like 'not good' carefully, for example with bigrams.",
+      "keywords": [
+        "labelled",
+        "tokenising",
+        "bag-of-words",
+        "tf-idf",
+        "multinomial naive bayes",
+        "laplace smoothing",
+        "negation"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Context-free grammar, top-down/bottom-up and CYK parsing",
+      "text": "Why must a grammar be in Chomsky Normal Form for the CYK algorithm, and what is its time complexity?",
+      "ideal_answer": "CYK is a bottom-up dynamic programming parser that fills a triangular table where each cell holds the non-terminals that can generate a substring. It combines two smaller adjacent substrings at a time, so it needs every rule to have either exactly two non-terminals or a single terminal on the right side, which is Chomsky Normal Form. Any context-free grammar can be converted to CNF. Its time complexity is O(n cubed times the grammar size), where n is the sentence length. Because the table stores all possibilities, it can also detect ambiguous sentences with multiple parses.",
+      "keywords": [
+        "bottom-up",
+        "dynamic programming",
+        "table",
+        "chomsky normal form",
+        "two non-terminals",
+        "n cubed",
+        "ambiguous"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Regular expressions, finite-state automata and morphological parsing",
+      "text": "How do finite-state transducers help in morphological parsing? Explain with the word 'cats'.",
+      "ideal_answer": "Morphological parsing breaks a word into its stem and morphemes and identifies their features. A finite-state transducer is an automaton that maps between two levels: the surface form, which is the actual word, and the lexical form, which is the stem plus morphological tags. For cats, the FST maps the surface form cats to the lexical form cat +N +PL, meaning noun plural. It uses a lexicon of stems and rules for affixes and spelling changes, such as foxes becoming fox +N +PL. Since FSTs are efficient and can run in both directions, they are used for both analysis and generation.",
+      "keywords": [
+        "stem",
+        "morphemes",
+        "finite-state transducer",
+        "surface form",
+        "lexical form",
+        "noun plural",
+        "both directions"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Information retrieval models: classical, non-classical, cluster and fuzzy",
+      "text": "In a vector space retrieval model, why do we use TF-IDF weighting and cosine similarity instead of just counting matching words?",
+      "ideal_answer": "Simple word counts give too much weight to common words like 'the' and favour long documents that repeat words. TF-IDF multiplies term frequency by inverse document frequency, which is the log of total documents divided by documents containing the term, so terms that are frequent in a document but rare in the collection get high weights. Documents and the query are represented as TF-IDF vectors. Cosine similarity measures the angle between vectors, so it normalises for document length and ranks by topic similarity. This gives ranked results rather than the exact-match output of the Boolean model.",
+      "keywords": [
+        "term frequency",
+        "inverse document frequency",
+        "rare",
+        "vectors",
+        "cosine similarity",
+        "document length",
+        "ranked"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Encoder-decoder machine translation and MT evaluation",
+      "text": "A basic encoder-decoder translation model works well for short sentences but poorly for long ones. Why, and what improves it?",
+      "ideal_answer": "In a basic RNN encoder-decoder, the encoder compresses the whole source sentence into one fixed-length context vector. For long sentences this vector becomes a bottleneck and early information is lost, and RNNs also suffer from vanishing gradients over long sequences. The attention mechanism fixes this by letting the decoder look at all encoder hidden states and compute a weighted combination at each output step, focusing on the relevant source words. Transformers extend this with self-attention and no recurrence, which handles long-range dependencies better. Translation quality is commonly evaluated with the BLEU score, which measures n-gram overlap with reference translations.",
+      "keywords": [
+        "fixed-length",
+        "context vector",
+        "bottleneck",
+        "vanishing gradients",
+        "attention",
+        "transformer",
+        "bleu"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Processing Indian languages; Paninian framework and Karaka theory",
+      "text": "You are building an NLP pipeline for Hindi customer feedback. What language-specific challenges would you face, and why is the Paninian framework relevant?",
+      "ideal_answer": "Hindi is morphologically rich and has relatively free word order, so fixed-position, English-style parsing does not work well. Text is often code-mixed Hinglish written in both Devanagari and Roman script with inconsistent spellings, which requires transliteration and normalisation. Annotated corpora and tools are also more limited than for English. The Paninian framework suits Indian languages because it identifies Karaka relations, such as karta for the agent and karma for the object, using case markers or vibhakti like ne and ko rather than word position. I would use resources such as IndicNLP, multilingual models like IndicBERT or MuRIL, and evaluate on real feedback data.",
+      "keywords": [
+        "morphologically rich",
+        "free word order",
+        "code-mixed",
+        "transliteration",
+        "karaka",
+        "vibhakti",
+        "karta",
+        "multilingual models"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Information retrieval and text analytics",
+      "text": "An e-commerce company's product search returns poor results when customers misspell words or use synonyms. How would you improve the search using NLP techniques?",
+      "ideal_answer": "First, normalise queries and product text with lowercasing, tokenisation and stemming or lemmatisation so different word forms match. For misspellings, apply spelling correction using edit distance against the product vocabulary, weighted by query frequency. For synonyms, use a synonym dictionary or WordNet-style resource, for example mapping mobile to phone, and query expansion. Ranking can use TF-IDF or BM25, and semantic search with sentence embeddings can match meaning rather than exact words. I would measure improvements with metrics like precision at k and click-through rate using A/B testing.",
+      "keywords": [
+        "normalise",
+        "lemmatisation",
+        "spelling correction",
+        "edit distance",
+        "synonyms",
+        "query expansion",
+        "bm25",
+        "embeddings"
+      ]
+    }
+  ]
+}

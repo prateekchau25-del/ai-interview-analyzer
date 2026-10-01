@@ -1,0 +1,197 @@
+{
+  "subject": "Cloud Computing & AI Services",
+  "applies_to": [
+    {
+      "course": "BSC_AI",
+      "year": 2,
+      "semester": 4
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Characteristics, advantages and disadvantages of cloud computing",
+      "text": "What is cloud computing and what are its essential characteristics?",
+      "ideal_answer": "Cloud computing is the on-demand delivery of computing resources such as servers, storage, databases and software over the Internet with pay-as-you-go pricing. According to NIST, its essential characteristics are on-demand self-service, broad network access, resource pooling where providers serve many customers from shared resources, rapid elasticity to scale up or down quickly, and measured service where usage is metered and billed.",
+      "keywords": [
+        "on-demand",
+        "internet",
+        "pay-as-you-go",
+        "resource pooling",
+        "rapid elasticity",
+        "measured service",
+        "broad network access"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "Service models: SaaS, PaaS and IaaS",
+      "text": "What are the three cloud service models?",
+      "ideal_answer": "The three service models are Infrastructure as a Service, Platform as a Service and Software as a Service. IaaS provides virtual machines, storage and networks, and the customer manages the operating system and applications, for example AWS EC2. PaaS provides a managed platform to develop and deploy applications without managing servers, for example Google App Engine or AWS Elastic Beanstalk. SaaS provides complete ready-to-use applications over the Internet, for example Gmail or Salesforce.",
+      "keywords": [
+        "iaas",
+        "paas",
+        "saas",
+        "virtual machines",
+        "platform",
+        "application",
+        "ec2"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Cloud deployment models; cloud vs traditional IT providers",
+      "text": "Explain the difference between public, private and hybrid cloud.",
+      "ideal_answer": "A public cloud is owned and operated by a third-party provider such as AWS, Azure or Google Cloud and its resources are shared by many customers over the Internet, giving low cost and high scalability. A private cloud is used by a single organisation, hosted on-premises or by a provider, giving more control, security and compliance but at higher cost. A hybrid cloud combines public and private clouds, so sensitive workloads can stay private while other workloads or peak loads use the public cloud. A community cloud is shared by organisations with common requirements.",
+      "keywords": [
+        "public cloud",
+        "third-party",
+        "shared",
+        "private cloud",
+        "single organisation",
+        "hybrid cloud",
+        "control"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "AWS core services: compute, load balancing, autoscaling, storage",
+      "text": "What is the difference between Amazon EC2 and Amazon S3?",
+      "ideal_answer": "Amazon EC2, Elastic Compute Cloud, is a compute service that provides resizable virtual servers called instances, on which you run operating systems and applications. Amazon S3, Simple Storage Service, is an object storage service that stores files as objects inside buckets, accessible over the Internet, with very high durability. So EC2 is used to run code and applications, while S3 is used to store and retrieve data such as images, backups and datasets. EC2 instances often read from and write to S3.",
+      "keywords": [
+        "ec2",
+        "compute",
+        "virtual servers",
+        "instances",
+        "s3",
+        "object storage",
+        "buckets"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "AWS core services: load balancing, autoscaling",
+      "text": "How do an Elastic Load Balancer and Auto Scaling work together to handle sudden traffic spikes on a web application?",
+      "ideal_answer": "The Elastic Load Balancer receives incoming requests and distributes them across multiple healthy EC2 instances, often in different availability zones, and stops sending traffic to instances that fail health checks. An Auto Scaling group monitors metrics such as CPU utilisation through CloudWatch and automatically launches more instances when load rises above a threshold and terminates them when load falls, within minimum and maximum limits. New instances are registered with the load balancer automatically. Together they give high availability and let the application handle spikes while paying only for the capacity needed.",
+      "keywords": [
+        "load balancer",
+        "distributes",
+        "health checks",
+        "auto scaling group",
+        "cloudwatch",
+        "threshold",
+        "high availability"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "VMware virtualization: creating, cloning and managing virtual machines",
+      "text": "What is a hypervisor, and what is the purpose of cloning a virtual machine in VMware?",
+      "ideal_answer": "A hypervisor is software that creates and runs virtual machines by sharing the physical hardware among them. A Type 1 or bare-metal hypervisor, such as VMware ESXi, runs directly on the hardware, while a Type 2 or hosted hypervisor, such as VMware Workstation, runs on top of a host operating system. Cloning creates a copy of an existing virtual machine, including its OS, software and configuration, so you can quickly deploy many identical machines, for example for a lab or testing. A full clone is independent, while a linked clone shares the parent's virtual disk to save space.",
+      "keywords": [
+        "hypervisor",
+        "virtual machines",
+        "type 1",
+        "type 2",
+        "clone",
+        "full clone",
+        "linked clone"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "AWS managed services: RDS, DynamoDB",
+      "text": "When would you choose Amazon RDS over DynamoDB, and why?",
+      "ideal_answer": "Amazon RDS is a managed relational database service supporting engines like MySQL, PostgreSQL and Oracle, so it suits structured data with fixed schemas, complex SQL queries, joins and multi-row transactions, such as an order-management system. DynamoDB is a fully managed NoSQL key-value and document database that scales automatically to very high request rates with single-digit millisecond latency, which suits simple access patterns by key, such as user sessions, shopping carts or IoT data. So choose RDS when relational structure and complex queries matter, and DynamoDB when massive scale and predictable low latency matter more.",
+      "keywords": [
+        "rds",
+        "relational",
+        "sql",
+        "joins",
+        "dynamodb",
+        "nosql",
+        "key-value",
+        "scale"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "AWS managed services: SNS, SQS",
+      "text": "Explain the difference between SNS and SQS, and why they are often used together.",
+      "ideal_answer": "Amazon SNS, Simple Notification Service, is a publish-subscribe service that pushes each message to all its subscribers at once, such as email, SMS, Lambda functions or SQS queues. Amazon SQS, Simple Queue Service, is a message queue where messages are stored until a consumer polls and processes them, so each message is processed by one consumer. They are used together in a fan-out pattern: one SNS topic sends a message to several SQS queues, so different services each get their own copy and can process it reliably at their own pace. This decouples the components of an application.",
+      "keywords": [
+        "sns",
+        "publish-subscribe",
+        "push",
+        "sqs",
+        "queue",
+        "poll",
+        "fan-out",
+        "decouple"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Challenges and risks in cloud adoption",
+      "text": "A company's monthly cloud bill has unexpectedly doubled. How would you troubleshoot the cause and control the costs?",
+      "ideal_answer": "First use the provider's billing tools, such as AWS Cost Explorer, to break costs down by service, region and resource tags and find what grew. Common causes are idle or oversized instances, forgotten resources like unattached volumes, snapshots and elastic IPs, data transfer charges, and auto scaling misconfigurations. Fix it by right-sizing or stopping unused resources, using reserved instances or savings plans for steady workloads and spot instances for flexible ones, and moving old data to cheaper storage classes. Prevent recurrence with budgets and alerts, mandatory tagging and regular cost reviews.",
+      "keywords": [
+        "cost explorer",
+        "tags",
+        "idle",
+        "right-sizing",
+        "reserved instances",
+        "spot instances",
+        "budgets",
+        "alerts"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Cloud simulators: CloudSim architecture and Green Cloud",
+      "text": "Why do researchers use CloudSim instead of testing on a real cloud, and what are the limitations of simulation results?",
+      "ideal_answer": "CloudSim is a Java-based toolkit for modelling and simulating cloud environments, including data centres, hosts, virtual machines, cloudlets that represent tasks, and brokers. It lets researchers test resource allocation, scheduling and energy-saving policies repeatably and at large scale without paying for real infrastructure. GreenCloud similarly focuses on energy consumption in data centres. The limitation is that a simulation relies on simplified models, so real-world factors like network variability, hardware failures, interference between VMs and real workload behaviour may not be captured, and results must be validated on real systems.",
+      "keywords": [
+        "cloudsim",
+        "simulation",
+        "data centres",
+        "virtual machines",
+        "cloudlets",
+        "broker",
+        "repeatably",
+        "simplified models"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Indian cloud ecosystem: MeghRaj, Digital India",
+      "text": "A state government department wants to move its citizen services portal to the cloud. What would you recommend, considering Indian regulations and initiatives?",
+      "ideal_answer": "Under the MeghRaj or GI Cloud initiative of the Digital India programme, government departments should use cloud service providers empanelled by MeitY, whose services have been audited for security and compliance. Citizen data should be stored in data centres located in India to meet data localisation and privacy requirements, including the Digital Personal Data Protection Act. A hybrid or government community cloud approach could keep sensitive data private while using scalable public cloud services for the portal. The plan should include encryption, access control, backups and disaster recovery, and avoid vendor lock-in through open standards.",
+      "keywords": [
+        "meghraj",
+        "digital india",
+        "meity",
+        "empanelled",
+        "data localisation",
+        "data protection",
+        "disaster recovery"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Cloud architecture and its components",
+      "text": "Your startup wants to deploy an AI image-recognition API on AWS that must stay available even if one data centre fails. How would you design the architecture?",
+      "ideal_answer": "Deploy the API servers on EC2 instances or containers in an Auto Scaling group spread across at least two availability zones, behind an Application Load Balancer with health checks, so traffic moves away from a failed zone automatically. Store images and model files in S3, and use a managed database like RDS in Multi-AZ mode or DynamoDB for metadata. Use SQS to queue heavy inference jobs so spikes do not overload the servers, and use GPU instances only where inference needs them. Monitor with CloudWatch alarms, keep backups, and secure it with IAM roles and HTTPS.",
+      "keywords": [
+        "availability zones",
+        "auto scaling",
+        "load balancer",
+        "s3",
+        "multi-az",
+        "sqs",
+        "cloudwatch",
+        "iam"
+      ]
+    }
+  ]
+}

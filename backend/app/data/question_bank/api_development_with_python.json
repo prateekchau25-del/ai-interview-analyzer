@@ -1,0 +1,194 @@
+{
+  "subject": "API Development with Python",
+  "applies_to": [
+    {
+      "course": "BSC_DS",
+      "year": 3,
+      "semester": 5
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Flask as a web framework and comparison with other frameworks",
+      "text": "What is Flask, and why is it called a micro-framework?",
+      "ideal_answer": "Flask is a lightweight web framework for Python used to build web applications and APIs. It is called a micro-framework because its core is small and provides only essentials such as routing, request handling and templating with Jinja2, built on the Werkzeug toolkit. It does not include a built-in database layer, form validation or authentication; these are added through extensions such as Flask-SQLAlchemy or Flask-Login. This makes Flask simple and flexible, unlike Django, which is a full-stack framework with many built-in features.",
+      "keywords": [
+        "python",
+        "web framework",
+        "micro-framework",
+        "routing",
+        "werkzeug",
+        "jinja2",
+        "extensions"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "Introduction to RESTful APIs",
+      "text": "What is a REST API?",
+      "ideal_answer": "REST, Representational State Transfer, is an architectural style for building web APIs. In a REST API, data is exposed as resources identified by URLs, and clients act on them using standard HTTP methods: GET to read, POST to create, PUT or PATCH to update and DELETE to remove. REST APIs are stateless, meaning each request contains all the information needed to process it, and they usually exchange data in JSON format. Responses use HTTP status codes like 200, 201 and 404.",
+      "keywords": [
+        "representational state transfer",
+        "resources",
+        "url",
+        "http methods",
+        "stateless",
+        "json",
+        "status codes"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Handling HTTP methods; request and response objects",
+      "text": "What is the difference between GET and POST requests?",
+      "ideal_answer": "GET is used to retrieve data; its parameters are sent in the URL query string, so they are visible, can be bookmarked and cached, and are limited in length. POST is used to send data to the server to create or process something; the data is sent in the request body, so it is not shown in the URL and can be large, such as form submissions or JSON. GET should be safe and idempotent, meaning it does not change server state, whereas POST usually does. In Flask, you allow them with methods equal to GET and POST in the route decorator.",
+      "keywords": [
+        "get",
+        "retrieve",
+        "query string",
+        "post",
+        "request body",
+        "idempotent",
+        "methods"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Cookies and sessions",
+      "text": "What is the difference between a cookie and a session in Flask?",
+      "ideal_answer": "A cookie is a small piece of data stored in the user's browser and sent to the server with every request; in Flask you set it with response.set_cookie and read it with request.cookies. A session stores user-specific data, such as the logged-in user ID, across requests. Flask's default session is stored in a cookie that is cryptographically signed with the app's SECRET_KEY, so users can read it but cannot tamper with it. Sensitive data should not be stored in cookies, and server-side sessions can be used through extensions like Flask-Session.",
+      "keywords": [
+        "cookie",
+        "browser",
+        "set_cookie",
+        "session",
+        "signed",
+        "secret_key",
+        "server-side"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Setting up Flask, routing and views",
+      "text": "How does routing work in Flask? Explain with a route that takes a user ID from the URL.",
+      "ideal_answer": "Routing maps a URL to a Python view function using the @app.route decorator. When a request arrives, Flask matches the URL against registered rules and calls the corresponding function, returning its result as the response. Dynamic parts of the URL are written in angle brackets with an optional converter, for example @app.route('/user/<int:user_id>'), and the value is passed as the user_id argument to the function, converted to an integer. You can also specify allowed methods and build URLs with url_for.",
+      "keywords": [
+        "@app.route",
+        "decorator",
+        "view function",
+        "url",
+        "angle brackets",
+        "converter",
+        "url_for"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Returning JSON responses",
+      "text": "How do you return a JSON response with the correct status code from a Flask API endpoint?",
+      "ideal_answer": "Use the jsonify function, which converts a Python dictionary or list into JSON and sets the Content-Type header to application/json. You can return a tuple of the response and a status code, for example return jsonify({'id': 5, 'name': 'Asha'}), 201 after creating a resource. In recent Flask versions, simply returning a dictionary is automatically converted to JSON. Errors should also return JSON with a suitable code, such as 404 for not found or 400 for bad input.",
+      "keywords": [
+        "jsonify",
+        "dictionary",
+        "application/json",
+        "content-type",
+        "status code",
+        "201",
+        "404"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Creating an API with Flask and handling API requests/responses",
+      "text": "A Flask POST endpoint uses request.form to read data, but when a client sends JSON the values are empty. Why does this happen and how do you fix it?",
+      "ideal_answer": "request.form only contains data sent as form-encoded or multipart form data, from HTML forms. When a client sends a JSON body with the Content-Type application/json header, Flask places it in request.get_json() or request.json, not in request.form, so the form dictionary is empty. The fix is to read data with request.get_json() and validate that the required fields are present, returning a 400 Bad Request if not. The client must also send the correct Content-Type header.",
+      "keywords": [
+        "request.form",
+        "form data",
+        "json body",
+        "content-type",
+        "get_json",
+        "400"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Database integration: connections, models, creating and querying records",
+      "text": "Why would you use an ORM like Flask-SQLAlchemy instead of writing raw SQL strings in a Flask app?",
+      "ideal_answer": "An ORM, Object Relational Mapper, maps database tables to Python classes called models and rows to objects, so you create and query records with Python code, such as User.query.filter_by(email=e).first(). It uses parameterised queries, which protects against SQL injection that can happen when building SQL strings with user input. It makes code more readable and database-independent, so you can switch from SQLite to PostgreSQL with little change, and supports relationships and migrations. The trade-off is some overhead and less control, so complex performance-critical queries may still use raw SQL.",
+      "keywords": [
+        "object relational mapper",
+        "models",
+        "python classes",
+        "sql injection",
+        "parameterised",
+        "database-independent",
+        "overhead"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Login/logout and CRUD operations project",
+      "text": "In your Flask login system, how should passwords be stored and verified, and what other security issues must you handle?",
+      "ideal_answer": "Passwords must never be stored in plain text; store a salted hash using a slow hashing algorithm, for example with werkzeug's generate_password_hash, and verify with check_password_hash at login. After a successful login, store the user ID in the session, and clear the session on logout. Keep the SECRET_KEY secret, use HTTPS so credentials are not sent in clear text, and set secure, HttpOnly cookie flags. Also protect forms against CSRF, give a generic error message for wrong credentials, and limit repeated login attempts to stop brute force.",
+      "keywords": [
+        "plain text",
+        "hash",
+        "salt",
+        "generate_password_hash",
+        "session",
+        "https",
+        "csrf",
+        "brute force"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "HTML, CSS and JavaScript DOM basics for API front ends",
+      "text": "Your JavaScript front end on one domain calls your Flask API on another domain, and the browser blocks the request with a CORS error even though Postman works. Why, and how do you fix it?",
+      "ideal_answer": "Browsers enforce the same-origin policy, which blocks JavaScript from reading responses from a different origin, meaning a different domain, port or protocol, unless the server allows it with CORS headers. Postman is not a browser, so it does not apply this policy. The fix is for the Flask API to send the Access-Control-Allow-Origin header listing the front end's origin, which can be done with the Flask-CORS extension. For requests with custom headers or methods, the server must also answer the preflight OPTIONS request. Avoid allowing all origins with a star when credentials are used.",
+      "keywords": [
+        "same-origin policy",
+        "cors",
+        "origin",
+        "access-control-allow-origin",
+        "flask-cors",
+        "preflight",
+        "options"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Creating an API with Flask",
+      "text": "You need to deploy a Flask API that serves a machine-learning model to many users in production. What would you change from your development setup?",
+      "ideal_answer": "The built-in Flask development server is not meant for production, so run the app with a WSGI server like Gunicorn with multiple workers, behind a reverse proxy such as Nginx that handles HTTPS. Turn off debug mode, keep secrets like SECRET_KEY and database passwords in environment variables, and load the ML model once at startup rather than per request. Add input validation, error handling with proper JSON errors, logging and monitoring, and rate limiting. For long predictions, use a task queue like Celery, and containerise the app with Docker for consistent deployments and scaling.",
+      "keywords": [
+        "development server",
+        "gunicorn",
+        "nginx",
+        "debug mode",
+        "environment variables",
+        "load the ml model once",
+        "logging",
+        "docker"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Introduction to RESTful APIs",
+      "text": "Your team's public REST API will be used by mobile apps and partners. How would you design it so it stays consistent, secure and easy to evolve?",
+      "ideal_answer": "Use resource-based URLs with plural nouns, such as /api/v1/students/42, and use HTTP methods and status codes correctly. Include a version number in the URL or header so you can make breaking changes without affecting existing clients. Secure it with token-based authentication such as JWT or API keys over HTTPS, validate all input, and apply rate limiting. Return consistent JSON structures, including for errors, support pagination and filtering for large lists, and document the API using OpenAPI or Swagger.",
+      "keywords": [
+        "resource",
+        "nouns",
+        "status codes",
+        "version number",
+        "authentication",
+        "https",
+        "pagination",
+        "document"
+      ]
+    }
+  ]
+}

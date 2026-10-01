@@ -14,6 +14,10 @@ class Settings(BaseSettings):
     # Required. No default on purpose, so a database is never created implicitly.
     # Example: postgresql+psycopg://postgres:password@localhost:5432/interview_ai
     database_url: str | None = None
+    # Apply migrations + seed on API start. Disabled in tests (they build the schema directly).
+    auto_migrate: bool = True
+    # Load Whisper/embedding models in the background at API start (first answer is then fast).
+    warm_up_models: bool = True
 
     data_dir: Path = PROJECT_ROOT / "data"
     ml_models_dir: Path = PROJECT_ROOT / "ml" / "models"

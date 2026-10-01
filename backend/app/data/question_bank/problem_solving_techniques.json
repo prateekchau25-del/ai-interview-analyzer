@@ -1,0 +1,90 @@
+{
+  "subject": "Problem Solving Techniques",
+  "applies_to": [{"course": "BCA", "year": 1, "semester": 1}],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Pseudocode, flowcharts and characteristics of algorithms",
+      "text": "What is an algorithm, and what are its main characteristics?",
+      "ideal_answer": "An algorithm is a finite, step-by-step set of well-defined instructions for solving a problem. Its characteristics are: it takes zero or more inputs and produces at least one output; each step is definite and unambiguous; it must be finite, meaning it terminates after a limited number of steps; and each step must be effective, meaning basic enough to be carried out.",
+      "keywords": ["step-by-step", "input", "output", "definiteness", "finiteness", "effectiveness"]
+    },
+    {
+      "level": 1,
+      "topic": "Sequence, selection and repetition control structures",
+      "text": "What are the three basic control structures used in programming?",
+      "ideal_answer": "The three basic control structures are sequence, selection and repetition. Sequence means statements are executed one after another in order. Selection means choosing between paths based on a condition, using if, if-else or switch. Repetition, or iteration, means executing a block repeatedly while a condition holds, using loops like for, while and do-while.",
+      "keywords": ["sequence", "selection", "repetition", "if-else", "loops", "condition"]
+    },
+    {
+      "level": 2,
+      "topic": "Pseudocode and flowcharts",
+      "text": "What is the difference between a flowchart and pseudocode?",
+      "ideal_answer": "A flowchart is a graphical representation of an algorithm using standard symbols, such as an oval for start and end, a parallelogram for input and output, a rectangle for processing and a diamond for decisions, connected by arrows. Pseudocode is a text-based, informal description of an algorithm written in structured English-like statements without strict programming syntax. Flowcharts are easier to understand visually, while pseudocode is easier to write, modify and convert into actual code.",
+      "keywords": ["graphical", "symbols", "diamond", "text-based", "english-like", "no strict syntax"]
+    },
+    {
+      "level": 2,
+      "topic": "Problem-solving steps, input validation, pre and post conditions",
+      "text": "What are pre-conditions and post-conditions? Give an example.",
+      "ideal_answer": "A pre-condition is a condition that must be true before a function or algorithm runs, for it to work correctly. A post-condition is a condition that is guaranteed to be true after it finishes, if the pre-condition held. For example, for a square root function, the pre-condition is that the input number is non-negative, and the post-condition is that the result multiplied by itself equals the input. Input validation checks pre-conditions so that invalid input is rejected early.",
+      "keywords": ["pre-condition", "before", "post-condition", "after", "input validation", "example"]
+    },
+    {
+      "level": 3,
+      "topic": "Integer representation: 1's and 2's complement",
+      "text": "How do you represent minus 5 in 8-bit 2's complement?",
+      "ideal_answer": "First write plus 5 in 8-bit binary, which is 00000101. Then take the 1's complement by inverting every bit, giving 11111010. Finally add 1 to get the 2's complement, which is 11111011. So minus 5 is 11111011 in 8-bit 2's complement, and the leading 1 shows the number is negative.",
+      "keywords": ["binary of 5", "invert bits", "1's complement", "add 1", "11111011", "sign bit"]
+    },
+    {
+      "level": 3,
+      "topic": "Problems on numbers: palindrome",
+      "text": "Explain the logic to check whether an integer is a palindrome.",
+      "ideal_answer": "Store the original number in a separate variable. Reverse the number using a loop: take the last digit with number modulo 10, add it to reverse multiplied by 10, and remove the last digit by dividing the number by 10, until the number becomes 0. Finally compare the reversed number with the original; if they are equal, the number is a palindrome, such as 121, otherwise it is not.",
+      "keywords": ["original number", "modulo 10", "divide by 10", "reverse", "loop", "compare"]
+    },
+    {
+      "level": 4,
+      "topic": "else-if ladder, switch, break and continue in C",
+      "text": "In C, a switch statement has case 1, case 2 and case 3, but there is no break after case 1. What happens when the value is 1, and when would you prefer switch over an else-if ladder?",
+      "ideal_answer": "Without a break, execution falls through: after the statements of case 1 run, the statements of case 2 also run, and so on until a break or the end of the switch. So the code for case 1 and case 2 executes, and case 3 too if case 2 also lacks a break. Switch is preferred when comparing one integer or character expression against many fixed constant values, as it is cleaner and can be faster. An else-if ladder is needed for ranges, floating-point values or complex conditions, which switch cannot test.",
+      "keywords": ["fall through", "break", "case 2 executes", "constant values", "else-if ladder", "ranges"]
+    },
+    {
+      "level": 4,
+      "topic": "Arrays: sequential and binary search",
+      "text": "Compare sequential search and binary search. Why can binary search not be used on every array?",
+      "ideal_answer": "Sequential or linear search checks each element one by one from the start, so it takes O(n) time in the worst case but works on any array. Binary search repeatedly compares the target with the middle element and discards half of the array each time, taking O(log n) time. Binary search requires the array to be sorted, because it relies on knowing whether the target lies in the left or right half. For an unsorted array we must either sort it first or use linear search.",
+      "keywords": ["linear search", "binary search", "middle element", "o(n)", "o(log n)", "sorted"]
+    },
+    {
+      "level": 5,
+      "topic": "IEEE 754 floating point",
+      "text": "In C, a program checks if (0.1 + 0.2 == 0.3) and it prints false. Why does this happen and how should you compare floating-point numbers?",
+      "ideal_answer": "Floating-point numbers are stored in IEEE 754 format using a sign, exponent and mantissa in binary. Decimal fractions like 0.1 and 0.2 cannot be represented exactly in binary, so they are stored as close approximations, and their sum differs slightly from the stored value of 0.3. Therefore exact equality fails. The correct approach is to check whether the absolute difference is smaller than a small tolerance, like fabs(a - b) < 1e-9, which is called epsilon comparison.",
+      "keywords": ["ieee 754", "binary", "cannot be represented exactly", "approximation", "tolerance", "epsilon"]
+    },
+    {
+      "level": 5,
+      "topic": "Modular programming and recursion",
+      "text": "A recursive factorial function in C crashes for large inputs and gives wrong answers for n around 20. What are the causes and how would you fix them?",
+      "ideal_answer": "Every recursive call uses stack space, so very deep recursion or a missing or wrong base case causes stack overflow and a crash. The function must have a correct base case, such as returning 1 when n is 0 or 1, and should reject negative input. Wrong answers come from integer overflow, because factorial grows very fast and 13 factorial already exceeds a 32-bit int. The fix is to use a larger type like unsigned long long, which still only holds up to 20 factorial, and to use an iterative loop instead of recursion to avoid stack growth.",
+      "keywords": ["base case", "stack overflow", "integer overflow", "long long", "iterative", "negative input"]
+    },
+    {
+      "level": 6,
+      "topic": "Modular programming: top-down and bottom-up approaches",
+      "text": "You are asked to build a student result management program in C with a team of three. How would you use modular programming and a top-down approach to organise it?",
+      "ideal_answer": "Using top-down design, start with the main problem and break it into modules such as input of student data, validation, calculation of totals and grades, searching, and report printing. Each module becomes a separate function with clear inputs, outputs and pre-conditions, and can be put in its own source file with a header file. Team members can develop and test modules independently, and the main function simply calls them. This improves readability, reuse and debugging; low-level utility functions can still be built bottom-up and reused across modules.",
+      "keywords": ["top-down", "modules", "functions", "header file", "independent testing", "reuse"]
+    },
+    {
+      "level": 6,
+      "topic": "C functions, 1D/2D arrays, string functions and debugging",
+      "text": "A teammate's C program uses strcpy to copy a user's name into a char array of size 10 and it sometimes crashes or corrupts other variables. What is wrong and how would you fix and debug it?",
+      "ideal_answer": "This is a buffer overflow: strcpy does not check the destination size, so a name of 10 or more characters, plus the null terminator, writes past the end of the array and overwrites nearby memory. The fix is to use a bounded function like strncpy or snprintf with sizeof the destination and ensure the string is null-terminated, or use fgets with a size limit when reading input. Input length should also be validated. To debug, use a debugger like gdb to inspect variables and memory, add print statements, and compile with warnings or tools such as AddressSanitizer.",
+      "keywords": ["buffer overflow", "null terminator", "strncpy", "fgets", "input validation", "debugger"]
+    }
+  ]
+}

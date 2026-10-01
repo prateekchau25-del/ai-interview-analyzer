@@ -1,0 +1,185 @@
+{
+  "subject": "Core Java",
+  "applies_to": [
+    {
+      "course": "BSC_IT",
+      "year": 2,
+      "semester": 4
+    },
+    {
+      "course": "BSC_DS",
+      "year": 2,
+      "semester": 4
+    }
+  ],
+  "questions": [
+    {
+      "level": 1,
+      "topic": "Java architecture, JVM, JRE and JDK",
+      "text": "What is the difference between JDK, JRE and JVM?",
+      "ideal_answer": "The JVM, Java Virtual Machine, executes Java bytecode and makes Java platform independent. The JRE, Java Runtime Environment, contains the JVM plus the core class libraries needed to run Java programs. The JDK, Java Development Kit, contains the JRE plus development tools like the javac compiler, debugger and javadoc, so it is needed to write and compile programs. In short, JDK includes JRE, which includes JVM.",
+      "keywords": [
+        "jvm",
+        "bytecode",
+        "jre",
+        "libraries",
+        "jdk",
+        "javac"
+      ]
+    },
+    {
+      "level": 1,
+      "topic": "Packages",
+      "text": "What is a package in Java?",
+      "ideal_answer": "A package is a namespace that groups related classes and interfaces together, similar to a folder. It avoids name conflicts, since two classes with the same name can exist in different packages, and it provides access control through package-level visibility. Java has built-in packages such as java.lang, java.util and java.io, and users can create their own with the package keyword. Classes from other packages are used with the import statement.",
+      "keywords": [
+        "namespace",
+        "group",
+        "classes",
+        "name conflicts",
+        "access control",
+        "import"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Classes, objects, constructors",
+      "text": "What is a constructor, and how is it different from a normal method?",
+      "ideal_answer": "A constructor is a special block that initialises a new object and is called automatically when the object is created with the new keyword. It has the same name as the class and has no return type, not even void, whereas a method has a return type and must be called explicitly. If no constructor is written, the compiler provides a default no-argument constructor. Constructors can be overloaded but are not inherited.",
+      "keywords": [
+        "initialise",
+        "object",
+        "new",
+        "same name as class",
+        "no return type",
+        "default constructor"
+      ]
+    },
+    {
+      "level": 2,
+      "topic": "Data types, strings and autoboxing",
+      "text": "What is autoboxing and unboxing in Java? Give an example.",
+      "ideal_answer": "Autoboxing is the automatic conversion of a primitive type into its corresponding wrapper class object, for example int to Integer, as in Integer x = 10. Unboxing is the reverse, converting a wrapper object back to its primitive, as in int y = x. The compiler does this automatically. It is mainly needed because collections like ArrayList can store only objects, not primitives.",
+      "keywords": [
+        "autoboxing",
+        "primitive",
+        "wrapper class",
+        "integer",
+        "unboxing",
+        "collections"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Inheritance, this and super",
+      "text": "Explain how the keywords this and super are used in a subclass constructor, with an example.",
+      "ideal_answer": "The this keyword refers to the current object; it is used to distinguish instance variables from parameters with the same name, as in this.name = name, and this() calls another constructor of the same class. The super keyword refers to the parent class; super() calls the parent class constructor and super.method() calls an overridden parent method. For example, a Student class extending Person can call super(name) to initialise the name in Person, then set this.rollNo = rollNo. A call to this() or super() must be the first statement in a constructor.",
+      "keywords": [
+        "this",
+        "current object",
+        "super",
+        "parent class",
+        "constructor",
+        "first statement"
+      ]
+    },
+    {
+      "level": 3,
+      "topic": "Exception handling: try, catch, finally",
+      "text": "What is printed by this code: try { int x = 10 / 0; System.out.println(\"A\"); } catch (ArithmeticException e) { System.out.println(\"B\"); } finally { System.out.println(\"C\"); }",
+      "ideal_answer": "The output is B followed by C. Dividing an integer by zero throws an ArithmeticException, so the statement printing A is skipped and control moves to the matching catch block, which prints B. The finally block always executes whether or not an exception occurs, so it prints C. Finally is typically used to release resources like files or database connections.",
+      "keywords": [
+        "divide by zero",
+        "finally",
+        "arithmeticexception",
+        "skipped",
+        "catch",
+        "always executes"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Abstract classes and interfaces",
+      "text": "When would you choose an interface over an abstract class in Java, and why?",
+      "ideal_answer": "An abstract class can have instance variables, constructors, and both abstract and concrete methods, and a class can extend only one abstract class. An interface defines a contract; its variables are public static final, and since Java 8 it can have default and static methods, and a class can implement multiple interfaces. Choose an interface when unrelated classes need a common capability, like Comparable or Runnable, or when multiple inheritance of type is needed. Choose an abstract class when closely related classes share state and common code, like a base Shape class.",
+      "keywords": [
+        "abstract class",
+        "interface",
+        "contract",
+        "multiple inheritance",
+        "state",
+        "default methods"
+      ]
+    },
+    {
+      "level": 4,
+      "topic": "Strings: == vs equals",
+      "text": "What is printed by: String a = \"java\"; String b = new String(\"java\"); System.out.println(a == b); System.out.println(a.equals(b)); and why?",
+      "ideal_answer": "It prints false and then true. The == operator compares references, that is whether both variables point to the same object. The literal \"java\" is stored in the string constant pool, while new String creates a separate object on the heap, so the references differ. The equals method of String compares the actual character content, which is the same, so it returns true. String contents should therefore always be compared with equals.",
+      "keywords": [
+        "false",
+        "true",
+        "references",
+        "string pool",
+        "heap",
+        "content"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Multithreading and thread life cycle",
+      "text": "Two threads increment a shared counter 1000 times each, but the final value is often less than 2000. Why does this happen and how do you fix it?",
+      "ideal_answer": "This is a race condition. count++ is not atomic; it involves reading the value, adding one and writing it back, so two threads can read the same value and one update gets lost. The fix is to make the increment mutually exclusive, using a synchronized method or synchronized block on a shared lock, or to use AtomicInteger with incrementAndGet, which is lock-free. Also call join on both threads before printing, so the main thread waits for them to finish.",
+      "keywords": [
+        "race condition",
+        "not atomic",
+        "lost update",
+        "synchronized",
+        "atomicinteger",
+        "join"
+      ]
+    },
+    {
+      "level": 5,
+      "topic": "Byte and character streams; file I/O",
+      "text": "A program reading a large text file line by line with FileReader is slow and sometimes leaves the file open after an exception. How would you improve it?",
+      "ideal_answer": "Wrap the FileReader in a BufferedReader, which reads large chunks into memory and provides readLine, greatly reducing the number of disk accesses. Use character streams for text and byte streams like FileInputStream for binary files. To guarantee the file is closed even if an exception occurs, use try-with-resources, which automatically calls close on any AutoCloseable resource. Also specify the character encoding, such as UTF-8, to avoid corrupted text.",
+      "keywords": [
+        "bufferedreader",
+        "readline",
+        "character streams",
+        "try-with-resources",
+        "close",
+        "encoding"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Arrays and Vectors; collections",
+      "text": "A legacy project uses Vector everywhere. A colleague suggests replacing it with ArrayList. What are the trade-offs?",
+      "ideal_answer": "Vector and ArrayList are both resizable arrays, but Vector's methods are synchronized, which makes every operation pay a locking cost even in single-threaded code. Vector also doubles its capacity when full, while ArrayList grows by about 50 percent. ArrayList is faster and is the modern standard for single-threaded use. However, if the Vector is shared between threads, replacing it blindly could cause race conditions, so in those places you should use Collections.synchronizedList or CopyOnWriteArrayList, and run tests after the change.",
+      "keywords": [
+        "synchronized",
+        "thread-safe",
+        "arraylist",
+        "performance",
+        "capacity",
+        "copyonwritearraylist"
+      ]
+    },
+    {
+      "level": 6,
+      "topic": "Event handling, AWT components and layouts",
+      "text": "You are building a desktop form in AWT for student registration with a Submit button. How would you handle the button click and lay out the form so it works on different screen sizes?",
+      "ideal_answer": "Java AWT uses the delegation event model: the button is the event source, and I register a listener by calling addActionListener with an object implementing ActionListener, whose actionPerformed method runs on click to validate and save the data. Instead of absolute positions, I would use layout managers, such as GridLayout or GridBagLayout for label and text-field rows, inside a BorderLayout with the buttons in a FlowLayout panel at the bottom. Layout managers resize components automatically when the window changes size. Long tasks like database saves should not block the event dispatch thread, so the interface stays responsive.",
+      "keywords": [
+        "delegation event model",
+        "actionlistener",
+        "actionperformed",
+        "layout managers",
+        "gridlayout",
+        "event source"
+      ]
+    }
+  ]
+}
