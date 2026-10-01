@@ -72,12 +72,14 @@ def current_question(interview_id: int) -> dict:
     return _call("GET", f"/interviews/{interview_id}/question")
 
 
-def answer_audio(interview_id: int, filename: str, data: bytes) -> dict:
-    return _call("POST", f"/interviews/{interview_id}/answer", files={"audio": (filename, data)})
+def answer_audio(interview_id: int, filename: str, data: bytes, vision: str | None = None) -> dict:
+    return _call("POST", f"/interviews/{interview_id}/answer", files={"audio": (filename, data)},
+                 data={"vision": vision} if vision else None)
 
 
-def answer_text(interview_id: int, text: str) -> dict:
-    return _call("POST", f"/interviews/{interview_id}/answer", data={"text": text})
+def answer_text(interview_id: int, text: str, vision: str | None = None) -> dict:
+    return _call("POST", f"/interviews/{interview_id}/answer",
+                 data={"text": text, **({"vision": vision} if vision else {})})
 
 
 def skip(interview_id: int) -> dict:

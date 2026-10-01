@@ -1,6 +1,7 @@
 import api
 import streamlit as st
 import ui
+import webcam
 
 ui.setup_page("🎙️ Interview")
 cand = ui.require_candidate()
@@ -84,6 +85,12 @@ if last:
             st.caption("🗣️ " + " · ".join(bits))
         for note in dl.get("voice_notes", []):
             st.caption(f"💡 {note}")
+        if dl.get("body_language") is not None:
+            st.caption(f"🧍 body language {dl['body_language']:.0f}/100 · "
+                       f"eye contact {dl['eye_contact']:.0f}%"
+                       + (f" · face looked {dl['face_emotion']}" if dl.get("face_emotion") else ""))
+        for note in dl.get("body_notes", []):
+            st.caption(f"💡 {note}")
         if last.get("transcript"):
             with st.expander("What we heard"):
                 st.write(last["transcript"])
@@ -97,20 +104,24 @@ if q.get("phase") not in ("review", "finished"):
     done = q["number"] - 1
     st.progress(min(1.0, done / q["planned_total"]),
                 text=f"Question {q['number']} of about {q['planned_total']}")
-    ui.question_card(q)
-    ui.speak(q["text"], key=f"q{iid}-{q['question_id']}")
-    st.caption(f"Suggested time: about {q['time_limit_sec'] // 60} min {q['time_limit_sec'] % 60:02d} s")
+    main, cam = st.columns([3, 2])
+    with cam:
+        webcam.render(f"{iid}-{q['question_id']}")
+    with main:
+        ui.question_card(q)
+        ui.speak(q["text"], key=f"q{iid}-{q['question_id']}")
+        st.caption(f"Suggested time: about {q['time_limit_sec'] // 60} min {q['time_limit_sec'] % 60:02d} s")
 
-    rec = st.audio_input("Record your answer", key=f"rec-{q['question_id']}")
-    c1, c2 = st.columns([1, 1])
-    if c1.button("Submit answer", type="primary", disabled=rec is None):
-        submit(api.answer_audio, "answer.wav", rec.getvalue())
-    if c2.button("I don't know / Skip"):
-        submit(api.skip)
-    with st.expander("Can't use the microphone? Type your answer"):
-        typed = st.text_area("Your answer", key=f"typed-{q['question_id']}")
-        if st.button("Submit typed answer", disabled=not typed.strip()):
-            submit(api.answer_text, typed)
+        rec = st.audio_input("Record your answer", key=f"rec-{q['question_id']}")
+        c1, c2 = st.columns([1, 1])
+        if c1.button("Submit answer", type="primary", disabled=rec is None):
+            submit(api.answer_audio, "answer.wav", rec.getvalue(), webcam.answer_summary())
+        if c2.button("I don't know / Skip"):
+            submit(api.skip)
+        with st.expander("Can't use the microphone? Type your answer"):
+            typed = st.text_area("Your answer", key=f"typed-{q['question_id']}")
+            if st.button("Submit typed answer", disabled=not typed.strip()):
+                submit(api.answer_text, typed, webcam.answer_summary())
     st.stop()
 
 # ---------------------------------------------------------------- end-of-interview review

@@ -98,6 +98,21 @@ if any(dl.get(k) is not None for k in ("fluency", "voice_confidence", "confident
                "Tone is estimated by a speech-emotion model (≈63% accurate on unseen speakers), so treat "
                "it as a hint.")
 
+if dl.get("body_language") is not None:
+    st.subheader("Body language (webcam)")
+    b1, b2, b3, b4 = st.columns(4)
+    b1.metric("Body language", f"{dl['body_language']:.0f}/100")
+    b2.metric("Eye contact", f"{dl['eye_contact']:.0f}%")
+    b3.metric("Face in frame", f"{dl['face_present']:.0f}%")
+    b4.metric("Smiling", f"{dl['smile']:.0f}%")
+    if dl.get("face_emotion_counts"):
+        st.caption("Facial expression across answers: " + ", ".join(
+            f"{k} ×{v}" for k, v in sorted(dl["face_emotion_counts"].items(), key=lambda kv: -kv[1])))
+    for note in dl.get("frequent_body_notes", []):
+        st.markdown(f"- 💡 {note}")
+    st.caption(f"Measured on {dl['answers_with_video']} answer(s) with the camera on; counts for 10% of the "
+               "overall score.")
+
 b5 = s.get("big_five")
 if b5:
     with st.expander("🧭 Communication style indicator (Big Five) - experimental"):

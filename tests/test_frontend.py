@@ -101,3 +101,18 @@ def test_report_page_renders_delivery_and_big_five(fake_api):
     assert "How you spoke" in subs and "Knowledge by subject" in subs
     metrics = {m.label: m.value for m in at.metric}
     assert metrics["Voice confidence"] == "85/100" and metrics["Overall score"] == "78%"
+
+
+def test_interview_page_renders_with_webcam_panel(fake_api):
+    q = {"question_id": 11, "text": "What is normalization?", "phase": "technical", "kind": "technical",
+         "level": 2, "level_name": "Beginner", "subject": "DBMS", "topic": "nf", "time_limit_sec": 120,
+         "number": 2, "planned_total": 21, "technical_done": 0, "technical_total": 15}
+    at = AppTest.from_file(str(FRONTEND / "app.py"), default_timeout=60).run()
+    at.session_state["candidate"] = {"id": 1, "name": "Asha", "role": "student", "course_name": "B.Sc IT",
+                                     "year_name": "SY", "has_resume": False}
+    at.session_state["interview_id"] = 5
+    at.session_state["question"] = q
+    at.switch_page("pages/2_interview.py").run()
+    assert not at.exception, at.exception
+    assert any("What is normalization?" in m.value for m in at.markdown)
+    assert any(b.label == "I don't know / Skip" for b in at.button)
