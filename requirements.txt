@@ -45,4 +45,5 @@ matplotlib>=3.9
 
 # ---- Dev ----
 pytest>=8.2
+pypdfium2>=4.30  # dev: render PDF pages to images for visual checks
 ruff>=0.5

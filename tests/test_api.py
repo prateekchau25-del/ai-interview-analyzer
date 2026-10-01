@@ -125,3 +125,26 @@ def test_answers_with_webcam_summary_reach_the_report(client):
     dl = rep["summary"]["delivery"]
     assert dl["body_language"] == 72.0 and dl["answers_with_video"] == 1
     assert dl["frequent_body_notes"] == ["Look at the camera more."]
+
+
+def test_pdf_report(client):
+    from pypdf import PdfReader
+
+    cand = client.post("/candidates", json={"name": "Pdf User", "college_name": "KES", "roll_no": "P-1",
+                                            "course": "BSC_DS", "year": 1}).json()
+    iid = client.post("/interviews", json={"candidate_id": cand["id"]}).json()["interview_id"]
+    assert client.get(f"/interviews/{iid}/report.pdf").status_code == 409  # not finished yet
+    q, i = {"phase": "intro"}, 0
+    while q["phase"] not in ("review", "finished"):
+        data = {"text": "good answer"} if i % 3 else {"skip": "true"}
+        r = client.post(f"/interviews/{iid}/answer", data=data)
+        q, i = r.json()["next"], i + 1
+    client.post(f"/interviews/{iid}/finish")
+    res = client.get(f"/interviews/{iid}/report.pdf")
+    assert res.status_code == 200 and res.headers["content-type"] == "application/pdf"
+    assert 'filename="interview_report_Pdf_User.pdf"' in res.headers["content-disposition"]
+    import io
+
+    text = " ".join(page.extract_text() for page in PdfReader(io.BytesIO(res.content)).pages)
+    assert "Pdf User" in text and "Score for every question" in text and "Questions to revise" in text
+    assert "Correct answer:" in text  # model answers appear even without asking for explanations

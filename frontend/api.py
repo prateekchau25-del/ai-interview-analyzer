@@ -102,5 +102,9 @@ def report(interview_id: int) -> dict:
     return _call("GET", f"/interviews/{interview_id}/report")
 
 
+def report_pdf(interview_id: int) -> bytes:
+    return _call("GET", f"/interviews/{interview_id}/report.pdf")
+
+
 def tts(text: str, voice: str = "female") -> bytes | None:
     return _call("GET", "/tts", params={"text": text[:1500], "voice": voice})

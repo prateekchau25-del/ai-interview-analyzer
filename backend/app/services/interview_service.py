@@ -506,5 +506,7 @@ def report_data(db: Session, interview: Interview) -> dict:
                      "level_name": eng.level_name(a.level) if a.level else None,
                      "score": a.score, "verdict": a.verdict, "skipped": a.skipped,
                      "transcript": a.transcript, "feedback": (a.grade or {}).get("feedback"),
-                     "explanation": a.explanation} for a in interview.answers],
+                     "explanation": a.explanation,
+                     "model_answer": a.question.ideal_answer if a.question and a.kind != "soft" else None}
+                    for a in interview.answers],
     }

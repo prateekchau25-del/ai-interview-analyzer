@@ -36,6 +36,12 @@ label, _ = ui.status_of(overall)
 h1, h2 = st.columns([1, 2])
 h1.metric("Overall score", f"{overall:.0f}%")
 h2.markdown(f"<p class='verdict' style='margin-top:1.2rem'>{rep['verdict']}</p>", unsafe_allow_html=True)
+try:
+    h2.download_button("⬇️ Download PDF report", api.report_pdf(int(iid)),
+                       file_name=f"interview_report_{c['name'].replace(' ', '_')}.pdf",
+                       mime="application/pdf")
+except api.ApiError as e:
+    h2.caption(f"PDF not available: {e}")
 
 t1, t2, t3, t4 = st.columns(4)
 t1.metric("Technical (level-weighted)", f"{rep['technical_score'] or 0:.0f}%")

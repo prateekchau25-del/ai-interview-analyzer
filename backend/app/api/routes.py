@@ -261,6 +261,20 @@ def report(interview_id: int, db: DB) -> dict:
     return svc.report_data(db, _interview(db, interview_id))
 
 
+@router.get("/interviews/{interview_id}/report.pdf", responses={200: {"content": {"application/pdf": {}}}})
+def report_pdf(interview_id: int, db: DB) -> Response:
+    from backend.app.services.report_pdf import build_pdf
+
+    interview = _interview(db, interview_id)
+    if interview.status != "completed":
+        raise HTTPException(409, "Finish the interview first")
+    pdf = build_pdf(svc.report_data(db, interview))
+    name = "".join(ch for ch in interview.candidate.name if ch.isalnum() or ch in " -_")
+    name = name.strip().replace(" ", "_")
+    return Response(content=pdf, media_type="application/pdf",
+                    headers={"Content-Disposition": f'attachment; filename="interview_report_{name}.pdf"'})
+
+
 # ------------------------------------------------------------------ voice
 @router.get("/tts", responses={200: {"content": {"audio/mpeg": {}}}, 204: {"description": "TTS unavailable"}})
 def tts(text: Annotated[str, Query(min_length=1, max_length=1500)], voice: str = "female") -> Response:

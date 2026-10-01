@@ -92,6 +92,7 @@ REPORT = {
 
 def test_report_page_renders_delivery_and_big_five(fake_api):
     sys.modules["api"].report = lambda iid: REPORT
+    sys.modules["api"].report_pdf = lambda iid: b"%PDF-1.4 fake"
     at = AppTest.from_file(str(FRONTEND / "app.py"), default_timeout=30).run()
     at.switch_page("pages/3_report.py")
     at.query_params["interview"] = "7"
