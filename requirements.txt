@@ -1,5 +1,5 @@
 # Python 3.11 or 3.12 ONLY (3.13/3.14 have no wheels for numpy<2.2 / mediapipe and pip tries to compile).
-# Install inside a venv:  py -3.12 -m venv .venv  &&  .venv\Scriptsctivate
+# Install inside a venv:  py -3.12 -m venv .venv  then  .venv\Scripts\activate
 # ---- Backend / API ----
 fastapi>=0.115
 uvicorn[standard]>=0.30

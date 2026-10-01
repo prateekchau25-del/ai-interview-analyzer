@@ -43,13 +43,18 @@ cd ai-interview-analyzer
 ```
 Already cloned? Just run `git pull`.
 
-### 2. Python environment (Python 3.11 or 3.12)
+### 2. Python environment (Python 3.11 or 3.12 - NOT 3.13/3.14)
+Install Python 3.12 if needed: `winget install -e --id Python.Python.3.12` (it can live next to newer versions).
 ```bash
 py -3.12 -m venv .venv
 .venv\Scripts\activate
+python --version          # must print Python 3.12.x, and the prompt must start with (.venv)
+python -m pip install --upgrade pip
 pip install torch --index-url https://download.pytorch.org/whl/cpu
 pip install -r requirements.txt
 ```
+If pip starts *building* numpy and fails with "Unknown compiler", you are on the wrong Python: check
+`python --version` inside the activated `.venv`.
 Also install FFmpeg: `winget install Gyan.FFmpeg`
 
 ### 3. Database (PostgreSQL + pgAdmin)
