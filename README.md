@@ -18,7 +18,8 @@ interviews **IT-department teachers** on the subjects they teach.
 | Live feedback | "Correct answer!" / "This answer is not correct" with % score and what was missing |
 | Review | At the end: "Do you want the answers?" Yes → teacher-style explanations, No → thank you |
 | How you spoke | Fluency (pace, fillers, pauses), voice confidence (Praat prosody), tone (speech-emotion model), confident vs hesitant language |
-| Report | Overall verdict, % for every question, knowledge by subject, level graph, delivery, resume, experimental Big Five style indicator |
+| Body language | Optional live webcam: face in frame, eye contact (iris + head direction), smile, blinks, head and hand movement, facial emotion (MediaPipe + HSEmotion) |
+| Report | Overall verdict, % for every question, knowledge by subject, level graph, delivery, body language, resume, experimental Big Five style indicator; downloadable HR-style PDF |
 | Dashboard | Students and teachers, scores, ATS pass rate, CSV export |
 
 ## Machine-learning models (trained in this project)
@@ -79,6 +80,17 @@ streamlit run frontend/app.py
 ```
 Open http://localhost:8501. The first start downloads the Whisper model (~480 MB) once.
 
+### Optional: run everything with Docker
+If Docker Desktop is installed:
+```bash
+docker compose up --build
+```
+UI: http://localhost:8501 · API docs: http://localhost:8000/docs. This starts its own PostgreSQL
+(host port 5433, so it does not clash with your pgAdmin server). Put `LLM_API_KEY=...` in `.env` first.
+
+Note: on Windows/macOS Docker Desktop the browser webcam stream (WebRTC) often cannot reach a container.
+For webcam body-language analysis run the UI without Docker (`streamlit run frontend/app.py`).
+
 ### 6. Tests
 ```bash
 pytest -q
@@ -88,8 +100,8 @@ Tests use an in-memory database and never call the LLM.
 ## Project structure
 ```
 backend/app/
-  analyzers/   speech (Whisper), nlp (grading), lexical, prosody, voice_emotion, personality, resume, tts, llm
-  services/    interview_engine (adaptive logic), interview_service (orchestration), syllabus
+  analyzers/   speech (Whisper), nlp (grading), lexical, prosody, voice_emotion, vision, personality, resume, tts, llm
+  services/    interview_engine (adaptive logic), interview_service (orchestration), syllabus, report_pdf
   db/          models, Alembic migrations, seed, setup, export_sql
   data/        syllabus.json, question_bank/*.json, soft_skills.json, teacher_skills.json
   api/         FastAPI routes
