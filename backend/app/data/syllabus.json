@@ -1,0 +1,3213 @@
+{
+  "meta": {
+    "collected_on": "2026-09-30",
+    "college": "K.E.S. Shroff College of Arts & Commerce (Autonomous), Kandivali (W), Mumbai - Department of IT & Data Science",
+    "notes": "KES Shroff is an autonomous college (affiliated to University of Mumbai) and does NOT publish its syllabus/unit contents on kessc.edu.in (course pages, NEP page, WP media library and notices were all checked). Subject names and codes per semester are therefore taken from official KES exam time-tables and result sheets linked from https://kessc.edu.in/notices/ (Google Drive PDFs) and marked source.type='kes_official'. Unit topics for each subject come from a published syllabus of the same/closest-named subject elsewhere and are marked per subject in topics_source (mumbai_university_fallback = MU NEP syllabus re-hosted by MU-affiliated colleges since mu.ac.in PDF links return 404; other_fallback = SNDT or other university). Sem I/III/V lists are the 2026-27 syllabus (26U codes); Sem II/IV/VI lists are from Mar/Jun 2026 exams (23U/24U/25U codes). Languages, EVS, IKS, Indian Constitution, OJT and co-curricular papers are omitted; communication papers are listed under soft_skills. IKS-for-Computing and IPR/Cyber-law papers are kept as they are department papers."
+  },
+  "courses": {
+    "BSC_IT": {
+      "name": "B.Sc. Information Technology",
+      "years": {
+        "1": {
+          "semesters": {
+            "1": [
+              {
+                "subject": "Introduction to Programming",
+                "code": "26UBIT101",
+                "topics": [
+                  "Algorithms, pseudocode and flowchart symbols",
+                  "History and structure of a C program; compiler, linker and preprocessor",
+                  "Compilation and execution of a program",
+                  "C character set, identifiers, keywords, data types, constants and variables",
+                  "typedef and typecasting",
+                  "Operators: arithmetic, relational, logical, increment/decrement, conditional; precedence",
+                  "Control flow: if-else, else-if, switch, while, for, do-while, break, continue, goto",
+                  "User-defined and library functions",
+                  "Pointers and addresses, pointers with function arguments and arrays",
+                  "Structures and unions"
+                ],
+                "topics_source": {
+                  "url": "https://rizvicollege.edu.in/pdf/syllabus/nep_syllabus/NEP_BScIT.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Programming with C",
+                  "note": "University of Mumbai B.Sc. IT NEP 2020 syllabus (AC 24/11/2023, Item 6.2 N), Sem I-II, hosted by Rizvi College. KES title differs; closest MU NEP Sem I programming course."
+                }
+              },
+              {
+                "subject": "Fundamentals of Digital Computing",
+                "code": "26UBIT102",
+                "topics": [
+                  "Number systems (binary, octal, hexadecimal) and inter-conversions",
+                  "Signed magnitude, 1's and 2's complement, binary arithmetic",
+                  "Fixed point and floating point representation",
+                  "Codes: BCD, Excess-3, Gray, Hamming, ASCII, EBCDIC, Unicode; error detection and correction",
+                  "Logic gates, universal gates, Boolean identities and De Morgan's laws",
+                  "Karnaugh maps (SOP/POS) and Quine-McCluskey method",
+                  "Combinational circuits: adders, code converters, multiplexers, demultiplexers, encoders, decoders",
+                  "Flip-flops: RS, clocked RS, D, JK, master-slave JK, T",
+                  "Shift registers and synchronous/asynchronous counters",
+                  "Memory: RAM, ROM, PROM, EPROM, EEPROM, cache and secondary storage",
+                  "Types of operating systems; Windows and Linux overview"
+                ],
+                "topics_source": {
+                  "url": "https://naac.xaviers.edu/wp-content/uploads/syllabi/sits-ug-15.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Fundamentals of Digital Computing (S.ITS.1.03)",
+                  "note": "St. Xavier's College (Autonomous, MU-affiliated), Mumbai - B.Sc. IT syllabus 2015-16; exact course title. MU NEP equivalent is 'Combinational and Sequential Design'."
+                }
+              },
+              {
+                "subject": "Discrete Structures-I",
+                "code": "26UBIT103",
+                "topics": [
+                  "Language of sets, relations and functions",
+                  "Set theory: element method of proof, properties of sets, algebraic proofs, Boolean algebras",
+                  "Logic of compound statements: logical equivalence, conditional statements, valid arguments",
+                  "Predicates and quantified statements, arguments with quantifiers",
+                  "Methods of proof: direct proof, contradiction, contraposition",
+                  "Divisibility, quotient-remainder theorem, floor and ceiling",
+                  "Sequences, mathematical induction and well-ordering principle",
+                  "Recursion and solving recurrence relations by iteration",
+                  "Functions: one-to-one, onto, inverse, composition, cardinality",
+                  "Relations: reflexivity, symmetry, transitivity, equivalence and partial order relations"
+                ],
+                "topics_source": {
+                  "url": "https://vivek-college.org/Uploads/VES/B.Sc-IT%20Sem%20I%20and%20Sem%20II%20-%20Click%20here%20to%20view.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Discrete Mathematics (USIT104)",
+                  "note": "University of Mumbai F.Y.B.Sc. IT CBCS syllabus (2016-17), hosted by Vivekanand Education Society's college. Units I-IV used for Part I; Part II is taken from the later MU course."
+                }
+              },
+              {
+                "subject": "Intellectual Property Rights (IPR)",
+                "code": "26UBIT105",
+                "topics": [
+                  "Nature, concept and general principles of intellectual property",
+                  "Forms of IP: copyright, patent, trademark, design, geographical indication",
+                  "Semiconductor layout designs and plant varieties",
+                  "Patents",
+                  "Trade marks",
+                  "Copyrights and geographical indications",
+                  "Paris Convention 1883 and Berne Convention 1886",
+                  "WIPO Convention 1967 and TRIPS Agreement 1994",
+                  "IP management, IP audit and remedies for infringement"
+                ],
+                "topics_source": {
+                  "url": "https://standrewscollege.ac.in/wp-content/uploads/2024/08/FYBSC-IT-SYLLABUS-2024-2025.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Law related to Intellectual Property Rights (VEC, Sem I)",
+                  "note": "University of Mumbai NEP 2020 value-education course included in the FY B.Sc. IT syllabus hosted by St. Andrew's College."
+                }
+              },
+              {
+                "subject": "Cyber Law and Digital Ethics",
+                "code": "26UBIT107",
+                "topics": [
+                  "Cyber crime under the IT Act 2000: hacking, cyber fraud, defamation, e-mail abuse",
+                  "Penalties, adjudication and appeals under the IT Act; arrest without warrant",
+                  "Contracts in the infotech world: click-wrap and shrink-wrap contracts",
+                  "Jurisdiction in the cyber world",
+                  "Cyber squatting, domain names and meta-tagging",
+                  "Copyright protection on the Internet, ISP liability and software piracy",
+                  "E-commerce taxation and permanent establishment",
+                  "Digital signatures, certifying authorities and e-governance",
+                  "Electronic records as evidence: Indian Evidence Act vs IT Act",
+                  "Protection of cyber consumers and amendments to the IT Act"
+                ],
+                "topics_source": {
+                  "url": "https://rizvicollege.edu.in/iqac/aqar2021_22/criteria1/1.3.2/BScITSEMI-VICOMBINED.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Cyber Laws (USIT607)",
+                  "note": "University of Mumbai B.Sc. IT CBCS syllabus (Sem I-VI, revised 2021-22), hosted by Rizvi College. Covers cyber law; digital-ethics coverage is limited."
+                }
+              }
+            ],
+            "2": [
+              {
+                "subject": "Object Oriented Programming",
+                "code": "23UBIT201",
+                "topics": [
+                  "Procedure-oriented vs object-oriented programming; principles of OOP",
+                  "Objects, classes, abstraction, encapsulation, dynamic binding, message passing",
+                  "Defining member functions, passing and returning objects",
+                  "Friend functions and friend classes",
+                  "Constructors and destructors",
+                  "Inheritance: single, multiple, multilevel, hybrid; derived class constructors",
+                  "Function overloading and operator overloading (unary and binary)",
+                  "Virtual functions, pure virtual functions, abstract classes, this pointer, virtual destructors",
+                  "Exception handling: throw and catch",
+                  "File handling: file operations, modes and file pointers"
+                ],
+                "topics_source": {
+                  "url": "https://rizvicollege.edu.in/pdf/syllabus/nep_syllabus/NEP_BScIT.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Object Oriented Programming using C++",
+                  "note": "University of Mumbai B.Sc. IT NEP 2020 syllabus (AC 24/11/2023, Item 6.2 N), Sem I-II, hosted by Rizvi College."
+                }
+              },
+              {
+                "subject": "Database Management Systems",
+                "code": "23UBIT202",
+                "topics": [
+                  "Database systems, view of data and database architecture",
+                  "Data models, business rules and degrees of data abstraction",
+                  "ER model, constraints and ER diagrams; Codd's rules",
+                  "Relational model: keys and integrity rules",
+                  "Functional dependencies and normalization",
+                  "SQL: complex queries, joins, views, triggers and schema modification",
+                  "Query processing and optimization",
+                  "File structures, hashing and indexing",
+                  "Transaction processing and concurrency control",
+                  "Database recovery techniques"
+                ],
+                "topics_source": {
+                  "url": "https://rizvicollege.edu.in/pdf/syllabus/nep_syllabus/NEP_BScIT.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Database Management System",
+                  "note": "University of Mumbai B.Sc. IT NEP 2020 syllabus (AC 24/11/2023, Item 6.2 N), Sem I-II, hosted by Rizvi College."
+                }
+              },
+              {
+                "subject": "Discrete Structures-II",
+                "code": "23UBIT203",
+                "topics": [
+                  "Advanced counting: permutations, combinations, pigeonhole and inclusion-exclusion",
+                  "Linear recurrence relations with constant coefficients",
+                  "Graphs and multigraphs, subgraphs, isomorphic and homeomorphic graphs",
+                  "Paths, connectivity, Eulerian and traversable graphs",
+                  "Complete, regular, bipartite and planar graphs; graph colouring",
+                  "Directed graphs, Warshall's algorithm and shortest paths",
+                  "DFS, BFS and topological sort",
+                  "Binary trees, traversals, binary search trees, heaps and Huffman's algorithm",
+                  "Ordered sets, Hasse diagrams, supremum and infimum",
+                  "Lattices: bounded, distributive and complemented"
+                ],
+                "topics_source": {
+                  "url": "https://rizvicollege.edu.in/iqac/aqar2021_22/criteria1/1.3.2/BScITSEMI-VICOMBINED.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Computational Logic and Discrete Structures (USIT104)",
+                  "note": "University of Mumbai B.Sc. IT CBCS syllabus (Sem I-VI, revised 2021-22), hosted by Rizvi College. Units III-V used as the second part of discrete structures."
+                }
+              },
+              {
+                "subject": "Digital Marketing",
+                "code": "23UBIT204",
+                "topics": [
+                  "Introduction to digital marketing; traditional vs digital; latest trends",
+                  "Digital channels: owned, earned and paid media",
+                  "SEO: on-page and off-page, keywords, backlinks, SEO tools",
+                  "SEM: Google Ads, PPC, keyword planning, ad creation, bidding strategies",
+                  "Tools: Google Analytics, Google Search Console, SEMrush",
+                  "Content marketing: blogging, video and influencer marketing",
+                  "Email marketing: campaign planning, Mailchimp, A/B testing, GDPR",
+                  "CRM: email automation, segmentation, lead scoring",
+                  "Digital ethics and laws: data privacy, IP, advertising laws"
+                ],
+                "topics_source": {
+                  "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-iii-iv-ay-25-26/bsc-in-it-sem-iii-iv.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Digital Marketing (Th)",
+                  "note": "SNDT Women's University, Mumbai - B.Sc. (IT) NEP 2020 syllabus Sem III-IV (2025-26); exact title."
+                }
+              },
+              {
+                "subject": "Green Computing",
+                "code": "23UBIT209",
+                "topics": [
+                  "Green IT problems: toxins, power consumption, equipment disposal, carbon footprint",
+                  "Global initiatives and standards: Basel Convention, WEEE, RoHS",
+                  "Minimizing power usage: monitoring, virtualization, data de-duplication, low-power computers",
+                  "Data centre cooling: hot aisle/cold aisle, airflow, economizers",
+                  "Changing the way of work: telecommuting and outsourcing",
+                  "Going paperless: intranets, unified communications, EDI",
+                  "Recycling, refurbishing and hard-drive disposal",
+                  "Hardware certifications: EPEAT, Energy Star; thin clients and server consolidation",
+                  "Greening information systems: metrics, green supply chain",
+                  "Staying green: audits, benchmarking, Chief Green Officer"
+                ],
+                "topics_source": {
+                  "url": "https://vivek-college.org/Uploads/VES/B.Sc-IT%20Sem%20I%20and%20Sem%20II%20-%20Click%20here%20to%20view.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Green Computing (USIT205)",
+                  "note": "University of Mumbai F.Y.B.Sc. IT CBCS syllabus (2016-17), hosted by Vivekanand Education Society's college. Exact title."
+                }
+              }
+            ]
+          },
+          "source": {
+            "url": "https://drive.google.com/file/d/1_4MpBbiV78SF23ilmOujQySUCU5giqMb/view",
+            "type": "kes_official",
+            "scope": "subject names and codes only (KES exam time-tables / result sheets); unit topics are fallback, see topics_source",
+            "all_urls": [
+              "https://drive.google.com/file/d/1_4MpBbiV78SF23ilmOujQySUCU5giqMb/view",
+              "https://drive.google.com/file/d/1rhzedXXbR1G6UGypTiaCrSP8EFCMunPv/view"
+            ]
+          },
+          "topics_sources": [
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://rizvicollege.edu.in/iqac/aqar2021_22/criteria1/1.3.2/BScITSEMI-VICOMBINED.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://rizvicollege.edu.in/pdf/syllabus/nep_syllabus/NEP_BScIT.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://standrewscollege.ac.in/wp-content/uploads/2024/08/FYBSC-IT-SYLLABUS-2024-2025.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://vivek-college.org/Uploads/VES/B.Sc-IT%20Sem%20I%20and%20Sem%20II%20-%20Click%20here%20to%20view.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://naac.xaviers.edu/wp-content/uploads/syllabi/sits-ug-15.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-iii-iv-ay-25-26/bsc-in-it-sem-iii-iv.pdf"
+            }
+          ],
+          "soft_skills": {
+            "1": [
+              {
+                "subject": "Professional Communication Skills",
+                "code": "26UBIT110"
+              }
+            ],
+            "2": [
+              {
+                "subject": "Group Communication",
+                "code": "23UBIT208"
+              }
+            ]
+          },
+          "gaps": [
+            "Sem I is the 2026-27 syllabus (26U codes); Sem II list is from the Mar-2026 exam (23U codes), the 2026 Sem II list is not yet published."
+          ]
+        },
+        "2": {
+          "semesters": {
+            "3": [
+              {
+                "subject": "Python Programming",
+                "code": "26UBIT301",
+                "topics": [
+                  "Python features, installation, debugging and error types",
+                  "Variables, expressions, operators and type conversion",
+                  "Conditional statements and loops",
+                  "Functions, parameters, recursion and fruitful functions",
+                  "Strings: slicing, immutability and string methods",
+                  "Lists, tuples and dictionaries",
+                  "Files and exception handling, user-defined exceptions",
+                  "Regular expressions",
+                  "Classes, objects, inheritance, method overriding and data hiding",
+                  "Multithreading and modules (math, random, time)",
+                  "Tkinter GUI widgets and layout management",
+                  "Connecting Python GUI to MySQL: insert, update, delete"
+                ],
+                "topics_source": {
+                  "url": "https://rizvicollege.edu.in/iqac/aqar2021_22/criteria1/1.3.2/BScITSEMI-VICOMBINED.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Python Programming (USIT301)",
+                  "note": "University of Mumbai B.Sc. IT CBCS syllabus (Sem I-VI, revised 2021-22), hosted by Rizvi College. Exact title."
+                }
+              },
+              {
+                "subject": "Operating System",
+                "code": "26UBIT302",
+                "topics": [
+                  "Operating system concepts, system calls and OS structure",
+                  "Processes, threads and interprocess communication",
+                  "Process scheduling and classic IPC problems",
+                  "Memory management, address spaces and virtual memory",
+                  "Page replacement algorithms, paging and segmentation",
+                  "File systems: files, directories and implementation",
+                  "I/O hardware and software, disks and clocks",
+                  "Deadlocks: detection, recovery, avoidance and prevention",
+                  "Virtualization, hypervisors and cloud",
+                  "Multiprocessor and distributed systems",
+                  "Case studies: Linux, Android and Windows"
+                ],
+                "topics_source": {
+                  "url": "https://vivek-college.org/Uploads/VES/B.Sc-IT%20Sem%20I%20and%20Sem%20II%20-%20Click%20here%20to%20view.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Operating Systems (USIT103)",
+                  "note": "University of Mumbai F.Y.B.Sc. IT CBCS syllabus (2016-17), hosted by Vivekanand Education Society's college."
+                }
+              },
+              {
+                "subject": "Numerical Methods and Regression Analysis",
+                "code": "26UBIT303",
+                "topics": [
+                  "Mathematical modelling, approximations and round-off errors",
+                  "Truncation errors and Taylor series; error propagation",
+                  "Roots of equations: bisection, Newton-Raphson, regula-falsi, secant methods",
+                  "Interpolation: Newton's forward/backward difference, Lagrange's interpolation",
+                  "Simultaneous linear equations: Gauss-Jordan and Gauss-Seidel methods",
+                  "Numerical differentiation and integration: trapezoidal, Simpson's 1/3 and 3/8 rules",
+                  "ODEs: Euler, modified Euler and Runge-Kutta methods",
+                  "Least-squares regression: linear, polynomial and multiple linear regression",
+                  "Nonlinear regression and general linear least squares",
+                  "Linear programming: formulation and graphical solution"
+                ],
+                "topics_source": {
+                  "url": "https://rizvicollege.edu.in/iqac/aqar2021_22/criteria1/1.3.2/BScITSEMI-VICOMBINED.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Numerical Methods (USIT204)",
+                  "note": "University of Mumbai B.Sc. IT CBCS syllabus (Sem I-VI, revised 2021-22), hosted by Rizvi College. Includes a least-squares regression unit."
+                }
+              },
+              {
+                "subject": "Embedded System with Arduino",
+                "code": "26UBIT304",
+                "topics": [
+                  "Sensors: definition and types",
+                  "Interfacing Arduino with light, temperature, humidity, pressure and sound sensors",
+                  "Ultrasonic range finder, gas/smoke and water detector sensors",
+                  "Interfacing LEDs: blinking, traffic light, 7-segment display, LED dot matrix",
+                  "LCD control: displaying and scrolling text; touch screens",
+                  "Reading and writing SD cards",
+                  "DC motor speed and direction control",
+                  "Servo and stepper motor control; robots",
+                  "Ethernet shield and Internet-connected Arduino projects"
+                ],
+                "topics_source": {
+                  "url": "https://mangaloreuniversity.ac.in/sites/default/files/UG%20CBCS/SYLLABUS%20B.Sc%20Embedded.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Introduction to Arduino (BSCEMB 181)",
+                  "note": "Mangalore University B.Sc. (Embedded System) syllabus. Arduino-specific; the MU equivalent 'Introduction to Embedded Systems' (USIT402) is 8051-based, so embedded theory (RTOS, firmware) is not covered here."
+                }
+              },
+              {
+                "subject": "Introduction to FinTech",
+                "code": "26UBIT305",
+                "topics": [
+                  "FinTech: meaning, definition and types of FinTech companies",
+                  "Scope of FinTech in future",
+                  "E-wallets and payment systems",
+                  "Recent trends in FinTech",
+                  "FinTech evolution 1.0, 2.0 and 3.0",
+                  "FinTech in banking and insurance; FinTech users and customer service",
+                  "Technologies that power FinTech",
+                  "BankTech and Central Bank Digital Currency (CBDC)"
+                ],
+                "topics_source": {
+                  "url": "https://mu.ac.in/wp-content/uploads/2024/05/7.7-Sem.-I-8a-Basics-of-Fintech-BBI.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Basics of Fintech (Open Elective, Sem I)",
+                  "note": "University of Mumbai NEP 2020 open-elective syllabus (Board of Studies in Banking & Insurance, AC 20/04/2024); closest MU FinTech course, not from the B.Sc. IT board."
+                }
+              }
+            ],
+            "4": [
+              {
+                "subject": "Cloud Computing",
+                "code": "24UBIT401",
+                "topics": [
+                  "Definition, evolution and characteristics of cloud computing",
+                  "Cloud computing architecture",
+                  "Service models: IaaS, PaaS, SaaS",
+                  "Deployment models: public, private, hybrid, community",
+                  "Virtualization, hypervisors and virtual machines",
+                  "Cloud storage: object, block and file storage",
+                  "Containers and Docker",
+                  "Web services: SOAP, REST, JSON/XML",
+                  "Cloud platforms: AWS, Azure, Google Cloud",
+                  "Cloud security, IAM, monitoring and cost management",
+                  "Case studies: e-commerce, LMS, banking"
+                ],
+                "topics_source": {
+                  "url": "https://sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-v-vi-ay-25-26/bsc-in-it-sem-v-vi.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Cloud Computing and Web Services",
+                  "note": "SNDT Women's University, Mumbai - B.Sc. (IT) NEP 2020 syllabus Sem V-VI; closest title. No MU B.Sc. IT cloud syllabus located."
+                }
+              },
+              {
+                "subject": "Core Java",
+                "code": "24UBIT402",
+                "topics": [
+                  "Java architecture, JVM, JRE, JDK and Java API",
+                  "Data types, operators, strings and autoboxing",
+                  "Control flow statements and loops",
+                  "Classes, objects, constructors, method overloading, varargs, static members",
+                  "Inheritance, this and super",
+                  "Abstract classes and interfaces",
+                  "Packages",
+                  "Arrays and Vectors; enumerations",
+                  "Multithreading and thread life cycle",
+                  "Exception handling: try, catch, finally, throws",
+                  "Byte and character streams; file I/O",
+                  "Event handling, AWT components and layouts"
+                ],
+                "topics_source": {
+                  "url": "https://rizvicollege.edu.in/iqac/aqar2021_22/criteria1/1.3.2/BScITSEMI-VICOMBINED.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Core Java (USIT401)",
+                  "note": "University of Mumbai B.Sc. IT CBCS syllabus (Sem I-VI, revised 2021-22), hosted by Rizvi College. Exact title."
+                }
+              },
+              {
+                "subject": "Operating System",
+                "code": "24UBIT403",
+                "topics": [
+                  "Operating system concepts, system calls and OS structure",
+                  "Processes, threads and interprocess communication",
+                  "Process scheduling and classic IPC problems",
+                  "Memory management, address spaces and virtual memory",
+                  "Page replacement algorithms, paging and segmentation",
+                  "File systems: files, directories and implementation",
+                  "I/O hardware and software, disks and clocks",
+                  "Deadlocks: detection, recovery, avoidance and prevention",
+                  "Virtualization, hypervisors and cloud",
+                  "Multiprocessor and distributed systems",
+                  "Case studies: Linux, Android and Windows"
+                ],
+                "topics_source": {
+                  "url": "https://vivek-college.org/Uploads/VES/B.Sc-IT%20Sem%20I%20and%20Sem%20II%20-%20Click%20here%20to%20view.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Operating Systems (USIT103)",
+                  "note": "University of Mumbai F.Y.B.Sc. IT CBCS syllabus (2016-17), hosted by Vivekanand Education Society's college."
+                }
+              }
+            ]
+          },
+          "source": {
+            "url": "https://drive.google.com/file/d/1NdpDdm1PMNlV7Yg8nwTNrB3IwU9BZA_f/view",
+            "type": "kes_official",
+            "scope": "subject names and codes only (KES exam time-tables / result sheets); unit topics are fallback, see topics_source",
+            "all_urls": [
+              "https://drive.google.com/file/d/1NdpDdm1PMNlV7Yg8nwTNrB3IwU9BZA_f/view",
+              "https://drive.google.com/file/d/1bG_9miMz0NAz01JFDoRlG25Yezn4R_Fu/view"
+            ]
+          },
+          "topics_sources": [
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://mu.ac.in/wp-content/uploads/2024/05/7.7-Sem.-I-8a-Basics-of-Fintech-BBI.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://rizvicollege.edu.in/iqac/aqar2021_22/criteria1/1.3.2/BScITSEMI-VICOMBINED.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://vivek-college.org/Uploads/VES/B.Sc-IT%20Sem%20I%20and%20Sem%20II%20-%20Click%20here%20to%20view.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://mangaloreuniversity.ac.in/sites/default/files/UG%20CBCS/SYLLABUS%20B.Sc%20Embedded.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-v-vi-ay-25-26/bsc-in-it-sem-v-vi.pdf"
+            }
+          ],
+          "gaps": [
+            "Sem IV list is from the Mar-2026 exam (2024 syllabus, 24UBIT codes); only 3 theory papers were scheduled. Operating System appears in both Sem III (2026 syllabus) and Sem IV (2024 syllabus)."
+          ]
+        },
+        "3": {
+          "semesters": {
+            "5": [
+              {
+                "subject": "Advanced Java",
+                "code": "26UBIT501",
+                "topics": [
+                  "Java EE architecture, servers and containers",
+                  "Servlets: API, life cycle and annotations",
+                  "JDBC architecture and database access",
+                  "RequestDispatcher, cookies and session tracking",
+                  "File upload/download and non-blocking I/O",
+                  "JSP: life cycle, elements, action elements and implicit objects",
+                  "Expression Language and JSTL",
+                  "Enterprise JavaBeans: session beans and message-driven beans",
+                  "Interceptors and JNDI",
+                  "Persistence, object/relational mapping and JPA"
+                ],
+                "topics_source": {
+                  "url": "https://rizvicollege.edu.in/iqac/aqar2021_22/criteria1/1.3.2/BScITSEMI-VICOMBINED.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Enterprise Java (USIT506)",
+                  "note": "University of Mumbai B.Sc. IT CBCS syllabus (Sem I-VI, revised 2021-22), hosted by Rizvi College. MU TYIT equivalent of Advanced Java (Java EE)."
+                }
+              },
+              {
+                "subject": "Indian Knowledge Systems for Computing, Intelligence and Data Traditions",
+                "code": "26UBIT502",
+                "topics": [
+                  "Foundations of IKS: Dharma, Karma and Pramana",
+                  "Indian ethical concepts (Lokasangraha, Ahimsa) applied to IT ethics",
+                  "Ancient Indian mathematics: zero, decimal system and place value",
+                  "Contributions of Aryabhata, Brahmagupta and Bhaskaracharya",
+                  "Indian logic: Nyaya and Vaisheshika schools",
+                  "Algorithmic thinking in ancient texts",
+                  "Astronomy and timekeeping: Indian calendars, eclipses, planetary motion",
+                  "Panini's grammar as a precursor to formal languages",
+                  "Sanskrit and structured programming logic",
+                  "Traditional engineering: metallurgy and water management systems"
+                ],
+                "topics_source": {
+                  "url": "https://sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-v-vi-ay-25-26/bsc-in-it-sem-v-vi.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Indian Knowledge Systems and Ethical Practices in IT",
+                  "note": "SNDT Women's University, Mumbai - B.Sc. (IT) NEP 2020 syllabus Sem V; closest IKS-for-IT course found."
+                }
+              },
+              {
+                "subject": "Software Engineering & Agile Methodologies",
+                "code": "26UBIT503",
+                "topics": [
+                  "Software engineering and SDLC phases",
+                  "Functional and non-functional requirements; requirements documentation",
+                  "Process models: waterfall, prototyping, iterative, RUP, RAD, time-boxing",
+                  "Agile methods, plan-driven vs agile development, extreme programming",
+                  "Agile project management and scaling agile methods",
+                  "Requirements engineering: feasibility, elicitation, validation, management",
+                  "System models and architectural design",
+                  "Project planning, scheduling and risk management",
+                  "Verification, validation and software testing",
+                  "Software metrics and cost estimation",
+                  "CMMI process improvement and software reuse"
+                ],
+                "topics_source": {
+                  "url": "https://rizvicollege.edu.in/iqac/aqar2021_22/criteria1/1.3.2/BScITSEMI-VICOMBINED.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Software Engineering (USIT404)",
+                  "note": "University of Mumbai B.Sc. IT CBCS syllabus (Sem I-VI, revised 2021-22), hosted by Rizvi College. Includes an agile development topic."
+                }
+              },
+              {
+                "subject": "Network Security",
+                "code": "26UBIT504",
+                "topics": [
+                  "Information security overview and security methodology",
+                  "Threats, types of attacks and risk analysis",
+                  "CIA triad, defense models and zones of trust",
+                  "Authentication and authorization",
+                  "Symmetric-key and public-key cryptography; PKI",
+                  "Storage and database security",
+                  "Secure network design and network device hardening",
+                  "Firewalls: functions and design",
+                  "Wireless network security",
+                  "Intrusion detection/prevention systems and SIEM",
+                  "VoIP security and OS security models",
+                  "Secure application design and physical security"
+                ],
+                "topics_source": {
+                  "url": "https://rizvicollege.edu.in/iqac/aqar2021_22/criteria1/1.3.2/BScITSEMI-VICOMBINED.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Security in Computing (USIT602)",
+                  "note": "University of Mumbai B.Sc. IT CBCS syllabus (Sem I-VI, revised 2021-22), hosted by Rizvi College. Closest MU TYIT security course."
+                }
+              },
+              {
+                "subject": "Mobile App Development (elective)",
+                "code": "26UBIT505",
+                "topics": [
+                  "Native vs hybrid vs cross-platform apps; Android ecosystem",
+                  "Flutter architecture and advantages",
+                  "Development setup: Flutter SDK, Android Studio / VS Code",
+                  "Dart fundamentals: variables, functions, control statements",
+                  "OOP in Dart and null safety",
+                  "Stateless vs stateful widgets; widget tree and build method",
+                  "Layouts: Row, Column, Stack, Container, Expanded",
+                  "Material Design: Scaffold, AppBar, themes",
+                  "User interaction: buttons, forms, gestures",
+                  "Navigation: named routes, bottom navigation and drawer"
+                ],
+                "topics_source": {
+                  "url": "https://sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-v-vi-ay-25-26/bsc-in-it-sem-v-vi.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Mobile Application Development using Android",
+                  "note": "SNDT Women's University, Mumbai - B.Sc. (IT) NEP 2020 syllabus Sem V-VI; Flutter/Dart based."
+                }
+              },
+              {
+                "subject": "Advanced Database Programming (elective)",
+                "code": "26UBIT507",
+                "topics": [
+                  "PL/SQL basics: variables, executable statements, anonymous blocks",
+                  "Sequences in PL/SQL",
+                  "Control structures: while, loop, for, GOTO",
+                  "Conditional statements: IF, ELSIF ladder, CASE",
+                  "Cursors: implicit, explicit and parameterized",
+                  "Collections and composite data types",
+                  "Stored procedures and functions",
+                  "Triggers: row-level, statement-level and INSTEAD OF",
+                  "Exception handling: system-defined and user-defined",
+                  "PL/SQL packages"
+                ],
+                "topics_source": {
+                  "url": "https://rizvicollege.edu.in/pdf/syllabus/nep_syllabus/NEP_BScIT.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "PLSQL Practical (SEC)",
+                  "note": "University of Mumbai B.Sc. IT NEP 2020 syllabus (AC 24/11/2023, Item 6.2 N), Sem I-II, hosted by Rizvi College. Closest MU database-programming course; it is a practical-only course."
+                }
+              }
+            ],
+            "6": [
+              {
+                "subject": "Full-Stack Web Development (MERN Stack)",
+                "code": "25UBIT601",
+                "topics": [
+                  "Frontend vs backend vs database; web development workflow",
+                  "HTML5, CSS3, Flexbox, Grid and responsive design",
+                  "JavaScript ES6+: arrow functions, promises, async/await",
+                  "React: components, JSX, props, state, hooks",
+                  "Node.js event-driven architecture and npm",
+                  "Express.js routing, middleware and REST APIs",
+                  "JWT authentication and password hashing",
+                  "MongoDB: documents, CRUD and Mongoose",
+                  "Connecting React to Node with Axios/Fetch",
+                  "State management: Context API and Redux",
+                  "Deployment: Vercel/Netlify, Render; environment variables",
+                  "Security: OWASP Top 10, CORS, rate limiting"
+                ],
+                "topics_source": {
+                  "url": "https://sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-v-vi-ay-25-26/bsc-in-it-sem-v-vi.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Full Stack Development",
+                  "note": "SNDT Women's University, Mumbai - B.Sc. (IT) NEP 2020 syllabus Sem V-VI; MERN-based content."
+                }
+              },
+              {
+                "subject": "Blockchain",
+                "code": "25UBIT602",
+                "topics": [
+                  "Blockchain definition, characteristics and need",
+                  "Block structure, hashing and the distributed ledger",
+                  "Peer-to-peer network, nodes and miners",
+                  "Public, private, consortium and permissioned blockchains",
+                  "Cryptographic hash functions, public/private keys and digital signatures",
+                  "Wallets and address generation",
+                  "Consensus: PoW, PoS, DPoS, PBFT",
+                  "Transaction lifecycle, validation and 51% attack",
+                  "Smart contracts and DApps",
+                  "Ethereum, Solidity, Web3.js and MetaMask",
+                  "Use cases: DeFi, NFTs, supply chain, identity, voting",
+                  "Challenges: scalability, energy, regulation; Layer 2 solutions"
+                ],
+                "topics_source": {
+                  "url": "https://sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-v-vi-ay-25-26/bsc-in-it-sem-v-vi.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Blockchain and Web3 Fundamentals",
+                  "note": "SNDT Women's University, Mumbai - B.Sc. (IT) NEP 2020 syllabus Sem V-VI."
+                }
+              },
+              {
+                "subject": "Internet of Things",
+                "code": "25UBIT603",
+                "topics": [
+                  "IoT overview and design principles for connected devices",
+                  "Internet principles: TCP/IP, UDP, IP addressing, DNS, IPv6, ports",
+                  "Application layer protocols: HTTP, HTTPS",
+                  "Prototyping: open vs closed source; sensors and actuators",
+                  "Embedded platforms: Arduino and Raspberry Pi",
+                  "Physical design: laser cutting, 3D printing, CNC milling",
+                  "Online components: APIs, mashups, scraping",
+                  "Real-time protocols: MQTT, XMPP, CoAP",
+                  "Writing embedded code: memory management, performance, battery life",
+                  "IoT business models and funding",
+                  "Moving to manufacture: PCB design, certification, scaling",
+                  "Ethics: privacy, control and environment"
+                ],
+                "topics_source": {
+                  "url": "https://rizvicollege.edu.in/iqac/aqar2021_22/criteria1/1.3.2/BScITSEMI-VICOMBINED.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Internet of Things (USIT502)",
+                  "note": "University of Mumbai B.Sc. IT CBCS syllabus (Sem I-VI, revised 2021-22), hosted by Rizvi College. Exact title."
+                }
+              },
+              {
+                "subject": "Software Testing",
+                "code": "25UBIT604",
+                "topics": [
+                  "Quality concepts, TQM and continuous improvement",
+                  "Software quality management and why software has defects",
+                  "Fundamentals of testing and the test process",
+                  "Test policy, test strategy and test planning",
+                  "Testing across the life cycle: test levels and test types",
+                  "Boundary value and equivalence class testing",
+                  "Decision table, path and data-flow testing",
+                  "Verification and validation; reviews",
+                  "V-model of testing",
+                  "Integration, system and acceptance testing",
+                  "Special tests: GUI, performance, security, regression, usability"
+                ],
+                "topics_source": {
+                  "url": "https://rizvicollege.edu.in/iqac/aqar2021_22/criteria1/1.3.2/BScITSEMI-VICOMBINED.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Software Quality Assurance (USIT601)",
+                  "note": "University of Mumbai B.Sc. IT CBCS syllabus (Sem I-VI, revised 2021-22), hosted by Rizvi College. Closest MU testing course."
+                }
+              },
+              {
+                "subject": "AI-Driven Software Development",
+                "code": "25UBIT607",
+                "topics": [
+                  "SDLC models (Waterfall, Agile, DevOps, V-model) and AI fundamentals",
+                  "Benefits and limitations of AI in the SDLC",
+                  "NLP for requirements gathering, classification and prioritization",
+                  "AI-assisted architecture decisions and design recommendation",
+                  "LLM-based code synthesis and intelligent code completion",
+                  "AI pair programming tools: GitHub Copilot, Amazon CodeWhisperer",
+                  "ML-based bug detection and code smell prediction",
+                  "Automated test case generation and predictive test selection",
+                  "AI in CI/CD, log anomaly detection and AIOps",
+                  "AI for refactoring, bug prediction and documentation",
+                  "Explainable AI, fairness, security and legal issues"
+                ],
+                "topics_source": {
+                  "url": "https://www.iare.ac.in/sites/default/files/BT25/ACSE30.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "AI in Software Engineering (ACSE30)",
+                  "note": "Institute of Aeronautical Engineering (Autonomous), Hyderabad - B.Tech CSE/IT elective; no MU or SNDT syllabus with this title found."
+                }
+              }
+            ]
+          },
+          "source": {
+            "url": "https://drive.google.com/file/d/1RZe2LQJ1DS8bm5xyfIxf66wPhybbsjGV/view",
+            "type": "kes_official",
+            "scope": "subject names and codes only (KES exam time-tables / result sheets); unit topics are fallback, see topics_source",
+            "all_urls": [
+              "https://drive.google.com/file/d/1RZe2LQJ1DS8bm5xyfIxf66wPhybbsjGV/view",
+              "https://drive.google.com/file/d/15AcQekugBeqvvxpTLv85hg71lt0ACoSb/view"
+            ]
+          },
+          "topics_sources": [
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://rizvicollege.edu.in/iqac/aqar2021_22/criteria1/1.3.2/BScITSEMI-VICOMBINED.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://rizvicollege.edu.in/pdf/syllabus/nep_syllabus/NEP_BScIT.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-v-vi-ay-25-26/bsc-in-it-sem-v-vi.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://www.iare.ac.in/sites/default/files/BT25/ACSE30.pdf"
+            }
+          ]
+        }
+      }
+    },
+    "BSC_DS": {
+      "name": "B.Sc. Data Science",
+      "years": {
+        "1": {
+          "semesters": {
+            "1": [
+              {
+                "subject": "Introduction to Programming with Python",
+                "code": "26UBDS101",
+                "topics": [
+                  "Features of Python, execution of a Python program and the Python interpreter",
+                  "Comparison of Python with C and Java; installing Python and using IDLE",
+                  "Comments, docstrings, data types and variables",
+                  "Input function, output statements and command line arguments",
+                  "Control statements: loops, else suite, break, continue, pass, assert",
+                  "Defining and calling functions, returning multiple values, parameters and arguments",
+                  "Recursive functions and lambda (anonymous) functions",
+                  "Operators: arithmetic, relational, logical, bitwise, membership, identity; precedence",
+                  "Arrays and NumPy array indexing, slicing and attributes",
+                  "Strings: slicing, concatenation, searching, splitting/joining, formatting",
+                  "Dictionaries: creation, methods, iteration and ordered dictionaries"
+                ],
+                "topics_source": {
+                  "url": "https://mu.ac.in/wp-content/uploads/2025/05/6.3-N-B.Sc-Data-Science-Sem-I-and-II.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Python Programming (Major, Sem I)",
+                  "note": "University of Mumbai NEP B.Sc. (Data Science) Sem I-II syllabus (AC 24/11/2023, Item 6.3 N)."
+                }
+              },
+              {
+                "subject": "Database Management System",
+                "code": "26UBDS102",
+                "topics": [
+                  "Need for databases, role and advantages of DBMS, types of databases",
+                  "Data models, business rules and degrees of data abstraction",
+                  "ER model: relationships, connectivity, cardinality, weak entities, ER diagrams",
+                  "Extended ER model, entity clustering and entity integrity (primary keys)",
+                  "Normalization process, higher-level normal forms and denormalization",
+                  "Database life cycle: conceptual, logical and physical design",
+                  "Transactions and concurrency control (locking, time stamping, optimistic)",
+                  "ANSI transaction isolation levels and database recovery management",
+                  "Query processing, indexes, query optimization and SQL performance tuning",
+                  "Database administration and security, role of the DBA"
+                ],
+                "topics_source": {
+                  "url": "https://mu.ac.in/wp-content/uploads/2025/05/6.3-N-B.Sc-Data-Science-Sem-I-and-II.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Database Management System (Major, Sem II)",
+                  "note": "University of Mumbai NEP B.Sc. (Data Science) Sem I-II syllabus (Item 6.3 N)."
+                }
+              },
+              {
+                "subject": "Descriptive Statistics",
+                "code": "26UBDS103",
+                "topics": [
+                  "Meaning and importance of statistics; nominal, ordinal, interval and ratio scales",
+                  "Frequency and cumulative frequency distributions, histograms and ogives",
+                  "Measures of central tendency: median, mode, quartiles, deciles, percentiles",
+                  "Measures of dispersion: range, quartile deviation, mean absolute deviation, standard deviation",
+                  "Combined standard deviation for grouped and ungrouped data",
+                  "Raw and central moments, skewness and kurtosis",
+                  "Correlation, scatter diagram and product moment correlation coefficient",
+                  "Spearman rank correlation with and without ties",
+                  "Linear regression and fitting a straight line by least squares",
+                  "Relation between correlation and regression; multiple correlation, multiple and logistic regression"
+                ],
+                "topics_source": {
+                  "url": "https://mu.ac.in/wp-content/uploads/2025/05/6.3-N-B.Sc-Data-Science-Sem-I-and-II.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Descriptive Statistics (Major, Sem I)",
+                  "note": "University of Mumbai NEP B.Sc. (Data Science) Sem I-II syllabus (Item 6.3 N)."
+                }
+              },
+              {
+                "subject": "Intellectual Property Rights (IPR)",
+                "code": "26UBDS105",
+                "topics": [
+                  "Nature, concept and general principles of intellectual property",
+                  "Forms of IP: copyright, patent, trademark, design, geographical indication",
+                  "Semiconductor layout designs and plant varieties",
+                  "Patents",
+                  "Trade marks",
+                  "Copyrights and geographical indications",
+                  "Paris Convention 1883 and Berne Convention 1886",
+                  "WIPO Convention 1967 and TRIPS Agreement 1994",
+                  "IP management, IP audit and remedies for infringement"
+                ],
+                "topics_source": {
+                  "url": "https://standrewscollege.ac.in/wp-content/uploads/2024/08/FYBSC-IT-SYLLABUS-2024-2025.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Law related to Intellectual Property Rights (VEC, Sem I)",
+                  "note": "University of Mumbai NEP 2020 value-education course included in the FY B.Sc. IT syllabus hosted by St. Andrew's College."
+                }
+              },
+              {
+                "subject": "Cyber Law and Digital Ethics",
+                "code": "26UBDS107",
+                "topics": [
+                  "Cyber crime under the IT Act 2000: hacking, cyber fraud, defamation, e-mail abuse",
+                  "Penalties, adjudication and appeals under the IT Act; arrest without warrant",
+                  "Contracts in the infotech world: click-wrap and shrink-wrap contracts",
+                  "Jurisdiction in the cyber world",
+                  "Cyber squatting, domain names and meta-tagging",
+                  "Copyright protection on the Internet, ISP liability and software piracy",
+                  "E-commerce taxation and permanent establishment",
+                  "Digital signatures, certifying authorities and e-governance",
+                  "Electronic records as evidence: Indian Evidence Act vs IT Act",
+                  "Protection of cyber consumers and amendments to the IT Act"
+                ],
+                "topics_source": {
+                  "url": "https://rizvicollege.edu.in/iqac/aqar2021_22/criteria1/1.3.2/BScITSEMI-VICOMBINED.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Cyber Laws (USIT607)",
+                  "note": "University of Mumbai B.Sc. IT CBCS syllabus (Sem I-VI, revised 2021-22), hosted by Rizvi College. Covers cyber law; digital-ethics coverage is limited."
+                }
+              }
+            ],
+            "2": [
+              {
+                "subject": "Python Programming",
+                "code": "23UBDS201",
+                "topics": [
+                  "Lists and tuples: functions, methods and operations",
+                  "Regular expressions: sequence characters, quantifiers, special characters, use on files",
+                  "Date and time handling, timedelta, calendar module",
+                  "IPython: magic commands, history, shell commands, debugging, profiling and timing",
+                  "NumPy arrays, universal functions and aggregations",
+                  "Broadcasting, masks, Boolean logic, fancy indexing and sorting in NumPy",
+                  "Pandas objects, indexing/selection and handling missing data",
+                  "Hierarchical indexing, concat, merge and join of datasets",
+                  "Aggregation, grouping, pivot tables and time series in Pandas",
+                  "Visualization with Matplotlib and Seaborn: line, scatter, histogram, subplots"
+                ],
+                "topics_source": {
+                  "url": "https://mu.ac.in/wp-content/uploads/2025/05/6.3-N-B.Sc-Data-Science-Sem-I-and-II.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Advanced Python Programming (Major, Sem II)",
+                  "note": "University of Mumbai NEP B.Sc. (Data Science) Sem I-II syllabus (Item 6.3 N); MU's second-semester Python course."
+                }
+              },
+              {
+                "subject": "Advanced Database Management Systems",
+                "code": "23UBDS202",
+                "topics": [
+                  "PL/SQL basics: variables, executable statements, anonymous blocks, sequences",
+                  "Control structures in PL/SQL: while, do and for loops, GOTO",
+                  "Conditional statements: if, if-else, elsif ladder, case expression",
+                  "Cursors: implicit, explicit and parameterized",
+                  "Collections and composite data types",
+                  "Stored procedures and functions",
+                  "Triggers: row-level, statement-level and instead-of triggers",
+                  "Exception handling: system-defined and user-defined exceptions",
+                  "PL/SQL packages for modular database applications"
+                ],
+                "topics_source": {
+                  "url": "https://rizvicollege.edu.in/pdf/syllabus/nep_syllabus/NEP_BScIT.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "PL/SQL (SEC, B.Sc. IT Sem II)",
+                  "note": "No published MU B.Sc. Data Science 'Advanced DBMS' syllabus found; closest is the University of Mumbai NEP B.Sc. IT Sem I-II PL/SQL course (Item 6.2 N, hosted by Rizvi College). Partial match: procedural SQL only, no NoSQL/distributed databases."
+                }
+              },
+              {
+                "subject": "Theory of Probability",
+                "code": "23UBDS203",
+                "topics": [
+                  "Univariate discrete and continuous random variables",
+                  "Moment generating, cumulant generating and characteristic functions",
+                  "Relationship between moments and cumulants; transformation of a random variable",
+                  "Bernoulli, binomial and Poisson distributions",
+                  "Geometric, negative binomial and hypergeometric distributions",
+                  "Truncated binomial and Poisson distributions; fitting of distributions",
+                  "Joint probability mass and density functions",
+                  "Marginal and conditional distributions; independence of random variables",
+                  "Conditional expectation and variance, regression function",
+                  "Transformation of random variables and Jacobian"
+                ],
+                "topics_source": {
+                  "url": "https://siesascs.edu.in/assets/pdf/courses/SYBSC STATISTICS SYLLABUS (NEP 2024-2025).pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Probability Distributions (S.Y.B.Sc. Statistics, Sem III)",
+                  "note": "SIES College (autonomous, MU-affiliated) S.Y.B.Sc. Statistics NEP 2024-25 syllabus; no published MU Data Science 'Theory of Probability' course found. Closest probability course; somewhat more advanced than a first-year paper."
+                }
+              },
+              {
+                "subject": "Digital Marketing",
+                "code": "23UBDS204",
+                "topics": [
+                  "Introduction to digital marketing; traditional vs digital; latest trends",
+                  "Digital channels: owned, earned and paid media",
+                  "SEO: on-page and off-page, keywords, backlinks, SEO tools",
+                  "SEM: Google Ads, PPC, keyword planning, ad creation, bidding strategies",
+                  "Tools: Google Analytics, Google Search Console, SEMrush",
+                  "Content marketing: blogging, video and influencer marketing",
+                  "Email marketing: campaign planning, Mailchimp, A/B testing, GDPR",
+                  "CRM: email automation, segmentation, lead scoring",
+                  "Digital ethics and laws: data privacy, IP, advertising laws"
+                ],
+                "topics_source": {
+                  "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-iii-iv-ay-25-26/bsc-in-it-sem-iii-iv.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Digital Marketing (Th)",
+                  "note": "SNDT Women's University, Mumbai - B.Sc. (IT) NEP 2020 syllabus Sem III-IV (2025-26); exact title."
+                }
+              },
+              {
+                "subject": "Introduction to Data Science and Analytics",
+                "code": "23UBDS207",
+                "topics": [
+                  "What is data science; big data and data science hype; datafication",
+                  "Data science profile and skill sets",
+                  "Statistical inference, populations and samples, statistical modelling and fitting a model",
+                  "Exploratory data analysis: plots, graphs, summary statistics and its philosophy",
+                  "The data science process",
+                  "Supervised, unsupervised and reinforcement learning",
+                  "k-Nearest Neighbours, simple linear regression and Naive Bayes",
+                  "k-means clustering and Apriori algorithm",
+                  "Intelligent agents, environments and problem formulation",
+                  "Uninformed (BFS, DFS) and heuristic search (hill climbing, A*, AO*)"
+                ],
+                "topics_source": {
+                  "url": "https://www.siesascs.edu.in/assets/pdf/courses/f7dffa86a6a5183b1f6c324c68276d2cNEP_FYBSc(DS)%20Syllabus.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Fundamentals of Data Science (F.Y.B.Sc. DS, Sem I)",
+                  "note": "SIES College (autonomous, MU-affiliated) F.Y.B.Sc. Data Science NEP syllabus 2023-24."
+                }
+              },
+              {
+                "subject": "Green Computing",
+                "code": "23UBDS209",
+                "topics": [
+                  "Green IT problems: toxins, power consumption, equipment disposal, carbon footprint",
+                  "Global initiatives and standards: Basel Convention, WEEE, RoHS",
+                  "Minimizing power usage: monitoring, virtualization, data de-duplication, low-power computers",
+                  "Data centre cooling: hot aisle/cold aisle, airflow, economizers",
+                  "Changing the way of work: telecommuting and outsourcing",
+                  "Going paperless: intranets, unified communications, EDI",
+                  "Recycling, refurbishing and hard-drive disposal",
+                  "Hardware certifications: EPEAT, Energy Star; thin clients and server consolidation",
+                  "Greening information systems: metrics, green supply chain",
+                  "Staying green: audits, benchmarking, Chief Green Officer"
+                ],
+                "topics_source": {
+                  "url": "https://vivek-college.org/Uploads/VES/B.Sc-IT%20Sem%20I%20and%20Sem%20II%20-%20Click%20here%20to%20view.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Green Computing (USIT205)",
+                  "note": "University of Mumbai F.Y.B.Sc. IT CBCS syllabus (2016-17), hosted by Vivekanand Education Society's college. Exact title."
+                }
+              }
+            ]
+          },
+          "source": {
+            "url": "https://drive.google.com/file/d/1_4MpBbiV78SF23ilmOujQySUCU5giqMb/view",
+            "type": "kes_official",
+            "scope": "subject names and codes only (KES exam time-tables / result sheets); unit topics are fallback, see topics_source",
+            "all_urls": [
+              "https://drive.google.com/file/d/1_4MpBbiV78SF23ilmOujQySUCU5giqMb/view",
+              "https://drive.google.com/file/d/1rhzedXXbR1G6UGypTiaCrSP8EFCMunPv/view"
+            ]
+          },
+          "topics_sources": [
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://mu.ac.in/wp-content/uploads/2025/05/6.3-N-B.Sc-Data-Science-Sem-I-and-II.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://rizvicollege.edu.in/iqac/aqar2021_22/criteria1/1.3.2/BScITSEMI-VICOMBINED.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://rizvicollege.edu.in/pdf/syllabus/nep_syllabus/NEP_BScIT.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://standrewscollege.ac.in/wp-content/uploads/2024/08/FYBSC-IT-SYLLABUS-2024-2025.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://vivek-college.org/Uploads/VES/B.Sc-IT%20Sem%20I%20and%20Sem%20II%20-%20Click%20here%20to%20view.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://siesascs.edu.in/assets/pdf/courses/SYBSC STATISTICS SYLLABUS (NEP 2024-2025).pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://www.siesascs.edu.in/assets/pdf/courses/f7dffa86a6a5183b1f6c324c68276d2cNEP_FYBSc(DS)%20Syllabus.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-iii-iv-ay-25-26/bsc-in-it-sem-iii-iv.pdf"
+            }
+          ],
+          "soft_skills": {
+            "1": [
+              {
+                "subject": "Professional Communication Skills",
+                "code": "26UBDS110"
+              }
+            ],
+            "2": [
+              {
+                "subject": "Group Communication",
+                "code": "23UBDS208"
+              }
+            ]
+          }
+        },
+        "2": {
+          "semesters": {
+            "3": [
+              {
+                "subject": "Data Analytics with Python",
+                "code": "26UBDS301",
+                "topics": [
+                  "Creating NumPy arrays, indexing and slicing",
+                  "Mathematical operations with NumPy arrays",
+                  "Pandas Series and DataFrame objects",
+                  "Importing and exporting data from various file formats into DataFrames",
+                  "Data selection and filtering with Boolean indexing",
+                  "Handling missing data in Pandas",
+                  "Sorting, reshaping and merging data",
+                  "Grouping data and aggregation functions",
+                  "Pivot tables and cross tabulation for summarization",
+                  "Matplotlib: line, scatter, bar, histogram and box plots, annotations"
+                ],
+                "topics_source": {
+                  "url": "https://www.unishivaji.ac.in/uploads/bosnew/commerce/BCA Part III Sem V and VI (NEP 2.0) Syllabus 2026-27 F.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Exploratory Data Analysis (DSE305, BCA III Sem VI)",
+                  "note": "Shivaji University, Kolhapur BCA Part III (NEP 2.0) syllabus; Python (NumPy/Pandas/Matplotlib) data analysis course."
+                }
+              },
+              {
+                "subject": "Data Structure",
+                "code": "26UBDS302",
+                "topics": [
+                  "Python OOP for data structures: classes, inheritance, encapsulation",
+                  "collections module: deque, ChainMap, Counter, OrderedDict, defaultdict, namedtuple",
+                  "Algorithm design: recursion, backtracking, divide and conquer",
+                  "Asymptotic analysis: Big O, Omega, Theta and amortized analysis",
+                  "Singly, doubly and circular linked lists",
+                  "Stacks and bracket matching; list-, stack- and node-based queues",
+                  "Trees: traversals, binary search trees, expression trees, heaps",
+                  "Hashing, hash tables, open addressing, chaining and symbol tables",
+                  "Graphs: representations, BFS and DFS traversals, priority queues",
+                  "Sorting: bubble, insertion, selection and quick sort; quickselect",
+                  "Pattern matching: brute force and Rabin-Karp"
+                ],
+                "topics_source": {
+                  "url": "https://www.kbpcollegevashi.edu.in/uploaded_files/Science/Syllabus New Data Science.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Data Structures and Algorithms Using Python (USDS302, Sem III)",
+                  "note": "University of Mumbai S.Y.B.Sc. Data Science (CBCS) Sem III-IV syllabus; source_url is an MU-affiliated college copy found by search (download URL of the local copy was not recorded)."
+                }
+              },
+              {
+                "subject": "Linear Algebra and Calculus",
+                "code": "26UBDS303",
+                "topics": [
+                  "Geometry of linear equations and Gaussian elimination",
+                  "Matrix multiplication, triangular factors, inverses and transposes",
+                  "Vector spaces, subspaces, solving Ax=0 and Ax=b",
+                  "Linear independence, basis, dimension and the four fundamental subspaces",
+                  "Linear transformations",
+                  "Orthogonality, projections, least squares and Gram-Schmidt",
+                  "Determinants: properties, formulas and applications",
+                  "Eigenvalues, eigenvectors and diagonalization",
+                  "Positive definite matrices; minima, maxima and saddle points",
+                  "Singular value decomposition",
+                  "Matrix norm, condition number and iterative methods for Ax=b"
+                ],
+                "topics_source": {
+                  "url": "https://www.kbpcollegevashi.edu.in/uploaded_files/Science/Syllabus New Data Science.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Linear Algebra and Discrete Mathematics (USDS305, Sem III)",
+                  "note": "University of Mumbai S.Y.B.Sc. Data Science (CBCS) Sem III-IV syllabus; source_url is an MU-affiliated college copy found by search (download URL of the local copy was not recorded). Weak match: covers linear algebra only (plus minima/maxima); the source has no calculus units."
+                }
+              },
+              {
+                "subject": "Supervised Machine Learning",
+                "code": "26UBDS304",
+                "topics": [
+                  "Need for and applications of machine learning; general ML architecture",
+                  "Inductive learning, generalization, bias and variance",
+                  "Overfitting and underfitting; parametric vs non-parametric algorithms",
+                  "Binary, multi-class and multi-label classification",
+                  "K-Nearest Neighbour: working and distance computation",
+                  "Decision trees, ID3, entropy, Gini impurity and information gain",
+                  "Support vector machines: hard and soft margin, kernels",
+                  "Bayes learning and Naive Bayes classifier",
+                  "Linear and logistic regression",
+                  "Classification metrics: accuracy, sensitivity, precision, F1, ROC/AUC",
+                  "Cross validation"
+                ],
+                "topics_source": {
+                  "url": "https://mu.ac.in/syllabus",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Machine Learning (USDS601, Sem VI) - supervised learning units",
+                  "note": "University of Mumbai T.Y.B.Sc. Data Science (CBCS, 2023-24) Sem V-VI syllabus; exact PDF URL of the local copy was not recorded, source_url is the MU syllabus index. Topics taken from the supervised-learning units only."
+                }
+              },
+              {
+                "subject": "Introduction to FinTech",
+                "code": "26UBDS305",
+                "topics": [
+                  "FinTech: meaning, definition and types of FinTech companies",
+                  "Scope of FinTech in future",
+                  "E-wallets and payment systems",
+                  "Recent trends in FinTech",
+                  "FinTech evolution 1.0, 2.0 and 3.0",
+                  "FinTech in banking and insurance; FinTech users and customer service",
+                  "Technologies that power FinTech",
+                  "BankTech and Central Bank Digital Currency (CBDC)"
+                ],
+                "topics_source": {
+                  "url": "https://mu.ac.in/wp-content/uploads/2024/05/7.7-Sem.-I-8a-Basics-of-Fintech-BBI.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Basics of Fintech (Open Elective, Sem I)",
+                  "note": "University of Mumbai NEP 2020 open-elective syllabus (Board of Studies in Banking & Insurance, AC 20/04/2024); closest MU FinTech course, not from the B.Sc. IT board."
+                }
+              }
+            ],
+            "4": [
+              {
+                "subject": "Artificial Intelligence",
+                "code": "24UBDS401",
+                "topics": [
+                  "AI problems and techniques, problem formulation and state space representation",
+                  "Intelligent agents, types of agents, environments and PEAS",
+                  "Uninformed search: DFS, BFS, uniform cost, depth limited, iterative deepening",
+                  "Informed search: heuristics, hill climbing, simulated annealing, best first, A*",
+                  "Constraint satisfaction: cryptarithmetic, map colouring, N-queens",
+                  "Adversarial search: minimax and alpha-beta pruning",
+                  "Propositional and first-order predicate logic",
+                  "Forward chaining, backward chaining and resolution",
+                  "Uncertainty, Bayes theorem and Bayesian/belief networks",
+                  "Forms of learning, decision trees, SVM, ensemble learning and neural networks"
+                ],
+                "topics_source": {
+                  "url": "https://www.kbpcollegevashi.edu.in/uploaded_files/Science/Syllabus New Data Science.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Artificial Intelligence (USDS404, Sem IV)",
+                  "note": "University of Mumbai S.Y.B.Sc. Data Science (CBCS) Sem III-IV syllabus; source_url is an MU-affiliated college copy found by search (download URL of the local copy was not recorded)."
+                }
+              },
+              {
+                "subject": "Cloud Computing for Data Science",
+                "code": "24UBDS402",
+                "topics": [
+                  "Characteristics, advantages and disadvantages of cloud computing",
+                  "Cloud deployment models and roots of cloud computing",
+                  "Cloud architecture and its components",
+                  "Service models: SaaS, PaaS and IaaS",
+                  "Challenges and risks in cloud adoption",
+                  "Cloud simulators: CloudSim architecture and GreenCloud",
+                  "VMware virtualization: creating, cloning and managing virtual machines",
+                  "AWS core services: compute, load balancing, autoscaling, storage",
+                  "AWS managed services: RDS, DynamoDB, SNS, SQS, CloudWatch",
+                  "Indian cloud ecosystem: MeghRaj, Digital India and homegrown SaaS"
+                ],
+                "topics_source": {
+                  "url": "https://siesascs.edu.in/academics/syllabus",
+                  "type": "other_fallback",
+                  "matched_subject": "Cloud Computing (SIUDSMJ321, T.Y.B.Sc. DS Sem VI)",
+                  "note": "SIES College (Sion, Mumbai; autonomous, MU-affiliated) T.Y.B.Sc. Data Science NEP syllabus 2025-26; exact PDF URL not recorded. MU's own T.Y. DS Cloud Computing (USDS504) section carries misprinted content, so SIES was used."
+                }
+              },
+              {
+                "subject": "Inferential Statistics",
+                "code": "24UBDS403",
+                "topics": [
+                  "Stating hypotheses, types of errors and level of significance",
+                  "P-values, rejection regions and critical values",
+                  "z-test and t-test for a mean",
+                  "Goodness of fit tests: chi-square, Kolmogorov-Smirnov, Shapiro-Wilk, Anderson-Darling",
+                  "Variance tests: chi-square for single variance and F-test",
+                  "Non-parametric tests: Wilcoxon rank-sum/Mann-Whitney U and sign test",
+                  "Contingency tables: chi-square, Fisher exact and McNemar tests",
+                  "One-way and two-way ANOVA, MANOVA and ANCOVA",
+                  "Kruskal-Wallis and Friedman non-parametric ANOVA",
+                  "Regression: ridge, polynomial, logistic and Poisson regression",
+                  "Hypothesis testing packages in R, Python and Excel"
+                ],
+                "topics_source": {
+                  "url": "https://www.kbpcollegevashi.edu.in/uploaded_files/Science/Syllabus New Data Science.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Testing of Hypothesis (USDS401, Sem IV)",
+                  "note": "University of Mumbai S.Y.B.Sc. Data Science (CBCS) Sem III-IV syllabus; source_url is an MU-affiliated college copy found by search (download URL of the local copy was not recorded)."
+                }
+              },
+              {
+                "subject": "Core Java",
+                "code": "24UBDS404",
+                "topics": [
+                  "Java architecture, JVM, JRE, JDK and Java API",
+                  "Data types, operators, strings and autoboxing",
+                  "Control flow statements and loops",
+                  "Classes, objects, constructors, method overloading, varargs, static members",
+                  "Inheritance, this and super",
+                  "Abstract classes and interfaces",
+                  "Packages",
+                  "Arrays and Vectors; enumerations",
+                  "Multithreading and thread life cycle",
+                  "Exception handling: try, catch, finally, throws",
+                  "Byte and character streams; file I/O",
+                  "Event handling, AWT components and layouts"
+                ],
+                "topics_source": {
+                  "url": "https://rizvicollege.edu.in/iqac/aqar2021_22/criteria1/1.3.2/BScITSEMI-VICOMBINED.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Core Java (USIT401)",
+                  "note": "University of Mumbai B.Sc. IT CBCS syllabus (Sem I-VI, revised 2021-22), hosted by Rizvi College. Exact title."
+                }
+              }
+            ]
+          },
+          "source": {
+            "url": "https://drive.google.com/file/d/1NdpDdm1PMNlV7Yg8nwTNrB3IwU9BZA_f/view",
+            "type": "kes_official",
+            "scope": "subject names and codes only (KES exam time-tables / result sheets); unit topics are fallback, see topics_source",
+            "all_urls": [
+              "https://drive.google.com/file/d/1NdpDdm1PMNlV7Yg8nwTNrB3IwU9BZA_f/view",
+              "https://drive.google.com/file/d/1bG_9miMz0NAz01JFDoRlG25Yezn4R_Fu/view"
+            ]
+          },
+          "topics_sources": [
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://mu.ac.in/syllabus"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://mu.ac.in/wp-content/uploads/2024/05/7.7-Sem.-I-8a-Basics-of-Fintech-BBI.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://rizvicollege.edu.in/iqac/aqar2021_22/criteria1/1.3.2/BScITSEMI-VICOMBINED.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://www.kbpcollegevashi.edu.in/uploaded_files/Science/Syllabus New Data Science.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://siesascs.edu.in/academics/syllabus"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://www.unishivaji.ac.in/uploads/bosnew/commerce/BCA Part III Sem V and VI (NEP 2.0) Syllabus 2026-27 F.pdf"
+            }
+          ]
+        },
+        "3": {
+          "semesters": {
+            "5": [
+              {
+                "subject": "Machine Learning",
+                "code": "26UBDS501",
+                "topics": [
+                  "Machine learning problems, structure of learning, training vs testing",
+                  "Predictive and descriptive tasks; geometric, logical and probabilistic models",
+                  "Feature types, construction, transformation and selection",
+                  "Binary and multiclass classification; class probability estimation",
+                  "Regression performance, error measures and overfitting",
+                  "VC dimension, growth function and regularization theory",
+                  "Least squares, multivariate and regularized regression",
+                  "Perceptron, SVM, soft margin SVM and kernel methods",
+                  "Nearest neighbour classification, k-means and hierarchical clustering",
+                  "Rule learning and association rule mining",
+                  "Decision trees, regression trees and Naive Bayes classifier"
+                ],
+                "topics_source": {
+                  "url": "https://siesascs.edu.in/academics/syllabus",
+                  "type": "other_fallback",
+                  "matched_subject": "Artificial Intelligence and Machine Learning (SIUDSMJ311, T.Y.B.Sc. DS Sem V) - ML units",
+                  "note": "SIES College (Sion, Mumbai; autonomous, MU-affiliated) T.Y.B.Sc. Data Science NEP syllabus 2025-26; exact PDF URL not recorded. Topics from the machine-learning units (II-III)."
+                }
+              },
+              {
+                "subject": "Indian Knowledge Systems for Computing, Intelligence and Data Traditions",
+                "code": "26UBDS502",
+                "topics": [
+                  "Foundations of IKS: Dharma, Karma and Pramana",
+                  "Indian ethical concepts (Lokasangraha, Ahimsa) applied to IT ethics",
+                  "Ancient Indian mathematics: zero, decimal system and place value",
+                  "Contributions of Aryabhata, Brahmagupta and Bhaskaracharya",
+                  "Indian logic: Nyaya and Vaisheshika schools",
+                  "Algorithmic thinking in ancient texts",
+                  "Astronomy and timekeeping: Indian calendars, eclipses, planetary motion",
+                  "Panini's grammar as a precursor to formal languages",
+                  "Sanskrit and structured programming logic",
+                  "Traditional engineering: metallurgy and water management systems"
+                ],
+                "topics_source": {
+                  "url": "https://sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-v-vi-ay-25-26/bsc-in-it-sem-v-vi.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Indian Knowledge Systems and Ethical Practices in IT",
+                  "note": "SNDT Women's University, Mumbai - B.Sc. (IT) NEP 2020 syllabus Sem V; closest IKS-for-IT course found."
+                }
+              },
+              {
+                "subject": "Data Visualization",
+                "code": "26UBDS503",
+                "topics": [
+                  "Overview of business intelligence and Power BI components",
+                  "Connecting Power BI to databases, Excel and web services",
+                  "Data loading, cleansing and shaping with Power Query Editor",
+                  "Definition and role of data visualization in decision making",
+                  "Types of data: numerical, categorical, temporal, geographical",
+                  "Data visualization process and its challenges and limitations",
+                  "Comparing Excel, Tableau, Power BI and Python visualization tools",
+                  "Principles of data storytelling: narrative and context",
+                  "Dashboard layout and interactivity best practices",
+                  "Visualization design principles, use of colour and data modelling"
+                ],
+                "topics_source": {
+                  "url": "https://www.unishivaji.ac.in/uploads/bosnew/commerce/BCA Part II Sem III and IV NEP 2.0 Syllabus 2025-26.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Data Visualization (DSE202.1, BCA II)",
+                  "note": "Shivaji University, Kolhapur BCA Part II (NEP 2.0) syllabus 2025-26."
+                }
+              },
+              {
+                "subject": "Natural Language Processing & Text Analytics",
+                "code": "26UBDS504",
+                "topics": [
+                  "Origins, challenges and applications of NLP; processing Indian languages",
+                  "Statistical language models: n-grams; Paninian framework and Karaka theory",
+                  "Regular expressions, finite-state automata and morphological parsing",
+                  "Spelling error detection and correction",
+                  "Part-of-speech tagging",
+                  "Context-free grammar, top-down/bottom-up and CYK parsing",
+                  "Naive Bayes text classification and sentiment analysis",
+                  "Information retrieval models: classical, non-classical, cluster and fuzzy",
+                  "Lexical resources: WordNet, FrameNet, stemmers, corpora",
+                  "Encoder-decoder machine translation and MT evaluation"
+                ],
+                "topics_source": {
+                  "url": "https://siesascs.edu.in/academics/syllabus",
+                  "type": "other_fallback",
+                  "matched_subject": "Natural Language Processing (SIUDSMJ322, T.Y.B.Sc. DS Sem VI)",
+                  "note": "SIES College (Sion, Mumbai; autonomous, MU-affiliated) T.Y.B.Sc. Data Science NEP syllabus 2025-26; exact PDF URL not recorded."
+                }
+              },
+              {
+                "subject": "API Development with Python",
+                "code": "26UBDS505",
+                "topics": [
+                  "Flask as a web framework and comparison with other frameworks",
+                  "Setting up Flask, routing and views",
+                  "Handling HTTP methods; request and response objects",
+                  "Introduction to RESTful APIs",
+                  "Creating an API with Flask and handling API requests/responses",
+                  "Returning JSON responses",
+                  "Cookies and sessions",
+                  "Database integration: connections, models, creating and querying records",
+                  "Login/logout and CRUD operations project",
+                  "HTML, CSS and JavaScript DOM basics for API front ends"
+                ],
+                "topics_source": {
+                  "url": "https://www.kamarajengg.edu.in/static/vac/ADS_Flask Syllabus.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Value Added Course on Flask (Dept. of AI & Data Science)",
+                  "note": "Weak match: no university B.Sc. syllabus titled 'API Development with Python' found; closest published outline is the Kamaraj College of Engineering (Tamil Nadu) AI&DS value-added Flask course (2025)."
+                }
+              }
+            ],
+            "6": [
+              {
+                "subject": "Image Processing & Computer Vision",
+                "code": "25UBDS601",
+                "topics": [
+                  "Goals of computer vision, image formation and radiometry",
+                  "Geometric transformations and camera models",
+                  "Image transforms and image filtering",
+                  "Colour image processing and mathematical morphology",
+                  "Image segmentation",
+                  "Texture and colour descriptors, edge detection, shape representation",
+                  "Corner detectors, HOG, SIFT and SURF features",
+                  "Pattern recognition: decision functions, Gaussian classifier, template matching",
+                  "Neural networks, CNNs and autoencoders for vision",
+                  "Motion estimation, object tracking, face and gesture recognition, image fusion"
+                ],
+                "topics_source": {
+                  "url": "https://mu.ac.in/syllabus",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Computer Vision (USDS501, Sem V)",
+                  "note": "University of Mumbai T.Y.B.Sc. Data Science (CBCS, 2023-24) Sem V-VI syllabus; exact PDF URL of the local copy was not recorded, source_url is the MU syllabus index."
+                }
+              },
+              {
+                "subject": "Data Science with Visual Programming",
+                "code": "25UBDS602",
+                "topics": [
+                  "Introduction to data tools and sources of data",
+                  "Importing data into Excel, OpenOffice, R/Rattle, RStudio and KNIME",
+                  "Descriptive statistics and cumulative probability charts across tools",
+                  "Parametric t-test in Excel, Rattle and KNIME",
+                  "Correlation and regression in KNIME and Rattle",
+                  "Confidence intervals and random sampling",
+                  "Power analysis and F-test",
+                  "Multiple regression/correlation",
+                  "Benford's law, lift, word clouds and filtering",
+                  "Analysis ToolPak and packages for additional data"
+                ],
+                "topics_source": {
+                  "url": "https://mu.ac.in/wp-content/uploads/2025/05/6.3-N-B.Sc-Data-Science-Sem-I-and-II.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Office Tools for Data Scientists (SEC, Sem I)",
+                  "note": "University of Mumbai NEP B.Sc. (Data Science) Sem I-II syllabus (Item 6.3 N). Partial match: GUI/workflow tools (KNIME, Rattle) rather than a dedicated visual-programming (e.g. Orange) course."
+                }
+              },
+              {
+                "subject": "Natural Language Processing (NLP) & Text Analytics",
+                "code": "25UBDS603",
+                "topics": [
+                  "Origins, challenges and applications of NLP; processing Indian languages",
+                  "Statistical language models: n-grams; Paninian framework and Karaka theory",
+                  "Regular expressions, finite-state automata and morphological parsing",
+                  "Spelling error detection and correction",
+                  "Part-of-speech tagging",
+                  "Context-free grammar, top-down/bottom-up and CYK parsing",
+                  "Naive Bayes text classification and sentiment analysis",
+                  "Information retrieval models: classical, non-classical, cluster and fuzzy",
+                  "Lexical resources: WordNet, FrameNet, stemmers, corpora",
+                  "Encoder-decoder machine translation and MT evaluation"
+                ],
+                "topics_source": {
+                  "url": "https://siesascs.edu.in/academics/syllabus",
+                  "type": "other_fallback",
+                  "matched_subject": "Natural Language Processing (SIUDSMJ322, T.Y.B.Sc. DS Sem VI)",
+                  "note": "SIES College (Sion, Mumbai; autonomous, MU-affiliated) T.Y.B.Sc. Data Science NEP syllabus 2025-26; exact PDF URL not recorded."
+                }
+              },
+              {
+                "subject": "Unsupervised Machine Learning",
+                "code": "25UBDS604",
+                "topics": [
+                  "Concept, importance and challenges of unsupervised learning",
+                  "Clustering and its applications",
+                  "Hierarchical clustering: types and issues",
+                  "K-means clustering: steps, issues, strengths and weaknesses",
+                  "Curse of dimensionality",
+                  "Dimensionality reduction: feature reduction and selection criteria",
+                  "Principal Component Analysis (PCA)",
+                  "Association rule mining basics",
+                  "Market basket analysis",
+                  "Apriori algorithm"
+                ],
+                "topics_source": {
+                  "url": "https://mu.ac.in/syllabus",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Machine Learning (USDS601, Sem VI) - unsupervised learning units",
+                  "note": "University of Mumbai T.Y.B.Sc. Data Science (CBCS, 2023-24) Sem V-VI syllabus; exact PDF URL of the local copy was not recorded, source_url is the MU syllabus index. Topics from units IV-V (unsupervised part); no standalone MU unsupervised-ML course found."
+                }
+              },
+              {
+                "subject": "Big Data Technologies",
+                "code": "25UBDS605",
+                "topics": [
+                  "Definition, sources and 4Vs of big data; structured vs unstructured",
+                  "Big data life cycle, batch vs real-time processing, data warehouse vs big data",
+                  "Hadoop architecture and daemons",
+                  "HDFS architecture and operations",
+                  "MapReduce architecture and examples",
+                  "Hadoop ecosystem: HBase, Pig, Hive and HiveQL",
+                  "NoSQL types: key-value, document, column family, graph; CAP theorem",
+                  "Cassandra data model and CRUD operations",
+                  "Apache Spark architecture, PySpark, RDD transformations and actions",
+                  "Spark DataFrames, Spark SQL and MLlib"
+                ],
+                "topics_source": {
+                  "url": "https://www.unishivaji.ac.in/uploads/bosnew/commerce/BCA Part III Sem V and VI (NEP 2.0) Syllabus 2026-27 F.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Big Data Analytics (DSE304, BCA III Sem VI)",
+                  "note": "Shivaji University, Kolhapur BCA Part III (NEP 2.0) syllabus; chosen over MU USDS402 'Big Data' (R/RHadoop analytics) because it covers the Hadoop/NoSQL/Spark technology stack."
+                }
+              }
+            ]
+          },
+          "source": {
+            "url": "https://drive.google.com/file/d/1RZe2LQJ1DS8bm5xyfIxf66wPhybbsjGV/view",
+            "type": "kes_official",
+            "scope": "subject names and codes only (KES exam time-tables / result sheets); unit topics are fallback, see topics_source",
+            "all_urls": [
+              "https://drive.google.com/file/d/1RZe2LQJ1DS8bm5xyfIxf66wPhybbsjGV/view",
+              "https://drive.google.com/file/d/15AcQekugBeqvvxpTLv85hg71lt0ACoSb/view",
+              "https://drive.google.com/file/d/1FGn796E17SAycpFETEoq6fJc9-kBZjY_/view"
+            ]
+          },
+          "topics_sources": [
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://mu.ac.in/syllabus"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://mu.ac.in/wp-content/uploads/2025/05/6.3-N-B.Sc-Data-Science-Sem-I-and-II.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://siesascs.edu.in/academics/syllabus"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-v-vi-ay-25-26/bsc-in-it-sem-v-vi.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://www.kamarajengg.edu.in/static/vac/ADS_Flask Syllabus.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://www.unishivaji.ac.in/uploads/bosnew/commerce/BCA Part II Sem III and IV NEP 2.0 Syllabus 2025-26.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://www.unishivaji.ac.in/uploads/bosnew/commerce/BCA Part III Sem V and VI (NEP 2.0) Syllabus 2026-27 F.pdf"
+            }
+          ]
+        }
+      }
+    },
+    "BSC_AI": {
+      "name": "B.Sc. Artificial Intelligence",
+      "years": {
+        "1": {
+          "semesters": {
+            "1": [
+              {
+                "subject": "Introduction to Programming with C",
+                "code": "26UBAI101",
+                "topics": [
+                  "History of C, structure of a C program, header files and main()",
+                  "Character set, tokens, keywords, identifiers, variables, constants and data types",
+                  "Arithmetic, relational, logical, bitwise and assignment operators; type conversion",
+                  "Formatted I/O with printf() and scanf(), character I/O",
+                  "Algorithms, pseudo-code conventions and flowcharts",
+                  "Decision making: if, if-else, nested if, else-if ladder, switch",
+                  "Loops: while, do-while, for; goto, break and continue",
+                  "One- and two-dimensional arrays: declaration and initialization",
+                  "Structures, typedef and enumerated data types",
+                  "Library and user-defined functions, scope of variables, recursion",
+                  "Parameter passing: call by value and call by reference",
+                  "Pointers: declaration, pointer arithmetic, handling arrays using pointers"
+                ],
+                "topics_source": {
+                  "url": "https://ves.ac.in/vesasc/wp-content/uploads/2026/07/FYBSC-Artificial-Intelligence-SYLLABUS-VESASC.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "C Programming",
+                  "note": "VES College of Arts, Science & Commerce, Chembur (Autonomous, Mumbai University affiliated) - F.Y.B.Sc. Artificial Intelligence, Sem I, NEP 2020."
+                }
+              },
+              {
+                "subject": "Database Management System",
+                "code": "26UBAI102",
+                "topics": [
+                  "Need for databases, role and advantages of DBMS, types of databases",
+                  "Data models, business rules and degrees of data abstraction",
+                  "ER model: relationships, connectivity, cardinality, weak entities, ER diagrams",
+                  "Extended ER model, entity clustering and entity integrity (primary keys)",
+                  "Normalization process, higher-level normal forms and denormalization",
+                  "Database life cycle: conceptual, logical and physical design",
+                  "Transactions and concurrency control (locking, time stamping, optimistic)",
+                  "ANSI transaction isolation levels and database recovery management",
+                  "Query processing, indexes, query optimization and SQL performance tuning",
+                  "Database administration and security, role of the DBA"
+                ],
+                "topics_source": {
+                  "url": "https://mu.ac.in/wp-content/uploads/2025/05/6.3-N-B.Sc-Data-Science-Sem-I-and-II.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Database Management System (Major, Sem II)",
+                  "note": "University of Mumbai NEP B.Sc. (Data Science) Sem I-II syllabus (Item 6.3 N)."
+                }
+              },
+              {
+                "subject": "Linear Algebra and Calculus",
+                "code": "26UBAI103",
+                "topics": [
+                  "Geometry of linear equations and Gaussian elimination",
+                  "Matrix multiplication, triangular factors, inverses and transposes",
+                  "Vector spaces, subspaces, solving Ax=0 and Ax=b",
+                  "Linear independence, basis, dimension and the four fundamental subspaces",
+                  "Linear transformations",
+                  "Orthogonality, projections, least squares and Gram-Schmidt",
+                  "Determinants: properties, formulas and applications",
+                  "Eigenvalues, eigenvectors and diagonalization",
+                  "Positive definite matrices; minima, maxima and saddle points",
+                  "Singular value decomposition",
+                  "Matrix norm, condition number and iterative methods for Ax=b"
+                ],
+                "topics_source": {
+                  "url": "https://www.kbpcollegevashi.edu.in/uploaded_files/Science/Syllabus New Data Science.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Linear Algebra and Discrete Mathematics (USDS305, Sem III)",
+                  "note": "University of Mumbai S.Y.B.Sc. Data Science (CBCS) Sem III-IV syllabus; source_url is an MU-affiliated college copy found by search (download URL of the local copy was not recorded). Weak match: covers linear algebra only (plus minima/maxima); the source has no calculus units."
+                }
+              },
+              {
+                "subject": "Intellectual Property Rights (IPR)",
+                "code": "26UBAI105",
+                "topics": [
+                  "Nature, concept and general principles of intellectual property",
+                  "Forms of IP: copyright, patent, trademark, design, geographical indication",
+                  "Semiconductor layout designs and plant varieties",
+                  "Patents",
+                  "Trade marks",
+                  "Copyrights and geographical indications",
+                  "Paris Convention 1883 and Berne Convention 1886",
+                  "WIPO Convention 1967 and TRIPS Agreement 1994",
+                  "IP management, IP audit and remedies for infringement"
+                ],
+                "topics_source": {
+                  "url": "https://standrewscollege.ac.in/wp-content/uploads/2024/08/FYBSC-IT-SYLLABUS-2024-2025.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Law related to Intellectual Property Rights (VEC, Sem I)",
+                  "note": "University of Mumbai NEP 2020 value-education course included in the FY B.Sc. IT syllabus hosted by St. Andrew's College."
+                }
+              },
+              {
+                "subject": "Cyber Law and Digital Ethics",
+                "code": "26UBAI107",
+                "topics": [
+                  "Cyber crime under the IT Act 2000: hacking, cyber fraud, defamation, e-mail abuse",
+                  "Penalties, adjudication and appeals under the IT Act; arrest without warrant",
+                  "Contracts in the infotech world: click-wrap and shrink-wrap contracts",
+                  "Jurisdiction in the cyber world",
+                  "Cyber squatting, domain names and meta-tagging",
+                  "Copyright protection on the Internet, ISP liability and software piracy",
+                  "E-commerce taxation and permanent establishment",
+                  "Digital signatures, certifying authorities and e-governance",
+                  "Electronic records as evidence: Indian Evidence Act vs IT Act",
+                  "Protection of cyber consumers and amendments to the IT Act"
+                ],
+                "topics_source": {
+                  "url": "https://rizvicollege.edu.in/iqac/aqar2021_22/criteria1/1.3.2/BScITSEMI-VICOMBINED.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Cyber Laws (USIT607)",
+                  "note": "University of Mumbai B.Sc. IT CBCS syllabus (Sem I-VI, revised 2021-22), hosted by Rizvi College. Covers cyber law; digital-ethics coverage is limited."
+                }
+              }
+            ],
+            "2": [
+              {
+                "subject": "Python Programming",
+                "code": "24UBAI201",
+                "topics": [
+                  "Lists and tuples: functions, methods and operations",
+                  "Regular expressions: sequence characters, quantifiers, special characters, use on files",
+                  "Date and time handling, timedelta, calendar module",
+                  "IPython: magic commands, history, shell commands, debugging, profiling and timing",
+                  "NumPy arrays, universal functions and aggregations",
+                  "Broadcasting, masks, Boolean logic, fancy indexing and sorting in NumPy",
+                  "Pandas objects, indexing/selection and handling missing data",
+                  "Hierarchical indexing, concat, merge and join of datasets",
+                  "Aggregation, grouping, pivot tables and time series in Pandas",
+                  "Visualization with Matplotlib and Seaborn: line, scatter, histogram, subplots"
+                ],
+                "topics_source": {
+                  "url": "https://mu.ac.in/wp-content/uploads/2025/05/6.3-N-B.Sc-Data-Science-Sem-I-and-II.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Advanced Python Programming (Major, Sem II)",
+                  "note": "University of Mumbai NEP B.Sc. (Data Science) Sem I-II syllabus (Item 6.3 N); MU's second-semester Python course."
+                }
+              },
+              {
+                "subject": "Artificial Intelligence",
+                "code": "24UBAI202",
+                "topics": [
+                  "Definition, characteristics, history, scope and applications of AI",
+                  "Types of intelligent agents",
+                  "Representation of search problems; completeness, optimality, time and space complexity",
+                  "Uninformed search: BFS, uniform cost search, DFS",
+                  "Informed search: greedy best-first and A* search",
+                  "Local search: hill climbing and travelling salesman problem",
+                  "Knowledge representation techniques and knowledge-based agents",
+                  "First-order logic, rules of inference, forward and backward chaining",
+                  "Probabilistic and Bayesian reasoning under uncertainty",
+                  "Planning and planning graphs",
+                  "Ethics and AI",
+                  "Generative AI: generative models, tools, benefits and limitations"
+                ],
+                "topics_source": {
+                  "url": "https://ves.ac.in/vesasc/wp-content/uploads/2026/07/SYBSC-Artificial-Intelligence-SYLLABUS-VESASC.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Artificial Intelligence",
+                  "note": "VES College (Autonomous, MU affiliated) S.Y.B.Sc. AI Sem III course. SNDT B.Sc AI 'Introduction to AI' (Sem II) covers a subset: agents, PEAS, BFS/DFS, greedy/A*."
+                }
+              },
+              {
+                "subject": "Probability and Quality Control Charts",
+                "code": "24UBAI203",
+                "topics": [
+                  "Measures of central tendency and variation; histograms, box plots, scatter plots",
+                  "Basic probability: additive and multiplicative laws",
+                  "Conditional probability and Bayes' theorem",
+                  "Discrete and continuous random variables; expectation and variance",
+                  "Binomial, Poisson and negative binomial distributions",
+                  "Normal, gamma and chi-square distributions",
+                  "Sampling distribution of mean and proportion; central limit theorem",
+                  "Quality control and its importance",
+                  "Control charts for variables: X-bar and R charts; p-chart",
+                  "Six sigma concepts",
+                  "Creating control charts for process monitoring using software"
+                ],
+                "topics_source": {
+                  "url": "https://portal.tu.edu.np/downloads/2025_11_10_10_47_06.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Probability and Statistics (ENSH 304)",
+                  "note": "Tribhuvan University (Nepal) B.E. course; no MU/MU-affiliated syllabus pairing probability with control charts found. MU B.Sc IT 'Computer Oriented Statistical Techniques' lists control charts only as a single sub-topic."
+                }
+              },
+              {
+                "subject": "NoSQL",
+                "code": "24UBAI204",
+                "topics": [
+                  "Why NoSQL: value of relational databases, impedance mismatch, emergence of NoSQL",
+                  "Aggregate data models: key-value, document and column-family stores",
+                  "Graph databases, schemaless databases and materialized views",
+                  "Distribution models: sharding, master-slave and peer-to-peer replication",
+                  "Consistency, CAP theorem, relaxing durability, quorums and version stamps",
+                  "Map-Reduce: partitioning, combining, multi-stage and incremental map-reduce",
+                  "Key-value databases: features, use cases and when not to use",
+                  "Document databases (MongoDB): features, consistency, scaling, use cases",
+                  "Column-family databases (Cassandra) and graph databases (Neo4j)",
+                  "Database security: authentication, authorization, SQL injection"
+                ],
+                "topics_source": {
+                  "url": "https://siesascs.edu.in/assets/pdf/courses/TYBSC DS NEP syllabus 2025-26.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Introduction to NoSQL Database and Security (SIUDSMJ312)",
+                  "note": "SIES College, Sion (Autonomous, MU affiliated) - T.Y.B.Sc. Data Science Sem V, NEP 2025-26."
+                }
+              },
+              {
+                "subject": "Digital Marketing",
+                "code": "24UBAI205",
+                "topics": [
+                  "Introduction to digital marketing; traditional vs digital; latest trends",
+                  "Digital channels: owned, earned and paid media",
+                  "SEO: on-page and off-page, keywords, backlinks, SEO tools",
+                  "SEM: Google Ads, PPC, keyword planning, ad creation, bidding strategies",
+                  "Tools: Google Analytics, Google Search Console, SEMrush",
+                  "Content marketing: blogging, video and influencer marketing",
+                  "Email marketing: campaign planning, Mailchimp, A/B testing, GDPR",
+                  "CRM: email automation, segmentation, lead scoring",
+                  "Digital ethics and laws: data privacy, IP, advertising laws"
+                ],
+                "topics_source": {
+                  "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-iii-iv-ay-25-26/bsc-in-it-sem-iii-iv.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Digital Marketing (Th)",
+                  "note": "SNDT Women's University, Mumbai - B.Sc. (IT) NEP 2020 syllabus Sem III-IV (2025-26); exact title."
+                }
+              },
+              {
+                "subject": "Prompt Engineering with ChatGPT",
+                "code": "24UBAI208",
+                "topics": [
+                  "Introduction, importance and applications of prompt engineering",
+                  "Introduction to LLMs and history of language models",
+                  "Basic structure of prompts and five principles of prompting",
+                  "Types and components of prompts; defining personality",
+                  "Challenges and limitations of prompts",
+                  "Prompting for image generation: DALL-E, Midjourney",
+                  "Role-based, chain-of-thought and instruction-based prompting",
+                  "Prompt optimization: accuracy, ambiguity, output format",
+                  "Applications: text, code and content generation, chatbots",
+                  "Ethics: bias, fairness, privacy and responsible AI"
+                ],
+                "topics_source": {
+                  "url": "https://www.unishivaji.ac.in/uploads/bosnew/science/B.Sc.%20M.Sc%20Part%20III%20AI%20&%20ML%202026-27%20Syllabus.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Prompt Engineering (Open Elective V)",
+                  "note": "Shivaji University, Kolhapur - B.Sc.-M.Sc. (AI-ML) Part III syllabus 2026-27; general prompt engineering, not ChatGPT-specific."
+                }
+              },
+              {
+                "subject": "Green Computing",
+                "code": "24UBAI210",
+                "topics": [
+                  "Green IT problems: toxins, power consumption, equipment disposal, carbon footprint",
+                  "Global initiatives and standards: Basel Convention, WEEE, RoHS",
+                  "Minimizing power usage: monitoring, virtualization, data de-duplication, low-power computers",
+                  "Data centre cooling: hot aisle/cold aisle, airflow, economizers",
+                  "Changing the way of work: telecommuting and outsourcing",
+                  "Going paperless: intranets, unified communications, EDI",
+                  "Recycling, refurbishing and hard-drive disposal",
+                  "Hardware certifications: EPEAT, Energy Star; thin clients and server consolidation",
+                  "Greening information systems: metrics, green supply chain",
+                  "Staying green: audits, benchmarking, Chief Green Officer"
+                ],
+                "topics_source": {
+                  "url": "https://vivek-college.org/Uploads/VES/B.Sc-IT%20Sem%20I%20and%20Sem%20II%20-%20Click%20here%20to%20view.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Green Computing (USIT205)",
+                  "note": "University of Mumbai F.Y.B.Sc. IT CBCS syllabus (2016-17), hosted by Vivekanand Education Society's college. Exact title."
+                }
+              }
+            ]
+          },
+          "source": {
+            "url": "https://drive.google.com/file/d/1_4MpBbiV78SF23ilmOujQySUCU5giqMb/view",
+            "type": "kes_official",
+            "scope": "subject names and codes only (KES exam time-tables / result sheets); unit topics are fallback, see topics_source",
+            "all_urls": [
+              "https://drive.google.com/file/d/1_4MpBbiV78SF23ilmOujQySUCU5giqMb/view",
+              "https://drive.google.com/file/d/1rhzedXXbR1G6UGypTiaCrSP8EFCMunPv/view"
+            ]
+          },
+          "topics_sources": [
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://mu.ac.in/wp-content/uploads/2025/05/6.3-N-B.Sc-Data-Science-Sem-I-and-II.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://rizvicollege.edu.in/iqac/aqar2021_22/criteria1/1.3.2/BScITSEMI-VICOMBINED.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://siesascs.edu.in/assets/pdf/courses/TYBSC DS NEP syllabus 2025-26.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://standrewscollege.ac.in/wp-content/uploads/2024/08/FYBSC-IT-SYLLABUS-2024-2025.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://ves.ac.in/vesasc/wp-content/uploads/2026/07/FYBSC-Artificial-Intelligence-SYLLABUS-VESASC.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://ves.ac.in/vesasc/wp-content/uploads/2026/07/SYBSC-Artificial-Intelligence-SYLLABUS-VESASC.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://vivek-college.org/Uploads/VES/B.Sc-IT%20Sem%20I%20and%20Sem%20II%20-%20Click%20here%20to%20view.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://www.kbpcollegevashi.edu.in/uploaded_files/Science/Syllabus New Data Science.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://portal.tu.edu.np/downloads/2025_11_10_10_47_06.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-iii-iv-ay-25-26/bsc-in-it-sem-iii-iv.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://www.unishivaji.ac.in/uploads/bosnew/science/B.Sc.%20M.Sc%20Part%20III%20AI%20&%20ML%202026-27%20Syllabus.pdf"
+            }
+          ],
+          "soft_skills": {
+            "1": [
+              {
+                "subject": "Professional Communication Skills",
+                "code": "26UBAI110"
+              }
+            ],
+            "2": [
+              {
+                "subject": "Group Communication",
+                "code": "24UBAI209"
+              }
+            ]
+          }
+        },
+        "2": {
+          "semesters": {
+            "3": [
+              {
+                "subject": "Advanced Python Programming",
+                "code": "26UBAI301",
+                "topics": [
+                  "List, dictionary and set comprehensions",
+                  "Functional programming: map(), filter(), reduce() and lambda expressions",
+                  "Iterators and generators",
+                  "Decorators and closures",
+                  "Magic methods, method overloading and overriding",
+                  "Multiple inheritance, MRO and abstract base classes",
+                  "Design patterns: Singleton and Factory",
+                  "Advanced file handling: binary, CSV and JSON files; context managers",
+                  "Custom exceptions, logging and debugging",
+                  "Modules, packages, virtual environments and dependency management",
+                  "Multithreading, multiprocessing and async/await",
+                  "Database connectivity (SQLite/MySQL) and CRUD operations"
+                ],
+                "topics_source": {
+                  "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-i-ii-iii-iv-v-vi-25-26/bsc-artificial-intelligence-aedp.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Advanced Python",
+                  "note": "SNDT Women's University, Mumbai - B.Sc. (Artificial Intelligence) AEDP, NEP 2025-26."
+                }
+              },
+              {
+                "subject": "Data Structure for AI",
+                "code": "26UBAI302",
+                "topics": [
+                  "Algorithm analysis: time and space complexity, asymptotic notations",
+                  "Classification of data structures; arrays and array operations",
+                  "Linked lists: singly, doubly and circular; insertion and deletion",
+                  "Stacks: push/pop, implementation and applications",
+                  "Infix, prefix and postfix notations",
+                  "Queues: implementation and operations",
+                  "Trees: binary, strictly binary and complete binary trees; array/linked representation",
+                  "Tree traversals (inorder, preorder, postorder) and binary search trees",
+                  "Graphs: representation, applications, BFS and DFS traversal",
+                  "Sorting: bubble, selection, insertion, quick and heap sort",
+                  "Searching: linear and binary search"
+                ],
+                "topics_source": {
+                  "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-i-ii-iii-iv-v-vi-25-26/bsc-artificial-intelligence-aedp.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Data Structures and Algorithms",
+                  "note": "SNDT B.Sc. (AI) AEDP Sem III. Alternative MU source: MU B.Sc Data Science USDS302 'Data Structures and Algorithms using Python' (AC 29/06/2021)."
+                }
+              },
+              {
+                "subject": "Discrete Mathematics for AI",
+                "code": "26UBAI303",
+                "topics": [
+                  "Sets: notation, union, intersection, complement, Cartesian product",
+                  "Relations: reflexive, symmetric, transitive and equivalence relations",
+                  "Functions: one-to-one, onto, bijection, composition and inverse",
+                  "Mapping input features to outputs in AI models",
+                  "Propositional logic: connectives, truth tables, tautologies, contradictions",
+                  "Predicate logic: quantifiers and translating English sentences to logic",
+                  "Boolean algebra laws and simplification",
+                  "Karnaugh maps",
+                  "Logical reasoning in expert systems"
+                ],
+                "topics_source": {
+                  "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-i-ii-iii-iv-v-vi-25-26/bsc-artificial-intelligence-aedp.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Discrete Mathematics for AI",
+                  "note": "SNDT B.Sc. (AI) AEDP Sem II; exact course title (2-credit course, so 9 topics)."
+                }
+              },
+              {
+                "subject": "Embedded Systems with Arduino",
+                "code": "26UBAI304",
+                "topics": [
+                  "Sensors: definition and types",
+                  "Interfacing Arduino with light, temperature, humidity, pressure and sound sensors",
+                  "Ultrasonic range finder, gas/smoke and water detector sensors",
+                  "Interfacing LEDs: blinking, traffic light, 7-segment display, LED dot matrix",
+                  "LCD control: displaying and scrolling text; touch screens",
+                  "Reading and writing SD cards",
+                  "DC motor speed and direction control",
+                  "Servo and stepper motor control; robots",
+                  "Ethernet shield and Internet-connected Arduino projects"
+                ],
+                "topics_source": {
+                  "url": "https://mangaloreuniversity.ac.in/sites/default/files/UG%20CBCS/SYLLABUS%20B.Sc%20Embedded.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Introduction to Arduino (BSCEMB 181)",
+                  "note": "Mangalore University B.Sc. (Embedded System) syllabus. Arduino-specific; the MU equivalent 'Introduction to Embedded Systems' (USIT402) is 8051-based, so embedded theory (RTOS, firmware) is not covered here."
+                }
+              },
+              {
+                "subject": "Introduction to FinTech",
+                "code": "26UBAI305",
+                "topics": [
+                  "FinTech: meaning, definition and types of FinTech companies",
+                  "Scope of FinTech in future",
+                  "E-wallets and payment systems",
+                  "Recent trends in FinTech",
+                  "FinTech evolution 1.0, 2.0 and 3.0",
+                  "FinTech in banking and insurance; FinTech users and customer service",
+                  "Technologies that power FinTech",
+                  "BankTech and Central Bank Digital Currency (CBDC)"
+                ],
+                "topics_source": {
+                  "url": "https://mu.ac.in/wp-content/uploads/2024/05/7.7-Sem.-I-8a-Basics-of-Fintech-BBI.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Basics of Fintech (Open Elective, Sem I)",
+                  "note": "University of Mumbai NEP 2020 open-elective syllabus (Board of Studies in Banking & Insurance, AC 20/04/2024); closest MU FinTech course, not from the B.Sc. IT board."
+                }
+              }
+            ],
+            "4": [
+              {
+                "subject": "Cloud Computing & AI Services",
+                "code": "24UBAI401",
+                "topics": [
+                  "Characteristics, advantages and disadvantages of cloud computing",
+                  "Cloud deployment models; cloud vs traditional IT providers",
+                  "Cloud architecture and its components",
+                  "Service models: SaaS, PaaS and IaaS",
+                  "Challenges and risks in cloud adoption",
+                  "Indian cloud ecosystem: MeghRaj, Digital India, Indian SaaS players",
+                  "Cloud simulators: CloudSim architecture and Green Cloud",
+                  "VMware virtualization: creating, cloning and managing virtual machines",
+                  "AWS core services: compute, load balancing, autoscaling, storage",
+                  "AWS managed services: RDS, DynamoDB, SNS, SQS, CloudWatch"
+                ],
+                "topics_source": {
+                  "url": "https://siesascs.edu.in/assets/pdf/courses/TYBSC DS NEP syllabus 2025-26.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Cloud Computing (SIUDSMJ321)",
+                  "note": "SIES College (Autonomous, MU affiliated) T.Y.B.Sc. DS Sem VI. Weak on AI-specific cloud services (e.g., managed ML platforms); no published syllabus with that exact focus found."
+                }
+              },
+              {
+                "subject": "AI Framework & Library",
+                "code": "24UBAI402",
+                "topics": [
+                  "Introduction to TensorFlow: strengths, challenges, new features",
+                  "Installing TensorFlow, Keras, Jupyter and Matplotlib",
+                  "Computation graphs, tensors, variables, placeholders and constants",
+                  "Image classification with Fashion MNIST using Keras",
+                  "Text classification and sentiment analysis on IMDB; TensorFlow Hub",
+                  "Building and training neural networks with gradient descent",
+                  "Regression with linear models and deep neural networks",
+                  "Overfitting and underfitting",
+                  "Convolutional neural networks on MNIST and CIFAR-10",
+                  "RNNs and LSTM for text generation and sentiment analysis"
+                ],
+                "topics_source": {
+                  "url": "https://mu.ac.in/old/wp-content/uploads/2025/06/6.2-N-3bTensorflow-OE-Vertical-3-Sem.-IV.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "TensorFlow 2 (Open Elective, Vertical 3, Sem IV)",
+                  "note": "University of Mumbai, Board of Studies in Data Science, NEP 2025-26; covers one framework (TensorFlow/Keras)."
+                }
+              },
+              {
+                "subject": "Hypothesis Testing",
+                "code": "24UBAI403",
+                "topics": [
+                  "Stating hypotheses, Type I/II errors and level of significance",
+                  "P-values, rejection regions and critical values",
+                  "z-test and t-test for a mean",
+                  "Hypothesis testing with R/Python/Excel packages",
+                  "Goodness-of-fit tests: chi-square, Kolmogorov-Smirnov, Shapiro-Wilk, Anderson-Darling",
+                  "Variance tests: chi-square for single variance, F-test, homogeneity tests",
+                  "Non-parametric tests: Wilcoxon/Mann-Whitney U and sign test",
+                  "Contingency tables: chi-square, Fisher's exact and McNemar's tests",
+                  "ANOVA (one-way, two-way), MANOVA and ANCOVA",
+                  "Non-parametric ANOVA: Kruskal-Wallis, Friedman, Mood's median",
+                  "Regression and smoothing: ridge, GLM, Poisson regression, GAM",
+                  "Communicating results: data storytelling and infographics"
+                ],
+                "topics_source": {
+                  "url": "https://siesascs.edu.in/assets/pdf/courses/TYBSC DS NEP syllabus 2025-26.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Applied Hypothesis Testing",
+                  "note": "SIES College (Autonomous, MU affiliated) T.Y.B.Sc. DS Sem VI; content mirrors MU B.Sc DS 'Testing of Hypothesis' (USDS401)."
+                }
+              },
+              {
+                "subject": "Supervised Machine Learning",
+                "code": "24UBAI404",
+                "topics": [
+                  "Need for and applications of machine learning; general ML architecture",
+                  "Inductive learning, generalization, bias and variance",
+                  "Overfitting and underfitting; parametric vs non-parametric algorithms",
+                  "Binary, multi-class and multi-label classification",
+                  "K-Nearest Neighbour: working and distance computation",
+                  "Decision trees, ID3, entropy, Gini impurity and information gain",
+                  "Support vector machines: hard and soft margin, kernels",
+                  "Bayes learning and Naive Bayes classifier",
+                  "Linear and logistic regression",
+                  "Classification metrics: accuracy, sensitivity, precision, F1, ROC/AUC",
+                  "Cross validation"
+                ],
+                "topics_source": {
+                  "url": "https://mu.ac.in/syllabus",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Machine Learning (USDS601, Sem VI) - supervised learning units",
+                  "note": "University of Mumbai T.Y.B.Sc. Data Science (CBCS, 2023-24) Sem V-VI syllabus; exact PDF URL of the local copy was not recorded, source_url is the MU syllabus index. Topics taken from the supervised-learning units only."
+                }
+              }
+            ]
+          },
+          "source": {
+            "url": "https://drive.google.com/file/d/1NdpDdm1PMNlV7Yg8nwTNrB3IwU9BZA_f/view",
+            "type": "kes_official",
+            "scope": "subject names and codes only (KES exam time-tables / result sheets); unit topics are fallback, see topics_source",
+            "all_urls": [
+              "https://drive.google.com/file/d/1NdpDdm1PMNlV7Yg8nwTNrB3IwU9BZA_f/view",
+              "https://drive.google.com/file/d/1bG_9miMz0NAz01JFDoRlG25Yezn4R_Fu/view"
+            ]
+          },
+          "topics_sources": [
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://mu.ac.in/old/wp-content/uploads/2025/06/6.2-N-3bTensorflow-OE-Vertical-3-Sem.-IV.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://mu.ac.in/syllabus"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://mu.ac.in/wp-content/uploads/2024/05/7.7-Sem.-I-8a-Basics-of-Fintech-BBI.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://siesascs.edu.in/assets/pdf/courses/TYBSC DS NEP syllabus 2025-26.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://mangaloreuniversity.ac.in/sites/default/files/UG%20CBCS/SYLLABUS%20B.Sc%20Embedded.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-i-ii-iii-iv-v-vi-25-26/bsc-artificial-intelligence-aedp.pdf"
+            }
+          ]
+        },
+        "3": {
+          "semesters": {
+            "5": [
+              {
+                "subject": "Natural Language Processing",
+                "code": "26UBAI501",
+                "topics": [
+                  "Origins, challenges and applications of NLP; processing Indian languages",
+                  "Statistical language models: n-grams; Paninian framework and Karaka theory",
+                  "Regular expressions and finite-state automata",
+                  "Morphological parsing, spelling error detection and correction",
+                  "Part-of-speech tagging",
+                  "Context-free grammar, top-down/bottom-up and CYK parsing",
+                  "Naive Bayes text classification and sentiment analysis",
+                  "Information retrieval models: classical, non-classical, alternative",
+                  "Lexical resources: WordNet, FrameNet, stemmers, corpora",
+                  "Machine translation with encoder-decoder models; MT evaluation and bias"
+                ],
+                "topics_source": {
+                  "url": "https://siesascs.edu.in/assets/pdf/courses/TYBSC DS NEP syllabus 2025-26.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Natural Language Processing (SIUDSMJ322)",
+                  "note": "SIES College (Autonomous, MU affiliated) T.Y.B.Sc. Data Science Sem VI, NEP 2025-26."
+                }
+              },
+              {
+                "subject": "Machine Learning & Optimization",
+                "code": "26UBAI502",
+                "topics": [
+                  "Types of machine learning: supervised, unsupervised, reinforcement",
+                  "Issues and applications of machine learning",
+                  "Training vs generalization error, overfitting, underfitting, bias-variance trade-off",
+                  "Linear, multivariate linear and logistic regression",
+                  "Decision trees using Gini index; CART",
+                  "Performance metrics: confusion matrix, precision, recall, F-measure, ROC",
+                  "Ensemble learning: bagging, boosting, random forest; k-fold cross validation",
+                  "Support vector machines, kernel trick and support vector regression",
+                  "Clustering: distance metrics, K-means and hierarchical clustering"
+                ],
+                "topics_source": {
+                  "url": "https://ves.ac.in/vesasc/wp-content/uploads/2026/07/SYBSC-Artificial-Intelligence-SYLLABUS-VESASC.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Machine Learning",
+                  "note": "VES College (Autonomous, MU affiliated) S.Y.B.Sc. AI Sem IV. Weak on the 'Optimization' part: no published B.Sc 'ML & Optimization' syllabus found; gradient descent appears in MU TensorFlow 2 OE."
+                }
+              },
+              {
+                "subject": "Indian Knowledge Systems for Computing, Intelligence and Data Traditions",
+                "code": "26UBAI503",
+                "topics": [
+                  "Foundations of IKS: Dharma, Karma and Pramana",
+                  "Indian ethical concepts (Lokasangraha, Ahimsa) applied to IT ethics",
+                  "Ancient Indian mathematics: zero, decimal system and place value",
+                  "Contributions of Aryabhata, Brahmagupta and Bhaskaracharya",
+                  "Indian logic: Nyaya and Vaisheshika schools",
+                  "Algorithmic thinking in ancient texts",
+                  "Astronomy and timekeeping: Indian calendars, eclipses, planetary motion",
+                  "Panini's grammar as a precursor to formal languages",
+                  "Sanskrit and structured programming logic",
+                  "Traditional engineering: metallurgy and water management systems"
+                ],
+                "topics_source": {
+                  "url": "https://sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-v-vi-ay-25-26/bsc-in-it-sem-v-vi.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Indian Knowledge Systems and Ethical Practices in IT",
+                  "note": "SNDT Women's University, Mumbai - B.Sc. (IT) NEP 2020 syllabus Sem V; closest IKS-for-IT course found."
+                }
+              },
+              {
+                "subject": "Edge Computing",
+                "code": "26UBAI504",
+                "topics": [
+                  "Limitations of cloud for low latency; from cloud to edge computing",
+                  "IoT edge platforms: Azure IoT Hub, AWS",
+                  "Edge computing architectures and applications (5G slicing, self-driving cars)",
+                  "Distributed systems at the edge: time ordering, clock synchronization, snapshots",
+                  "Integrating cloud, IoT and edge infrastructures; federating edge resources",
+                  "Edge data centers and lightweight edge clouds",
+                  "Docker and Kubernetes for edge; edge key-value storage",
+                  "MQTT and Kafka for end-to-end edge pipelines",
+                  "Edge analytics, data management and predictive analysis",
+                  "Edge AI use cases: autonomous vehicles, smart cities, predictive maintenance, healthcare"
+                ],
+                "topics_source": {
+                  "url": "https://fcrit.ac.in/Collegesystem/pdf/cse/1775361157_N2024_B.TECH._ Final year Syllabus.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Edge Computing (ITPCC712)",
+                  "note": "Fr. C. Rodrigues Institute of Technology, Vashi (Autonomous, MU affiliated) - Final Year B.Tech IT, N2024; engineering-level course."
+                }
+              },
+              {
+                "subject": "AI System Design",
+                "code": "26UBAI505",
+                "topics": [
+                  "Overview of ML systems and software engineering principles",
+                  "Data engineering fundamentals: data collection and preprocessing",
+                  "Feature engineering, feature stores, data validation and monitoring",
+                  "Model selection, evaluation and distributed training",
+                  "Model versioning, reproducibility and MLOps for training",
+                  "Deployment strategies and model serving infrastructure",
+                  "Model monitoring, logging and performance optimization",
+                  "Scalable and real-time ML system design",
+                  "Handling data and model drift; reliability and resilience",
+                  "Edge AI and IoT applications; responsible AI and ML system security"
+                ],
+                "topics_source": {
+                  "url": "https://cse.bracu.ac.bd/course/view/CSE757",
+                  "type": "other_fallback",
+                  "matched_subject": "Machine Learning Systems Design (CSE757)",
+                  "note": "BRAC University (Bangladesh) course page; closest published syllabus found - no MU/Indian B.Sc 'AI System Design' syllabus located. Graduate-level course."
+                }
+              }
+            ],
+            "6": []
+          },
+          "source": {
+            "url": "https://drive.google.com/file/d/1RZe2LQJ1DS8bm5xyfIxf66wPhybbsjGV/view",
+            "type": "kes_official",
+            "scope": "subject names and codes only (KES exam time-tables / result sheets); unit topics are fallback, see topics_source",
+            "all_urls": [
+              "https://drive.google.com/file/d/1RZe2LQJ1DS8bm5xyfIxf66wPhybbsjGV/view"
+            ]
+          },
+          "topics_sources": [
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://fcrit.ac.in/Collegesystem/pdf/cse/1775361157_N2024_B.TECH._ Final year Syllabus.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://siesascs.edu.in/assets/pdf/courses/TYBSC DS NEP syllabus 2025-26.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://ves.ac.in/vesasc/wp-content/uploads/2026/07/SYBSC-Artificial-Intelligence-SYLLABUS-VESASC.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://cse.bracu.ac.bd/course/view/CSE757"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-v-vi-ay-25-26/bsc-in-it-sem-v-vi.pdf"
+            }
+          ],
+          "gaps": [
+            "Sem VI: not yet examined/published. B.Sc. AI's first batch (codes 24UBAI...) reaches Sem VI in Jan-Apr 2027; no KES Sem VI subject list is public yet."
+          ]
+        }
+      }
+    },
+    "BCA": {
+      "name": "Bachelor of Computer Applications (BCA, AICTE)",
+      "years": {
+        "1": {
+          "semesters": {
+            "1": [
+              {
+                "subject": "Problem Solving Techniques",
+                "code": "24UBCA101",
+                "topics": [
+                  "Problem instances, types and classification of computational problems",
+                  "Problem-solving steps, input validation, pre and post conditions",
+                  "Sequence, selection and repetition control structures",
+                  "Pseudocode, flowcharts and characteristics of algorithms",
+                  "Integer representation: signed magnitude, 1's and 2's complement",
+                  "IEEE 754 floating point and ASCII/Unicode representation",
+                  "C language basics: scanf, printf, operators, data types",
+                  "Problems on numbers: palindrome, prime, Armstrong, base conversion",
+                  "else-if ladder, switch, break and continue in C",
+                  "Modular programming, top-down and bottom-up approaches, recursion",
+                  "Arrays: sequential and binary search, sorting, matrix operations",
+                  "C functions, 1D/2D arrays, string functions and debugging"
+                ],
+                "topics_source": {
+                  "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/bachelor-of-computer-applications.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Problem Solving Techniques",
+                  "note": "SNDT Women's University, Mumbai - BCA (AICTE recognised, NEP 2020) Sem I-II syllabus; exact course title."
+                }
+              },
+              {
+                "subject": "Computer Architecture",
+                "code": "24UBCA102",
+                "topics": [
+                  "Digital vs analog signals and digital logic basics",
+                  "Von Neumann architecture",
+                  "Boolean laws and theorems",
+                  "Karnaugh maps: SOP and POS simplification, don't care conditions",
+                  "Number systems and conversions: binary, octal, decimal, hexadecimal",
+                  "Binary arithmetic, ASCII, Gray code and error-detecting codes",
+                  "Half adder and full adder",
+                  "Multiplexer and demultiplexer",
+                  "SR and D flip-flops",
+                  "4-bit shift registers and synchronous binary counters"
+                ],
+                "topics_source": {
+                  "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/bachelor-of-computer-applications.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Computer Architecture",
+                  "note": "SNDT Women's University, Mumbai - BCA (AICTE recognised, NEP 2020) Sem I-II syllabus; exact course title."
+                }
+              },
+              {
+                "subject": "Prompt Engineering with ChatGPT",
+                "code": "24UBCA103",
+                "topics": [
+                  "Introduction, importance and applications of prompt engineering",
+                  "Introduction to LLMs and history of language models",
+                  "Basic structure of prompts and five principles of prompting",
+                  "Types and components of prompts; defining personality",
+                  "Challenges and limitations of prompts",
+                  "Prompting for image generation: DALL-E, Midjourney",
+                  "Role-based, chain-of-thought and instruction-based prompting",
+                  "Prompt optimization: accuracy, ambiguity, output format",
+                  "Applications: text, code and content generation, chatbots",
+                  "Ethics: bias, fairness, privacy and responsible AI"
+                ],
+                "topics_source": {
+                  "url": "https://www.unishivaji.ac.in/uploads/bosnew/science/B.Sc.%20M.Sc%20Part%20III%20AI%20&%20ML%202026-27%20Syllabus.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Prompt Engineering (Open Elective V)",
+                  "note": "Shivaji University, Kolhapur - B.Sc.-M.Sc. (AI-ML) Part III syllabus 2026-27; general prompt engineering, not ChatGPT-specific."
+                }
+              },
+              {
+                "subject": "Mathematics Foundations to Computer Science - I",
+                "code": "24UBCA104",
+                "topics": [
+                  "Sets, set operations, Venn diagrams and Cartesian products",
+                  "Relations, equivalence relations, closures and Warshall's algorithm",
+                  "Functions: injective, surjective, bijective, inverse and composition",
+                  "Exponential, logarithmic, ceiling and floor functions",
+                  "Counting, pigeonhole principle, permutations and combinations",
+                  "Binomial theorem and binomial coefficients",
+                  "Recurrence relations: Fibonacci, Tower of Hanoi, characteristic roots",
+                  "Graph theory basics: paths, cycles, Euler and Hamiltonian graphs",
+                  "Trees, spanning trees and planar graphs",
+                  "Matrix algebra: determinant, rank and inverse",
+                  "Solving linear equations using matrices",
+                  "Eigen values, eigen vectors and Cayley-Hamilton theorem"
+                ],
+                "topics_source": {
+                  "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/bachelor-of-computer-applications.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Mathematics Foundations to Computer Science - I",
+                  "note": "SNDT Women's University, Mumbai - BCA (AICTE recognised, NEP 2020) Sem I-II syllabus; exact course title."
+                }
+              }
+            ],
+            "2": [
+              {
+                "subject": "Object Oriented Programming using Java",
+                "code": "24UBCA201",
+                "topics": [
+                  "Basic concepts and benefits of object-oriented programming",
+                  "Java features and differences from C and C++",
+                  "Java program structure, tokens, JVM and command line arguments",
+                  "Constants, variables, data types and typecasting",
+                  "Java operators, expressions and operator precedence",
+                  "Decision making, looping and labelled loops",
+                  "Classes, objects, constructors and method overloading",
+                  "Method overriding, inheritance and interfaces",
+                  "Arrays, strings, vectors and wrapper classes",
+                  "Packages: system and user-defined packages",
+                  "Exception handling: try, catch, throw, throws, finally",
+                  "User-defined exceptions and multiple catch statements"
+                ],
+                "topics_source": {
+                  "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/bachelor-of-computer-applications.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Object Oriented Programming using Java",
+                  "note": "SNDT Women's University, Mumbai - BCA (AICTE recognised, NEP 2020) Sem I-II syllabus; exact course title."
+                }
+              },
+              {
+                "subject": "Data Structures",
+                "code": "24UBCA202",
+                "topics": [
+                  "Classification and operations of data structures",
+                  "Algorithm complexity and time-space tradeoff",
+                  "Arrays: traversal, insertion, deletion, sparse matrices",
+                  "Linear and binary search; bubble, selection, insertion sort",
+                  "Singly, doubly and circular linked lists",
+                  "Hashing, hash functions and collision resolution",
+                  "Stacks, infix to postfix conversion and postfix evaluation",
+                  "Recursion: runtime stack, GCD, Towers of Hanoi",
+                  "Queues: circular, double-ended and priority queues",
+                  "Graph representation and traversal",
+                  "Binary trees, traversals and binary search trees",
+                  "AVL trees: insertion and deletion"
+                ],
+                "topics_source": {
+                  "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/bachelor-of-computer-applications.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Data Structures",
+                  "note": "SNDT Women's University, Mumbai - BCA (AICTE recognised, NEP 2020) Sem I-II syllabus; exact course title."
+                }
+              },
+              {
+                "subject": "Operating System",
+                "code": "24UBCA203",
+                "topics": [
+                  "Operating system components, services and types",
+                  "Multiprogramming, time sharing, distributed and real-time systems",
+                  "System calls and operating system structure",
+                  "Process states, transitions and process control block",
+                  "Threads and multithreading models",
+                  "CPU scheduling: FCFS, SJF, Round Robin",
+                  "Process synchronization: critical section, semaphores, monitors",
+                  "Deadlocks: prevention, avoidance, Banker's algorithm, detection",
+                  "Memory management: swapping, fragmentation, paging, segmentation",
+                  "Virtual memory: demand paging, page replacement, thrashing",
+                  "Disk structure and disk scheduling algorithms"
+                ],
+                "topics_source": {
+                  "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/bachelor-of-computer-applications.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Operating Systems",
+                  "note": "SNDT Women's University, Mumbai - BCA (AICTE recognised, NEP 2020) Sem I-II syllabus; exact course title."
+                }
+              },
+              {
+                "subject": "Mathematics Foundations to Computer Science - II",
+                "code": "24UBCA204",
+                "topics": [
+                  "Propositions, logical connectives and truth tables",
+                  "Quantifiers, tautology, contradiction and logical equivalence",
+                  "Conjunctive and disjunctive normal forms",
+                  "Rules of inference: modus ponens, modus tollens, syllogism",
+                  "Proof by contradiction and mathematical induction",
+                  "Algebraic structures: semigroup, monoid, group, cyclic group",
+                  "Bisection and Newton-Raphson methods",
+                  "Newton forward/backward and Lagrange interpolation",
+                  "Numerical integration: trapezoidal and Simpson's 1/3 rule",
+                  "Linear programming: formulation, graphical and simplex methods, duality",
+                  "Transportation problem: NWC, least cost, VAM and MODI"
+                ],
+                "topics_source": {
+                  "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/bachelor-of-computer-applications.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Mathematics Foundations to Computer Science - II",
+                  "note": "SNDT Women's University, Mumbai - BCA (AICTE recognised, NEP 2020) Sem I-II syllabus; exact course title."
+                }
+              },
+              {
+                "subject": "Web Technologies",
+                "code": "24UBCA206",
+                "topics": [
+                  "Internet overview and history of the web",
+                  "Web protocols HTTP, HTTPS, FTP; browsers and servers",
+                  "W3C standards, WCAG accessibility, semantic web and SEO",
+                  "HTML5 document structure and key elements",
+                  "HTML5 semantic elements and multimedia audio/video tags",
+                  "HTML5 forms: new input types and attributes",
+                  "CSS syntax; inline, internal and external CSS",
+                  "CSS selectors, combinators, pseudo-classes and pseudo-elements",
+                  "CSS text and font properties",
+                  "CSS colour models and background properties"
+                ],
+                "topics_source": {
+                  "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/bachelor-of-computer-applications.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Web Technology - I",
+                  "note": "Closest match: SNDT Women's University, Mumbai - BCA Sem I SEC 'Web Technology - I' (HTML5/CSS)."
+                }
+              }
+            ]
+          },
+          "source": {
+            "url": "https://drive.google.com/file/d/1BnUX48dfs9l-3XtnjcjA6ktrMYKoZO7U/view",
+            "type": "kes_official",
+            "scope": "subject names and codes only (KES exam time-tables / result sheets); unit topics are fallback, see topics_source",
+            "all_urls": [
+              "https://drive.google.com/file/d/1BnUX48dfs9l-3XtnjcjA6ktrMYKoZO7U/view",
+              "https://drive.google.com/file/d/1W2-q_ZGeCIhEDsFMyvY6IOK24m_1jUMd/view"
+            ]
+          },
+          "topics_sources": [
+            {
+              "type": "other_fallback",
+              "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/bachelor-of-computer-applications.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://www.unishivaji.ac.in/uploads/bosnew/science/B.Sc.%20M.Sc%20Part%20III%20AI%20&%20ML%202026-27%20Syllabus.pdf"
+            }
+          ],
+          "soft_skills": {
+            "1": [
+              {
+                "subject": "General English - I",
+                "code": "24UBCA106"
+              }
+            ]
+          }
+        },
+        "2": {
+          "semesters": {
+            "3": [
+              {
+                "subject": "Database Management System",
+                "code": "26UBCA301",
+                "topics": [
+                  "Database vs traditional file system, data abstraction",
+                  "Three-tier, centralized and client-server architecture",
+                  "Data models: hierarchical, network, relational, object-oriented",
+                  "RDBMS, distributed databases and NoSQL",
+                  "Keys: primary, candidate, super, foreign, composite",
+                  "ER model, weak entity sets and extended ER features",
+                  "Functional dependencies and normalization 1NF to 5NF, BCNF",
+                  "SQL DDL, DML, aggregate functions, GROUP BY, HAVING",
+                  "SQL joins: inner, natural, outer and equi joins",
+                  "Transactions, ACID properties and serializability",
+                  "Concurrency control: 2PL, timestamp ordering, optimistic",
+                  "Database recovery: checkpoints and transaction rollback"
+                ],
+                "topics_source": {
+                  "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-iii-iv-ay-25-26/bachelor-of-computer-applications-sem-iii-iv.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Data Base Management System",
+                  "note": "SNDT Women's University, Mumbai - BCA (NEP) Sem III-IV syllabus, AY 2025-26; exact course title."
+                }
+              },
+              {
+                "subject": "Software Engineering",
+                "code": "26UBCA302",
+                "topics": [
+                  "Characteristics of software and software engineering ethics",
+                  "Software Development Life Cycle (SDLC)",
+                  "SDLC models: waterfall, incremental, spiral, agile",
+                  "Functional and non-functional requirements, SRS",
+                  "Software design: architectural and detailed design",
+                  "UML use case and class diagrams",
+                  "Levels of testing, black box and white box testing",
+                  "Software maintenance and quality assurance",
+                  "Project planning, scheduling and cost estimation (LOC, FP)",
+                  "Risk management and software configuration management",
+                  "Agile Scrum and DevOps CI/CD concepts",
+                  "Software reliability, metrics and component-based reuse"
+                ],
+                "topics_source": {
+                  "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-i-ii-iii-iv-v-vi-25-26/bsc-information-technology-aedp.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Software Engineering",
+                  "note": "SNDT Women's University, Mumbai - B.Sc. IT (AEDP, NEP) syllabus AY 2025-26 (no SNDT BCA Sem V/VI syllabus found). Same title also exists as CC203 in Shivaji Univ. BCA Sem III."
+                }
+              },
+              {
+                "subject": "Probability and Statistics",
+                "code": "26UBCA303",
+                "topics": [
+                  "Sample space, events and axioms of probability",
+                  "Addition and multiplication theorems of probability",
+                  "Conditional probability and Bayes' theorem",
+                  "Discrete and continuous random variables, PMF and PDF",
+                  "Binomial, Poisson, exponential and normal distributions",
+                  "Measures of central tendency",
+                  "Measures of dispersion: quartile deviation, standard deviation",
+                  "Coefficient of variation",
+                  "Karl Pearson's correlation and rank correlation",
+                  "Regression analysis and lines of regression"
+                ],
+                "topics_source": {
+                  "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-iii-iv-ay-25-26/bachelor-of-computer-applications-sem-iii-iv.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Probability and Statistics",
+                  "note": "SNDT Women's University, Mumbai - BCA (NEP) Sem III-IV syllabus, AY 2025-26; exact course title."
+                }
+              },
+              {
+                "subject": "Python Programming",
+                "code": "26UBCA304",
+                "topics": [
+                  "Lists and tuples: functions, methods and operations",
+                  "Regular expressions: sequence characters, quantifiers, special characters, use on files",
+                  "Date and time handling, timedelta, calendar module",
+                  "IPython: magic commands, history, shell commands, debugging, profiling and timing",
+                  "NumPy arrays, universal functions and aggregations",
+                  "Broadcasting, masks, Boolean logic, fancy indexing and sorting in NumPy",
+                  "Pandas objects, indexing/selection and handling missing data",
+                  "Hierarchical indexing, concat, merge and join of datasets",
+                  "Aggregation, grouping, pivot tables and time series in Pandas",
+                  "Visualization with Matplotlib and Seaborn: line, scatter, histogram, subplots"
+                ],
+                "topics_source": {
+                  "url": "https://mu.ac.in/wp-content/uploads/2025/05/6.3-N-B.Sc-Data-Science-Sem-I-and-II.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Advanced Python Programming (Major, Sem II)",
+                  "note": "University of Mumbai NEP B.Sc. (Data Science) Sem I-II syllabus (Item 6.3 N); MU's second-semester Python course."
+                }
+              },
+              {
+                "subject": "Introduction to FinTech",
+                "code": "26UBCA305",
+                "topics": [
+                  "FinTech: meaning, definition and types of FinTech companies",
+                  "Scope of FinTech in future",
+                  "E-wallets and payment systems",
+                  "Recent trends in FinTech",
+                  "FinTech evolution 1.0, 2.0 and 3.0",
+                  "FinTech in banking and insurance; FinTech users and customer service",
+                  "Technologies that power FinTech",
+                  "BankTech and Central Bank Digital Currency (CBDC)"
+                ],
+                "topics_source": {
+                  "url": "https://mu.ac.in/wp-content/uploads/2024/05/7.7-Sem.-I-8a-Basics-of-Fintech-BBI.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Basics of Fintech (Open Elective, Sem I)",
+                  "note": "University of Mumbai NEP 2020 open-elective syllabus (Board of Studies in Banking & Insurance, AC 20/04/2024); closest MU FinTech course, not from the B.Sc. IT board."
+                }
+              }
+            ],
+            "4": [
+              {
+                "subject": "Computer Networks",
+                "code": "24UBIT401",
+                "topics": [
+                  "Network types: LAN, MAN, WAN; client-server vs peer-to-peer",
+                  "Network topologies: bus, star, ring, mesh",
+                  "OSI and TCP/IP models",
+                  "Transmission media and switching techniques",
+                  "Error detection and correction: parity, CRC, Hamming code",
+                  "Flow control: stop-and-wait, sliding window; CSMA/CD, CSMA/CA",
+                  "IPv4 addressing, subnetting, CIDR and IPv6",
+                  "Routing: distance vector (RIP) and link state (OSPF)",
+                  "TCP vs UDP, ports and sockets",
+                  "Application protocols: HTTP, FTP, SMTP, DNS; DHCP, NAT",
+                  "Network security: firewalls, VPN, SSL/TLS",
+                  "Wireless networks, SDN, NFV and IoT networking"
+                ],
+                "topics_source": {
+                  "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-i-ii-iii-iv-v-vi-25-26/bsc-information-technology-aedp.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Computer Networks",
+                  "note": "SNDT Women's University, Mumbai - B.Sc. IT (AEDP, NEP) syllabus AY 2025-26 (no SNDT BCA Sem V/VI syllabus found). Same title also exists as CC205 in Shivaji Univ. BCA Sem III."
+                }
+              },
+              {
+                "subject": "Artificial Intelligence",
+                "code": "24UBIT402",
+                "topics": [
+                  "Intelligent agents, rationality and nature of environments",
+                  "Knowledge-based agents and the Wumpus world",
+                  "Uninformed search: DFS, BFS, iterative deepening",
+                  "Informed search: best-first, A*, AO* search",
+                  "Adversarial search: minimax and alpha-beta pruning",
+                  "Constraint satisfaction problems and backtracking search",
+                  "Genetic algorithms and evolutionary search",
+                  "Propositional and first-order predicate logic, unification",
+                  "Forward chaining, backward chaining and resolution",
+                  "Planning: blocks world and STRIPS",
+                  "Non-monotonic, probabilistic reasoning and fuzzy sets",
+                  "Expert systems, AI domains and ethical issues"
+                ],
+                "topics_source": {
+                  "url": "https://www.unishivaji.ac.in/uploads/bosnew/commerce/BCA Part II Sem III and IV NEP 2.0 Syllabus 2025-26.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Artificial Intelligence (CC207, Semester IV)",
+                  "note": "Shivaji University, Kolhapur - BCA (NEP 2.0, 'As per AICTE Model Curriculum'); course names match KES exactly. Chosen over SNDT B.Sc IT 'Introduction to Artificial Intelligence' because it is the same BCA SY Sem IV course."
+                }
+              },
+              {
+                "subject": "Design and Analysis of Algorithm",
+                "code": "24UBIT403",
+                "topics": [
+                  "Performance analysis: time and space complexity",
+                  "Asymptotic notations O, Omega, Theta",
+                  "Analysis of sequential search and elementary sorts",
+                  "Analysis of recursive algorithms",
+                  "Divide and conquer: binary search, merge sort, quick sort",
+                  "Strassen's matrix multiplication and sorting lower bound",
+                  "Greedy: knapsack, Prim's, Kruskal's, Dijkstra's algorithms",
+                  "Dynamic programming: binomial coefficients, 0/1 knapsack",
+                  "Floyd-Warshall all pairs shortest paths",
+                  "BFS, DFS, connected components, topological sorting",
+                  "Backtracking: n-Queens, sum of subsets, Hamiltonian circuit",
+                  "P, NP, NP-complete and NP-hard problems"
+                ],
+                "topics_source": {
+                  "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-iii-iv-ay-25-26/bachelor-of-computer-applications-sem-iii-iv.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Design & Analysis of Algorithm",
+                  "note": "SNDT Women's University, Mumbai - BCA (NEP) Sem III-IV syllabus, AY 2025-26; exact course title."
+                }
+              },
+              {
+                "subject": "Design Thinking and Innovation",
+                "code": "24UBIT406",
+                "topics": [
+                  "Definition, history and applications of design thinking",
+                  "Role of empathy, creativity and innovation",
+                  "Five stages: empathize, define, ideate, prototype, test",
+                  "User research: interviews, surveys, observation, ethnography",
+                  "Problem framing using 'How Might We' questions",
+                  "Ideation: brainstorming, mind mapping, SCAMPER",
+                  "Low-fidelity and high-fidelity prototyping",
+                  "Testing, feedback and iteration",
+                  "Case studies of design thinking projects"
+                ],
+                "topics_source": {
+                  "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-iii-iv-ay-25-26/bachelor-of-computer-applications-sem-iii-iv.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Design Thinking & Innovation",
+                  "note": "SNDT Women's University, Mumbai - BCA (NEP) Sem III-IV syllabus, AY 2025-26; exact course title."
+                }
+              }
+            ]
+          },
+          "source": {
+            "url": "https://drive.google.com/file/d/1NdpDdm1PMNlV7Yg8nwTNrB3IwU9BZA_f/view",
+            "type": "kes_official",
+            "scope": "subject names and codes only (KES exam time-tables / result sheets); unit topics are fallback, see topics_source",
+            "all_urls": [
+              "https://drive.google.com/file/d/1NdpDdm1PMNlV7Yg8nwTNrB3IwU9BZA_f/view",
+              "https://drive.google.com/file/d/1aBRW4TuPA4dM_86DwqghC9n6UmeFvz8_/view"
+            ]
+          },
+          "topics_sources": [
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://mu.ac.in/wp-content/uploads/2024/05/7.7-Sem.-I-8a-Basics-of-Fintech-BBI.pdf"
+            },
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://mu.ac.in/wp-content/uploads/2025/05/6.3-N-B.Sc-Data-Science-Sem-I-and-II.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-i-ii-iii-iv-v-vi-25-26/bsc-information-technology-aedp.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-iii-iv-ay-25-26/bachelor-of-computer-applications-sem-iii-iv.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://www.unishivaji.ac.in/uploads/bosnew/commerce/BCA Part II Sem III and IV NEP 2.0 Syllabus 2025-26.pdf"
+            }
+          ],
+          "gaps": [
+            "Sem IV (Jun-2026 AICTE time-table, image PDF) lists SYBCA papers under 24UBIT codes."
+          ]
+        },
+        "3": {
+          "semesters": {
+            "5": [
+              {
+                "subject": "Cloud Computing",
+                "code": "26UBCA501",
+                "topics": [
+                  "Cloud computing basics, characteristics, pros and cons",
+                  "Migrating into the cloud: seven-step model",
+                  "Cloud service models and deployment models",
+                  "Cloud lifecycle model and reference architecture",
+                  "Federated cloud, cloud ecosystem and governance",
+                  "Types of virtualization and virtualization architecture",
+                  "CPU, network and storage virtualization",
+                  "Cloud storage and data management",
+                  "Risks in cloud computing and data security",
+                  "SaaS, PaaS and IaaS services",
+                  "Cloud tools: VMware, Eucalyptus, CloudSim, OpenNebula",
+                  "Windows Azure, Google Cloud and Amazon cloud services"
+                ],
+                "topics_source": {
+                  "url": "https://nmcc.ac.in/Uploads/Syllabus/Nmcc_e87d6fd1-986c-41c8-973b-2dc1fdecb40d.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Cloud Computing (CMCA61, BCA Semester VI)",
+                  "note": "Manonmaniam Sundaranar University BCA syllabus (2021-22 onwards), hosted by Nesamony Memorial Christian College. Not in SNDT or Shivaji BCA; no Mumbai BCA cloud syllabus located."
+                }
+              },
+              {
+                "subject": "Quantitative Techniques",
+                "code": "26UBCA502",
+                "topics": [
+                  "Percentages, profit and loss, simple and compound interest",
+                  "Ratio, proportion, averages, mixtures and alligations",
+                  "Time and work, time speed and distance",
+                  "Algebra: equations, logarithms, progressions",
+                  "Number system: LCM, HCF, divisibility, remainder theorem",
+                  "Geometry and mensuration: area, perimeter, volume",
+                  "Analogy, classification and coding-decoding",
+                  "Syllogisms, statement-conclusion, assertion-reasoning",
+                  "Blood relations, directions and ranking",
+                  "Non-verbal reasoning: figure series, mirror images, dice and cubes"
+                ],
+                "topics_source": {
+                  "url": "https://www.unishivaji.ac.in/uploads/bosnew/commerce/BCA Part III Sem V and VI (NEP 2.0) Syllabus 2026-27 F.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Quantitative Techniques (SEC301, Semester V)",
+                  "note": "Shivaji University, Kolhapur - BCA (NEP 2.0, 'As per AICTE Model Curriculum'); course names match KES exactly. Content is quantitative aptitude and reasoning."
+                }
+              },
+              {
+                "subject": "Introduction to Data Science (elective)",
+                "code": "26UBCA503",
+                "topics": [
+                  "Definition and scope of data science",
+                  "Data science vs data analytics vs big data",
+                  "Data science lifecycle",
+                  "Structured, semi-structured and unstructured data",
+                  "Data sources: databases, web, sensors, surveys",
+                  "Applications in healthcare, finance, retail, education",
+                  "Data cleaning: missing values and duplicates",
+                  "Data transformation and normalization",
+                  "Mean, median, mode, variance and standard deviation",
+                  "Correlation analysis and interpreting results"
+                ],
+                "topics_source": {
+                  "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-i-ii-iii-iv-v-vi-25-26/bsc-information-technology-aedp.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Introduction to Data Science",
+                  "note": "SNDT Women's University, Mumbai - B.Sc. IT (AEDP, NEP) syllabus AY 2025-26 (no SNDT BCA Sem V/VI syllabus found). Same title also exists as DSE301 in Shivaji Univ. BCA Sem V."
+                }
+              },
+              {
+                "subject": "Time Series Analysis (elective)",
+                "code": "26UBCA504",
+                "topics": [
+                  "Definition and characteristics of time series data",
+                  "Components: trend, seasonal, cyclical, irregular",
+                  "Measuring trend: semi-average, moving average, least squares",
+                  "Additive and multiplicative decomposition models",
+                  "Seasonal index: simple average, ratio to moving average",
+                  "Cyclical variations and business cycles",
+                  "Irregular variations and their causes",
+                  "Naive forecasting, moving average, exponential smoothing",
+                  "AR, MA and ARIMA models introduction",
+                  "Role of time series in data science"
+                ],
+                "topics_source": {
+                  "url": "https://www.unishivaji.ac.in/uploads/bosnew/commerce/BCA Part III Sem V and VI (NEP 2.0) Syllabus 2026-27 F.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Time Series Analysis (DSE302, Data Science track, Semester V)",
+                  "note": "Shivaji University, Kolhapur - BCA (NEP 2.0, 'As per AICTE Model Curriculum'); course names match KES exactly."
+                }
+              },
+              {
+                "subject": "Machine Learning (elective)",
+                "code": "26UBCA505",
+                "topics": [
+                  "Definition, need and applications of machine learning",
+                  "Bias, variance, overfitting and underfitting",
+                  "Supervised, unsupervised, semi-supervised, reinforcement learning",
+                  "Classification: binary, multi-class, multi-label",
+                  "K-Nearest Neighbour algorithm",
+                  "Decision trees: ID3, entropy, information gain, Gini",
+                  "Linear and logistic regression",
+                  "Support vector machines and kernel functions",
+                  "Naive Bayes classifier and Bayes' theorem",
+                  "Confusion matrix, precision, recall, F1, ROC-AUC",
+                  "Hierarchical and K-means clustering",
+                  "Curse of dimensionality and PCA"
+                ],
+                "topics_source": {
+                  "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-i-ii-iii-iv-v-vi-25-26/bsc-information-technology-aedp.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Machine Learning",
+                  "note": "SNDT Women's University, Mumbai - B.Sc. IT (AEDP, NEP) syllabus AY 2025-26 (no SNDT BCA Sem V/VI syllabus found). Same title also exists as DSE303 in Shivaji Univ. BCA Sem V."
+                }
+              },
+              {
+                "subject": "Neural Network (elective)",
+                "code": "26UBCA506",
+                "topics": [
+                  "Biological neuron vs artificial neuron",
+                  "ANN components: weights, bias, activation functions",
+                  "Activation functions: step, sigmoid, ReLU, tanh",
+                  "Supervised, unsupervised and reinforcement learning",
+                  "Single layer perceptron and perceptron learning algorithm",
+                  "XOR problem and limitations of perceptron",
+                  "Multilayer perceptron and forward propagation",
+                  "Backpropagation algorithm and loss functions",
+                  "Gradient descent and weight update",
+                  "Overfitting and underfitting",
+                  "Applications: pattern, image and speech recognition",
+                  "Building ANN models with TensorFlow/Keras"
+                ],
+                "topics_source": {
+                  "url": "https://www.unishivaji.ac.in/uploads/bosnew/commerce/BCA Part III Sem V and VI (NEP 2.0) Syllabus 2026-27 F.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Neural Network (DSE301, AI & ML track, Semester V)",
+                  "note": "Shivaji University, Kolhapur - BCA (NEP 2.0, 'As per AICTE Model Curriculum'); course names match KES exactly."
+                }
+              },
+              {
+                "subject": "Digital Image Processing (elective)",
+                "code": "26UBCA507",
+                "topics": [
+                  "Steps in digital image processing and applications",
+                  "Image sampling, quantization and pixel relationships",
+                  "Grey level transformations and histogram processing",
+                  "Spatial filtering: smoothing and sharpening filters",
+                  "Discrete Fourier transform and frequency domain filtering",
+                  "Image restoration in spatial and frequency domains",
+                  "Morphology: erosion, dilation, opening, closing, hit-or-miss",
+                  "Image compression: error-free and lossy, JPEG, MPEG",
+                  "Point, line and edge detection, gradient operators",
+                  "Thresholding and region-based segmentation",
+                  "Chain codes, polygonal approximation and skeletons"
+                ],
+                "topics_source": {
+                  "url": "https://www.unishivaji.ac.in/uploads/bosnew/commerce/BCA Part III Sem V and VI (NEP 2.0) Syllabus 2026-27 F.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Digital Image Processing (DSE302, AI & ML track, Semester V)",
+                  "note": "Shivaji University, Kolhapur - BCA (NEP 2.0, 'As per AICTE Model Curriculum'); course names match KES exactly."
+                }
+              },
+              {
+                "subject": "Natural Language Processing (elective)",
+                "code": "26UBCA508",
+                "topics": [
+                  "Applications, components and steps in NLP",
+                  "Morphology: lexemes, morphemes, inflectional and derivational",
+                  "Morphological processing and typology",
+                  "Parsing, treebanks and syntactic representation",
+                  "Dependency graphs and phrase structure trees",
+                  "Shift-reduce parsing, chart parsing, CYK algorithm",
+                  "Probabilistic context-free grammar (PCFG)",
+                  "Lexical and compositional semantics, semantic role labeling",
+                  "Emotion and sentiment analysis, affect lexicons",
+                  "WordNet and word sense disambiguation (Lesk algorithm)",
+                  "Coreference resolution: anaphora and cataphora",
+                  "NLP using Python and NLTK"
+                ],
+                "topics_source": {
+                  "url": "https://www.unishivaji.ac.in/uploads/bosnew/commerce/BCA Part III Sem V and VI (NEP 2.0) Syllabus 2026-27 F.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Natural Language Processing (DSE303, AI & ML track, Semester V)",
+                  "note": "Shivaji University, Kolhapur - BCA (NEP 2.0, 'As per AICTE Model Curriculum'); course names match KES exactly. Unit IV body text in the PDF appears copy-pasted from Big Data Analytics, so only its title (NLP using Python and NLTK) was used."
+                }
+              }
+            ],
+            "6": [
+              {
+                "subject": "Full-Stack Web Development (MERN Stack)",
+                "code": "25UBCA601",
+                "topics": [
+                  "Frontend vs backend vs database; web development workflow",
+                  "HTML5, CSS3, Flexbox, Grid and responsive design",
+                  "JavaScript ES6+: arrow functions, promises, async/await",
+                  "React: components, JSX, props, state, hooks",
+                  "Node.js event-driven architecture and npm",
+                  "Express.js routing, middleware and REST APIs",
+                  "JWT authentication and password hashing",
+                  "MongoDB: documents, CRUD and Mongoose",
+                  "Connecting React to Node with Axios/Fetch",
+                  "State management: Context API and Redux",
+                  "Deployment: Vercel/Netlify, Render; environment variables",
+                  "Security: OWASP Top 10, CORS, rate limiting"
+                ],
+                "topics_source": {
+                  "url": "https://sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-v-vi-ay-25-26/bsc-in-it-sem-v-vi.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Full Stack Development",
+                  "note": "SNDT Women's University, Mumbai - B.Sc. (IT) NEP 2020 syllabus Sem V-VI; MERN-based content."
+                }
+              },
+              {
+                "subject": "Blockchain",
+                "code": "25UBCA602",
+                "topics": [
+                  "Blockchain definition, characteristics and need",
+                  "Block structure, hashing and the distributed ledger",
+                  "Peer-to-peer network, nodes and miners",
+                  "Public, private, consortium and permissioned blockchains",
+                  "Cryptographic hash functions, public/private keys and digital signatures",
+                  "Wallets and address generation",
+                  "Consensus: PoW, PoS, DPoS, PBFT",
+                  "Transaction lifecycle, validation and 51% attack",
+                  "Smart contracts and DApps",
+                  "Ethereum, Solidity, Web3.js and MetaMask",
+                  "Use cases: DeFi, NFTs, supply chain, identity, voting",
+                  "Challenges: scalability, energy, regulation; Layer 2 solutions"
+                ],
+                "topics_source": {
+                  "url": "https://sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-v-vi-ay-25-26/bsc-in-it-sem-v-vi.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "Blockchain and Web3 Fundamentals",
+                  "note": "SNDT Women's University, Mumbai - B.Sc. (IT) NEP 2020 syllabus Sem V-VI."
+                }
+              },
+              {
+                "subject": "Internet of Things",
+                "code": "25UBCA603",
+                "topics": [
+                  "IoT overview and design principles for connected devices",
+                  "Internet principles: TCP/IP, UDP, IP addressing, DNS, IPv6, ports",
+                  "Application layer protocols: HTTP, HTTPS",
+                  "Prototyping: open vs closed source; sensors and actuators",
+                  "Embedded platforms: Arduino and Raspberry Pi",
+                  "Physical design: laser cutting, 3D printing, CNC milling",
+                  "Online components: APIs, mashups, scraping",
+                  "Real-time protocols: MQTT, XMPP, CoAP",
+                  "Writing embedded code: memory management, performance, battery life",
+                  "IoT business models and funding",
+                  "Moving to manufacture: PCB design, certification, scaling",
+                  "Ethics: privacy, control and environment"
+                ],
+                "topics_source": {
+                  "url": "https://rizvicollege.edu.in/iqac/aqar2021_22/criteria1/1.3.2/BScITSEMI-VICOMBINED.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Internet of Things (USIT502)",
+                  "note": "University of Mumbai B.Sc. IT CBCS syllabus (Sem I-VI, revised 2021-22), hosted by Rizvi College. Exact title."
+                }
+              },
+              {
+                "subject": "Software Testing",
+                "code": "25UBCA604",
+                "topics": [
+                  "Quality concepts, TQM and continuous improvement",
+                  "Software quality management and why software has defects",
+                  "Fundamentals of testing and the test process",
+                  "Test policy, test strategy and test planning",
+                  "Testing across the life cycle: test levels and test types",
+                  "Boundary value and equivalence class testing",
+                  "Decision table, path and data-flow testing",
+                  "Verification and validation; reviews",
+                  "V-model of testing",
+                  "Integration, system and acceptance testing",
+                  "Special tests: GUI, performance, security, regression, usability"
+                ],
+                "topics_source": {
+                  "url": "https://rizvicollege.edu.in/iqac/aqar2021_22/criteria1/1.3.2/BScITSEMI-VICOMBINED.pdf",
+                  "type": "mumbai_university_fallback",
+                  "matched_subject": "Software Quality Assurance (USIT601)",
+                  "note": "University of Mumbai B.Sc. IT CBCS syllabus (Sem I-VI, revised 2021-22), hosted by Rizvi College. Closest MU testing course."
+                }
+              },
+              {
+                "subject": "AI-Driven Software Development",
+                "code": "25UBCA607",
+                "topics": [
+                  "SDLC models (Waterfall, Agile, DevOps, V-model) and AI fundamentals",
+                  "Benefits and limitations of AI in the SDLC",
+                  "NLP for requirements gathering, classification and prioritization",
+                  "AI-assisted architecture decisions and design recommendation",
+                  "LLM-based code synthesis and intelligent code completion",
+                  "AI pair programming tools: GitHub Copilot, Amazon CodeWhisperer",
+                  "ML-based bug detection and code smell prediction",
+                  "Automated test case generation and predictive test selection",
+                  "AI in CI/CD, log anomaly detection and AIOps",
+                  "AI for refactoring, bug prediction and documentation",
+                  "Explainable AI, fairness, security and legal issues"
+                ],
+                "topics_source": {
+                  "url": "https://www.iare.ac.in/sites/default/files/BT25/ACSE30.pdf",
+                  "type": "other_fallback",
+                  "matched_subject": "AI in Software Engineering (ACSE30)",
+                  "note": "Institute of Aeronautical Engineering (Autonomous), Hyderabad - B.Tech CSE/IT elective; no MU or SNDT syllabus with this title found."
+                }
+              }
+            ]
+          },
+          "source": {
+            "url": "https://drive.google.com/file/d/1RZe2LQJ1DS8bm5xyfIxf66wPhybbsjGV/view",
+            "type": "kes_official",
+            "scope": "subject names and codes only (KES exam time-tables / result sheets); unit topics are fallback, see topics_source",
+            "all_urls": [
+              "https://drive.google.com/file/d/1RZe2LQJ1DS8bm5xyfIxf66wPhybbsjGV/view",
+              "https://drive.google.com/file/d/15AcQekugBeqvvxpTLv85hg71lt0ACoSb/view"
+            ]
+          },
+          "topics_sources": [
+            {
+              "type": "mumbai_university_fallback",
+              "url": "https://rizvicollege.edu.in/iqac/aqar2021_22/criteria1/1.3.2/BScITSEMI-VICOMBINED.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://nmcc.ac.in/Uploads/Syllabus/Nmcc_e87d6fd1-986c-41c8-973b-2dc1fdecb40d.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-v-vi-ay-25-26/bsc-in-it-sem-v-vi.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://www.iare.ac.in/sites/default/files/BT25/ACSE30.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://www.sndt.ac.in/pdf/academics/syllabus-as-per-nep/faculty-of-science-and-technology/sem-i-ii-iii-iv-v-vi-25-26/bsc-information-technology-aedp.pdf"
+            },
+            {
+              "type": "other_fallback",
+              "url": "https://www.unishivaji.ac.in/uploads/bosnew/commerce/BCA Part III Sem V and VI (NEP 2.0) Syllabus 2026-27 F.pdf"
+            }
+          ],
+          "gaps": [
+            "Sem VI list is from the Mar-2026 TYBCA exam (25UBCA codes) and is identical to B.Sc. IT Sem VI."
+          ]
+        }
+      }
+    }
+  }
+}
