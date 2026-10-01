@@ -102,3 +102,26 @@ def test_teacher_api(client):
         {"course": "BSC_IT", "year": 1, "subject": "Database Management Systems"}]}).json()
     assert t["role"] == "teacher" and t["teaching"][0]["subject"] == "Database Management Systems"
     assert [c["id"] for c in client.get("/candidates", params={"role": "teacher"}).json()] == [t["id"]]
+
+
+def test_answers_with_webcam_summary_reach_the_report(client):
+    import json
+
+    cand = client.post("/candidates", json={"name": "Cam User", "college_name": "KES", "roll_no": "V-1",
+                                            "course": "BSC_DS", "year": 1}).json()
+    iid = client.post("/interviews", json={"candidate_id": cand["id"]}).json()["interview_id"]
+    vision = {"body_language_score": 72.0, "eye_contact_pct": 55.0, "face_present_pct": 95.0,
+              "smile_pct": 10.0,
+              "dominant_emotion": "calm", "notes": ["Look at the camera more."]}
+    r = client.post(f"/interviews/{iid}/answer",
+                    data={"text": "good answer", "vision": json.dumps(vision)}).json()
+    assert r["delivery"]["body_language"] == 72.0 and r["delivery"]["eye_contact"] == 55.0
+    bad = client.post(f"/interviews/{iid}/answer", data={"text": "good answer", "vision": "{not json"})
+    assert bad.status_code == 422
+    q = r["next"]
+    while q["phase"] not in ("review", "finished"):
+        q = client.post(f"/interviews/{iid}/answer", data={"text": "good answer"}).json()["next"]
+    rep = client.post(f"/interviews/{iid}/finish").json()
+    dl = rep["summary"]["delivery"]
+    assert dl["body_language"] == 72.0 and dl["answers_with_video"] == 1
+    assert dl["frequent_body_notes"] == ["Look at the camera more."]

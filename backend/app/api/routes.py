@@ -1,4 +1,5 @@
 """REST API used by the Streamlit frontend."""
+import json
 import logging
 import shutil
 import uuid
@@ -183,9 +184,16 @@ def submit_answer(
     audio: Annotated[UploadFile | None, File()] = None,
     text: Annotated[str | None, Form()] = None,
     skip: Annotated[bool, Form()] = False,
+    vision: Annotated[str | None, Form()] = None,
 ) -> dict:
     """Answer by voice (audio file), typed text (fallback/testing) or skip ("I don't know")."""
     interview = _interview(db, interview_id)
+    vision_summary = None
+    if vision:
+        try:
+            vision_summary = json.loads(vision)
+        except ValueError as e:
+            raise HTTPException(422, "vision must be the JSON summary from the webcam tracker") from e
     if interview.status not in ("in_progress",):
         raise HTTPException(409, f"Interview is {interview.status}")
     speech, media_path, transcript, wav = None, None, "", None
@@ -213,7 +221,7 @@ def submit_answer(
         raise HTTPException(422, "Send an audio file, text, or skip=true")
     try:
         result = svc.submit_answer(db, interview, transcript, speech=speech, media_path=media_path,
-                                   audio_path=wav)
+                                   audio_path=wav, vision=vision_summary)
     except ValueError as e:
         raise HTTPException(409, str(e)) from e
     if speech:

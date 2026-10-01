@@ -21,7 +21,7 @@ from backend.app.services import syllabus
 log = logging.getLogger(__name__)
 
 # Overall score weights (body-language/voice metrics are added by the media worker when available).
-W_TECHNICAL, W_SOFT, W_COMMUNICATION = 0.65, 0.20, 0.15
+W_TECHNICAL, W_SOFT, W_COMMUNICATION, W_BODY = 0.65, 0.20, 0.15, 0.10
 
 
 def verdict_for(score: float) -> str:
@@ -313,7 +313,7 @@ def delivery_analysis(transcript: str, keywords: list[str], audio_path: str | Pa
 
 def submit_answer(db: Session, interview: Interview, transcript: str, *, speech: dict | None = None,
                   media_path: str | None = None, audio_path: str | Path | None = None,
-                  rng: random.Random | None = None) -> dict:
+                  vision: dict | None = None, rng: random.Random | None = None) -> dict:
     """Grade the answer to the pending question and advance the engine."""
     state = _state(interview)
     if not state.pending_question_id:
@@ -329,6 +329,8 @@ def submit_answer(db: Session, interview: Interview, transcript: str, *, speech:
     grade_json = {**grade.to_dict(), **delivery}
     if speech:
         grade_json["speech"] = speech
+    if vision and not grade.skipped:
+        grade_json["vision"] = vision
 
     db.add(Answer(
         interview_id=interview.id, question_id=q.id, question_text=q.text, kind=ref.kind, level=q.level,
@@ -356,7 +358,7 @@ def submit_answer(db: Session, interview: Interview, transcript: str, *, speech:
         "missing_points": grade.missing_points, "grading_method": grade.method,
         "level": result["level"], "level_name": result["level_name"], "level_change": result["level_change"],
         "followup_next": result["followup_next"], "transcript": transcript,
-        "delivery": _delivery_brief(delivery),
+        "delivery": _delivery_brief({**delivery, "vision": vision} if vision else delivery),
     }
 
 
@@ -371,6 +373,10 @@ def _delivery_brief(d: dict) -> dict:
     if "lexical" in d:
         out.update(confident_language=d["lexical"]["confidence_language_score"],
                    hedges=d["lexical"]["hedge_count"])
+    if d.get("vision"):
+        v = d["vision"]
+        out.update(body_language=v["body_language_score"], eye_contact=v["eye_contact_pct"],
+                   face_emotion=v.get("dominant_emotion"), body_notes=v["notes"][:2])
     return out
 
 
@@ -419,7 +425,25 @@ def delivery_summary(answers: list[Answer]) -> dict:
         for n in g.get("prosody", {}).get("notes", []):
             notes[n] = notes.get(n, 0) + 1
     parts = [x for x in (fluency, voice, language) if x is not None]
+    vis = [g["vision"] for g in graded if g.get("vision")]
+    face_emotions: dict[str, int] = {}
+    body_notes: dict[str, int] = {}
+    for v in vis:
+        if v.get("dominant_emotion"):
+            face_emotions[v["dominant_emotion"]] = face_emotions.get(v["dominant_emotion"], 0) + 1
+        for n in v.get("notes", []):
+            body_notes[n] = body_notes.get(n, 0) + 1
+    body = {
+        "body_language": avg([v["body_language_score"] for v in vis]),
+        "eye_contact": avg([v["eye_contact_pct"] for v in vis]),
+        "face_present": avg([v["face_present_pct"] for v in vis]),
+        "smile": avg([v["smile_pct"] for v in vis]),
+        "face_emotion_counts": face_emotions,
+        "frequent_body_notes": [n for n, _ in sorted(body_notes.items(), key=lambda kv: -kv[1])[:3]],
+        "answers_with_video": len(vis),
+    }
     return {
+        **body,
         "fluency": fluency, "voice_confidence": voice, "confident_language": language,
         "communication": round(sum(parts) / len(parts), 1) if parts else None,
         "emotion_counts": emotions,
@@ -438,6 +462,8 @@ def finish_interview(db: Session, interview: Interview) -> dict:
     parts = [(s["technical_weighted"], W_TECHNICAL), (s["soft_avg"], W_SOFT)]
     if communication is not None:
         parts.append((communication, W_COMMUNICATION))
+    if delivery["body_language"] is not None:  # only when the webcam was on
+        parts.append((delivery["body_language"], W_BODY))
     overall = round(sum(v * w for v, w in parts) / sum(w for _, w in parts), 1)
 
     interview.technical_score = s["technical_weighted"]
