@@ -53,3 +53,15 @@ def test_delivery_summary_communication_is_mean_of_measured_parts():
     assert s["fluency"] == 80 and s["voice_confidence"] == 90 and s["confident_language"] == 60
     assert s["communication"] == round((80 + 90 + 60) / 3, 1)
     assert s["emotion_counts"] == {"calm": 1} and s["total_hedges"] == 4
+
+
+def test_big_five_indicator_needs_enough_words_and_has_disclaimer():
+    from backend.app.analyzers import personality
+
+    assert personality.indicator(["Too short."]) is None
+    text = ("I love exploring new technologies and I enjoy working with my team on creative projects. " * 12)
+    r = personality.indicator([text])
+    assert r and set(r["traits"]) == {"openness", "conscientiousness", "extraversion", "agreeableness",
+                                      "neuroticism"}
+    assert all(0 <= v["score"] <= 100 for v in r["traits"].values())
+    assert "Indicator only" in r["disclaimer"]

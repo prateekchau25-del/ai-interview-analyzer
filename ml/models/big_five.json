@@ -1,0 +1,30 @@
+{
+  "traits": [
+    "openness",
+    "conscientiousness",
+    "extraversion",
+    "agreeableness",
+    "neuroticism"
+  ],
+  "dataset": "Pennebaker & King Essays (2,467 essays, self-reported Big Five)",
+  "embedding": "sentence-transformers/all-MiniLM-L6-v2 (ONNX), 180-word chunks averaged",
+  "metrics": {
+    "test_accuracy": {
+      "openness": 0.619,
+      "conscientiousness": 0.538,
+      "extraversion": 0.609,
+      "agreeableness": 0.568,
+      "neuroticism": 0.586
+    },
+    "majority_baseline": {
+      "openness": 0.509,
+      "conscientiousness": 0.501,
+      "extraversion": 0.533,
+      "agreeableness": 0.519,
+      "neuroticism": 0.511
+    },
+    "test_essays": 493,
+    "mean_accuracy": 0.584
+  },
+  "disclaimer": "Indicator only. Text-based personality prediction is weak (~55-60%) and must not be used for selection decisions."
+}

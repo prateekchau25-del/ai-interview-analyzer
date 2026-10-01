@@ -20,8 +20,6 @@ from pathlib import Path
 
 import numpy as np
 
-from backend.app.analyzers.nlp import text_embedding  # same function at inference
-
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "ml" / "datasets" / "essays" / "essays.csv"
 CACHE = ROOT / "ml" / "datasets" / "essays" / "embeddings.npz"
@@ -41,13 +39,31 @@ def load():
     return texts, y
 
 
-def embeddings(texts):
+def embeddings(texts, batch: int = 64):
+    """Batched, resumable: chunk embeddings are saved every few batches, so an interrupted run continues."""
     if CACHE.exists():
         return np.load(CACHE)["X"]
+    from backend.app.analyzers.nlp import chunk_words, embed
+
+    chunks, owner = [], []
+    for i, tx in enumerate(texts):
+        for c in chunk_words(tx):
+            chunks.append(c)
+            owner.append(i)
+    partial = CACHE.with_suffix(".partial.npy")
+    done = np.load(partial) if partial.exists() else np.zeros((0, 384), dtype=np.float32)
     t = time.time()
-    X = np.stack([text_embedding(tx) for tx in texts]).astype(np.float32)
-    np.savez_compressed(CACHE, X=X)
-    print(f"embedded {len(texts)} essays in {time.time() - t:.0f}s")
+    while len(done) < len(chunks):
+        parts = [embed(chunks[j:j + batch]) for j in range(len(done), min(len(chunks), len(done) + 8 * batch),
+                                                            batch)]
+        done = np.concatenate([done, *parts]).astype(np.float32)
+        np.save(partial, done)
+        print(f"  {len(done)}/{len(chunks)} chunks ({time.time() - t:.0f}s)", flush=True)
+    owner = np.array(owner)
+    X = np.stack([done[owner == i].mean(0) for i in range(len(texts))])
+    X /= np.linalg.norm(X, axis=1, keepdims=True) + 1e-9
+    np.savez_compressed(CACHE, X=X.astype(np.float32))
+    partial.unlink(missing_ok=True)
     return X
 
 
